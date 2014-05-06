@@ -1,5 +1,6 @@
 package com.gointegro.Pages.Social;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Util.StringUtils;
+import com.gointegro.Util.WaitTool;
 
 public class Comment extends PageBase{
 
@@ -33,6 +35,9 @@ public class Comment extends PageBase{
 	
 	@FindBy (className = "numeric-like-count")
 	private WebElement likecount;
+	
+	@FindBy (css = "div.mentions-autocomplete-list > ul > li.active")
+	private WebElement mentionlist;
 	
 	/** Complete comment box */
 	private void setComment(String comment) {
@@ -99,6 +104,25 @@ public class Comment extends PageBase{
 	
 	public String likecommentisDisplayed() {
 		return likecount.getCssValue("display");
+	}
+	
+	public void completCommentMention(String comment, String mention) {
+		selectMention(comment, mention);
+	}
+	
+	/** Selection user in mention list*/
+	private void selectMention(String post, String mention) {
+		String posteo = "@"+ mention;
+		commentcontent.clear();
+		commentcontent.sendKeys(posteo);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		mentionlist.click();
+		commentcontent.sendKeys(" "+post+"\n");
+	}
+	
+	public TagFeed selectHashtag(String hashtag){
+		driver.findElement(By.linkText(hashtag)).click();
+		return PageFactory.initElements(driver, TagFeed.class);
 	}
 	
 	

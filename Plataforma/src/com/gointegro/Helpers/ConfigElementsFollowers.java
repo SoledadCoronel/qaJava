@@ -11,15 +11,21 @@ public class ConfigElementsFollowers {
 	
 	/** Datos */
 	
-	private static String follower1 = "";
+	//1 sigue a 2
 	
-	private static String follower2 = "";
+	private static String follower1 = "gustavo.moreira@gointegro.com";
 	
-	private static String follower1name = "";
+	private static String follower2 = "constanza.luciani@gointegro.com";
 	
-	private static String follower2name = "";
+	private static String follower1name = "Gustavo Moreira";
 	
-	private static String follower2profile = "";
+	private static String follower2name = "Constanza Luciani";
+	
+	private static String follower2profile = "constanza-luciani";
+	
+	private static String follower1pwd = "";
+	
+	private static String follower2pwd = "";
 	
 	/** Get */
 
@@ -41,6 +47,14 @@ public class ConfigElementsFollowers {
 
 	public static String getFollower2profile() {
 		return follower2profile;
+	}
+	
+	public static String getFollower1pwd() {
+		return follower1pwd;
+	}
+	
+	public static String getFollower2pwd() {
+		return follower2pwd;
 	}
 	
 	

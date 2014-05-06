@@ -68,7 +68,32 @@ public class WallFeeds extends PageBase {
 	@FindBy (xpath = "//div[@class='post-text-content']/p/span/span/a")
 	private WebElement feedmention;
 	
+	@FindBy(xpath = "//div[@class='media']/div/p/a")
+	private WebElement commentmention;
 	
+	@FindBy(className = "share-content")
+	private WebElement sharecontent;
+	
+	@FindBy(xpath = "//div[@class='well-quote']/p")
+	private WebElement contentpreview;
+	
+	@FindBy(xpath = "//p[@class='feed-content']/span/a[2]")
+	private WebElement supublicacion;
+	
+	@FindBy(className = "original-text")
+	private WebElement originaltext;
+	
+	@FindBy(xpath = "//div[@class='p']/div[2]/div/img")
+	private WebElement originalimg;
+	
+	@FindBy(xpath = "//table[@class='post-file']/tbody/tr[3]/td/a")
+	private WebElement originalfile;
+	
+	@FindBy(xpath = "//table[@class='post-link']/tbody/tr[2]/td/a")
+	private WebElement originalurl;
+	
+	@FindBy(className = "media")
+	private WebElement media;
 	
 	/** Constructor */
 	public WallFeeds(WebDriver driver) {
@@ -185,5 +210,52 @@ public class WallFeeds extends PageBase {
 		return PageFactory.initElements(driver, Profile.class);
 	}
 	
+	public Profile selectMentionInComment() {
+		commentmention.click();
+		return PageFactory.initElements(driver, Profile.class);
+	}
+	
+	public TagFeed selectHashtag(String hashtag){
+		driver.findElement(By.linkText(hashtag)).click();
+		return PageFactory.initElements(driver, TagFeed.class);
+	}
+	
+	public SharePost selectShareContent() {
+		sharecontent.click();
+		return PageFactory.initElements(driver, SharePost.class);
+	}
+	
+	public String getContentPreview() {
+		return contentpreview.getText();
+	}
+	
+	public DetailPost selectSuPublicacion() {
+		supublicacion.click();
+		return PageFactory.initElements(driver, DetailPost.class);
+	}
+	
+	public String getOriginalText() {
+		return originaltext.getText();
+	}
+	
+	public String getOriginalImg() {
+		return originalimg.getAttribute("alt");
+	}
+	
+	public String getOriginalFile() {
+		return originalfile.getText();
+	}
+	
+	public String getOriginalUrl() {
+		return originalurl.getText();
+	}
+	
+	public String getTextVerMasContentPreview() {
+		return StringUtils.RecortarTextoVerMas(contentpreview.getText());
+	}
+	
+	public String getMediaContent() {
+		return media.getText();
+	}
 
 }

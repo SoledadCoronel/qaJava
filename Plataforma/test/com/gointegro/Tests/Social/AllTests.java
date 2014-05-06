@@ -11,10 +11,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Suite.class)
 @SuiteClasses({ 
 	//testPostSimple.class, testPostVinculo.class, testPostFileNoImagen.class, testPostFileImagen.class, testPostExtenso.class, 
+	//testPostPrivateWorkspace.class,
 	//testPostEliminar.class,
 	//testComment.class, testCommentEliminar.class, testCommentExtenso.class,
 	//testLikePost.class, testLikeComment.class,
-	testMentionsPostSimple.class,
+	//testMentionsPostSimple.class, testMentionsComment.class,
+	//testHashtagPost.class,
+	//testHashtagComment.class, //no funciona 30/04 https://gointegro.atlassian.net/browse/PLATAFORMAII-2889
+	//testPostDetail.class,
+	//testSharePostSimple.class, testSharePostEspecial.class,
+	//testFollowUserPost.class, testFollowUserComment.class, testFollowUserLike.class,
+	testFollowPost.class,
+	
 	})
 public class AllTests {
 	

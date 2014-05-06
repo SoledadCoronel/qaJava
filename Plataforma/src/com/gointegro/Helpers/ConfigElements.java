@@ -44,6 +44,12 @@ public class ConfigElements {
 	private static String otherUser = "federico.niveiro@gointegro.com";
 	
 	private static String otherUserName2 = "Federico Martin Niveiro";
+	
+	private static String nombreEspacioPrivado = "Privado Automation";
+	
+	private static String idAppEspacioPrivado = "1958";
+	
+	private static String slugMiPerfil = "gustavo-moreira";
 
 	
 	/** Get */
@@ -109,5 +115,17 @@ public class ConfigElements {
 	
 	public static String getotherUserName2() {
 		return otherUserName2;
+	}
+
+	public static String getNombreEspacioPrivado() {
+		return nombreEspacioPrivado;
+	}
+
+	public static String getIdAppEspacioPrivado() {
+		return idAppEspacioPrivado;
+	}
+	
+	public static String getSlugMiPerfil() {
+		return slugMiPerfil;
 	}
 }

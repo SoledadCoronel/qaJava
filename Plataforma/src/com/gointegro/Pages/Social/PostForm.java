@@ -198,13 +198,20 @@ public class PostForm extends PageBase{
 		submitPostFile();
 	}
 	
+	/** Complete post simple with mention */
 	public void completePostMention(String post, String mention) {
+		selectMention(post, mention);
+		enterPost();
+	}
+	
+	
+	/** Selection user in mention list*/
+	private void selectMention(String post, String mention) {
 		String posteo = "@"+ mention;
 		setText(posteo);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		mentionlist.click();
 		textpost.sendKeys(" "+post);
-		enterPost();
 	}
 	
 
