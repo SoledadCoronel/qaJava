@@ -76,7 +76,7 @@ public class Profile extends PageBase{
 	
 	
 	/** Get list of followers */
-	private String getfollowing () {
+	public String getfollowing () {
 		return following.getAttribute("outerHTML");
 	}
 	

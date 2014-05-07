@@ -32,6 +32,9 @@ public class OtherProfile extends PageBase{
 	
 	@FindBy (className = "wall")
 	private WebElement linkWall;
+	
+	@FindBy (id = "follow-button")
+	private WebElement followbutton;
 
 	/** Constructor */
 	public OtherProfile(WebDriver driver) {
@@ -81,7 +84,9 @@ public class OtherProfile extends PageBase{
 			return false;
 	}
 	
-	
+	public boolean isFollowBtnPresent() {
+		return followbutton.isEnabled();
+	}
 	
 	/** Search in filelist a string */
 	private boolean listOfFiles(String searched) {

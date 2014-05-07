@@ -39,6 +39,12 @@ public class Comment extends PageBase{
 	@FindBy (css = "div.mentions-autocomplete-list > ul > li.active")
 	private WebElement mentionlist;
 	
+	@FindBy (xpath = "//div[@class='feed-comments']/div/a")
+	private WebElement excesscomments;
+	
+	@FindBy (className = "feed-comments")
+	private WebElement feedcomments;
+	
 	/** Complete comment box */
 	private void setComment(String comment) {
 		commentcontent.clear();
@@ -125,6 +131,16 @@ public class Comment extends PageBase{
 		return PageFactory.initElements(driver, TagFeed.class);
 	}
 	
+	public boolean isDisplayedExcessComments() {
+		return excesscomments.isDisplayed();
+	}
 	
+	public void selectExcessComments() {
+		excesscomments.click();
+	}
+	
+	public String getfeedComments() {
+		return feedcomments.getText();
+	}
 
 }
