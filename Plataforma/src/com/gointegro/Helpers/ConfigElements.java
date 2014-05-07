@@ -30,6 +30,8 @@ public class ConfigElements {
 	private static String FileImagen = "/home/gustavomoreira/Pictures/Otro/Explosions-In-The-Sky.jpg";
 	
 	private static String idAppSocial = "1956";
+	
+	private static String idAppCelebration = "1982";
 
 	private static String nameOtherUser = "Juan Jose Toledo";
 	
@@ -127,5 +129,9 @@ public class ConfigElements {
 	
 	public static String getSlugMiPerfil() {
 		return slugMiPerfil;
+	}
+	
+	public static String getIdAppCelebraciones() {
+		return idAppCelebration;
 	}
 }
