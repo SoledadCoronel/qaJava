@@ -37,6 +37,9 @@ public class AdminCategory extends PageBase {
 	
 	@FindBy (xpath = "//div[@id='name']/div/div/div")
 	private WebElement categorynameerror;
+	
+	@FindBy (xpath = "//ul[@class='automations']/li/input")
+	private WebElement automationbirthdaycheck;
 
 	/**
 	 * Constructor
@@ -53,9 +56,11 @@ public class AdminCategory extends PageBase {
 		categoryname.sendKeys(name);
 	}
 	
-	public void createCategory (String name) {
+	public void createCategory (String name, boolean isAutomation) {
 		newcategorybtn.click();
 		completeCategoryName(name);
+		if (isAutomation)
+			automationbirthdaycheck.click();
 		savecategory.click();
 	}
 	
@@ -65,6 +70,12 @@ public class AdminCategory extends PageBase {
 	
 	public String getCategoryNameError() {
 		return categorynameerror.getText();
+	}
+	
+	public void cancelCreateCategory(String name) {
+		newcategorybtn.click();
+		completeCategoryName(name);
+		cancelcategory.click();
 	}
 	
 	public boolean isCategoryInList(String name) {
@@ -79,6 +90,20 @@ public class AdminCategory extends PageBase {
 			}
 		}
 		return status;
+	}
+	
+	public String getCategoryAutomationText(String name){
+		String textcontent = null;
+		for (WebElement element : categorieslist) {
+			if (element.findElement(By.className("span10")).getText().contains(name)) {
+				textcontent = element.getText();
+				break;
+			}
+			else {
+				textcontent = null;
+			}
+		}
+		return textcontent;
 	}
 
 }

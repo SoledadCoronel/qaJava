@@ -40,8 +40,10 @@ public class NewCategoryOverlay extends PageBase{
 		categoryname.sendKeys(name);
 	}
 	
-	public void createCategory(String name) {
+	public void createCategory(String name, boolean isAutomation) {
 		completeCategoryName(name);
+		if (isAutomation)
+			categoryautomation.click();
 		savebtn.click();
 	}
 	
@@ -51,6 +53,11 @@ public class NewCategoryOverlay extends PageBase{
 	
 	public String getSaveError() {
 		return saveerror.getText();
+	}
+	
+	public void cancelCreate(String name) {
+		completeCategoryName(name);
+		cancelbtn.click();
 	}
 
 	
