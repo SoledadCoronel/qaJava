@@ -49,9 +49,13 @@ public class NewEvent extends PageBase{
 		super(driver);
 	}
 	
-	protected NewCategoryOverlay selectNewCategory() {
+	public NewCategoryOverlay selectNewCategory() {
 		newcategory.click();
 		return PageFactory.initElements(driver, NewCategoryOverlay.class);
+	}
+	
+	public String getCategoryPresent() {
+		return categories.getText();
 	}
 
 }

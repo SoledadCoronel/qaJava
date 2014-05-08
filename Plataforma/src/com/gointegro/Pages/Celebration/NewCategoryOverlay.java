@@ -26,7 +26,7 @@ public class NewCategoryOverlay extends PageBase{
 	@FindBy (xpath = "//div[@class='modal-body']/div/div/div/div")
 	private WebElement categorynameerror;
 	
-	@FindBy (xpath = "//div[@class='modal-body']/div")
+	@FindBy (xpath = "//div[@id='category-modal']/div[2]/div")
 	private WebElement saveerror;
 	
 
@@ -34,6 +34,26 @@ public class NewCategoryOverlay extends PageBase{
 		super(driver);
 		
 	}
+	
+	private void completeCategoryName(String name) {
+		categoryname.clear();
+		categoryname.sendKeys(name);
+	}
+	
+	public void createCategory(String name) {
+		completeCategoryName(name);
+		savebtn.click();
+	}
+	
+	public String getCategoryNameError() {
+		return categorynameerror.getText();
+	}
+	
+	public String getSaveError() {
+		return saveerror.getText();
+	}
+
+	
 	
 
 }
