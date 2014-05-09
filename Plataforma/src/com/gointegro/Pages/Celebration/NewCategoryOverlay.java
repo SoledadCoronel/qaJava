@@ -17,7 +17,7 @@ public class NewCategoryOverlay extends PageBase{
 	@FindBy (name = "new-category")
 	private WebElement savebtn;
 	
-	@FindBy (xpath = "//div[@class='modal-footer']/button")
+	@FindBy (xpath = "//div[@class='modal-footer']/button[2]")
 	private WebElement cancelbtn;
 	
 	@FindBy (className = "close")
@@ -30,15 +30,34 @@ public class NewCategoryOverlay extends PageBase{
 	private WebElement saveerror;
 	
 
+	/**
+	 * Cosntructor
+	 * 
+	 * @param driver
+	 */
 	public NewCategoryOverlay(WebDriver driver) {
 		super(driver);
 		
 	}
 	
+	/** 
+	 * Completa el nombre de la categoria
+	 * 
+	 * @param name
+	 */
+	
 	private void completeCategoryName(String name) {
 		categoryname.clear();
 		categoryname.sendKeys(name);
 	}
+	
+	/** 
+	 * Crea la categoria.
+	 * isAutomation define si la categoria sera automatica o no
+	 * 
+	 * @param name
+	 * @param isAutomation
+	 */
 	
 	public void createCategory(String name, boolean isAutomation) {
 		completeCategoryName(name);
@@ -47,6 +66,12 @@ public class NewCategoryOverlay extends PageBase{
 		savebtn.click();
 	}
 	
+	/**
+	 * Obtiene los errores mostrados al crear una categoria
+	 * 
+	 * @return
+	 */
+	
 	public String getCategoryNameError() {
 		return categorynameerror.getText();
 	}
@@ -54,6 +79,12 @@ public class NewCategoryOverlay extends PageBase{
 	public String getSaveError() {
 		return saveerror.getText();
 	}
+	
+	/**
+	 * Cancela la creacion de la categoria
+	 * 
+	 * @param name
+	 */
 	
 	public void cancelCreate(String name) {
 		completeCategoryName(name);

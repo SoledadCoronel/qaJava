@@ -10,7 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testNewCategory.class
+	//testNewCategory.class,
+	testEditCategory.class
 })
 public class AllTestsCelebration {
 	

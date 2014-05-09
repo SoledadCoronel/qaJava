@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -29,7 +28,7 @@ private WebDriver driver;
 		driver = AllTestsCelebration.getDriver();
 	}
 
-	@Ignore
+	@Test
 	public void test_new_category_category_menu() {
 		String categoryname = DataGenerator.nombreFile();
 		
@@ -59,7 +58,7 @@ private WebDriver driver;
 		assertTrue(newevent.getCategoryPresent().contains(categoryname));
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_category_new_event() {
 		String categoryname = DataGenerator.nombreFile();
 		
@@ -89,7 +88,7 @@ private WebDriver driver;
 		assertTrue(admincategory.isCategoryInList(categoryname));
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_category_category_admin() {
 		String categoryname = DataGenerator.nombreFile();
 		
@@ -118,7 +117,7 @@ private WebDriver driver;
 		assertTrue(newevent.getCategoryPresent().contains(categoryname));
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_category_overlay_empty() {
 		String categoryname = "";
 		
@@ -138,7 +137,7 @@ private WebDriver driver;
 		assertEquals("Ocurrió un error al crear la categoría", newcategory.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_category_admin_empty() {
 		String categoryname = "";
 		
@@ -159,7 +158,7 @@ private WebDriver driver;
 		assertEquals("Ocurrió un error al crear la categoría", admincategory.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_category_overlay_lot_of_characters() {
 		String categoryname = StringUtils.getTextoLargo();
 		
@@ -179,7 +178,7 @@ private WebDriver driver;
 		assertEquals("Ocurrió un error al crear la categoría", newcategory.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_category_admin_lot_of_characters() {
 		String categoryname = StringUtils.getTextoLargo();
 		
@@ -200,7 +199,7 @@ private WebDriver driver;
 		assertEquals("Ocurrió un error al crear la categoría", admincategory.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_category_overlay_repeated() {
 		String categoryname = DataGenerator.nombreFile();
 		
@@ -227,7 +226,7 @@ private WebDriver driver;
 		assertEquals("El nombre de la categoría ya existe", newcategory.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_category_admin_repeated() {
 		String categoryname = DataGenerator.nombreFile();
 		
@@ -256,7 +255,7 @@ private WebDriver driver;
 		assertEquals("El nombre de la categoría ya existe", admincategory.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_category_automation_overlay() {
 		String categoryname = DataGenerator.nombreFile();
 		
