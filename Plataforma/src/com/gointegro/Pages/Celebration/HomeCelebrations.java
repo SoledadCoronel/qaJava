@@ -11,6 +11,12 @@ import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsCelebration;
 import com.gointegro.Pages.Base.PageBase;
 
+/**
+ * PO. Home de una app de celebraciones
+ * 
+ * @author gustavomoreira
+ *
+ */
 public class HomeCelebrations extends PageBase{
 	
 	@FindBy(xpath = "//header[@class='app-name']/div/a")
@@ -31,43 +37,64 @@ public class HomeCelebrations extends PageBase{
 	@FindBy(xpath = "//*[@id='category-list']/ul/li")
 	private List<WebElement> categorylist;
 
-	/** Constructor */
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public HomeCelebrations(WebDriver driver) {
 		super(driver);
 		URL = ConfigElements.getURL()+"/app/celebrations/"+ConfigElementsCelebration.getIdAppCelebraciones();
 	}
+
 	
-	/** Private methods */
-	
-	public NewEvent selectNewEvent() {
-		neweventheader.click();
-		return PageFactory.initElements(driver, NewEvent.class);
-	}
-	
+	/**
+	 * Selecionar Menu de categorias
+	 */
 	private void selectCategoryMenu() {
 		admincategbtn.click();
 	}
 	
-	/** Public methods */
 	
+	/**
+	 * Seleccionar nueva Categoria
+	 * 
+	 * @return NewCategoryOverlay
+	 */
 	public NewCategoryOverlay selectNewCategory() {
 		selectCategoryMenu();
 		newcategory.click();
 		return PageFactory.initElements(driver, NewCategoryOverlay.class);
 	}
 	
+	/**
+	 * Seleccionar administrador de categorias
+	 * 
+	 * @return AdminCategory
+	 */
 	public AdminCategory selectAdminCategory() {
 		selectCategoryMenu();
 		admincategories.click();
 		return PageFactory.initElements(driver, AdminCategory.class);
 	}
 	
+	/**
+	 * Seleccionar nueva celebracion
+	 * 
+	 * @return NewEvent
+	 */
 	public NewEvent selectNewCelebration() {
 		neweventheader.click();
 		return PageFactory.initElements(driver, NewEvent.class);
 	}
 	
+	/**
+	 * Buscar en el sidebar de categorias
+	 * 
+	 * @param name
+	 * @return boolean
+	 */
 	public boolean isCategoryInSideBar(String name) {
 		boolean status = false;
 		for (WebElement element : categorylist) {
@@ -82,6 +109,12 @@ public class HomeCelebrations extends PageBase{
 		return status;
 	}
 	
+	/**
+	 * Seleccionar una categoria en el arbol de celebraciones
+	 * 
+	 * @param categoryname
+	 * @return CelebrationList
+	 */
 	public CelebrationList selectCategoryInSideBar(String categoryname) {
 		for (WebElement element : categorylist) {
 			if (element.getText().contains(categoryname)) {
@@ -96,6 +129,16 @@ public class HomeCelebrations extends PageBase{
 			}
 		}
 		return PageFactory.initElements(driver, CelebrationList.class);
+	}
+	
+	/**
+	 * Seleccionar nueva celebracion
+	 * 
+	 * @return NewEvent
+	 */
+	public NewEvent selectNewEvent() {
+		neweventheader.click();
+		return PageFactory.initElements(driver, NewEvent.class);
 	}
 
 }

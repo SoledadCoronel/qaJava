@@ -11,9 +11,11 @@ import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Util.WaitTool;
 
 /**
- * Profile. This class contains all elements of Profile.
+ * PO. Profile
+ * 
+ * @author gustavomoreira
+ *
  */
-
 public class Profile extends PageBase{
 	
 	@FindBy (linkText = "Archivos")
@@ -37,25 +39,43 @@ public class Profile extends PageBase{
 	@FindBy (id = "user-name")
 	private WebElement username;
 
-	/** Constructor */
+	/** 
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public Profile(WebDriver driver) {
 		super(driver);
 		URL = ConfigElements.getURL()+"/profile";
 	}
 	
-	/** Select solapa Archivos */
+	
+	/**
+	 * Obtener el listado de followers
+	 * 
+	 * @return String
+	 */
+	private String getfollowers () {
+		return followers.getAttribute("outerHTML");
+	}
+	
+	/**
+	 * Seleccionar la solapa archivos
+	 */
 	public void selectArchivos() {
 		linkArchivos.click();
 	}
 	
-	/** Select solapa Wall */
+	/**
+	 * Seleccionar la solapa wall
+	 */
 	public void selectWall () {
 		linkWall.click();
 	}
 	
-	/** Ordernar archivos por fecha 
-	 * Los ordena de forma que el ultimo aparezca primero.
-	 * */
+	/**
+	 * Ordenar los archivos de forma descendentes
+	 */
 	public void orderByDateFiles() {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		orderDate.click();
@@ -64,23 +84,40 @@ public class Profile extends PageBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 	}
 	
-	/** Get el nombre del archivo posteado */
+	/**
+	 * Obtener el nombre del archivo posteado
+	 * 
+	 * @return String
+	 */
 	public String getFileNameList() {
 		return driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[2]/a")).getAttribute("text");
 	}
 	
-	/** Get la location donde fue posteado un archivo */
+	/**
+	 * Obtener la location donde se posteo un archivo
+	 * 
+	 * @return String
+	 */
 	public String getLocationNameList() {
 		return driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[3]/a")).getAttribute("text");
 	}
 	
 	
-	/** Get list of followers */
+	/**
+	 * Obtener el listado de following
+	 * 
+	 * @return String
+	 */
 	public String getfollowing () {
 		return following.getAttribute("outerHTML");
 	}
 	
-	/** Search user in followers */
+	/**
+	 * Buscar un usuario en following
+	 * 
+	 * @param following
+	 * @return boolean
+	 */
 	public boolean searchfollowing (String following) {
 		if (getfollowing().contains(following))
 			return true;
@@ -88,13 +125,12 @@ public class Profile extends PageBase{
 			return false;
 	}
 	
-	
-	/** Get list of followers */
-	private String getfollowers () {
-		return followers.getAttribute("outerHTML");
-	}
-	
-	/** Search user in followers */
+	/**
+	 * Buscar un usuario en followers
+	 * 
+	 * @param follower
+	 * @return boolean
+	 */
 	public boolean searchfollowers (String follower) {
 		if (getfollowers().contains(follower))
 			return true;
@@ -102,7 +138,11 @@ public class Profile extends PageBase{
 			return false;
 	}
 	
-	/** Return user name profile */
+	/**
+	 * Obtiene el nombre de perfil
+	 * 
+	 * @return String
+	 */
 	public String getUserName() {
 		return username.getText();
 	}

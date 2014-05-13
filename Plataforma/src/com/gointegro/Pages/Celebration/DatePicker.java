@@ -6,6 +6,12 @@ import org.openqa.selenium.support.FindBy;
 
 import com.gointegro.Pages.Base.PageBase;
 
+/**
+ * PO. Manejo del datepicker con el calendario
+ * 
+ * @author gustavomoreira
+ *
+ */
 public class DatePicker extends PageBase{
 
 	@FindBy (className = "prev")
@@ -17,7 +23,11 @@ public class DatePicker extends PageBase{
 	@FindBy (className = "datepicker-switch")
 	private WebElement month;
 	
-	
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public DatePicker(WebDriver driver) {
 		super(driver);
 	}

@@ -36,33 +36,88 @@ public class OtherProfile extends PageBase{
 	@FindBy (id = "follow-button")
 	private WebElement followbutton;
 
-	/** Constructor */
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public OtherProfile(WebDriver driver) {
 		super(driver);
 		URL = ConfigElements.getURL()+"/profile/"+ConfigElements.getProfileOtherUser();
 	}
 	
-	/** Select solapa Archivos */
-	public void selectArchivos() {
-		linkArchivos.click();
+	
+	/** 
+	 * Search in filelist a string 
+	 * 
+	 * @return boolean
+	 * */
+	private boolean listOfFiles(String searched) {
+		boolean status = false;
+		List <WebElement> rowCollection = filetable.findElements(By.xpath("//*[@class='table']/tbody/tr"));
+		for (WebElement rowElement : rowCollection) {
+			List<WebElement> colCollection = rowElement.findElements(By.xpath("td"));
+			for (WebElement colElement: colCollection){
+				if (searched.contains(colElement.getAttribute("text"))){
+					status = true;
+					break;
+				}
+				else {
+					status = false;
+				}
+			}
+		}
+		return status;
 	}
 	
-	/** Select solapa Wall */
-	public void selectWall () {
-		linkWall.click();
-	}
-	
-	/** Search a string in table files*/
-	public boolean searchinfilelist (String searched) {
-		return listOfFiles(searched);
-	}
-	
-	/** Get list of followers */
+	/**
+	 * Obtiene el listado de followers
+	 * 
+	 * @return String
+	 */
 	private String getfollowers () {
 		return followers.getAttribute("outerHTML");
 	}
 	
-	/** Search user in followers */
+	/**
+	 * Obtener el listado de following
+	 * @return String
+	 */
+	private String getfollowing () {
+		return following.getAttribute("outerHTML");
+	}
+	
+	
+	/**
+	 * Seleccionar solapa archivos
+	 */
+	public void selectArchivos() {
+		linkArchivos.click();
+	}
+	
+	/**
+	 * Seleccionar el wall
+	 */
+	public void selectWall () {
+		linkWall.click();
+	}
+	
+	/**
+	 * Buscar un archivo en el listado de archivos
+	 * 
+	 * @param searched
+	 * @return boolean
+	 */
+	public boolean searchinfilelist (String searched) {
+		return listOfFiles(searched);
+	}
+	
+	/**
+	 * Buscar un follower
+	 * 
+	 * @param follower
+	 * @return boolean
+	 */
 	public boolean searchfollowers (String follower) {
 		if (getfollowers().contains(follower))
 			return true;
@@ -70,13 +125,12 @@ public class OtherProfile extends PageBase{
 			return false;
 	}
 	
-	
-	/** Get list of followers */
-	private String getfollowing () {
-		return following.getAttribute("outerHTML");
-	}
-	
-	/** Search user in followers */
+	/**
+	 * Buscar un usuario en following
+	 * 
+	 * @param following
+	 * @return boolean
+	 */
 	public boolean searchfollowing (String following) {
 		if (getfollowing().contains(following))
 			return true;
@@ -84,32 +138,15 @@ public class OtherProfile extends PageBase{
 			return false;
 	}
 	
+	/**
+	 * Verificar estado del btn Follow
+	 * 
+	 * @return boolean
+	 */
 	public boolean isFollowBtnPresent() {
 		return followbutton.isEnabled();
 	}
 	
-	/** Search in filelist a string */
-	private boolean listOfFiles(String searched) {
-		boolean status = false;
-		
-		List <WebElement> rowCollection = filetable.findElements(By.xpath("//*[@class='table']/tbody/tr"));
-		
-		for (WebElement rowElement : rowCollection) {
-			List<WebElement> colCollection = rowElement.findElements(By.xpath("td"));
-			
-			for (WebElement colElement: colCollection){
-				if (searched.contains(colElement.getAttribute("text"))){
-					status = true;
-					break;
-				}
-				
-				else {
-					status = false;
-				}
-			}
-		}
-		
-		return status;
-	}
+	
 
 }

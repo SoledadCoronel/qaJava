@@ -6,7 +6,7 @@ import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Base.PageBase;
 
 /**
- * Clase que solo desloguea. No mucho mas.
+ * Logout
  * 
  * @author gustavomoreira
  *
@@ -15,7 +15,11 @@ import com.gointegro.Pages.Base.PageBase;
 public class Logout extends PageBase{
 
 	
-	/** Constructor */
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public Logout(WebDriver driver) {
 		super(driver);
 		URL = ConfigElements.getURL()+"/auth/signout";

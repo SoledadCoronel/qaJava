@@ -6,6 +6,12 @@ import org.openqa.selenium.support.FindBy;
 
 import com.gointegro.Pages.Base.PageBase;
 
+/**
+ * PO. Nueva categoria desde overlay
+ * 
+ * @author gustavomoreira
+ *
+ */
 public class NewCategoryOverlay extends PageBase{
 	
 	@FindBy (id = "category-name")
@@ -31,7 +37,7 @@ public class NewCategoryOverlay extends PageBase{
 	
 
 	/**
-	 * Cosntructor
+	 * Constructor
 	 * 
 	 * @param driver
 	 */
@@ -40,25 +46,24 @@ public class NewCategoryOverlay extends PageBase{
 		
 	}
 	
+	
 	/** 
 	 * Completa el nombre de la categoria
 	 * 
 	 * @param name
 	 */
-	
 	private void completeCategoryName(String name) {
 		categoryname.clear();
 		categoryname.sendKeys(name);
 	}
 	
+	
 	/** 
 	 * Crea la categoria.
-	 * isAutomation define si la categoria sera automatica o no
 	 * 
 	 * @param name
 	 * @param isAutomation
 	 */
-	
 	public void createCategory(String name, boolean isAutomation) {
 		completeCategoryName(name);
 		if (isAutomation)
@@ -69,13 +74,17 @@ public class NewCategoryOverlay extends PageBase{
 	/**
 	 * Obtiene los errores mostrados al crear una categoria
 	 * 
-	 * @return
+	 * @return String
 	 */
-	
 	public String getCategoryNameError() {
 		return categorynameerror.getText();
 	}
 	
+	/**
+	 * Obtiene los mensajes de error mostrados debajo del textbox
+	 * 
+	 * @return String
+	 */
 	public String getSaveError() {
 		return saveerror.getText();
 	}
@@ -85,13 +94,9 @@ public class NewCategoryOverlay extends PageBase{
 	 * 
 	 * @param name
 	 */
-	
 	public void cancelCreate(String name) {
 		completeCategoryName(name);
 		cancelbtn.click();
 	}
-
 	
-	
-
 }

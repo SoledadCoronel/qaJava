@@ -12,6 +12,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Util.WaitTool;
 
+/**
+ * PO. Nueva celebracion
+ * 
+ * @author gustavomoreira
+ *
+ */
 public class NewEvent extends PageBase{
 	
 	@FindBy (id = "collaborators-container-input")
@@ -57,38 +63,59 @@ public class NewEvent extends PageBase{
 	private WebElement textlist;
 	
 
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public NewEvent(WebDriver driver) {
 		super(driver);
 	}
 	
-	public NewCategoryOverlay selectNewCategory() {
-		newcategory.click();
-		return PageFactory.initElements(driver, NewCategoryOverlay.class);
-	}
-	
-	public String getCategoryPresent() {
-		return categories.getText();
-	}
-	
+	/**
+	 * Seleccionar la categoria
+	 * 
+	 * @param categoryname
+	 */
 	private void selectCategory(String categoryname) {
 		new Select(categories).selectByVisibleText(categoryname);
 	}
 	
+	/**
+	 * Completar la fecha
+	 * 
+	 * @param date
+	 */
 	private void selectDate(String date) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.getElementById('date').value='"+date+"'");
 	}
 	
+	/**
+	 * Completar el titulo
+	 * 
+	 * @param titletext
+	 */
 	private void completeTitle (String titletext) {
 		title.clear();
 		title.sendKeys(titletext);
 	}
 	
+	/**
+	 * Completar la descripcion
+	 * 
+	 * @param descriptiontext
+	 */
 	private void completeDescription (String descriptiontext) {
 		description.clear();
 		description.sendKeys(descriptiontext);
 	}
 	
+	/**
+	 * Completar el colaborador
+	 * 
+	 * @param collaboratorname
+	 */
 	private void completeCollaborator (String collaboratorname) {
 		collaborators.clear();
 		collaborators.sendKeys(collaboratorname); 
@@ -96,13 +123,47 @@ public class NewEvent extends PageBase{
 		selectColaboratorList(collaboratorname);
 	}
 	
+	/**
+	 * Seleccionar un colaborador
+	 * 
+	 * @param collaboratorname
+	 */
 	private void selectColaboratorList(String collaboratorname) {
-		
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.textToBePresentInElement(textlist, collaboratorname));		
 		textlabel.click();
 	}
 	
+	
+	/**
+	 * Seleccionar nueva categoria
+	 * 
+	 * @return NewCategoryOverlay
+	 */
+	public NewCategoryOverlay selectNewCategory() {
+		newcategory.click();
+		return PageFactory.initElements(driver, NewCategoryOverlay.class);
+	}
+	
+	/**
+	 * Buscar categoria presente
+	 * 
+	 * @return String
+	 */
+	public String getCategoryPresent() {
+		return categories.getText();
+	}
+	
+	/**
+	 * Crear nueva celebracion
+	 * 
+	 * @param categoryname
+	 * @param date
+	 * @param titletext
+	 * @param descriptiontext
+	 * @param collaboratorname
+	 * @return HomeCelebrations
+	 */
 	public HomeCelebrations completeCelebration (String categoryname, String date, String titletext, String descriptiontext, String collaboratorname) {
 		completeCollaborator(collaboratorname);
 		completeTitle(titletext);

@@ -9,7 +9,7 @@ import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Base.PageBase;
 
 /**
- * Login class.
+ * Login
  * 
  * @author gustavomoreira
  *
@@ -29,28 +29,49 @@ public class Login extends PageBase{
 	@FindBy(id = "signupButton")
 	private WebElement signup;
 	
-	/** Constructor */
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public Login (WebDriver driver){
 		super(driver);
 		URL = ConfigElements.getURL();
 	}
 	
-	/** Complete username */
+	
+	/**
+	 * Complete username
+	 * 
+	 * @param username
+	 */
 	private void completeUsername (String username) {
 		usernamelogin.sendKeys(username);
 	}
 	
-	/** Complete password */
+	/**
+	 * Complete Password
+	 * 
+	 * @param password
+	 */
 	/*private void completePassword (String password) {
 		passwordlogin.sendKeys(password);
 	}*/
 	
-	/** Submit login */
+	/**
+	 * Submit login
+	 */
 	private void submitform () {
 		submit.click();
 	}
 	
-	/** Login in platform */
+	/**
+	 * Complete Login
+	 * 
+	 * @param username
+	 * @param password
+	 * @return Home
+	 */
 	public Home LoginPlatformNoReg(String username, String password) {
 		completeUsername(username);
 		//completePassword(password);
@@ -59,6 +80,4 @@ public class Login extends PageBase{
 		return PageFactory.initElements(driver, Home.class);
 	}
 	
-	
-
 }

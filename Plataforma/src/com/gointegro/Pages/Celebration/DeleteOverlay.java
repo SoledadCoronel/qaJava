@@ -6,6 +6,12 @@ import org.openqa.selenium.support.FindBy;
 
 import com.gointegro.Pages.Base.PageBase;
 
+/**
+ * PO. Delete overlay 
+ * 
+ * @author gustavomoreira
+ *
+ */
 public class DeleteOverlay extends PageBase{
 	
 	@FindBy (xpath = "//div[@id='delete-modal']//div[@class='modal-footer']/button")
@@ -17,14 +23,25 @@ public class DeleteOverlay extends PageBase{
 	@FindBy (className = "close")
 	private WebElement closeoverlay;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public DeleteOverlay(WebDriver driver) {
 		super(driver);
 	}
 	
+	/**
+	 * Confirmar eliminar
+	 */
 	public void selectConfirmDelete() {
 		confirmdelete.click();
 	}
 	
+	/**
+	 * Cancelar eliminar
+	 */
 	public void selectCancelDelete() {
 		canceldelete.click();
 	}

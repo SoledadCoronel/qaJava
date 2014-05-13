@@ -10,6 +10,12 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 
+/**
+ * PO. Administrador de categorias
+ * 
+ * @author gustavomoreira
+ *
+ */
 public class AdminCategory extends PageBase {
 	
 	@FindBy (id = "new-category-btn")
@@ -47,7 +53,6 @@ public class AdminCategory extends PageBase {
 	 * 
 	 * @param driver
 	 */
-	
 	public AdminCategory(WebDriver driver) {
 		super(driver);
 	}
@@ -57,19 +62,17 @@ public class AdminCategory extends PageBase {
 	 * 
 	 * @param name
 	 */
-	
 	private void completeCategoryName(String name) {
 		categoryname.clear();
 		categoryname.sendKeys(name);
 	}
 	
 	/**
-	 * Crean o editan una categoria
+	 * Crear una categoria
 	 * 
 	 * @param name Define el nombre de la categoria
 	 * @param isAutomation Define si la categoria a crear/editar es del tipo automatica o no.
 	 */
-	
 	public void createCategory (String name, boolean isAutomation) {
 		newcategorybtn.click();
 		completeCategoryName(name);
@@ -78,6 +81,12 @@ public class AdminCategory extends PageBase {
 		savecategory.click();
 	}
 	
+	/**
+	 * Editar una categoria
+	 * 
+	 * @param name
+	 * @param isAutomation
+	 */
 	public void editCategory (String name, boolean isAutomation) {
 		completeCategoryName(name);
 		if (isAutomation)
@@ -88,13 +97,17 @@ public class AdminCategory extends PageBase {
 	/**
 	 * Obtiene los mensajes de error mostrados
 	 * 
-	 * @return
+	 * @return String
 	 */
-	
 	public String getSaveError() {
 		return saveerror.getText();
 	}
 	
+	/**
+	 * Obtiene el mensaje de error mostrado debajo del textbox
+	 * 
+	 * @return String
+	 */
 	public String getCategoryNameError() {
 		return categorynameerror.getText();
 	}
@@ -104,13 +117,17 @@ public class AdminCategory extends PageBase {
 	 * 
 	 * @param name
 	 */
-	
 	public void cancelCreateCategory(String name) {
 		newcategorybtn.click();
 		completeCategoryName(name);
 		cancelcategory.click();
 	}
 	
+	/**
+	 * Cancela la edicion de una categoria
+	 * 
+	 * @param name
+	 */
 	public void cancelEditCategory(String name) {
 		completeCategoryName(name);
 		cancelcategory.click();
@@ -120,9 +137,8 @@ public class AdminCategory extends PageBase {
 	 * Busca una categoria presente en el listado de categoria. Retorna true si la encuentra o false si no
 	 * 
 	 * @param name
-	 * @return
+	 * @return boolean
 	 */
-	
 	public boolean isCategoryInList(String name) {
 		boolean status = false;
 		for (WebElement element : categorieslist) {
@@ -142,9 +158,8 @@ public class AdminCategory extends PageBase {
 	 * Para comprobar es necesario el assert en el test 
 	 * 
 	 * @param name
-	 * @return
+	 * @return String
 	 */
-	
 	public String getCategoryAutomationText(String name) {
 		String textcontent = null;
 		for (WebElement element : categorieslist) {
@@ -163,9 +178,8 @@ public class AdminCategory extends PageBase {
 	 * Obtiene el id de una categoria
 	 * 
 	 * @param name
-	 * @return
+	 * @return String
 	 */
-	
 	public String getCategoryId(String name) {
 		String id = null;
 		for (WebElement element : categorieslist) {
@@ -174,7 +188,6 @@ public class AdminCategory extends PageBase {
 				break;
 			}
 		}
-		
 		return id;
 	}
 	
@@ -183,7 +196,6 @@ public class AdminCategory extends PageBase {
 	 * 
 	 * @param name
 	 */
-	
 	public void selectCategoryEdit(String name) {
 		for (WebElement element : categorieslist) {
 			if (element.findElement(By.className("span10")).getText().contains(name)) {
@@ -197,9 +209,8 @@ public class AdminCategory extends PageBase {
 	 * Abre el overlay de delete para la categoria dada
 	 * 
 	 * @param name
-	 * @return
+	 * @return DeleteOverlay
 	 */
-	
 	public DeleteOverlay selectCategoryDelete(String name) {
 		DeleteOverlay deleteoverlay = null;
 		for (WebElement element : categorieslist) {
@@ -212,12 +223,7 @@ public class AdminCategory extends PageBase {
 				deleteoverlay = null;
 			}
 		}
-		
 		return deleteoverlay;
-	}
-	
-	public void getOrder() {
-		
 	}
 
 }
