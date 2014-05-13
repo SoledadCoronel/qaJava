@@ -6,6 +6,12 @@ import java.util.Random;
 
 public class DataGenerator {
 	
+	/**
+	 * Crea un string de caracteres aleatorios de 20 caracteres
+	 * 
+	 * @return
+	 */
+	
 	public static String nombreFile() {
 		char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 		StringBuilder sb = new StringBuilder();
@@ -17,6 +23,12 @@ public class DataGenerator {
 		String nombre = sb.toString();
 		return nombre;
 	}
+	
+	/**
+	 * Devuelve la hora actual en formato HH:mm:ss dd/MM/yyyy
+	 * 
+	 * @return
+	 */
 
 	public static String horaactual() {
 		String hora = null;

@@ -13,9 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Varios metodos recopiados para wait elements
- * 
- * @author gustavomoreira
+ * Varios metodos para wait elements
  *
  */
 

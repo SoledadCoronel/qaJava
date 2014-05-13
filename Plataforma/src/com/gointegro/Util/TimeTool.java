@@ -9,7 +9,10 @@ import java.text.SimpleDateFormat;
 
 public class TimeTool {
 
-	/** Return the current time in "MMM dd,yyyy HH:mm:ss" format. */ 
+	/** 
+	 * Return the current time in "MMM dd,yyyy HH:mm:ss" format. 
+	 * 
+	 * */ 
 	public static String getCurrentTime(){
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
         return sdf.format(new Date().getTime()); 

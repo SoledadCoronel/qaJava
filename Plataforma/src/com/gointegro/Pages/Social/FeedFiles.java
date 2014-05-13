@@ -13,13 +13,21 @@ import com.gointegro.Pages.Base.PageBase;
 
 public class FeedFiles extends PageBase {
 	
-	/** Constructor */
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public FeedFiles(WebDriver driver) {
 		super(driver);
 		
 	}
 	
-	/** Get Files in div */
+	/**
+	 * Devuelve los archivos en el panel derecho. Solo devuelve el primero de la lista
+	 * 
+	 * @return
+	 */
 	public String getFeedFiles() {
 		return driver.findElement(By.xpath("//div[@class='well-profile']/ul/li/a")).getAttribute("title");
 	}

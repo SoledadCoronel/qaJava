@@ -63,111 +63,190 @@ public class PostForm extends PageBase{
 	@FindBy (css = "div.mentions-autocomplete-list > ul > li.active")
 	private WebElement mentionlist;
 	
-	/** Constructor */
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public PostForm(WebDriver driver) {
 		super(driver);
 	}
 	
-	/** Complete post text */
+	
+	/**
+	 * Completa el texto de un post con el parametro que se le paso
+	 * 
+	 * @param post
+	 */
 	private void setText (String post) {
 		textpost.clear();
 		textpost.sendKeys(post);
 	}
 	
-	/** Submit post */
+	/**
+	 * Confirma el envio del post
+	 */
 	private void enterPost () {
 		posttext.click();
 	}
 	
-	/** Select post link */
+	/**
+	 * Selecciona el tab Post-Link
+	 */
 	private void selectPostLink() {
 		linkvinculo.click();
 	}
 	
-	/** Complete link */
+	/**
+	 * Completa el link de un post de link con el parametro enviado
+	 * 
+	 * @param link2
+	 */
 	private void completeLink (String link2) {
 		link.clear();
 		link.sendKeys(link2);
 	}
 	
-	/** Complete post link */
+	/**
+	 * Completa el texto de un post de link con el parametro enviado
+	 * 
+	 * @param post
+	 */
 	private void completePostLinkInput (String post) {
 		postlink.clear();
 		postlink.sendKeys(post);
 	}
 	
-	/** Select post File */
+	/**
+	 * Selecciona el tab Post-File
+	 */
 	private void selectPostFile() {
 		linkFile.click();
 	}
 	
-	/** Complete attachment */
+	/**
+	 * Completa el attachment de un Post-File
+	 * 
+	 * @param file
+	 */
 	private void completeAttachment(String file) {
 		attachment.sendKeys(file);
 	}
 	
-	/** Complete postfileinput */
+	/**
+	 * Completa el texto de un post de file con el parametro enviado
+	 * 
+	 * @param post
+	 */
 	private void completePostFileInput(String post) {
 		postfileinput.clear();
 		postfileinput.sendKeys(post);
 	}
 	
-	/** Submit postfile */
+	/**
+	 * Envia el post
+	 */
 	private void submitPostFile() {
 		postfile.click();
 	}
 	
-	/** Complete File Title */
+	/**
+	 * Completa el titulo de un archivo no imagen
+	 * 
+	 * @param title
+	 */
 	private void completeFileTitle (String title) {
 		postfiletitle.clear();
 		postfiletitle.sendKeys(title);
 	}
 	
+	/**
+	 * Selecciona un usuario para mencionar y le agrega un texto de post
+	 * 
+	 * @param post
+	 * @param mention
+	 */
+	private void selectMention(String post, String mention) {
+		String posteo = "@"+ mention;
+		setText(posteo);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		mentionlist.click();
+		textpost.sendKeys(" "+post);
+	}
 	
-	/** Submit post link */
+	
+	/**
+	 * Envia un post de link
+	 */
 	public void submitPostLink () {
 		postlinksubmit.click();
 	}
 	
-	/** Aguardo que se cargue el preview */
+	/**
+	 * Aguarda a que se cargue el preview del post link
+	 */
 	public void waitForLinkLoad () {
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			
 		}
-		// Estar hardcodeado el tiempo, habria que hacer un wait mas copado, pero no hay tiempo.
+		//TODO 
+		//Estar hardcodeado el tiempo, habria que hacer un wait mas copado, pero no hay tiempo.
 	}
 	
-	/** Get url text of preview */
+	/**
+	 * Obtiene la preview mostrada en el form de post
+	 * 
+	 * @return
+	 */
 	public String getURLPreview () {
 		return urlTest.getText();
 	}
 	
-	/** Get Disable status button */
+	/**
+	 * Obtiene el estado del boton publicar
+	 * 
+	 * @return
+	 */
 	public String getDisableButton() {
 		return posttext.getAttribute("disable");
 	}
 	
-	/** Get Placeholder */
+	/**
+	 * Obtiene el placeholder del textpost
+	 * 
+	 * @return
+	 */
 	public String getPlaceholder() {
 		return textpost.getAttribute("placeholder");
 	}
 	
-	/** Get Alt from feed */
+	/**
+	 * Obtiene el nobmre de la imagen preview
+	 * 
+	 * @return
+	 */
 	public String getImageFeed() {
 		return feedimagen.getAttribute("alt");
 	}
-	
-	
-	
-	/** Complete post simple */
+
+	/**
+	 * Completa un post de texto
+	 * 
+	 * @param post
+	 */
 	public void completePost (String post){
 		setText(post);
 		enterPost();
 	}
 	
-	/** Complete post Link */
+	/**
+	 * Completa un post de link con el link y el texto
+	 * 
+	 * @param link
+	 * @param post
+	 */
 	public void completePostLink (String link, String post) {
 		selectPostLink();
 		WaitTool.waitForElement(driver, By.id("post-link-input"), 3);
@@ -175,7 +254,12 @@ public class PostForm extends PageBase{
 		completePostLinkInput(post);
 	}
 	
-	/** Complete post File Imagen */
+	/**
+	 * Completa un post de imagen
+	 * 
+	 * @param post
+	 * @param file
+	 */
 	public void completePostFileImagen (String post, String file) {
 		selectPostFile();
 		WaitTool.waitForElementPresent(driver, By.id("attachmentUpload"), 3);
@@ -186,7 +270,13 @@ public class PostForm extends PageBase{
 		submitPostFile();
 	}
 	
-	/** Complete post File */
+	/**
+	 * Completa un post de archivo
+	 * 
+	 * @param post
+	 * @param title
+	 * @param file
+	 */
 	public void completePostFile(String post, String title, String file) {
 		selectPostFile();
 		WaitTool.waitForElementPresent(driver, By.id("attachmentUpload"), 3);
@@ -198,21 +288,15 @@ public class PostForm extends PageBase{
 		submitPostFile();
 	}
 	
-	/** Complete post simple with mention */
+	/**
+	 * Completa un post simple con una mencion
+	 * 
+	 * @param post
+	 * @param mention
+	 */
 	public void completePostMention(String post, String mention) {
 		selectMention(post, mention);
 		enterPost();
 	}
-	
-	
-	/** Selection user in mention list*/
-	private void selectMention(String post, String mention) {
-		String posteo = "@"+ mention;
-		setText(posteo);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		mentionlist.click();
-		textpost.sendKeys(" "+post);
-	}
-	
 
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Helpers.ConfigElementsCelebration;
 import com.gointegro.Pages.Base.PageBase;
 
 public class HomeCelebrations extends PageBase{
@@ -34,7 +35,7 @@ public class HomeCelebrations extends PageBase{
 	
 	public HomeCelebrations(WebDriver driver) {
 		super(driver);
-		URL = ConfigElements.getURL()+"/app/celebrations/"+ConfigElements.getIdAppCelebraciones();
+		URL = ConfigElements.getURL()+"/app/celebrations/"+ConfigElementsCelebration.getIdAppCelebraciones();
 	}
 	
 	/** Private methods */
@@ -79,6 +80,22 @@ public class HomeCelebrations extends PageBase{
 			}
 		}
 		return status;
+	}
+	
+	public CelebrationList selectCategoryInSideBar(String categoryname) {
+		for (WebElement element : categorylist) {
+			if (element.getText().contains(categoryname)) {
+				//Como la categoria por defecto queda seleccionada hay que hacer "doble click" para que funcione, 
+				//queda asi total no afecta en nada
+				element.click();
+				element.click();
+				break;
+			}
+			else {
+				//
+			}
+		}
+		return PageFactory.initElements(driver, CelebrationList.class);
 	}
 
 }

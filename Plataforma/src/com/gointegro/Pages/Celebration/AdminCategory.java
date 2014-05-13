@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 
@@ -169,8 +170,6 @@ public class AdminCategory extends PageBase {
 		String id = null;
 		for (WebElement element : categorieslist) {
 			if (element.findElement(By.className("span10")).getText().contains(name)){
-				System.out.println(name);
-				System.out.println(element.getAttribute("data-id"));
 				id = element.getAttribute("data-id");
 				break;
 			}
@@ -192,6 +191,33 @@ public class AdminCategory extends PageBase {
 				break;
 			}
 		}
+	}
+	
+	/**
+	 * Abre el overlay de delete para la categoria dada
+	 * 
+	 * @param name
+	 * @return
+	 */
+	
+	public DeleteOverlay selectCategoryDelete(String name) {
+		DeleteOverlay deleteoverlay = null;
+		for (WebElement element : categorieslist) {
+			if (element.findElement(By.className("span10")).getText().contains(name)) {
+				element.findElement(By.className("btn-delete")).click();
+				deleteoverlay = PageFactory.initElements(driver, DeleteOverlay.class);
+				break;
+			}
+			else {
+				deleteoverlay = null;
+			}
+		}
+		
+		return deleteoverlay;
+	}
+	
+	public void getOrder() {
+		
 	}
 
 }

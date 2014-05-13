@@ -11,7 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Suite.class)
 @SuiteClasses({
 	//testNewCategory.class,
-	testEditCategory.class
+	//testEditCategory.class, //Faltan un par de tests todavia con events
+	//testDeleteCategory.class,
+	testNewCelebration.class
 })
 public class AllTestsCelebration {
 	

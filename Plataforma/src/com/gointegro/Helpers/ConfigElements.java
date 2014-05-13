@@ -15,7 +15,7 @@ public class ConfigElements {
 	
 	private static String URL = "https://nahuel.p2-stage.gointegro.com";
 	
-	private static String platformname = "GoConnection";
+	private static String platformname = "Go&Connection";
 	
 	private static String username = "gustavo.moreira@gointegro.com";
 	
@@ -25,14 +25,8 @@ public class ConfigElements {
 	
 	private static String nombreEspacio = "Welcome to the jungle";
 	
-	private static String SocialApp = "AutoSocialApp";
-	
 	private static String FileImagen = "/home/gustavomoreira/Pictures/Otro/Explosions-In-The-Sky.jpg";
 	
-	private static String idAppSocial = "1956";
-	
-	private static String idAppCelebration = "1982";
-
 	private static String nameOtherUser = "Juan Jose Toledo";
 	
 	private static String profileOtherUser = "juan-jose-toledo";
@@ -59,10 +53,6 @@ public class ConfigElements {
 		return URL;
 	}
 	
-	public static String getSocialApp() {
-		return SocialApp;
-	}
-	
 	public static String getFileImagen() {
 		return FileImagen;
 	}
@@ -81,10 +71,6 @@ public class ConfigElements {
 	
 	public static String getNombrePlataforma () {
 		return platformname;
-	}
-	
-	public static String getIdAppSocial () {
-		return idAppSocial;
 	}
 	
 	public static String getNameOtherUser() {
@@ -131,7 +117,5 @@ public class ConfigElements {
 		return slugMiPerfil;
 	}
 	
-	public static String getIdAppCelebraciones() {
-		return idAppCelebration;
-	}
+
 }

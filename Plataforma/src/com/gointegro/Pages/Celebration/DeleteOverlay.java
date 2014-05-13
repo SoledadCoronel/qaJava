@@ -8,7 +8,7 @@ import com.gointegro.Pages.Base.PageBase;
 
 public class DeleteOverlay extends PageBase{
 	
-	@FindBy (xpath = "//div[@class='modal-footer']/button")
+	@FindBy (xpath = "//div[@id='delete-modal']//div[@class='modal-footer']/button")
 	private WebElement confirmdelete;
 	
 	@FindBy (xpath = "//div[@class='modal-footer']/button[2]")
@@ -19,6 +19,14 @@ public class DeleteOverlay extends PageBase{
 
 	public DeleteOverlay(WebDriver driver) {
 		super(driver);
+	}
+	
+	public void selectConfirmDelete() {
+		confirmdelete.click();
+	}
+	
+	public void selectCancelDelete() {
+		canceldelete.click();
 	}
 
 }

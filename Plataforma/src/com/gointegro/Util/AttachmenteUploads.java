@@ -7,6 +7,12 @@ import org.openqa.selenium.WebElement;
 
 public class AttachmenteUploads {
 	
+	/**
+	 * Modifica la clase para permitir ver el input nativo del browser para enviar archivos
+	 * 
+	 * @param driver
+	 */
+	
 	public static void SocialWallAttachment(WebDriver driver) {
 		
 		String nombreClass = "fileinput-button";
@@ -21,6 +27,12 @@ public class AttachmenteUploads {
 		js.executeScript("document.getElementById('attachment-upload').setAttribute('style','visible: visible; opacity: 1; position: static; transform: none;');");*/
 		
 	}
+	
+	/**
+	 * Espera que la barra cargue al 100%
+	 * 
+	 * @param driver
+	 */
 	
 	public static void waitBar (WebDriver driver) {
 		/*WebDriverWait wait = new WebDriverWait(driver, 15);

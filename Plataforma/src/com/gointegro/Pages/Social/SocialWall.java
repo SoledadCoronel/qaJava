@@ -13,11 +13,14 @@ import com.gointegro.Pages.Base.PageBase;
 
 public class SocialWall extends PageBase{
 	
-	/** Constructor */
+	/**
+	 * Constructor
+	 * 
+	 * @param driver
+	 */
 	public SocialWall(WebDriver driver) {
 		super(driver);
 		URL = ConfigElements.getURL()+"/social/wall";
 	}
-	
 	
 }

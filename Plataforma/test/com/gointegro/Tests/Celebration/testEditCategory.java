@@ -103,7 +103,7 @@ private WebDriver driver;
 		assertEquals("Ocurrió un error al editar la categoría", admincategory.getSaveError());
 	}
 	
-	@Test
+	@Ignore
 	public void test_edit_category_repeated() {
 		String categoryname = DataGenerator.nombreFile();
 		String categoryname2 = 	DataGenerator.nombreFile();	
@@ -183,6 +183,12 @@ private WebDriver driver;
 		
 	}
 	
+	@Test
+	public void test_edit_category_with_events() {
+		// TODO
+	}
+	
+
 	private void createCategory (String categoryname, boolean isAutomation) {
 		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
 		home.open();

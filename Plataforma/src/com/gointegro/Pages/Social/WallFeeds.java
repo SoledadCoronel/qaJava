@@ -13,7 +13,8 @@ import com.gointegro.Util.WaitTool;
 
 
 /**
- * Clase para manejar todos los feeds creados
+ * Page object que controla todos los feeds
+ * 
  * @author gustavomoreira
  *
  */
@@ -95,165 +96,293 @@ public class WallFeeds extends PageBase {
 	@FindBy(className = "media")
 	private WebElement media;
 	
-	/** Constructor */
+	/**
+	 * Constructor 
+	 * 
+	 * @param driver
+	 */
 	public WallFeeds(WebDriver driver) {
 		super(driver);
 		
 	}
 	
-	/** Get url feed content */
-	public String getURLFeed () {
-		return feedurl.getAttribute("text");
-	}
 	
-	/** Get simple feed content */
-	public String getFeedContent () {
-		return feedcontent.getText();
-	}
-	
-	/** Get complete simple feed content */
-	public String getPublicoEn () {
-		return publicoen.getText();
-	}
-	
-	/** Get Image Feed */
-	public String getFeedImage() {
-		return feedimagen.getAttribute("alt");
-	}
-	
-	/** Get File name */
-	public String getFileName() {
-		return feedfiletitle.getText();
-	}
-	
-	/** Get Descargar */
-	public String getDescargarFile() {
-		return feeddescargarfile.getText();
-	}
-	
-	public void waitDeleteAction() {
-		WaitTool.waitForElement(driver, By.xpath("//*[contains(@id,'feed-item-post')]//a[contains(@class, 'social-action-delete')]"), 5);
-	}
-	
-	/** Select "Ver Mas" */
-	public void selectViewMore() {
-		viewmore.click();
-	}
-	
-	/** Select "Ver Menos" */
-	public void selectViewLess() {
-		viewless.click();
-	}
-
-	/** Get texto sin ver mas */
-	public String getTextVerMas() {
-		return StringUtils.RecortarTextoVerMas(feedcontent.getText());
-	}
-	
-	/** Click "Eliminar" */
-	private void selectDeletePost() {
-		deletepost.click();
-	}
-	
-	/** Confirmar popup eliminar post */
+	/**
+	 * Confirmar eliminar un post
+	 */
 	private void selectConfirmDeletePost() {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		confirmdelete.click();
 	}
 	
+	/**
+	 * Cancelar eliminar un post
+	 */
 	private void selectCancelDeletePost() {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		canceldelete.click();
 	}
 	
-	/** eliminar un post */
+	
+	/**
+	 * Obtiene la url del feed
+	 * 
+	 * @return
+	 */
+	public String getURLFeed () {
+		return feedurl.getAttribute("text");
+	}
+	
+	/**
+	 * Obtiene el feedcontent
+	 * 
+	 * @return
+	 */
+	public String getFeedContent () {
+		return feedcontent.getText();
+	}
+	
+	/**
+	 * Obtiene el "publico en"
+	 * 
+	 * @return
+	 */
+	public String getPublicoEn () {
+		return publicoen.getText();
+	}
+	
+	/**
+	 * Obtiene el nombre de la imagen
+	 * 
+	 * @return
+	 */
+	public String getFeedImage() {
+		return feedimagen.getAttribute("alt");
+	}
+	
+	/**
+	 * Obtiene el nombre del archivo
+	 * 
+	 * @return
+	 */
+	public String getFileName() {
+		return feedfiletitle.getText();
+	}
+	
+	/**
+	 * Obtiene el "Descargar + nombre archivo"
+	 * 
+	 * @return
+	 */
+	public String getDescargarFile() {
+		return feeddescargarfile.getText();
+	}
+	
+	/**
+	 * Espera por la accion de eliminar
+	 */
+	public void waitDeleteAction() {
+		WaitTool.waitForElement(driver, By.xpath("//*[contains(@id,'feed-item-post')]//a[contains(@class, 'social-action-delete')]"), 5);
+	}
+	
+	/**
+	 * Seleccionar ver mas
+	 */
+	public void selectViewMore() {
+		viewmore.click();
+	}
+	
+	/**
+	 * Seleccionar ver menos
+	 */
+	public void selectViewLess() {
+		viewless.click();
+	}
+
+	/**
+	 * Obtener el texto sin ver mas
+	 *  
+	 * @return
+	 */
+	public String getTextVerMas() {
+		return StringUtils.RecortarTextoVerMas(feedcontent.getText());
+	}
+	
+	/**
+	 * Seleccionar eliminar
+	 */
+	private void selectDeletePost() {
+		deletepost.click();
+	}
+	
+	/**
+	 * Eliminar un post
+	 */
 	public void deletePost() {
 		selectDeletePost();
 		selectConfirmDeletePost();
 	}
 	
-	/** cancelar eliminar un post */
+	/**
+	 * Cancelar eliminar un post
+	 */
 	public void deleteCancelPost() {
 		selectDeletePost();
 		selectCancelDeletePost();
 	}
 	
-	/** Like a post */
+	/**
+	 * Likear un post
+	 */
 	public void selectLikePost() {
 		likepost.click();
 	}
 	
-	/** Get Like status */
+	/**
+	 * Obtener el status de mi like
+	 * 
+	 * @return
+	 */
 	public String getLikes() {
 		return likes.getText();
 	}
 	
-	/** Select user name like */
+	/**
+	 * Seleccionar el like de un usuario
+	 */
 	public void selectLikeUser() {
 		profilelikes.click();
 	}
 	
-	/** Select "1 persona mas" */
+	/**
+	 * Seleccionar "a una persona mas le gusta"
+	 *  
+	 * @return
+	 */
 	public ExcessLikers selectExcessLikers() {
 		excesslikers.click();
 		return PageFactory.initElements(driver, ExcessLikers.class);
 	}
 	
-	/** Get display status like */
+	/**
+	 * Ver si el like esta mostrado
+	 * 
+	 * @return
+	 */
 	public String likeDisplayed() {
 		return likes.getCssValue("display");
 	}
 	
-	/** Select mention */
+	/**
+	 * Seleccionar a quien le gusta algo
+	 * 
+	 * @return Profile
+	 */
 	public Profile selectMentionSocialFeed() {
 		feedmention.click();
 		return PageFactory.initElements(driver, Profile.class);
 	}
 	
+	/**
+	 * Seleccionar una persona mencionada en un coment
+	 * 
+	 * @return Profile
+	 */
 	public Profile selectMentionInComment() {
 		commentmention.click();
 		return PageFactory.initElements(driver, Profile.class);
 	}
 	
+	/** 
+	 * Seleccionar un hashtag
+	 * 
+	 * @param hashtag
+	 * @return TagFeed
+	 */
 	public TagFeed selectHashtag(String hashtag){
 		driver.findElement(By.linkText(hashtag)).click();
 		return PageFactory.initElements(driver, TagFeed.class);
 	}
 	
+	/**
+	 * Seleccionar SharePost
+	 * 
+	 * @return SharePost
+	 */
 	public SharePost selectShareContent() {
 		sharecontent.click();
 		return PageFactory.initElements(driver, SharePost.class);
 	}
 	
+	/**
+	 * Obtener la preview de un contenido
+	 * 
+	 * @return String
+	 */
 	public String getContentPreview() {
 		return contentpreview.getText();
 	}
 	
+	/**
+	 * Seleccionar el texto "su publicacion"
+	 * 
+	 * @return DetailPost
+	 */
 	public DetailPost selectSuPublicacion() {
 		supublicacion.click();
 		return PageFactory.initElements(driver, DetailPost.class);
 	}
 	
+	/** 
+	 * Obtener el texto original de un feed de shareo
+	 * 
+	 * @return String
+	 */
 	public String getOriginalText() {
 		return originaltext.getText();
 	}
 	
+	/**
+	 * Obtener el nombre de la imagen original de un feed de shareo
+	 * 
+	 * @return String
+	 */
 	public String getOriginalImg() {
 		return originalimg.getAttribute("alt");
 	}
 	
+	/**
+	 * Obtener el nombre original de un archivo de un feed de shareo
+	 * 
+	 * @return String
+	 */
 	public String getOriginalFile() {
 		return originalfile.getText();
 	}
 	
+	/** 
+	 * Obtener un la url original de un feed de shareo
+	 * 
+	 * @return String
+	 */
 	public String getOriginalUrl() {
 		return originalurl.getText();
 	}
 	
+	/**
+	 * Obtener el texto recortado de un feed de shareo
+	 * 
+	 * @return String
+	 */
 	public String getTextVerMasContentPreview() {
 		return StringUtils.RecortarTextoVerMas(contentpreview.getText());
 	}
 	
+	/**
+	 * Obtener el media content
+	 * 
+	 * @return String
+	 */
 	public String getMediaContent() {
 		return media.getText();
 	}

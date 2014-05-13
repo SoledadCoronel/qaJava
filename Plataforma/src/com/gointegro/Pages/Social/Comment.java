@@ -10,6 +10,13 @@ import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
+/**
+ * Page que maneja todo el componente de comments
+ * 
+ * @author gustavomoreira
+ *
+ */
+
 public class Comment extends PageBase{
 
 	@FindBy (name = "comment-content")
@@ -45,78 +52,29 @@ public class Comment extends PageBase{
 	@FindBy (className = "feed-comments")
 	private WebElement feedcomments;
 	
-	/** Complete comment box */
+	/** 
+	 * Constructor 
+	 * 
+	 * */
+	public Comment(WebDriver driver) {
+		super(driver);
+	}
+	
+	
+	
+	/** 
+	 * Complete comment box 
+	 * 
+	 * */
 	private void setComment(String comment) {
 		commentcontent.clear();
 		commentcontent.sendKeys(comment+"\n");
 	}
 	
-	/** Constructor */
-	public Comment(WebDriver driver) {
-		super(driver);
-	}
-	
-	/** Complete comment */
-	public void completeComment (String comment) {
-		setComment(comment);
-		
-	}
-	
-	/** Get comment */
-	public String getTextComment () {
-		return commentcreated.getText();
-	}
-	
-	/** Get placeholder */
-	public String getPlaceholder() {
-		return commentcontent.getAttribute("placeholder");
-	}
-	
-	/** Select delete comment */
-	public void deleteCommment() {
-		commentdelete.click();
-	}
-	
-	/** Get texto sin ver mas */
-	public String getTextVerMas() {
-		return StringUtils.RecortarTextoVerMas(commentcreated.getText());
-	}
-	
-	/** Select view more */
-	public void selectViewMore() {
-		viewmore.click();
-	}
-	
-	/** Select view less */
-	public void selectViewLess() {
-		viewless.click();
-	}
-	
-	/** Select like comment */
-	public void selectLikeComment() {
-		likecomment.click();
-	}
-	
-	/** View Ya no me gusta */
-	public String getTextLikeComment() {
-		return likecomment.getText();
-	}
-	
-	/** Get likers comment */
-	public ExcessLikers selectExcessLikers() {
-		excesslikers.click();
-		return PageFactory.initElements(driver, ExcessLikers.class);
-	}
-	
-	public String likecommentisDisplayed() {
-		return likecount.getCssValue("display");
-	}
-	
-	public void completCommentMention(String comment, String mention) {
-		selectMention(comment, mention);
-	}
-	
-	/** Selection user in mention list*/
+	/**
+	 * Selection user in mention list
+	 * 
+	 * */
 	private void selectMention(String post, String mention) {
 		String posteo = "@"+ mention;
 		commentcontent.clear();
@@ -126,19 +84,140 @@ public class Comment extends PageBase{
 		commentcontent.sendKeys(" "+post+"\n");
 	}
 	
+	
+	
+	/** 
+	 * Complete comment 
+	 * 
+	 * */
+	public void completeComment (String comment) {
+		setComment(comment);
+		
+	}
+	
+	/** 
+	 * Get comment 
+	 * */
+	public String getTextComment () {
+		return commentcreated.getText();
+	}
+	
+	/** 
+	 * Get placeholder 
+	 * 
+	 * */
+	public String getPlaceholder() {
+		return commentcontent.getAttribute("placeholder");
+	}
+	
+	/** 
+	 * Select delete comment 
+	 * 
+	 * */
+	public void deleteCommment() {
+		commentdelete.click();
+	}
+	
+	/** 
+	 * Get texto sin ver mas 
+	 * 
+	 * */
+	public String getTextVerMas() {
+		return StringUtils.RecortarTextoVerMas(commentcreated.getText());
+	}
+	
+	/** 
+	 * Select view more 
+	 * 
+	 * */
+	public void selectViewMore() {
+		viewmore.click();
+	}
+	
+	/** 
+	 * Select view less 
+	 * 
+	 * */
+	public void selectViewLess() {
+		viewless.click();
+	}
+	
+	/** 
+	 * Select like comment 
+	 * 
+	 * */
+	public void selectLikeComment() {
+		likecomment.click();
+	}
+	
+	/** 
+	 * View Ya no me gusta 
+	 * 
+	 * */
+	public String getTextLikeComment() {
+		return likecomment.getText();
+	}
+	
+	/** 
+	 * Get likers comment 
+	 * 
+	 * */
+	public ExcessLikers selectExcessLikers() {
+		excesslikers.click();
+		return PageFactory.initElements(driver, ExcessLikers.class);
+	}
+	
+	/**
+	 * Ver si el like count esta display
+	 * @return
+	 */
+	public String likecommentisDisplayed() {
+		return likecount.getCssValue("display");
+	}
+	
+	/**
+	 * Completar una mencion en un comment
+	 * 
+	 * @param comment
+	 * @param mention
+	 */
+	public void completCommentMention(String comment, String mention) {
+		selectMention(comment, mention);
+	}
+	
+	/**
+	 * Acceder a un hashtag, esto debe mostrar el muro de hashtags
+	 * 
+	 * @param hashtag
+	 * @return
+	 */
 	public TagFeed selectHashtag(String hashtag){
 		driver.findElement(By.linkText(hashtag)).click();
 		return PageFactory.initElements(driver, TagFeed.class);
 	}
 	
+	/**
+	 * Muestra si esta disponible el Excess Comments
+	 * 
+	 * @return
+	 */
 	public boolean isDisplayedExcessComments() {
 		return excesscomments.isDisplayed();
 	}
 	
+	/**
+	 * Seleccionar el Excess Comments para ver todos
+	 * 
+	 */
 	public void selectExcessComments() {
 		excesscomments.click();
 	}
 	
+	/**
+	 * Obtener el comment 
+	 * 
+	 * @return
+	 */
 	public String getfeedComments() {
 		return feedcomments.getText();
 	}
