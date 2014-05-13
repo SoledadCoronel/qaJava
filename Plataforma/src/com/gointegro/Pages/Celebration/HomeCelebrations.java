@@ -121,7 +121,7 @@ public class HomeCelebrations extends PageBase{
 				//Como la categoria por defecto queda seleccionada hay que hacer "doble click" para que funcione, 
 				//queda asi total no afecta en nada
 				element.click();
-				element.click();
+				//element.click();
 				break;
 			}
 			else {

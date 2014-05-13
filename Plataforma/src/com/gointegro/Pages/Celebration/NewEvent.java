@@ -165,6 +165,7 @@ public class NewEvent extends PageBase{
 	 * @return HomeCelebrations
 	 */
 	public HomeCelebrations completeCelebration (String categoryname, String date, String titletext, String descriptiontext, String collaboratorname) {
+		if (!collaboratorname.isEmpty())
 		completeCollaborator(collaboratorname);
 		completeTitle(titletext);
 		completeDescription(descriptiontext);

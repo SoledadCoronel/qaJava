@@ -10,16 +10,14 @@ import java.util.Date;
  * @author gustavomoreira
  *
  */
-
 public class DateTool {
 	
 	/**
 	 * Convierte un string de date con formato yyyy-MM-dd a formato dd/MM/yyyy
 	 * 
 	 * @param TodayViewDate
-	 * @return
+	 * @return String date in format dd/MM/yyyy
 	 */
-	
 	public static String TimeFormatTodayViewDate(String TodayViewDate) {
 		final String OLD_FORMAT = "yyyy-MM-dd";
 		final String NEW_FORMAT = "dd/MM/yyyy";
@@ -45,9 +43,8 @@ public class DateTool {
 	 * Funciona en español
 	 * 
 	 * @param StringDate
-	 * @return
+	 * @return String
 	 */
-	
 	public static String getMonthText(String StringDate) {
 		
 		String date = StringDate;
@@ -85,6 +82,30 @@ public class DateTool {
 			break; 
 		}
 		return monthString;
+	}
+	
+	/**
+	 * Obtener el dia de un string
+	 * 
+	 * @param StringDate
+	 * @return String
+	 */
+	public static String getDayText(String StringDate) {
+		String date = StringDate;
+		String daystr = date.split("/")[0];
+		return daystr;
+	}
+	
+	/**
+	 * Obtener el año de un string
+	 * 
+	 * @param StringDate
+	 * @return String
+	 */
+	public static String getYearText(String StringDate) {
+		String date = StringDate;
+		String yearstr = date.split("/")[2];
+		return yearstr;
 	}
 
 }
