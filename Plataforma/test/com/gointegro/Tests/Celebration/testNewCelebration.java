@@ -451,6 +451,28 @@ private WebDriver driver;
 		
 		assertNotEquals("", celebrationlist.srcLightBoxImg());
 	}
+	
+	@Test
+	public void test_new_event_cancel() {
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		NewEvent newevent = home.selectNewEvent();
+		
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = newevent.cancelCreation();
+		
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertFalse(home.getTitle().contains("Nueva celebración"));
+	}
+	
 
 	private void createCategory(String categoryname, NewEvent newevent) {
 		NewCategoryOverlay newcategory = newevent.selectNewCategory();

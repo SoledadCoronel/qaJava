@@ -13,7 +13,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	//testNewCategory.class,
 	//testEditCategory.class, //Faltan un par de tests todavia con events
 	//testDeleteCategory.class,
-	testNewCelebration.class
+	//testNewCelebration.class,
+	testEditCelebration.class
 })
 public class AllTestsCelebration {
 	
