@@ -3,6 +3,7 @@ package com.gointegro.Pages.Celebration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Util.DateTool;
@@ -66,8 +67,22 @@ public class CelebrationList extends PageBase{
 	 * 
 	 * @return String
 	 */
-	private String getTodayViewDate () {
+	private String getTodayViewDate() {
 		return todayviewdate.getAttribute("datetime");
+	}
+	
+	/**
+	 * Seleccionar event option
+	 */
+	private void selectEventOption() {
+		eventoptions.click();
+	}
+	
+	/**
+	 * Seleccionar Editar evento
+	 */
+	private void selectEventEdit() {
+		eventedit.click();
 	}
 	
 	/**
@@ -148,5 +163,19 @@ public class CelebrationList extends PageBase{
 	public String srcLightBoxImg() {
 		return lightbox.getAttribute("src");
 	}
+	
+	/**
+	 * Seleccionar editar un evento
+	 * 
+	 * @return EdivEvent
+	 */
+	public EditEvent selectEditEvent() {
+		selectEventOption();
+		selectEventEdit();
+		
+		return PageFactory.initElements(driver, EditEvent.class);
+	}
+	
+	
 	
 }

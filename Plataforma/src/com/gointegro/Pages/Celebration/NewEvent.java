@@ -22,58 +22,55 @@ import com.gointegro.Util.WaitTool;
 public class NewEvent extends PageBase{
 	
 	@FindBy (id = "collaborators-container-input")
-	private WebElement collaborators;
+	protected WebElement collaborators;
 	
 	@FindBy (id = "title")
-	private WebElement title;
+	protected WebElement title;
 	
 	@FindBy (id = "description")
-	private WebElement description;
+	protected WebElement description;
 	
 	@FindBy (id = "accept")
-	private WebElement savebtn;
+	protected WebElement savebtn;
 	
 	@FindBy (id = "cancel")
-	private WebElement cancelbtn;
+	protected WebElement cancelbtn;
 	
 	@FindBy (id = "form-category-new")
-	private WebElement newcategory;
+	protected WebElement newcategory;
 	
 	@FindBy (id = "categories")
-	private WebElement categories;
+	protected WebElement categories;
 	
 	@FindBy (id = "date")
-	private WebElement date;
+	protected WebElement date;
 	
 	@FindBy (xpath = "//div[@class='collaborators']//div[@class='error']/div/div")
-	private WebElement collaboratoserrormsj;
+	protected WebElement collaboratoserrormsj;
 	
 	@FindBy (xpath = "//div[@id='alert']/div")
-	private WebElement saveerror;
+	protected WebElement saveerror;
 	
 	@FindBy (xpath = "//span[@class='title']//div[@class='error']/div/div")
-	private WebElement titleerror;
+	protected WebElement titleerror;
 	
 	@FindBy (xpath = "//span[@class='description']//div[@class='error']/div/div")
-	private WebElement descriptionerror;
+	protected WebElement descriptionerror;
 	
 	@FindBy (xpath = "//span[@class='categories']//div[@class='error']/div/div")
-	private WebElement categorieserrormsj;
+	protected WebElement categorieserrormsj;
 	
 	@FindBy (xpath = "//span[@class='date']//div[@class='error']/div/div")
-	private WebElement dateerrormsj;
+	protected WebElement dateerrormsj;
 	
 	@FindBy (xpath = "//div[@id='collaborators']//div[@class='text-list']/div/span")
-	private WebElement textlabel;
+	protected WebElement textlabel;
 	
 	@FindBy (xpath = "//div[@id='collaborators']//div[@class='text-list']")
-	private WebElement textlist;
+	protected WebElement textlist;
 	
 	@FindBy (id = "attachmentUpload")
-	private WebElement attachementupload;
-	
-	@FindBy (xpath = "//div[@id='content-container']/span/div[2]/form/div/div/span[3]/span/div")
-	private WebElement attachmenterror;
+	protected WebElement attachementupload;
 	
 
 	/**
@@ -90,7 +87,7 @@ public class NewEvent extends PageBase{
 	 * 
 	 * @param categoryname
 	 */
-	private void selectCategory(String categoryname) {
+	protected void selectCategory(String categoryname) {
 		new Select(categories).selectByVisibleText(categoryname);
 	}
 	
@@ -99,7 +96,7 @@ public class NewEvent extends PageBase{
 	 * 
 	 * @param date
 	 */
-	private void selectDate(String date) {
+	protected void selectDate(String date) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.getElementById('date').value='"+date+"'");
 	}
@@ -109,7 +106,7 @@ public class NewEvent extends PageBase{
 	 * 
 	 * @param titletext
 	 */
-	private void completeTitle (String titletext) {
+	protected void completeTitle (String titletext) {
 		title.clear();
 		title.sendKeys(titletext);
 	}
@@ -119,7 +116,7 @@ public class NewEvent extends PageBase{
 	 * 
 	 * @param descriptiontext
 	 */
-	private void completeDescription (String descriptiontext) {
+	protected void completeDescription (String descriptiontext) {
 		description.clear();
 		description.sendKeys(descriptiontext);
 	}
@@ -129,7 +126,7 @@ public class NewEvent extends PageBase{
 	 * 
 	 * @param collaboratorname
 	 */
-	private void completeCollaborator (String collaboratorname) {
+	protected void completeCollaborator (String collaboratorname) {
 		collaborators.clear();
 		collaborators.sendKeys(collaboratorname); 
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -141,7 +138,7 @@ public class NewEvent extends PageBase{
 	 * 
 	 * @param collaboratorname
 	 */
-	private void selectColaboratorList(String collaboratorname) {
+	protected void selectColaboratorList(String collaboratorname) {
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.textToBePresentInElement(textlist, collaboratorname));		
 		textlabel.click();
@@ -246,12 +243,11 @@ public class NewEvent extends PageBase{
 	}
 	
 	/**
-	 * Obtener el mensaje de error del input de archivos
-	 * 
-	 * @return
+	 * Cancelar la creacion de un evento
 	 */
-	public String getAttachmentUploadError() {
-		return attachmenterror.getText();
+	public HomeCelebrations cancelCreation() {
+		cancelbtn.click();
+		return PageFactory.initElements(driver, HomeCelebrations.class);
 	}
 
 }
