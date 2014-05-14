@@ -50,6 +50,12 @@ public class NewEvent extends PageBase{
 	@FindBy (xpath = "//div[@id='alert']/div")
 	private WebElement saveerror;
 	
+	@FindBy (xpath = "//span[@class='title']//div[@class='error']/div/div")
+	private WebElement titleerror;
+	
+	@FindBy (xpath = "//span[@class='description']//div[@class='error']/div/div")
+	private WebElement descriptionerror;
+	
 	@FindBy (xpath = "//span[@class='categories']//div[@class='error']/div/div")
 	private WebElement categorieserrormsj;
 	
@@ -176,5 +182,49 @@ public class NewEvent extends PageBase{
 		return PageFactory.initElements(driver, HomeCelebrations.class);
 	}
 	
+	/**
+	 * Obtener el mensaje de error al no poner una fecha
+	 * 
+	 * @return String
+	 */
+	public String getDateErrorMsj() {
+		return dateerrormsj.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje al dejar vacio titulo y colaborador
+	 * 
+	 * @return String
+	 */
+	public String getCollaboratorsError() {
+		return collaboratoserrormsj.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error debajo del title del form
+	 * 
+	 * @return String
+	 */
+	public String getSaveError() {
+		return saveerror.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del titulo
+	 * 
+	 * @return String
+	 */
+	public String getTitleError() {
+		return titleerror.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error de la descripcion
+	 * 
+	 * @return String
+	 */
+	public String getDescriptionError() {
+		return descriptionerror.getText();
+	}
 
 }

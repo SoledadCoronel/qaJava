@@ -20,7 +20,7 @@ public class StringUtils {
 	/**
 	 * Devuelve un texto extenso, para pruebas de caracteres
 	 * 
-	 * @return
+	 * @return String 1500 characters
 	 */
 	
 	public static String getTextoLargo() {
