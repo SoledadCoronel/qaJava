@@ -31,6 +31,9 @@ public class CelebrationList extends PageBase{
 	@FindBy (className = "media-object")
 	private WebElement media;
 	
+	@FindBy (className = "celeb-image")
+	private WebElement celebimage;
+	
 	@FindBy (id = "event-options")
 	private WebElement eventoptions;
 	
@@ -42,6 +45,12 @@ public class CelebrationList extends PageBase{
 	
 	@FindBy (className = "todayview-date")
 	private WebElement todayviewdate;
+	
+	@FindBy (css = "a.celeb-image > img.media-object")
+	private WebElement zoomimg;
+	
+	@FindBy (className = "lb-image")
+	private WebElement lightbox;
 	
 	/**
 	 * Constructor
@@ -113,6 +122,31 @@ public class CelebrationList extends PageBase{
 	 */
 	public String getImgAlt() {
 		return media.getAttribute("alt");
+	}
+	
+	/**
+	 * Obtener el src de la imagen
+	 * 
+	 * @return String
+	 */
+	public String srcCelebImg() {
+		return media.getAttribute("src");
+	}
+	
+	/**
+	 * Seleccionar la imagen de la celebracion
+	 */
+	public void selectCelebImg() {
+		zoomimg.click();
+	}
+	
+	/**
+	 * Obtener el src de la imagen en el lightbox
+	 * 
+	 * @return String
+	 */
+	public String srcLightBoxImg() {
+		return lightbox.getAttribute("src");
 	}
 	
 }

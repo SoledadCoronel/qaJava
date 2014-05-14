@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.gointegro.Pages.Base.PageBase;
-import com.gointegro.Util.AttachmenteUploads;
+import com.gointegro.Util.AttachmentUploads;
 import com.gointegro.Util.WaitTool;
 
 /**
@@ -263,9 +263,9 @@ public class PostForm extends PageBase{
 	public void completePostFileImagen (String post, String file) {
 		selectPostFile();
 		WaitTool.waitForElementPresent(driver, By.id("attachmentUpload"), 3);
-		AttachmenteUploads.SocialWallAttachment(driver);
+		AttachmentUploads.SocialWallAttachment(driver);
 		completeAttachment(file);
-		AttachmenteUploads.waitBar(driver);
+		AttachmentUploads.waitBar(driver);
 		completePostFileInput(post);
 		submitPostFile();
 	}
@@ -280,9 +280,9 @@ public class PostForm extends PageBase{
 	public void completePostFile(String post, String title, String file) {
 		selectPostFile();
 		WaitTool.waitForElementPresent(driver, By.id("attachmentUpload"), 3);
-		AttachmenteUploads.SocialWallAttachment(driver);
+		AttachmentUploads.SocialWallAttachment(driver);
 		completeAttachment(file);
-		AttachmenteUploads.waitBar(driver);
+		AttachmentUploads.waitBar(driver);
 		completeFileTitle(title);
 		completePostFileInput(post);
 		submitPostFile();

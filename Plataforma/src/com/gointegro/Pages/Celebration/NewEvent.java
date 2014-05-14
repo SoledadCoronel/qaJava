@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Util.AttachmentUploads;
 import com.gointegro.Util.WaitTool;
 
 /**
@@ -67,6 +68,12 @@ public class NewEvent extends PageBase{
 	
 	@FindBy (xpath = "//div[@id='collaborators']//div[@class='text-list']")
 	private WebElement textlist;
+	
+	@FindBy (id = "attachmentUpload")
+	private WebElement attachementupload;
+	
+	@FindBy (xpath = "//div[@id='content-container']/span/div[2]/form/div/div/span[3]/span/div")
+	private WebElement attachmenterror;
 	
 
 	/**
@@ -225,6 +232,26 @@ public class NewEvent extends PageBase{
 	 */
 	public String getDescriptionError() {
 		return descriptionerror.getText();
+	}
+	
+	/**
+	 * Ingresar una imagen miniatura
+	 * 
+	 * @param fileupload
+	 */
+	public void fileUpload(String fileupload) {
+		AttachmentUploads.SocialWallAttachment(driver);
+		attachementupload.sendKeys(fileupload);
+		AttachmentUploads.waitBar(driver);
+	}
+	
+	/**
+	 * Obtener el mensaje de error del input de archivos
+	 * 
+	 * @return
+	 */
+	public String getAttachmentUploadError() {
+		return attachmenterror.getText();
 	}
 
 }

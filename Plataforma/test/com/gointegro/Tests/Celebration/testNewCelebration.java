@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -30,7 +29,7 @@ private WebDriver driver;
 		driver = AllTestsCelebration.getDriver();
 	}
 
-	@Ignore
+	@Test
 	public void test_new_event() {
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  DataGenerator.nombreFile();
@@ -92,7 +91,7 @@ private WebDriver driver;
 		assertEquals(date, celebrationlist.getTodayDate());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_event_without_collaborator() {
 		String collaborator = "";
 		String celebrationtitle =  DataGenerator.nombreFile();
@@ -150,7 +149,7 @@ private WebDriver driver;
 		assertEquals(date, celebrationlist.getTodayDate());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_event_without_title() {
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  "";
@@ -210,7 +209,7 @@ private WebDriver driver;
 		assertEquals(date, celebrationlist.getTodayDate());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_event_without_description() {
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  DataGenerator.nombreFile();
@@ -270,7 +269,7 @@ private WebDriver driver;
 		assertEquals(date, celebrationlist.getTodayDate());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_event_undated() {
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  DataGenerator.nombreFile();
@@ -301,7 +300,7 @@ private WebDriver driver;
 		assertEquals("La fecha no puede estar vacía", newevent.getDateErrorMsj());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_event_empty() {
 		String collaborator = "";
 		String celebrationtitle =  "";
@@ -334,7 +333,7 @@ private WebDriver driver;
 		assertEquals("No se pudo guardar la Celebración", newevent.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_event_title_more_than_80_characters() {
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  StringUtils.getTextoLargo();
@@ -397,9 +396,60 @@ private WebDriver driver;
 		assertEquals("La descripción no debería superar los 500 caracteres", newevent.getDescriptionError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_new_event_uploadfile() {
-		//TODO
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String fileupload = ConfigElements.getFileImagen();
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		NewEvent newevent = home.selectNewEvent();
+		
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createCategory(categoryname, newevent);
+		
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newevent.fileUpload(fileupload);
+		
+		home = newevent.completeCelebration(categoryname, date, celebrationtitle, descriptiontext, collaborator);
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(categoryname, celebrationlist.getCategory());
+		assertEquals(celebrationtitle, celebrationlist.getTitle());
+		assertEquals(descriptiontext, celebrationlist.getDescription());
+		assertEquals(collaborator, celebrationlist.getCollaboratonName());
+		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(date, celebrationlist.getTodayDate());
+		
+		assertNotEquals("", celebrationlist.srcCelebImg());
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		celebrationlist.selectCelebImg();
+		
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertNotEquals("", celebrationlist.srcLightBoxImg());
 	}
 
 	private void createCategory(String categoryname, NewEvent newevent) {
