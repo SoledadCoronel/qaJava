@@ -1,5 +1,7 @@
 package com.gointegro.Pages.Celebration;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +20,9 @@ public class EditEvent extends NewEvent{
 	
 	@FindBy (className = "file-name")
 	private WebElement filename;
+	
+	@FindBy (className = "text-remove")
+	private List<WebElement> removecollab;
 
 	/**
 	 * Constructor
@@ -65,7 +70,7 @@ public class EditEvent extends NewEvent{
 	 * @return String
 	 */
 	public String getEventTitle() {
-		return super.title.getText();
+		return super.title.getAttribute("value");
 	}
 	
 	/**
@@ -74,7 +79,7 @@ public class EditEvent extends NewEvent{
 	 * @return String
 	 */
 	public String getEventDescription() {
-		return super.description.getText();
+		return super.description.getAttribute("value");
 	}
 	
 	/**
@@ -103,6 +108,17 @@ public class EditEvent extends NewEvent{
 	 */
 	public String getFileName() {
 		return filename.getText();
+	}
+	
+	/**
+	 * Limpiar el listado de colaboradores
+	 */
+	public void cleanCollaborators() {
+		while (removecollab.size() > 0){
+			for (WebElement element : removecollab) {
+				element.click();
+			}
+		}
 	}
 
 }

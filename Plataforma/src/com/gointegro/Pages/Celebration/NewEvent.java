@@ -177,6 +177,7 @@ public class NewEvent extends PageBase{
 	public HomeCelebrations completeCelebration (String categoryname, String date, String titletext, String descriptiontext, String collaboratorname) {
 		if (!collaboratorname.isEmpty())
 		completeCollaborator(collaboratorname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		completeTitle(titletext);
 		completeDescription(descriptiontext);
 		selectCategory(categoryname);

@@ -53,6 +53,9 @@ public class CelebrationList extends PageBase{
 	@FindBy (className = "lb-image")
 	private WebElement lightbox;
 	
+	@FindBy (className = "collaborators-list")
+	private WebElement collaboratorslist;
+	
 	/**
 	 * Constructor
 	 * 
@@ -167,7 +170,7 @@ public class CelebrationList extends PageBase{
 	/**
 	 * Seleccionar editar un evento
 	 * 
-	 * @return EdivEvent
+	 * @return {@link EditEvent}
 	 */
 	public EditEvent selectEditEvent() {
 		selectEventOption();
@@ -176,6 +179,15 @@ public class CelebrationList extends PageBase{
 		return PageFactory.initElements(driver, EditEvent.class);
 	}
 	
-	
+	/**
+	 * Selecciona el texto "y otra persona mas" para desplegar el overlay de colaboradores
+	 * 
+	 * @return {@link EventCollaboratorOverlay}
+	 */
+	public EventCollaboratorOverlay selectCollaboratosList() {
+		collaboratorslist.click();
+		
+		return PageFactory.initElements(driver, EventCollaboratorOverlay.class);
+	}
 	
 }
