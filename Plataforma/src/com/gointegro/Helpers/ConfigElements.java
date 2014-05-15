@@ -27,6 +27,8 @@ public class ConfigElements {
 	
 	private static String FileImagen = "/home/gustavomoreira/Pictures/Otro/Explosions-In-The-Sky.jpg";
 	
+	private static String FileImagenChange = "/home/gustavomoreira/Pictures/Otro/business-cat.jpg";
+	
 	private static String nameOtherUser = "Juan Jose Toledo";
 	
 	private static String profileOtherUser = "juan-jose-toledo";
@@ -115,6 +117,10 @@ public class ConfigElements {
 	
 	public static String getSlugMiPerfil() {
 		return slugMiPerfil;
+	}
+	
+	public static String getFileImagenChange() {
+		return FileImagenChange;
 	}
 	
 

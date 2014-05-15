@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -19,6 +18,7 @@ import com.gointegro.Pages.Celebration.NewEvent;
 import com.gointegro.Pages.Platform.Login;
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Util.DataGenerator;
+import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
 public class testEditCelebration {
@@ -37,6 +37,7 @@ private WebDriver driver;
 		String categoryname = DataGenerator.nombreFile();
 		String descriptiontext = DataGenerator.nombreFile();
 		String date = "26/12/2014";
+		String fileupload = "";
 		
 		Login login = PageFactory.initElements(driver, Login.class);
 		login.open();
@@ -46,7 +47,7 @@ private WebDriver driver;
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home);
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
 		
 		home.open();
 		
@@ -72,6 +73,7 @@ private WebDriver driver;
 		String descriptiontext = DataGenerator.nombreFile();
 		String date = "26/12/2014";
 		String newcollaborator = ConfigElements.getNameOtherUser();
+		String fileupload = "";
 		
 		Login login = PageFactory.initElements(driver, Login.class);
 		login.open();
@@ -81,7 +83,7 @@ private WebDriver driver;
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home);
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
 		
 		home.open();
 		
@@ -125,6 +127,7 @@ private WebDriver driver;
 		String descriptiontext = DataGenerator.nombreFile();
 		String date = "26/12/2014";
 		String newcollaborator = ConfigElements.getNameOtherUser();
+		String fileupload = "";
 		
 		Login login = PageFactory.initElements(driver, Login.class);
 		login.open();
@@ -134,7 +137,7 @@ private WebDriver driver;
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home);
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
 		
 		home.open();
 		
@@ -174,6 +177,7 @@ private WebDriver driver;
 		String descriptiontext = DataGenerator.nombreFile();
 		String date = "26/12/2014";
 		String newtitle = DataGenerator.nombreFile();
+		String fileupload = "";
 		
 		Login login = PageFactory.initElements(driver, Login.class);
 		login.open();
@@ -183,7 +187,7 @@ private WebDriver driver;
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home);
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
 		
 		home.open();
 		
@@ -222,6 +226,7 @@ private WebDriver driver;
 		String descriptiontext = DataGenerator.nombreFile();
 		String date = "26/12/2014";
 		String newdescription = DataGenerator.nombreFile();
+		String fileupload = "";
 		
 		Login login = PageFactory.initElements(driver, Login.class);
 		login.open();
@@ -231,7 +236,7 @@ private WebDriver driver;
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home);
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
 		
 		home.open();
 		
@@ -262,14 +267,15 @@ private WebDriver driver;
 		assertEquals(date, celebrationlist.getTodayDate());
 	}
 	
-	@Ignore
+	@Test
 	public void test_edit_event_modify_category() {
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  DataGenerator.nombreFile();
 		String categoryname = DataGenerator.nombreFile();
 		String descriptiontext = DataGenerator.nombreFile();
 		String date = "26/12/2014";
-		String newcategory = DataGenerator.nombreFile();
+		String newcategoryname = DataGenerator.nombreFile();
+		String fileupload = "";
 		
 		Login login = PageFactory.initElements(driver, Login.class);
 		login.open();
@@ -279,44 +285,443 @@ private WebDriver driver;
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home);
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
 		
 		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		NewEvent newevent = home.selectNewEvent();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		createCategory(newcategory, newevent);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		NewCategoryOverlay newcategory = home.selectNewCategory();
 		
-		home.open();
+		newcategory.createCategory(newcategoryname,false);
 		
 		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		EditEvent editevent = celebrationlist.selectEditEvent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		editevent.completeCelebration(newcategoryname, date, celebrationtitle, descriptiontext, "");
+		
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		editevent.cleanCollaborators();
-		editevent.completeCelebration(newcategory, date, celebrationtitle, descriptiontext, collaborator);
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		celebrationlist = home.selectCategoryInSideBar(newcategoryname);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals(newcategoryname, celebrationlist.getCategory());
+		assertEquals(celebrationtitle, celebrationlist.getTitle());
+		assertEquals(descriptiontext, celebrationlist.getDescription());
+		assertEquals(collaborator, celebrationlist.getCollaboratonName());
+		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(date, celebrationlist.getTodayDate());
+		
+	}
+	
+	@Test
+	public void test_edit_event_modify_date() {
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String newdate = "27/12/2014";
+		String fileupload = "";
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditEvent editevent = celebrationlist.selectEditEvent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		editevent.completeCelebration(categoryname, newdate, celebrationtitle, descriptiontext, "");
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(categoryname, celebrationlist.getCategory());
+		assertEquals(celebrationtitle, celebrationlist.getTitle());
+		assertEquals(descriptiontext, celebrationlist.getDescription());
+		assertEquals(collaborator, celebrationlist.getCollaboratonName());
+		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(newdate, celebrationlist.getTodayDate());
+	}
+	
+	@Test
+	public void test_edit_event_delete_picture() {
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String fileupload = ConfigElements.getFileImagen();
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditEvent editevent = celebrationlist.selectEditEvent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		editevent.deleteUploadFile();
+		editevent.completeCelebration(categoryname, date, celebrationtitle, descriptiontext, "");
+		
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		celebrationlist = home.selectCategoryInSideBar(newcategory);
+		celebrationlist = home.selectCategoryInSideBar(categoryname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals(newcategory, celebrationlist.getCategory());
+		assertEquals(categoryname, celebrationlist.getCategory());
 		assertEquals(celebrationtitle, celebrationlist.getTitle());
+		assertEquals(descriptiontext, celebrationlist.getDescription());
+		assertEquals(collaborator, celebrationlist.getCollaboratonName());
+		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(date, celebrationlist.getTodayDate());
+		assertFalse(celebrationlist.isElementPresent());
+		
+	}
+	
+	@Test
+	public void test_edit_event_add_picture() {
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String fileupload = ConfigElements.getFileImagen();
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditEvent editevent = celebrationlist.selectEditEvent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		editevent.uploadNewFile(fileupload);
+		editevent.completeCelebration(categoryname, date, celebrationtitle, descriptiontext, "");
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(categoryname, celebrationlist.getCategory());
+		assertEquals(celebrationtitle, celebrationlist.getTitle());
+		assertEquals(descriptiontext, celebrationlist.getDescription());
+		assertEquals(collaborator, celebrationlist.getCollaboratonName());
+		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(date, celebrationlist.getTodayDate());
+		assertNotEquals("", celebrationlist.srcCelebImg());
+	}
+	
+	@Test
+	public void test_edit_event_delete_title() {
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String newtitle = "";
+		String fileupload = "";
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditEvent editevent = celebrationlist.selectEditEvent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		editevent.completeCelebration(categoryname, date, newtitle, descriptiontext, "");
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(categoryname, celebrationlist.getCategory());
 		assertEquals(descriptiontext, celebrationlist.getDescription());
 		assertEquals(collaborator, celebrationlist.getCollaboratonName());
 		assertEquals(collaborator, celebrationlist.getImgAlt());
 		assertEquals(date, celebrationlist.getTodayDate());
 	}
 	
-	private HomeCelebrations createEvent(String collaborator, String celebrationtitle, String categoryname, String descriptiontext, String date, HomeCelebrations home) {
+	@Test
+	public void test_edit_event_title_more_than_80_characters() {
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String newtitle = StringUtils.getTextoLargo();
+		String fileupload = "";
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditEvent editevent = celebrationlist.selectEditEvent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		editevent.completeCelebration(categoryname, date, newtitle, descriptiontext, "");
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("No se pudo guardar la Celebración", editevent.getSaveError());
+		assertEquals("El título supera el máximo de 80 caracteres", editevent.getTitleError());
+	}
+	
+	@Test
+	public void test_edit_event_delete_description() {
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String newdescription = "";
+		String fileupload = "";
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditEvent editevent = celebrationlist.selectEditEvent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		editevent.completeCelebration(categoryname, date, celebrationtitle, newdescription, "");
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(categoryname, celebrationlist.getCategory());
+		assertEquals(celebrationtitle, celebrationlist.getTitle());
+		assertEquals(collaborator, celebrationlist.getCollaboratonName());
+		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(date, celebrationlist.getTodayDate());
+	}
+	
+	@Test
+	public void test_edit_event_title_more_than_500_characters() {
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String newdescription = StringUtils.getTextoLargo();
+		String fileupload = "";
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditEvent editevent = celebrationlist.selectEditEvent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		editevent.completeCelebration(categoryname, date, celebrationtitle, newdescription, "");
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("La descripción no debería superar los 500 caracteres", editevent.getDescriptionError());
+	}
+	
+	@Test
+	public void test_edit_event_empty_date() {
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String newdate = "";
+		String fileupload = "";
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditEvent editevent = celebrationlist.selectEditEvent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		editevent.completeCelebration(categoryname, newdate, celebrationtitle, descriptiontext, "");
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("La fecha no puede estar vacía", editevent.getDateErrorMsj());
+	}
+	
+	@Test
+	public void test_edit_event_cancel() {
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String fileupload = ConfigElements.getFileImagen();
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = createEvent(collaborator, celebrationtitle, categoryname, descriptiontext, date, home, fileupload);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditEvent editevent = celebrationlist.selectEditEvent();
+		editevent.deleteUploadFile();
+		home = editevent.cancelCreation();
+		
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(categoryname, celebrationlist.getCategory());
+		assertEquals(celebrationtitle, celebrationlist.getTitle());
+		assertEquals(descriptiontext, celebrationlist.getDescription());
+		assertEquals(collaborator, celebrationlist.getCollaboratonName());
+		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(date, celebrationlist.getTodayDate());
+		assertTrue(celebrationlist.isElementPresent());
+	}
+	
+	private HomeCelebrations createEvent(String collaborator, String celebrationtitle, String categoryname, String descriptiontext, String date, HomeCelebrations home, String fileupload) {
 		NewEvent newevent = home.selectNewEvent();
 		
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -324,6 +729,9 @@ private WebDriver driver;
 		createCategory(categoryname, newevent);
 		
 		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		if (!fileupload.isEmpty())
+			newevent.fileUpload(fileupload);
 		
 		home = newevent.completeCelebration(categoryname, date, celebrationtitle, descriptiontext, collaborator);
 		

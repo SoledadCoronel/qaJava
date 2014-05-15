@@ -72,6 +72,12 @@ public class NewEvent extends PageBase{
 	@FindBy (id = "attachmentUpload")
 	protected WebElement attachementupload;
 	
+	@FindBy (className = "deleteUploadedFile")
+	protected WebElement deleteuploadedfile;
+	
+	@FindBy (className = "uploadNewFile")
+	protected WebElement uploadnewfile;
+	
 
 	/**
 	 * Constructor
@@ -249,6 +255,22 @@ public class NewEvent extends PageBase{
 	public HomeCelebrations cancelCreation() {
 		cancelbtn.click();
 		return PageFactory.initElements(driver, HomeCelebrations.class);
+	}
+	
+	/**
+	 * Seleccionar eliminar un archivo subido
+	 */
+	public void deleteUploadFile() {
+		deleteuploadedfile.click();
+	}
+	
+	/**
+	 * Subir una nueva imagen 
+	 * 
+	 * @param file
+	 */
+	public void uploadNewFile(String file) {
+		uploadnewfile.sendKeys(file);
 	}
 
 }

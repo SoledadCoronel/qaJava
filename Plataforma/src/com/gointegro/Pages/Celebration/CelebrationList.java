@@ -1,5 +1,6 @@
 package com.gointegro.Pages.Celebration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -188,6 +189,19 @@ public class CelebrationList extends PageBase{
 		collaboratorslist.click();
 		
 		return PageFactory.initElements(driver, EventCollaboratorOverlay.class);
+	}
+	
+	/**
+	 * Verifica si la imagen es visible 
+	 * 
+	 * @return boolean
+	 */
+	public boolean isElementPresent() {
+		if (driver.findElements(By.className("photo")).size() > 0)
+			return true;
+		else
+			return false;
+		
 	}
 	
 }
