@@ -57,6 +57,9 @@ public class CelebrationList extends PageBase{
 	@FindBy (className = "collaborators-list")
 	private WebElement collaboratorslist;
 	
+	@FindBy (xpath = "//div[@id='alert']/div")
+	private WebElement emptyevents;
+	
 	/**
 	 * Constructor
 	 * 
@@ -88,6 +91,15 @@ public class CelebrationList extends PageBase{
 	private void selectEventEdit() {
 		eventedit.click();
 	}
+	
+	/**
+	 * Seleccionar Eliminar evento
+	 */
+	private void selectDeleteEvent() {
+		eventdelete.click();
+	}
+	
+	
 	
 	/**
 	 * Obtener el datetime en formato español
@@ -201,7 +213,27 @@ public class CelebrationList extends PageBase{
 			return true;
 		else
 			return false;
+	}
+	
+	/**
+	 * Obtener el mensaje de No se encontraron celebraciones
+	 * 
+	 * @return String
+	 */
+	public String getEmptyEvents() {
+		return emptyevents.getText();
+	}
+	
+	/**
+	 * Seleccionar borrar evento
+	 * 
+	 * @return {@link DeleteOverlay}
+	 */
+	public DeleteOverlay deleteEvent() {
+		selectEventOption();
+		selectDeleteEvent();
 		
+		return PageFactory.initElements(driver, DeleteOverlay.class);
 	}
 	
 }
