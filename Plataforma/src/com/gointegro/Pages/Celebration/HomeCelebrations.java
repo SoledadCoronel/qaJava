@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsCelebration;
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Pages.Platform.AplicationEdit;
 
 /**
  * PO. Home de una app de celebraciones
@@ -36,6 +37,9 @@ public class HomeCelebrations extends PageBase{
 	
 	@FindBy(xpath = "//*[@id='category-list']/ul/li")
 	private List<WebElement> categorylist;
+	
+	@FindBy(className = "adm-action")
+	private WebElement admaction;
 
 	
 	/**
@@ -139,6 +143,17 @@ public class HomeCelebrations extends PageBase{
 	public NewEvent selectNewEvent() {
 		neweventheader.click();
 		return PageFactory.initElements(driver, NewEvent.class);
+	}
+	
+	/**
+	 * Seleccionar Administrar Aplicacion
+	 * 
+	 * @return {@link AplicationEdit}
+	 */
+	public AplicationEdit selectAdminApp() {
+		admaction.click();
+		
+		return PageFactory.initElements(driver, AplicationEdit.class);
 	}
 
 }

@@ -25,6 +25,8 @@ public class ConfigElements {
 	
 	private static String nombreEspacio = "Welcome to the jungle";
 	
+	private static String workspace_id = "696";
+	
 	private static String FileImagen = "/home/gustavomoreira/Pictures/Otro/Explosions-In-The-Sky.jpg";
 	
 	private static String FileImagenChange = "/home/gustavomoreira/Pictures/Otro/business-cat.jpg";
@@ -121,6 +123,10 @@ public class ConfigElements {
 	
 	public static String getFileImagenChange() {
 		return FileImagenChange;
+	}
+	
+	public static String getWorkspaceId() {
+		return workspace_id;
 	}
 	
 

@@ -44,6 +44,9 @@ public class AplicationInstall extends PageBase{
 	
 	@FindBy (id = "cancel")
 	protected WebElement cancel;
+	
+	@FindBy (name = "tournamentList")
+	protected WebElement tournamentlist;
 
 	/**
 	 * Constructor
@@ -102,6 +105,18 @@ public class AplicationInstall extends PageBase{
 	 */
 	protected void selectDesactive() {
 		radiodesactive.click();
+	}
+	
+	/**
+	 * Seleccionar el status de la app
+	 * 
+	 * @param status
+	 */
+	protected void setStatus (boolean status) {
+		if (status)
+			selectActive();
+		else
+			selectDesactive();
 	}
 	
 	/**
@@ -188,6 +203,33 @@ public class AplicationInstall extends PageBase{
 		}
 		else
 			monthsPastComplete(month);
+	}
+	
+	/**
+	 * Seleccionar un torneo por nombre
+	 * 
+	 * @param tournament
+	 */
+	public void selectTournament(String tournament) {
+		Select droplist = new Select(tournamentlist);
+		droplist.selectByVisibleText(tournament);
+	}
+	
+	/**
+	 * Completar los campos standard de todas las app
+	 * 
+	 * @param name
+	 * @param descr
+	 * @param status
+	 * @param activeSocial
+	 */
+	public void completeInstallApp(String name, String descr, boolean status, boolean activeSocial, boolean isappsocial) {
+		setAppName(name);
+		setDescription(descr);
+		setStatus(status);
+		if (!isappsocial)
+		selectSocialEnabled(activeSocial);
+		saveBtn();
 	}
 
 }
