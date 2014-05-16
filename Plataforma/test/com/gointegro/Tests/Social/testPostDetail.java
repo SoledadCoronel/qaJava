@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Platform.Login;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Pages.Platform.Profile;
+import com.gointegro.Pages.Profile.Profile;
 import com.gointegro.Pages.Social.AppPrivateSocial;
 import com.gointegro.Pages.Social.DetailPost;
 import com.gointegro.Pages.Social.PostForm;

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
-import com.gointegro.Pages.Platform.Profile;
+import com.gointegro.Pages.Profile.Profile;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
