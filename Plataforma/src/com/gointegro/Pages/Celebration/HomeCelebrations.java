@@ -38,7 +38,7 @@ public class HomeCelebrations extends PageBase{
 	@FindBy(xpath = "//*[@id='category-list']/ul/li")
 	private List<WebElement> categorylist;
 	
-	@FindBy(className = "adm-action")
+	@FindBy(linkText = "Administrar aplicación")
 	private WebElement admaction;
 
 	

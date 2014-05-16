@@ -60,6 +60,9 @@ public class CelebrationList extends PageBase{
 	@FindBy (xpath = "//div[@id='alert']/div")
 	private WebElement emptyevents;
 	
+	@FindBy (css = "div.alert.empty-events")
+	private WebElement emptyEventsCategory;
+	
 	/**
 	 * Constructor
 	 * 
@@ -234,6 +237,15 @@ public class CelebrationList extends PageBase{
 		selectDeleteEvent();
 		
 		return PageFactory.initElements(driver, DeleteOverlay.class);
+	}
+	
+	/**
+	 * Obtener el texto no se encontraron celebraciones
+	 * 
+	 * @return String
+	 */
+	public String getEmptyEvent() {
+		return emptyEventsCategory.getText();
 	}
 	
 }

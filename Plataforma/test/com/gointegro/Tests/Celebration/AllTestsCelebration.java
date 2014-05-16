@@ -15,7 +15,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	//testDeleteCategory.class,
 	//testNewCelebration.class,
 	//testEditCelebration.class,
-	testDeleteCelebration.class
+	//testDeleteCelebration.class,
+	testViewEventsSince.class
 })
 public class AllTestsCelebration {
 	

@@ -8,9 +8,8 @@ public class AplicationEdit extends AplicationInstall{
 	 * Constructor 
 	 * 
 	 * @param driver
-	 * @param id_app
 	 */
-	public AplicationEdit(WebDriver driver, String id_app) {
+	public AplicationEdit(WebDriver driver) {
 		super(driver);
 	}
 	
@@ -32,6 +31,9 @@ public class AplicationEdit extends AplicationInstall{
 		return description.getText();
 	}
 	
+	public void saveEdit() {
+		saveBtn();
+	}
 	
 
 }

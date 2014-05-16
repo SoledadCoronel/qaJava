@@ -1,7 +1,9 @@
 package com.gointegro.Util;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -106,6 +108,18 @@ public class DateTool {
 		String date = StringDate;
 		String yearstr = date.split("/")[2];
 		return yearstr;
+	}
+	
+	/**
+	 * Obtener la fecha de ayer
+	 * 
+	 * @return String
+	 */
+	public static String getYesterday() {
+		Calendar cal = Calendar.getInstance();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		cal.add(Calendar.DATE, -3);
+		return dateFormat.format(cal.getTime());
 	}
 
 }
