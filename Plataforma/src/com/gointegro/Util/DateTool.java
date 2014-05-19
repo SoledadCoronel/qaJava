@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+
 /**
  * Clase que contiene todos los metodos de manejo de fechas o que involucren Date o Calendar.
  * 
@@ -111,7 +112,7 @@ public class DateTool {
 	}
 	
 	/**
-	 * Obtener la fecha de ayer
+	 * Obtener la fecha de -3 dias
 	 * 
 	 * @return String
 	 */
@@ -120,6 +121,70 @@ public class DateTool {
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		cal.add(Calendar.DATE, -3);
 		return dateFormat.format(cal.getTime());
+	}
+	
+	/**
+	 * Obtener la fecha actual -2 mes
+	 * 
+	 * @return String
+	 */
+	public static String setLastMonth() {
+		int previousMonthInt = 0;
+		int previousYearInt = 0;
+		Calendar cal = Calendar.getInstance();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		String StringDate = dateFormat.format(cal.getTime());
+		String date = StringDate;
+		String daystr = date.split("/")[0];
+		String monthstr = date.split("/")[1];
+		String yearstr = date.split("/")[2];
+		int month = Integer.parseInt(monthstr);
+		previousMonthInt = month;
+		previousYearInt = Integer.parseInt(yearstr);
+		if (month == 01){
+			previousMonthInt = 11;
+			previousYearInt--;
+		}
+		else if (month == 02) {
+			previousMonthInt = 12;
+			previousYearInt--;
+		}
+		else
+			previousMonthInt = previousMonthInt -2;
+		
+		String DatePast = daystr+"/"+Integer.toString(previousMonthInt)+"/"+Integer.toString(previousYearInt);
+		return DatePast;
+		
+	}
+	
+	/**
+	 * Obtener la fecha actual -1 mes
+	 * 
+	 * @return
+	 */
+	public static String setPreviousMonth() {
+		int previousMonthInt = 0;
+		int previousYearInt = 0;
+		Calendar cal = Calendar.getInstance();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		String StringDate = dateFormat.format(cal.getTime());
+		String date = StringDate;
+		String daystr = date.split("/")[0];
+		String monthstr = date.split("/")[1];
+		String yearstr = date.split("/")[2];
+		int month = Integer.parseInt(monthstr);
+		previousMonthInt = month;
+		previousYearInt = Integer.parseInt(yearstr);
+		if (month == 01){
+			previousMonthInt = 11;
+			previousYearInt--;
+		}
+		else
+			previousMonthInt--;
+		
+		String DatePast = daystr+"/"+Integer.toString(previousMonthInt)+"/"+Integer.toString(previousYearInt);
+		return DatePast;
+		
 	}
 
 }

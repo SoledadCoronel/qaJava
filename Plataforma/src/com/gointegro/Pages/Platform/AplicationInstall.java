@@ -30,7 +30,7 @@ public class AplicationInstall extends PageBase{
 	@FindBy (name = "displayStrategy")
 	protected WebElement radiodaysPast;
 	
-	@FindBy (xpath = "//input[@name='displayStrategy'][2]")
+	@FindBy (xpath = "(//input[@name='displayStrategy'])[2]")
 	protected WebElement radiomonthsPast;
 	
 	@FindBy (name = "daysPast")
@@ -149,11 +149,10 @@ public class AplicationInstall extends PageBase{
 	 * @param month false "Mes anterior" - true "Mes actual"
 	 */
 	protected void setMonthsPast(boolean month) {
-		Select droplist = new Select(monthsPast);
 		if (month)
-			droplist.selectByVisibleText("Mes actual");
+			new Select(monthsPast).selectByVisibleText("Mes actual");
 		else
-			droplist.selectByVisibleText("Mes anterior");
+			new Select(monthsPast).selectByVisibleText("Mes anterior");
 	}
 	
 	/**
