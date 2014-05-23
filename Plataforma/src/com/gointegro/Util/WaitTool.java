@@ -341,7 +341,4 @@ public class WaitTool {
        }
    }
    
-	
-	
-
 }

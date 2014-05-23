@@ -39,10 +39,10 @@ public class Profile extends PageBase{
 	@FindBy (id = "user-name")
 	private WebElement username;
 	
-	@FindBy (id = "data-edit")
+	@FindBy (xpath = "//div[@class='profile-action']/div/button")
 	private WebElement dataedit;
 	
-	@FindBy (id = "data-edit-modal-link")
+	@FindBy (xpath = "//div[@class='profile-action']/div/ul/li/a")
 	private WebElement dataeditmodal;
 	
 	@FindBy (id = "notification-preference-modal-link")

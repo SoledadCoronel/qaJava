@@ -4,15 +4,16 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Celebration.AdminCategory;
+import com.gointegro.Pages.Celebration.CelebrationList;
 import com.gointegro.Pages.Celebration.HomeCelebrations;
 import com.gointegro.Pages.Celebration.NewCategoryOverlay;
+import com.gointegro.Pages.Celebration.NewEvent;
 import com.gointegro.Pages.Platform.Login;
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Util.DataGenerator;
@@ -28,7 +29,7 @@ private WebDriver driver;
 		driver = AllTestsCelebration.getDriver();
 	}
 
-	@Ignore
+	@Test
 	public void test_edit_category() {
 		String categoryname = DataGenerator.nombreFile();
 		String categorynameedited = DataGenerator.nombreFile();
@@ -53,7 +54,7 @@ private WebDriver driver;
 		assertFalse(admincategory.isCategoryInList(categoryname));
 	}
 	
-	@Ignore
+	@Test
 	public void test_edit_category_empty() {
 		String categoryname = DataGenerator.nombreFile();
 		String categorynameedited = "";
@@ -78,7 +79,7 @@ private WebDriver driver;
 		assertEquals("Ocurrió un error al editar la categoría", admincategory.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_edit_category_lot_of_characters() {
 		String categoryname = DataGenerator.nombreFile();
 		String categorynameedited = StringUtils.getTextoLargo();
@@ -103,7 +104,7 @@ private WebDriver driver;
 		assertEquals("Ocurrió un error al editar la categoría", admincategory.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_edit_category_repeated() {
 		String categoryname = DataGenerator.nombreFile();
 		String categoryname2 = 	DataGenerator.nombreFile();	
@@ -131,7 +132,7 @@ private WebDriver driver;
 		assertEquals("El nombre de la categoría ya existe", admincategory.getSaveError());
 	}
 	
-	@Ignore
+	@Test
 	public void test_edit_category_cancel() {
 		String categoryname = DataGenerator.nombreFile();
 		String categorynameedited = DataGenerator.nombreFile();
@@ -156,7 +157,7 @@ private WebDriver driver;
 		assertTrue(admincategory.isCategoryInList(categoryname));
 	}
 	
-	@Ignore
+	@Test
 	public void test_edit_category_automation() {
 		String categoryname = DataGenerator.nombreFile();
 		String categorynameedited = DataGenerator.nombreFile();
@@ -185,7 +186,71 @@ private WebDriver driver;
 	
 	@Test
 	public void test_edit_category_with_events() {
-		// TODO
+		String collaborator = ConfigElements.getNombreUsuario();
+		String celebrationtitle =  DataGenerator.nombreFile();
+		String categoryname = DataGenerator.nombreFile();
+		String descriptiontext = DataGenerator.nombreFile();
+		String date = "26/12/2014";
+		String newcategoryname = DataGenerator.nombreFile();
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		NewEvent newevent = home.selectNewEvent();
+		
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createCategory(categoryname, false);
+		
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = newevent.completeCelebration(categoryname, date, celebrationtitle, descriptiontext, collaborator);
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(categoryname, celebrationlist.getCategory());
+		assertEquals(celebrationtitle, celebrationlist.getTitle());
+		assertEquals(descriptiontext, celebrationlist.getDescription());
+		assertEquals(collaborator, celebrationlist.getCollaboratonName());
+		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(date, celebrationlist.getTodayDate());
+		
+		home.open();
+		
+		AdminCategory admincategory = home.selectAdminCategory();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		admincategory.selectCategoryEdit(categoryname);
+		
+		admincategory.editCategory(newcategoryname, false);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertTrue(admincategory.isCategoryInList(newcategoryname));
+		assertFalse(admincategory.isCategoryInList(categoryname));
+		
+		home.open();
+		
+		celebrationlist = home.selectCategoryInSideBar(newcategoryname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(newcategoryname, celebrationlist.getCategory());
+		assertEquals(celebrationtitle, celebrationlist.getTitle());
+		assertEquals(descriptiontext, celebrationlist.getDescription());
+		assertEquals(collaborator, celebrationlist.getCollaboratonName());
+		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(date, celebrationlist.getTodayDate());
 	}
 	
 
