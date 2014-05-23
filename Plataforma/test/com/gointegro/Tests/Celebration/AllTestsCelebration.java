@@ -16,7 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testNewCelebration.class,
 	testEditCelebration.class,
 	testDeleteCelebration.class,
-	//testViewEventsSince.class, //Fallan un par de tests por https://gointegro.atlassian.net/browse/PLATAFORMAII-3050
+	testViewEventsSince.class, //Fallan un par de tests por https://gointegro.atlassian.net/browse/PLATAFORMAII-3050
 	//testCategoryAutomatic.class
 })
 public class AllTestsCelebration {

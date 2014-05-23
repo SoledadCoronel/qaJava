@@ -2,6 +2,7 @@ package com.gointegro.Tests.Celebration;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ import com.gointegro.Pages.Celebration.CelebrationList;
 import com.gointegro.Pages.Celebration.DatePicker;
 import com.gointegro.Pages.Celebration.HomeCelebrations;
 import com.gointegro.Pages.Platform.Login;
+import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Pages.Profile.DataEditModal;
 import com.gointegro.Pages.Profile.Profile;
 import com.gointegro.Util.DataGenerator;
@@ -28,7 +30,7 @@ private WebDriver driver;
 	}
 
 	@Test
-	public void test() {
+	public void test_auto_category() {
 		String categoryname = DataGenerator.nombreFile();
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  "Cumpleaños de "+ConfigElements.getNombreUsuario();
@@ -48,7 +50,7 @@ private WebDriver driver;
 		
 		createCategory(admincategory, categoryname);
 		
-		wait1Minute();
+		wait2Minute();
 		
 		home.open();
 		
@@ -93,11 +95,20 @@ private WebDriver driver;
 		return dataeditmodal.getBirthdate();
 	}
 	
-	private void wait1Minute() {
+	/**
+	 * Aguarda a que corra el chrone de Celebraciones
+	 */
+	private void wait2Minute() {
 		try {
-			Thread.sleep(60000);
+			Thread.sleep(120000);
 		} catch (InterruptedException e) {
 		}
+	}
+	
+	@After
+	public void tearDown() {
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
 	}
 
 }
