@@ -34,14 +34,28 @@ public class DatePicker extends PageBase{
 		super(driver);
 	}
 	
+	/**
+	 * Selecciona el mes del datepicker, si supera el año 2016 sin encontrarlo tira un break para no loopear forever.
+	 * Tiene como corte el 2016, hardcodeado
+	 * 
+	 * @param date
+	 */
 	public void selectMonth(String date) {
 		String monthtext = DateTool.getMonthText(date);
-		String yeartext = DateTool.getYearText(date);
+		String yeartext = DateTool.getYearText(date);		
 		while (!month.getText().equals(monthtext+" "+yeartext)) {
 			next.click();
+			if (month.getText().contains("2016")) {
+				break;
+			}
 		}
 	}
 	
+	/**
+	 * Seleccionar un dia en el datepicker
+	 * 
+	 * @param StringDate
+	 */
 	public void selectDay(String StringDate) {
 		String daytext = DateTool.getDayText(StringDate);
 		//No se puede usar annotations, por eso volvemos al driver.findelement

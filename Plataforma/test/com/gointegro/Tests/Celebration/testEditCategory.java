@@ -48,7 +48,7 @@ private WebDriver driver;
 		admincategory.selectCategoryEdit(categoryname);
 		
 		admincategory.editCategory(categorynameedited, false);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertTrue(admincategory.isCategoryInList(categorynameedited));
 		assertFalse(admincategory.isCategoryInList(categoryname));
@@ -127,7 +127,7 @@ private WebDriver driver;
 		admincategory.selectCategoryEdit(categoryname2);
 		
 		admincategory.editCategory(categoryname3, false);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("El nombre de la categoría ya existe", admincategory.getSaveError());
 	}
@@ -207,7 +207,7 @@ private WebDriver driver;
 		
 		createCategory(categoryname, false);
 		
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		home = newevent.completeCelebration(categoryname, date, celebrationtitle, descriptiontext, collaborator);
 		
