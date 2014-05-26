@@ -21,6 +21,12 @@ public class HomeContent extends PageBase{
 	@FindBy(css = "div.span24.content > p")
 	WebElement description;
 	
+	@FindBy(xpath = "//button[@title='Editar']")
+	WebElement contentOptions;
+	
+	@FindBy(className = "editArticle")
+	WebElement editContent;
+	
 	
 	/**
 	 * Constructor
@@ -61,6 +67,27 @@ public class HomeContent extends PageBase{
 	 */
 	public String getDescription() {
 		return description.getText();
+	}
+	
+	/**
+	 * Seleccionar content option
+	 */
+	private void selectContentOption() {
+		contentOptions.click();
+	}
+	
+	/**
+	 * Seleccionar editar contenido
+	 */
+	private void selectEditContent() {
+		editContent.click();
+	}
+	
+	public NewContent editContent() {
+		selectContentOption();
+		selectEditContent();
+		
+		return PageFactory.initElements(driver, NewContent.class);
 	}
 
 }
