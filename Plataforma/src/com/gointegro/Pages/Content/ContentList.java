@@ -35,7 +35,7 @@ public class ContentList extends PageBase {
 	
 	
 	/**
-	 * Obtiene el titulo del contenido en el menu lateral
+	 * Obtiene el titulo del primer contenido en el menu lateral
 	 * 
 	 * @return String
 	 */
@@ -73,5 +73,22 @@ public class ContentList extends PageBase {
 		      }
 		}
 		return counter;
+	}
+	
+	
+	/**
+	 * Devuelve verdadero si el contenido se encuentra en el listado del menu lateral
+	 * 
+	 * @param allElements
+	 * @param titulo
+	 * @return Boolean
+	 */
+	public Boolean isContentOnList(List<WebElement> allElements, String titulo) {
+		int location = findInList(allElements, titulo);
+		
+		if(location < allElements.size()) {
+			return true;
+		}
+		return false;
 	}
 }

@@ -28,6 +28,11 @@ public class StringUtils {
 	}
 	
 	
+	/**
+	 * Devuelve un string con caracteres especiales
+	 * 
+	 * @return String
+	 */
 	public static String getCaracteresEspeciales() {
 		return "São Paulo é você áéëíóôõúç";
 	}

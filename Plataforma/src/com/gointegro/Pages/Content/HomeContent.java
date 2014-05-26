@@ -27,6 +27,9 @@ public class HomeContent extends PageBase{
 	@FindBy(className = "editArticle")
 	WebElement editContent;
 	
+	@FindBy(className = "delete-article")
+	WebElement deleteContent;
+	
 	
 	/**
 	 * Constructor
@@ -83,9 +86,33 @@ public class HomeContent extends PageBase{
 		editContent.click();
 	}
 	
+	/**
+	 * Seleccionar content option y editar contenido
+	 * 
+	 * @return NewContent
+	 */
 	public NewContent editContent() {
 		selectContentOption();
 		selectEditContent();
+		
+		return PageFactory.initElements(driver, NewContent.class);
+	}
+	
+	/**
+	 * Seleccionar eliminar contenido
+	 */
+	private void selectDeleteContent() {
+		deleteContent.click();
+	}
+	
+	/**
+	 * Seleccionar content option y editar contenido
+	 * 
+	 * @return NewContent
+	 */
+	public NewContent deleteContent() {
+		selectContentOption();
+		selectDeleteContent();
 		
 		return PageFactory.initElements(driver, NewContent.class);
 	}
