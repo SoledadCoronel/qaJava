@@ -36,7 +36,7 @@ public class DatePicker extends PageBase{
 	
 	/**
 	 * Selecciona el mes del datepicker, si supera el año 2016 sin encontrarlo tira un break para no loopear forever.
-	 * Tiene como corte el 2016
+	 * Tiene como corte el 2016, hardcodeado
 	 * 
 	 * @param date
 	 */

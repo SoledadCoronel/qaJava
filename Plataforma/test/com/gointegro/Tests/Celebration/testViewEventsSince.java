@@ -161,7 +161,7 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		CelebrationList celebrationlist = home.selectCategoryInSideBar(categoryname);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		celebrationlist.getEmptyEvent();
 	}

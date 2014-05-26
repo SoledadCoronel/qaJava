@@ -152,7 +152,7 @@ public class DateTool {
 		else
 			previousMonthInt = previousMonthInt -2;
 		
-		String DatePast = daystr+"/"+Integer.toString(previousMonthInt)+"/"+Integer.toString(previousYearInt);
+		String DatePast = daystr+"/"+Integer.toString(addZerosInt(previousMonthInt))+"/"+Integer.toString(previousYearInt);
 		return DatePast;
 		
 	}
@@ -182,9 +182,24 @@ public class DateTool {
 		else
 			previousMonthInt--;
 		
-		String DatePast = daystr+"/"+Integer.toString(previousMonthInt)+"/"+Integer.toString(previousYearInt);
+		String DatePast = daystr+"/"+Integer.toString(addZerosInt(previousMonthInt))+"/"+Integer.toString(previousYearInt);
 		return DatePast;
 		
+	}
+	
+	/**
+	 * Agrega zeros a la izquierda para los meses de una sola cifra
+	 * 
+	 * @param num
+	 * @return Int
+	 */
+	private static int addZerosInt(int num) {
+		if (num < 10) {
+			 String padded = String.format("%01d" , num);
+			 return Integer.parseInt(padded);
+		}
+		else
+			return num;
 	}
 
 }
