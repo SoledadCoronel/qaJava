@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.gointegro.Pages.Base.PageBase;
 
@@ -19,6 +20,9 @@ public class NewContent extends PageBase{
 	@FindBy(id = "accept")
 	WebElement savebtn;
 	
+	@FindBy(id = "cancel")
+	WebElement cancelbtn;
+	
 	@FindBy(id = "category-new")
 	WebElement newCategory;
 	
@@ -27,6 +31,9 @@ public class NewContent extends PageBase{
 	
 	@FindBy(id = "content-error")
 	WebElement descriptionError;
+	
+	@FindBy(id = "bellowArticle")
+	WebElement bellowArticle;
 	
 	/**
 	 * Constructor
@@ -88,6 +95,16 @@ public class NewContent extends PageBase{
 		return PageFactory.initElements(driver, HomeContent.class);
 	}
 	
+	/**
+	 *  Seleccionar el botón cancelar
+	 *  
+	 *  @return HomeContent
+	 */
+	public HomeContent selectCancelBtn() {
+		cancelbtn.click();
+		return PageFactory.initElements(driver, HomeContent.class);
+	}
+	
 	
 	/**
 	 *  Obtener el mensaje de error del titulo
@@ -126,5 +143,14 @@ public class NewContent extends PageBase{
 	 */
 	public boolean isDescriptionErrorPresent() {
 		return descriptionError.isDisplayed();
+	}
+	
+	/**
+	 *  Cambiar el orden del contido 
+	 *  
+	 * @param String
+	 */
+	public void setContentBellowOf(String contentTitle) {
+		new Select(bellowArticle).selectByVisibleText(contentTitle);
 	}
 }
