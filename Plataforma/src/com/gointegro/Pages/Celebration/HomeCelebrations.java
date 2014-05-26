@@ -155,5 +155,21 @@ public class HomeCelebrations extends PageBase{
 		
 		return PageFactory.initElements(driver, AplicationEdit.class);
 	}
+	
+	/**
+	 * Seleccionar hoy
+	 */
+	public void selectToday() {
+		filtertoday.click();
+	}
+	
+	/**
+	 * Devuelve el estado del boton Hoy
+	 * 
+	 * @return boolean
+	 */
+	public boolean selectTodayDisplay() {
+		return filtertoday.isEnabled();
+	}
 
 }
