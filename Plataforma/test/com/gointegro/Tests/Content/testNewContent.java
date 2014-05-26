@@ -151,7 +151,7 @@ public class testNewContent {
 	
 	@Test
 	public void test_special_chars() {
-		String titleText = "São Paulo é você áäçôú";
+		String titleText = StringUtils.getCaracteresEspeciales();
 		String descriptionText = StringUtils.getTextoLargo();
 		
 		login();
