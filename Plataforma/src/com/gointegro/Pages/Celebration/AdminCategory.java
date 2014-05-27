@@ -5,6 +5,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -224,6 +226,52 @@ public class AdminCategory extends PageBase {
 			}
 		}
 		return deleteoverlay;
+	}
+	
+	/**
+	 * Cambiar el orden de las categorias, pone la primera ultima.
+	 * 
+	 * @param category1name
+	 * @param category2name
+	 * @param category3name
+	 */
+	public void changeOrder(String category1name, String category2name, String category3name) {
+		WebElement webElement1 = null;
+		WebElement webElement3 = null;
+		
+		for (WebElement element : categorieslist) {
+			if (element.getText().contains(category1name)) {
+				webElement1 = element;
+			}
+			else if (element.getText().contains(category3name)) {
+				webElement3 = element;
+			}
+			else {
+				// aca iria una excepcion ponele (?)
+			}
+		}
+		
+		Actions builder = new Actions(driver);
+		Action dragAndDrop = builder.clickAndHold(webElement3).moveToElement(webElement1).release(webElement1).build();
+
+		dragAndDrop.perform();
+	}
+	
+	/**
+	 * Retornar el index de un elemento en el listado de categorias
+	 * 
+	 * @param category
+	 * @return Int
+	 */
+	public int getElementIdInList(String category) {
+		int i = 0;
+		for (i=0; i < categorieslist.size(); i++) {
+			WebElement e = categorieslist.get(i);
+			if (e.getText().contains(category))
+				break;
+		}
+		
+		return i;
 	}
 
 }
