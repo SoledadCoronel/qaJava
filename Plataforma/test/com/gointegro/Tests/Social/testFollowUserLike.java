@@ -106,8 +106,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(ConfigElementsFollowers.getFollower1(), ConfigElementsFollowers.getFollower1pwd());
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
+		WaitTool.waitForJQueryProcessing(driver, 10);		
 		
 		assertNotEquals(commentpost, comment.getTextComment());
 	}

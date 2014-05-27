@@ -60,6 +60,7 @@ private WebDriver driver;
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());

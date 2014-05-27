@@ -71,6 +71,46 @@ private WebDriver driver;
 		assertEquals(birthdate, celebrationlist.getTodayDate());
 	}
 	
+	@Test
+	public void test_auto_category_select_today() {
+		String categoryname = DataGenerator.nombreFile();
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		login.open();
+		login.LoginPlatformNoReg(ConfigElements.getUsername(), ConfigElements.getPassword());
+
+		String birthdate = getBirthdate();
+		
+		HomeCelebrations home = PageFactory.initElements(driver, HomeCelebrations.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AdminCategory admincategory = home.selectAdminCategory();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createCategory(admincategory, categoryname);
+		
+		wait2Minute();
+		
+		home.open();
+		
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.selectCategoryInSideBar(categoryname);
+		
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DatePicker datepicker = PageFactory.initElements(driver, DatePicker.class);
+		datepicker.selectMonth(birthdate);
+		datepicker.selectDay(birthdate);
+		
+		home.selectToday();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		//Por ahora con ver el btn sin poder ser seleccionado alcanza, porque es un lio sino.
+		assertFalse(home.selectTodayDisplay());
+	}
+	
 	/**
 	 * Crea una categoria automatica
 	 * 
