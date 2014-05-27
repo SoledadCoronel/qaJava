@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Base.PageBase;
 
 public class NewContent extends PageBase{
@@ -32,6 +33,9 @@ public class NewContent extends PageBase{
 	@FindBy(id = "content-error")
 	WebElement descriptionError;
 	
+	@FindBy(id = "category")
+	WebElement categorySelect;
+	
 	@FindBy(id = "bellowArticle")
 	WebElement bellowArticle;
 	
@@ -42,6 +46,7 @@ public class NewContent extends PageBase{
 	 */
 	public NewContent(WebDriver driver) {
 		super(driver);
+		URL = ConfigElements.getURL()+"/app/articles/1957/create";
 	}
 	
 	
@@ -143,6 +148,15 @@ public class NewContent extends PageBase{
 	 */
 	public boolean isDescriptionErrorPresent() {
 		return descriptionError.isDisplayed();
+	}
+	
+	/**
+	 *  Seccionar la categoria 
+	 *  
+	 * @param String
+	 */
+	public void setCategory(String categoryName) {
+		new Select(categorySelect).selectByVisibleText(categoryName);
 	}
 	
 	/**

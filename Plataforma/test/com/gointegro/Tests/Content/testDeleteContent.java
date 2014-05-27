@@ -2,12 +2,17 @@ package com.gointegro.Tests.Content;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Pages.Celebration.DeleteOverlay;
 import com.gointegro.Pages.Content.ContentList;
 import com.gointegro.Pages.Content.HomeContent;
 import com.gointegro.Pages.Content.NewCategoryOvelayContent;
@@ -18,9 +23,10 @@ import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
-public class testNewContent extends TestBase{
+public class testDeleteContent extends TestBase{
 	
 	private WebDriver driver;
+	
 	
 	@Before
 	public void setUp() {
@@ -29,9 +35,9 @@ public class testNewContent extends TestBase{
 	
 	
 	@Test
-	public void test_new_content_without_category(){
+	public void delete_content_with_no_category() {
 		String titleText = DataGenerator.nombreFile();
-		String descriptionText = StringUtils.getTextoLargo();
+		String descriptionText = StringUtils.getTextoLargo() + DataGenerator.horaactual();
 		
 		login(driver);
 		
@@ -49,6 +55,95 @@ public class testNewContent extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newContent.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent = home.deleteContent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DeleteOverlay delete = PageFactory.initElements(driver, DeleteOverlay.class);
+		delete.selectConfirmDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		ContentList contentList = PageFactory.initElements(driver, ContentList.class);
+		
+		assertNotEquals(titleText, home.getTitle());
+		assertNotEquals(descriptionText, home.getDescription());
+		assertNotEquals(titleText, contentList.getTitle());
+	}
+	
+
+	@Test
+	public void delete_content_with_category() {
+		String titleText = DataGenerator.nombreFile();
+		String descriptionText = StringUtils.getTextoLargo() + DataGenerator.horaactual();
+		
+		login(driver);
+		
+		HomeContent home = PageFactory.initElements(driver, HomeContent.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		NewContent newContent = home.selectNewContent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createTitle(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createDescription(descriptionText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createCategory(titleText, newContent);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.setCategory(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent = home.deleteContent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DeleteOverlay delete = PageFactory.initElements(driver, DeleteOverlay.class);
+		delete.selectConfirmDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		ContentList contentList = PageFactory.initElements(driver, ContentList.class);
+		List<WebElement> allContentList = contentList.getContentList(); 
+		
+		assertNotEquals(titleText, home.getTitle());
+		assertFalse(contentList.isContentOnList(allContentList, titleText));
+	}
+	
+	
+	@Test
+	public void delete_content_press_cancel() {
+		String titleText = DataGenerator.nombreFile();
+		String descriptionText = StringUtils.getTextoLargo() + DataGenerator.horaactual();
+		
+		login(driver);
+		
+		HomeContent home = PageFactory.initElements(driver, HomeContent.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		NewContent newContent = home.selectNewContent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createTitle(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createDescription(descriptionText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent = home.deleteContent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DeleteOverlay delete = PageFactory.initElements(driver, DeleteOverlay.class);
+		delete.selectCancelDelete();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		ContentList contentList = PageFactory.initElements(driver, ContentList.class);
@@ -60,43 +155,9 @@ public class testNewContent extends TestBase{
 	
 	
 	@Test
-	public void test_new_content_with_category(){
+	public void delete_content_and_acces_by_url() {
 		String titleText = DataGenerator.nombreFile();
-		String descriptionText = StringUtils.getTextoLargo();
-		String categoryName = DataGenerator.nombreFile();
-		
-		login(driver);
-		
-		HomeContent home = PageFactory.initElements(driver, HomeContent.class);
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		NewContent newContent = home.selectNewContent();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newContent.createTitle(titleText);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newContent.createDescription(descriptionText);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		createCategory(categoryName, newContent);
-		
-		newContent.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		ContentList contentList = PageFactory.initElements(driver, ContentList.class);
-		
-		assertEquals(titleText, home.getTitle());
-		assertEquals(descriptionText, home.getDescription());
-		assertEquals(titleText, contentList.getTitle());
-	}
-	
-	
-	@Test
-	public void test_title_max_characters() {
-		String titleText = StringUtils.getTextoLargo();
-		String descriptionText = StringUtils.getTextoLargo();
+		String descriptionText = StringUtils.getTextoLargo() + DataGenerator.horaactual();
 		
 		login(driver);
 		
@@ -116,75 +177,19 @@ public class testNewContent extends TestBase{
 		newContent.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertTrue(newContent.isTitleErrorPresent());
-	}
-	
-	@Test
-	public void test_create_content_with_basic_user() {
+		String contentUrl = home.getURL();
 		
-		loginBasicUser(driver);
-		
-		NewContent home = PageFactory.initElements(driver, NewContent.class);
-		home.open();
+		newContent = home.deleteContent();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertTrue(driver.getTitle().contains("Forbidden"));
-	}
-	
-	
-	 
-	@Test
-	public void test_empty_title_and_description() {
-		String titleText = "";
-		String descriptionText = "";
-		
-		login(driver);
-		
-		HomeContent home = PageFactory.initElements(driver, HomeContent.class);
-		home.open();
+		DeleteOverlay delete = PageFactory.initElements(driver, DeleteOverlay.class);
+		delete.selectConfirmDelete();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		NewContent newContent = home.selectNewContent();
+		driver.get(contentUrl);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newContent.createTitle(titleText);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newContent.createDescription(descriptionText);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newContent.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		assertTrue(newContent.isTitleErrorPresent());
-		assertTrue(newContent.isDescriptionErrorPresent());
-	}
-	
-	
-	@Test
-	public void test_special_chars() {
-		String titleText = StringUtils.getCaracteresEspeciales();
-		String descriptionText = StringUtils.getTextoLargo();
-		
-		login(driver);
-		
-		HomeContent home = PageFactory.initElements(driver, HomeContent.class);
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		NewContent newContent = home.selectNewContent();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newContent.createTitle(titleText);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newContent.createDescription(descriptionText);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newContent.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		assertEquals(titleText, home.getTitle());
+		assertEquals(driver.getCurrentUrl(), ConfigElements.getURL()+"/error404");
 	}
 	
 	
@@ -201,5 +206,5 @@ public class testNewContent extends TestBase{
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
 		logOut.open();
 	}
-	
+
 }
