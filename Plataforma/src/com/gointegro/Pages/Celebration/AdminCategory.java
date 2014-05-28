@@ -64,7 +64,7 @@ public class AdminCategory extends PageBase {
 	 * 
 	 * @param name
 	 */
-	private void completeCategoryName(String name) {
+	protected void completeCategoryName(String name) {
 		categoryname.clear();
 		categoryname.sendKeys(name);
 	}
