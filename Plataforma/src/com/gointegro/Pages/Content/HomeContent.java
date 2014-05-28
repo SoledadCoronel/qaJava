@@ -30,6 +30,15 @@ public class HomeContent extends PageBase{
 	@FindBy(className = "delete-article")
 	WebElement deleteContent;
 	
+	@FindBy(name = "btn-category-new")
+	WebElement categoryOptions;
+	
+	@FindBy(id = "category-new")
+	WebElement newCategory;
+	
+	@FindBy(xpath = "//header[@class='app-name']/div/ul[@class='dropdown-menu']/li[2]/a")
+	WebElement adminCategory;
+	
 	
 	/**
 	 * Constructor
@@ -115,6 +124,51 @@ public class HomeContent extends PageBase{
 		selectDeleteContent();
 		
 		return PageFactory.initElements(driver, NewContent.class);
+	}
+	
+	/**
+	 * Seleccionar category option
+	 */
+	public void selectCategoryOption() {
+		categoryOptions.click();
+	}
+	
+	/**
+	 * Seleccionar nueva categoria
+	 */
+	public void selectNewCategory() {
+		newCategory.click();
+	}
+	
+	/**
+	 * Seleccionar administrar categorias
+	 */
+	public void selectAdminCategory() {
+		adminCategory.click();
+	}
+	
+	/**
+	 * Seleccionar category option y nueva categoria
+	 * 
+	 * @return AdminCategoryContent
+	 */
+	public NewCategoryOvelayContent newCategory() {
+		selectCategoryOption();
+		selectNewCategory();
+		
+		return PageFactory.initElements(driver, NewCategoryOvelayContent.class);
+	}
+	
+	/**
+	 * Seleccionar category option y administrar categorias
+	 * 
+	 * @return AdminCategoryContent
+	 */
+	public AdminCategoryContent adminCategory() {
+		selectCategoryOption();
+		selectAdminCategory();
+		
+		return PageFactory.initElements(driver, AdminCategoryContent.class);
 	}
 
 }

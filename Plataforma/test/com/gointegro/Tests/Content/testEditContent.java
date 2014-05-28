@@ -404,8 +404,39 @@ public class testEditContent extends TestBase{
 		
 		home = newContent.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 5);
-		
+				
 		assertEquals(descriptionText2, home.getDescription());
+	}
+	
+	@Test
+	public void test_edit_check_data() {
+		String titleText = DataGenerator.nombreFile();
+		String descriptionText1 = StringUtils.getTextoLargo();
+		
+		login(driver);
+		
+		HomeContent home = PageFactory.initElements(driver, HomeContent.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		//Creo el contenido
+		NewContent newContent = home.selectNewContent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createTitle(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createDescription(descriptionText1);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home = newContent.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent = home.editContent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(titleText, newContent.getTitleText());
+		assertEquals(descriptionText1, newContent.getDescription());
 	}
 	
 		

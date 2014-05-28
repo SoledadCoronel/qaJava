@@ -27,13 +27,16 @@ public class NewCategoryOvelayContent extends PageBase{
 	@FindBy (className = "close")
 	private WebElement closebtn;
 	
-	@FindBy (xpath = "//div[@class='modal-body']/div/div/div/div")
-	private WebElement categorynameerror;
+	@FindBy (xpath = "//*[@id='modal-new-cat']/div[2]/div[1]")
+	private WebElement categoryNameExistsError;
 	
 	@FindBy (xpath = "//div[@id='category-modal']/div[2]/div")
 	private WebElement saveerror;
 	
+	@FindBy (xpath = ".//*[@id='name']/div/div")
+	WebElement categorynameerror;
 
+	
 	/**
 	 * Constructor
 	 * 
@@ -43,7 +46,6 @@ public class NewCategoryOvelayContent extends PageBase{
 		super(driver);
 		
 	}
-	
 	
 	/** 
 	 * Completa el nombre de la categoria
@@ -55,7 +57,6 @@ public class NewCategoryOvelayContent extends PageBase{
 		categoryname.sendKeys(name);
 	}
 	
-	
 	/** 
 	 * Crea la categoria.
 	 * 
@@ -64,6 +65,15 @@ public class NewCategoryOvelayContent extends PageBase{
 	public void createCategory(String name) {
 		completeCategoryName(name);
 		savebtn.click();
+	}
+	
+	/**
+	 * Obtiene los errores mostrados al crear una categoria
+	 * 
+	 * @return String
+	 */
+	public String getCategoryNameExistsError() {
+		return categoryNameExistsError.getText();
 	}
 	
 	/**
