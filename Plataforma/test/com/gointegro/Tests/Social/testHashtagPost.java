@@ -254,6 +254,7 @@ private WebDriver driver;
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		assertEquals(ConfigElements.getUrlTest(), feeds.getURLFeed());
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		TagFeed tagfeeds = feeds.selectHashtag("#hashtag2");
 		WaitTool.waitForJQueryProcessing(driver, 5);

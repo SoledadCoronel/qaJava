@@ -10,7 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
-	testPostSimple.class, testPostVinculo.class, testPostFileNoImagen.class, testPostFileImagen.class, testPostExtenso.class, 
+	testPostSimple.class, 
+	testPostVinculo.class, 
+	testPostFileNoImagen.class, testPostFileImagen.class, testPostExtenso.class, 
 	testPostPrivateWorkspace.class,
 	testPostEliminar.class,
 	testComment.class, testCommentEliminar.class, testCommentExtenso.class,

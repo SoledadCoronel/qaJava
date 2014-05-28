@@ -155,5 +155,38 @@ public class HomeCelebrations extends PageBase{
 		
 		return PageFactory.initElements(driver, AplicationEdit.class);
 	}
+	
+	/**
+	 * Seleccionar hoy
+	 */
+	public void selectToday() {
+		filtertoday.click();
+	}
+	
+	/**
+	 * Devuelve el estado del boton Hoy
+	 * 
+	 * @return boolean
+	 */
+	public boolean selectTodayDisplay() {
+		return filtertoday.isEnabled();
+	}
+	
+	/**
+	 * Retornar el index de un elemento en el listado de categorias
+	 * 
+	 * @param category
+	 * @return Int
+	 */
+	public int getElementIdInList(String category) {
+		int i = 0;
+		for (i=0; i < categorylist.size(); i++) {
+			WebElement e = categorylist.get(i);
+			if (e.getText().contains(category))
+				break;
+		}
+		
+		return i;
+	}
 
 }
