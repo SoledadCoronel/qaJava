@@ -11,8 +11,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Suite.class)
 @SuiteClasses({
 	testNewContent.class,
-	//testEditContent.class,
-	//testDeleteContent.class,
+	testEditContent.class,
+	testDeleteContent.class,
+	testNewCategory.class,
+	testEditCategory.class,
+	testDeleteCategory.class,
 })
 
 public class AllTestsContent {

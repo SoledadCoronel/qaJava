@@ -18,6 +18,12 @@ public class NewContent extends PageBase{
 	@FindBy(id = "content_ifr")
 	WebElement description;
 	
+	@FindBy(xpath = "//*[@class='mce-content-body ']/p")
+	WebElement descriptionText;
+	
+	@FindBy(xpath = "//*[@class='mce-content-body ']/p")
+	WebElement titleText;
+	
 	@FindBy(id = "accept")
 	WebElement savebtn;
 	
@@ -26,6 +32,9 @@ public class NewContent extends PageBase{
 	
 	@FindBy(id = "category-new")
 	WebElement newCategory;
+	
+	@FindBy (id = "category")
+	WebElement categories;
 	
 	@FindBy(id = "title-error")
 	WebElement titleError;
@@ -64,6 +73,19 @@ public class NewContent extends PageBase{
 		driver.switchTo().defaultContent();
 	}
 	
+	/**
+	 * Devuelve la descripción del titulo
+	 * 
+	 * @param String
+	 */
+	public String getTitleText() {
+		driver.switchTo().frame(title);
+		String text = titleText.getText();
+		
+		driver.switchTo().defaultContent();
+		return text;
+	}
+	
 	
 	/**
 	 * Crear descripción para el contenido
@@ -81,6 +103,20 @@ public class NewContent extends PageBase{
 	
 	
 	/**
+	 * Devuelve la descripción del contenido
+	 * 
+	 * @param String
+	 */
+	public String getDescription() {
+		driver.switchTo().frame(description);
+		String text = descriptionText.getText();
+		
+		driver.switchTo().defaultContent();
+		return text;
+	}
+	
+	
+	/**
 	 * Seleccionar nueva categoria
 	 * 
 	 * @return NewCategoryOverlay
@@ -88,6 +124,15 @@ public class NewContent extends PageBase{
 	public NewCategoryOvelayContent selectNewCategory() {
 		newCategory.click();
 		return PageFactory.initElements(driver, NewCategoryOvelayContent.class);
+	}
+	
+	/**
+	 * Buscar categoria presente
+	 * 
+	 * @return String
+	 */
+	public String getCategoryPresent() {
+		return categories.getText();
 	}
 	
 	/**
@@ -157,6 +202,18 @@ public class NewContent extends PageBase{
 	 */
 	public void setCategory(String categoryName) {
 		new Select(categorySelect).selectByVisibleText(categoryName);
+	}
+	
+	/**
+	 *  Devulve si la categoria esta en la lista
+	 *  
+	 * @param Boolean
+	 */
+	public Boolean isCategoryOnList(String categoryName) {
+		System.out.println("List: " + new Select(categorySelect).getOptions());
+		
+		Boolean isOnList = new Select(categorySelect).getOptions().contains(categoryName);
+		return isOnList;
 	}
 	
 	/**
