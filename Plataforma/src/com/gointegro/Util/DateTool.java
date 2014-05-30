@@ -201,5 +201,22 @@ public class DateTool {
 		else
 			return num;
 	}
+	
+	/**
+	 * Devuelve una fecha en el formato "22 de Octubre de 2015"
+	 * Toma como parametro una fecha en el formato dd/mm/yyyy
+	 * 
+	 * @param date
+	 * @return String
+	 */
+	public static String getDateAsText(String date) {
+		String day = date.split("/")[0];
+		String month = getMonthText(date);
+		String year = date.split("/")[2];
+		
+		String dateText = day + " de " + month + " de " + year;
+		
+		return dateText;
+	}
 
 }

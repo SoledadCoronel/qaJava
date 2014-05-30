@@ -37,4 +37,18 @@ public class DataGenerator {
 		hora = hourdateFormat.format(date);
 		return hora;
 	}
+	
+	/**
+	 * Devuelve la fecha actual en formato dd/MM/yyyy
+	 * 
+	 * @return
+	 */
+
+	public static String fechaactual() {
+		String fecha = null;
+		Date date = new Date();
+		SimpleDateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		fecha = hourdateFormat.format(date);
+		return fecha;
+	}
 }
