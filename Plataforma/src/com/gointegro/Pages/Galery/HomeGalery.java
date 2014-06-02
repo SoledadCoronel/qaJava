@@ -2,11 +2,14 @@ package com.gointegro.Pages.Galery;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsGalery;
@@ -64,6 +67,8 @@ public class HomeGalery extends PageBase{
 	 * @return {@link NewAlbumOverlay}
 	 */
 	public NewAlbumOverlay selectNewAlbum() {
+		WebDriverWait wait = new WebDriverWait(driver, 60); 
+		wait.until(ExpectedConditions.elementToBeClickable(albumdropdown));
 		selectAlbumDropdown();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		newalbum.click();
@@ -127,7 +132,7 @@ public class HomeGalery extends PageBase{
 	public AlbumDetail selectAlbumSideBar(String albumname) {
 		for (WebElement element : albumsidebarlist) {
 			if (element.getText().contains(albumname.substring(0, 15))) {
-				element.click();
+				element.findElement(By.xpath("//header/a")).click();
 				break;
 			}
 		}

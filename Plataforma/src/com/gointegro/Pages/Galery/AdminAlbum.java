@@ -82,6 +82,20 @@ public class AdminAlbum extends PageBase{
 	}
 	
 	/**
+	 * Seleccionar el boton editar
+	 * 
+	 * @param name
+	 */
+	private void selectAlbumEdit(String name) {
+		for (WebElement element : albumlist) {
+			if (element.findElement(By.className("span10")).getText().contains(name)) {
+				element.findElement(By.className("btn-edit")).click();
+				break;
+			}
+		}
+	}
+	
+	/**
 	 * Completar el new album, si savecancel == true guarda, sino cancel
 	 * 
 	 * @param albumname
@@ -132,6 +146,32 @@ public class AdminAlbum extends PageBase{
 			}
 		}
 		return status;
+	}
+	
+	/**
+	 * Completar editar album
+	 * 
+	 * @param albumname
+	 * @param savecancel
+	 * @param newalbumname
+	 */
+	public void editAlbum(String albumname, boolean savecancel, String newalbumname) {
+		selectAlbumEdit(albumname);
+		completeAlbumName(newalbumname);
+		if (savecancel)
+			selectSave();
+		else
+			selectCancel();
+	}
+	
+	/**
+	 * Obtener el nombre del album
+	 * 
+	 * @return String
+	 */
+	public String getAlbumName(String name) {
+		selectAlbumEdit(name);
+		return albumname.getText();
 	}
 
 }

@@ -29,10 +29,10 @@ public class UploadContent extends PageBase{
 	private WebElement title;
 	
 	@FindBy (id = "save-button")
-	private WebElement savebtn;
+	protected WebElement savebtn;
 	
 	@FindBy (id = "cancel-button")
-	private WebElement cancelbtn;
+	protected WebElement cancelbtn;
 	
 	@FindBy (id = "contents-upload-new")
 	private WebElement newcontentupload;
