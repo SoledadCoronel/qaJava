@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -27,7 +26,7 @@ public class testEditCategory extends TestBase{
 		driver = AllTestsContent.getDriver();
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_category() {
 		String categoryName1 = DataGenerator.nombreFile();
@@ -57,7 +56,7 @@ public class testEditCategory extends TestBase{
 		assertTrue(adminCategory.isCategoryInList(categoryName2));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_category_empty() {
 		String categoryName1 = DataGenerator.nombreFile();
@@ -87,7 +86,7 @@ public class testEditCategory extends TestBase{
 		assertEquals("El nombre de la categoría no puede ser vacío", adminCategory.getCategoryNameError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_category_max_chars() {
 		String categoryName1 = DataGenerator.nombreFile();
@@ -117,7 +116,7 @@ public class testEditCategory extends TestBase{
 		assertEquals("El nombre de la categoría debe contener como máximo 80 caracteres", adminCategory.getCategoryNameError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_existing_category() {
 		String categoryName1 = DataGenerator.nombreFile();

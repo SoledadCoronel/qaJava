@@ -1,6 +1,7 @@
 package com.gointegro.Util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -9,7 +10,7 @@ public class DataGenerator {
 	/**
 	 * Crea un string de caracteres aleatorios de 20 caracteres
 	 * 
-	 * @return
+	 * @return String
 	 */
 	
 	public static String nombreFile() {
@@ -27,7 +28,7 @@ public class DataGenerator {
 	/**
 	 * Devuelve la hora actual en formato HH:mm:ss dd/MM/yyyy
 	 * 
-	 * @return
+	 * @return String
 	 */
 
 	public static String horaactual() {
@@ -41,9 +42,8 @@ public class DataGenerator {
 	/**
 	 * Devuelve la fecha actual en formato dd/MM/yyyy
 	 * 
-	 * @return
+	 * @return String
 	 */
-
 	public static String fechaactual() {
 		String fecha = null;
 		Date date = new Date();
@@ -51,4 +51,21 @@ public class DataGenerator {
 		fecha = hourdateFormat.format(date);
 		return fecha;
 	}
+	
+	/**
+	 * Devuelve la fecha actual en formato dd/MM/yyyy
+	 * 
+	 * @return String
+	 */
+	public static String fechamanana() {
+		String fecha = null;
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_YEAR, 1);
+		SimpleDateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		fecha = hourdateFormat.format(cal.getTime());
+		return fecha;
+	}
+	
 }

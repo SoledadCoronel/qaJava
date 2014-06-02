@@ -210,8 +210,6 @@ public class NewContent extends PageBase{
 	 * @param Boolean
 	 */
 	public Boolean isCategoryOnList(String categoryName) {
-		System.out.println("List: " + new Select(categorySelect).getOptions());
-		
 		Boolean isOnList = new Select(categorySelect).getOptions().contains(categoryName);
 		return isOnList;
 	}

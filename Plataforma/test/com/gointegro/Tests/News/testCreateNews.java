@@ -84,7 +84,6 @@ public class testCreateNews extends TestBase {
 		String titleText = "";
 		String descriptionText = DataGenerator.nombreFile();
 		String date = DataGenerator.fechaactual();
-		System.out.println("fecha: " + date);
 		String hour = "19:00";
 		
 		login(driver);
@@ -407,6 +406,19 @@ public class testCreateNews extends TestBase {
 		assertEquals(DateTool.getDateAsText(date).toLowerCase(), home.getDate(newsElement));
 		assertTrue(home.isImagePresent(newsElement));
 		assertEquals(hour + " hs", home.getHour(newsElement));
+	}
+	
+	
+	@Test
+	public void test_create_news_basic_user() {
+		
+		loginBasicUser(driver);
+		
+		CreateNews createHome = PageFactory.initElements(driver, CreateNews.class);
+		createHome.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertNotEquals(driver.getCurrentUrl(), createHome.getURL());
 	}
 	
 	@After

@@ -22,6 +22,8 @@ public class Comment extends PageBase{
 	@FindBy (name = "comment-content")
 	private WebElement commentcontent;
 	
+	private String commentBox = "comment-content";
+	
 	@FindBy (css = "p.comment-content")
 	private WebElement commentcreated;
 	
@@ -69,6 +71,14 @@ public class Comment extends PageBase{
 	private void setComment(String comment) {
 		commentcontent.clear();
 		commentcontent.sendKeys(comment+"\n");
+	}
+	
+	/** 
+	 * Returns if comment box is present
+	 * 
+	 * */
+	public Boolean isCommentBoxPresent() {
+		return driver.findElements(By.name(commentBox)).size() > 0;
 	}
 	
 	/**

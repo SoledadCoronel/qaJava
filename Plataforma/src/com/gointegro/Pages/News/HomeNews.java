@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsNews;
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Pages.Celebration.DeleteOverlay;
 import com.gointegro.Util.StringUtils;
 
 public class HomeNews extends PageBase {
@@ -26,8 +27,13 @@ public class HomeNews extends PageBase {
 	
 	String dateNews = "news-date";
 	
-	@FindBy(className = "news-date")
-	WebElement date;
+	String newsOptionsBtn = "div/div/div[@class='btn-group']/a";
+	
+	String editNews = "edit-article";
+	
+	String deleteNews = "delete-article";
+	
+	String image = "div/div[2]/img";
 	
 	@FindBy(xpath = "//*[@id='articles-list']/article")
 	List<WebElement> newsList;
@@ -38,7 +44,7 @@ public class HomeNews extends PageBase {
 	/**
 	 * Constructor
 	 * 
-	 * @param driver
+	 * @param WebDriver
 	 */
 	public HomeNews(WebDriver driver) {
 		super(driver);
@@ -62,7 +68,7 @@ public class HomeNews extends PageBase {
 	 * @return String
 	 */
 	public String getTitleNews(WebElement element) {
-		return element.findElement(By.className("article-title")).getText();	 
+		return element.findElement(By.className(titleNews)).getText();	 
 	}
 	
 	
@@ -73,7 +79,7 @@ public class HomeNews extends PageBase {
 	 * @return String
 	 */
 	public String getDescription(WebElement element) {
-		return element.findElement(By.className("news-body")).getText();	 
+		return element.findElement(By.className(descriptionNews)).getText();	 
 	}
 	
 	/**
@@ -83,7 +89,56 @@ public class HomeNews extends PageBase {
 	 * @return String
 	 */
 	public String getShortDescription(WebElement element) {
-		return StringUtils.RecortarTextoVerMas(element.findElement(By.className("news-body")).getText());	 
+		return StringUtils.RecortarTextoVerMas(element.findElement(By.className(descriptionNews)).getText());	 
+	}
+	
+	/**
+	 * Seleccionar el botón opciones
+	 * 
+	 * @param WebElement
+	 */
+	private void selectNewsOptionsButton(WebElement element) {
+		element.findElement(By.xpath(newsOptionsBtn)).click();
+	}
+	
+	/**
+	 * Seleccionar el botón editar novedad
+	 * 
+	 * @param WebElement
+	 */
+	private void selectEditNews(WebElement element) {
+		element.findElement(By.className(editNews)).click();
+	}
+	
+	/**
+	 * Seleccionar el botón eliminar novedad
+	 * 
+	 * @param WebElement
+	 */
+	private void selectDeleteNews(WebElement element) {
+		element.findElement(By.className(deleteNews)).click();
+		element.findElement(By.className(deleteNews)).click();
+	}
+	
+	/**
+	 * Seleccionar el botón de opciones y editar novedad
+	 * 
+	 * @param WebElement
+	 */
+	public void editNews(WebElement element) {
+		selectNewsOptionsButton(element);
+		selectEditNews(element);
+	}
+	
+	/**
+	 * Seleccionar el botón de opciones y eliminar novedad
+	 * 
+	 * @param WebElement
+	 */
+	public DeleteOverlay deleteNews(WebElement element) {
+		selectNewsOptionsButton(element);
+		selectDeleteNews(element);
+		return PageFactory.initElements(driver, DeleteOverlay.class);
 	}
 	
 	/**
@@ -97,7 +152,7 @@ public class HomeNews extends PageBase {
 		String[] date;
 		
 		if(dateText.contains("|")) {
-			date = dateText.split("\\|");	
+			date = dateText.split("\\|");
 			dateText = date[0];
 			dateText = dateText.substring(0, dateText.length() -1);
 		}
@@ -129,8 +184,17 @@ public class HomeNews extends PageBase {
 	 * @return Boolean
 	 */
 	public Boolean isImagePresent(WebElement element) {
-		WebElement img = element.findElement(By.xpath("//img"));
-		return img.isDisplayed();
+		return element.findElements(By.xpath(image)).size() > 0;
+	}
+	
+	/**
+	 * Devuelve el src de la imagen
+	 * 
+	 * @param WebElement
+	 * @return String
+	 */
+	public String getImageSource(WebElement element) {
+		return element.findElement(By.xpath(image)).getAttribute("src");
 	}
 	
 	/**
@@ -183,7 +247,7 @@ public class HomeNews extends PageBase {
 	/**
 	 * Hacer un scroll al footer y otro al tope de la pagina 
 	 */
-	public void scrollUpAndDown() {
+	private void scrollUpAndDown() {
 		scrollToElement(footer);
 		scrollToElement(createNewsBtn);
 	}

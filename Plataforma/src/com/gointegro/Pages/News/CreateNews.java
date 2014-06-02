@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Helpers.ConfigElementsNews;
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Util.AttachmentUploads;
 
@@ -47,6 +49,10 @@ public class CreateNews extends PageBase {
 	@FindBy(xpath = "//header[@class='titleEditable']/div")
 	WebElement saveError;
 	
+	@FindBy(className = "deleteUploadedFile")
+	WebElement deleteFileBtn;
+	
+	private String CreateNewsURL = ConfigElements.getURL() + "/app/news/" + ConfigElementsNews.getIdAppNews() + "/create";
 	
 	/**
 	 * Constructor
@@ -55,6 +61,11 @@ public class CreateNews extends PageBase {
 	 */
 	public CreateNews(WebDriver driver) {
 		super(driver);
+		URL = CreateNewsURL; 
+	}
+	
+	public String getURL() {
+		return CreateNewsURL;
 	}
 	
 	/**
@@ -175,6 +186,15 @@ public class CreateNews extends PageBase {
 		AttachmentUploads.SocialWallAttachment(driver);
 		attachmentUpload.sendKeys(fileupload);
 		AttachmentUploads.waitBar(driver);
+	}
+	
+	/**
+	 * Selccionar el botón Eliminar
+	 * 
+	 * @param fileupload
+	 */
+	public void removeFile() {
+		deleteFileBtn.click();
 	}
 	
 	
