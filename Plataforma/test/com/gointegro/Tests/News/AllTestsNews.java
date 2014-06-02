@@ -11,6 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Suite.class)
 @SuiteClasses({
 	testCreateNews.class,
+	testEditNews.class,
+	testDeleteNews.class,
+	testFilterNews.class,
 })
 
 public class AllTestsNews {
