@@ -10,7 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testNewAlbum.class,
+	//testNewAlbum.class,
+	testEditAlbumName.class
 })
 public class AllTestsGalery {
 	

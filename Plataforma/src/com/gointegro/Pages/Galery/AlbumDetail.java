@@ -5,15 +5,17 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Util.WaitTool;
 
 public class AlbumDetail extends PageBase{
 
 	@FindBy (id = "album-actions")
 	private WebElement albumactions;
 	
-	@FindBy (xpath = "//ul[@class='dropdown-menu']/li/a")
+	@FindBy (linkText = "Editar")
 	private WebElement editalbum;
 	
 	@FindBy (className = "delete-album-header")
@@ -35,10 +37,39 @@ public class AlbumDetail extends PageBase{
 	}
 	
 	/**
+	 * Seleccionar Album Actions
+	 */
+	private void selectAlbumActions() {
+		albumactions.click();
+	}
+	
+	/**
 	 * Seleccionar la ultima foto de un album. Esta foto es la ultima subida
 	 */
 	public void selectLastPictureInAlbum() {
 		imagelist.get(imagelist.size()-1).click();
+	}
+	
+	/**
+	 * Seleccionar Editar Album
+	 * 
+	 * @return {@link EditAlbum}
+	 */
+	public EditAlbum selectEditAlbum() {
+		selectAlbumActions();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		editalbum.click();
+		
+		return PageFactory.initElements(driver, EditAlbum.class);
+	}
+	
+	/**
+	 * Obtener el titulo del album
+	 * 
+	 * @return String
+	 */
+	public String getAlbumTitle() {
+		return albumtitle.getText();
 	}
 
 }

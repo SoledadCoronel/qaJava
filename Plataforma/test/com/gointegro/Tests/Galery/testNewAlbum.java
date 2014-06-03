@@ -412,7 +412,7 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_new_album_file_upload_specia_char() {
+	public void test_new_album_file_upload_special_char() {
 		String albumname = StringUtils.getCaracteresEspeciales();
 		String testfile = ConfigElements.getFileImagen();
 		
@@ -435,7 +435,29 @@ private WebDriver driver;
 		assertTrue(home.getAlbumNameSideBar(albumname));
 	}
 	
+	@Test
+	public void test_new_album_admin_basic() {
+		loginBasicUser(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AdminAlbum admin = PageFactory.initElements(driver, AdminAlbum.class);
+		admin.open();
+		
+		assertEquals(ConfigElements.getURL(), driver.getCurrentUrl());
+	}
 	
+	@Test
+	public void test_new_album_file_upload_max_char() {
+		//Hay un bug
+	}
+	
+	@Test
+	public void test_new_album_file_empty() {
+		//Hay un bug
+	}
 	
 	@After
 	public void tearDown() {
