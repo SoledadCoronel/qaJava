@@ -1,9 +1,12 @@
 package com.gointegro.Pages.Galery;
 
+import java.util.List;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Util.WaitTool;
@@ -43,6 +46,12 @@ public class UploadContent extends PageBase{
 	@FindBy (xpath = "//div[@id='upload-errors']/div")
 	private WebElement uploaderror;
 	
+	@FindBy (xpath = "//*[@id=\"albumId\"]/div/ul/li/a")
+	private List<WebElement> dropdownmenu;
+	
+	@FindBy (xpath = "//div[@id='image-upload-container']/div[2]/div")
+	private WebElement uploadedcontents;
+	
 	/**
 	 * Constructor
 	 * 
@@ -72,6 +81,19 @@ public class UploadContent extends PageBase{
 	}
 	
 	/**
+	 * Seleccionar album en el dropdown
+	 * 
+	 * @param name
+	 */
+	private void selectAlbumDropdown(String name) {
+		for (WebElement element : dropdownmenu) {
+			if (element.getText().contains(name)) {
+				element.click();
+			}
+		}
+	}
+	
+	/**
 	 * Create album
 	 * 
 	 * @param name
@@ -79,6 +101,16 @@ public class UploadContent extends PageBase{
 	public void completeAlbum(String name) {
 		selectSeleccionarAlbum();
 		completeAlbumName(name);
+	}
+	
+	/**
+	 * Seleccionar un album
+	 * 
+	 * @param name
+	 */
+	public void selectAlbumInList(String name) {
+		selectSeleccionarAlbum();
+		selectAlbumDropdown(name);
 	}
 	
 	/**
@@ -113,6 +145,45 @@ public class UploadContent extends PageBase{
 	public void selectCancel() {
 		cancelbtn.click();
 		driver.switchTo().alert().accept();
+	}
+	
+	/**
+	 * Seleccionar eliminar una imagen. El olerlay es el mismo para eliminar una imagen.
+	 * 
+	 * @return {@link DeleteAlbumOverlay}
+	 */
+	public DeleteAlbumOverlay selectDeletePicture() {
+		selectdeletefile.click();
+		
+		return PageFactory.initElements(driver, DeleteAlbumOverlay.class);
+	}
+	
+	/**
+	 * Ver si la imagen esta presente. Para esto devuelvo todo el innerHTML, y me fijo si esta cierto tag. Se intento de maneras menos cabezas pero bue... ¬¬
+	 * 
+	 * @return String
+	 */
+	public boolean isUploadedContentPresent() {
+		return uploadedcontents.isDisplayed();
+	}
+	
+	/**
+	 * Completar el titulo de la imagen
+	 * 
+	 * @param filetitle
+	 */
+	public void setFileTitle(String filetitle) {
+		title.clear();
+		title.sendKeys(filetitle);
+	}
+	
+	/**
+	 * Agregar otra imagen
+	 * 
+	 * @param file
+	 */
+	public void setOtherFile(String file) {
+		newcontentupload.sendKeys(file);
 	}
 
 }

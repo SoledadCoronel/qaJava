@@ -27,6 +27,9 @@ public class AlbumDetail extends PageBase{
 	@FindBy (xpath = "//div[@class='main-container']/ul/li")
 	private List<WebElement> imagelist;
 	
+	@FindBy (xpath = "//li[contains(@id,'image-')]")
+	private WebElement imageid;
+	
 	/**
 	 * Constructor
 	 * 
@@ -44,10 +47,32 @@ public class AlbumDetail extends PageBase{
 	}
 	
 	/**
-	 * Seleccionar la ultima foto de un album. Esta foto es la ultima subida
+	 * Seleccionar la ultima imagen del album
+	 * 
+	 * @return {@link ImageDetail}
 	 */
-	public void selectLastPictureInAlbum() {
+	public ImageDetail selectLastPictureInAlbum() {
 		imagelist.get(imagelist.size()-1).click();
+		
+		return PageFactory.initElements(driver, ImageDetail.class);
+	}
+	
+	/**
+	 * Devuelve el size del album
+	 * 
+	 * @return int
+	 */
+	public int albumsize() {
+		return imagelist.size();
+	}
+	
+	/**
+	 * Verificar que la imagen se muestre, solo funciona para albums con una sola imagen.
+	 * 
+	 * @return boolean
+	 */
+	public boolean isPictureInAlbum() {
+		return imageid.isDisplayed();
 	}
 	
 	/**
@@ -70,6 +95,19 @@ public class AlbumDetail extends PageBase{
 	 */
 	public String getAlbumTitle() {
 		return albumtitle.getText();
+	}
+	
+	/**
+	 * Seleccionar Eliminar Album
+	 * 
+	 * @return {@link DeleteAlbumOverlay}
+	 */
+	public DeleteAlbumOverlay selectDeleteAlbum() {
+		selectAlbumActions();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		deletealbum.click();
+		
+		return PageFactory.initElements(driver, DeleteAlbumOverlay.class);
 	}
 
 }

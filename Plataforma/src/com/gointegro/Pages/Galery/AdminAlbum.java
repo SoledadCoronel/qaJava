@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsGalery;
@@ -96,6 +97,20 @@ public class AdminAlbum extends PageBase{
 	}
 	
 	/**
+	 * Seleccionar el boton eliminar
+	 * 
+	 * @param name
+	 */
+	private void selectAlbumDelete(String name) {
+		for (WebElement element : albumlist) {
+			if (element.findElement(By.className("span10")).getText().contains(name)) {
+				element.findElement(By.className("btn-delete")).click();
+				break;
+			}
+		}
+	}
+	
+	/**
 	 * Completar el new album, si savecancel == true guarda, sino cancel
 	 * 
 	 * @param albumname
@@ -162,6 +177,18 @@ public class AdminAlbum extends PageBase{
 			selectSave();
 		else
 			selectCancel();
+	}
+	
+	/**
+	 * Seleccionar eliminar album
+	 * 
+	 * @param name
+	 * @return {@link DeleteAlbumOverlay}
+	 */
+	public DeleteAlbumOverlay deleteAlbum(String name) {
+		selectAlbumDelete(name);
+		
+		return PageFactory.initElements(driver, DeleteAlbumOverlay.class);
 	}
 	
 	/**

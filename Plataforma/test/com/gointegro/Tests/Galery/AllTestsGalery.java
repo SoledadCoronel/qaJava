@@ -11,7 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Suite.class)
 @SuiteClasses({
 	//testNewAlbum.class,
-	testEditAlbumName.class
+	//testEditAlbumName.class,
+	//testDeleteAlbum.class,
+	testUploadFile.class
 })
 public class AllTestsGalery {
 	
