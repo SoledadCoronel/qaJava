@@ -23,6 +23,9 @@ public class ImageDetail extends PageBase{
 	
 	@FindBy (className = "modal-delete-button")
 	private WebElement deletebtn;
+	
+	@FindBy (id = "album-image-title")
+	private WebElement imagetitle;
 
 	/**
 	 * Constructor
@@ -41,9 +44,21 @@ public class ImageDetail extends PageBase{
 		js.executeScript("arguments[0].setAttribute('style','display:block;')", picactions);
 	}
 	
+	/**
+	 * Seleccionar eliminar
+	 */
 	public void selectDelete() {
 		makeVisiblePicActions();
 		deletebtn.click();
+	}
+	
+	/**
+	 * Obtener el titulo de la imagen
+	 * 
+	 * @return String
+	 */
+	public String getImageTitle() {
+		return imagetitle.getText();
 	}
 
 }
