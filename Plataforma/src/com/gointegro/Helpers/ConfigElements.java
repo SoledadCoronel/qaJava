@@ -50,6 +50,8 @@ public class ConfigElements {
 	private static String idAppEspacioPrivado = "1958";
 	
 	private static String slugMiPerfil = "gustavo-moreira";
+	
+	private static String fileDownloadLocation = "/home/gustavomoreira/Desktop/";
 
 	
 	/** Get */
@@ -127,6 +129,10 @@ public class ConfigElements {
 	
 	public static String getWorkspaceId() {
 		return workspace_id;
+	}
+
+	public static String getFileDownloadLocation() {
+		return fileDownloadLocation;
 	}
 	
 

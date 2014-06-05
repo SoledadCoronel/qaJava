@@ -26,6 +26,9 @@ public class ImageDetail extends PageBase{
 	
 	@FindBy (id = "album-image-title")
 	private WebElement imagetitle;
+	
+	@FindBy (className = "download-link")
+	private WebElement downloadlink;
 
 	/**
 	 * Constructor
@@ -52,6 +55,12 @@ public class ImageDetail extends PageBase{
 		deletebtn.click();
 	}
 	
+	public WebElement downloadLink() {
+		makeVisiblePicActions();
+		WebElement _downloadLink = downloadlink;
+		return _downloadLink;
+	}
+	
 	/**
 	 * Obtener el titulo de la imagen
 	 * 
@@ -59,6 +68,38 @@ public class ImageDetail extends PageBase{
 	 */
 	public String getImageTitle() {
 		return imagetitle.getText();
+	}
+	
+	/**
+	 * Obtener el src de la imagen 
+	 * 
+	 * @return String
+	 */
+	public String getSrcImg() {
+		return currentphoto.getAttribute("src");
+	}
+	
+	/**
+	 * Seleccionar siguiente imagen
+	 */
+	public void selectNextPicture() {
+		nextphoto.click();
+	}
+	
+	/**
+	 * Seleccionar la imagen previa
+	 */
+	public void selectPreviousPicture() {
+		previousphoto.click();
+	}
+	
+	/**
+	 * Obtener el source de las Actions para ver si un link esta presente o no.
+	 * 
+	 * @return String
+	 */
+	public String getActionsSource() {
+		return picactions.getAttribute("outerHTML");
 	}
 
 }

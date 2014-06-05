@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -29,7 +28,7 @@ private WebDriver driver;
 	public void setUp() {
 		driver = AllTestsGalery.getDriver();
 	}
-	@Ignore
+	
 	@Test
 	public void test_upload_file_select_album() {
 		String albumname = DataGenerator.nombreFile();
@@ -59,7 +58,7 @@ private WebDriver driver;
 		
 		assertTrue(detail.isPictureInAlbum());
 	}
-	@Ignore
+	
 	@Test
 	public void test_upload_file_no_select_album() {
 		String testfile = ConfigElements.getFileImagen();
@@ -78,7 +77,7 @@ private WebDriver driver;
 		
 		assertEquals("Debe seleccionar un álbum", upload.getErrorMsjAlbum());
 	}
-	@Ignore
+	
 	@Test
 	public void test_upload_file_invalid() {
 		String testfile = ConfigElements.getFileNoImage();
@@ -95,7 +94,7 @@ private WebDriver driver;
 		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
 		assertTrue(upload.getUploadErrorMsj().contains("Este archivo no es de un tipo válido de imagen"));
 	}
-	@Ignore
+	
 	@Test
 	public void test_upload_file_delete() {
 		String testfile = ConfigElements.getFileImagen();
@@ -119,7 +118,7 @@ private WebDriver driver;
 		//No le encuentro la vuelta falla siempre, me quemo la cabeza
 		assertFalse(upload.isUploadedContentPresent());
 	}
-	@Ignore
+	
 	@Test
 	public void test_upload_file_title() {
 		String albumname = DataGenerator.nombreFile();
@@ -154,7 +153,7 @@ private WebDriver driver;
 		
 		assertEquals(filetitle, img.getImageTitle());
 	}
-	@Ignore
+	
 	@Test
 	public void test_upload_file_cancel() {
 		String albumname = DataGenerator.nombreFile();
@@ -184,7 +183,7 @@ private WebDriver driver;
 		
 		assertEquals(0, detail.albumsize());
 	}
-	@Ignore
+	
 	@Test
 	public void test_upload_file_2_pictures() {
 		String albumname = DataGenerator.nombreFile();
@@ -216,7 +215,7 @@ private WebDriver driver;
 		
 		assertEquals(2, detail.albumsize());
 	}
-	@Ignore
+	
 	@Test
 	public void test_upload_file_second_picture_invalid() {
 		String albumname = DataGenerator.nombreFile();
