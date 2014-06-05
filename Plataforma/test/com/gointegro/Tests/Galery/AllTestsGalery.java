@@ -13,7 +13,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	//testNewAlbum.class,
 	//testEditAlbumName.class,
 	//testDeleteAlbum.class,
-	testUploadFile.class
+	//testUploadFile.class,
+	testImageDetail.class
 })
 public class AllTestsGalery {
 	
