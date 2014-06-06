@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -156,7 +157,7 @@ public class testCreateNews extends TestBase {
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_without_date() {
 		String titleText = DataGenerator.nombreFile();
@@ -237,6 +238,8 @@ public class testCreateNews extends TestBase {
 		assertEquals(titleText, home.getTitleNews(newsElement));
 		assertEquals(descriptionText, home.getDescription(newsElement));
 		assertEquals(DateTool.getDateAsText(date).toLowerCase(), home.getDate(newsElement));
+		
+		driver.get(ConfigElements.getURL());
 	}
 	
 	
@@ -357,7 +360,7 @@ public class testCreateNews extends TestBase {
 		assertTrue(newsElement == null);
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_upload_file() {
 		String titleText = DataGenerator.nombreFile();

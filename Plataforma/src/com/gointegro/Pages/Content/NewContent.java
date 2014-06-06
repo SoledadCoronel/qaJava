@@ -8,9 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Helpers.ConfigElementsContent;
 import com.gointegro.Pages.Base.PageBase;
 
-public class NewContent extends PageBase{
+public class NewContent extends PageBase {
 
 	@FindBy(id = "title_ifr")
 	WebElement title;
@@ -48,6 +49,8 @@ public class NewContent extends PageBase{
 	@FindBy(id = "bellowArticle")
 	WebElement bellowArticle;
 	
+	private String NewContentURL = ConfigElements.getURL()+"/app/articles/" + ConfigElementsContent.getIdAppContent() + "/create";
+	
 	/**
 	 * Constructor
 	 * 
@@ -55,10 +58,12 @@ public class NewContent extends PageBase{
 	 */
 	public NewContent(WebDriver driver) {
 		super(driver);
-		URL = ConfigElements.getURL()+"/app/articles/1957/create";
+		URL = NewContentURL;
 	}
 	
-	
+	public String getURL() {
+		return NewContentURL;
+	}
 	/**
 	 * Crear titulo para el contenido
 	 * 
