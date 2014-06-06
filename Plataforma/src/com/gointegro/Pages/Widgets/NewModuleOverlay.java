@@ -3,10 +3,14 @@ package com.gointegro.Pages.Widgets;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.gointegro.Helpers.ConfigElementsWidgets;
 import com.gointegro.Pages.Base.PageBase;
@@ -42,7 +46,7 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(className = "showBorder")
 	WebElement borderCheckBox;
 	
-	@FindBy(name = "name")
+	@FindBy(xpath = "//form[@class='widget-form']/article/div/div/span/input")
 	WebElement title;
 	
 	@FindBy(xpath = "//div/div/iframe")
@@ -204,8 +208,38 @@ public class NewModuleOverlay extends PageBase {
 	 * @param String
 	 */
 	public void createTitle(String name) {
+		//new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.name("name")));
+		
+		System.out.println("deb: " + driver.findElement(By.xpath("//div[4]")).getAttribute("style"));
+		System.out.println("disp0: " + driver.findElement(By.xpath("//div[4]")).isDisplayed());
+		System.out.println("disp: " + driver.findElement(By.xpath("//div/div[2]/form[@class='widget-form']")).isDisplayed());
+		System.out.println("disp2: " + driver.findElement(By.xpath("//div/div[2]/form[@class='widget-form']/article")).isDisplayed());
+		System.out.println("disp3: " + driver.findElement(By.xpath("//div/div[2]/form[@class='widget-form']/article/div/div")).isDisplayed());
+		System.out.println("enab: " + driver.findElement(By.xpath("//div/div[2]/form[@class='widget-form']/article/div/div/span/input")).isEnabled());
 		title.clear();
 		title.sendKeys(name);
+	}
+	
+	
+	public void makeTitleVisible() {
+		WebElement elem = driver.findElement(By.xpath("//div[4]"));
+		String js = "arguments[0].style.height='auto'; arguments[0].style.display='block'; arguments[0].style.visibility='visible';";
+
+		((JavascriptExecutor) driver).executeScript(js, elem);
+	}
+	
+	public void makeTitleVisible2() {
+		WebElement elem = driver.findElement(By.xpath("//div/div[2]/form[@class='widget-form']"));
+		String js = "arguments[0].style.height='auto'; arguments[0].style.display='block'; arguments[0].style.visibility='visible';";
+
+		((JavascriptExecutor) driver).executeScript(js, elem);
+	}
+	
+	public void makeTitleVisible3() {
+		WebElement elem = driver.findElement(By.xpath("//div[@id='new-module-standard-img']/div[3]/button[4]"));
+		String js = "arguments[0].style.height='auto'; arguments[0].style.display='block'; arguments[0].style.visibility='visible';";
+
+		((JavascriptExecutor) driver).executeScript(js, elem);
 	}
 	
 	/**

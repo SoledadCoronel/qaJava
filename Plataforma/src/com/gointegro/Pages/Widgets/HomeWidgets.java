@@ -118,9 +118,11 @@ public class HomeWidgets extends PageBase {
 		
 		for(WebElement element : widgetsList) {
 			if(element.getAttribute("class").contains("html-text")) {
-				if(element.findElement(By.xpath(textHTMLTitle)).getText().contains(name)) {
-					widget = element;
-					break;
+				if(element.findElements(By.xpath(textHTMLTitle)).size() > 0) {
+					if(element.findElement(By.xpath(textHTMLTitle)).getText().contains(name)) {
+						widget = element;
+						break;
+					}
 				}
 			}
 		}

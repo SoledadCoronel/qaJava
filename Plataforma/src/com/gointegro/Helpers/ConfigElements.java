@@ -17,7 +17,7 @@ public class ConfigElements {
 	
 	private static String platformname = "Go&Connection";
 	
-	private static String username = "gustavo.moreira@gointegro.com";
+	private static String username = "diogo.darosa@gointegro.com";
 	
 	private static String password = "integro00";
 	

@@ -8,6 +8,8 @@ public class ConfigElementsWidgets {
 	
 	private static String nombreEspacio = "Automation Apps";
 	
+	private static String nameEnviroment = "ideas";
+	
 	public static String getIdAppWidgetsCelebration() {
 		return idAppWidgetsCelebration;
 	}
@@ -18,5 +20,9 @@ public class ConfigElementsWidgets {
 	
 	public static String getNombreEspacio () {
 		return nombreEspacio;
+	}
+	
+	public static String getNameEnviroment() {
+		return nameEnviroment;
 	}
 }

@@ -12,7 +12,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @SuiteClasses({
 	//testNewTextWidget.class,
 	//testNewImageWidget.class,
-	testNewInstalledAppWidget.class,
+	//testNewInstalledAppWidget.class,
+	testEditTextWidget.class,
 })
 
 public class AllTestsWidgets {
