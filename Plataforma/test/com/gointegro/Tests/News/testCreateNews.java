@@ -237,6 +237,8 @@ public class testCreateNews extends TestBase {
 		assertEquals(titleText, home.getTitleNews(newsElement));
 		assertEquals(descriptionText, home.getDescription(newsElement));
 		assertEquals(DateTool.getDateAsText(date).toLowerCase(), home.getDate(newsElement));
+		
+		driver.get(ConfigElements.getURL());
 	}
 	
 	

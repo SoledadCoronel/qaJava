@@ -128,11 +128,10 @@ public class testNewContent extends TestBase{
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertTrue(driver.getTitle().contains("Forbidden"));
+		assertNotEquals(driver.getCurrentUrl(), home.getURL());
 	}
 	
 	
-	 
 	@Test
 	public void test_empty_title_and_description() {
 		String titleText = "";

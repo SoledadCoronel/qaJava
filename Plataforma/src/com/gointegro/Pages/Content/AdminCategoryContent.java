@@ -31,7 +31,7 @@ public class AdminCategoryContent extends AdminCategory {
 	@FindBy (xpath = "//div[@id='flash-messages']/div")
 	private WebElement saveerror;
 	
-	@FindBy (xpath = "//*[@id='admin-categories']/ul/div/div/div/div/div")   
+	@FindBy (xpath = "//*[@id='admin-categories']/div[3]/div/div/div/div")   
 	private WebElement categorynameerror;
 	
 	@FindBy (xpath = "//*[@id='admin-categories']/div[3]/div/div/div/div")   
