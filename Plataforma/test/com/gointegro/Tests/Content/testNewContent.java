@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -28,7 +27,7 @@ public class testNewContent extends TestBase{
 		driver = AllTestsContent.getDriver();
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_content_without_category(){
 		String titleText = DataGenerator.nombreFile();
@@ -59,7 +58,7 @@ public class testNewContent extends TestBase{
 		assertEquals(titleText, contentList.getTitle());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_content_with_category(){
 		String titleText = DataGenerator.nombreFile();
@@ -93,7 +92,7 @@ public class testNewContent extends TestBase{
 		assertEquals(titleText, contentList.getTitle());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_title_max_characters() {
 		String titleText = StringUtils.getTextoLargo();
@@ -132,7 +131,7 @@ public class testNewContent extends TestBase{
 		assertNotEquals(driver.getCurrentUrl(), home.getURL());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_empty_title_and_description() {
 		String titleText = "";
@@ -160,7 +159,7 @@ public class testNewContent extends TestBase{
 		assertTrue(newContent.isDescriptionErrorPresent());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_special_chars() {
 		String titleText = StringUtils.getCaracteresEspeciales();
