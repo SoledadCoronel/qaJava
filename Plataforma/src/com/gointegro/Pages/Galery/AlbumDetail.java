@@ -100,14 +100,14 @@ public class AlbumDetail extends PageBase{
 	/**
 	 * Seleccionar Eliminar Album
 	 * 
-	 * @return {@link DeleteAlbumOverlay}
+	 * @return {@link DeleteOverlay}
 	 */
-	public DeleteAlbumOverlay selectDeleteAlbum() {
+	public DeleteOverlay selectDeleteAlbum() {
 		selectAlbumActions();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		deletealbum.click();
 		
-		return PageFactory.initElements(driver, DeleteAlbumOverlay.class);
+		return PageFactory.initElements(driver, DeleteOverlay.class);
 	}
 
 }

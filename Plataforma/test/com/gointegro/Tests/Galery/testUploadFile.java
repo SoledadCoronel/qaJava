@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Galery.AlbumDetail;
-import com.gointegro.Pages.Galery.DeleteAlbumOverlay;
+import com.gointegro.Pages.Galery.DeleteOverlay;
 import com.gointegro.Pages.Galery.HomeGalery;
 import com.gointegro.Pages.Galery.ImageDetail;
 import com.gointegro.Pages.Galery.NewAlbumOverlay;
@@ -109,7 +109,7 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
-		DeleteAlbumOverlay delete = upload.selectDeletePicture();
+		DeleteOverlay delete = upload.selectDeletePicture();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		delete.confirmDelete();
