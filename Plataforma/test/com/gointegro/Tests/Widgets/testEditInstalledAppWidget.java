@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -89,7 +88,7 @@ public class testEditInstalledAppWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 30);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_app_celebration_title_empty() {
 		String title = DataGenerator.nombreFile();
@@ -154,7 +153,7 @@ public class testEditInstalledAppWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_app_gallery_title_empty() {
 		String title = DataGenerator.nombreFile();
@@ -224,7 +223,7 @@ public class testEditInstalledAppWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_app_gallery_remove_images() {
 		String title = DataGenerator.nombreFile();
@@ -292,7 +291,7 @@ public class testEditInstalledAppWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 60);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_app_gallery_add_images() {
 		String title = DataGenerator.nombreFile();
