@@ -210,13 +210,29 @@ public class DateTool {
 	 * @return String
 	 */
 	public static String getDateAsText(String date) {
-		String day = date.split("/")[0];
+		String day = removeZeroInt(date.split("/")[0]);
 		String month = getMonthText(date);
 		String year = date.split("/")[2];
 		
 		String dateText = day + " de " + month + " de " + year;
 		
 		return dateText;
+	}
+	
+	/**
+	 * Remueve el zero a la izquierda de numeros menor a 10
+	 * 
+	 * @param String
+	 * @return String
+	 */
+	public static String removeZeroInt(String number) {
+		int num = Integer.parseInt(number);
+		
+		if(num < 10) {
+			return String.format("%-1d" , num);
+		} else {
+			return number;
+		}
 	}
 
 }

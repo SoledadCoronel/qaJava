@@ -1,4 +1,4 @@
-package com.goIntegro.Tests.Widgets;
+package com.gointegro.Tests.Widgets;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -55,7 +55,7 @@ public class testNewInstalledAppWidget extends TestBase {
 		newModule.selectVisibleTitle();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.createTitle(title);
+		newModule.createCelebrationTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newModule.selectFinishBtn();
@@ -64,7 +64,7 @@ public class testNewInstalledAppWidget extends TestBase {
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 30);
 		
-		assertTrue(home.isInstalledCellebrationAppWidgetOnList(title));
+		assertTrue(home.isInstalledCellebrationAppWidgetinList(title));
 	}
 	
 	
@@ -178,7 +178,7 @@ public class testNewInstalledAppWidget extends TestBase {
 		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.selectPicturesInGallery();
+		newModule.selectPicturesInGallery(10);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newModule.selectFinishBtn();
@@ -191,7 +191,7 @@ public class testNewInstalledAppWidget extends TestBase {
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 30);
 		
-		assertTrue(home.isInstalledGalleryAppWidgetOnList(galleryId));
+		assertTrue(home.isInstalledGalleryAppWidgetInList(galleryId));
 	}
 	
 	
@@ -226,7 +226,7 @@ public class testNewInstalledAppWidget extends TestBase {
 		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.selectPicturesInGallery();
+		newModule.selectPicturesInGallery(10);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newModule.selectFinishBtn();

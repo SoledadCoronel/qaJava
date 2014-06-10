@@ -1,4 +1,4 @@
-package com.goIntegro.Tests.Widgets;
+package com.gointegro.Tests.Widgets;
 
 import static org.junit.Assert.*;
 

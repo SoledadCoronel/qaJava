@@ -152,7 +152,7 @@ public class testNewCategory extends TestBase{
 		assertTrue(newContent.isCategoryOnList(categoryname));
 	}
 	
-
+	
 	@Test
 	public void test_new_existing_category_dropdown() {
 		String categoryname = DataGenerator.nombreFile();
