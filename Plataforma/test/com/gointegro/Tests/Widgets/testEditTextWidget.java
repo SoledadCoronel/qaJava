@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,7 +27,7 @@ public class testEditTextWidget extends TestBase {
 		driver = AllTestsWidgets.getDriver();
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_text_edit_title_with_text() {
 		String title = DataGenerator.nombreFile();
@@ -98,7 +97,7 @@ public class testEditTextWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 60);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_text_edit_title_empty() {
 		String title = DataGenerator.nombreFile();
@@ -234,7 +233,7 @@ public class testEditTextWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 60);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_text_edit_description_with_text() {
 		String title = DataGenerator.nombreFile();
@@ -304,7 +303,7 @@ public class testEditTextWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 60);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_text_edit_description_empty() {
 		String title = DataGenerator.nombreFile();
