@@ -10,13 +10,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	//testNewTextWidget.class,
-	//testNewImageWidget.class,
-	//testNewInstalledAppWidget.class,
-	//testEditTextWidget.class,
-	//testEditImageWidget.class,
-	//testOrderSizeWidgets.class,
+	testNewTextWidget.class,
+	testNewImageWidget.class,
+	testNewInstalledAppWidget.class,
+	testEditTextWidget.class,
+	testEditImageWidget.class,
+	testOrderSizeWidgets.class,
 	testEditInstalledAppWidget.class,
+	testDeleteTextWidget.class,
+	testDeleteImageWidget.class,
+	testDeleteInstalledAppWidget.class,
 })
 
 public class AllTestsWidgets {
