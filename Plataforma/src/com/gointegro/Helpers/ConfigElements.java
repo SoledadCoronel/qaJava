@@ -17,7 +17,7 @@ public class ConfigElements {
 	
 	private static String platformname = "Go&Connection";
 	
-	private static String username = "diogo.darosa@gointegro.com";
+	private static String username = "gustavo.moreira@gointegro.com";
 	
 	private static String password = "integro00";
 	
@@ -27,9 +27,9 @@ public class ConfigElements {
 	
 	private static String workspace_id = "696";
 	
-	private static String FileImagen = "/home/diogodarosa/Pictures/car.jpg";
+	private static String FileImagen = "/home/gustavomoreira/Pictures/Otro/Explosions-In-The-Sky.jpg";
 	
-	private static String FileImagenChange = "/home/diogodarosa/Pictures/watch.jpeg";
+	private static String FileImagenChange = "/home/gustavomoreira/Pictures/Otro/business-cat.jpg";
 	
 	private static String nameOtherUser = "Juan Jose Toledo";
 	
