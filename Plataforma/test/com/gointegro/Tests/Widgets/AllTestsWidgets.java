@@ -1,4 +1,4 @@
-package com.goIntegro.Tests.Widgets;
+package com.gointegro.Tests.Widgets;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,14 +10,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	//testNewTextWidget.class,
-	//testNewImageWidget.class,
+	testNewTextWidget.class,
+	testNewImageWidget.class,
 	testNewInstalledAppWidget.class,
+	testEditTextWidget.class,
+	testEditImageWidget.class,
+	testOrderSizeWidgets.class,
+	testEditInstalledAppWidget.class,
 })
 
 public class AllTestsWidgets {
 
-private static WebDriver driver;
+	private static WebDriver driver;
 	
 	@BeforeClass
 	public static void setUp() {

@@ -7,10 +7,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.gointegro.Helpers.ConfigElementsWidgets;
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Util.AttachmentUploads;
+import com.gointegro.Util.WaitTool;
 
 public class NewModuleOverlay extends PageBase {
 	
@@ -42,8 +46,11 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(className = "showBorder")
 	WebElement borderCheckBox;
 	
-	@FindBy(name = "name")
+	@FindBy(xpath = "//form[@class='widget-form']/article/div/div/span/input")
 	WebElement title;
+	
+	@FindBy(xpath = "//div[@id='new-module-standard-img']/div[2]/form/article/div/div/span/input")
+	WebElement celebrationTitle;
 	
 	@FindBy(xpath = "//div/div/iframe")
 	WebElement description;
@@ -78,6 +85,11 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(xpath = "//div[@id='carousel-images-selector']/ul/li")
 	List<WebElement> imagesSelector;
 	
+	String imageSelector = "//div[@id='carousel-images-selector']/ul/li";
+	
+	@FindBy(id = "album-selector")
+	WebElement albumSelector;
+	
 	@FindBy(className = "all-categories")
 	WebElement allCategoriesCheckBox;
 	
@@ -85,8 +97,10 @@ public class NewModuleOverlay extends PageBase {
 	WebElement categoryErrorMsg;
 	
 	@FindBy(xpath = "div[@class='widget-type-form']/div[5]")
-	WebElement noImageErrorMsg;
+	WebElement galleryNoImageErrorMsg;
 	
+	@FindBy(xpath = "//div[@class='widget-type-form']/div[4]/div/span[2]")
+	WebElement bannerNoImageErrorMsg;
 	
 	/**
 	 * Constructor
@@ -135,6 +149,21 @@ public class NewModuleOverlay extends PageBase {
 	public void selectFinishBtn() {
 		finishBtn.click();
 	}
+	
+	/**
+	 * Seleccionar el botón Cancelar
+	 */
+	public void selectCancelBtn() {
+		cancelBtn.click();
+	}
+	
+	/**
+	 * Seleccionar el botón Finalizar
+	 */
+	public void selectFinishBtnWithElement(WebElement element) {
+		element.findElement(By.xpath("./div[3]/button[4]")).click();
+	}
+	
 	
 	/**
 	 *  MÓDULO DE TEXTO
@@ -209,6 +238,16 @@ public class NewModuleOverlay extends PageBase {
 	}
 	
 	/**
+	 * Crear titulo para el widget
+	 * 
+	 * @param String
+	 */
+	public void createCelebrationTitle(String name) {
+		celebrationTitle.clear();
+		celebrationTitle.sendKeys(name);
+	}
+	
+	/**
 	 * Crear descripcion para el widget
 	 * 
 	 * @param String
@@ -222,6 +261,34 @@ public class NewModuleOverlay extends PageBase {
 		driver.switchTo().defaultContent();
 	}
 	
+	/**
+	 * Crea un widget Text/HTML con titulo y descripcion
+	 * 
+	 * @param String
+	 * @param String
+	 */
+	public void createTextWidget(String title, String description) {
+		selectStandard();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		selectTextRadioBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		selectVisibleTitle();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		selectBorder();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		selectFinishBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+	}
 	
 	/**
 	 *  MÓDULO DE IMAGEN
@@ -243,7 +310,7 @@ public class NewModuleOverlay extends PageBase {
 	 * 
 	 * @param fileupload
 	 */
-	public void removeFile() {
+	public void selectRemoveFile() {
 		deleteFileBtn.click();
 	}
 	
@@ -274,6 +341,14 @@ public class NewModuleOverlay extends PageBase {
 		return linkErrorMsg.getText();
 	}
 	
+	/**
+	 * Devuelve el mensaje de error del link
+	 * 
+	 * @return String
+	 */
+	public String getImageWidgetNoImageErrorMsg() {
+		return bannerNoImageErrorMsg.getText();
+	}
 	
 	/**
 	 *  MÓDULO DE APLICACIONES
@@ -283,14 +358,14 @@ public class NewModuleOverlay extends PageBase {
 	 * Seleccionar la aplicación Celebraciones
 	 */
 	public void selectApplicationCelebration() {
-		selectApplication(ConfigElementsWidgets.getIdAppWidgetsCelebration());
+		selectApplication(ConfigElementsWidgets.getWidgetsCelebrationAppId());
 	}
 	
 	/**
 	 * Seleccionar la aplicación Galeria
 	 */
 	public void selectApplicationGallery() {
-		selectApplication(ConfigElementsWidgets.getIdAppWidgetsGallery());
+		selectApplication(ConfigElementsWidgets.getWidgetsGalleryAppId());
 	}
 	
 	/**
@@ -315,12 +390,33 @@ public class NewModuleOverlay extends PageBase {
 	}
 	
 	/**
-	 * Seleccionar todas las imagenes en una galeria
+	 * Seleccionar mitad de las imagenes en una galeria
 	 */
-	public void selectPicturesInGallery() {
-		for(WebElement element : imagesSelector) {
-				element.findElement(By.xpath("./img")).click();
+	public void selectPicturesInGallery(int num) {
+		int total = imagesSelector.size();
+		int count = 1;
+		if(num > total) { 
+			num = total; 
 		}
+		
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		List <WebElement> imagesSelector = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(imageSelector)));
+		
+		for(WebElement element : imagesSelector) {
+			if(count <= num) {
+				element.findElement(By.xpath("./img")).click();
+				count += 1;
+			} else {
+				break;
+			}
+		}
+	}
+	
+	/**
+	 * Seleccionar un album
+	 */
+	public void selectAlbumByName(String name) {
+		new Select(albumSelector).selectByVisibleText(name);
 	}
 	
 	/**
@@ -345,7 +441,7 @@ public class NewModuleOverlay extends PageBase {
 	 * @return String
 	 */
 	public String getNoImageErrorMsg() {
-		return noImageErrorMsg.getText();
+		return galleryNoImageErrorMsg.getText();
 	}
 	
 }
