@@ -597,7 +597,7 @@ public class testEditNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		DetailNews detail = createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		Comment comment = PageFactory.initElements(driver, Comment.class);
 		
@@ -613,7 +613,7 @@ public class testEditNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		assertFalse(comment.isCommentBoxPresent());
 	}
