@@ -27,7 +27,7 @@ public class ConfigElements {
 	
 	private static String workspace_id = "696";
 	
-	private static String FileImagen = "/home/gustavomoreira/Pictures/Otro/Explosions-In-The-Sky.jpg";
+	private static String FileImagen = "/home/diogodarosa/Pictures/car.jpg";
 	
 	private static String FileImagenChange = "/home/gustavomoreira/Pictures/Otro/business-cat.jpg";
 	
