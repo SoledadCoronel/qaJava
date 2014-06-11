@@ -63,21 +63,21 @@ public class testDeleteNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		DetailNews detail = createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(titleText1, detail.getTitle());
 		assertEquals(descriptionText, detail.getDescription());
 		
 		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		WebElement newsElement = home.getNewsElement(titleText1);
 		
 		DeleteOverlay deleteOverlay = home.deleteNews(newsElement);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		deleteOverlay.selectCancelDelete();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		deleteOverlay.selectConfirmDelete();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertTrue(home.getNewsElement(titleText1) == null);
 	}
@@ -218,7 +218,7 @@ public class testDeleteNews extends TestBase {
 		String newsURL = home.getURL();
 		
 		DeleteOverlay deleteOverlay = detail.deleteNews();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		deleteOverlay.selectConfirmDelete();
 		WaitTool.waitForJQueryProcessing(driver, 5);
