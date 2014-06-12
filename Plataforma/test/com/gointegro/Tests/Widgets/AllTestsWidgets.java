@@ -17,6 +17,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testEditImageWidget.class,
 	testOrderSizeWidgets.class,
 	testEditInstalledAppWidget.class,
+	testDeleteTextWidget.class,
+	testDeleteImageWidget.class,
+	testDeleteInstalledAppWidget.class,
 })
 
 public class AllTestsWidgets {

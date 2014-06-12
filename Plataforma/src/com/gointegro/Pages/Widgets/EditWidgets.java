@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Pages.Celebration.DeleteOverlay;
 
 public class EditWidgets extends PageBase {
 	
@@ -97,9 +98,10 @@ public class EditWidgets extends PageBase {
 	 * 
 	 * @param WebElement
 	 */
-	public void selectDeleteWidget(WebElement element) {
+	public DeleteOverlay selectDeleteWidget(WebElement element) {
 		selectOptions(element);
 		selectDeleteBtn(element);
+		return PageFactory.initElements(driver, DeleteOverlay.class);
 	}
 	
 	/**
