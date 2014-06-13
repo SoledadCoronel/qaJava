@@ -15,7 +15,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testDeleteAlbum.class,
 	testUploadFile.class,
 	testImageDetail.class,
-	testDeleteImage.class
+	testDeleteImage.class,
+	testSetAsCover.class
 })
 public class AllTestsGalery {
 	

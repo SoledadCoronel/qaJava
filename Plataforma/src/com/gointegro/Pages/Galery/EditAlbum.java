@@ -10,6 +10,9 @@ public class EditAlbum extends UploadContent{
 	@FindBy (id = "name")
 	private WebElement albumname;
 	
+	@FindBy (xpath = "(//input[@name='cover'])[2]")
+	private WebElement selectsecondpiccover;
+	
 	/**
 	 * Constructor
 	 * 
@@ -55,6 +58,12 @@ public class EditAlbum extends UploadContent{
 		return PageFactory.initElements(driver, AlbumDetail.class);
 	}
 	
+	/**
+	 * Seleccionar la segunda imagen como portada
+	 */
+	public void selectCover() {
+		selectsecondpiccover.click();
+	}
 	
 
 }
