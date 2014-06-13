@@ -195,23 +195,31 @@ public class testEditNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		DetailNews detail = createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 30);
 		
 		assertEquals(titleText1, detail.getTitle());
 		assertEquals(descriptionText, detail.getDescription());
 		
 		//Edito la novedad
 		detail.editNews();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 25);
 		
 		createNews.createTitle(titleText2);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("El título no puede estar vacío.", createNews.getTitleError());
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
+		
+		
+		//Hack para no manejar el alert
+		createNews.createTitle(titleText1);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		createNews.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 20);
 	}
 	
 	
@@ -299,7 +307,7 @@ public class testEditNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		DetailNews detail = createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		assertEquals(titleText, detail.getTitle());
 		assertEquals(descriptionText1, detail.getDescription());
@@ -312,10 +320,17 @@ public class testEditNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("El detalle no puede estar vacío.", createNews.getDescriptionError());
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
+		
+		//Hack para no manejar el alert
+		createNews.createDescription(descriptionText1);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		createNews.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 20);
 	}
 	
 	
@@ -349,7 +364,7 @@ public class testEditNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		DetailNews detail = createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		assertEquals(titleText, detail.getTitle());
 		assertEquals(descriptionText, detail.getDescription());
@@ -362,10 +377,17 @@ public class testEditNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("La fecha de publicación es obligatoria.", createNews.getDateError());
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
+		
+		//Hack para no manejar el alert
+		createNews.selectDate(date);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		createNews.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 20);
 	}
 	
 	
@@ -575,10 +597,9 @@ public class testEditNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		DetailNews detail = createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		Comment comment = PageFactory.initElements(driver, Comment.class);
-		
 		
 		assertEquals(titleText, detail.getTitle());
 		assertEquals(descriptionText, detail.getDescription());
@@ -592,7 +613,7 @@ public class testEditNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		assertFalse(comment.isCommentBoxPresent());
 	}

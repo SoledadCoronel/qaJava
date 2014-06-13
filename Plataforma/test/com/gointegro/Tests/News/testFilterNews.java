@@ -72,11 +72,11 @@ private WebDriver driver;
 		
 		FilterNews filter = PageFactory.initElements(driver, FilterNews.class);
 		filter.selectLastWeek();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		WebElement newsElement = home.getNewsElement(titleText);
 		
-		assertTrue(newsElement == null);
+		assertEquals(titleText, home.getTitleNews(newsElement));
 	}
 	
 	

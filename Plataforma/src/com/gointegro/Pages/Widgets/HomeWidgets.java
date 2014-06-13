@@ -115,12 +115,13 @@ public class HomeWidgets extends PageBase {
 	 */
 	public WebElement getTextWidgetElementByTitle(String name) {
 		WebElement widget = null;
-		
 		for(WebElement element : widgetsList) {
 			if(element.getAttribute("class").contains("html-text")) {
-				if(element.findElement(By.xpath(textHTMLTitle)).getText().contains(name)) {
-					widget = element;
-					break;
+				if(element.findElements(By.xpath(textHTMLTitle)).size() > 0) {				
+					if(element.findElement(By.xpath(textHTMLTitle)).getText().contains(name)) {
+						widget = element;
+						break;
+					}
 				}
 			}
 		}
@@ -138,7 +139,7 @@ public class HomeWidgets extends PageBase {
 	}
 	
 	/**
-	 * Devuelve un WebElement del widget buscando por descripción
+	 * Devuelve un WebElement del widget Text/HTML buscando por descripción
 	 * 
 	 * @param String
 	 * @return WebElement
@@ -176,6 +177,26 @@ public class HomeWidgets extends PageBase {
 			}
 		}
 		return isImageOnList;
+	}
+	
+	/**
+	 * Devuelve el nombre de la imagen del Banner buscando por el titulo
+	 * 
+	 * @param String
+	 * @return String
+	 */
+	public String getImageWidgetImageName(String name) {
+		String imageName = "";
+		
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("banner")) {
+				if(element.findElement(By.className(imageBanner)).getAttribute("alt").contains(name)) {
+					imageName= element.findElement(By.className(imageBanner)).getAttribute("src");
+					break;
+				}
+			}
+		}
+		return imageName;
 	}
 	
 	/**
@@ -219,21 +240,42 @@ public class HomeWidgets extends PageBase {
 	 * @param String
 	 * @return Boolean
 	 */
-	public Boolean isInstalledCellebrationAppWidgetOnList(String name) {
-		Boolean isInstalledAppOnList = false;
+	public Boolean isInstalledCellebrationAppWidgetinList(String name) {
+		Boolean isInstalledAppInList = false;
 		
 		for(WebElement element : widgetsList) {
 			if(element.getAttribute("class").contains("celebration.feed")) {
 				if(element.findElements(By.xpath(installedAppTitle)).size() > 0 ) {
 					if(element.findElement(By.xpath(installedAppTitle)).getText().contains(name)) {
-						isInstalledAppOnList= true;
+						isInstalledAppInList= true;
 						break;
 					}
 				}
-				
 			}
 		}
-		return isInstalledAppOnList;
+		return isInstalledAppInList;
+	}
+	
+	/**
+	 * Devuelve un WebElement de la aplicacion Celebraciones buscando por el titulo
+	 * 
+	 * @param String
+	 * @return WebElement
+	 */
+	public WebElement getCelebrationAppElement(String name) {
+		WebElement celebrationElement = null;
+		
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("celebration.feed")) {
+				if(element.findElements(By.xpath(installedAppTitle)).size() > 0 ) {
+					if(element.findElement(By.xpath(installedAppTitle)).getText().contains(name)) {
+						celebrationElement = element;
+						break;
+					}
+				}
+			}
+		}
+		return celebrationElement;
 	}
 	
 	/**
@@ -242,16 +284,17 @@ public class HomeWidgets extends PageBase {
 	 * @param String
 	 * @return Boolean
 	 */
-	public Boolean isInstalledGalleryAppWidgetOnList(String appId) {
-		Boolean isInstalledAppOnList = false;
+	public Boolean isInstalledGalleryAppWidgetInList(String appId) {
+		Boolean isInstalledAppInList = false;
 		
 		for(WebElement element : widgetsList) {
 			if(element.getAttribute("class").contains("gallery.carousel") && element.getAttribute("data-id").contains(appId)) {
-				isInstalledAppOnList= true;
+				isInstalledAppInList= true;
 				break;		
 			}
 		}
-		return isInstalledAppOnList;
+		return isInstalledAppInList;
 	}
+	
 	
 }

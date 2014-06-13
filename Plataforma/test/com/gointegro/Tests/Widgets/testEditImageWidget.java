@@ -1,4 +1,4 @@
-package com.goIntegro.Tests.Widgets;
+package com.gointegro.Tests.Widgets;
 
 import static org.junit.Assert.*;
 
@@ -11,15 +11,16 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Platform.Logout;
+import com.gointegro.Pages.Widgets.EditWidgets;
 import com.gointegro.Pages.Widgets.HomeWidgets;
 import com.gointegro.Pages.Widgets.NewModuleOverlay;
 import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.WaitTool;
 
-public class testNewImageWidget extends TestBase {
+public class testEditImageWidget extends TestBase {
 	
-	private WebDriver driver;
+private WebDriver driver;
 	
 	@Before
 	public void setUp() {
@@ -28,7 +29,78 @@ public class testNewImageWidget extends TestBase {
 	
 	
 	@Test
-	public void test_new_banner() {
+	public void test_edit_banner_title_empty() {
+		String title = DataGenerator.nombreFile();
+		String title2 = "";
+		String imageFile = ConfigElements.getFileImagen();
+		
+		login(driver);
+		
+		HomeWidgets home = PageFactory.initElements(driver, HomeWidgets.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home.selectConfigBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		NewModuleOverlay newModule = home.addNewModule();
+		WaitTool.waitForJQueryProcessing(driver, 30);
+		
+		newModule.selectStandard();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectImageBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectBorder();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertFalse(newModule.isVisibleTitleEnabled());
+		
+		newModule.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.fileUpload(imageFile);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectFinishBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 30);
+		
+		assertTrue(home.isImageWidgetOnList(title));
+		
+		home.selectConfigBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
+		
+		WebElement widgetElement = home.getBannerElement(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		//Edito el widget
+		EditWidgets editWidget = PageFactory.initElements(driver, EditWidgets.class);
+		
+		NewModuleOverlay newModule2 = editWidget.selectEditWidget(widgetElement);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule2.createTitle(title2);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule2.selectFinishBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals("Este campo es obligatorio.", newModule.getTitleErrorMsg());
+		
+		newModule.selectCancelBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
+	}
+	
+	
+	@Test
+	public void test_edit_banner_remove_image() {
 		String title = DataGenerator.nombreFile();
 		String imageFile = ConfigElements.getFileImagen();
 		
@@ -68,14 +140,111 @@ public class testNewImageWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 30);
 		
 		assertTrue(home.isImageWidgetOnList(title));
+		
+		home.selectConfigBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
+		
+		WebElement widgetElement = home.getBannerElement(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		//Edito el widget
+		EditWidgets editWidget = PageFactory.initElements(driver, EditWidgets.class);
+		editWidget.selectEditWidget(widgetElement);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectRemoveFile();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectFinishBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals("Es necesario que suba una imagen.", newModule.getImageWidgetNoImageErrorMsg());
+		
+		newModule.selectCancelBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
 	}
 	
 	
 	@Test
-	public void test_new_banner_with_link() {
+	public void test_edit_banner_change_image() {
+		String title = DataGenerator.nombreFile();
+		String imageFile = ConfigElements.getFileImagen();
+		String imageFile2 = ConfigElements.getFileImagenChange();
+		String imageName;
+		
+		login(driver);
+		
+		HomeWidgets home = PageFactory.initElements(driver, HomeWidgets.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+				
+		home.selectConfigBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		NewModuleOverlay newModule = home.addNewModule();
+		WaitTool.waitForJQueryProcessing(driver, 30);
+		
+		newModule.selectStandard();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectImageBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectBorder();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertFalse(newModule.isVisibleTitleEnabled());
+		
+		newModule.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.fileUpload(imageFile);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectFinishBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 30);
+		
+		imageName = home.getImageWidgetImageName(title);
+		
+		home.selectConfigBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
+		
+		WebElement widgetElement = home.getBannerElement(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		//Edito el widget
+		EditWidgets editWidget = PageFactory.initElements(driver, EditWidgets.class);
+		editWidget.selectEditWidget(widgetElement);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		//newModule.selectRemoveFile();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.fileUpload(imageFile2);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectFinishBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
+		
+		assertNotEquals(imageName, home.getImageWidgetImageName(title));
+	}
+
+		
+	@Test
+	public void test_edit_banner_change_link() {
 		String title = DataGenerator.nombreFile();
 		String imageFile = ConfigElements.getFileImagen();
 		String link = "http://www." + title + ".com";
+		String link2 = "http://www." + DataGenerator.nombreFile() + ".com";
 		
 		login(driver);
 		
@@ -113,129 +282,42 @@ public class testNewImageWidget extends TestBase {
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 30);
 	
+		home.selectConfigBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
+		
 		WebElement bannerElement = home.getBannerElement(title);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertTrue(home.isImageWidgetOnList(title));
-		assertEquals(link, home.getBannerLinkUrl(bannerElement));
-	}
-	
-	
-	@Test
-	public void test_new_banner_without_link() {
-		String title = DataGenerator.nombreFile();
-		String imageFile = ConfigElements.getFileImagen();
-		
-		login(driver);
-		
-		HomeWidgets home = PageFactory.initElements(driver, HomeWidgets.class);
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-				
-		home.selectConfigBtn();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		NewModuleOverlay newModule = home.addNewModule();
-		WaitTool.waitForJQueryProcessing(driver, 30);
-		
-		newModule.selectStandard();
+		//Edito el widget
+		EditWidgets editWidget = PageFactory.initElements(driver, EditWidgets.class);
+		editWidget.selectEditWidget(bannerElement);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.selectImageBtn();
+		//newModule.selectRemoveFile();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.createTitle(title);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newModule.selectLinkCheckBox();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-			
-		newModule.fileUpload(imageFile);
+		newModule.createLink(link2);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newModule.selectFinishBtn();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-	
-		assertEquals("Ingrese una URL válida.", newModule.getImageWidgetLinkErrorMsg());
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
+		
+		WebElement bannerElement2 = home.getBannerElement(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertNotEquals(link, home.getBannerLinkUrl(bannerElement2));
 	}
-	
-	
-	@Test
-	public void test_new_banner_without_title() {
-		String title = "";
-		String imageFile = ConfigElements.getFileImagen();
-		
-		login(driver);
-		
-		HomeWidgets home = PageFactory.initElements(driver, HomeWidgets.class);
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-				
-		home.selectConfigBtn();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		NewModuleOverlay newModule = home.addNewModule();
-		WaitTool.waitForJQueryProcessing(driver, 30);
-		
-		newModule.selectStandard();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newModule.selectImageBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newModule.createTitle(title);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newModule.fileUpload(imageFile);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newModule.selectLinkCheckBox();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newModule.selectFinishBtn();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		assertEquals("Este campo es obligatorio.", newModule.getTitleErrorMsg());
-	}
-	
-	
-	@Test
-	public void test_new_banner_without_image() {
-		String title = DataGenerator.nombreFile();
-		
-		login(driver);
-		
-		HomeWidgets home = PageFactory.initElements(driver, HomeWidgets.class);
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-				
-		home.selectConfigBtn();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		NewModuleOverlay newModule = home.addNewModule();
-		WaitTool.waitForJQueryProcessing(driver, 30);
-		
-		newModule.selectStandard();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newModule.selectImageBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
 
-		newModule.createTitle(title);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newModule.selectFinishBtn();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-	
-		assertEquals("Es necesario que suba una imagen.", newModule.getDescriptionErrorMsg());
-	}
-	
 	
 	@Test
-	public void test_new_banner_invalid_link() {
+	public void test_edit_banner_remove_link() {
 		String title = DataGenerator.nombreFile();
 		String imageFile = ConfigElements.getFileImagen();
-		String link = "www.algo.com.com.a";
+		String link = "http://www." + title + ".com";
+		String link2 = "";
 		
 		login(driver);
 		
@@ -256,6 +338,9 @@ public class testNewImageWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newModule.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.fileUpload(imageFile);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newModule.selectLinkCheckBox();
@@ -263,14 +348,37 @@ public class testNewImageWidget extends TestBase {
 		
 		newModule.createLink(link);
 		WaitTool.waitForJQueryProcessing(driver, 5);
-			
-		newModule.fileUpload(imageFile);
-		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newModule.selectFinishBtn();
 		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 30);
 	
+		home.selectConfigBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
+		
+		WebElement bannerElement = home.getBannerElement(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		//Edito el widget
+		EditWidgets editWidget = PageFactory.initElements(driver, EditWidgets.class);
+		editWidget.selectEditWidget(bannerElement);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.createLink(link2);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectFinishBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		assertEquals("Ingrese una URL válida.", newModule.getImageWidgetLinkErrorMsg());
+		
+		newModule.selectCancelBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 60);
 	}
 	
 	@After
@@ -278,6 +386,5 @@ public class testNewImageWidget extends TestBase {
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
 	}
-	
-	
+
 }
