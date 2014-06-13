@@ -106,6 +106,24 @@ public class HomeGalery extends PageBase{
 	}
 	
 	/**
+	 * Obtener el innerHTML para ver que difiera el src
+	 * 
+	 * @param albumname
+	 * @return String
+	 */
+	public String getAlbumCoverSrc(String albumname) {
+		String src = null;
+		for (WebElement element : maincontainerlist) {
+			if (element.getText().contains(albumname.substring(0, 15).toUpperCase())) {
+				src = element.getAttribute("innerHTML");
+				break;
+			}
+		}
+		
+		return src;
+	}
+	
+	/**
 	 * Verifica que exista el nombre del album en el sidebar
 	 * 
 	 * @param albumname
