@@ -1,4 +1,4 @@
-package com.gointegro.Tests.Platform;
+package com.gointegro.Tests.Workspace;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,8 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testNewWorkspace.class,
-	testEditWorkspace.class,
+	//testNewWorkspace.class,
+	//testEditWorkspace.class,
+	testDeleteWorkspace.class,
 })
 
 public class AllTests {

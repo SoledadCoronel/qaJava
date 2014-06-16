@@ -1,4 +1,4 @@
-package com.gointegro.Tests.Platform;
+package com.gointegro.Tests.Workspace;
 
 import static org.junit.Assert.*;
 

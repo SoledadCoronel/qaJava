@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsWorkspace;
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Pages.Workspace.AdminWorkspace;
 import com.gointegro.Pages.Workspace.JoinWorkSpace;
 import com.gointegro.Pages.Workspace.WorkspaceCreate;
 
@@ -52,6 +53,17 @@ public class Home extends PageBase{
 		workspacecreate.click();
 		
 		return PageFactory.initElements(driver, WorkspaceCreate.class);
+	}
+	
+	/** 
+	 * Seleccionar Administrar espacios
+	 * 
+	 * @return AdminWorkspace
+	 */
+	public AdminWorkspace selectAdminWorkspace() {
+		dropdownworkspacemenu.click();
+		adminworkspace.click();
+		return PageFactory.initElements(driver, AdminWorkspace.class);
 	}
 	
 	/**

@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 
@@ -24,6 +25,8 @@ public class WorkspaceList extends PageBase {
 	String options = "./div/a[2]";
 	
 	String edit = "./div/ul/li[1]/a";
+	
+	String delete = "./div/ul/li[2]/a";
 	
 	
 	/**
@@ -150,6 +153,28 @@ public class WorkspaceList extends PageBase {
 	 */
 	private void selectEditBtn(WebElement element) {
 		element.findElement(By.xpath(edit)).click();
+	}
+	
+	/**
+	 * Seleccionar el botón Eliminar espacio
+	 * 
+	 * @param Webelement
+	 */
+	private void selectDeleteBtn(WebElement element) {
+		element.findElement(By.xpath(delete)).click();
+	}
+	
+	/**
+	 * Seleccionar el botón opciones y Configurar espacio
+	 * 
+	 * @param String
+	 * @return DeleteOverlay
+	 */
+	public DeleteOverlay selectDeleteWorkspace(String name) {
+		WebElement element = getWorkspaceElement(name);
+		selectOptionsBtn(element);
+		selectDeleteBtn(element);
+		return PageFactory.initElements(driver, DeleteOverlay.class);
 	}
 	
 }
