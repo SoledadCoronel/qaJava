@@ -16,7 +16,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testUploadFile.class,
 	testImageDetail.class,
 	testDeleteImage.class,
-	testSetAsCover.class
+	testSetAsCover.class,
+	testOrderAlbum.class
 })
 public class AllTestsGalery {
 	
@@ -35,10 +36,9 @@ private static WebDriver driver;
 		AllTestsGalery.driver = driver;
 	}
 	
-	
 	@AfterClass
 	public static void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 
 }
