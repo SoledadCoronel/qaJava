@@ -183,8 +183,8 @@ public class EditWidgets extends PageBase {
 	/**
 	 * Cambiar el orden de los widgets, pone el primero ultimo.
 	 * 
-	 * @param String
-	 * @param String
+	 * @param WebElement
+	 * @param WebElement
 	 */
 	public void changeOrder(WebElement widgetElement1, WebElement widgetElement2) {
 		Actions builder = new Actions(driver);
