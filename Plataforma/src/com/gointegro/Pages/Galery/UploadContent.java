@@ -150,12 +150,12 @@ public class UploadContent extends PageBase{
 	/**
 	 * Seleccionar eliminar una imagen. El olerlay es el mismo para eliminar una imagen.
 	 * 
-	 * @return {@link DeleteAlbumOverlay}
+	 * @return {@link DeleteOverlay}
 	 */
-	public DeleteAlbumOverlay selectDeletePicture() {
+	public DeleteOverlay selectDeletePicture() {
 		selectdeletefile.click();
 		
-		return PageFactory.initElements(driver, DeleteAlbumOverlay.class);
+		return PageFactory.initElements(driver, DeleteOverlay.class);
 	}
 	
 	/**

@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 
@@ -48,13 +49,22 @@ public class ImageDetail extends PageBase{
 	}
 	
 	/**
-	 * Seleccionar eliminar
+	 * Eliminar imagen
+	 * 
+	 * @return {@link DeleteOverlay}
 	 */
-	public void selectDelete() {
+	public DeleteOverlay selectDelete() {
 		makeVisiblePicActions();
 		deletebtn.click();
+		
+		return PageFactory.initElements(driver, DeleteOverlay.class);
 	}
 	
+	/**
+	 * Obtener el link de descarga del archivo
+	 * 
+	 * @return {@link WebElement}
+	 */
 	public WebElement downloadLink() {
 		makeVisiblePicActions();
 		WebElement _downloadLink = downloadlink;

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="all" name="Platform">
+	<property environment="env" />
+	<property name="build-dir" location="build" />
+	<property name="classes-dir" value="${build-dir}/classes" />
+	<property name="dist-dir" location="dist" />
+	<property name="lib-dir" value="lib" />
+	<property name="jar-dir" value="${build-dir}/jar" />
+	<property name="main-class" value="android.HelloServer" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.7" />
+	<property name="source" value="1.7" />
+	<path id="JUnit 4.libraryclasspath">
+		<pathelement location="../../../eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar" />
+		<pathelement location="../../../eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar" />
+	</path>
+	<path id="Platform.classpath">
+		<pathelement location="bin" />
+		<pathelement location="../../selenium-2.41.0/selenium-java-2.41.0.jar" />
+		<pathelement location="../../selenium-2.41.0/selenium-java-2.41.0-srcs.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/apache-mime4j-0.6.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/bsh-1.3.0.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/cglib-nodep-2.1_3.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/commons-codec-1.8.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/commons-collections-3.2.1.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/commons-exec-1.1.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/commons-io-2.2.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/commons-jxpath-1.3.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/commons-lang3-3.1.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/commons-logging-1.1.1.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/cssparser-0.9.11.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/guava-15.0.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/hamcrest-core-1.3.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/hamcrest-library-1.3.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/htmlunit-2.13.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/htmlunit-core-js-2.13.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/httpclient-4.3.1.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/httpcore-4.3.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/httpmime-4.3.1.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/ini4j-0.5.2.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/jcommander-1.29.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/jetty-websocket-8.1.8.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/jna-3.4.0.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/jna-platform-3.4.0.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/json-20080701.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/junit-dep-4.11.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/nekohtml-1.9.19.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/netty-3.5.7.Final.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/operadriver-1.5.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/phantomjsdriver-1.1.0.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/protobuf-java-2.4.1.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/sac-1.3.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/serializer-2.7.1.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/testng-6.8.5.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/xalan-2.7.1.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/xercesImpl-2.10.0.jar" />
+		<pathelement location="../../selenium-2.41.0/libs/xml-apis-1.4.01.jar" />
+		<path refid="JUnit 4.libraryclasspath" />
+	</path>
+
+	<target name="all" depends="Galery, Celebration, Content, News, Social, Widgets" />
+
+	<target name="init">
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="test">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac source="1.7" srcdir="test" fork="true" destdir="bin">
+			<classpath>
+				<pathelement path="bin">
+				</pathelement>
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+		</javac>
+	</target>
+
+
+
+	<target name="Galery" depends="compile">
+		<delete dir="reportGalery" />
+		<mkdir dir="reportGalery" />
+		<mkdir dir="reportGalery/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+
+			<test name="com.gointegro.Tests.Galery.AllTestsGalery" haltonfailure="no" todir="reportGalery/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="reportGalery">
+			<fileset dir="reportGalery/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="reportGalery/html" />
+		</junitreport>
+	</target>
+
+	<target name="Celebration">
+		<delete dir="reportCelebration" />
+		<mkdir dir="reportCelebration" />
+		<mkdir dir="reportCelebration/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+
+			<test name="com.gointegro.Tests.Celebration.AllTestsCelebration" haltonfailure="no" todir="reportCelebration/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="reportCelebration">
+			<fileset dir="reportCelebration/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="reportCelebration/html" />
+		</junitreport>
+	</target>
+
+	<target name="Content">
+		<delete dir="reportContent" />
+		<mkdir dir="reportContent" />
+		<mkdir dir="reportContent/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+
+			<test name="com.gointegro.Tests.Content.AllTestsContent" haltonfailure="no" todir="reportContent/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="reportContent">
+			<fileset dir="reportContent/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="reportContent/html" />
+		</junitreport>
+	</target>
+
+	<target name="News">
+		<delete dir="reportNews" />
+		<mkdir dir="reportNews" />
+		<mkdir dir="reportNews/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+
+			<test name="com.gointegro.Tests.News.AllTestsNews" haltonfailure="no" todir="reportNews/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="reportNews">
+			<fileset dir="reportNews/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="reportNews/html" />
+		</junitreport>
+	</target>
+
+	<target name="Social">
+		<delete dir="reportSocial" />
+		<mkdir dir="reportSocial" />
+		<mkdir dir="reportSocial/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+
+			<test name="com.gointegro.Tests.Social.AllTests" haltonfailure="no" todir="reportSocial/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="reportSocial">
+			<fileset dir="reportSocial/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="reportSocial/html" />
+		</junitreport>
+	</target>
+
+	<target name="Widgets">
+		<delete dir="reportWidgets" />
+		<mkdir dir="reportWidgets" />
+		<mkdir dir="reportWidgets/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+
+			<test name="com.gointegro.Tests.Widgets.AllTestsWidgets" haltonfailure="no" todir="reportWidgets/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="reportWidgets">
+			<fileset dir="reportWidgets/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="reportWidgets/html" />
+		</junitreport>
+	</target>
+
+</project>

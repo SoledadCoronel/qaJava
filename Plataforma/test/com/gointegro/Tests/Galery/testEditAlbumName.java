@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -267,7 +268,7 @@ private WebDriver driver;
 		
 		assertEquals(albumnameedit, detail.getAlbumTitle());
 	}
-	
+	@Ignore
 	@Test
 	public void test_edit_album_special_char() {
 		String albumname = DataGenerator.nombreFile();

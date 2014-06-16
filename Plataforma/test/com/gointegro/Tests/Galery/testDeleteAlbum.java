@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Galery.AdminAlbum;
 import com.gointegro.Pages.Galery.AlbumDetail;
-import com.gointegro.Pages.Galery.DeleteAlbumOverlay;
+import com.gointegro.Pages.Galery.DeleteOverlay;
 import com.gointegro.Pages.Galery.HomeGalery;
 import com.gointegro.Pages.Galery.NewAlbumOverlay;
 import com.gointegro.Pages.Galery.UploadContent;
@@ -45,7 +45,7 @@ private WebDriver driver;
 		AdminAlbum admin = home.selectAdminAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		DeleteAlbumOverlay delete = admin.deleteAlbum(albumname);
+		DeleteOverlay delete = admin.deleteAlbum(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		delete.confirmDelete();
@@ -79,7 +79,7 @@ private WebDriver driver;
 		AdminAlbum admin = home.selectAdminAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		DeleteAlbumOverlay delete = admin.deleteAlbum(albumname);
+		DeleteOverlay delete = admin.deleteAlbum(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		delete.cancelDelete();
@@ -114,7 +114,7 @@ private WebDriver driver;
 		AdminAlbum admin = home.selectAdminAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		DeleteAlbumOverlay delete = admin.deleteAlbum(albumname);
+		DeleteOverlay delete = admin.deleteAlbum(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals("Este álbum tiene imágenes asociadas", delete.getAlert());
@@ -150,7 +150,7 @@ private WebDriver driver;
 		AlbumDetail detail = home.selectAlbumSideBar(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		DeleteAlbumOverlay delete = detail.selectDeleteAlbum();
+		DeleteOverlay delete = detail.selectDeleteAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals("¿Esta seguro que desea eliminar el álbum \""+albumname +"\" y todo su contenido?", delete.getMsjBody());
@@ -181,7 +181,7 @@ private WebDriver driver;
 		AlbumDetail detail = home.selectAlbumSideBar(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		DeleteAlbumOverlay delete = detail.selectDeleteAlbum();
+		DeleteOverlay delete = detail.selectDeleteAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals("¿Esta seguro que desea eliminar el álbum \""+albumname +"\" y todo su contenido?", delete.getMsjBody());
@@ -213,7 +213,7 @@ private WebDriver driver;
 		AlbumDetail detail = home.selectAlbumSideBar(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		DeleteAlbumOverlay delete = detail.selectDeleteAlbum();
+		DeleteOverlay delete = detail.selectDeleteAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals("¿Esta seguro que desea eliminar el álbum \""+albumname +"\" y todo su contenido?", delete.getMsjBody());
@@ -246,7 +246,7 @@ private WebDriver driver;
 		
 		String url = driver.getCurrentUrl();
 		
-		DeleteAlbumOverlay delete = detail.selectDeleteAlbum();
+		DeleteOverlay delete = detail.selectDeleteAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		delete.confirmDelete();

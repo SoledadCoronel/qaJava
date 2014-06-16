@@ -2,16 +2,17 @@ package com.gointegro.Tests.Galery;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Galery.AlbumDetail;
+import com.gointegro.Pages.Galery.DeleteOverlay;
+import com.gointegro.Pages.Galery.EditAlbum;
 import com.gointegro.Pages.Galery.HomeGalery;
 import com.gointegro.Pages.Galery.ImageDetail;
 import com.gointegro.Pages.Galery.NewAlbumOverlay;
@@ -22,7 +23,7 @@ import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.FileDownloader;
 import com.gointegro.Util.WaitTool;
 
-public class testImageDetail extends TestBase{
+public class testDeleteImage extends TestBase{
 	
 private WebDriver driver; 
 	
@@ -32,7 +33,7 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_img_detail_view() {
+	public void test_delete_img_detail() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();
 		
@@ -53,11 +54,85 @@ private WebDriver driver;
 		ImageDetail img = detail.selectLastPictureInAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertFalse(img.getSrcImg().isEmpty());
+		DeleteOverlay delete = img.selectDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		delete.confirmDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(0, detail.albumsize());
 	}
 	
 	@Test
-	public void test_img_detail_download() {
+	public void test_delete_img_detail_cancel() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileImagen();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createAddFile(testfile, albumname, home, false);
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		ImageDetail img = detail.selectLastPictureInAlbum();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DeleteOverlay delete = img.selectDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		delete.cancelDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(1, detail.albumsize());
+	}
+	
+	@Test
+	public void test_delete_img_detail_2_pictures() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileImagen();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createAddFile(testfile, albumname, home, true);
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+
+		
+		String urlalbum = detail.getURL();
+		
+		ImageDetail img = detail.selectLastPictureInAlbum();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DeleteOverlay delete = img.selectDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		delete.confirmDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		driver.get(urlalbum);
+		
+		assertEquals(1, detail.albumsize());
+	}
+	
+	@Test
+	public void test_delete_img_access_url() {
 		FileDownloader downloadTestFile = new FileDownloader(driver);
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();
@@ -81,78 +156,33 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		try {
-			downloadedFileAbsoluteLocation = downloadTestFile.downloadFile(img.downloadLink());
+			downloadedFileAbsoluteLocation = img.getSrcImg();
 		} catch (Exception e) {
 			
 		}
 		
-		assertEquals(true, new File(downloadedFileAbsoluteLocation).exists());
+		DeleteOverlay delete = img.selectDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals(200, downloadTestFile.getHTTPStatusOfLastDownloadAttempt());
+		delete.confirmDelete();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
+		
+		WebDriver _driver = new FirefoxDriver();
+		
+		login(_driver);
+
+		_driver.get(downloadedFileAbsoluteLocation);
+		
+		assertNotEquals(200, downloadTestFile.getHTTPStatusOfLastDownloadAttempt());
+		
+		_driver.close();
 	}
 	
 	@Test
-	public void test_img_detail_next_picture() {
-		String albumname = DataGenerator.nombreFile();
-		String testfile = ConfigElements.getFileImagen();
-		
-		login(driver);
-		
-		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		createAddFile(testfile, albumname, home, true);
-		
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		AlbumDetail detail = home.selectAlbumSideBar(albumname);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		ImageDetail img = detail.selectLastPictureInAlbum();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		String pic1 = img.getSrcImg();
-		img.selectNextPicture();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		String pic2 = img.getSrcImg();
-		
-		assertNotEquals(pic1, pic2);
-	}
-	
-	@Test
-	public void test_img_detail_previous_picture() {
-		String albumname = DataGenerator.nombreFile();
-		String testfile = ConfigElements.getFileImagen();
-		
-		login(driver);
-		
-		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		createAddFile(testfile, albumname, home, true);
-		
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		AlbumDetail detail = home.selectAlbumSideBar(albumname);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		ImageDetail img = detail.selectLastPictureInAlbum();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		String pic1 = img.getSrcImg();
-		img.selectPreviousPicture();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		String pic2 = img.getSrcImg();
-		
-		assertNotEquals(pic1, pic2);
-	}
-	
-	@Test
-	public void test_img_detail_basic_user() {
+	public void test_delete_img_edit_album() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();
 		
@@ -164,31 +194,31 @@ private WebDriver driver;
 		
 		createAddFile(testfile, albumname, home, false);
 		
-		Logout logout = PageFactory.initElements(driver, Logout.class);
-		logout.open();
-		
-		loginBasicUser(driver);
-		
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		AlbumDetail detail = home.selectAlbumSideBar(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		ImageDetail img = detail.selectLastPictureInAlbum();
+		EditAlbum edit = detail.selectEditAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertFalse(img.getSrcImg().isEmpty());
+		DeleteOverlay del = edit.selectDeletePicture();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertFalse(img.getActionsSource().contains("modal-delete-button"));
+		del.confirmDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		edit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(0, detail.albumsize());
 	}
 	
 	@Test
-	public void test_img_detail_basic_user_download() {
-		FileDownloader downloadTestFile = new FileDownloader(driver);
+	public void test_delete_img_edit_album_cancel() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();
-		String downloadedFileAbsoluteLocation = null;
 		
 		login(driver);
 		
@@ -198,10 +228,42 @@ private WebDriver driver;
 		
 		createAddFile(testfile, albumname, home, false);
 		
-		Logout logout = PageFactory.initElements(driver, Logout.class);
-		logout.open();
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		loginBasicUser(driver);
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		EditAlbum edit = detail.selectEditAlbum();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DeleteOverlay del = edit.selectDeletePicture();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		del.confirmDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		edit.selectCancel();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(1, detail.albumsize());
+	}
+	
+	@Test
+	public void test_delete_img_edit_album_cancel_overlay() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileImagen();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createAddFile(testfile, albumname, home, false);
 		
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -209,22 +271,23 @@ private WebDriver driver;
 		AlbumDetail detail = home.selectAlbumSideBar(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		ImageDetail img = detail.selectLastPictureInAlbum();
+		EditAlbum edit = detail.selectEditAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		try {
-			downloadedFileAbsoluteLocation = downloadTestFile.downloadFile(img.downloadLink());
-		} catch (Exception e) {
-			
-		}
+		DeleteOverlay del = edit.selectDeletePicture();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals(true, new File(downloadedFileAbsoluteLocation).exists());
+		del.cancelDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals(200, downloadTestFile.getHTTPStatusOfLastDownloadAttempt());
+		edit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(1, detail.albumsize());
 	}
 	
 	@Test
-	public void test_img_detail_basic_user_next_picture() {
+	public void test_delete_img_edit_album_2_pictures() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();
 		
@@ -236,61 +299,25 @@ private WebDriver driver;
 		
 		createAddFile(testfile, albumname, home, true);
 		
-		Logout logout = PageFactory.initElements(driver, Logout.class);
-		logout.open();
-		
-		loginBasicUser(driver);
-		
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		AlbumDetail detail = home.selectAlbumSideBar(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		ImageDetail img = detail.selectLastPictureInAlbum();
+		EditAlbum edit = detail.selectEditAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		String pic1 = img.getSrcImg();
-		img.selectNextPicture();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		String pic2 = img.getSrcImg();
-		
-		assertNotEquals(pic1, pic2);
-	}
-	
-	@Test
-	public void test_img_detail_basic_user_previous_picture() {
-		String albumname = DataGenerator.nombreFile();
-		String testfile = ConfigElements.getFileImagen();
-		
-		login(driver);
-		
-		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
-		home.open();
+		DeleteOverlay del = edit.selectDeletePicture();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		createAddFile(testfile, albumname, home, true);
-		
-		Logout logout = PageFactory.initElements(driver, Logout.class);
-		logout.open();
-		
-		loginBasicUser(driver);
-		
-		home.open();
+		del.confirmDelete();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		ImageDetail img = detail.selectLastPictureInAlbum();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		String pic1 = img.getSrcImg();
-		img.selectPreviousPicture();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		String pic2 = img.getSrcImg();
-		
-		assertNotEquals(pic1, pic2);
+		assertEquals(1, detail.albumsize());
 	}
 	
 	private void createAddFile(String testfile, String albumname, HomeGalery home, boolean otherfile) {

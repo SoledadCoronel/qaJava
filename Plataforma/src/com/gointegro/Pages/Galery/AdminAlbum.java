@@ -183,12 +183,12 @@ public class AdminAlbum extends PageBase{
 	 * Seleccionar eliminar album
 	 * 
 	 * @param name
-	 * @return {@link DeleteAlbumOverlay}
+	 * @return {@link DeleteOverlay}
 	 */
-	public DeleteAlbumOverlay deleteAlbum(String name) {
+	public DeleteOverlay deleteAlbum(String name) {
 		selectAlbumDelete(name);
 		
-		return PageFactory.initElements(driver, DeleteAlbumOverlay.class);
+		return PageFactory.initElements(driver, DeleteOverlay.class);
 	}
 	
 	/**
