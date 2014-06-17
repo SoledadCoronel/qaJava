@@ -17,6 +17,9 @@ public class DeleteOverlay extends PageBase {
 	@FindBy (xpath = "//div[@id='delete-workspace-modal']//div[@class='modal-footer']/button")
 	private WebElement confirmdelete;
 	
+	@FindBy (xpath = "//div[@id='delete-modal']/div[3]/button[1]")
+	private WebElement confirmdeleteApps;
+	
 	@FindBy (xpath = "//div[@class='modal-footer']/button[2]")
 	private WebElement canceldelete;
 
@@ -30,10 +33,17 @@ public class DeleteOverlay extends PageBase {
 	}
 	
 	/**
-	 * Confirmar eliminar
+	 * Confirmar eliminar para espacios
 	 */
 	public void selectConfirmDelete() {
 		confirmdelete.click();
+	}
+	
+	/**
+	 * Confirmar eliminar para aplicaciones
+	 */
+	public void selectConfirmDeleteApps() {
+		confirmdeleteApps.click();
 	}
 	
 	/**

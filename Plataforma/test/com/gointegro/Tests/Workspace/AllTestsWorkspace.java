@@ -10,12 +10,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	//testNewWorkspace.class,
-	//testEditWorkspace.class,
+	testNewWorkspace.class,
+	testEditWorkspace.class,
 	testDeleteWorkspace.class,
+	testAddApplications.class,
+	testEditApplications.class,
+	testDeleteApplications.class,
 })
 
-public class AllTests {
+public class AllTestsWorkspace {
 
 	private static WebDriver driver;
 	
@@ -29,7 +32,7 @@ public class AllTests {
 	}
 	
 	public static void setDriver(WebDriver driver) {
-		AllTests.driver = driver;
+		AllTestsWorkspace.driver = driver;
 	}
 	
 	@AfterClass

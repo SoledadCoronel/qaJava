@@ -18,7 +18,6 @@ public class AplicationAdd extends PageBase{
 	
 	@FindBy (xpath = "//button[contains(@alt,'Instalar Celebraciones')]")
 	private WebElement installCelebration;
-	
 	@FindBy (xpath = "//button[contains(@alt,'Instalar Novedades')]")
 	private WebElement installNews;
 	

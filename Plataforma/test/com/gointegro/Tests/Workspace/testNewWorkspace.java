@@ -28,7 +28,7 @@ public class testNewWorkspace extends TestBase {
 	
 	@Before
 	public void setUp() {
-		driver = AllTests.getDriver();
+		driver = AllTestsWorkspace.getDriver();
 	}
 
 	
@@ -138,7 +138,43 @@ public class testNewWorkspace extends TestBase {
 		assertEquals("Existen errores en el formulario", workspace.getSaveErrorMsg());
 		assertEquals("Campo obligatorio", workspace.getTitleErrorMsg());
 	}
+	
+	
+	@Test
+	public void test_create_workspace_title_exist() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 
+		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("El nombre del espacio ya existe para este ambiente", workspace.getSaveErrorMsg());
+	}
+	
 	
 	@Test
 	public void test_create_workspace_description_empty() {

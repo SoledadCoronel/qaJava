@@ -12,7 +12,7 @@ public class AplicationInstall extends PageBase{
 	@FindBy (id = "app-name")
 	protected WebElement appname;
 	
-	@FindBy (name = "description")
+	@FindBy (xpath = "//div[@id='description']/textarea")
 	protected WebElement description;
 	
 	@FindBy (id = "selected-icon")
@@ -47,6 +47,12 @@ public class AplicationInstall extends PageBase{
 	
 	@FindBy (name = "tournamentList")
 	protected WebElement tournamentlist;
+	
+	@FindBy(xpath = "//div[@id='name']/span")
+	protected WebElement titleErrorMsg;
+	
+	@FindBy(xpath = "//div[@id='install-app-view']/div")
+	protected WebElement saveErrorMsg;
 
 	/**
 	 * Constructor
@@ -62,7 +68,7 @@ public class AplicationInstall extends PageBase{
 	 * 
 	 * @param name
 	 */
-	protected void setAppName(String name) {
+	public void setAppName(String name) {
 		appname.clear();
 		appname.sendKeys(name);
 	}
@@ -88,7 +94,7 @@ public class AplicationInstall extends PageBase{
 				socialEnabled.click();
 		}
 		else {
-			if (!socialEnabled.isSelected())
+			if (socialEnabled.isSelected())
 				socialEnabled.click();
 		}
 	}
@@ -158,7 +164,7 @@ public class AplicationInstall extends PageBase{
 	/**
 	 * Seleccionar Guardar
 	 */
-	protected void saveBtn() {
+	public void saveBtn() {
 		accept.click();
 	}
 	
@@ -226,9 +232,28 @@ public class AplicationInstall extends PageBase{
 		setAppName(name);
 		setDescription(descr);
 		setStatus(status);
-		if (!isappsocial)
-		selectSocialEnabled(activeSocial);
+		if (isappsocial) {
+			selectSocialEnabled(activeSocial);
+		}
 		saveBtn();
+	}
+	
+	/**
+	 * Devuelve el mensaje de error del titulo
+	 * 
+	 * @return String
+	 */
+	public String getTitleErrorMsg() {
+		return titleErrorMsg.getText();
+	}
+	
+	/**
+	 * Devuelve el mensaje de error al guardar los cambios
+	 * 
+	 * @return String
+	 */
+	public String getSaveErrorMsg() {
+		return saveErrorMsg.getText();
 	}
 
 }

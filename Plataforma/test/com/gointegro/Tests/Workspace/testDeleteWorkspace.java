@@ -25,7 +25,7 @@ public class testDeleteWorkspace extends TestBase {
 	
 	@Before
 	public void setUp() {
-		driver = AllTests.getDriver();
+		driver = AllTestsWorkspace.getDriver();
 	}
 
 	
