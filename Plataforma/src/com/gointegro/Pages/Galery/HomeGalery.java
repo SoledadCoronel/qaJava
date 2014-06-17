@@ -171,5 +171,22 @@ public class HomeGalery extends PageBase{
 		contentupload.sendKeys(testfile);
 		return PageFactory.initElements(driver, UploadContent.class);
 	}
+	
+	/**
+	 * Obtener el id en el listado lateral de un album
+	 * 
+	 * @param album
+	 * @return int
+	 */
+	public int getElementIdInList(String album) {
+		int i = 0;
+		for (i=0; i < albumsidebarlist.size(); i++) {
+			WebElement e = albumsidebarlist.get(i);
+			if (e.getText().contains(album.substring(0, 15)))
+				break;
+		}
+		
+		return i;
+	}
 
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -199,6 +201,52 @@ public class AdminAlbum extends PageBase{
 	public String getAlbumName(String name) {
 		selectAlbumEdit(name);
 		return albumname.getText();
+	}
+	
+	/**
+	 * Cambiar el orden de los albums
+	 * 
+	 * @param album1name
+	 * @param album2name
+	 * @param album3name
+	 */
+	public void changeOrder(String album1name, String album2name, String album3name) {
+		WebElement webElement1 = null;
+		WebElement webElement3 = null;
+		
+		for (WebElement element : albumlist) {
+			if (element.getText().contains(album1name)) {
+				webElement1 = element;
+			}
+			else if (element.getText().contains(album3name)) {
+				webElement3 = element;
+			}
+			else {
+				// aca iria una excepcion ponele (?)
+			}
+		}
+		
+		Actions builder = new Actions(driver);
+		Action dragAndDrop = builder.clickAndHold(webElement3).moveToElement(webElement1).release(webElement1).build();
+
+		dragAndDrop.perform();
+	}
+	
+	/**
+	 * OBtener el id del elemento en el listado
+	 * 
+	 * @param album
+	 * @return int
+	 */
+	public int getElementIdInList(String album) {
+		int i = 0;
+		for (i=0; i < albumlist.size(); i++) {
+			WebElement e = albumlist.get(i);
+			if (e.getText().contains(album))
+				break;
+		}
+		
+		return i;
 	}
 
 }
