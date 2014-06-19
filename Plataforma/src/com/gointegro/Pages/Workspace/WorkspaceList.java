@@ -280,5 +280,23 @@ public class WorkspaceList extends PageBase {
 		return isAppPresent;
 	}
 	
+	/**
+	 * Devuelve el index del espacio en el listado
+	 * 
+	 * @param name
+	 * @return int
+	 */
+	public int getWorkspaceIndex(String name) {
+		int index = 0;
+		name = name.toUpperCase();
+		
+		for(WebElement element : workspaceList) {
+			if(element.findElement(By.xpath("./li")).getText().contains(name)) {
+				break;
+			}
+			index++;
+		}
+		return index;
+	}	
 	
 }
