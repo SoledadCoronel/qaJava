@@ -85,7 +85,9 @@ public class AdminWorkspace extends PageBase {
 		return isWorkspaceInList;
 	}
 	
-	
+	/**
+	 * Espera que el alerta "Se cambió el orden de los espacios" este presente
+	 */
 	public void waitForSaveAlertPresent() {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//section[@class='spaces-administrator']/p/div")));
