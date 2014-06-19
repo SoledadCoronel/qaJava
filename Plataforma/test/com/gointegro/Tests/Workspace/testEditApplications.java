@@ -176,6 +176,61 @@ public class testEditApplications extends TestBase {
 		assertEquals(appTitle2, workList.getFirstAppName(title));
 	}
 	
+	
+	@Test
+	public void test_edit_application_change_to_deactivated_access_url() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
+		
+		AplicationAdd appAdd = workList.selectAddAplicactions(title);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AplicationInstall appInstall = appAdd.selectInstallGalery();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.completeInstallApp(appTitle, "", true, true, true);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		String appURL = driver.getCurrentUrl();
+		
+		workList.selectEditWorkspace(title);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		workspace.selectDisabled();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		loginBasicUser(driver);
+		
+		driver.get(appURL);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertNotEquals(appURL, driver.getCurrentUrl());
+	}
+	
 
 	@After
 	public void tearDown() {

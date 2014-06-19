@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Pages.Platform.AplicationAdd;
 import com.gointegro.Util.WaitTool;
@@ -73,6 +74,8 @@ public class WorkspaceCreate extends PageBase {
 	@FindBy(xpath = "//label[@for='workspace-autojoin']")
 	WebElement joinAllCheckBox;
 	
+	String createURL = ConfigElements.getURL() + "/environment/inicio/workspaces/create";
+	
 	/**
 	 * Constructor
 	 * 
@@ -80,6 +83,11 @@ public class WorkspaceCreate extends PageBase {
 	 */
 	public WorkspaceCreate(WebDriver driver) {
 		super(driver);
+		URL = createURL;
+	}
+	
+	public String getURL() {
+		return createURL;
 	}
 	
 	/**
@@ -158,6 +166,24 @@ public class WorkspaceCreate extends PageBase {
 	 */
 	public void selectCancelBtn() {
 		cancel.click();
+	}
+
+	/**
+	 * Devuelve el texto de la url
+	 * 
+	 * @return String 
+	 */
+	public String getExternalURL() {
+		return externalUrlInput.getAttribute("value");
+	}
+	
+	/**
+	 * Devuelve si el checkbox "Agregar automáticamente a todos" esta seleccionado
+	 * 
+	 * @return Boolean
+	 */
+	public Boolean isJoinAllSelected() {
+		return joinAllCheckBox.isSelected();
 	}
 	
 	/**

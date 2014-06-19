@@ -9,8 +9,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Pages.Platform.AplicationAdd;
+import com.gointegro.Pages.Platform.AplicationInstall;
 import com.gointegro.Pages.Platform.Home;
 import com.gointegro.Pages.Platform.Logout;
+import com.gointegro.Pages.Platform.Profile;
+import com.gointegro.Pages.Profile.WorkspacesTab;
 import com.gointegro.Pages.Workspace.AddColaboratorsOverlay;
 import com.gointegro.Pages.Workspace.JoinWorkSpace;
 import com.gointegro.Pages.Workspace.WorkspaceCreate;
@@ -310,7 +314,7 @@ public class testNewWorkspace extends TestBase {
 
 	
 	@Test
-	public void test_create_workspace_public_dont_add_all() {
+	public void test_create_workspace_join_basic_user() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
 		
@@ -353,6 +357,11 @@ public class testNewWorkspace extends TestBase {
 		
 		assertTrue(joinWorkspace.isWorkspaceInList(title));
 		assertFalse(workList.isWorkspaceInList(title));
+		
+		joinWorkspace.selectJoin(title);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(workList.isWorkspaceInList(title));
 	}
 
 	
@@ -443,6 +452,131 @@ public class testNewWorkspace extends TestBase {
 		}
 		
 		assertTrue(driver.getCurrentUrl().indexOf(url) != -1);
+	}
+	
+	
+	@Test
+	public void test_create_workspace_with_basic_user() {
+		loginBasicUser(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = PageFactory.initElements(driver, WorkspaceCreate.class);
+		workspace.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertNotEquals(workspace.getURL(), driver.getCurrentUrl());
+	}
+	
+	
+	@Test
+	public void test_create_leave_workspace_from_profile() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String basicUser = ConfigElements.getNameOtherUser();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, true, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AddColaboratorsOverlay addColab = workspace.selectAddColabs();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		addColab.createFilterWithName("Juan Jose");
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		addColab.selectColabInList(basicUser);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		addColab.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		loginBasicUser(driver);
+		
+		Profile profile = PageFactory.initElements(driver, Profile.class);
+		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspacesTab workTab = profile.selectWorkspaces();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		workTab.selectUnjoin(title);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
+		
+		assertFalse(workList.isWorkspaceInList(title));
+	}
+	
+	
+	@Test
+	public void test_go_to_workspace_from_profile() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AplicationAdd appAdd = PageFactory.initElements(driver, AplicationAdd.class);
+		
+		AplicationInstall appInstall = appAdd.selectInstallGalery();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.completeInstallApp(appTitle, "", true, true, true);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		String appUrl = driver.getCurrentUrl();
+		
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		loginBasicUser(driver);
+		
+		Profile profile = PageFactory.initElements(driver, Profile.class);
+		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspacesTab workTab = profile.selectWorkspaces();
+		WaitTool.waitForJQueryProcessing(driver, 30);
+		
+		workTab.selectGoToWorkspace(title);
+		WaitTool.waitForJQueryProcessing(driver, 30);
+		
+		assertEquals(appUrl, driver.getCurrentUrl());
 	}
 	
 

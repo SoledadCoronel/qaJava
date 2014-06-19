@@ -13,14 +13,15 @@ import com.gointegro.Pages.Base.PageBase;
  * PO. Listado de espacios publicos para unirse
  * 
  * @author diogodarosa
- *
  */
 public class JoinWorkSpace extends PageBase {
 	
-	@FindBy(className = "spaces-list")
+	@FindBy(xpath = "//ul[@class='spaces-list']/li")
 	List<WebElement> joinList;
 	
+	String join = "./button";
 	
+	String title = "./header/h4";
 	
 	/**
 	 * Constructor
@@ -46,5 +47,16 @@ public class JoinWorkSpace extends PageBase {
 		return isWorkspaceInList;
 	}
 	
-	
+	/**
+	 * Seleccionar el botón Unirme
+	 * 
+	 * @param name
+	 */
+	public void selectJoin(String name) {	
+		for(WebElement element : joinList) {
+			if(element.findElement(By.xpath(title)).getText().contains(name)) {
+				element.findElement(By.xpath(join)).click();
+			}
+		}
+	}
 }
