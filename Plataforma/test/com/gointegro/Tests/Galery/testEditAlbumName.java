@@ -110,7 +110,7 @@ private WebDriver driver;
 	@Test
 	public void test_edit_album_admin_max_char() {
 		String albumname = DataGenerator.nombreFile();
-		String albumnameedit = "";
+		String albumnameedit = StringUtils.getTextoLargo();
 		
 		login(driver);
 		
@@ -129,6 +129,14 @@ private WebDriver driver;
 		
 		assertEquals("El título supera el máximo de 80 caracteres", admin.getFieldErrorMsj());
 		assertEquals("Ocurrió un error al editar el álbum", admin.getErrorMsj());
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	@Test
@@ -209,16 +217,12 @@ private WebDriver driver;
 		admin.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		assertTrue(admin.isAlbumInList(albumnameedit));
-		assertFalse(admin.isAlbumInList(albumname));
 		
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertTrue(home.getAlbumNameMainContainer(albumnameedit));
 		assertTrue(home.getAlbumNameSideBar(albumnameedit));
-		
-		assertFalse(home.getAlbumNameMainContainer(albumname));
-		assertFalse(home.getAlbumNameSideBar(albumname));
 	}
 	
 	@Test
@@ -322,7 +326,7 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_edit_album_detail_existe() {
+	public void test_edit_album_detail_exist() {
 		String albumname = DataGenerator.nombreFile();
 		String albumname2 = DataGenerator.nombreFile();
 		
@@ -344,16 +348,24 @@ private WebDriver driver;
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		AlbumDetail detail = home.selectAlbumSideBar(albumname2);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		EditAlbum edit = detail.selectEditAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		edit.editAlbum(albumname2, true);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		edit.editAlbum(albumname, true);
+		WaitTool.waitForJQueryProcessing(driver, 15);
 		
 		assertEquals("El nombre del album ya existe", edit.getUploadErrorMsj());
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	@Test
@@ -365,7 +377,7 @@ private WebDriver driver;
 		
 		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
 		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 15);
 		
 		createAlbum(albumname, home);
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -380,6 +392,14 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals("El título supera el máximo de 80 caracteres", edit.getErrorMsjAlbum());
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	@Test
@@ -405,15 +425,14 @@ private WebDriver driver;
 		detail = edit.editAlbum(albumnameedit, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		driver.switchTo().alert().accept();
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 		
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		assertTrue(home.getAlbumNameMainContainer(albumnameedit));
-		assertTrue(home.getAlbumNameSideBar(albumnameedit));
-		
-		assertFalse(home.getAlbumNameMainContainer(albumname));
-		assertFalse(home.getAlbumNameSideBar(albumname));
+		assertTrue(home.getAlbumNameMainContainer(albumname));
+		assertTrue(home.getAlbumNameSideBar(albumname));
 	}
 	
 	@Test
@@ -427,7 +446,7 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		createAlbum(albumname, home);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		AlbumDetail detail = home.selectAlbumSideBar(albumname);
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -463,5 +482,15 @@ private WebDriver driver;
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
 	}
+	
+	public boolean isAlertPresent(){
+        try{
+            driver.switchTo().alert();
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
 
 }
