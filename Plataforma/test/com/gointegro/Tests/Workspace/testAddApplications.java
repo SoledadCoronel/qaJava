@@ -403,6 +403,50 @@ public class testAddApplications extends TestBase {
 		assertTrue(driver.getCurrentUrl().contains("celebrations"));
 	}
 	
+	
+	@Test
+	public void test_add_application_private_access_url() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, true, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		AplicationAdd appAdd = PageFactory.initElements(driver, AplicationAdd.class);
+		
+		AplicationInstall appInstall = appAdd.selectInstallNews();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.completeInstallApp(appTitle, "", true, true, true);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		String appURL = driver.getCurrentUrl();
+		
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		loginBasicUser(driver);
+		
+		driver.get(appURL);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertNotEquals(appURL, driver.getCurrentUrl());
+	}
+	
 	private void createApp(WorkspaceList workList, String title, String appTitle) {
 		AplicationAdd appAdd = workList.selectAddAplicactions(title);
 		WaitTool.waitForJQueryProcessing(driver, 20);

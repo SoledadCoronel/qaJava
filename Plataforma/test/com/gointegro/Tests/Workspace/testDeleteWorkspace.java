@@ -165,7 +165,8 @@ public class testDeleteWorkspace extends TestBase {
 		assertFalse(admin.isWorkspaceInList(title));
 		assertFalse(workList.isWorkspaceInList(title));
 	}
-
+	
+	
 	@After
 	public void tearDown() {
 		Logout logout = PageFactory.initElements(driver, Logout.class);

@@ -12,6 +12,7 @@ import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Platform.Home;
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Pages.Workspace.AddColaboratorsOverlay;
+import com.gointegro.Pages.Workspace.AdminWorkspace;
 import com.gointegro.Pages.Workspace.WorkspaceCreate;
 import com.gointegro.Pages.Workspace.WorkspaceList;
 import com.gointegro.Tests.Base.TestBase;
@@ -434,6 +435,89 @@ public class testEditWorkspace extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertFalse(workList.hasUrl(title));
+	}
+	
+	
+	@Test
+	public void test_edit_change_order() {
+		String title = DataGenerator.nombreFile();
+		String title2 = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title2, description, true, false, "");
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AdminWorkspace admin = home.selectAdminWorkspace();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
+		
+		int index = workList.getWorkspaceIndex(title2);
+		
+		admin.changeWorkspaceOrder(title, title2);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		admin.waitForSaveAlertPresent();
+		
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 30);
+		
+		assertTrue(index > workList.getWorkspaceIndex(title2));
+	}
+	
+	
+	@Test
+	public void test_edit_application_check_options_are_saved() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String url = "https://www.google.com";
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		workspace.createWorkspace(title, description, false, false, url);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectJoinAll();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 30);
+		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
+		workList.selectEditWorkspace(title);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals(url, workspace.getExternalURL());
+		assertFalse(workspace.isJoinAllSelected());
 	}
 
 	

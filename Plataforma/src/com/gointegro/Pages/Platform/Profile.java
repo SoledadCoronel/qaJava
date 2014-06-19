@@ -4,10 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Pages.Profile.WorkspacesTab;
 import com.gointegro.Util.WaitTool;
 
 /**
@@ -38,6 +39,9 @@ public class Profile extends PageBase{
 	
 	@FindBy (id = "user-name")
 	private WebElement username;
+	
+	@FindBy (xpath = "//ul/li[@class='workspaces']/a")
+	private WebElement workspaces;
 
 	/** 
 	 * Constructor
@@ -147,4 +151,11 @@ public class Profile extends PageBase{
 		return username.getText();
 	}
 
+	/**
+	 * Seleccionar la pestaña Espacios
+	 */
+	public WorkspacesTab selectWorkspaces() {
+		workspaces.click();
+		return PageFactory.initElements(driver, WorkspacesTab.class);
+	}
 }
