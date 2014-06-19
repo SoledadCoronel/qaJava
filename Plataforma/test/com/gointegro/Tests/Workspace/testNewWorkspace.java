@@ -1,4 +1,4 @@
-package com.gointegro.Tests.Platform;
+package com.gointegro.Tests.Workspace;
 
 import static org.junit.Assert.*;
 
@@ -12,6 +12,7 @@ import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Platform.Home;
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Pages.Workspace.AddColaboratorsOverlay;
+import com.gointegro.Pages.Workspace.JoinWorkSpace;
 import com.gointegro.Pages.Workspace.WorkspaceCreate;
 import com.gointegro.Pages.Workspace.WorkspaceList;
 import com.gointegro.Tests.Base.TestBase;
@@ -19,18 +20,20 @@ import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
-public class testEditWorkspace extends TestBase {
+
+
+public class testNewWorkspace extends TestBase {
 	
 	private WebDriver driver;
 	
 	@Before
 	public void setUp() {
-		driver = AllTests.getDriver();
+		driver = AllTestsWorkspace.getDriver();
 	}
 
 	
 	@Test
-	public void test_edit_workspace_change_to_deactivated() {
+	public void test_create_workspace_deactivated() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
 		
@@ -38,24 +41,22 @@ public class testEditWorkspace extends TestBase {
 		
 		Home home = PageFactory.initElements(driver, Home.class);
 		home.openWorkspaceEnv();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		WorkspaceCreate workspace = home.workspaceCreate();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.createWorkspace(title, description, true, false, "");
+		workspace.selectDisabled();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
-		
-		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
-		workList.selectEditWorkspace(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		workspace.createWorkspace(title, description, false, false, "");
-		
-		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
@@ -64,14 +65,15 @@ public class testEditWorkspace extends TestBase {
 		loginBasicUser(driver);
 		
 		home.openWorkspaceEnv();
-		WaitTool.waitForJQueryProcessing(driver, 40);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
 		assertFalse(workList.isWorkspaceInList(title));
 	}
 
 	
 	@Test
-	public void test_edit_workspace_change_to_activated() {
+	public void test_create_workspace_activated() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
 		
@@ -79,24 +81,23 @@ public class testEditWorkspace extends TestBase {
 		
 		Home home = PageFactory.initElements(driver, Home.class);
 		home.openWorkspaceEnv();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		WorkspaceCreate workspace = home.workspaceCreate();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.createWorkspace(title, description, false, false, "");
+		workspace.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
-		
-		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
-		workList.selectEditWorkspace(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		workspace.createWorkspace(title, description, true, false, "");
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
 		
-		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
+		assertTrue(workList.isWorkspaceInList(title));
 		
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
@@ -112,44 +113,37 @@ public class testEditWorkspace extends TestBase {
 
 	
 	@Test
-	public void test_edit_workspace_title_empty() {
-		String title = DataGenerator.nombreFile();
-		String title2 = "";
+	public void test_create_workspace_title_empty() {
+		String title = "";
 		String description = StringUtils.getTextoLargo();
 		
 		login(driver);
 		
 		Home home = PageFactory.initElements(driver, Home.class);
 		home.openWorkspaceEnv();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		WorkspaceCreate workspace = home.workspaceCreate();
 		WaitTool.waitForJQueryProcessing(driver, 5);
+
+		workspace.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.createWorkspace(title, description, true, false, "");
+		workspace.createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
-		
-		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
-		workList.selectEditWorkspace(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		workspace.createWorkspace(title2, description, true, false, "");
-		
-		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		assertEquals("Existen errores en el formulario", workspace.getSaveErrorMsg());
 		assertEquals("Campo obligatorio", workspace.getTitleErrorMsg());
 	}
-
+	
 	
 	@Test
-	public void test_edit_workspace_description_empty() {
+	public void test_create_workspace_title_exist() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
-		String description2 = "";
 		
 		login(driver);
 		
@@ -159,20 +153,51 @@ public class testEditWorkspace extends TestBase {
 		
 		WorkspaceCreate workspace = home.workspaceCreate();
 		WaitTool.waitForJQueryProcessing(driver, 5);
-		
+
 		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
-		
-		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
-		workList.selectEditWorkspace(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		workspace.createWorkspace(title, description2, true, false, "");
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("El nombre del espacio ya existe para este ambiente", workspace.getSaveErrorMsg());
+	}
+	
+	
+	@Test
+	public void test_create_workspace_description_empty() {
+		String title = DataGenerator.nombreFile();
+		String description = "";
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Existen errores en el formulario", workspace.getSaveErrorMsg());
 		assertEquals("Campo obligatorio", workspace.getDescriptionErrorMsg());
@@ -180,47 +205,89 @@ public class testEditWorkspace extends TestBase {
 
 	
 	@Test
-	public void test_edit_workspace_change_to_private() {
+	public void test_create_workspace_private_without_basic_user() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
-		String user = ConfigElements.getNombreUsuario();
-		String nameSplit[] = ConfigElements.getNombreUsuario().split("\\s");
-		String surname = nameSplit[1];
 		
 		login(driver);
 		
 		Home home = PageFactory.initElements(driver, Home.class);
 		home.openWorkspaceEnv();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		WorkspaceCreate workspace = home.workspaceCreate();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.createWorkspace(title, description, true, false, "");
+		workspace.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectPrivate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
-		
-		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
-		workList.selectEditWorkspace(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		workspace.createWorkspace(title, description, true, true, "");
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		loginBasicUser(driver);
+		
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		JoinWorkSpace joinWorkspace = home.selectJoinWorkspace();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertFalse(joinWorkspace.isWorkspaceInList(title));
+		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
+		
+		assertFalse(workList.isWorkspaceInList(title));
+	}
+	
+	
+	@Test
+	public void test_create_workspace_private_with_basic_user() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String basicUser = ConfigElements.getNameOtherUser();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectPrivate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		AddColaboratorsOverlay addColab = workspace.selectAddColabs();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		addColab.createFilterWithName(surname);
+		addColab.createFilterWithName("Juan Jose");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		addColab.selectColabInList(user);
+		addColab.selectColabInList(basicUser);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		addColab.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
@@ -231,97 +298,46 @@ public class testEditWorkspace extends TestBase {
 		home.openWorkspaceEnv();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertFalse(workList.isWorkspaceInList(title));
-	}
-
-	
-	@Test
-	public void test_edit_workspace_change_to_public() {
-		String title = DataGenerator.nombreFile();
-		String description = StringUtils.getTextoLargo();
-		
-		login(driver);
-		
-		Home home = PageFactory.initElements(driver, Home.class);
-		home.openWorkspaceEnv();
+		JoinWorkSpace joinWorkspace = home.selectJoinWorkspace();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		WorkspaceCreate workspace = home.workspaceCreate();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		workspace.createWorkspace(title, description, true, true, "");
-		
-		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
+		assertFalse(joinWorkspace.isWorkspaceInList(title));
 		
 		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
-		workList.selectEditWorkspace(title);
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		workspace.createWorkspace(title, description, true, false, "");
-		
-		workspace.selectJoinAll();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
-		
-		Logout logout = PageFactory.initElements(driver, Logout.class);
-		logout.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		loginBasicUser(driver);
-		
-		home.openWorkspaceEnv();
-		WaitTool.waitForJQueryProcessing(driver, 40);
 		
 		assertTrue(workList.isWorkspaceInList(title));
 	}
 
 	
 	@Test
-	public void test_edit_workspace_public_remove_add_all() {
+	public void test_create_workspace_public_dont_add_all() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
-		String user = ConfigElements.getNombreUsuario();
-		String nameSplit[] = ConfigElements.getNombreUsuario().split("\\s");
-		String surname = nameSplit[1];
 		
 		login(driver);
 		
 		Home home = PageFactory.initElements(driver, Home.class);
 		home.openWorkspaceEnv();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		WorkspaceCreate workspace = home.workspaceCreate();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.createWorkspace(title, description, true, false, "");
+		workspace.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
-		
-		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
-		workList.selectEditWorkspace(title);
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		workspace.createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectJoinAll();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		AddColaboratorsOverlay addColab = workspace.selectAddColabs();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		addColab.createFilterWithName(surname);
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		addColab.selectColabInList(user);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		addColab.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
+		
+		assertTrue(workList.isWorkspaceInList(title));
 		
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
@@ -332,12 +348,16 @@ public class testEditWorkspace extends TestBase {
 		home.openWorkspaceEnv();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
+		JoinWorkSpace joinWorkspace = home.selectJoinWorkspace();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(joinWorkspace.isWorkspaceInList(title));
 		assertFalse(workList.isWorkspaceInList(title));
 	}
 
 	
 	@Test
-	public void test_edit_workspace_remove_mark_as_new() {
+	public void test_create_workspace_mark_as_new() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
 		String date = DataGenerator.fechaactual();
@@ -351,7 +371,11 @@ public class testEditWorkspace extends TestBase {
 		WorkspaceCreate workspace = home.workspaceCreate();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.createWorkspace(title, description, true, false, "");
+		workspace.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectMarkAsNew();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -360,39 +384,21 @@ public class testEditWorkspace extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
 		
-		assertTrue(workList.isNewLabelPresent(title));
-		
-		workList.selectEditWorkspace(title);
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		workspace.selectMarkAsNew();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
-		
-		Logout logout = PageFactory.initElements(driver, Logout.class);
-		logout.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		loginBasicUser(driver);
-		
-		home.openWorkspaceEnv();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		assertFalse(workList.isNewLabelPresent(title));
+		assertTrue(workList.isNewLabelPresent(title));
 	}
 
 	
 	@Test
-	public void test_edit_workspace_remove_url() {
+	public void test_create_workspace_with_url() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
-		String url = "https://www.google.com";
+		String url = "https://www.google.com.ar";
 		
 		login(driver);
 		
@@ -403,44 +409,47 @@ public class testEditWorkspace extends TestBase {
 		WorkspaceCreate workspace = home.workspaceCreate();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.createWorkspace(title, description, true, false, url);
+		workspace.createTitle(title);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createDescription(description);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectExternalUrlBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createExternalUrl(url);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		home.openWorkspaceEnv();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
 		
-		assertTrue(workList.hasUrl(title));
-		
-		workList.selectEditWorkspace(title);
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		workspace.selectCloseUrl();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		workspace.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 20);
+		workList.selectWorkspace(title);
+		WaitTool.waitForJQueryProcessing(driver, 30);
 		
-		Logout logout = PageFactory.initElements(driver, Logout.class);
-		logout.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		String parentHandle = driver.getWindowHandle();
 		
-		loginBasicUser(driver);
+		for(String winHandle : driver.getWindowHandles()) {
+			if(winHandle != parentHandle) {
+				driver.switchTo().window(winHandle);
+			}
+		}
 		
-		home.openWorkspaceEnv();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		assertFalse(workList.hasUrl(title));
+		assertTrue(driver.getCurrentUrl().indexOf(url) != -1);
 	}
-
 	
+
 	@After
 	public void tearDown() {
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
 	}
-
+	
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Pages.Platform.AplicationAdd;
@@ -170,8 +171,12 @@ public class WorkspaceCreate extends PageBase {
 	/**
 	 * Seleccionar el botón Aplicaciones visibles
 	 */
-	public void selectVisibleAppsNum() {
-		visibleApps.click();
+	public void selectVisibleAppsNum(int num) {
+		if(num > 10) {
+			num = 10;
+		}
+		String numb = Integer.toString(num);
+		new Select(visibleApps).selectByVisibleText(numb);
 	}
 	
 	/**
@@ -271,6 +276,4 @@ public class WorkspaceCreate extends PageBase {
 	public void selectJoinAll() {
 		joinAllCheckBox.click();
 	}
-	
-
 }
