@@ -105,6 +105,11 @@ private WebDriver driver;
 		admincategory.createCategory(categoryname,false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
+		home.open();
+		
+		admincategory = home.selectAdminCategory();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		assertTrue(admincategory.isCategoryInList(categoryname));
 		
 		home.open();
@@ -301,6 +306,11 @@ private WebDriver driver;
 		
 		admincategory.createCategory(categoryname,true);
 		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		
+		admincategory = home.selectAdminCategory();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertTrue(admincategory.isCategoryInList(categoryname));
 		assertTrue(admincategory.getCategoryAutomationText(categoryname).contains("Fecha de nacimiento"));

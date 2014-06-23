@@ -200,7 +200,7 @@ public class AdminAlbum extends PageBase{
 	 */
 	public String getAlbumName(String name) {
 		selectAlbumEdit(name);
-		return albumname.getText();
+		return albumname.getAttribute("value");
 	}
 	
 	/**

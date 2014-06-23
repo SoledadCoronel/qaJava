@@ -50,6 +50,11 @@ private WebDriver driver;
 		admincategory.editCategory(categorynameedited, false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
+		home.open();
+		
+		admincategory = home.selectAdminCategory();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		assertTrue(admincategory.isCategoryInList(categorynameedited));
 		assertFalse(admincategory.isCategoryInList(categoryname));
 	}
@@ -176,6 +181,11 @@ private WebDriver driver;
 		admincategory.selectCategoryEdit(categoryname);
 		
 		admincategory.editCategory(categorynameedited, true);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		
+		admincategory = home.selectAdminCategory();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertTrue(admincategory.isCategoryInList(categorynameedited));
@@ -209,6 +219,8 @@ private WebDriver driver;
 		
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
+		home.selectNewEvent();
+		
 		home = newevent.completeCelebration(categoryname, date, celebrationtitle, descriptiontext, collaborator);
 		
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -235,7 +247,12 @@ private WebDriver driver;
 		admincategory.selectCategoryEdit(categoryname);
 		
 		admincategory.editCategory(newcategoryname, false);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		
+		admincategory = home.selectAdminCategory();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertTrue(admincategory.isCategoryInList(newcategoryname));
 		assertFalse(admincategory.isCategoryInList(categoryname));

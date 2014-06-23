@@ -39,7 +39,7 @@ public class AllTestsCelebration {
 	
 	@AfterClass
 	 public static void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 
 }
