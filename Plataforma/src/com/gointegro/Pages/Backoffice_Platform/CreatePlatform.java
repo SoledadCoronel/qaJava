@@ -1,5 +1,7 @@
 package com.gointegro.Pages.Backoffice_Platform;
 
+import java.util.List;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +13,7 @@ import com.gointegro.Pages.Base.PageBase;
 
 public class CreatePlatform extends PageBase{
 	
-	@FindBy (name = "name")
+	@FindBy (id = "c1_name")
 	protected WebElement name;
 	
 	@FindBy (name = "imageSize")
@@ -59,7 +61,7 @@ public class CreatePlatform extends PageBase{
 	@FindBy (id = "cancel")
 	protected WebElement cancelBtn;
 	
-	@FindBy (xpath = "//div[contains(text(),'Cuenta')]/div/span/span")
+	@FindBy (xpath = "//div[contains(@class,'field-account')]/div/span/span")
 	protected WebElement accountname;
 	
 	@FindBy (id = "c1_termsAndConditions_ifr")
@@ -67,6 +69,49 @@ public class CreatePlatform extends PageBase{
 	
 	@FindBy (id = "c1_htmlLogin_ifr")
 	protected WebElement htmlLogin;
+	
+	@FindBy (name = "file-logoBenefitsUrl")
+	protected WebElement filelogoBenefitsUrl;
+	
+	@FindBy (name = "usesBenefitsCard")
+	protected WebElement usesBenefitsCard;
+	
+	@FindBy (name = "targetUserType")
+	protected WebElement targetUserType;
+	
+	@FindBy (name = "countries")
+	protected List<WebElement> countries;
+	
+	@FindBy (name = "error-message")
+	protected WebElement errormessage;
+	
+	/**
+	 * Mensajes de error de cada campo
+	 */
+	
+	@FindBy (xpath = "//div[contains(@class,'field-name')]/div/div")
+	protected WebElement errorname;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-imageSize')]/div/div")
+	protected WebElement errorImgSize;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-videoSize')]/div/div")
+	protected WebElement errorVideoSize;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-storage')]/div/div")
+	protected WebElement errorStorage;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-webSite')]/div/div")
+	protected WebElement errorWebSite;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-industry')]/div/div")
+	protected WebElement errorIndustry;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-usersRange')]/div/div")
+	protected WebElement errorUsersRange;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-termsAndConditions')]/div/div")
+	protected WebElement errorTermsAndConditions;
 
 	/**
 	 * Constructor
@@ -236,6 +281,49 @@ public class CreatePlatform extends PageBase{
 	}
 	
 	/**
+	 * Seleccionar habilitar beneficios
+	 * 
+	 * @param statusbenefitsEnabled
+	 */
+	protected void setBenefitsEnabled(boolean statusbenefitsEnabled) {
+		if (statusbenefitsEnabled && !benefitsEnabled.isSelected())
+			benefitsEnabled.click();
+		else if (!statusbenefitsEnabled && benefitsEnabled.isSelected())
+			benefitsEnabled.click();
+	}
+	
+	/**
+	 * Completar Logo Benefits
+	 * 
+	 * @param filelogoBenefits
+	 */
+	protected void setFileLogoBenefitsUrl(String filelogoBenefits) {
+		filelogoBenefitsUrl.sendKeys(filelogoBenefits);
+	}
+	
+	/**
+	 * Seleccionar Mostrar beneficios con tarjeta
+	 * 
+	 * @param statusUsesBenefitsCard
+	 */
+	protected void setUsesBenefitsCard(boolean statusUsesBenefitsCard) {
+		if (statusUsesBenefitsCard && !usesBenefitsCard.isSelected())
+			usesBenefitsCard.click();
+		else if (!statusUsesBenefitsCard && usesBenefitsCard.isSelected())
+			usesBenefitsCard.click();
+	}
+	
+	/**
+	 * Seleccionar el tipo de usuario
+	 * 
+	 * @param userType
+	 */
+	protected void setTargetUserType(String userType) {
+		Select select = new Select(targetUserType);
+		select.selectByVisibleText(userType);
+	}
+	
+	/**
 	 * Guardar los cambios
 	 */
 	public void selectSave() {
@@ -287,12 +375,108 @@ public class CreatePlatform extends PageBase{
 	}
 	
 	/**
+	 * Completar la seccion de beneficios
+	 * 
+	 * @param statusbenefitsEnabled
+	 * @param filelogoBenefits
+	 * @param statusUsesBenefitsCard
+	 * @param userType
+	 */
+	public void completeBenefist(boolean statusbenefitsEnabled, String filelogoBenefits, boolean statusUsesBenefitsCard, String userType) {
+		if (statusbenefitsEnabled) {
+			setBenefitsEnabled(statusbenefitsEnabled);
+			setFileLogoBenefitsUrl(filelogoBenefits);
+			setUsesBenefitsCard(statusUsesBenefitsCard);
+			setTargetUserType(userType);
+		}
+	}
+	
+	/**
 	 * Obtener la cuenta
 	 * 
 	 * @return String
 	 */
 	public String getPlatformAccount() {
 		return accountname.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error de arriba de todo
+	 * 
+	 * @return String
+	 */
+	public String getErrorMessage() {
+		return errormessage.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo name
+	 * 
+	 * @return String
+	 */
+	public String getErrorName() {
+		return errorname.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo img size
+	 * 
+	 * @return String
+	 */
+	public String getErrorImgSize() {
+		return errorImgSize.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo video size
+	 * 
+	 * @return String
+	 */
+	public String getErrorVideoSize() {
+		return errorVideoSize.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo storage
+	 * @return
+	 */
+	public String getErrorStorage() {
+		return errorStorage.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo web site
+	 * 
+	 * @return String
+	 */
+	public String getErrorWebSite() {
+		return errorWebSite.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo industry
+	 * 
+	 * @return String
+	 */
+	public String getErrorIndustry() {
+		return errorIndustry.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo users range
+	 * 
+	 * @return String
+	 */
+	public String getErrorUsersRange() {
+		return errorUsersRange.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo TermsAndConditions
+	 * @return
+	 */
+	public String getErrorTermsAndConditions() {
+		return errorTermsAndConditions.getText();
 	}
 
 }
