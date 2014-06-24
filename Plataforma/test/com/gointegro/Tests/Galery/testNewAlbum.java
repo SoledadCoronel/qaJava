@@ -431,6 +431,9 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		home.open();
+		
+		driver.switchTo().alert().accept();
+		
 		assertTrue(home.getAlbumNameMainContainer(albumname));
 		assertTrue(home.getAlbumNameSideBar(albumname));
 	}
@@ -446,7 +449,7 @@ private WebDriver driver;
 		AdminAlbum admin = PageFactory.initElements(driver, AdminAlbum.class);
 		admin.open();
 		
-		assertEquals(ConfigElements.getURL(), driver.getCurrentUrl());
+		assertEquals(ConfigElements.getURL()+"/", driver.getCurrentUrl());
 	}
 	
 	@Test

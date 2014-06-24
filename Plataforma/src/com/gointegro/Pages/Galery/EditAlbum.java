@@ -52,8 +52,11 @@ public class EditAlbum extends UploadContent{
 		completeAlbumName(name);
 		if (savecancel)
 			savebtn.click();
-		else
+		else {
 			cancelbtn.click();
+			driver.switchTo().alert().accept();
+		}
+			
 		
 		return PageFactory.initElements(driver, AlbumDetail.class);
 	}
@@ -63,6 +66,13 @@ public class EditAlbum extends UploadContent{
 	 */
 	public void selectCover() {
 		selectsecondpiccover.click();
+	}
+	
+	/**
+	 * Guardar los cambios
+	 */
+	public void cancelChanges() {
+		cancelbtn.click();
 	}
 	
 

@@ -30,6 +30,7 @@ public class testDeleteApplications extends TestBase {
 		driver = AllTestsWorkspace.getDriver();
 	}
 	
+	
 	@Test
 	public void test_delete_application() {
 		String title = DataGenerator.nombreFile();
@@ -120,6 +121,55 @@ public class testDeleteApplications extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertTrue(workList.isApplicationInWorkspace(title, appTitle));
+	}
+	
+	@Test
+	public void test_delete_application_access_url() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
+		
+		AplicationAdd appAdd = workList.selectAddAplicactions(title);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AplicationInstall appInstall = appAdd.selectInstallGalery();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.completeInstallApp(appTitle, "", true, true, true);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		String appURL = driver.getCurrentUrl();
+		
+		ApplicationAdmin appAdmin = workList.selectAdminApps(title);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		DeleteOverlay delete = appAdmin.deleteApp(appTitle);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		delete.selectConfirmDeleteApps();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		driver.get(appURL);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		assertNotEquals(appURL, driver.getCurrentUrl());
 	}
 	
 	@After

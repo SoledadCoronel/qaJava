@@ -10,8 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testNewWorkspace.class,
+	testDeleteAll.class,
 	testEditWorkspace.class,
+	testNewWorkspace.class,
 	testDeleteWorkspace.class,
 	testAddApplications.class,
 	testEditApplications.class,

@@ -1,4 +1,4 @@
-package com.gointegro.Tests.Celebration;
+package com.gointegro.Tests.Profile;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,19 +10,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testNewCategory.class,
-	testEditCategory.class,
-	testDeleteCategory.class,
-	testNewCelebration.class,
-	testEditCelebration.class,
-	testDeleteCelebration.class,
-	testViewEventsSince.class, //Fallan un par de tests por https://gointegro.atlassian.net/browse/PLATAFORMAII-3050
-	testCategoryAutomatic.class,
-	testOrderCategory.class
+	testNewFile.class,
+	testDeleteFile.class,
 })
-public class AllTestsCelebration {
-	
-	private static WebDriver driver;
+
+public class AllTestsProfile {
+
+private static WebDriver driver;
 	
 	@BeforeClass
 	public static void setUp(){
@@ -34,12 +28,11 @@ public class AllTestsCelebration {
 	}
 	
 	public static void setDriver(WebDriver driver) {
-		AllTestsCelebration.driver = driver;
+		AllTestsProfile.driver = driver;
 	}
 	
 	@AfterClass
 	 public static void tearDown() {
 		driver.quit();
 	}
-
 }
