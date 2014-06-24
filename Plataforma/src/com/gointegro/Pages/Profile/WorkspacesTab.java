@@ -9,7 +9,12 @@ import org.openqa.selenium.support.FindBy;
 
 import com.gointegro.Pages.Base.PageBase;
 
-
+/**
+ * PO. Pestaña Espacios
+ * 
+ * @author diogodarosa
+ *
+ */
 public class WorkspacesTab extends PageBase {
 	
 	

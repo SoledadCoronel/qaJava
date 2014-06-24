@@ -48,7 +48,8 @@ public class Profile extends PageBase{
 	@FindBy (id = "notification-preference-modal-link")
 	private WebElement notificationpreferencemodal;
 
-	String profileURL = ConfigElements.getURL()+"/profile";
+	String profileURL = ConfigElements.getURL() + "/profile";
+			
 	/** 
 	 * Constructor
 	 * 
@@ -58,10 +59,14 @@ public class Profile extends PageBase{
 		super(driver);
 		URL = profileURL;
 	}
-	
-	public String getURL() {
+
+	/**
+	 * Devuelve la URL del Perfil
+	 */
+	public String getProfileURL() {
 		return profileURL;
 	}
+	
 	/**
 	 * Obtener el listado de followers
 	 * 

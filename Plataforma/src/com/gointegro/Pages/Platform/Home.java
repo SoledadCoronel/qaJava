@@ -32,6 +32,12 @@ public class Home extends PageBase{
 	@FindBy(xpath = "//div[@class='user-info']/div/a")
 	private WebElement joinWorkspaceBtn;
 	
+	@FindBy(xpath = "//li[@class='profile-pic']/a")
+	private WebElement dropDownProfile;
+	
+	@FindBy(xpath = "//li[@class='profile-pic open']/ul/li[1]/a")
+	private WebElement myProfileBtn;
+	
 	private String workspaceURL = ConfigElements.getURL() + "/environment/" + ConfigElementsWorkspace.getEnvironmentName();
 
 	/**
@@ -41,6 +47,7 @@ public class Home extends PageBase{
 	 */
 	public Home(WebDriver driver) {
 		super(driver);
+		URL = ConfigElements.getURL();
 		
 	}
 	
@@ -81,5 +88,28 @@ public class Home extends PageBase{
 	public JoinWorkSpace selectJoinWorkspace() {
 		joinWorkspaceBtn.click();
 		return PageFactory.initElements(driver, JoinWorkSpace.class);
+	}
+	
+	/**
+	 * Seleccionar el drop down del perfil
+	 */
+	private void selectProfileDropDown() {
+		dropDownProfile.click();
+	}
+	
+	/**
+	 * Seleccionar el drop down del perfil
+	 */
+	private void selectMyProfileBtn() {
+		myProfileBtn.click();
+	}
+	
+	/**
+	 * Seleccionar el drop down del perfil y el botón Mi Perfil
+	 */
+	public Profile selectMyProfile() {
+		selectProfileDropDown();
+		selectMyProfileBtn();
+		return PageFactory.initElements(driver, Profile.class);
 	}
 }
