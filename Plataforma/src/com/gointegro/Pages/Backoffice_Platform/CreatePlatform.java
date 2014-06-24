@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import com.gointegro.Helpers.ConfigElementsBO;
@@ -82,7 +83,7 @@ public class CreatePlatform extends PageBase{
 	@FindBy (name = "countries")
 	protected List<WebElement> countries;
 	
-	@FindBy (name = "error-message")
+	@FindBy (xpath = "//div[contains(@class,'error-message-container')]/span")
 	protected WebElement errormessage;
 	
 	/**
@@ -326,8 +327,10 @@ public class CreatePlatform extends PageBase{
 	/**
 	 * Guardar los cambios
 	 */
-	public void selectSave() {
+	public PlatformDetail selectSave() {
 		saveBtn.click();
+		
+		return PageFactory.initElements(driver, PlatformDetail.class);
 	}
 	
 	/**

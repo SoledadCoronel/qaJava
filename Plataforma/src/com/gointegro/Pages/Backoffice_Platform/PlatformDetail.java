@@ -49,7 +49,7 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='content']/div[14]/div/span")
 	private WebElement socialEnabled;
 	
-	@FindBy(xpath = "//div[@id='content']/div[15]/div")
+	@FindBy(xpath = "//div[@id='content']/div[15]/div[2]")
 	private WebElement googleanalytics;
 	
 	@FindBy(xpath = "//div[@id='content']/div[16]/div/span")
@@ -100,7 +100,38 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='content']/div[32]/div/span")
 	private WebElement showusersmail;
 	
-	//TODO
+	@FindBy(xpath = "//div[@id='principal-logo']/div[2]/img")
+	private WebElement principallogo;
+	
+	@FindBy(xpath = "//div[@id='secondary-logo']/div[2]/img")
+	private WebElement secondarylogo;
+	
+	@FindBy(xpath = "//div[@id='banner-login']/div[2]/img")
+	private WebElement bannerlogin;
+	
+	@FindBy(xpath = "//div[@id='content']/div[37]/div[2]")
+	private WebElement backgroundcolor;
+	
+	@FindBy(xpath = "//div[@id='content']/div[38]/div[2]")
+	private WebElement backgroundheaderfooter;
+	
+	@FindBy(xpath = "//div[@id='content']/div[39]/div[2]")
+	private WebElement textheaderfooter;
+	
+	@FindBy(xpath = "//div[@id='content']/div[40]/div[2]")
+	private WebElement textbtn;
+	
+	@FindBy(xpath = "//div[@id='content']/div[41]/div[2]")
+	private WebElement backgroundbtn;
+	
+	@FindBy(xpath = "//div[@id='content']/div[42]/div[2]")
+	private WebElement borderheaderfooter;
+	
+	@FindBy(xpath = "//div[@id='content']/div[43]/div[2]")
+	private WebElement coloricon;
+	
+	@FindBy (xpath = "//div[contains(@class,'signin-customisation-html-view')]/div[2]/p")
+	protected WebElement htmlsignin;
 
 	/**
 	 * Constructor
@@ -111,6 +142,115 @@ public class PlatformDetail extends PageBase{
 		super(driver);
 		URL = ConfigElementsBO.getUrlBackoffice()+"/account/"+ConfigElementsBO.getAccountId()+"/platform/"+ConfigElementsBO.getPlatformId()
 				+"/view";
+	}
+	
+	/**
+	 * Obtener el nombre de la plataforma
+	 * 
+	 * @return String
+	 */
+	public String getPlatformName() {
+		return platformname.getText();
+	}
+	
+	/**
+	 * Obtener el website de la plataforma
+	 * 
+	 * @return String
+	 */
+	public String getPlatformWebSite() {
+		return website.getText();
+	}
+	
+	/**
+	 * Obtener el estado de la plataforma
+	 * 
+	 * @return String
+	 */
+	public String getDisablePlatform() {
+		return disableplatform.getText();
+	}
+	
+	/**
+	 * Obtener la visibilidad entre usuarios
+	 * 
+	 * @return String
+	 */
+	public String getUserVisibility() {
+		return userVisibility.getText();
+	}
+	
+	/**
+	 * Obtener el codigo de google analytics
+	 * 
+	 * @return String
+	 */
+	public String getGoogleCode() {
+		return googleanalytics.getText();
+	}
+	
+	/**
+	 * Obtener el estado de social
+	 * 
+	 * @return String
+	 */
+	public String getSocialStatus() {
+		return socialEnabled.getText();
+	}
+	
+	/**
+	 * Obtener el HTML Inicio de Sesión
+	 * 
+	 * @return String
+	 */
+	public String getHtmlLogin() {
+		return htmlsignin.getText();
+	}
+	
+	/**
+	 * Obtener el campo unico de la plataforma
+	 * 
+	 * @return String
+	 */
+	public String getUniqueField() {
+		return uniquefield.getText();
+	}
+	
+	/**
+	 * Obtener el estado de Mostrar mail del usuario
+	 * 
+	 * @return String
+	 */
+	public String getShowUserMail() {
+		return showusersmail.getText();
+	}
+	
+	public String getBackgroundcolor() {
+		return backgroundcolor.getText();
+	}
+	
+	public String getBackgroundheaderfooter() {
+		return backgroundheaderfooter.getText();
+	}
+	
+	public String getTextheaderfooter() {
+		return textheaderfooter.getText();
+	}
+	
+	public String getTextbtn() {
+		return textbtn.getText();
+	}
+	
+	public String getBackgroundbtn() {
+		return backgroundbtn.getText();
+	}
+	
+	public String getBorderheaderfooter() {
+		return borderheaderfooter.getText();
+	}
+	
+	public String getColoricon() {
+		return coloricon.getText();
 	}
 
 }
