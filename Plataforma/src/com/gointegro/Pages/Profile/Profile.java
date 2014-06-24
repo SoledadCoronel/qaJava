@@ -59,7 +59,7 @@ public class Profile extends PageBase{
 		super(driver);
 		URL = profileURL;
 	}
-	
+
 	/**
 	 * Devuelve la URL del Perfil
 	 */
