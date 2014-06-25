@@ -29,4 +29,15 @@ public class TestBase {
 		login.open();
 		login.LoginPlatformNoReg(ConfigElements.getOtherUsername(), ConfigElements.getPassword());
 	}
+	
+	/**
+	 * Login para BO
+	 * 
+	 * @param driver
+	 */
+	public void loginBackoffice(WebDriver driver) {
+		LoginBackoffice login = PageFactory.initElements(driver, LoginBackoffice.class);
+		login.open();
+		login.loginBackoffice(ConfigElementsBO.getUser(), ConfigElementsBO.getPassw());
+	}
 }
