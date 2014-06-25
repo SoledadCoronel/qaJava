@@ -29,6 +29,9 @@ public class Login extends PageBase{
 	@FindBy(id = "signupButton")
 	private WebElement signup;
 	
+	@FindBy(id = "forgotPasswordButton")
+	private WebElement forgotPasswordButton;
+	
 	/**
 	 * Constructor
 	 * 
@@ -78,6 +81,18 @@ public class Login extends PageBase{
 		submitform();
 		
 		return PageFactory.initElements(driver, Home.class);
+	}
+	
+	/**
+	 * Verificar campo esta presente
+	 * 
+	 * @return boolean
+	 */
+	public boolean isPasswordPresent() {
+		boolean status = false;
+		if (passwordlogin.isDisplayed())
+			status = true;
+		return status;
 	}
 	
 }

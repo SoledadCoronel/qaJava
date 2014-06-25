@@ -48,6 +48,28 @@ public class PersonalizationConfig  extends PageBase{
 	
 	@FindBy (name = "defaultLanguage")
 	private WebElement defaultLanguage;
+	
+	@FindBy (name = "benefitHeaderTitle")
+	private WebElement benefitHeaderTitle;
+	
+	/**
+	 * Mensajes de error
+	 */
+	
+	@FindBy (xpath = "//div[contains(@class,'field-logoUrl')]/div/div")
+	protected WebElement errorlogoUrl;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-logoUrlFooter')]/div/div")
+	protected WebElement errorUrlFooter;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-signinBannerUrl')]/div/div")
+	protected WebElement errorSigninBannerUrl;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-defaultBackgroundColor')]/div/div")
+	protected WebElement errordefaultBackgroundColor;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-defaultBgColorHeaderFooter')]/div/div")
+	protected WebElement errordefaultBgColorHeaderFooter;
 
 	/**
 	 * Constructor
@@ -314,6 +336,51 @@ public class PersonalizationConfig  extends PageBase{
 		WebElement option = select.getFirstSelectedOption();
 		
 		return option.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error en el campo logo principal
+	 * 
+	 * @return String
+	 */
+	public String getErrorLogoUrl() {
+		return errorlogoUrl.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error en el campo logo secundario
+	 * 
+	 * @return String
+	 */
+	public String getErrorLogoUrlFooter() {
+		return errorUrlFooter.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error en el campo banner login
+	 *  
+	 * @return String
+	 */
+	public String getErrorSignInBanner() {
+		return errorSigninBannerUrl.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error en el campo fondo plataforma
+	 * 
+	 * @return String
+	 */
+	public String getErrorDefaultBackgroundColor() {
+		return errordefaultBackgroundColor.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo fondo header y footer
+	 * 
+	 * @return Sring
+	 */
+	public String getErrorDefaultBgColorHeaderFooter() {
+		return errordefaultBgColorHeaderFooter.getText();
 	}
 
 }
