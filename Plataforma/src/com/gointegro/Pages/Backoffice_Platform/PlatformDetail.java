@@ -225,32 +225,142 @@ public class PlatformDetail extends PageBase{
 		return showusersmail.getText();
 	}
 	
+	/**
+	 * Obtener el Fondo plataforma
+	 * 
+	 * @return String
+	 */
 	public String getBackgroundcolor() {
 		return backgroundcolor.getText();
 	}
 	
+	/**
+	 * Obtener el Fondo header y footer
+	 * 
+	 * @return String
+	 */
 	public String getBackgroundheaderfooter() {
 		return backgroundheaderfooter.getText();
 	}
 	
+	/**
+	 * Obtener el Texto header y footer
+	 * 
+	 * @return String
+	 */
 	public String getTextheaderfooter() {
 		return textheaderfooter.getText();
 	}
 	
+	/**
+	 * Obtener el Texto botones
+	 * 
+	 * @return String
+	 */
 	public String getTextbtn() {
 		return textbtn.getText();
 	}
 	
+	/**
+	 * Obtener el Fondo botones
+	 * 
+	 * @return String
+	 */
 	public String getBackgroundbtn() {
 		return backgroundbtn.getText();
 	}
 	
+	/**
+	 * Obtener el Borde header y footer 
+	 * 
+	 * @return String
+	 */
 	public String getBorderheaderfooter() {
 		return borderheaderfooter.getText();
 	}
 	
+	/**
+	 * Obtener el Íconos home
+	 * 
+	 * @return String
+	 */
 	public String getColoricon() {
 		return coloricon.getText();
+	}
+	
+	/**
+	 * Obtener el Registración usuario
+	 * 
+	 * @return String
+	 */
+	public String getRegistration() {
+		return registration.getText();
+	}
+	
+	/**
+	 * Obtener el Texto de registro
+	 * 
+	 * @return String
+	 */
+	public String getHtmlSignUp() {
+		return useshtmlSignUp.getText();
+	}
+	
+	/**
+	 * Obtener el Usa tarjeta
+	 * 
+	 * @return String
+	 */
+	public String getUsesCard() {
+		return usescard.getText();
+	}
+	
+	/**
+	 * Obtener el caso de que use tarjeta nominada
+	 * 
+	 * @return String
+	 */
+	public String getNominated() {
+		return cardtype.getText();
+	}
+	
+	/**
+	 * Obtener el caso de que necesite fecha de nacimiento
+	 * 
+	 * @return String
+	 */
+	public String getBirthdate() {
+		return usesBirthdate.getText();
+	}
+	
+	/**
+	 * Obtener si usa o no genero
+	 * 
+	 * @return String
+	 */
+	public String getGender() {
+		return usesgender.getText();
+	}
+	
+	/**
+	 * Obtener el tipo de login
+	 * 
+	 * @return String
+	 */
+	public String getUserField() {
+		return userfield.getText();
+	}
+	
+	public String getSrcPrincipalLogo() {
+		return principallogo.getAttribute("src");
+	}
+	
+	public String getSrcSecondaryLogo() {
+		return secondarylogo.getAttribute("src");
+	}
+	
+	public String getSrcBannerLogin() {
+		return bannerlogin.getAttribute("src");
 	}
 
 }

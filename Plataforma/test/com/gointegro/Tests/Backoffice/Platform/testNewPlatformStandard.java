@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -62,12 +61,13 @@ public class testNewPlatformStandard extends TestBase{
 	boolean requirepass = true;
 	boolean recoverpass = false;
 	boolean isnominated = false;
+	String htmlSignUp = DataGenerator.nombreFile();
 	
 	@Before
 	public void setUp() {
 		driver = AllTestsBackofficePlatform.getDriver();
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_verify_account_label() {
 		loginBackoffice(driver);
@@ -79,7 +79,7 @@ public class testNewPlatformStandard extends TestBase{
 		
 		assertEquals(ConfigElementsBO.getAccountPlatformTestName(), newplat.getPlatformAccount());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_empty_title() {
 		
@@ -103,13 +103,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("Por favor ingrese el dato solicitado.", newplat.getErrorName());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_special_char_title() {
 		platformname = StringUtils.getCaracteresEspeciales()+DataGenerator.nombreFile();
@@ -133,7 +133,7 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		
@@ -141,7 +141,7 @@ public class testNewPlatformStandard extends TestBase{
 		
 		assertEquals(platformname, detail.getPlatformName());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_name_exist() {
 		platformname = DataGenerator.nombreFile();
@@ -165,7 +165,7 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -187,7 +187,7 @@ public class testNewPlatformStandard extends TestBase{
 		reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -195,7 +195,7 @@ public class testNewPlatformStandard extends TestBase{
 		assertEquals("Ya existe una plataforma con este nombre para la cuenta "+ConfigElementsBO.getAccountPlatformTestName(), 
 				newplat.getErrorMessage());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_web_empty() {
 		loginBackoffice(driver);
@@ -217,13 +217,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("Por favor ingrese el dato solicitado.", newplat.getErrorWebSite());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_web_without_http() {
 		platformname = DataGenerator.nombreFile();
@@ -247,7 +247,7 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		
@@ -255,7 +255,7 @@ public class testNewPlatformStandard extends TestBase{
 		
 		assertEquals("http://"+platformname+ConfigElementsBO.getHostName(), detail.getPlatformWebSite());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_web_invalid() {
 		platformname = DataGenerator.nombreFile();
@@ -279,13 +279,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("La URL ingresada es inválida.", newplat.getErrorWebSite());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_web_exist() {
 		platformname = DataGenerator.nombreFile();
@@ -311,7 +311,7 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
@@ -332,14 +332,14 @@ public class testNewPlatformStandard extends TestBase{
 		reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("La URL ingresada ya está siendo utilizada en el sistema.",newplat.getErrorMessage());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_filesize_empty() {
 		loginBackoffice(driver);
@@ -361,13 +361,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("El campo debe ser un número entero", newplat.getErrorImgSize());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_filesize_not_numbers() {
 		loginBackoffice(driver);
@@ -389,13 +389,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("El campo debe ser un número entero", newplat.getErrorImgSize());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_videosize_empty() {
 		loginBackoffice(driver);
@@ -417,13 +417,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("El campo debe ser un número entero", newplat.getErrorVideoSize());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_videosize_not_number() {
 		loginBackoffice(driver);
@@ -445,13 +445,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("El campo debe ser un número entero", newplat.getErrorVideoSize());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_storage_empty() {
 		loginBackoffice(driver);
@@ -473,13 +473,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("Por favor ingrese el dato solicitado.", newplat.getErrorStorage());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_storage_not_number() {
 		loginBackoffice(driver);
@@ -501,13 +501,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("El campo debe ser un número entero", newplat.getErrorStorage());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_industry_no_select() {
 		loginBackoffice(driver);
@@ -529,13 +529,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("Por favor, seleccione una industria.", newplat.getErrorIndustry());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_users_range_no_select() {
 		loginBackoffice(driver);
@@ -557,13 +557,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("Por favor, seleccione una cantidad de usuarios/empleados.", newplat.getErrorUsersRange());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_disabled() {
 		platformname = DataGenerator.nombreFile();
@@ -588,7 +588,7 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -599,7 +599,7 @@ public class testNewPlatformStandard extends TestBase{
 		
 		assertTrue(driver.getPageSource().contains("La plataforma se encuentra en mantenimiento, por favor vuelve a ingresar más tarde."));
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_user_visibility() {
 		platformname = DataGenerator.nombreFile();
@@ -624,7 +624,7 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -632,7 +632,7 @@ public class testNewPlatformStandard extends TestBase{
 		assertEquals("Ocultar", detail.getUserVisibility());
 		//Falta la parte de front.
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_google_code_empty() {
 		platformname = DataGenerator.nombreFile();
@@ -656,14 +656,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("", detail.getGoogleCode());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_social_disable() {
 		platformname = DataGenerator.nombreFile();
@@ -687,14 +687,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);	
 		
 		assertEquals("No", detail.getSocialStatus());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_without_timezone() {
 		platformname = DataGenerator.nombreFile();
@@ -718,14 +718,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		//Directamente el campo no existe si no elegis timezone en la vista ¬¬
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_tyc_empty() {
 		platformname = DataGenerator.nombreFile();
@@ -749,13 +749,13 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
 		assertEquals("Por favor, ingrese los Términos y Condiciones.", newplat.getErrorTermsAndConditions());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_html_login() {
 		platformname = DataGenerator.nombreFile();
@@ -779,14 +779,20 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(htmllog, detail.getHtmlLogin());
+		
+		driver.get(web);
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		
+		assertEquals(htmllog, login.getHtmlLogin());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_uniquefield_id() {
 		platformname = DataGenerator.nombreFile();
@@ -810,14 +816,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("usernameId", detail.getUniqueField());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_uniquefield_document() {
 		platformname = DataGenerator.nombreFile();
@@ -841,14 +847,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("document", detail.getUniqueField());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_uniquefield_email() {
 		platformname = DataGenerator.nombreFile();
@@ -872,14 +878,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("email", detail.getUniqueField());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_logourl_empty() {
 		platformname = DataGenerator.nombreFile();
@@ -903,14 +909,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Por favor ingrese el dato solicitado.", person.getErrorLogoUrl());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_logofooter_empty() {
 		platformname = DataGenerator.nombreFile();
@@ -934,14 +940,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Por favor ingrese el dato solicitado.", person.getErrorLogoUrlFooter());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_banner_empty() {
 		platformname = DataGenerator.nombreFile();
@@ -965,14 +971,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Por favor ingrese el dato solicitado.", person.getErrorSignInBanner());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_view_user_mails_false() {
 		platformname = DataGenerator.nombreFile();
@@ -996,14 +1002,14 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("no", detail.getShowUserMail());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_backgroundcolor_empty() {
 		platformname = DataGenerator.nombreFile();
@@ -1027,12 +1033,12 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		assertEquals("Por favor ingrese el dato solicitado.", person.getErrorDefaultBackgroundColor());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_background_color_header_footer_empty() {
 		platformname = DataGenerator.nombreFile();
@@ -1056,12 +1062,12 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		assertEquals("Por favor ingrese el dato solicitado.", person.getErrorDefaultBgColorHeaderFooter());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_set_backgrounds_color() {
 		platformname = DataGenerator.nombreFile();
@@ -1093,7 +1099,7 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated);
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -1106,7 +1112,7 @@ public class testNewPlatformStandard extends TestBase{
 		assertEquals(defaultBorderColor, detail.getBorderheaderfooter());
 		assertEquals(iconsColor, detail.getColoricon());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_platform_login_with_password() {
 		platformname = DataGenerator.nombreFile();
@@ -1130,7 +1136,7 @@ public class testNewPlatformStandard extends TestBase{
 		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
 		
 		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, true, recoverpass, isnominated);
+				identity, true, recoverpass, isnominated, htmlSignUp);
 		
 		newplat.selectSave();
 		
@@ -1141,12 +1147,378 @@ public class testNewPlatformStandard extends TestBase{
 		assertTrue(login.isPasswordPresent());
 	}
 	
+	@Test
+	public void test_new_platform_recover_password() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
+				identity, true, true, isnominated, htmlSignUp);
+		
+		newplat.selectSave();
+		
+		driver.get(web);
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		
+		assertTrue(login.isPasswordPresent());
+	}
 	
+	@Test
+	public void test_new_platform_require_reg_false() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(false, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("No", detail.getRegistration());
+		
+		driver.get(web);
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		
+		assertFalse(login.isSignUpPresent());
+	}
+	
+	@Test
+	public void test_new_platform_hmtl_sign_up() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals(htmlSignUp, detail.getHtmlSignUp());
+		
+		driver.get(web);
+		
+		Login login = PageFactory.initElements(driver, Login.class);
+		
+		assertTrue(login.getSignInContent().contains(htmlSignUp));
+	}
+	
+	@Test
+	public void test_new_platform_uses_card() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, true, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("Si", detail.getUsesCard());
+	}
+	
+	@Test
+	public void test_new_platform_uses_card_nominated() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, usescard, true, usesGender, requireVerif, verif1, verif2, 
+				identity, requirepass, recoverpass, true, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("Nominada", detail.getNominated());
+	}
+	
+	@Test
+	public void test_new_platform_uses_birthdate() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, usescard, true, usesGender, requireVerif, verif1, verif2, 
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("Si", detail.getBirthdate());
+	}
+	
+	@Test
+	public void test_new_platform_uses_gender() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, true, requireVerif, verif1, verif2, 
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("Si", detail.getGender());
+	}
+	
+	@Test
+	public void test_new_platform_login_document() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
+				"Documento", requirepass, recoverpass, isnominated, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("document", detail.getUserField());
+	}
+	
+	@Test
+	public void test_new_platform_login_email() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
+				"Email", requirepass, recoverpass, isnominated, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("email", detail.getUserField());
+	}
+	
+	@Test
+	public void test_new_platform_login_id() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
+				"Id", requirepass, recoverpass, isnominated, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("usernameId", detail.getUserField());
+	}
+	
+	@Test
+	public void test_new_platform_complete_banners() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		
+		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
+				identity, requirepass, recoverpass, isnominated, htmlSignUp);
+		
+		PlatformDetail detail = newplat.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertFalse(detail.getSrcBannerLogin().isEmpty());
+		assertFalse(detail.getSrcPrincipalLogo().isEmpty());
+		assertFalse(detail.getSrcSecondaryLogo().isEmpty());
+	}
 	
 	@After
 	public void tearDown() {
-		//Logout logout = PageFactory.initElements(driver, Logout.class);
-		//logout.open();
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
 	}
 
 }

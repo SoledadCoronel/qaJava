@@ -1,5 +1,6 @@
 package com.gointegro.Pages.Backoffice;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -180,6 +181,15 @@ public class RegistrationConfig extends PageBase{
 			isNominated.click();
 	}
 	
+	private void completeHtmlSignUp(String text) {
+		driver.switchTo().frame(htmlsignupifr);
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("document.body.innerHTML = '<p>" + text + "</p>'");
+		
+		driver.switchTo().defaultContent();
+	}
+	
 	/**
 	 * Completar la configuracion de la registracion
 	 * 
@@ -194,21 +204,27 @@ public class RegistrationConfig extends PageBase{
 	 * @param password
 	 * @param recover
 	 * @param nominated 
+	 * @param htmlsignup 
 	 */
 	public void completeConfigRegistration(boolean require, boolean card, boolean birthdate, boolean gender, 
 			boolean requireverif, String field, String field2, String fieldidentity, boolean password, boolean recover, 
-			boolean nominated) {
+			boolean nominated, String htmlsignup) {
 		selectRequireRegistration(require);
-		selectUsesCard(card);
-		selectIsNominated(nominated);
-		selectUsesBirthDate(birthdate);
-		selectUsesGender(gender);
-		selectRequireVerification(requireverif);
-		selectVerificationField1(field);
-		selectVerificationField2(field2);
-		selectIdentityField(fieldidentity);
-		selectHasPassword(password);
-		selectRecoverPassword(recover);
+		if (require) {
+			selectUsesCard(card);
+			selectIsNominated(nominated);
+			selectUsesBirthDate(birthdate);
+			selectUsesGender(gender);
+			selectRequireVerification(requireverif);
+			if (requireverif) {
+				selectVerificationField1(field);
+				selectVerificationField2(field2);
+			}
+			selectIdentityField(fieldidentity);
+			selectHasPassword(password);
+			selectRecoverPassword(recover);
+			completeHtmlSignUp(htmlsignup);
+		}
 	}
 
 }

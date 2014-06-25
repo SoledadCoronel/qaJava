@@ -1,5 +1,6 @@
 package com.gointegro.Pages.Platform;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,6 +32,12 @@ public class Login extends PageBase{
 	
 	@FindBy(id = "forgotPasswordButton")
 	private WebElement forgotPasswordButton;
+	
+	@FindBy(xpath = "//section[@class='additional']/p")
+	private WebElement htmllogin;
+	
+	@FindBy(className = "singin-content")
+	private WebElement signinncontent;
 	
 	/**
 	 * Constructor
@@ -93,6 +100,46 @@ public class Login extends PageBase{
 		if (passwordlogin.isDisplayed())
 			status = true;
 		return status;
+	}
+	
+	/**
+	 * Verificar que el link este presente
+	 * 
+	 * @return boolean
+	 */
+	public boolean isForgotPasswordPresent() {
+		boolean status = false;
+		if (forgotPasswordButton.isDisplayed())
+			status = true;
+		return status;
+	}
+	
+	/**
+	 * Verificar que el boton registrarme este presente
+	 * 
+	 * @return boolean
+	 */
+	public boolean isSignUpPresent() {
+		//Por algun motivo extragalactico el isdiplay() no funca...
+		return isElementPresent(By.id("signupButton"));
+	}
+	
+	/**
+	 * Obtener el html de login
+	 * 
+	 * @return String
+	 */
+	public String getHtmlLogin() {
+		return htmllogin.getText();
+	}
+	
+	/**
+	 * Obtener el signincontent
+	 * 
+	 * @return String
+	 */
+	public String getSignInContent() {
+		return signinncontent.getText();
 	}
 	
 }
