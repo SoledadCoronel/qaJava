@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Helpers.ConfigElementsBO;
+import com.gointegro.Pages.Backoffice.LoginBackoffice;
 import com.gointegro.Pages.Platform.Login;
 
 public class TestBase {
