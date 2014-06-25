@@ -3,10 +3,12 @@ package com.gointegro.Pages.Backoffice_Benefits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
+import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Base.PageBase;
 
-public class Home extends PageBase {
+public class HomeBenefits extends PageBase {
 	
 	@FindBy(xpath = "//section/div[2]/button")
 	WebElement newCompany;
@@ -22,15 +24,19 @@ public class Home extends PageBase {
 	 * 
 	 * @param driver
 	 */
-	public Home(WebDriver driver) {
+	public HomeBenefits(WebDriver driver) {
 		super(driver);
+		URL = ConfigElementsBO.getUrlBackoffice()+"/benefits/company/list";
 	}
 
 	/**
 	 * Seleccionar el botón Nuevo Comercio
+	 * 
+	 * @return NewCompany
 	 */
-	public void selectNewCompany() {
+	public NewCompany selectNewCompany() {
 		newCompany.click();
+		return PageFactory.initElements(driver, NewCompany.class);
 	}
 	
 	/**
