@@ -41,15 +41,19 @@ public class HomeBenefits extends PageBase {
 	
 	/**
 	 * Seleccionar el botón Adminsitrar especiales
+	 * 
+	 * @return SpecialList
 	 */
-	public void selectAdminSpecials() {
+	public SpecialList selectAdminSpecials() {
 		adminSpecials.click();
+		return PageFactory.initElements(driver, SpecialList.class);
 	}
 	
 	/**
 	 * Seleccionar el botón Adminsitrar categorias
 	 */
-	public void selectAdminCategory() {
+	public CategoriesList selectAdminCategory() {
 		adminCategory.click();
+		return PageFactory.initElements(driver, CategoriesList.class);
 	}
 }

@@ -1,4 +1,4 @@
-package com.gointegro.Tests.Backoffice_Benefits;
+package com.gointegro.Tests.Backoffice.Benefits;
 
 import static org.junit.Assert.*;
 

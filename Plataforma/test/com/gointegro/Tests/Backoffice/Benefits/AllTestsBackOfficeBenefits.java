@@ -1,4 +1,4 @@
-package com.gointegro.Tests.Backoffice_Benefits;
+package com.gointegro.Tests.Backoffice.Benefits;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,7 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testNewCompany.class,
+	//testNewCompany.class,
+	//testNewCategory.class,
+	testNewSpecial.class,
 })
 
 public class AllTestsBackOfficeBenefits {
