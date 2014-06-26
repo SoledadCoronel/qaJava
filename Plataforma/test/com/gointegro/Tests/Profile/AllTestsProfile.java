@@ -10,8 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	//testNewFile.class,
-	//testDeleteFile.class,
+	testNewFile.class,
+	testDeleteFile.class,
 	testEditProfileData.class,
 })
 

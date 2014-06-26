@@ -6,7 +6,6 @@ import java.util.Random;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -59,7 +58,7 @@ public class testEditProfileData extends TestBase {
 		assertTrue(editModal.getBirthdate().contains(date));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_profile_document() {
 		Random rand = new Random();
@@ -89,7 +88,7 @@ public class testEditProfileData extends TestBase {
 		assertEquals(documentId, editModal.getDocument());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_profile_time_zone() {
 		String timeZone1 = "America/Noronha";
@@ -134,7 +133,7 @@ public class testEditProfileData extends TestBase {
 		assertEquals(timeZone2, editModal.getTimeZone());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_profile_change_language() {
 		String lang1 = "Español";
@@ -179,7 +178,7 @@ public class testEditProfileData extends TestBase {
 		assertEquals(lang1, editModal.getLanguage());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_profile_press_cancel() {
 		Random rand = new Random();
