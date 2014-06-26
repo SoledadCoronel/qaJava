@@ -152,8 +152,8 @@ public class DataEditModal extends PageBase{
 	 * @param lang
 	 */
 	public void selectLanguage(String lang) {
-		Select langOpiton = new Select(language);
-		langOpiton.selectByVisibleText(lang);
+		Select langOption = new Select(language);
+		langOption.selectByVisibleText(lang);
 	}
 	
 	/**

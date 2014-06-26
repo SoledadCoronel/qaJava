@@ -139,7 +139,7 @@ public class testEditProfileData extends TestBase {
 		String lang1 = "Español";
 		String lang2 = "English";
 		
-		login(driver);
+		loginBasicUser(driver);
 		
 		Home home = PageFactory.initElements(driver, Home.class);
 		Profile profile = home.selectMyProfile();
