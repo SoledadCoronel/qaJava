@@ -13,7 +13,7 @@ import com.gointegro.Pages.Platform.AplicationAdd;
 import com.gointegro.Pages.Platform.AplicationInstall;
 import com.gointegro.Pages.Platform.Home;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Pages.Platform.Profile;
+import com.gointegro.Pages.Profile.Profile;
 import com.gointegro.Pages.Profile.WorkspacesTab;
 import com.gointegro.Pages.Workspace.AddColaboratorsOverlay;
 import com.gointegro.Pages.Workspace.JoinWorkSpace;
