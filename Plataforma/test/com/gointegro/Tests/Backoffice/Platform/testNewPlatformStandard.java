@@ -1178,7 +1178,7 @@ public class testNewPlatformStandard extends TestBase{
 		
 		Login login = PageFactory.initElements(driver, Login.class);
 		
-		assertTrue(login.isPasswordPresent());
+		assertTrue(login.isForgotPasswordPresent());
 	}
 	
 	@Test
