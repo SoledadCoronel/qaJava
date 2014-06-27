@@ -1,4 +1,4 @@
-package com.gointegro.Tests.Profile;
+package com.gointegro.Tests.Platform;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,30 +10,28 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testNewFile.class,
-	testDeleteFile.class,
-	testEditProfileData.class,
+	testHelpCenter.class,
 })
 
-public class AllTestsProfile {
-
+public class AllTestsPlatform {
+	
 private static WebDriver driver;
 	
 	@BeforeClass
-	public static void setUp(){
+	public static void setUp() {
 		setDriver(new FirefoxDriver());
 	}
-
+	
 	public static WebDriver getDriver() {
 		return driver;
 	}
 	
 	public static void setDriver(WebDriver driver) {
-		AllTestsProfile.driver = driver;
-	}
+		AllTestsPlatform.driver = driver;
+	}	
 	
 	@AfterClass
-	 public static void tearDown() {
+	public static void tearDown() {
 		driver.quit();
 	}
 }

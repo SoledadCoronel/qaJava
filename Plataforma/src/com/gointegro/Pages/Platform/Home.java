@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsWorkspace;
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Pages.Profile.Profile;
 import com.gointegro.Pages.Workspace.AdminWorkspace;
 import com.gointegro.Pages.Workspace.JoinWorkSpace;
 import com.gointegro.Pages.Workspace.WorkspaceCreate;
