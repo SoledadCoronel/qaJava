@@ -129,6 +129,29 @@ public class HomeWidgets extends PageBase {
 	}
 	
 	/**
+	 * Devuelve un WebElement del primer widget 
+	 * 
+	 * @return WebElement
+	 */
+	public WebElement getFirstWidgetElement() {
+		WebElement widget = null;
+		for(WebElement element : widgetsList) {
+			widget = element;
+			break;
+		}
+		return widget;
+	}
+	
+	/**
+	 * Devuelve la cantidad de widgets
+	 * 
+	 * @return int
+	 */
+	public int listCount() {
+		return widgetsList.size();
+	}
+	
+	/**
 	 *  Devuelve la dsecripción del widget Text / HTML
 	 *  
 	 * @param WebElement

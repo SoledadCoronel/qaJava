@@ -1,5 +1,6 @@
 package com.gointegro.Pages.Celebration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,6 +38,13 @@ public class DeleteOverlay extends PageBase{
 	 */
 	public void selectConfirmDelete() {
 		confirmdelete.click();
+	}
+	
+	/**
+	 * Confirmar eliminar
+	 */
+	public void selectConfirmDeleteAll(int num) {
+		driver.findElement(By.xpath("//div[@id='delete-modal']["+num+"]//div[@class='modal-footer']/button")).click();
 	}
 	
 	/**
