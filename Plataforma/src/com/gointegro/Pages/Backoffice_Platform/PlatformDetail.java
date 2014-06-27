@@ -3,6 +3,7 @@ package com.gointegro.Pages.Backoffice_Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Base.PageBase;
@@ -12,6 +13,9 @@ public class PlatformDetail extends PageBase{
 	/**
 	 * Si son un asco pero lo necesito para el assert de la creacion y hasta que lo arreglen...
 	 */
+	
+	@FindBy(className = "icon-edit")
+	private WebElement linkEditar;
 	
 	@FindBy(xpath = "//div[@id='account']/div[2]/a")
 	private WebElement account;
@@ -142,6 +146,17 @@ public class PlatformDetail extends PageBase{
 		super(driver);
 		URL = ConfigElementsBO.getUrlBackoffice()+"/account/"+ConfigElementsBO.getAccountId()+"/platform/"+ConfigElementsBO.getPlatformId()
 				+"/view";
+	}
+	
+	/**
+	 * Seleccionar el link a Editar Plataforma
+	 * 
+	 * @return {@link EditPlatform}
+	 */
+	public EditPlatform selectEditar() {
+		linkEditar.click();
+		
+		return PageFactory.initElements(driver, EditPlatform.class);
 	}
 	
 	/**
