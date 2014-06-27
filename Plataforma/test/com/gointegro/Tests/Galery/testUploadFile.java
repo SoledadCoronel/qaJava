@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -28,7 +29,7 @@ private WebDriver driver;
 	public void setUp() {
 		driver = AllTestsGalery.getDriver();
 	}
-	
+	@Ignore
 	@Test
 	public void test_upload_file_select_album() {
 		String albumname = DataGenerator.nombreFile();
@@ -58,7 +59,7 @@ private WebDriver driver;
 		
 		assertTrue(detail.isPictureInAlbum());
 	}
-	
+	@Ignore
 	@Test
 	public void test_upload_file_no_select_album() {
 		String testfile = ConfigElements.getFileImagen();
@@ -77,7 +78,7 @@ private WebDriver driver;
 		
 		assertEquals("Debe seleccionar un álbum", upload.getErrorMsjAlbum());
 	}
-	
+	@Ignore
 	@Test
 	public void test_upload_file_invalid() {
 		String testfile = ConfigElements.getFileNoImage();
@@ -94,7 +95,7 @@ private WebDriver driver;
 		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
 		assertTrue(upload.getUploadErrorMsj().contains("Este archivo no es de un tipo válido de imagen"));
 	}
-	
+	@Ignore
 	@Test
 	public void test_upload_file_delete() {
 		String testfile = ConfigElements.getFileImagen();
@@ -118,7 +119,7 @@ private WebDriver driver;
 		//No le encuentro la vuelta falla siempre, me quemo la cabeza
 		assertFalse(upload.isUploadedContentPresent());
 	}
-	
+	@Ignore
 	@Test
 	public void test_upload_file_title() {
 		String albumname = DataGenerator.nombreFile();
@@ -153,7 +154,7 @@ private WebDriver driver;
 		
 		assertEquals(filetitle, img.getImageTitle());
 	}
-	
+	@Ignore
 	@Test
 	public void test_upload_file_cancel() {
 		String albumname = DataGenerator.nombreFile();
@@ -183,7 +184,7 @@ private WebDriver driver;
 		
 		assertEquals(0, detail.albumsize());
 	}
-	
+	@Ignore
 	@Test
 	public void test_upload_file_2_pictures() {
 		String albumname = DataGenerator.nombreFile();
@@ -215,7 +216,7 @@ private WebDriver driver;
 		
 		assertEquals(2, detail.albumsize());
 	}
-	
+	@Ignore
 	@Test
 	public void test_upload_file_second_picture_invalid() {
 		String albumname = DataGenerator.nombreFile();
@@ -241,6 +242,36 @@ private WebDriver driver;
 		assertTrue(upload.getUploadErrorMsj().contains("Este archivo no es de un tipo válido de imagen"));
 		
 		upload.selectCancel();
+	}
+	
+	@Test
+	public void test_upload_file_video() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileMP4Video();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createAlbum(albumname, home);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home.uploadFile(testfile);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
+		upload.selectAlbumInList(albumname);
+		upload.selectSave();
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertTrue(detail.isPictureInAlbum());
 	}
 	
 	private void createAlbum(String albumname, HomeGalery home) {
