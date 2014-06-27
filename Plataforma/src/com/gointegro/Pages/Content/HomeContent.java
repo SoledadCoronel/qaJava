@@ -1,5 +1,6 @@
 package com.gointegro.Pages.Content;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -79,6 +80,20 @@ public class HomeContent extends PageBase{
 	 */
 	public String getDescription() {
 		return description.getText();
+	}
+	
+	/**
+	 * Devuelve si hay una imagen en la descripción
+	 * 
+	 * @return Boolean
+	 */
+	public Boolean hasImage() {
+		Boolean hasImage = false;
+		
+		if(driver.findElement(By.xpath("//div[@class='main-container']/div")).getAttribute("innerHTML").contains("<img")) {
+			hasImage = true;
+		}
+		return hasImage;
 	}
 	
 	/**
