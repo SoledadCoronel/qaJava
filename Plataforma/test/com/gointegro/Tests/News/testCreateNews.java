@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,7 +30,7 @@ public class testCreateNews extends TestBase {
 		driver = AllTestsNews.getDriver();
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news() {
 		String titleText = DataGenerator.nombreFile();
@@ -78,7 +79,7 @@ public class testCreateNews extends TestBase {
 		assertEquals(hour + " hs", home.getHour(newsElement));
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_without_title() {
 		String titleText = "";
@@ -117,7 +118,7 @@ public class testCreateNews extends TestBase {
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_without_description() {
 		String titleText = DataGenerator.nombreFile();
@@ -156,7 +157,7 @@ public class testCreateNews extends TestBase {
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_without_date() {
 		String titleText = DataGenerator.nombreFile();
@@ -195,7 +196,7 @@ public class testCreateNews extends TestBase {
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_without_hour() {
 		String titleText = DataGenerator.nombreFile();
@@ -239,7 +240,7 @@ public class testCreateNews extends TestBase {
 		assertEquals(DateTool.getDateAsText(date).toLowerCase(), home.getDate(newsElement));
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_empty() {
 		String titleText = "";
@@ -276,7 +277,7 @@ public class testCreateNews extends TestBase {
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_description_max_chars() {
 		String titleText = DataGenerator.nombreFile();
@@ -314,7 +315,7 @@ public class testCreateNews extends TestBase {
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_press_cancel() {
 		String titleText = DataGenerator.nombreFile();
@@ -357,7 +358,7 @@ public class testCreateNews extends TestBase {
 		assertTrue(newsElement == null);
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_upload_file() {
 		String titleText = DataGenerator.nombreFile();
@@ -408,7 +409,7 @@ public class testCreateNews extends TestBase {
 		assertEquals(hour + " hs", home.getHour(newsElement));
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_create_news_basic_user() {
 		
@@ -421,6 +422,91 @@ public class testCreateNews extends TestBase {
 		assertNotEquals(driver.getCurrentUrl(), createHome.getURL());
 	}
 	
+	@Ignore
+	@Test
+	public void test_create_news_tinymce_link() {
+		String titleText = DataGenerator.nombreFile();
+		String date = DataGenerator.fechaactual();
+		String url = ConfigElements.getUrlTest();
+		String hour = "19:00";
+		
+		login(driver);
+		
+		HomeNews home = PageFactory.initElements(driver, HomeNews.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		CreateNews createNews = home.selectCreateNews();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createTitle(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createDescriptionWithURL(url);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.selectDate(date);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createHour(hour);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.selectSocialCheckBox();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DetailNews detail = createNews.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(titleText, detail.getTitle());
+		assertTrue(detail.getDescription().contains(url));
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WebElement newsElement = home.getNewsElement(titleText);
+		
+		assertEquals(titleText, home.getTitleNews(newsElement));
+		assertTrue(home.getDescription(newsElement).contains(url));
+	}
+	
+	
+	@Test
+	public void test_create_news_tinymce_image() {
+		String titleText = DataGenerator.nombreFile();
+		String date = DataGenerator.fechaactual();
+		String image = ConfigElements.getFileImagen();
+		String hour = "19:00";
+		
+		login(driver);
+		
+		HomeNews home = PageFactory.initElements(driver, HomeNews.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		CreateNews createNews = home.selectCreateNews();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createTitle(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createDescriptionWithPic(image);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.selectDate(date);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createHour(hour);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.selectSocialCheckBox();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DetailNews detail = createNews.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(titleText, detail.getTitle());
+		assertTrue(detail.hasImage());
+	}
 	@After
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);

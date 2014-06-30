@@ -27,7 +27,8 @@ public class DetailNews extends PageBase {
 	@FindBy(className = "news-content-detail")
 	WebElement description;
 	
-	
+	@FindBy(xpath = "//div[@class='news-content-detail']/p/img")
+	WebElement descriptionImage;
 	
 	/**
 	 * Constructor
@@ -100,6 +101,15 @@ public class DetailNews extends PageBase {
 		selectDeleteNews();
 		
 		return PageFactory.initElements(driver, DeleteOverlay.class);
+	}
+	
+	/**
+	 * Devuelve si la descripión tiene una imagen
+	 * 
+	 * @return Boolean
+	 */
+	public Boolean hasImage() {
+		return descriptionImage.isDisplayed();
 	}
 
 }
