@@ -30,6 +30,9 @@ public class AlbumDetail extends PageBase{
 	@FindBy (xpath = "//li[contains(@id,'image-')]")
 	private WebElement imageid;
 	
+	@FindBy (xpath = "//li/span/i[@class='icon-play']")
+	private WebElement video;
+	
 	/**
 	 * Constructor
 	 * 
@@ -73,6 +76,15 @@ public class AlbumDetail extends PageBase{
 	 */
 	public boolean isPictureInAlbum() {
 		return imageid.isDisplayed();
+	}
+	
+	/**
+	 * Verificar que el video se muestre, solo funciona para albums con una sola imagen.
+	 * 
+	 * @return boolean
+	 */
+	public boolean isVideoInAlbum() {
+		return video.isDisplayed();
 	}
 	
 	/**

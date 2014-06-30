@@ -293,6 +293,115 @@ private WebDriver driver;
 		assertNotEquals(pic1, pic2);
 	}
 	
+	@Test
+	public void test_video_detail_copy_link() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileMP4Video();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createAddFile(testfile, albumname, home, false);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		ImageDetail video = detail.selectLastPictureInAlbum();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		video.selectCopyLink();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		String videoURL = video.copyLink();
+		driver.get(videoURL);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(1, detail.albumsize());
+	}
+	
+	@Test
+	public void test_video_detail_next_video() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileMP4Video();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createAddFile(testfile, albumname, home, true);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		ImageDetail video = detail.selectLastPictureInAlbum();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		video.selectCopyLink();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		String vid1 = video.copyLink();
+		video.selectNextPicture();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+
+		video.selectCopyLink();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		String vid2 = video.copyLink();
+		
+		assertNotEquals(vid1, vid2);
+	}
+	
+	@Test
+	public void test_video_detail_previous_video() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileMP4Video();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createAddFile(testfile, albumname, home, true);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		ImageDetail video = detail.selectLastPictureInAlbum();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		video.selectCopyLink();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		String vid1 = video.copyLink();
+		video.selectNextPicture();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+
+		video.selectCopyLink();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		String vid2 = video.copyLink();
+		
+		assertNotEquals(vid1, vid2);
+	}
+	
 	private void createAddFile(String testfile, String albumname, HomeGalery home, boolean otherfile) {
 		createAlbum(albumname, home);
 		WaitTool.waitForJQueryProcessing(driver, 5);

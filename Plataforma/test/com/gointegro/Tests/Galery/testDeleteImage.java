@@ -320,6 +320,37 @@ private WebDriver driver;
 		assertEquals(1, detail.albumsize());
 	}
 	
+	@Test
+	public void test_delete_video_detail() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileMP4Video();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createAddFile(testfile, albumname, home, false);
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		ImageDetail img = detail.selectLastPictureInAlbum();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		DeleteOverlay delete = img.selectDeleteVideo();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		delete.confirmDelete();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(0, detail.albumsize());
+	}
+	
 	private void createAddFile(String testfile, String albumname, HomeGalery home, boolean otherfile) {
 		createAlbum(albumname, home);
 		WaitTool.waitForJQueryProcessing(driver, 5);
