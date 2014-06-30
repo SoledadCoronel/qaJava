@@ -335,11 +335,6 @@ private WebDriver driver;
 		assertEquals(2, detail.albumsize());
 	}
 	
-	@Test
-	public void test_upload_file_video_delete() {
-		
-	}
-	
 	private void createAlbum(String albumname, HomeGalery home) {
 		NewAlbumOverlay albumover = home.selectNewAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);

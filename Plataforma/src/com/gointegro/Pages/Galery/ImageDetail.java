@@ -81,7 +81,7 @@ public class ImageDetail extends PageBase{
 	}
 	
 	/**
-	 * Eliminar imagen
+	 * Eliminar video
 	 * 
 	 * @return {@link DeleteOverlay}
 	 */
