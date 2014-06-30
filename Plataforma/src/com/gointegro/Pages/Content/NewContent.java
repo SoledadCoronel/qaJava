@@ -1,8 +1,10 @@
 package com.gointegro.Pages.Content;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -10,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsContent;
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Util.WaitTool;
 
 public class NewContent extends PageBase {
 
@@ -48,6 +51,9 @@ public class NewContent extends PageBase {
 	
 	@FindBy(id = "bellowArticle")
 	WebElement bellowArticle;
+	
+	@FindBy(xpath = "//div[@id='mce_24']/button")
+	WebElement tinyLink;
 	
 	private String NewContentURL = ConfigElements.getURL()+"/app/articles/" + ConfigElementsContent.getIdAppContent() + "/create";
 	
@@ -104,6 +110,41 @@ public class NewContent extends PageBase {
 		js.executeScript("document.body.innerHTML = '<p>" + descriptionText + "</p>'");
 		
 		driver.switchTo().defaultContent();
+	}
+	
+	/**
+	 * Crear descripción para el contenido con imagen
+	 * 
+	 * @param String
+	 */
+	public void createDescriptionWithPic(String imageFile) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript(" document.getElementById('mce_26').style.visibility = 'visible'");
+		
+		driver.findElement(By.xpath("//div[@id='mce_25']/button")).click();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		driver.switchTo().frame(driver.findElement(By.xpath("//div[@class='mce-container-body mce-abs-layout']/iframe")));
+		
+		driver.findElement(By.xpath("//p[@id='upload_form_container']/input")).sendKeys(imageFile);
+		
+		Sleeper.sleepTightInSeconds(10);
+		WaitTool.waitForJQueryProcessing(driver, 10);	
+	}
+	
+	/**
+	 * Crear descripción para el contenido con link
+	 * 
+	 * @param String
+	 */
+	public void createDescriptionWithURL(String url) {
+		tinyLink.click();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+
+		driver.findElement(By.xpath("//input[@class='mce-textbox mce-placeholder']")).sendKeys(url);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+	
+		driver.findElement(By.xpath("//div[@class='mce-container mce-panel mce-foot']/div/div[2]/button")).click();
 	}
 	
 	
