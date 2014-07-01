@@ -35,6 +35,8 @@ public class HomeWidgets extends PageBase {
 	
 	String textHTMLDescription = "./div/div/div/div/p";
 	
+	String textHTMLDescriptionImage = "./div/div/div/div/p/img";
+	
 	String imageBanner = "banner";
 	
 	String imageLink = "banner-external-url";
@@ -179,6 +181,29 @@ public class HomeWidgets extends PageBase {
 			}
 		}
 		return widget;
+	}
+	
+	/**
+	 * Devuelve si el widget Text/HTML tiene una imagen
+	 * 
+	 * @param String
+	 * @return Boolean
+	 */
+	public Boolean hasImageTextWidget(String name) {
+		Boolean hasImage= false;
+		
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("html-text")) {
+				if(element.findElements(By.xpath(textHTMLTitle)).size() > 0 && 
+						element.findElement(By.xpath(textHTMLTitle)).getText().contains(name)) {
+					if(element.findElements(By.xpath(textHTMLDescriptionImage)).size() > 0) {
+						hasImage = true;
+						break;
+					}
+				}
+			}
+		}
+		return hasImage;
 	}
 	
 	

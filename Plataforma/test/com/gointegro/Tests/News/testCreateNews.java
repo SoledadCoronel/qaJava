@@ -421,6 +421,91 @@ public class testCreateNews extends TestBase {
 		assertNotEquals(driver.getCurrentUrl(), createHome.getURL());
 	}
 	
+	
+	@Test
+	public void test_create_news_tinymce_link() {
+		String titleText = DataGenerator.nombreFile();
+		String date = DataGenerator.fechaactual();
+		String url = ConfigElements.getUrlTest();
+		String hour = "19:00";
+		
+		login(driver);
+		
+		HomeNews home = PageFactory.initElements(driver, HomeNews.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		CreateNews createNews = home.selectCreateNews();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createTitle(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createDescriptionWithURL(url);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.selectDate(date);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createHour(hour);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.selectSocialCheckBox();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DetailNews detail = createNews.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(titleText, detail.getTitle());
+		assertTrue(detail.getDescription().contains(url));
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WebElement newsElement = home.getNewsElement(titleText);
+		
+		assertEquals(titleText, home.getTitleNews(newsElement));
+		assertTrue(home.getDescription(newsElement).contains(url));
+	}
+	
+	
+	@Test
+	public void test_create_news_tinymce_image() {
+		String titleText = DataGenerator.nombreFile();
+		String date = DataGenerator.fechaactual();
+		String image = ConfigElements.getFileImagen();
+		String hour = "19:00";
+		
+		login(driver);
+		
+		HomeNews home = PageFactory.initElements(driver, HomeNews.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		CreateNews createNews = home.selectCreateNews();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createTitle(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createDescriptionWithPic(image);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.selectDate(date);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createHour(hour);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.selectSocialCheckBox();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DetailNews detail = createNews.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(titleText, detail.getTitle());
+		assertTrue(detail.hasImage());
+	}
 	@After
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
