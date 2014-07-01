@@ -36,8 +36,8 @@ public class testNewPlatformStandard extends TestBase{
 	boolean uservisib = false;
 	boolean socialact = true;
 	String timezone = "Africa/Dakar";
-	String tyc = DataGenerator.nombreFile();;
-	String htmllog = DataGenerator.nombreFile();;
+	String tyc = DataGenerator.nombreFile();
+	String htmllog = DataGenerator.nombreFile();
 	String uniquefield = "Documento";
 	String logourl = ConfigElements.getFileImagen();
 	String logofooter  = ConfigElements.getFileImagen();
