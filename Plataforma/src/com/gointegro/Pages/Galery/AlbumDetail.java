@@ -33,6 +33,9 @@ public class AlbumDetail extends PageBase{
 	@FindBy (xpath = "//li/span/i[@class='icon-play']")
 	private WebElement video;
 	
+	@FindBy (xpath = "//h3[@id='album-image-title']")
+	private WebElement imagetitle;
+	
 	/**
 	 * Constructor
 	 * 
@@ -107,6 +110,15 @@ public class AlbumDetail extends PageBase{
 	 */
 	public String getAlbumTitle() {
 		return albumtitle.getText();
+	}
+	
+	/**
+	 * Obtener el titulo de la imagen/video
+	 * 
+	 * @return String
+	 */
+	public String getImageTitle() {
+		return imagetitle.getText();
 	}
 	
 	/**

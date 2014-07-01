@@ -296,6 +296,7 @@ private WebDriver driver;
 	@Test
 	public void test_video_detail_copy_link() {
 		String albumname = DataGenerator.nombreFile();
+		String filename = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileMP4Video();
 		
 		login(driver);
@@ -304,7 +305,18 @@ private WebDriver driver;
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		createAddFile(testfile, albumname, home, false);
+		createAlbum(albumname, home);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home.uploadFile(testfile);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
+		upload.selectAlbumInList(albumname);
+		upload.setFileTitle(filename);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		upload.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		home.open();
@@ -315,6 +327,8 @@ private WebDriver driver;
 		
 		ImageDetail video = detail.selectLastPictureInAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(filename, detail.getImageTitle());
 		
 		video.selectCopyLink();
 		WaitTool.waitForJQueryProcessing(driver, 5);

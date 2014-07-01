@@ -252,23 +252,23 @@ private WebDriver driver;
 		
 		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
 		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		createAlbum(albumname, home);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		home.uploadFile(testfile);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
 		upload.selectAlbumInList(albumname);
 		upload.selectSave();
 		
 		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		AlbumDetail detail = home.selectAlbumSideBar(albumname);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertTrue(detail.isPictureInAlbum());
 	}
