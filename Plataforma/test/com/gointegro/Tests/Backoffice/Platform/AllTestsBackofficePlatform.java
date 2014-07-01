@@ -13,7 +13,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	//testNewPlatformStandard.class,
 	//testEditPlatformStandard.class,
 	//testListPlatform.class,
-	testNewPlatformRegional.class
+	//testNewPlatformRegional.class,
+	testEditPlatformRegional.class
 	})
 
 public class AllTestsBackofficePlatform {
