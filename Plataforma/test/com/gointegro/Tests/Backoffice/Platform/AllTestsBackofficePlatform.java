@@ -11,7 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Suite.class)
 @SuiteClasses({ 
 	//testNewPlatformStandard.class,
-	testEditPlatformStandard.class
+	//testEditPlatformStandard.class,
+	//testListPlatform.class,
+	testNewPlatformRegional.class
 	})
 
 public class AllTestsBackofficePlatform {

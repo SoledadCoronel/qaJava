@@ -23,25 +23,25 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='name']/div[2]")
 	private WebElement platformname;
 	
-	@FindBy(xpath = "//div[@id=image-max-size]/div[2]")
+	@FindBy(xpath = "//div[@id='image-max-size']/div[2]")
 	private WebElement imagemaxsize;
 	
 	@FindBy(xpath = "//div[@id='content']/div[6]/div[2]/a")
 	private WebElement website;
 	
-	@FindBy(xpath = "//div[@id='content']/div[7]/div")
+	@FindBy(xpath = "//div[@id='content']/div[7]/div[2]")
 	private WebElement storage;
 	
-	@FindBy(xpath = "//div[@id='content']/div[8]/div")
+	@FindBy(xpath = "//div[@id='content']/div[8]/div[2]")
 	private WebElement industry;
 	
-	@FindBy(xpath = "//div[@id='content']/div[9]/div")
+	@FindBy(xpath = "//div[@id='content']/div[9]/div[2]")
 	private WebElement usersRange;
 	
-	@FindBy(xpath = "//div[@id='content']/div[10]/div")
+	@FindBy(xpath = "//div[@id='content']/div[10]/div[2]")
 	private WebElement mobileactivationcode;
 	
-	@FindBy(xpath = "//div[@id='content']/div[11]/div")
+	@FindBy(xpath = "//div[@id='content']/div[11]/div[2]")
 	private WebElement timezone;
 	
 	@FindBy(xpath = "//div[@id='content']/div[12]/div/span")
@@ -160,6 +160,15 @@ public class PlatformDetail extends PageBase{
 	}
 	
 	/**
+	 * Obtener el nombre de la cuenta
+	 * 
+	 * @return String
+	 */
+	public String getAccountName() {
+		return account.getText();
+	}
+	
+	/**
 	 * Obtener el nombre de la plataforma
 	 * 
 	 * @return String
@@ -175,6 +184,51 @@ public class PlatformDetail extends PageBase{
 	 */
 	public String getPlatformWebSite() {
 		return website.getText();
+	}
+	
+	/**
+	 * Obtener el tamaño maximo de la imagen
+	 * 
+	 * @return String
+	 */
+	public String getPlatformImgSize() {
+		return imagemaxsize.getText();
+	}
+	
+	/**
+	 * Obtener el storage de la plat
+	 * 
+	 * @return String
+	 */
+	public String getPlatformStorage() {
+		return storage.getText();
+	}
+	
+	/**
+	 * Obtener la industria
+	 * 
+	 * @return String
+	 */
+	public String getIndustry() {
+		return industry.getText();
+	}
+	
+	/**
+	 * Obtener el user range
+	 * 
+	 * @return String
+	 */
+	public String getUserRange() {
+		return usersRange.getText();
+	}
+	
+	/**
+	 * Obtener la timezone
+	 * 
+	 * @return String
+	 */
+	public String getTimeZone() {
+		return timezone.getText();
 	}
 	
 	/**

@@ -374,7 +374,8 @@ public class CreatePlatform extends PageBase{
 		setSocialEnabled(socialstatus);
 		setTimeZone(time);
 		setTermsAndConditions(tyc);
-		setHtmlLogin(htmllog);
+		if (!htmllog.isEmpty())
+			setHtmlLogin(htmllog);
 	}
 	
 	/**
