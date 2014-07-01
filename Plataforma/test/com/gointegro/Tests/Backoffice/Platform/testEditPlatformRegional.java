@@ -8,28 +8,19 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsBO;
-import com.gointegro.Pages.Backoffice.PersonalizationConfig;
-import com.gointegro.Pages.Backoffice.RegistrationConfig;
-import com.gointegro.Pages.Backoffice_Platform.CreatePlatform;
+import com.gointegro.Pages.Backoffice_Platform.CreatePlatformRegional;
 import com.gointegro.Pages.Backoffice_Platform.EditPlatform;
 import com.gointegro.Pages.Backoffice_Platform.PlatformDetail;
-import com.gointegro.Pages.Platform.Login;
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
-public class testEditPlatformStandard extends TestBase{
+public class testEditPlatformRegional extends TestBase{
 	
 	private WebDriver driver;
-	
-	/**
-	 * Valores para cada new platform
-	 */
-	
 	String platformname = DataGenerator.nombreFile();
 	String web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 	String filesize = "800";
@@ -43,31 +34,7 @@ public class testEditPlatformStandard extends TestBase{
 	boolean socialact = true;
 	String timezone = "Africa/Dakar";
 	String tyc = DataGenerator.nombreFile();
-	String htmllog = DataGenerator.nombreFile();
-	String uniquefield = "Documento";
-	String logourl = ConfigElements.getFileImagen();
-	String logofooter  = ConfigElements.getFileImagen();
-	String banner = ConfigElements.getFileImagen();
-	boolean showusermail = false;
-	String backgroundcolor = "#aaaaaa";
-	String BgColorHeaderFooter = "#aaaaaa";
-	String FontColor = "#aaaaaa";
-	String buttonFontColor = "#aaaaaa";
-	String buttonBackgroundColor = "#aaaaaa";
-	String defaultBorderColor = "#aaaaaa";
-	String iconsColor = "White";
-	boolean requireReg = true;
-	boolean usescard = true;
-	boolean usesbirthdate = true;
-	boolean usesGender = true;
-	boolean requireVerif = true;
-	String verif1 = "Documento";
-	String verif2 = "Email";
-	String identity = "Id";
-	boolean requirepass = true;
-	boolean recoverpass = true;
-	boolean isnominated = false;
-	String htmlSignUp = DataGenerator.nombreFile();
+	String htmllog = "";
 	
 	@Before
 	public void setUp() {
@@ -75,7 +42,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_verify() {
+	public void test_edit_platform_regional_verify() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -86,7 +53,7 @@ public class testEditPlatformStandard extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		assertEquals(platformname, edit.getPlatformName());
-		assertEquals(ConfigElementsBO.getAccountPlatformTestName(), edit.getPlatformAccount());
+		assertEquals(ConfigElementsBO.getAccountRegionalName(), edit.getPlatformAccount());
 		assertEquals(filesize, edit.getImageSize());
 		assertEquals(videosize, edit.getVideoSize());
 		assertEquals(storage, edit.getStorage());
@@ -99,37 +66,10 @@ public class testEditPlatformStandard extends TestBase{
 		assertEquals(socialact, edit.getSocialStatus());
 		assertEquals(timezone, edit.getTimeZone());
 		assertEquals(tyc, edit.getTyC());
-		assertEquals(htmllog, edit.getHtmlLogin());
-		
-		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
-		
-		assertFalse(person.getUniqueFieldStatus());		
-		assertEquals(uniquefield, person.getUniqueField());
-		assertFalse(person.getUserMail());
-		assertEquals(backgroundcolor, person.getDefaulBackgroundColor());
-		assertEquals(BgColorHeaderFooter, person.getDefaultBgColorHeaderFooter());
-		assertEquals(FontColor, person.getDefaultFontColor());
-		assertEquals(buttonFontColor, person.getButtonFontColor());
-		assertEquals(buttonBackgroundColor, person.getButtonBackgroundColor());
-		assertEquals(defaultBorderColor, person.getDefaultBorderColor());
-		assertEquals(iconsColor, person.getIconsColor());
-		
-		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
-		
-		assertTrue(reg.getRequireRegistration());
-		assertTrue(reg.getUsesBirthdate());
-		assertTrue(reg.getUsesCard());
-		assertTrue(reg.getUsesGender());
-		assertTrue(reg.getRequireVerif());
-		assertEquals(verif1, reg.getVerifField1());
-		assertEquals(verif2, reg.getVerifField2());
-		assertEquals(identity, reg.getIdentityField());
-		assertTrue(reg.getUsesPassword());
-		assertTrue(reg.getRecoverPassword());
 	}
 	
 	@Test
-	public void test_edit_platform_name_empty() {
+	public void test_edit_platform_regional_name_empty() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -148,8 +88,9 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_name_special_char() {
-		platformname = StringUtils.getCaracteresEspeciales()+DataGenerator.nombreFile();
+	public void test_edit_platform_regional_name_special_char() {
+		String platformnamechanged = StringUtils.getCaracteresEspeciales()+DataGenerator.nombreFile();
+		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
 		loginBackoffice(driver);
@@ -158,22 +99,20 @@ public class testEditPlatformStandard extends TestBase{
 		
 		EditPlatform edit = detail.selectEditar();
 		
-		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+		edit.completeBasicInformation(platformnamechanged, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
 		
 		detail = edit.selectSave();
-		
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals(platformname, detail.getPlatformName());
+		assertEquals(platformnamechanged, detail.getPlatformName());
 	}
 	
 	@Test
-	public void test_edit_platform_name_exist() {
+	public void test_edit_platform_regional_name_exist() {
 		platformname = DataGenerator.nombreFile();
-		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
-		
 		String platformname2 = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		String web2 = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
 		loginBackoffice(driver);
@@ -190,13 +129,14 @@ public class testEditPlatformStandard extends TestBase{
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Ya existe una plataforma con este nombre para la cuenta "+ConfigElementsBO.getAccountPlatformTestName(), 
+		assertEquals("Ya existe una plataforma con este nombre para la cuenta "+ConfigElementsBO.getAccountRegionalName(), 
 				edit.getErrorMessage());
 	}
 	
 	@Test
-	public void test_edit_platform_web_empty() {
+	public void test_edit_platform_regional_web_empty() {
 		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
 		loginBackoffice(driver);
 		
@@ -213,9 +153,10 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_web_without_http() {
+	public void test_edit_platform_regional_web_without_http() {
 		platformname = DataGenerator.nombreFile();
-		web = platformname+ConfigElementsBO.getHostName();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		String web2 = DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
 		loginBackoffice(driver);
 		
@@ -223,20 +164,20 @@ public class testEditPlatformStandard extends TestBase{
 		
 		EditPlatform edit = detail.selectEditar();
 		
-		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+		edit.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("http://"+platformname+ConfigElementsBO.getHostName(), detail.getPlatformWebSite());
+		assertEquals("http://"+web2, detail.getPlatformWebSite());
 	}
 	
 	@Test
-	public void test_edit_platform_web_invalid() {
+	public void test_edit_platform_regional_web_invalid() {
 		platformname = DataGenerator.nombreFile();
-		web = platformname+ConfigElementsBO.getHostName();
-		String webedited = platformname;
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		String web2 = platformname;
 		
 		loginBackoffice(driver);
 		
@@ -244,7 +185,7 @@ public class testEditPlatformStandard extends TestBase{
 		
 		EditPlatform edit = detail.selectEditar();
 		
-		edit.completeBasicInformation(platformname, filesize, videosize, storage, webedited, industry, userRange, 
+		edit.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
 		
 		edit.selectSave();
@@ -253,11 +194,11 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_web_exist() {
+	public void test_edit_platform_regional_web_exist() {
 		platformname = DataGenerator.nombreFile();
 		String platformname2 = DataGenerator.nombreFile();
-		web = "http://"+platformname+ConfigElementsBO.getHostName();
-		String web2 = "http://"+platformname2+ConfigElementsBO.getHostName();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		String web2 = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
 		loginBackoffice(driver);
 		
@@ -277,7 +218,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_filesize_empty() {
+	public void test_edit_platform_regional_filesize_empty() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -296,7 +237,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_filesize_not_numbers() {
+	public void test_edit_platform_regional_filesize_not_number() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -306,7 +247,7 @@ public class testEditPlatformStandard extends TestBase{
 		
 		EditPlatform edit = detail.selectEditar();
 		
-		edit.completeBasicInformation(platformname, "asd", videosize, storage, web, industry, userRange, 
+		edit.completeBasicInformation(platformname, "asdasd", videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
 		
 		edit.selectSave();
@@ -315,7 +256,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_videosize_empty() {
+	public void test_edit_platform_regional_videosize_empty() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -334,7 +275,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_videosize_not_number() {
+	public void test_edit_platform_regional_videosize_not_number() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -344,7 +285,7 @@ public class testEditPlatformStandard extends TestBase{
 		
 		EditPlatform edit = detail.selectEditar();
 		
-		edit.completeBasicInformation(platformname, filesize, "asd", storage, web, industry, userRange, 
+		edit.completeBasicInformation(platformname, filesize, "dasd", storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
 		
 		edit.selectSave();
@@ -353,7 +294,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_storage_empty() {
+	public void test_edit_platform_regional_storage_empty() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -372,7 +313,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_storage_not_number() {
+	public void test_edit_platform_regional_storage_not_number() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -382,7 +323,7 @@ public class testEditPlatformStandard extends TestBase{
 		
 		EditPlatform edit = detail.selectEditar();
 		
-		edit.completeBasicInformation(platformname, filesize, videosize, "asd", web, industry, userRange, 
+		edit.completeBasicInformation(platformname, filesize, videosize, "asdsad", web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
 		
 		edit.selectSave();
@@ -391,7 +332,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_industry_not_select() {
+	public void test_edit_platform_regional_industry_not_selected() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -410,7 +351,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_uses_range_not_select() {
+	public void test_edit_platform_regional_users_range_not_selected() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -429,7 +370,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_disabled() {
+	public void test_edit_platform_regional_disabled() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -453,7 +394,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_user_visibility() {
+	public void test_edit_platform_regional_user_visibility() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -464,16 +405,16 @@ public class testEditPlatformStandard extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, true, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, false, socialact, timezone, tyc, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Mostrar", detail.getUserVisibility());
+		assertEquals("Ocultar", detail.getUserVisibility());
 	}
 	
 	@Test
-	public void test_edit_platform_google_code_empty() {
+	public void test_edit_platform_regional_google_code_empty() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -493,7 +434,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_social_disabled() {
+	public void test_edit_platform_regional_social_disabled() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -513,7 +454,7 @@ public class testEditPlatformStandard extends TestBase{
 	}
 	
 	@Test
-	public void test_edit_platform_without_time_zone() {
+	public void test_edit_platform_regional_without_timezone() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -529,11 +470,11 @@ public class testEditPlatformStandard extends TestBase{
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		//Falta en la vista el campo... osea daleee... ¬¬
+		//Falta el campo en la vista
 	}
 	
 	@Test
-	public void test_edit_platform_tyc_empty() {
+	public void test_edit_platform_regional_tyc_empty() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -547,96 +488,13 @@ public class testEditPlatformStandard extends TestBase{
 				disablestatus, googlea, uservisib, socialact, timezone, "", htmllog);
 		
 		edit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Por favor, ingrese los Términos y Condiciones.", edit.getErrorTermsAndConditions());
 	}
 	
 	@Test
-	public void test_edit_platform_html_login() {
-		platformname = DataGenerator.nombreFile();
-		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
-		htmllog = DataGenerator.nombreFile();
-		
-		loginBackoffice(driver);
-		
-		PlatformDetail detail = createPlatform(platformname, web);
-		
-		EditPlatform edit = detail.selectEditar();
-		
-		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
-		
-		detail = edit.selectSave();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		assertEquals(htmllog, detail.getHtmlLogin());
-	}
-	
-	@Test
-	public void test_edit_platform_change_logo_and_banner() {
-		platformname = DataGenerator.nombreFile();
-		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
-		String logourl = ConfigElements.getFileImagenChange();
-		String logofooter = ConfigElements.getFileImagenChange();
-		String banner = ConfigElements.getFileImagenChange();
-		
-		
-		loginBackoffice(driver);
-		
-		PlatformDetail detail = createPlatform(platformname, web);
-		
-		String principallogo = detail.getSrcPrincipalLogo();
-		String secondlogo = detail.getSrcSecondaryLogo();
-		String bannersign = detail.getSrcBannerLogin();
-		
-		EditPlatform edit = detail.selectEditar();
-		
-		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
-		
-		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
-		
-		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
-				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
-				defaultBorderColor, iconsColor);
-		
-		detail = edit.selectSave();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		assertNotEquals(principallogo, detail.getSrcPrincipalLogo());
-		assertNotEquals(secondlogo, detail.getSrcSecondaryLogo());
-		assertNotEquals(bannersign, detail.getSrcBannerLogin());
-	}
-	
-	@Test
-	public void test_edit_platform_view_user_mails_true() {
-		platformname = DataGenerator.nombreFile();
-		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
-		htmllog = DataGenerator.nombreFile();
-		
-		loginBackoffice(driver);
-		
-		PlatformDetail detail = createPlatform(platformname, web);
-		
-		EditPlatform edit = detail.selectEditar();
-		
-		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
-		
-		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
-		
-		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
-				true, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
-				defaultBorderColor, iconsColor);
-		
-		detail = edit.selectSave();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		assertEquals("si", detail.getShowUserMail());
-	}
-	
-	@Test
-	public void test_edit_platform_background_color_empty() {
+	public void test_edit_platform_regional() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
@@ -649,22 +507,28 @@ public class testEditPlatformStandard extends TestBase{
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
 		
-		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
-		
-		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
-				showusermail, "", BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
-				defaultBorderColor, iconsColor);
-		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Por favor ingrese el dato solicitado.", person.getErrorDefaultBackgroundColor());
+		assertEquals(ConfigElementsBO.getAccountRegionalName(), detail.getAccountName());
+		assertEquals(platformname, detail.getPlatformName());
+		assertEquals(filesize+" KB", detail.getPlatformImgSize());
+		assertEquals(web, detail.getPlatformWebSite());
+		assertEquals(storage+" KB", detail.getPlatformStorage());
+		assertEquals(industry, detail.getIndustry());
+		assertEquals(userRange, detail.getUserRange());
+		assertEquals(timezone, detail.getTimeZone());
+		assertEquals("No", detail.getDisablePlatform());
+		assertEquals("Ocultar", detail.getUserVisibility());
+		assertEquals("Si", detail.getSocialStatus());
+		assertEquals(googlea, detail.getGoogleCode());
 	}
 	
 	@Test
-	public void test_edit_platform_background_color_header_footer_empty() {
+	public void test_edit_platform_regional_web_equals_account() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		String web2 = ConfigElementsBO.getWebSiteAccount();
 		
 		loginBackoffice(driver);
 		
@@ -672,159 +536,24 @@ public class testEditPlatformStandard extends TestBase{
 		
 		EditPlatform edit = detail.selectEditar();
 		
-		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+		edit.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
 		
-		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
-		
-		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
-				showusermail, backgroundcolor, "", FontColor, buttonFontColor, buttonBackgroundColor, 
-				defaultBorderColor, iconsColor);
-		
-		detail = edit.selectSave();
+		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Por favor ingrese el dato solicitado.", person.getErrorDefaultBgColorHeaderFooter());
-	}
-	
-	@Test
-	public void test_edit_platform_change_colors() {
-		platformname = DataGenerator.nombreFile();
-		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
-		
-		backgroundcolor = "#282828";
-		BgColorHeaderFooter = "#882827";
-		FontColor = "#944949";
-		buttonFontColor = "#421717";
-		buttonBackgroundColor = "#ad8e8e";
-		defaultBorderColor = "#a621b8";
-		iconsColor = "White";
-		
-		loginBackoffice(driver);
-		
-		PlatformDetail detail = createPlatform(platformname, web);
-		
-		EditPlatform edit = detail.selectEditar();
-		
-		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
-		
-		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
-		
-		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
-				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
-				defaultBorderColor, iconsColor);
-		
-		detail = edit.selectSave();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		assertEquals(backgroundcolor, detail.getBackgroundcolor());
-		assertEquals(BgColorHeaderFooter, detail.getBackgroundheaderfooter());
-		assertEquals(FontColor, detail.getTextheaderfooter());
-		assertEquals(buttonFontColor, detail.getTextbtn());
-		assertEquals(buttonBackgroundColor, detail.getBackgroundbtn());
-		assertEquals(defaultBorderColor, detail.getBorderheaderfooter());
-		assertEquals(iconsColor, detail.getColoricon());
-	}
-	
-	@Test
-	public void test_edit_platform_change_password_setting() {
-		platformname = DataGenerator.nombreFile();
-		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
-		
-		loginBackoffice(driver);
-		
-		PlatformDetail detail = createPlatform(platformname, web);
-		
-		EditPlatform edit = detail.selectEditar();
-		
-		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
-		
-		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, false, recoverpass, isnominated, htmlSignUp);
-		
-		detail = edit.selectSave();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		driver.get(web);
-		
-		Login login = PageFactory.initElements(driver, Login.class);
-		
-		assertFalse(login.isPasswordPresent());
-		
-	}
-	
-	@Test
-	public void test_edit_platform_change_recover_password() {
-		platformname = DataGenerator.nombreFile();
-		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
-		
-		loginBackoffice(driver);
-		
-		PlatformDetail detail = createPlatform(platformname, web);
-		
-		EditPlatform edit = detail.selectEditar();
-		
-		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
-		
-		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, false, isnominated, htmlSignUp);
-		
-		detail = edit.selectSave();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		driver.get(web);
-		
-		Login login = PageFactory.initElements(driver, Login.class);
-		
-		assertFalse(login.isForgotPasswordPresent());
-	}
-	
-	@Test
-	public void test_edit_platform_disable_registration() {
-		platformname = DataGenerator.nombreFile();
-		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
-		
-		loginBackoffice(driver);
-		
-		PlatformDetail detail = createPlatform(platformname, web);
-		
-		EditPlatform edit = detail.selectEditar();
-		
-		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
-		
-		reg.completeConfigRegistration(false, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated, htmlSignUp);
-		
-		detail = edit.selectSave();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		driver.get(web);
-		
-		Login login = PageFactory.initElements(driver, Login.class);
-		
-		assertFalse(login.isSignUpPresent());
+		assertEquals("La URL ingresada ya está siendo utilizada en el sistema.", edit.getErrorMessage());
 	}
 	
 	private PlatformDetail createPlatform(String platformname, String web) {
-		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		CreatePlatformRegional newplat = PageFactory.initElements(driver, CreatePlatformRegional.class);
 		
 		newplat.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
-		
-		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
-		
-		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
-				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
-				defaultBorderColor, iconsColor);
-		
-		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
-		
-		reg.completeConfigRegistration(requireReg, usescard, usesbirthdate, usesGender, requireVerif, verif1, verif2, 
-				identity, requirepass, recoverpass, isnominated, htmlSignUp);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
