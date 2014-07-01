@@ -30,6 +30,12 @@ public class AlbumDetail extends PageBase{
 	@FindBy (xpath = "//li[contains(@id,'image-')]")
 	private WebElement imageid;
 	
+	@FindBy (xpath = "//li/span/i[@class='icon-play']")
+	private WebElement video;
+	
+	@FindBy (xpath = "//h3[@id='album-image-title']")
+	private WebElement imagetitle;
+	
 	/**
 	 * Constructor
 	 * 
@@ -76,6 +82,15 @@ public class AlbumDetail extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el video se muestre, solo funciona para albums con una sola imagen.
+	 * 
+	 * @return boolean
+	 */
+	public boolean isVideoInAlbum() {
+		return video.isDisplayed();
+	}
+	
+	/**
 	 * Seleccionar Editar Album
 	 * 
 	 * @return {@link EditAlbum}
@@ -95,6 +110,15 @@ public class AlbumDetail extends PageBase{
 	 */
 	public String getAlbumTitle() {
 		return albumtitle.getText();
+	}
+	
+	/**
+	 * Obtener el titulo de la imagen/video
+	 * 
+	 * @return String
+	 */
+	public String getImageTitle() {
+		return imagetitle.getText();
 	}
 	
 	/**

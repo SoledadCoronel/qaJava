@@ -19,8 +19,14 @@ public class ImageDetail extends PageBase{
 	@FindBy (className = "current-photo")
 	private WebElement currentphoto;
 	
+	@FindBy (id = "video-player_flash_api")
+	private WebElement currentvideo;
+	
 	@FindBy (xpath = "//div[@class='content-container']/div")
 	private WebElement picactions;
+	
+	@FindBy (xpath = "//div[@class='content-container']/div[2]")
+	private WebElement picactionsVideo;
 	
 	@FindBy (className = "modal-delete-button")
 	private WebElement deletebtn;
@@ -31,6 +37,12 @@ public class ImageDetail extends PageBase{
 	@FindBy (className = "download-link")
 	private WebElement downloadlink;
 
+	@FindBy (className = "copy-link")
+	private WebElement copylink;
+	
+	@FindBy (id = "copy-link-video")
+	private WebElement videolink;
+	
 	/**
 	 * Constructor
 	 * 
@@ -49,12 +61,32 @@ public class ImageDetail extends PageBase{
 	}
 	
 	/**
+	 * Vuelve visible las acciones del video
+	 */
+	private void makeVisibleVidActions() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].setAttribute('style','display:block;')", picactionsVideo);
+	}
+	
+	/**
 	 * Eliminar imagen
 	 * 
 	 * @return {@link DeleteOverlay}
 	 */
 	public DeleteOverlay selectDelete() {
 		makeVisiblePicActions();
+		deletebtn.click();
+		
+		return PageFactory.initElements(driver, DeleteOverlay.class);
+	}
+	
+	/**
+	 * Eliminar video
+	 * 
+	 * @return {@link DeleteOverlay}
+	 */
+	public DeleteOverlay selectDeleteVideo() {
+		makeVisibleVidActions();
 		deletebtn.click();
 		
 		return PageFactory.initElements(driver, DeleteOverlay.class);
@@ -69,6 +101,23 @@ public class ImageDetail extends PageBase{
 		makeVisiblePicActions();
 		WebElement _downloadLink = downloadlink;
 		return _downloadLink;
+	}
+	
+	/**
+	 * Seleccionar el botón Copiar Link
+	 */
+	public void selectCopyLink() {
+		makeVisiblePicActions();
+		copylink.click();
+	}
+	
+	/**
+	 * Obtener el link del Video
+	 * 
+	 * @return String
+	 */
+	public String copyLink() {
+		return videolink.getAttribute("value");
 	}
 	
 	/**
@@ -87,6 +136,15 @@ public class ImageDetail extends PageBase{
 	 */
 	public String getSrcImg() {
 		return currentphoto.getAttribute("src");
+	}
+	
+	/**
+	 * Obtener el src del video 
+	 * 
+	 * @return String
+	 */
+	public String getSrcVideo() {
+		return currentvideo.getAttribute("data");
 	}
 	
 	/**
