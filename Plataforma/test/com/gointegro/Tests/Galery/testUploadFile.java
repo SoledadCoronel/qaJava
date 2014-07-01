@@ -305,36 +305,6 @@ private WebDriver driver;
 		assertEquals(2, detail.albumsize());
 	}
 	
-	@Test
-	public void test_upload_file_video_copy_link() {
-		String albumname = DataGenerator.nombreFile();
-		String testfile = ConfigElements.getFileMP4Video();
-		
-		login(driver);
-		
-		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		createAlbum(albumname, home);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		home.uploadFile(testfile);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
-		upload.selectAlbumInList(albumname);
-		upload.selectSave();
-		
-		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		AlbumDetail detail = home.selectAlbumSideBar(albumname);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		assertEquals(2, detail.albumsize());
-	}
-	
 	private void createAlbum(String albumname, HomeGalery home) {
 		NewAlbumOverlay albumover = home.selectNewAlbum();
 		WaitTool.waitForJQueryProcessing(driver, 5);
