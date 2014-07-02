@@ -806,6 +806,98 @@ public class testEditPlatformStandard extends TestBase{
 		assertFalse(login.isSignUpPresent());
 	}
 	
+	@Test
+	public void test_edit_platform() {
+		//Prueba cambiandole unicamente el nombre, web,storage,filesize,industria y rango de usuarios.
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		String platformname2 = DataGenerator.nombreFile();
+		String web2 = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		String filesize2 = "700";
+		String storage2 = "1000";
+		String industry2 = "Autos";
+		String userRange2 = "100-300";
+		String timezone2 = "Africa/Accra";
+		
+		loginBackoffice(driver);
+		
+		PlatformDetail detail = createPlatform(platformname, web);
+		
+		EditPlatform edit = detail.selectEditar();
+		
+		edit.completeBasicInformation(platformname2, filesize2, videosize, storage2, web2, industry2, userRange2, 
+				disablestatus, googlea, uservisib, socialact, timezone2, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		detail = edit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals(ConfigElementsBO.getAccountPlatformTestName(), detail.getAccountName());
+		assertEquals(platformname2, detail.getPlatformName());
+		assertEquals(filesize2+" KB", detail.getPlatformImgSize());
+		assertEquals(web2, detail.getPlatformWebSite());
+		assertEquals(storage2+" KB", detail.getPlatformStorage());
+		assertEquals(industry2, detail.getIndustry());
+		assertEquals(userRange2, detail.getUserRange());
+		assertEquals(timezone2, detail.getTimeZone());
+		assertEquals("No", detail.getDisablePlatform());
+		assertEquals("Ocultar", detail.getUserVisibility());
+		assertEquals("Si", detail.getSocialStatus());
+		assertEquals(googlea, detail.getGoogleCode());
+		assertEquals(htmllog, detail.getHtmlLogin());
+	}
+	
+	@Test
+	public void test_edit_platform_cancel() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		String platformname2 = DataGenerator.nombreFile();
+		String web2 = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		String filesize2 = "700";
+		String storage2 = "1000";
+		String industry2 = "Autos";
+		String userRange2 = "100-300";
+		String timezone2 = "Africa/Accra";
+		
+		loginBackoffice(driver);
+		
+		PlatformDetail detail = createPlatform(platformname, web);
+		
+		EditPlatform edit = detail.selectEditar();
+		
+		edit.completeBasicInformation(platformname2, filesize2, videosize, storage2, web2, industry2, userRange2, 
+				disablestatus, googlea, uservisib, socialact, timezone2, tyc, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
+		edit.selectCancel();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals(ConfigElementsBO.getAccountPlatformTestName(), detail.getAccountName());
+		assertEquals(platformname, detail.getPlatformName());
+		assertEquals(filesize+" KB", detail.getPlatformImgSize());
+		assertEquals(web, detail.getPlatformWebSite());
+		assertEquals(storage+" KB", detail.getPlatformStorage());
+		assertEquals(industry, detail.getIndustry());
+		assertEquals(userRange, detail.getUserRange());
+		assertEquals(timezone, detail.getTimeZone());
+		assertEquals("No", detail.getDisablePlatform());
+		assertEquals("Ocultar", detail.getUserVisibility());
+		assertEquals("Si", detail.getSocialStatus());
+		assertEquals(googlea, detail.getGoogleCode());
+	}
+	
 	private PlatformDetail createPlatform(String platformname, String web) {
 		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
 		
