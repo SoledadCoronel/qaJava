@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -50,7 +49,7 @@ public class testNewAccountStandard extends TestBase{
 		assertEquals("No", detail.getRegional());
 		assertEquals("No", detail.getRegistration());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_account_standard_name_empty() {
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
@@ -70,7 +69,7 @@ public class testNewAccountStandard extends TestBase{
 		
 		assertEquals("Required", standard.getNameError());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_account_standard_name_exist() {
 		String accountname = "Z"+DataGenerator.nombreFile();
@@ -102,7 +101,7 @@ public class testNewAccountStandard extends TestBase{
 		
 		assertEquals("Ya existe una cuenta con el nombre "+accountname+".", standard.getErrorMsj());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_account_standard_salesforceid_empty() {
 		String accountname = "Z"+DataGenerator.nombreFile();
@@ -122,7 +121,7 @@ public class testNewAccountStandard extends TestBase{
 		
 		assertEquals("El ID de Salesforce debe tener entre 15 y 18 caracteres.", standard.getSalesForceIdError());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_account_standard_saleforceid_litte() {
 		String accountname = "Z"+DataGenerator.nombreFile();
@@ -143,7 +142,7 @@ public class testNewAccountStandard extends TestBase{
 		
 		assertEquals("El ID de Salesforce debe tener entre 15 y 18 caracteres.", standard.getSalesForceIdError());
 	}
-	@Ignore
+	
 	@Test
 	public void test_new_account_standard_salesforceid_exist() {
 		String accountname = "Z"+DataGenerator.nombreFile();
