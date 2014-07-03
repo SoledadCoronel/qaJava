@@ -536,6 +536,23 @@ public class testNewPlatformRegional extends TestBase{
 		assertEquals("La URL ingresada ya está siendo utilizada en el sistema.", newplat.getErrorMessage());
 	}
 	
+	@Test
+	public void test_new_platform_regional_cancel() {
+		loginBackoffice(driver);
+		
+		CreatePlatformRegional newplat = PageFactory.initElements(driver, CreatePlatformRegional.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		String urlCreate = driver.getCurrentUrl();
+		
+		newplat.selectCancel();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertNotEquals(urlCreate, driver.getCurrentUrl());
+	}
+	
 	@After
 	public void tearDown() {
 		Logout logout = PageFactory.initElements(driver, Logout.class);

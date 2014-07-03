@@ -1,4 +1,4 @@
-package com.gointegro.Tests.Backoffice.Platform;
+package com.gointegro.Tests.Backoffice.Account;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -9,15 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
-@SuiteClasses({ 
-	testNewPlatformStandard.class,
-	testEditPlatformStandard.class,
-	testListPlatform.class,
-	testNewPlatformRegional.class,
-	testEditPlatformRegional.class,
-	})
-
-public class AllTestsBackofficePlatform {
+@SuiteClasses({
+	testNewAccountStandard.class,
+})
+public class AllTestsAccount {
 	
 private static WebDriver driver;
 	
@@ -31,12 +26,12 @@ private static WebDriver driver;
 	}
 	
 	public static void setDriver(WebDriver driver) {
-		AllTestsBackofficePlatform.driver = driver;
+		AllTestsAccount.driver = driver;
 	}
 	
 	@AfterClass
 	 public static void tearDown() {
-		driver.quit();
+		//driver.quit();
 	}
 
 }

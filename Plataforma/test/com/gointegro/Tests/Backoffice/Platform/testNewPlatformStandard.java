@@ -61,7 +61,7 @@ public class testNewPlatformStandard extends TestBase{
 	boolean requirepass = true;
 	boolean recoverpass = false;
 	boolean isnominated = false;
-	String htmlSignUp = DataGenerator.nombreFile();
+	String htmlSignUp = DataGenerator.nombreFile(); 
 	
 	@Before
 	public void setUp() {
@@ -70,6 +70,7 @@ public class testNewPlatformStandard extends TestBase{
 	
 	@Test
 	public void test_new_platform_verify_account_label() {
+		//Log.info(Thread.currentThread().getStackTrace()[1].getMethodName());
 		loginBackoffice(driver);
 		
 		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
@@ -82,8 +83,6 @@ public class testNewPlatformStandard extends TestBase{
 	
 	@Test
 	public void test_new_platform_empty_title() {
-		
-		
 		loginBackoffice(driver);
 		
 		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
@@ -1513,6 +1512,23 @@ public class testNewPlatformStandard extends TestBase{
 		assertFalse(detail.getSrcBannerLogin().isEmpty());
 		assertFalse(detail.getSrcPrincipalLogo().isEmpty());
 		assertFalse(detail.getSrcSecondaryLogo().isEmpty());
+	}
+	
+	@Test
+	public void test_new_platform_cancel() {
+		loginBackoffice(driver);
+		
+		CreatePlatform newplat = PageFactory.initElements(driver, CreatePlatform.class);
+		
+		newplat.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		String urlCreate = driver.getCurrentUrl();
+		
+		newplat.selectCancel();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertNotEquals(urlCreate, driver.getCurrentUrl());
 	}
 	
 	@After

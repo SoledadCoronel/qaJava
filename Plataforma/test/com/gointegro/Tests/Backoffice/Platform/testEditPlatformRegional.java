@@ -545,6 +545,40 @@ public class testEditPlatformRegional extends TestBase{
 		assertEquals("La URL ingresada ya está siendo utilizada en el sistema.", edit.getErrorMessage());
 	}
 	
+	@Test
+	public void test_edit_platform_regional_cancel() {
+		platformname = DataGenerator.nombreFile();
+		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		String platformname2 = DataGenerator.nombreFile();
+		String web2 = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
+		
+		loginBackoffice(driver);
+		
+		PlatformDetail detail = createPlatform(platformname, web);
+		
+		EditPlatform edit = detail.selectEditar();
+		
+		edit.completeBasicInformation(platformname2, filesize, videosize, storage, web2, industry, userRange, 
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+		
+		edit.selectCancel();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals(ConfigElementsBO.getAccountRegionalName(), detail.getAccountName());
+		assertEquals(platformname, detail.getPlatformName());
+		assertEquals(filesize+" KB", detail.getPlatformImgSize());
+		assertEquals(web, detail.getPlatformWebSite());
+		assertEquals(storage+" KB", detail.getPlatformStorage());
+		assertEquals(industry, detail.getIndustry());
+		assertEquals(userRange, detail.getUserRange());
+		assertEquals(timezone, detail.getTimeZone());
+		assertEquals("No", detail.getDisablePlatform());
+		assertEquals("Ocultar", detail.getUserVisibility());
+		assertEquals("Si", detail.getSocialStatus());
+		assertEquals(googlea, detail.getGoogleCode());
+	}
+	
 	private PlatformDetail createPlatform(String platformname, String web) {
 		
 		CreatePlatformRegional newplat = PageFactory.initElements(driver, CreatePlatformRegional.class);
