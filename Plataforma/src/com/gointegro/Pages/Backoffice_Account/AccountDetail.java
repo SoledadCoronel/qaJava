@@ -3,6 +3,7 @@ package com.gointegro.Pages.Backoffice_Account;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 
@@ -126,6 +127,17 @@ public class AccountDetail extends PageBase{
 	 */
 	public String getRegistration() {
 		return registration.getText();
+	}
+	
+	/**
+	 * Seleccionar Editar
+	 * 
+	 * @return {@link EditAccountStandard}
+	 */
+	public EditAccountStandard selectEdit() {
+		linkEditar.click();
+		
+		return PageFactory.initElements(driver, EditAccountStandard.class);
 	}
 
 }
