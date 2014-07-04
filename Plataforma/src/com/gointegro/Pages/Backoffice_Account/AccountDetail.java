@@ -15,7 +15,7 @@ public class AccountDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='account']/span/div[2]/span")
 	private WebElement name;
 	
-	@FindBy(xpath = "//div[@id='account']/span/div[4]/span")
+	@FindBy(xpath = "//div[@id='principal-logo']/span/div[2]/a")
 	private WebElement website;
 	
 	@FindBy(xpath = "//div[@id='account']/span/div[6]/span")
@@ -129,6 +129,74 @@ public class AccountDetail extends PageBase{
 		return registration.getText();
 	}
 	
+	/**
+	 * Obtener el html de login
+	 * 
+	 * @return String
+	 */
+	public String getHtmlLogin() {
+		return htmllogin.getText();
+	}
+	
+	public String getLoginType() {
+		return logintype.getText();
+	}
+	
+	public String getUserField() {
+		return userfield.getText();
+	}
+	
+	public String getRecoverPassword() {
+		return recoverpassword.getText();
+	}
+	
+	public String getVerifField1() {
+		return veriffield1.getText();
+	}
+	
+	public String getVerifField2() {
+		return veriffield2.getText();
+	}
+	
+	public String getUniqueField() {
+		return uniqueField.getText();
+	}
+	
+	public String getShowUserMail() {
+		return showUserEmail.getText();
+	}
+	
+	public String getBackgroundColor() {
+		return backgroundcolor.getText();
+	}
+	
+	public String getBackgroundColorHeader() {
+		return backgroundcolorheader.getText();
+	}
+	
+	public String getTextColorHeader() {
+		return textcolorheader.getText();
+	}
+	
+	public String getTextColorBtn() {
+		return textcolorbtn.getText();
+	}
+	
+	public String getBackgroundColorBtn() {
+		return backgroundcolorbtn.getText();
+	}
+	
+	public String getColorLineHeader() {
+		return colorlineheader.getText();
+	}
+	
+	public String getIconColor() {
+		return iconcolor.getText();
+	}
+	
+	public String getDefaultLang() {
+		return defaultlang.getText();
+	}
 	/**
 	 * Seleccionar Editar
 	 * 

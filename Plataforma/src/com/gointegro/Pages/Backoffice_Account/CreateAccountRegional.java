@@ -26,7 +26,7 @@ public class CreateAccountRegional extends PageBase{
 	@FindBy (xpath = "//div[@class='form-buttons']/button[2]")
 	protected WebElement cancelBtn;
 	
-	@FindBy (id = "c1_htmlLogin_ifr")
+	@FindBy (id = "c2_htmlLogin_ifr")
 	protected WebElement htmlLogin;
 	
 	/**
@@ -38,6 +38,9 @@ public class CreateAccountRegional extends PageBase{
 	
 	@FindBy (xpath = "//div[contains(@class,'field-webSite')]/div/div")
 	protected WebElement webSiteError;
+	
+	@FindBy (xpath = "//div[@id='error-message']/p")
+	protected WebElement errorMsj;
 	
 
 	/**
@@ -102,9 +105,13 @@ public class CreateAccountRegional extends PageBase{
 	
 	/**
 	 * Select save btn
+	 * 
+	 * @return {@link AccountDetail}
 	 */
-	public void selectSave() {
+	public AccountDetail selectSave() {
 		saveBtn.click();
+		
+		return PageFactory.initElements(driver, AccountDetail.class);
 	}
 	
 	/**
@@ -130,6 +137,15 @@ public class CreateAccountRegional extends PageBase{
 	 */
 	public String getWebSiteError() {
 		return webSiteError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error superior
+	 * 
+	 * @return String
+	 */
+	public String getErrorMsj() {
+		return errorMsj.getText();
 	}
 
 }

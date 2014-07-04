@@ -11,7 +11,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Suite.class)
 @SuiteClasses({
 	//testNewAccountStandard.class,
-	testEditAccountStandard.class,
+	//testEditAccountStandard.class,
+	testNewAccountRegionalFather.class
 })
 public class AllTestsAccount {
 	
