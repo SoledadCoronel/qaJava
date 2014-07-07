@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -25,7 +24,6 @@ public class testHelpCenter extends TestBase {
 		driver = AllTestsPlatform.getDriver();
 	}
 
-	@Ignore
 	@Test
 	public void test_helpcenter_contact() {
 		String phone = "1555464552";
