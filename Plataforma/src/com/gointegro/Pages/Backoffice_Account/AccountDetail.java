@@ -1,5 +1,6 @@
 package com.gointegro.Pages.Backoffice_Account;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -75,6 +76,9 @@ public class AccountDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='content']/div[24]/span/div[2]")
 	private WebElement htmllogin;
 	
+	@FindBy(xpath = "//legend[contains(text(),'Cuenta principal')]/following-sibling::div")
+	private WebElement accountprincipal;
+	
 	/**
 	 * Constructor
 	 * 
@@ -138,62 +142,137 @@ public class AccountDetail extends PageBase{
 		return htmllogin.getText();
 	}
 	
+	/**
+	 * Obtener el tipo de login
+	 * 
+	 * @return String
+	 */
 	public String getLoginType() {
 		return logintype.getText();
 	}
 	
+	/**
+	 * Obtener el user field
+	 * 
+	 * @return String
+	 */
 	public String getUserField() {
 		return userfield.getText();
 	}
 	
+	/**
+	 * Obtener el recover password
+	 * 
+	 * @return String
+	 */
 	public String getRecoverPassword() {
 		return recoverpassword.getText();
 	}
 	
+	/**
+	 * Obtener el verif field 1
+	 * 
+	 * @return String
+	 */
 	public String getVerifField1() {
 		return veriffield1.getText();
 	}
 	
+	/**
+	 * Obtener el verif field 2
+	 * 
+	 * @return String
+	 */
 	public String getVerifField2() {
 		return veriffield2.getText();
 	}
 	
+	/**
+	 * Obtener el unique field
+	 * 
+	 * @return String
+	 */
 	public String getUniqueField() {
 		return uniqueField.getText();
 	}
 	
+	/**
+	 * Obtener si muestra el mail de usuario
+	 * 
+	 * @return String
+	 */
 	public String getShowUserMail() {
 		return showUserEmail.getText();
 	}
 	
+	/**
+	 * Obtener el backgroundcolor
+	 * 
+	 * @return String
+	 */
 	public String getBackgroundColor() {
 		return backgroundcolor.getText();
 	}
 	
+	/**
+	 * Obtener el backgroundcolorheader
+	 * 
+	 * @return String
+	 */
 	public String getBackgroundColorHeader() {
 		return backgroundcolorheader.getText();
 	}
 	
+	/**
+	 * Obtener el textcolorheader
+	 * 
+	 * @return String
+	 */
 	public String getTextColorHeader() {
 		return textcolorheader.getText();
 	}
 	
+	/**
+	 * Obtener el textcolorbtn
+	 * 
+	 * @return String
+	 */
 	public String getTextColorBtn() {
 		return textcolorbtn.getText();
 	}
 	
+	/**
+	 * Obtener el backgroundcolorbtn
+	 * 
+	 * @return String
+	 */
 	public String getBackgroundColorBtn() {
 		return backgroundcolorbtn.getText();
 	}
 	
+	/**
+	 * Obtener el colorlineheader
+	 * 
+	 * @return String
+	 */
 	public String getColorLineHeader() {
 		return colorlineheader.getText();
 	}
 	
+	/**
+	 * Obtener el icon color
+	 * 
+	 * @return String
+	 */
 	public String getIconColor() {
 		return iconcolor.getText();
 	}
 	
+	/**
+	 * Obtener el default lang
+	 * 
+	 * @return String
+	 */
 	public String getDefaultLang() {
 		return defaultlang.getText();
 	}
@@ -206,6 +285,19 @@ public class AccountDetail extends PageBase{
 		linkEditar.click();
 		
 		return PageFactory.initElements(driver, EditAccountStandard.class);
+	}
+	
+	/**
+	 * Obtener la cuenta padre
+	 * 
+	 * @return String
+	 */
+	public String getAccountFather() {
+		return accountprincipal.getText();
+	}
+	
+	public boolean isFatherAccountPresent() {
+		return isElementPresent(By.xpath("//legend[contains(text(),'Cuenta principal')]/following-sibling::div"));
 	}
 
 }
