@@ -25,7 +25,6 @@ public class testHelpCenter extends TestBase {
 		driver = AllTestsPlatform.getDriver();
 	}
 
-	@Ignore
 	@Test
 	public void test_helpcenter_contact() {
 		String phone = "1555464552";
