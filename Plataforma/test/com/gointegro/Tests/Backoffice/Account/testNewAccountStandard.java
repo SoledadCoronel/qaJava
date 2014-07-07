@@ -177,6 +177,7 @@ public class testNewAccountStandard extends TestBase{
 	
 	@Test
 	public void test_new_account_standard_cancel() {
+		
 		loginBackoffice(driver);
 		
 		String url = driver.getCurrentUrl();

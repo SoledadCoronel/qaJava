@@ -10,7 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testNewAccountStandard.class,
+	//testNewAccountStandard.class,
+	//testEditAccountStandard.class,
+	testNewAccountRegionalFather.class
 })
 public class AllTestsAccount {
 	

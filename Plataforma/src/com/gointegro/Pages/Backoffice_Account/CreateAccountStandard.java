@@ -11,19 +11,19 @@ import com.gointegro.Pages.Base.PageBase;
 public class CreateAccountStandard extends PageBase{
 	
 	@FindBy (name = "name")
-	private WebElement name;
+	protected WebElement name;
 	
 	@FindBy (name = "salesforceId")
-	private WebElement salesforceId;
+	protected WebElement salesforceId;
 	
 	@FindBy (xpath = "//div[@class='selection-list-container']/button")
-	private WebElement searchAccount;
+	protected WebElement searchAccount;
 	
 	@FindBy (xpath = "//div[@class='form-buttons']/button")
-	private WebElement saveBtn;
+	protected WebElement saveBtn;
 	
 	@FindBy (xpath = "//div[@class='form-buttons']/button[2]")
-	private WebElement cancelBtn;
+	protected WebElement cancelBtn;
 	
 	/**
 	 * Mensajes de error
@@ -52,7 +52,7 @@ public class CreateAccountStandard extends PageBase{
 	 * 
 	 * @param accountname
 	 */
-	private void completeName(String accountname) {
+	protected void completeName(String accountname) {
 		name.clear();
 		name.sendKeys(accountname);
 	}
@@ -62,7 +62,7 @@ public class CreateAccountStandard extends PageBase{
 	 * 
 	 * @param salesforce
 	 */
-	private void completeSaleforceId(String salesforce) {
+	protected void completeSaleforceId(String salesforce) {
 		salesforceId.clear();
 		salesforceId.sendKeys(salesforce);
 	}

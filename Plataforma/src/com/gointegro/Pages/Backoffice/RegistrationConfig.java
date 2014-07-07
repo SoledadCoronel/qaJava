@@ -223,7 +223,8 @@ public class RegistrationConfig extends PageBase{
 			selectIdentityField(fieldidentity);
 			selectHasPassword(password);
 			selectRecoverPassword(recover);
-			completeHtmlSignUp(htmlsignup);
+			if(!htmlsignup.isEmpty())
+				completeHtmlSignUp(htmlsignup);
 		}
 	}
 	
