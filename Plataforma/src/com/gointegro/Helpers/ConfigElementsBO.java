@@ -21,6 +21,8 @@ public class ConfigElementsBO {
 	private static String accountRegionalName = "Automation Test Platform Regional Hija";
 	
 	private static String webSiteAccount = "http://automationtestplatformregional.p2-stage.gointegro.com";
+	
+	private static String accountRegionalFather = "Automation Test Platform Regional";
 
 	public static String getUser() {
 		return user;
@@ -60,6 +62,10 @@ public class ConfigElementsBO {
 	
 	public static String getWebSiteAccount() {
 		return webSiteAccount;
+	}
+	
+	public static String getAccountRegionalFather() {
+		return accountRegionalFather;
 	}
 
 }
