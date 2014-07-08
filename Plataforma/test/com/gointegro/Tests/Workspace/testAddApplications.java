@@ -451,7 +451,7 @@ public class testAddApplications extends TestBase {
 		AplicationAdd appAdd = workList.selectAddAplicactions(title);
 		WaitTool.waitForJQueryProcessing(driver, 20);
 		
-		AplicationInstall appInstall = appAdd.selectInstallAppSocial();
+		AplicationInstall appInstall = appAdd.selectInstallContent();
 		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		appInstall.completeInstallApp(appTitle, "", true, true, true);

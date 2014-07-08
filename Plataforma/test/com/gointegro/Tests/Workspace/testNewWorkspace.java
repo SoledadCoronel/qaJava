@@ -305,7 +305,7 @@ public class testNewWorkspace extends TestBase {
 		JoinWorkSpace joinWorkspace = home.selectJoinWorkspace();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertFalse(joinWorkspace.isWorkspaceInList(title));
+		assertTrue(joinWorkspace.isWorkspaceInList(title));
 		
 		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
 		
