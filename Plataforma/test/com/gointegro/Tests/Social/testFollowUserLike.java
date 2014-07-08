@@ -79,12 +79,11 @@ private WebDriver driver;
 		social.open();
 		PostForm post = PageFactory.initElements(driver, PostForm.class);
 		post.completePost(textopost);
-		WaitTool.setImplicitWait(driver, 3);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Comment comment = createComment(commentpost);
 		
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
@@ -94,10 +93,10 @@ private WebDriver driver;
 		
 		social.open();
 		
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		comment.selectLikeComment();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		assertEquals("Ya no me gusta", comment.getTextLikeComment());
 		
 		logout.open();
