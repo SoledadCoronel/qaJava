@@ -55,14 +55,14 @@ public class testNewInstalledAppWidget extends TestBase {
 		newModule.selectVisibleTitle();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.createCelebrationTitle(title);
+		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newModule.selectFinishBtn();
 		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		home.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 30);
+		WaitTool.waitForJQueryProcessing(driver, 60);
 		
 		assertTrue(home.isInstalledCellebrationAppWidgetinList(title));
 	}

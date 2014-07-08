@@ -292,7 +292,7 @@ public class HomeWidgets extends PageBase {
 		Boolean isInstalledAppInList = false;
 		
 		for(WebElement element : widgetsList) {
-			if(element.getAttribute("class").contains("celebration.feed")) {
+			if(element.getAttribute("class").contains("celebration-feed")) {
 				if(element.findElements(By.xpath(installedAppTitle)).size() > 0 ) {
 					if(element.findElement(By.xpath(installedAppTitle)).getText().contains(name)) {
 						isInstalledAppInList= true;
