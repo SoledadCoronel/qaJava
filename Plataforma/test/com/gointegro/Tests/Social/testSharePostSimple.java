@@ -158,12 +158,15 @@ private WebDriver driver;
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
 		SharePost sharepost = feeds.selectShareContent();
 		sharepost.completeShare(textoshare);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		feeds.deletePost();
 		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertNotEquals(textoshare, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombreUsuario()+" compartió su publicación\n"+textoshare, feeds.getPublicoEn());

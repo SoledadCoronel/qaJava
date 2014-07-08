@@ -115,13 +115,14 @@ private WebDriver driver;
 		post.completePost(textopost);
 		WaitTool.setImplicitWait(driver, 3);
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		
 		profile.open();
-		WaitTool.setImplicitWait(driver, 3);
 		feeds = PageFactory.initElements(driver, WallFeeds.class);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());

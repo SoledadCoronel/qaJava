@@ -96,6 +96,7 @@ private WebDriver driver;
 		
 		WaitTool.setImplicitWait(driver, 3);
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
@@ -103,6 +104,7 @@ private WebDriver driver;
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreEspacio()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
@@ -115,6 +117,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(ConfigElements.getOtherUsername(), ConfigElements.getPassword());
 		profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombreEspacio()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
@@ -138,6 +141,7 @@ private WebDriver driver;
 		
 		WaitTool.setImplicitWait(driver, 3);
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
@@ -146,6 +150,7 @@ private WebDriver driver;
 		profile.open();
 		WaitTool.setImplicitWait(driver, 3);
 		feeds = PageFactory.initElements(driver, WallFeeds.class);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
