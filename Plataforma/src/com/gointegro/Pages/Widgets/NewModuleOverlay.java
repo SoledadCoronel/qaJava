@@ -38,7 +38,7 @@ public class NewModuleOverlay extends PageBase {
 	WebElement finishBtn;
 	
 	// Widget Texto / HTML
-	@FindBy(xpath = "//*[@id='new-module-standard-img']/div[2]/nav/p[2]/label/input")
+	@FindBy(xpath = "//input[contains(@value, 'html-text')]")
 	WebElement textHtmlRadioBtn;
 	
 	@FindBy(className = "showTitle")
@@ -47,11 +47,8 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(className = "showBorder")
 	WebElement borderCheckBox;
 	
-	@FindBy(xpath = "//form[@class='widget-form']/article/div/div/span/input")
+	@FindBy(name = "name")
 	WebElement title;
-	
-	@FindBy(xpath = "//div[@id='new-module-standard-img']/div[2]/form/article/div/div/span/input")
-	WebElement celebrationTitle;
 	
 	@FindBy(xpath = "//div/div/iframe")
 	WebElement description;
@@ -62,7 +59,7 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(xpath = "//form/article/div[3]/div/div/span[2]")
 	WebElement descriptionErrorMsg;
 	
-	@FindBy(xpath = "//*[@id='new-module-standard-img']/div[2]/nav/p[3]/label/input")
+	@FindBy(xpath = "//input[contains(@value, 'banner')]")
 	WebElement imageRadioBtn;
 	
 	@FindBy (id = "banner-image-upload")
@@ -242,16 +239,6 @@ public class NewModuleOverlay extends PageBase {
 	}
 	
 	/**
-	 * Crear titulo para el widget
-	 * 
-	 * @param String
-	 */
-	public void createCelebrationTitle(String name) {
-		celebrationTitle.clear();
-		celebrationTitle.sendKeys(name);
-	}
-	
-	/**
 	 * Crear descripcion para el widget
 	 * 
 	 * @param String
@@ -298,6 +285,8 @@ public class NewModuleOverlay extends PageBase {
 		
 		Sleeper.sleepTightInSeconds(15);
 		WaitTool.waitForJQueryProcessing(driver, 10);	
+		
+		driver.switchTo().defaultContent();
 	}
 	
 	/**

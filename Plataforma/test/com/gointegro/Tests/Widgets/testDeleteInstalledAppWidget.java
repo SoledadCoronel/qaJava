@@ -56,7 +56,7 @@ public class testDeleteInstalledAppWidget extends TestBase {
 		newModule.selectVisibleTitle();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.createCelebrationTitle(title);
+		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newModule.selectFinishBtn();
@@ -115,7 +115,7 @@ public class testDeleteInstalledAppWidget extends TestBase {
 		newModule.selectVisibleTitle();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.createCelebrationTitle(title);
+		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newModule.selectFinishBtn();

@@ -56,7 +56,7 @@ public class testEditInstalledAppWidget extends TestBase {
 		newModule.selectVisibleTitle();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.createCelebrationTitle(title);
+		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newModule.selectFinishBtn();
@@ -76,7 +76,7 @@ public class testEditInstalledAppWidget extends TestBase {
 		editWidget.selectEditWidget(widgetElement);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.createCelebrationTitle(title2);
+		newModule.createTitle(title2);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newModule.selectFinishBtn();
@@ -118,7 +118,7 @@ public class testEditInstalledAppWidget extends TestBase {
 		newModule.selectVisibleTitle();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.createCelebrationTitle(title);
+		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newModule.selectFinishBtn();
@@ -138,7 +138,7 @@ public class testEditInstalledAppWidget extends TestBase {
 		editWidget.selectEditWidget(widgetElement);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newModule.createCelebrationTitle(title2);
+		newModule.createTitle(title2);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newModule.selectFinishBtn();
