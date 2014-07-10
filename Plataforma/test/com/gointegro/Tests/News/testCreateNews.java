@@ -454,7 +454,7 @@ public class testCreateNews extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		DetailNews detail = createNews.selectSaveBtn();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(titleText, detail.getTitle());
 		assertTrue(detail.getDescription().contains(url));
@@ -488,9 +488,6 @@ public class testCreateNews extends TestBase {
 		createNews.createTitle(titleText);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		createNews.createDescriptionWithPic(image);
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
 		createNews.selectDate(date);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
@@ -499,6 +496,9 @@ public class testCreateNews extends TestBase {
 		
 		createNews.selectSocialCheckBox();
 		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createNews.createDescriptionWithPic(image);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		DetailNews detail = createNews.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 5);
