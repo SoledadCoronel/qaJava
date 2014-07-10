@@ -88,6 +88,12 @@ public class testOrderSizeWidgets  extends TestBase {
 		
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	
@@ -128,10 +134,25 @@ public class testOrderSizeWidgets  extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 20);
 	}
 	
+	private boolean isAlertPresent(){
+	     try{
+	         driver.switchTo().alert();
+	         return true;
+	     }
+	     catch(Exception e){
+	    	 return false;
+	     }
+    }
 	
 	@After
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
 		logOut.open();
+		
+		if(isAlertPresent()) {
+			driver.switchTo().alert();
+			             driver.switchTo().alert().accept();
+			             driver.switchTo().defaultContent();
+		}
 	}
 }
