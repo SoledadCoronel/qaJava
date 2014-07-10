@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Collaborators.Home;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Pages.Profile.Profile;
 import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.WaitTool;
 
@@ -73,10 +72,10 @@ public class testSearchCollaborator extends TestBase {
 		home.searchEmail(email);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		Profile profile = home.selectCollaborator(email);
+		home.selectCollaborator(email);
 		WaitTool.waitForJQueryProcessing(driver, 20);
 		
-		String userProfileURL = profile.getURL() + "/" + ConfigElements.getSlugMiPerfil();
+		String userProfileURL = ConfigElements.getURL() + "/profile/" + ConfigElements.getSlugMiPerfil();
 		
 		assertEquals(userProfileURL, driver.getCurrentUrl());
 	}
