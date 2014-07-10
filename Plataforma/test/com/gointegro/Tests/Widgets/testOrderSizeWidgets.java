@@ -88,12 +88,6 @@ public class testOrderSizeWidgets  extends TestBase {
 		
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 20);
-		
-		if (isAlertPresent()) {
-			driver.switchTo().alert();
-            driver.switchTo().alert().accept();
-            driver.switchTo().defaultContent();
-		}
 	}
 	
 	
