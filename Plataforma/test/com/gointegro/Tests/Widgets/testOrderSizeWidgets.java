@@ -145,8 +145,8 @@ public class testOrderSizeWidgets  extends TestBase {
 		
 		if(isAlertPresent()) {
 			driver.switchTo().alert();
-			             driver.switchTo().alert().accept();
-			             driver.switchTo().defaultContent();
+	        driver.switchTo().alert().accept();
+	        driver.switchTo().defaultContent();
 		}
 	}
 }
