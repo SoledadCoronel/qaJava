@@ -129,8 +129,10 @@ public class CreateNews extends PageBase {
 		
 		driver.findElement(By.xpath("//p[@id='upload_form_container']/input")).sendKeys(imageFile);
 		
-		Sleeper.sleepTightInSeconds(10);
+		Sleeper.sleepTightInSeconds(20);
 		WaitTool.waitForJQueryProcessing(driver, 10);	
+		
+		driver.switchTo().defaultContent();
 	}
 	
 	/**
