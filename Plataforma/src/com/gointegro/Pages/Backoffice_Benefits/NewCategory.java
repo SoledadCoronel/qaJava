@@ -3,6 +3,7 @@ package com.gointegro.Pages.Backoffice_Benefits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Base.PageBase;
@@ -103,10 +104,10 @@ public class NewCategory extends PageBase {
 	 * Completar los 3 idiomas
 	 * @param name
 	 */
-	public void createCategory(String name) {
-		completeSpanish(name);
-		completePortuguese(name);
-		completeEnglish(name);
+	public void createCategory(String nameES, String namePT, String nameEN) {
+		completeSpanish(nameES);
+		completePortuguese(namePT);
+		completeEnglish(nameEN);
 	}
 
 	/**
@@ -132,9 +133,12 @@ public class NewCategory extends PageBase {
 	
 	/**
 	 * Seleccionar el botón Guardar
+	 * 
+	 * @return DetailCategory
 	 */
-	public void selectSave() {
+	public DetailCategory selectSave() {
 		save.click();
+		return PageFactory.initElements(driver, DetailCategory.class);
 	}
 	
 	/**

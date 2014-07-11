@@ -1,5 +1,9 @@
 package com.gointegro.Pages.Backoffice_Benefits;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,6 +43,24 @@ public class NewCompany extends PageBase {
 	@FindBy (xpath = "//div[@data-fields='logo']/div/div/span/div/div/span[2]/a/input")
 	WebElement logoUploadInput;
 	
+	@FindBy (xpath = "//div[@data-fields='image1']/div/div/span/div/div/span[2]/a")
+	WebElement image1UploadBtn;
+	
+	@FindBy (xpath = "//div[@data-fields='image1']/div/div/span/div/div/span[2]/a/input")
+	WebElement image1UploadInput;
+	
+	@FindBy (xpath = "//div[@data-fields='image2']/div/div/span/div/div/span[2]/a")
+	WebElement image2UploadBtn;
+	
+	@FindBy (xpath = "//div[@data-fields='image2']/div/div/span/div/div/span[2]/a/input")
+	WebElement image2UploadInput;
+	
+	@FindBy (xpath = "//div[@data-fields='image3']/div/div/span/div/div/span[2]/a")
+	WebElement image3UploadBtn;
+	
+	@FindBy (xpath = "//div[@data-fields='image3']/div/div/span/div/div/span[2]/a/input")
+	WebElement image3UploadInput;
+	
 	@FindBy(id = "description")
 	WebElement description;
 	
@@ -53,6 +75,12 @@ public class NewCompany extends PageBase {
 	
 	@FindBy(name = "zipCode")
 	WebElement zipCode;
+	
+	@FindBy(name = "floor")
+	WebElement floor;
+	
+	@FindBy(name = "apartment")
+	WebElement apartment;
 	
 	@FindBy(xpath = "//section[@class='bottom-section-button-bar']/button[1]")
 	WebElement save;
@@ -85,7 +113,19 @@ public class NewCompany extends PageBase {
 	WebElement siteLinkError;
 	
 	@FindBy(xpath = "//div[@class='geolocation']/section/div/div[1]/div")
-	WebElement zipCodeError;
+	WebElement addressError;
+	
+	@FindBy(xpath = "//div[@data-fields='image1']/div/div/div")
+	WebElement image1Error;
+	
+	@FindBy(xpath = "//div[@data-fields='image1']/div/div/div")
+	WebElement image2Error;
+	
+	@FindBy(xpath = "//div[@data-fields='image1']/div/div/div")
+	WebElement image3Error;
+	
+	@FindBy(xpath = "//")
+	List<WebElement> categoryList;
 	
 	
 	/**
@@ -178,10 +218,29 @@ public class NewCompany extends PageBase {
 	}
 	
 	/**
-	 * Seleccionar el botón Guardar
+	 * Completar Piso / Oficina/ Local
 	 */
-	public void selectSave() {
+	public void createFloor(String name) {
+		floor.clear();
+		floor.sendKeys(name);
+	}
+	
+	/**
+	 * Completar Departamento
+	 */
+	public void createApartment(String name) {
+		apartment.clear();
+		apartment.sendKeys(name);
+	}
+	
+	/**
+	 * Seleccionar el botón Guardar
+	 * 
+	 * @return DetailCompany
+	 */
+	public DetailCompany selectSave() {
 		save.click();
+		return PageFactory.initElements(driver, DetailCompany.class);
 	}
 	
 	/**
@@ -201,7 +260,7 @@ public class NewCompany extends PageBase {
 	/**
 	 * Crear un nuevo comercio
 	 */
-	public void createNewCompany(String name, String companyName, String taxId, String phone, String fax, String fileupload, String siteLink, String description, Boolean isDisabled) {
+	public void createNewCompany(String name, String companyName, String taxId, String phone, String fax, String fileupload, String siteLink, String description, String address, String zipcode, Boolean isDisabled) {
 		createName(name);
 		createCompanyName(companyName);
 		createTaxId(taxId);
@@ -214,8 +273,6 @@ public class NewCompany extends PageBase {
 			
 			imageCrop.selectSave();
 			WaitTool.waitForJQueryProcessing(driver, 5);
-			
-			AttachmentUploads.waitBar(driver);
 		}
 		
 		createWebSite(siteLink);
@@ -224,6 +281,20 @@ public class NewCompany extends PageBase {
 		if(isDisabled) {
 			selectActive();
 		}
+		
+		createAddress(address);
+		createZipCode(zipcode);
+	}
+	
+	/**
+	 * Completar Tags
+	 * 
+	 * @param name
+	 */
+	public void createTag(String name) {
+		tags.clear();
+		tags.sendKeys(name);
+		tags.sendKeys(Keys.RETURN);
 	}
 	
 	/**
@@ -247,6 +318,33 @@ public class NewCompany extends PageBase {
 	}
 	
 	/**
+	 * Subir imagen a Imagen 1
+	 * 
+	 * @param fileupload
+	 */
+	public void image1Upload(String fileupload) {
+		fileUpload(fileupload, image1UploadBtn, image1UploadInput);
+	}
+	
+	/**
+	 * Subir imagen a Imagen 1
+	 * 
+	 * @param fileupload
+	 */
+	public void image2Upload(String fileupload) {
+		fileUpload(fileupload, image2UploadBtn, image2UploadInput);
+	}
+	
+	/**
+	 * Subir imagen a Imagen 1
+	 * 
+	 * @param fileupload
+	 */
+	public void image3Upload(String fileupload) {
+		fileUpload(fileupload, image3UploadBtn, image3UploadInput);
+	}
+	
+	/**
 	 * Subir un archivo
 	 * 
 	 * @param fileupload
@@ -260,6 +358,7 @@ public class NewCompany extends PageBase {
 	
 	/**
 	 * Devuelve el mensaje de error del Nombre del comercio
+	 * 
 	 * @return String
 	 */
 	public String getNameError() {
@@ -268,6 +367,7 @@ public class NewCompany extends PageBase {
 	
 	/**
 	 * Devuelve el mensaje de error del Razón social
+	 * 
 	 * @return String
 	 */
 	public String getCompanyNameError() {
@@ -276,6 +376,7 @@ public class NewCompany extends PageBase {
 	
 	/**
 	 * Devuelve el mensaje de error del CUIT
+	 * 
 	 * @return String
 	 */
 	public String getTaxIdError() {
@@ -284,6 +385,7 @@ public class NewCompany extends PageBase {
 	
 	/**
 	 * Devuelve el mensaje de error del Teléfono
+	 * 
 	 * @return String
 	 */
 	public String getPhoneError() {
@@ -291,7 +393,9 @@ public class NewCompany extends PageBase {
 	}
 	
 	/**
+	 * 
 	 * Devuelve el mensaje de error del Logo principal
+	 * 
 	 * @return String
 	 */
 	public String getLogoError() {
@@ -300,6 +404,7 @@ public class NewCompany extends PageBase {
 	
 	/**
 	 * Devuelve el mensaje de error del Sitio Web
+	 * 
 	 * @return String
 	 */
 	public String getWebSiteError() {
@@ -308,6 +413,7 @@ public class NewCompany extends PageBase {
 	
 	/**
 	 * Devuelve el mensaje de error de la Descripción
+	 * 
 	 * @return String
 	 */
 	public String getDescriptionError() {
@@ -315,10 +421,51 @@ public class NewCompany extends PageBase {
 	}
 	
 	/**
-	 * Devuelve el mensaje de error del Código postal
+	 * Devuelve el mensaje de error de Ubicación
+	 * 
 	 * @return String
 	 */
-	public String getZipCodeError() {
-		return zipCodeError.getText();
+	public String getAddressError() {
+		return addressError.getText();
+	}
+	
+	/**
+	 * Devuelve el mensaje de error de Imagen 1
+	 * 
+	 * @return String
+	 */
+	public String getImage1Error() {
+		return image1Error.getText();
+	}
+	
+	/**
+	 * Devuelve el mensaje de error de Imagen 2
+	 * 
+	 * @return String
+	 */
+	public String getImage2Error() {
+		return image2Error.getText();
+	}
+	
+	/**
+	 * Devuelve el mensaje de error de Imagen 3
+	 * 
+	 * @return String
+	 */
+	public String getImage3Error() {
+		return image3Error.getText();
+	}
+	
+	/**
+	 * Seleccionar una categoria por el nombre
+	 * 
+	 * @param name
+	 */
+	public void selectCategory(String name) {
+		for(WebElement element : categoryList) {
+			if(element.findElements(By.xpath("")).size() > 0) {
+				element.findElement(By.xpath("")).click();
+			}
+		}
 	}
 }

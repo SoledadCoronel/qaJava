@@ -10,9 +10,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	//testNewCompany.class,
-	//testNewCategory.class,
-	testNewSpecial.class,
+	testNewCompany.class,
+	testNewCategory.class,
+	testNewSubCategory.class,
+	//testNewSpecial.class,
 })
 
 public class AllTestsBackOfficeBenefits {
