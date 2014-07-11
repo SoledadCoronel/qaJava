@@ -11,19 +11,32 @@ import com.gointegro.Pages.Base.PageBase;
 public class CreateAccountStandard extends PageBase{
 	
 	@FindBy (name = "name")
-	private WebElement name;
+	protected WebElement name;
 	
 	@FindBy (name = "salesforceId")
-	private WebElement salesforceId;
+	protected WebElement salesforceId;
 	
 	@FindBy (xpath = "//div[@class='selection-list-container']/button")
-	private WebElement searchAccount;
+	protected WebElement searchAccount;
 	
 	@FindBy (xpath = "//div[@class='form-buttons']/button")
-	private WebElement saveBtn;
+	protected WebElement saveBtn;
 	
 	@FindBy (xpath = "//div[@class='form-buttons']/button[2]")
-	private WebElement cancelBtn;
+	protected WebElement cancelBtn;
+	
+	/**
+	 * Mensajes de error
+	 */
+	
+	@FindBy (xpath = "//div[contains(@class,'field-name')]/div/div")
+	protected WebElement nameError;
+	
+	@FindBy (xpath = "//div[contains(@class,'field-salesforceId')]/div/div")
+	protected WebElement salesforceIdError;
+	
+	@FindBy (xpath = "//div[@id='error-message']/p")
+	protected WebElement errorMsj;
 
 	/**
 	 * Constructor
@@ -35,6 +48,26 @@ public class CreateAccountStandard extends PageBase{
 	}
 	
 	/**
+	 * Completar el nombre de la cuenta
+	 * 
+	 * @param accountname
+	 */
+	protected void completeName(String accountname) {
+		name.clear();
+		name.sendKeys(accountname);
+	}
+	
+	/**
+	 * Completar el salesforceid
+	 * 
+	 * @param salesforce
+	 */
+	protected void completeSaleforceId(String salesforce) {
+		salesforceId.clear();
+		salesforceId.sendKeys(salesforce);
+	}
+	
+	/**
 	 * Seleccionar cuenta principal overlay
 	 * 
 	 * @return
@@ -43,6 +76,60 @@ public class CreateAccountStandard extends PageBase{
 		searchAccount.click();
 		
 		return PageFactory.initElements(driver, AccountOverlay.class);
+	}
+	
+	/**
+	 * Completar nombre y saleforce id
+	 * 
+	 * @param accountname
+	 * @param salesforce
+	 */
+	public void completeAccount(String accountname, String salesforce) {
+		completeName(accountname);
+		completeSaleforceId(salesforce);
+	}
+	
+	/**
+	 * Seleccionar guardar
+	 */
+	public AccountDetail selectSave() {
+		saveBtn.click();
+		
+		return PageFactory.initElements(driver, AccountDetail.class);
+	}
+	
+	/**
+	 * Seleccionar cancelar
+	 */
+	public void selectCancel() {
+		cancelBtn.click();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del nombre
+	 * 
+	 * @return String
+	 */
+	public String getNameError() {
+		return nameError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del campo salesforce id
+	 * 
+	 * @return String
+	 */
+	public String getSalesForceIdError() {
+		return salesforceIdError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del top del form
+	 * 
+	 * @return String
+	 */
+	public String getErrorMsj() {
+		return errorMsj.getText();
 	}
 
 }

@@ -223,8 +223,105 @@ public class RegistrationConfig extends PageBase{
 			selectIdentityField(fieldidentity);
 			selectHasPassword(password);
 			selectRecoverPassword(recover);
-			completeHtmlSignUp(htmlsignup);
+			if(!htmlsignup.isEmpty())
+				completeHtmlSignUp(htmlsignup);
 		}
+	}
+	
+	/**
+	 * Obtener el estado de requiere registracion
+	 * 
+	 * @return boolean
+	 */
+	public boolean getRequireRegistration() {
+		return requireRegistration.isSelected();
+	}
+	
+	/**
+	 * Obtener el estado de usa tarjeta
+	 * 
+	 * @return boolean
+	 */
+	public boolean getUsesCard() {
+		return usesCard.isSelected();
+	}
+	
+	/**
+	 * Obtener el estado de Usa fecha de nacimiento
+	 * 
+	 * @return boolean
+	 */
+	public boolean getUsesBirthdate() {
+		return usesBirthDate.isSelected();
+	}
+	
+	/**
+	 * Obtener el estado de usa genero
+	 * 
+	 * @return boolean
+	 */
+	public boolean getUsesGender() {
+		return usesGender.isSelected();
+	}
+	
+	/**
+	 * Obtener el estado de requiere verif
+	 * 
+	 * @return boolean
+	 */
+	public boolean getRequireVerif() {
+		return requireVerification.isSelected();
+	}
+	
+	/**
+	 * Obtener el valor del primer campo de verificacion
+	 * 
+	 * @return String
+	 */
+	public String getVerifField1() {
+		Select select = new Select(verificationField1);
+		
+		return select.getFirstSelectedOption().getText();
+	}
+	
+	/**
+	 * Obtener el valor del segundo campo de verificacion
+	 * 
+	 * @return String
+	 */
+	public String getVerifField2() {
+		Select select = new Select(verificationField2);
+		
+		return select.getFirstSelectedOption().getText();
+	}
+	
+	/**
+	 * Obtener el campo de login
+	 * 
+	 * @return String
+	 */
+	public String getIdentityField() {
+		Select select = new Select(identityField);
+		
+		return select.getFirstSelectedOption().getText();
+	}
+	
+	/**
+	 * Verificar si utiliza password
+	 * 
+	 * @return boolean
+	 */
+	public boolean getUsesPassword() {
+		return hasPassword.isSelected();
+	}
+	
+	/**
+	 * Verificar si tiene recuperar password
+	 * 
+	 * @return boolean
+	 */
+	public boolean getRecoverPassword() {
+		return recoverPassword.isSelected();
 	}
 
 }

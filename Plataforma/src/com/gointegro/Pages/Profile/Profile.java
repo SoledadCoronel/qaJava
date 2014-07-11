@@ -47,6 +47,9 @@ public class Profile extends PageBase{
 	
 	@FindBy (id = "notification-preference-modal-link")
 	private WebElement notificationpreferencemodal;
+	
+	@FindBy (xpath = "//ul/li[@class='workspaces']/a")
+	private WebElement workspaces;
 
 	String profileURL = ConfigElements.getURL() + "/profile";
 			
@@ -189,6 +192,14 @@ public class Profile extends PageBase{
 		selectDataEditModalLink();
 		
 		return PageFactory.initElements(driver, DataEditModal.class);
+	}
+	
+	/**
+	 * Seleccionar la pestaña Espacios
+	 */
+	public WorkspacesTab selectWorkspaces() {
+		workspaces.click();
+		return PageFactory.initElements(driver, WorkspacesTab.class);
 	}
 
 }

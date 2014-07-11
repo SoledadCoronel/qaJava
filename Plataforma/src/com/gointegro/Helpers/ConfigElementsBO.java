@@ -15,6 +15,14 @@ public class ConfigElementsBO {
 	private static String hostname = ".p2-stage.gointegro.com";
 	
 	private static String accountPlatformTestName = "Automation Test Platform";
+	
+	private static String accountRegionalId = "215";
+
+	private static String accountRegionalName = "Automation Test Platform Regional Hija";
+	
+	private static String webSiteAccount = "http://automationtestplatformregional.p2-stage.gointegro.com";
+	
+	private static String accountRegionalFather = "Automation Test Platform Regional";
 
 	public static String getUser() {
 		return user;
@@ -42,6 +50,22 @@ public class ConfigElementsBO {
 
 	public static String getAccountPlatformTestName() {
 		return accountPlatformTestName;
+	}
+	
+	public static String getAccountRegionalId() {
+		return accountRegionalId;
+	}
+
+	public static String getAccountRegionalName() {
+		return accountRegionalName;
+	}
+	
+	public static String getWebSiteAccount() {
+		return webSiteAccount;
+	}
+	
+	public static String getAccountRegionalFather() {
+		return accountRegionalFather;
 	}
 
 }

@@ -35,6 +35,8 @@ public class HomeWidgets extends PageBase {
 	
 	String textHTMLDescription = "./div/div/div/div/p";
 	
+	String textHTMLDescriptionImage = "./div/div/div/div/p/img";
+	
 	String imageBanner = "banner";
 	
 	String imageLink = "banner-external-url";
@@ -129,6 +131,29 @@ public class HomeWidgets extends PageBase {
 	}
 	
 	/**
+	 * Devuelve un WebElement del primer widget 
+	 * 
+	 * @return WebElement
+	 */
+	public WebElement getFirstWidgetElement() {
+		WebElement widget = null;
+		for(WebElement element : widgetsList) {
+			widget = element;
+			break;
+		}
+		return widget;
+	}
+	
+	/**
+	 * Devuelve la cantidad de widgets
+	 * 
+	 * @return int
+	 */
+	public int listCount() {
+		return widgetsList.size();
+	}
+	
+	/**
 	 *  Devuelve la dsecripción del widget Text / HTML
 	 *  
 	 * @param WebElement
@@ -156,6 +181,29 @@ public class HomeWidgets extends PageBase {
 			}
 		}
 		return widget;
+	}
+	
+	/**
+	 * Devuelve si el widget Text/HTML tiene una imagen
+	 * 
+	 * @param String
+	 * @return Boolean
+	 */
+	public Boolean hasImageTextWidget(String name) {
+		Boolean hasImage= false;
+		
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("html-text")) {
+				if(element.findElements(By.xpath(textHTMLTitle)).size() > 0 && 
+						element.findElement(By.xpath(textHTMLTitle)).getText().contains(name)) {
+					if(element.findElements(By.xpath(textHTMLDescriptionImage)).size() > 0) {
+						hasImage = true;
+						break;
+					}
+				}
+			}
+		}
+		return hasImage;
 	}
 	
 	
@@ -244,7 +292,7 @@ public class HomeWidgets extends PageBase {
 		Boolean isInstalledAppInList = false;
 		
 		for(WebElement element : widgetsList) {
-			if(element.getAttribute("class").contains("celebration.feed")) {
+			if(element.getAttribute("class").contains("celebration-feed")) {
 				if(element.findElements(By.xpath(installedAppTitle)).size() > 0 ) {
 					if(element.findElement(By.xpath(installedAppTitle)).getText().contains(name)) {
 						isInstalledAppInList= true;

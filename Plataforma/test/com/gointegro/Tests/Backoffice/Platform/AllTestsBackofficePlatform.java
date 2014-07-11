@@ -9,7 +9,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
-@SuiteClasses({ testNewPlatformStandard.class })
+@SuiteClasses({ 
+	testNewPlatformStandard.class,
+	testEditPlatformStandard.class,
+	testListPlatform.class,
+	testNewPlatformRegional.class,
+	testEditPlatformRegional.class,
+	})
 
 public class AllTestsBackofficePlatform {
 	
@@ -30,7 +36,7 @@ private static WebDriver driver;
 	
 	@AfterClass
 	 public static void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 
 }

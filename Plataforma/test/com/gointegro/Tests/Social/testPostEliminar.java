@@ -268,16 +268,17 @@ private WebDriver driver;
 		WaitTool.setImplicitWait(driver, 3);
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
 		social.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		feeds.deletePost();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		social.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}

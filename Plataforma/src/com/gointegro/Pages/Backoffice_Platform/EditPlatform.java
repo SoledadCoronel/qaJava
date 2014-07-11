@@ -1,5 +1,6 @@
 package com.gointegro.Pages.Backoffice_Platform;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -170,6 +171,38 @@ public class EditPlatform extends CreatePlatform {
 	public void setDefaultRole(String role) {
 		Select select = new Select(defaultRole);
 		select.selectByVisibleText(role);
+	}
+	
+	/**
+	 * Obtener los TyC
+	 * 
+	 * @return String
+	 */
+	public String getTyC(){
+		driver.switchTo().frame(termsAndConditions);
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		String text = (String) js.executeScript("return document.body.textContent");
+		
+		driver.switchTo().defaultContent();
+		
+		return text;
+	}
+	
+	/**
+	 * Obtener el HTML Login
+	 * 
+	 * @return String
+	 */
+	public String getHtmlLogin() {
+		driver.switchTo().frame(htmlLogin);
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		String text = (String) js.executeScript("return document.body.textContent");
+		
+		driver.switchTo().defaultContent();
+		
+		return text;
 	}
 
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -37,7 +38,7 @@ public class NewModuleOverlay extends PageBase {
 	WebElement finishBtn;
 	
 	// Widget Texto / HTML
-	@FindBy(xpath = "//*[@id='new-module-standard-img']/div[2]/nav/p[2]/label/input")
+	@FindBy(xpath = "//input[contains(@value, 'html-text')]")
 	WebElement textHtmlRadioBtn;
 	
 	@FindBy(className = "showTitle")
@@ -46,11 +47,8 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(className = "showBorder")
 	WebElement borderCheckBox;
 	
-	@FindBy(xpath = "//form[@class='widget-form']/article/div/div/span/input")
+	@FindBy(name = "name")
 	WebElement title;
-	
-	@FindBy(xpath = "//div[@id='new-module-standard-img']/div[2]/form/article/div/div/span/input")
-	WebElement celebrationTitle;
 	
 	@FindBy(xpath = "//div/div/iframe")
 	WebElement description;
@@ -61,7 +59,7 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(xpath = "//form/article/div[3]/div/div/span[2]")
 	WebElement descriptionErrorMsg;
 	
-	@FindBy(xpath = "//*[@id='new-module-standard-img']/div[2]/nav/p[3]/label/input")
+	@FindBy(xpath = "//input[contains(@value, 'banner')]")
 	WebElement imageRadioBtn;
 	
 	@FindBy (id = "banner-image-upload")
@@ -101,6 +99,9 @@ public class NewModuleOverlay extends PageBase {
 	
 	@FindBy(xpath = "//div[@class='widget-type-form']/div[4]/div/span[2]")
 	WebElement bannerNoImageErrorMsg;
+	
+	@FindBy(xpath = "//div[@id='mce_17']/button")
+	WebElement tinyLink;
 	
 	/**
 	 * Constructor
@@ -238,16 +239,6 @@ public class NewModuleOverlay extends PageBase {
 	}
 	
 	/**
-	 * Crear titulo para el widget
-	 * 
-	 * @param String
-	 */
-	public void createCelebrationTitle(String name) {
-		celebrationTitle.clear();
-		celebrationTitle.sendKeys(name);
-	}
-	
-	/**
 	 * Crear descripcion para el widget
 	 * 
 	 * @param String
@@ -257,6 +248,43 @@ public class NewModuleOverlay extends PageBase {
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.body.innerHTML = '<p>" + descriptionText + "</p>'");
+		
+		driver.switchTo().defaultContent();
+	}
+	
+	/**
+	 * Crear descripción con link (TinyMce)
+	 * 
+	 * @param String
+	 */
+	public void createDescriptionWithURL(String url) {
+		tinyLink.click();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+
+		driver.findElement(By.xpath("//input[@class='mce-textbox mce-placeholder']")).sendKeys(url);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+	
+		driver.findElement(By.xpath("//div[@class='mce-container mce-panel mce-foot']/div/div[2]/button")).click();
+	}
+	
+	/**
+	 * Crear descripción para el contenido con imagen (TinyMce)
+	 * 
+	 * @param String
+	 */
+	public void createDescriptionWithPic(String imageFile) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript(" document.getElementById('mce_26').style.visibility = 'visible'");
+		
+		driver.findElement(By.xpath("//div[@id='mce_19']/button")).click();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		driver.switchTo().frame(driver.findElement(By.xpath("//div[@class='mce-container-body mce-abs-layout']/iframe")));
+		
+		driver.findElement(By.xpath("//p[@id='upload_form_container']/input")).sendKeys(imageFile);
+		
+		Sleeper.sleepTightInSeconds(15);
+		WaitTool.waitForJQueryProcessing(driver, 10);	
 		
 		driver.switchTo().defaultContent();
 	}

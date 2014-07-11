@@ -242,6 +242,15 @@ public class PersonalizationConfig  extends PageBase{
 	}
 	
 	/**
+	 * Obtener el status del uniquefield, tiene que venir false ya que tiene un .isEnabled()
+	 * 
+	 * @return boolean
+	 */
+	public boolean getUniqueFieldStatus() {
+		return uniqueField.isEnabled();
+	}
+	
+	/**
 	 * Obtener el estado del Mostrar mail del usuario
 	 * 
 	 * @return boolean

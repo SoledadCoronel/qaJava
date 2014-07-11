@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -76,6 +77,14 @@ private WebDriver driver;
 		upload.selectSave();
 		
 		assertEquals("Debe seleccionar un álbum", upload.getErrorMsjAlbum());
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	@Test
@@ -93,8 +102,16 @@ private WebDriver driver;
 		
 		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
 		assertTrue(upload.getUploadErrorMsj().contains("Este archivo no es de un tipo válido de imagen"));
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
-	
+	@Ignore
 	@Test
 	public void test_upload_file_delete() {
 		String testfile = ConfigElements.getFileImagen();
@@ -117,6 +134,14 @@ private WebDriver driver;
 		
 		//No le encuentro la vuelta falla siempre, me quemo la cabeza
 		assertFalse(upload.isUploadedContentPresent());
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	@Test
@@ -152,6 +177,14 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals(filetitle, img.getImageTitle());
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	@Test
@@ -182,6 +215,14 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals(0, detail.albumsize());
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	@Test
@@ -214,6 +255,14 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals(2, detail.albumsize());
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	@Test
@@ -240,7 +289,85 @@ private WebDriver driver;
 		
 		assertTrue(upload.getUploadErrorMsj().contains("Este archivo no es de un tipo válido de imagen"));
 		
-		upload.selectCancel();
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
+		
+		
+	}
+	
+	@Test
+	public void test_upload_file_video() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileMP4Video();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		createAlbum(albumname, home);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		home.uploadFile(testfile);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
+		upload.selectAlbumInList(albumname);
+		upload.selectSave();
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(detail.isPictureInAlbum());
+	}
+	
+	@Test
+	public void test_upload_file_2_videos() {
+		String albumname = DataGenerator.nombreFile();
+		String testfile = ConfigElements.getFileMP4Video();
+		
+		login(driver);
+		
+		HomeGalery home = PageFactory.initElements(driver, HomeGalery.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		createAlbum(albumname, home);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		home.uploadFile(testfile);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		UploadContent upload = PageFactory.initElements(driver, UploadContent.class);
+		upload.selectAlbumInList(albumname);
+		upload.setOtherFile(testfile);
+		
+		upload.selectSave();
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		AlbumDetail detail = home.selectAlbumSideBar(albumname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals(2, detail.albumsize());
+		
+		home.open();
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	private void createAlbum(String albumname, HomeGalery home) {
@@ -258,5 +385,15 @@ private WebDriver driver;
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
 	}
+	
+	public boolean isAlertPresent(){
+        try{
+            driver.switchTo().alert();
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
 
 }

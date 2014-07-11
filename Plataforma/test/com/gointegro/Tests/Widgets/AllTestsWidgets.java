@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
+	testDeleteAllWidgets.class,
 	testNewTextWidget.class,
 	testNewImageWidget.class,
 	testNewInstalledAppWidget.class,

@@ -96,10 +96,8 @@ public class Login extends PageBase{
 	 * @return boolean
 	 */
 	public boolean isPasswordPresent() {
-		boolean status = false;
-		if (passwordlogin.isDisplayed())
-			status = true;
-		return status;
+		//Por algun motivo extragalactico el isdiplay() no funca...
+		return isElementPresent(By.name("_password"));
 	}
 	
 	/**
@@ -108,10 +106,7 @@ public class Login extends PageBase{
 	 * @return boolean
 	 */
 	public boolean isForgotPasswordPresent() {
-		boolean status = false;
-		if (forgotPasswordButton.isDisplayed())
-			status = true;
-		return status;
+		return isElementPresent(By.id("forgotPasswordButton"));
 	}
 	
 	/**

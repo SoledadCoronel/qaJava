@@ -34,8 +34,8 @@ public class testOrderSizeWidgets  extends TestBase {
 		String title2 = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
 
-		String rowElement2;
-		String colElement2;
+		String rowElement;
+		String colElement;
 		
 		login(driver);
 		
@@ -78,13 +78,13 @@ public class testOrderSizeWidgets  extends TestBase {
 		
 		EditWidgets editWidget = PageFactory.initElements(driver, EditWidgets.class);
 		
-		rowElement2 = editWidget.getRowForElement(widgetElement2);
-		colElement2 = editWidget.getColForElement(widgetElement2);
+		rowElement = editWidget.getRowForElement(widgetElement1);
+		colElement = editWidget.getColForElement(widgetElement1);
 		
 		editWidget.changeOrder(widgetElement1, widgetElement2);
 		
-		assertEquals(rowElement2, editWidget.getRowForElement(widgetElement1));
-		assertEquals(colElement2, editWidget.getColForElement(widgetElement1));
+		assertEquals(rowElement, editWidget.getRowForElement(widgetElement2));
+		assertEquals(colElement, editWidget.getColForElement(widgetElement2));
 		
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 20);
@@ -128,11 +128,25 @@ public class testOrderSizeWidgets  extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 20);
 	}
 	
+	private boolean isAlertPresent(){
+	     try{
+	         driver.switchTo().alert();
+	         return true;
+	     }
+	     catch(Exception e){
+	    	 return false;
+	     }
+    }
 	
 	@After
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
 		logOut.open();
+		
+		if(isAlertPresent()) {
+			driver.switchTo().alert();
+	        driver.switchTo().alert().accept();
+	        driver.switchTo().defaultContent();
+		}
 	}
-
 }

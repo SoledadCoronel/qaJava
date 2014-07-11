@@ -28,7 +28,7 @@ private WebDriver driver;
 	}
 
 	@Test
-	public void test() {
+	public void test_hashtag_comment() {
 		String textopost = DataGenerator.horaactual();
 		String commentpost = "#hashtag2 "+DataGenerator.nombreFile();
 		

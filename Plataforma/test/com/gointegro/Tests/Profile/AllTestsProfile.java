@@ -12,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @SuiteClasses({
 	testNewFile.class,
 	testDeleteFile.class,
+	testEditProfileData.class,
 })
 
 public class AllTestsProfile {

@@ -53,6 +53,12 @@ public class testEditCategory extends TestBase{
 		adminCategory.editCategory(categoryName2);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		adminCategory= home.adminCategory();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		assertTrue(adminCategory.isCategoryInList(categoryName2));
 	}
 	
@@ -66,22 +72,22 @@ public class testEditCategory extends TestBase{
 		
 		HomeContent home = PageFactory.initElements(driver, HomeContent.class);
 		home.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		AdminCategoryContent adminCategory= home.adminCategory();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 
 		adminCategory.createCategory(categoryName1);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		adminCategory.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		adminCategory.selectCategoryEdit(categoryName1);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		adminCategory.editCategory(categoryName2);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("El nombre de la categoría no puede ser vacío", adminCategory.getCategoryNameError());
 	}

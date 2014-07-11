@@ -13,7 +13,7 @@ import com.gointegro.Pages.Platform.AplicationAdd;
 import com.gointegro.Pages.Platform.AplicationInstall;
 import com.gointegro.Pages.Platform.Home;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Pages.Platform.Profile;
+import com.gointegro.Pages.Profile.Profile;
 import com.gointegro.Pages.Profile.WorkspacesTab;
 import com.gointegro.Pages.Workspace.AddColaboratorsOverlay;
 import com.gointegro.Pages.Workspace.JoinWorkSpace;
@@ -305,7 +305,7 @@ public class testNewWorkspace extends TestBase {
 		JoinWorkSpace joinWorkspace = home.selectJoinWorkspace();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertFalse(joinWorkspace.isWorkspaceInList(title));
+		assertTrue(joinWorkspace.isWorkspaceInList(title));
 		
 		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
 		

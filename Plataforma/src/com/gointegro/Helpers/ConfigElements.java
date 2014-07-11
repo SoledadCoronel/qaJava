@@ -33,6 +33,8 @@ public class ConfigElements {
 	
 	private static String FileImagenChange = "/home/gustavomoreira/Pictures/Otro/business-cat.jpg";
 	
+	private static String FileMP4Video= "/home/gustavomoreira/Videos/The_Moon-Close-up.mp4";
+	
 	private static String nameOtherUser = "Juan Jose Toledo";
 	
 	private static String profileOtherUser = "juan-jose-toledo";
@@ -131,6 +133,10 @@ public class ConfigElements {
 	
 	public static String getFileImagenChange() {
 		return FileImagenChange;
+	}
+	
+	public static String getFileMP4Video() {
+		return FileMP4Video;
 	}
 	
 	public static String getWorkspaceId() {

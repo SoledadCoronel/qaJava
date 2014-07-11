@@ -1,22 +1,23 @@
 package com.gointegro.Pages.Profile;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import com.gointegro.Pages.Base.PageBase;
 
 public class DataEditModal extends PageBase{
 	
-	@FindBy (id = "name")
+	@FindBy (xpath = "//input[@id='name']")
 	private WebElement name;
 	
-	@FindBy (id = "surname")
+	@FindBy (xpath = "//input[@id='surname']")
 	private WebElement surname;
 	
-	@FindBy (id = "email")
+	@FindBy (xpath = "//input[@id='email']")
 	private WebElement email;
-	
 	@FindBy (id = "document")
 	private WebElement document;
 	
@@ -34,7 +35,7 @@ public class DataEditModal extends PageBase{
 	
 	@FindBy (id = "cancelProfileData")
 	private WebElement cancelProfileData;
-
+	
 	/**
 	 * Constructor
 	 * 
@@ -90,6 +91,28 @@ public class DataEditModal extends PageBase{
 	}
 	
 	/**
+	 * Obtener la Zona horaria
+	 * 
+	 * @return String
+	 */
+	public String getTimeZone() {
+		Select timeZoneOption = new Select(timezone);
+		WebElement option = timeZoneOption.getFirstSelectedOption();
+		return option.getText();
+	}
+	
+	/**
+	 * Obtener el Idioma
+	 * 
+	 * @return String
+	 */
+	public String getLanguage() {
+		Select languageOption = new Select(language);
+		WebElement option = languageOption.getFirstSelectedOption();
+		return option.getText();
+	}
+	
+	/**
 	 * Seleccionar Cancelar
 	 */
 	public void selectCancel() {
@@ -101,6 +124,46 @@ public class DataEditModal extends PageBase{
 	 */
 	public void selectSave() {
 		saveProfileData.click();
+	}
+	
+	/**
+	 * Completar Fecha de nacimiento
+	 * 
+	 * @param date
+	 */
+	public void completeBirthdate(String date) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("document.getElementById('birthdate').removeAttribute('readonly');document.getElementById('birthdate').value='"+date+"'");
+	}
+	
+	/**
+	 * Completar el campo Documento
+	 * 
+	 * @param id
+	 */
+	public void completeDocumentId(String id) {
+		document.clear();
+		document.sendKeys(id);
+	}
+	
+	/**
+	 * Seleccionar el idioma
+	 * 
+	 * @param lang
+	 */
+	public void selectLanguage(String lang) {
+		Select langOption = new Select(language);
+		langOption.selectByVisibleText(lang);
+	}
+	
+	/**
+	 * Seleccionar Zona horaria
+	 * 
+	 * @param zone
+	 */
+	public void selectTimeZone(String zone) {
+		Select timeZoneOption = new Select(timezone);
+		timeZoneOption.selectByValue(zone);
 	}
 
 }

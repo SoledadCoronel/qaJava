@@ -3,6 +3,7 @@ package com.gointegro.Pages.Backoffice_Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Base.PageBase;
@@ -13,31 +14,34 @@ public class PlatformDetail extends PageBase{
 	 * Si son un asco pero lo necesito para el assert de la creacion y hasta que lo arreglen...
 	 */
 	
+	@FindBy(className = "icon-edit")
+	private WebElement linkEditar;
+	
 	@FindBy(xpath = "//div[@id='account']/div[2]/a")
 	private WebElement account;
 	
 	@FindBy(xpath = "//div[@id='name']/div[2]")
 	private WebElement platformname;
 	
-	@FindBy(xpath = "//div[@id=image-max-size]/div[2]")
+	@FindBy(xpath = "//div[@id='image-max-size']/div[2]")
 	private WebElement imagemaxsize;
 	
 	@FindBy(xpath = "//div[@id='content']/div[6]/div[2]/a")
 	private WebElement website;
 	
-	@FindBy(xpath = "//div[@id='content']/div[7]/div")
+	@FindBy(xpath = "//div[@id='content']/div[7]/div[2]")
 	private WebElement storage;
 	
-	@FindBy(xpath = "//div[@id='content']/div[8]/div")
+	@FindBy(xpath = "//div[@id='content']/div[8]/div[2]")
 	private WebElement industry;
 	
-	@FindBy(xpath = "//div[@id='content']/div[9]/div")
+	@FindBy(xpath = "//div[@id='content']/div[9]/div[2]")
 	private WebElement usersRange;
 	
-	@FindBy(xpath = "//div[@id='content']/div[10]/div")
+	@FindBy(xpath = "//div[@id='content']/div[10]/div[2]")
 	private WebElement mobileactivationcode;
 	
-	@FindBy(xpath = "//div[@id='content']/div[11]/div")
+	@FindBy(xpath = "//div[@id='content']/div[11]/div[2]")
 	private WebElement timezone;
 	
 	@FindBy(xpath = "//div[@id='content']/div[12]/div/span")
@@ -145,6 +149,26 @@ public class PlatformDetail extends PageBase{
 	}
 	
 	/**
+	 * Seleccionar el link a Editar Plataforma
+	 * 
+	 * @return {@link EditPlatform}
+	 */
+	public EditPlatform selectEditar() {
+		linkEditar.click();
+		
+		return PageFactory.initElements(driver, EditPlatform.class);
+	}
+	
+	/**
+	 * Obtener el nombre de la cuenta
+	 * 
+	 * @return String
+	 */
+	public String getAccountName() {
+		return account.getText();
+	}
+	
+	/**
 	 * Obtener el nombre de la plataforma
 	 * 
 	 * @return String
@@ -160,6 +184,51 @@ public class PlatformDetail extends PageBase{
 	 */
 	public String getPlatformWebSite() {
 		return website.getText();
+	}
+	
+	/**
+	 * Obtener el tamaño maximo de la imagen
+	 * 
+	 * @return String
+	 */
+	public String getPlatformImgSize() {
+		return imagemaxsize.getText();
+	}
+	
+	/**
+	 * Obtener el storage de la plat
+	 * 
+	 * @return String
+	 */
+	public String getPlatformStorage() {
+		return storage.getText();
+	}
+	
+	/**
+	 * Obtener la industria
+	 * 
+	 * @return String
+	 */
+	public String getIndustry() {
+		return industry.getText();
+	}
+	
+	/**
+	 * Obtener el user range
+	 * 
+	 * @return String
+	 */
+	public String getUserRange() {
+		return usersRange.getText();
+	}
+	
+	/**
+	 * Obtener la timezone
+	 * 
+	 * @return String
+	 */
+	public String getTimeZone() {
+		return timezone.getText();
 	}
 	
 	/**

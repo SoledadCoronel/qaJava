@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Content.ContentList;
 import com.gointegro.Pages.Content.HomeContent;
 import com.gointegro.Pages.Content.NewCategoryOvelayContent;
@@ -184,6 +185,60 @@ public class testNewContent extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals(titleText, home.getTitle());
+	}
+	
+	
+	@Test
+	public void test_new_content_tinymce_image(){
+		String titleText = DataGenerator.nombreFile();
+		String image = ConfigElements.getFileImagen();
+		
+		login(driver);
+		
+		HomeContent home = PageFactory.initElements(driver, HomeContent.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		NewContent newContent = home.selectNewContent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createTitle(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createDescriptionWithPic(image);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertTrue(home.hasImage());
+	}
+	
+	
+	@Test
+	public void test_new_content_tinymce_link(){
+		String titleText = DataGenerator.nombreFile();
+		String url = ConfigElements.getUrlTest();
+		
+		login(driver);
+		
+		HomeContent home = PageFactory.initElements(driver, HomeContent.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		NewContent newContent = home.selectNewContent();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createTitle(titleText);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.createDescriptionWithURL(url);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContent.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertTrue(home.getDescription().contains(url));
 	}
 	
 	

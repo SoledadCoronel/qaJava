@@ -2,6 +2,7 @@ package com.gointegro.Pages.Backoffice_Platform;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -374,7 +375,8 @@ public class CreatePlatform extends PageBase{
 		setSocialEnabled(socialstatus);
 		setTimeZone(time);
 		setTermsAndConditions(tyc);
-		setHtmlLogin(htmllog);
+		if (!htmllog.isEmpty())
+			setHtmlLogin(htmllog);
 	}
 	
 	/**
@@ -480,6 +482,10 @@ public class CreatePlatform extends PageBase{
 	 */
 	public String getErrorTermsAndConditions() {
 		return errorTermsAndConditions.getText();
+	}
+	
+	public void tycSelectBold() {
+		driver.findElement(By.id("c1_htmlLogin_bold")).click();
 	}
 
 }
