@@ -19,59 +19,59 @@ import com.gointegro.Util.WaitTool;
 
 public class testNewSubCategory extends TestBase {
 	
-	
+
 	private WebDriver driver;
+	
+	@Before
+	public void setUp() {
+		driver = AllTestsBackOfficeBenefits.getDriver();
+	}
+	
+	@Test
+	public void test_new_subcategory() {
+		String name = DataGenerator.nombreFile();
+		String nameSubcat = DataGenerator.nombreFile();
 		
-		@Before
-		public void setUp() {
-			driver = AllTestsBackOfficeBenefits.getDriver();
-		}
+		loginBackoffice(driver);
 		
-		@Test
-		public void test_new_subcategory() {
-			String name = DataGenerator.nombreFile();
-			String nameSubcat = DataGenerator.nombreFile();
-			
-			loginBackoffice(driver);
-			
-			HomeBenefits home = PageFactory.initElements(driver, HomeBenefits.class);
-			home.open();
-			WaitTool.waitForJQueryProcessing(driver, 10);
-			
-			CategoriesList category = home.selectAdminCategory();
-			NewCategory newCategory = category.selectNewCategory();
-			WaitTool.waitForJQueryProcessing(driver, 10);
-			
-			newCategory.createCategory(name, name, name);
-			WaitTool.waitForJQueryProcessing(driver, 10);
-			
-			DetailCategory detail = newCategory.selectSave();
-			WaitTool.waitForJQueryProcessing(driver, 10);
-			
-			detail.selectNewSubCategory();
-			WaitTool.waitForJQueryProcessing(driver, 10);
-			
-			newCategory.createCategory(nameSubcat, nameSubcat, nameSubcat);
-			WaitTool.waitForJQueryProcessing(driver, 10);
-			
-			newCategory.selectSave();
-			WaitTool.waitForJQueryProcessing(driver, 10);
-			
-			assertEquals("Si", detail.getActive());
-			assertEquals(nameSubcat, detail.getCatES());
-			assertEquals(nameSubcat, detail.getCatPT());
-			assertEquals(nameSubcat, detail.getCatEN());
-			
-			detail.selectBreadcrumbCategory();
-			WaitTool.waitForJQueryProcessing(driver, 10);
-			
-			assertTrue(detail.isSubCategoryInLsit(nameSubcat));
-		}
+		HomeBenefits home = PageFactory.initElements(driver, HomeBenefits.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		@After
-		public void tearDown() {
-			Logout logOut = PageFactory.initElements(driver, Logout.class);
-			logOut.open();
-		}
+		CategoriesList category = home.selectAdminCategory();
+		NewCategory newCategory = category.selectNewCategory();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newCategory.createCategory(name, name, name);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		DetailCategory detail = newCategory.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		detail.selectNewSubCategory();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newCategory.createCategory(nameSubcat, nameSubcat, nameSubcat);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newCategory.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("Si", detail.getActive());
+		assertEquals(nameSubcat, detail.getCatES());
+		assertEquals(nameSubcat, detail.getCatPT());
+		assertEquals(nameSubcat, detail.getCatEN());
+		
+		detail.selectBreadcrumbCategory();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(detail.isSubCategoryInLsit(nameSubcat));
+	}
+	
+	@After
+	public void tearDown() {
+		Logout logOut = PageFactory.initElements(driver, Logout.class);
+		logOut.open();
+	}
 
 }
