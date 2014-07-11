@@ -193,6 +193,15 @@ public class testCreateNews extends TestBase {
 		
 		assertEquals("La fecha de publicación es obligatoria.", createNews.getDateError());
 		assertEquals("Atención ¡Existen errores en el formulario!", createNews.getSaveError());
+		
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		if (isAlertPresent()) {
+			driver.switchTo().alert();
+            driver.switchTo().alert().accept();
+            driver.switchTo().defaultContent();
+		}
 	}
 	
 	
@@ -506,6 +515,17 @@ public class testCreateNews extends TestBase {
 		assertEquals(titleText, detail.getTitle());
 		assertTrue(detail.hasImage());
 	}
+	
+	public boolean isAlertPresent(){
+        try{
+            driver.switchTo().alert();
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+	
 	@After
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
