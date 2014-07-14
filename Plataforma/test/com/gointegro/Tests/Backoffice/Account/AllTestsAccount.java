@@ -10,12 +10,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	//testNewAccountStandard.class,
-	//testEditAccountStandard.class,
-	//testNewAccountRegionalFather.class,
-	//testEditAccountRegionalFather.class,
-	//testNewAccountRegionalChild.class,
-	//testEditAccountRegionalChild.class,
+	testNewAccountStandard.class,
+	testEditAccountStandard.class,
+	testNewAccountRegionalFather.class,
+	testEditAccountRegionalFather.class,
+	testNewAccountRegionalChild.class,
+	testEditAccountRegionalChild.class,
 	testListAccount.class
 })
 public class AllTestsAccount {
@@ -37,7 +37,7 @@ private static WebDriver driver;
 	
 	@AfterClass
 	 public static void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 
 }
