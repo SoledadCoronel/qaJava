@@ -59,7 +59,6 @@ private WebDriver driver;
 		
 		assertEquals(accountname2, detail.getName());
 		assertEquals(salesforceid, detail.getSalesForceId());
-		assertEquals("No posee", detail.getWebSite());
 		assertEquals("No", detail.getRegional());
 		assertEquals("No", detail.getRegistration());
 	}
@@ -124,7 +123,6 @@ private WebDriver driver;
 		
 		assertEquals(accountname, detail.getName());
 		assertEquals(salesforceid2, detail.getSalesForceId());
-		assertEquals("No posee", detail.getWebSite());
 		assertEquals("No", detail.getRegional());
 		assertEquals("No", detail.getRegistration());
 	}
