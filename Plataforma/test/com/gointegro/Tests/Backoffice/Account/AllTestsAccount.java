@@ -15,7 +15,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	//testNewAccountRegionalFather.class,
 	//testEditAccountRegionalFather.class,
 	//testNewAccountRegionalChild.class,
-	testEditAccountRegionalChild.class
+	//testEditAccountRegionalChild.class,
+	testListAccount.class
 })
 public class AllTestsAccount {
 	
