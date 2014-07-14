@@ -8,6 +8,9 @@ public class EditAccountStandard extends CreateAccountStandard{
 	
 	@FindBy(name = "webSite")
 	private WebElement webSite;
+	
+	@FindBy(xpath = "//ul[@id='c1_parent']/li/a")
+	private WebElement principalaccount;
 
 	/**
 	 * Constructor
@@ -34,6 +37,15 @@ public class EditAccountStandard extends CreateAccountStandard{
 	 */
 	public String getSalesforceId() {
 		return salesforceId.getAttribute("value");
+	}
+	
+	/**
+	 * Obtener la cuenta principal
+	 * 
+	 * @return String
+	 */
+	public String getPrincipalAccount() {
+		return principalaccount.getText();
 	}
 
 }
