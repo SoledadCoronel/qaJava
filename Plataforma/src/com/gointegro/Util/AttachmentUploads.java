@@ -28,6 +28,18 @@ public class AttachmentUploads {
 	}
 	
 	/**
+	 * Modifica la clase para permitir ver el input nativo del browser para enviar archivos pasando un WebElement
+	 * 
+	 * @param driver
+	 */
+	public static void attachmentByElement(WebDriver driver, WebElement element) {		
+		String jsstr = "arguments[0].setAttribute('id','algoloco')";
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+    	js.executeScript(jsstr, element);
+    	js.executeScript("document.getElementById('algoloco').setAttribute('class','className');");
+	}
+	
+	/**
 	 * Espera que la barra cargue al 100%
 	 * 
 	 * @param driver

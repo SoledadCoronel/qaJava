@@ -29,6 +29,8 @@ public class ConfigElements {
 	
 	private static String FileImagen = "/home/gustavomoreira/Pictures/Otro/Explosions-In-The-Sky.jpg";
 	
+	private static String FileImageSmall = "/home/gustavomoreira/Pictures/Otro/small.jpg";
+	
 	private static String FileImagenChange = "/home/gustavomoreira/Pictures/Otro/business-cat.jpg";
 	
 	private static String FileMP4Video= "/home/gustavomoreira/Videos/The_Moon-Close-up.mp4";
@@ -63,6 +65,10 @@ public class ConfigElements {
 	
 	public static String getFileImagen() {
 		return FileImagen;
+	}
+	
+	public static String getFileImageSmall() {
+		return FileImageSmall;
 	}
 
 	public static String getUsername() {
