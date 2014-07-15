@@ -45,7 +45,6 @@ public class testNewAccountStandard extends TestBase{
 		
 		assertEquals(accountname, detail.getName());
 		assertEquals(salesforceid, detail.getSalesForceId());
-		assertEquals("No posee", detail.getWebSite());
 		assertEquals("No", detail.getRegional());
 		assertEquals("No", detail.getRegistration());
 	}
