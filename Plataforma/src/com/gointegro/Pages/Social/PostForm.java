@@ -174,6 +174,20 @@ public class PostForm extends PageBase{
 		textpost.sendKeys(" "+post);
 	}
 	
+	/**
+	 * Selecciona un usuario para mencionar y le agrega un texto de post
+	 * 
+	 * @param post
+	 * @param mention
+	 */
+	private void selectMentionImg(String post, String mention) {
+		String posteo = "@"+ mention;
+		completePostFileInput(posteo);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		mentionlist.click();
+		postfileinput.sendKeys(" "+post);
+	}
+	
 	
 	/**
 	 * Envia un post de link
@@ -297,6 +311,40 @@ public class PostForm extends PageBase{
 	public void completePostMention(String post, String mention) {
 		selectMention(post, mention);
 		enterPost();
+	}
+	
+	/**
+	 * Completa un post de img con una mencion
+	 * 
+	 * @param post
+	 * @param mention
+	 * @param file
+	 */
+	public void completePostImageMention(String post, String mention, String file) {
+		selectPostFile();
+		WaitTool.waitForElementPresent(driver, By.id("attachmentUpload"), 3);
+		AttachmentUploads.SocialWallAttachment(driver);
+		completeAttachment(file);
+		AttachmentUploads.waitBar(driver);
+		selectMentionImg(post, mention);
+		submitPostFile();
+	}
+	
+	/**
+	 * Completa un post de file con una mencion
+	 * 
+	 * @param post
+	 * @param mention
+	 * @param file
+	 */
+	public void completePostFileMention(String post, String mention, String file) {
+		selectPostFile();
+		WaitTool.waitForElementPresent(driver, By.id("attachmentUpload"), 3);
+		AttachmentUploads.SocialWallAttachment(driver);
+		completeAttachment(file);
+		AttachmentUploads.waitBar(driver);
+		selectMentionImg(post, mention);
+		submitPostFile();
 	}
 
 }
