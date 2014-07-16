@@ -4,10 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Platform.Logout;
@@ -20,13 +25,22 @@ import com.gointegro.Util.WaitTool;
 
 public class testEditImageWidget extends TestBase {
 	
-private WebDriver driver;
+	private WebDriver driver;
+
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+
+	@Rule
+	public TestWatcher testWatcher = new TestWatcher() {
+		@Override
+		protected void starting(final Description description) {
+			logger.info(description.getMethodName());
+		}
+	};
 	
 	@Before
 	public void setUp() {
 		driver = AllTestsWidgets.getDriver();
 	}
-	
 	
 	@Test
 	public void test_edit_banner_title_empty() {
@@ -98,7 +112,6 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 60);
 	}
 	
-	
 	@Test
 	public void test_edit_banner_remove_image() {
 		String title = DataGenerator.nombreFile();
@@ -166,7 +179,6 @@ private WebDriver driver;
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 60);
 	}
-	
 	
 	@Test
 	public void test_edit_banner_change_image() {
@@ -238,7 +250,6 @@ private WebDriver driver;
 		assertNotEquals(imageName, home.getImageWidgetImageName(title));
 	}
 
-		
 	@Test
 	public void test_edit_banner_change_link() {
 		String title = DataGenerator.nombreFile();
@@ -311,7 +322,6 @@ private WebDriver driver;
 		assertNotEquals(link, home.getBannerLinkUrl(bannerElement2));
 	}
 
-	
 	@Test
 	public void test_edit_banner_remove_link() {
 		String title = DataGenerator.nombreFile();
