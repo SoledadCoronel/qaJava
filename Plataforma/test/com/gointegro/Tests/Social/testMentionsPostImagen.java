@@ -2,12 +2,16 @@ package com.gointegro.Tests.Social;
 
 import static org.junit.Assert.*;
 
+<<<<<<< HEAD
 import org.junit.After;
 import org.junit.Before;
+=======
+>>>>>>> 4e47a47cb61d10242b02a1060436e72154b90b5a
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
+<<<<<<< HEAD
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
@@ -29,6 +33,13 @@ public class testMentionsPostImagen {
 	
 	private WebDriver driver;
 	
+=======
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class testMentionsPostImagen {
+	
+>>>>>>> 4e47a47cb61d10242b02a1060436e72154b90b5a
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Rule
@@ -38,11 +49,14 @@ public class testMentionsPostImagen {
 			logger.info(description.getMethodName());
 		}
 	};
+<<<<<<< HEAD
 	
 	@Before
 	public void setUp() {
 		driver = AllTests.getDriver();
 	}
+=======
+>>>>>>> 4e47a47cb61d10242b02a1060436e72154b90b5a
 
 	@Test
 	public void test_mention_post_img_en_social_wall() {

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<jmxConfigurator contextName="tkuf2" />
+	<!-- Se puede establecer el directorio "a mano" o usar el del usuario -->
+	<!-- <property name="USER_HOME" value="/home/szarza" /> -->
+	<property name="USER_HOME" value="${user.home}" />
+	<property name="appName" value="Platform" />
+
+	<property name="logPath" value="${USER_HOME}/tk2/logs" />
+	<!-- 1 por día. Nivel INFO. 30 días de historia -->
+	<appender name="INFO"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<File>${logPath}/${appName}.log</File>
+
+		<!-- 5 líneas de stacktrace para las excepciones -->
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level %logger{20} - %message%n %exception{5}
+			</Pattern>
+		</layout>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${logPath}/${appName}.%d{yyyy-MM-dd}.log
+			</FileNamePattern>
+			<!-- mantener 30 días de historia -->
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="DEBUG"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+
+		<File>${logPath}/${appName}.d.log</File>
+
+		<!-- 10 líneas de stacktrace para las excepciones -->
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level %logger{20} - %message%n %exception{10}
+			</Pattern>
+		</layout>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${logPath}/${appName}.d.%d{yyyy-MM-dd}.log
+			</FileNamePattern>
+			<!-- mantener 10 días de historia -->
+			<MaxHistory>10</MaxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="TRACE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+		<File>${logPath}/${appName}.t.log</File>
+
+		<!-- full stacktrace para las excepciones -->
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date %-5level %logger{20} - %message%n</Pattern>
+		</layout>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${logPath}/${appName}.t.%d{yyyy-MM-dd}.log
+			</FileNamePattern>
+			<!-- mantener 5 días de historia -->
+			<MaxHistory>5</MaxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%date{HH:mm:ss.SSS} %-5level %logger{10} - %message%n
+			</Pattern>
+		</layout>
+	</appender>
+
+
+	<logger name="cestel.tk.uf" level="info">
+		<appender-ref ref="INFO" />
+		<appender-ref ref="DEBUG" />
+		<appender-ref ref="TRACE" />
+	</logger>
+
+	<root level="INFO">
+
+		<appender-ref ref="INFO" />
+
+	</root>
+
+</configuration>
+
