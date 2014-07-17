@@ -198,7 +198,6 @@ public class testPostDetail {
 		
 		DetailPost detailpost = tagfeeds.selectFeed();
 		String urlpost = detailpost.getURL();
-		System.out.println(urlpost);
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
 		login = PageFactory.initElements(driver, Login.class);

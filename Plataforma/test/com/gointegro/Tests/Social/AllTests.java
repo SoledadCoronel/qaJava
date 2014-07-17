@@ -17,7 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testPostEliminar.class,
 	testComment.class, testCommentEliminar.class, testCommentExtenso.class,
 	testLikePost.class, testLikeComment.class,
-	testMentionsPostSimple.class, testMentionsComment.class,
+	testMentionsPostSimple.class, testMentionsComment.class,testMentionsPostImagen.class,
 	testHashtagPost.class,
 	testHashtagComment.class, //no funciona 30/04 https://gointegro.atlassian.net/browse/PLATAFORMAII-2889
 	testPostDetail.class,
