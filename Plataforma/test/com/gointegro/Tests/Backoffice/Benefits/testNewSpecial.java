@@ -55,9 +55,10 @@ public class testNewSpecial extends TestBase {
 		newSpecial.createSpecial(spanish, portuguese, english, date, image, false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		
 		newSpecial.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		
 	}
 	
 	@Ignore //FALTA ASSERT
@@ -66,7 +67,7 @@ public class testNewSpecial extends TestBase {
 		
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_special_press_cancel() {
 		loginBackoffice(driver);
@@ -90,7 +91,7 @@ public class testNewSpecial extends TestBase {
 		assertEquals(special.getSpecialURL(), driver.getCurrentUrl());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_special_empty_spanish() {
 		loginBackoffice(driver);
@@ -114,7 +115,7 @@ public class testNewSpecial extends TestBase {
 		assertEquals("El campo Categoría en Español es obligatorio", newSpecial.getSpanishError());	
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_special_empty_portuguese() {
 		loginBackoffice(driver);
@@ -138,7 +139,7 @@ public class testNewSpecial extends TestBase {
 		assertEquals("El campo Categoría en Portugués es obligatorio", newSpecial.getPortugueseError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_special_empty_english() {
 		loginBackoffice(driver);
@@ -162,7 +163,7 @@ public class testNewSpecial extends TestBase {
 		assertEquals("El campo Categoría en Inglés es obligatorio", newSpecial.getEnglishError());	
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_special_spanish_max_char() {
 		String largeText = StringUtils.getTextoLargo(); 
@@ -295,7 +296,7 @@ public class testNewSpecial extends TestBase {
 		assertEquals("El especial debe tener al menos un beneficio relacionado", newSpecial.getBenefitsError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_special_small_image() {
 		image = ConfigElements.getFileImagen();
