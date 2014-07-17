@@ -6,15 +6,18 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	//testNewAccountStandard.class,
-	//testEditAccountStandard.class,
-	//testNewAccountRegionalFather.class,
-	//testEditAccountRegionalFather.class,
-	testNewAccountRegionalChild.class
+	testNewAccountStandard.class,
+	testEditAccountStandard.class,
+	testNewAccountRegionalFather.class,
+	testEditAccountRegionalFather.class,
+	testNewAccountRegionalChild.class,
+	testEditAccountRegionalChild.class,
+	testListAccount.class
 })
 public class AllTestsAccount {
 	
@@ -22,7 +25,9 @@ private static WebDriver driver;
 	
 	@BeforeClass
 	public static void setUp(){
-		setDriver(new FirefoxDriver());
+		FirefoxBinary firefox = new FirefoxBinary();
+		firefox.setEnvironmentProperty("DISPLAY", ":0");
+		setDriver(new FirefoxDriver(firefox,null));
 	}
 
 	public static WebDriver getDriver() {
@@ -35,7 +40,7 @@ private static WebDriver driver;
 	
 	@AfterClass
 	 public static void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 
 }

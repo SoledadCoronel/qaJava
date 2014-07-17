@@ -6,9 +6,14 @@ import java.io.File;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Platform.Home;
@@ -25,12 +30,21 @@ import com.gointegro.Util.WaitTool;
 public class testNewFile extends TestBase {
 	
 	private WebDriver driver;
+	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+
+	@Rule
+	public TestWatcher testWatcher = new TestWatcher() {
+		@Override
+		protected void starting(final Description description) {
+			logger.info(description.getMethodName());
+		}
+	};
 
 	@Before
 	public void setUp() {
 		driver = AllTestsProfile.getDriver();
 	}
-	
 	
 	@Test
 	public void test_profile_upload_file() {
@@ -64,7 +78,6 @@ public class testNewFile extends TestBase {
 		
 		assertTrue(fileTab.isFileInList(name, date));
 	}
-	
 	
 	@Test
 	public void test_profile_upload_file_check_user_link() {
@@ -105,7 +118,6 @@ public class testNewFile extends TestBase {
 		
 		assertTrue(driver.getCurrentUrl().contains(profile.getProfileURL()));
 	}
-	
 	
 	@Test
 	public void test_profile_download_file() {
@@ -150,7 +162,6 @@ public class testNewFile extends TestBase {
 		assertEquals(true, new File(downloadedFileAbsoluteLocation).exists());
 		assertEquals(200, downloadTestFile.getHTTPStatusOfLastDownloadAttempt());
 	}
-	
 	
 	@Test
 	public void test_profile_paging() {

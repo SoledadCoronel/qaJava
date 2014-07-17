@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
@@ -17,7 +18,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testPostEliminar.class,
 	testComment.class, testCommentEliminar.class, testCommentExtenso.class,
 	testLikePost.class, testLikeComment.class,
-	testMentionsPostSimple.class, testMentionsComment.class,
+	testMentionsPostSimple.class, testMentionsComment.class,testMentionsPostImagen.class,
 	testHashtagPost.class,
 	testHashtagComment.class, //no funciona 30/04 https://gointegro.atlassian.net/browse/PLATAFORMAII-2889
 	testPostDetail.class,
@@ -33,7 +34,9 @@ public class AllTests {
 	
 	@BeforeClass
 	public static void setUp(){
-		setDriver(new FirefoxDriver());
+		FirefoxBinary firefox = new FirefoxBinary();
+		firefox.setEnvironmentProperty("DISPLAY", ":0");
+		setDriver(new FirefoxDriver(firefox,null));
 	}
 
 	public static WebDriver getDriver() {

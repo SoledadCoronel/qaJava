@@ -13,6 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gointegro.Helpers.ConfigElementsBO;
+import com.gointegro.Pages.Backoffice.AccountOverlay;
 import com.gointegro.Pages.Backoffice_Account.AccountDetail;
 import com.gointegro.Pages.Backoffice_Account.CreateAccountHome;
 import com.gointegro.Pages.Backoffice_Account.CreateAccountStandard;
@@ -22,12 +24,12 @@ import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.WaitTool;
 
-public class testEditAccountStandard extends TestBase{
+public class testEditAccountRegionalChild extends TestBase{
 	
-private WebDriver driver;
-
-private final Logger logger = LoggerFactory.getLogger(getClass());
-
+	private WebDriver driver;
+	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Rule 
 	public TestWatcher testWatcher = new TestWatcher() {
 		@Override
@@ -42,7 +44,88 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
 	}
 	
 	@Test
-	public void test_edit_account_standard_verify() {
+	public void test_edit_account_child_erase_child_relation() {
+		String accountname = "Z"+DataGenerator.nombreFile();
+		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
+		
+		loginBackoffice(driver);
+		
+		AccountDetail detail = createAccount(accountname, salesforceid);
+		
+		EditAccountStandard edit = detail.selectEdit();
+		
+		AccountOverlay overlay = edit.selectDependentAccounts();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		overlay.completeFilter(ConfigElementsBO.getAccountRegionalFather());
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		overlay.selectItem();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		overlay.selectAdd();
+		
+		detail = edit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertFalse(detail.isFatherAccountPresent());
+		
+		//Bloqueado por https://gointegro.atlassian.net/browse/PLATAFORMAII-3366
+	}
+	
+	@Test
+	public void test_edit_account_child_cancel() {
+		String accountname = "Z"+DataGenerator.nombreFile();
+		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
+		
+		loginBackoffice(driver);
+		
+		AccountDetail detail = createAccount(accountname, salesforceid);
+		
+		EditAccountStandard edit = detail.selectEdit();
+		
+		AccountOverlay overlay = edit.selectDependentAccounts();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		overlay.completeFilter(ConfigElementsBO.getAccountRegionalFather());
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		overlay.selectItem();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		overlay.selectCancel();
+		
+		detail = edit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals(ConfigElementsBO.getAccountRegionalFather(), detail.getAccountFather());
+	}
+	
+	@Test
+	public void test_edit_account_child_change_father() {
+		String accountname = "Z"+DataGenerator.nombreFile();
+		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
+		
+		loginBackoffice(driver);
+		
+		AccountDetail detail = createAccount(accountname, salesforceid);
+		
+		EditAccountStandard edit = detail.selectEdit();
+		
+		AccountOverlay overlay = edit.selectDependentAccounts();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		overlay.completeFilter(ConfigElementsBO.getAccountRegionalFather2());
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		overlay.selectItem();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		overlay.selectAdd();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		detail = edit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals(ConfigElementsBO.getAccountRegionalFather2(), detail.getAccountFather());
+	}
+	
+	@Test
+	public void test_edit_account_child_verify_fields() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
 		
@@ -54,32 +137,11 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
 		
 		assertEquals(accountname, edit.getName());
 		assertEquals(salesforceid, edit.getSalesforceId());
+		assertEquals(ConfigElementsBO.getAccountRegionalFather(), edit.getPrincipalAccount());
 	}
 	
 	@Test
-	public void test_edit_account_standard_change_name() {
-		String accountname = "Z"+DataGenerator.nombreFile();
-		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
-		String accountname2 = "Z"+DataGenerator.nombreFile();
-		
-		loginBackoffice(driver);
-		
-		AccountDetail detail = createAccount(accountname, salesforceid);
-		
-		EditAccountStandard edit = detail.selectEdit();
-		
-		edit.completeAccount(accountname2, salesforceid);
-		
-		detail = edit.selectSave();
-		
-		assertEquals(accountname2, detail.getName());
-		assertEquals(salesforceid, detail.getSalesForceId());
-		assertEquals("No", detail.getRegional());
-		assertEquals("No", detail.getRegistration());
-	}
-	
-	@Test
-	public void test_edit_account_standard_name_empty() {
+	public void test_edit_account_child_name_empty() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
 		
@@ -98,52 +160,26 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
 	}
 	
 	@Test
-	public void test_edit_account_standard_name_exist() {
+	public void test_edit_account_child_name_exist() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
-		String accountname2 = "Z"+DataGenerator.nombreFile();
-		String salesforceid2 = DataGenerator.nombreFile().substring(0, 15);
 		
 		loginBackoffice(driver);
 		
 		AccountDetail detail = createAccount(accountname, salesforceid);
 		
-		detail = createAccount(accountname2, salesforceid2);
-		
 		EditAccountStandard edit = detail.selectEdit();
 		
-		edit.completeAccount(accountname, salesforceid2);
+		edit.completeAccount(ConfigElementsBO.getAccountRegionalFather(), salesforceid);
 		
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Ya existe una cuenta con el nombre "+accountname+".", edit.getErrorMsj());
+		assertEquals("Ya existe una cuenta con el nombre "+ConfigElementsBO.getAccountRegionalFather()+".", edit.getErrorMsj());
 	}
 	
 	@Test
-	public void test_edit_account_standard_change_salesforceid() {
-		String accountname = "Z"+DataGenerator.nombreFile();
-		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
-		String salesforceid2 = DataGenerator.nombreFile().substring(0, 15);
-		
-		loginBackoffice(driver);
-		
-		AccountDetail detail = createAccount(accountname, salesforceid);
-		
-		EditAccountStandard edit = detail.selectEdit();
-		
-		edit.completeAccount(accountname, salesforceid2);
-		
-		detail = edit.selectSave();
-		
-		assertEquals(accountname, detail.getName());
-		assertEquals(salesforceid2, detail.getSalesForceId());
-		assertEquals("No", detail.getRegional());
-		assertEquals("No", detail.getRegistration());
-	}
-	
-	@Test
-	public void test_edit_account_standard_salesforceid_empty() {
+	public void test_edit_account_child_salesforceid_empty() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
 		
@@ -162,27 +198,7 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
 	}
 	
 	@Test
-	public void test_edit_account_standard_salesforceid_little() {
-		String accountname = "Z"+DataGenerator.nombreFile();
-		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
-		String salesforceid2 = DataGenerator.nombreFile().substring(0, 10);
-		
-		loginBackoffice(driver);
-		
-		AccountDetail detail = createAccount(accountname, salesforceid);
-		
-		EditAccountStandard edit = detail.selectEdit();
-		
-		edit.completeAccount(accountname, salesforceid2);
-		
-		edit.selectSave();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		assertEquals("El ID de Salesforce debe tener entre 15 y 18 caracteres.", edit.getSalesForceIdError());
-	}
-	
-	@Test
-	public void test_edit_account_standard_salesforceid_exist() {
+	public void test_edit_account_child_salesforceid_exist() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
 		String accountname2 = "Z"+DataGenerator.nombreFile();
@@ -205,10 +221,11 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
 	}
 	
 	@Test
-	public void test_edit_account_standard_cancel() {
+	public void test_edit_account_child() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
 		String accountname2 = "Z"+DataGenerator.nombreFile();
+		String salesforceid2 = DataGenerator.nombreFile().substring(0, 15);
 		
 		loginBackoffice(driver);
 		
@@ -216,25 +233,34 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
 		
 		EditAccountStandard edit = detail.selectEdit();
 		
-		edit.completeAccount(accountname2, salesforceid);
+		edit.completeAccount(accountname2, salesforceid2);
 		
-		edit.selectCancel();
+		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals(accountname, detail.getName());
-		assertEquals(salesforceid, detail.getSalesForceId());
-		assertEquals("No", detail.getRegional());
-		assertEquals("No", detail.getRegistration());
+		assertEquals(accountname2, detail.getName());
+		assertEquals(salesforceid2, detail.getSalesForceId());
 	}
 	
 	private AccountDetail createAccount(String accountname, String salesforceid) {
 		CreateAccountHome home = PageFactory.initElements(driver, CreateAccountHome.class);
 		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		CreateAccountStandard standard = home.selectStandard();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		standard.completeAccount(accountname, salesforceid);
+		
+		AccountOverlay overlay = standard.selectDependentAccounts();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		overlay.completeFilter(ConfigElementsBO.getAccountRegionalFather());
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		overlay.selectItem();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		overlay.selectAdd();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		AccountDetail detail = standard.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);

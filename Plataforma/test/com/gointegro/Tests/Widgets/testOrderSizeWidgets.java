@@ -4,10 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Pages.Widgets.EditWidgets;
@@ -22,11 +27,20 @@ public class testOrderSizeWidgets  extends TestBase {
 	
 	private WebDriver driver;
 	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+
+	@Rule
+	public TestWatcher testWatcher = new TestWatcher() {
+		@Override
+		protected void starting(final Description description) {
+			logger.info(description.getMethodName());
+		}
+	};
+	
 	@Before
 	public void setUp() {
 		driver = AllTestsWidgets.getDriver();
 	}
-	
 	
 	@Test
 	public void test_widget_change_position() {
@@ -89,7 +103,6 @@ public class testOrderSizeWidgets  extends TestBase {
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 20);
 	}
-	
 	
 	@Test
 	public void test_widget_resize() {
