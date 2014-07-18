@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
@@ -14,6 +15,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testNewCategory.class,
 	testNewSubCategory.class,
 	//testNewSpecial.class,
+	testNewContact.class,
+	testNewBenefit.class,
+	testNewFile.class,
+	testNewVisibleFile.class,
+	testNewStore.class,
 })
 
 public class AllTestsBackOfficeBenefits {
@@ -22,7 +28,9 @@ public class AllTestsBackOfficeBenefits {
 	
 	@BeforeClass
 	public static void setUp(){
-		setDriver(new FirefoxDriver());
+		FirefoxBinary firefox = new FirefoxBinary();
+		firefox.setEnvironmentProperty("DISPLAY", ":0");
+		setDriver(new FirefoxDriver(firefox,null));
 	}
 
 	public static WebDriver getDriver() {

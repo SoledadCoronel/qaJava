@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -124,7 +125,7 @@ public class NewCompany extends PageBase {
 	@FindBy(xpath = "//div[@data-fields='image1']/div/div/div")
 	WebElement image3Error;
 	
-	@FindBy(xpath = "//")
+	@FindBy(xpath = "//div[@id='ms-categories']/div/ul/li")
 	List<WebElement> categoryList;
 	
 	
@@ -206,7 +207,9 @@ public class NewCompany extends PageBase {
 	public void createAddress(String name) {
 		address.clear();
 		address.sendKeys(name);
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		addressBtn.click();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 	}
 	
 	/**
@@ -284,6 +287,7 @@ public class NewCompany extends PageBase {
 		
 		createAddress(address);
 		createZipCode(zipcode);
+		Sleeper.sleepTightInSeconds(2);
 	}
 	
 	/**
@@ -463,8 +467,9 @@ public class NewCompany extends PageBase {
 	 */
 	public void selectCategory(String name) {
 		for(WebElement element : categoryList) {
-			if(element.findElements(By.xpath("")).size() > 0) {
-				element.findElement(By.xpath("")).click();
+			if(element.getAttribute("innerHTML").contains(name)) {
+				element.findElement(By.xpath("./span")).click();
+				break;
 			}
 		}
 	}

@@ -10,7 +10,7 @@ import com.gointegro.Pages.Base.PageBase;
 
 public class SpecialList extends PageBase {
 	
-	@FindBy(xpath = "//section/div[2]/button")
+	@FindBy(xpath = "//section/div[2]/a")
 	WebElement newSpecial;
 	
 	String specialURL = ConfigElementsBO.getUrlBackoffice() + "/benefits/collection/list";

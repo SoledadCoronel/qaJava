@@ -83,33 +83,13 @@ public class CategoriesList extends PageBase {
 	}
 	
 	/**
-	 * Devuelve el Nombre en Español
+	 * Devuelve si el Nombre esta presente 
 	 * 
 	 * @param WebElement
 	 * @return String
 	 */
-	public String getNameES(WebElement element) {
-		return element.findElement(By.xpath("./td/a")).getText();
-	}
-	
-	/**
-	 * Devuelve el Nombre en Portugués
-	 * 
-	 * @param WebElement
-	 * @return String
-	 */
-	public String getNamePT(WebElement element) {
-		return element.findElement(By.xpath("./td[2]/a")).getText();
-	}
-	
-	/**
-	 * Devuelve el Nombre en Inglés
-	 * 
-	 * @param WebElement
-	 * @return String
-	 */
-	public String getNameEN(WebElement element) {
-		return element.findElement(By.xpath("./td[3]/a")).getText();
+	public boolean isNamePresent(WebElement element, String name) {
+		return element.getAttribute("innerHTML").contains(name);
 	}
 	
 	/**

@@ -1,12 +1,17 @@
 package com.gointegro.Pages.Backoffice_Benefits;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.gointegro.Helpers.ConfigElementsBO;
+import com.gointegro.Helpers.ConfigElementsBOBenefits;
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Util.WaitTool;
 
 public class DetailCompany extends PageBase {
 	
@@ -80,9 +85,24 @@ public class DetailCompany extends PageBase {
 	@FindBy(id = "country")
 	WebElement country;
 	
+	/**
+	 * OTROS
+	 */
 	String tags = "//section[@id='tags']";
 	
 	String category = "//section[@id='categories']";
+	
+	@FindBy(xpath = "//section[@id='contacts']/div/div/a")
+	WebElement newContact;
+	
+	@FindBy(xpath = "//section[@id='contacts']/div/table/tbody/tr")
+	List<WebElement> contactsList;
+	
+	@FindBy(xpath = "//section[@id='benefits']/div/div/a")
+	WebElement newBenefit;
+	
+	@FindBy(xpath = "//section[@id='stores']/div/div/a")
+	WebElement newStore;
 	
 	/**
 	 * Constructor
@@ -91,6 +111,7 @@ public class DetailCompany extends PageBase {
 	 */
 	public DetailCompany(WebDriver driver) {
 		super(driver);
+		URL = ConfigElementsBO.getUrlBackoffice() + "/benefits/company/" + ConfigElementsBOBenefits.getCompanyId() + "/view";
 	}
 	
 	/**
@@ -264,6 +285,122 @@ public class DetailCompany extends PageBase {
 	public NewCompany selectEdit() {
 		editbtn.click();
 		return PageFactory.initElements(driver, NewCompany.class);
+	}
+	
+	/**
+	 * Seleccionar Nuevo contacto
+	 * 
+	 * @return NewContactOverlay
+	 */
+	public NewContactOverlay selectNewContact() {
+		newContact.click();
+		return PageFactory.initElements(driver, NewContactOverlay.class);
+	}
+	
+	/**
+	 * Devuelve un WebElement del contacto
+	 * 
+	 * @param name
+	 * @return WebElement
+	 */
+	public WebElement getContactElement(String name) {
+		WebElement element = null;
+		
+		WaitTool.waitForElement(driver, By.xpath("//section[@id='contacts']/div/table/tbody/tr"), 10);
+		
+		for(WebElement ele : contactsList) {
+			if(ele.findElements(By.xpath("./td/a")).size() > 0 && ele.findElement(By.xpath("./td/a")).getText().contains(name)) {
+				element = ele;
+			}
+		}
+		return element;
+	}
+	
+	/**
+	 * Devuelve true si el contacto esta presente
+	 * 
+	 * @param name
+	 * @return boolean
+	 */
+	public boolean isContactInList(String name) {
+		boolean isContactInList = false;
+		
+		for(WebElement ele : contactsList) {
+			if(ele.findElements(By.xpath("./td/a")).size() > 0 && ele.findElement(By.xpath("./td/a")).getText().contains(name)) {
+				isContactInList = true;
+			}
+		}
+		return isContactInList;
+	}
+	
+	/**
+	 * Devuelve el Nombre del contacto
+	 * 
+	 * @param WebElement
+	 * @return String
+	 */
+	public String getContactName(WebElement element) {
+		return element.findElement(By.xpath("./td/a")).getText();
+	}
+	
+	/**
+	 * Devuelve el Nombre del contacto
+	 * 
+	 * @return DetailContactOverlay
+	 */
+	public DetailContactOverlay selectContact(WebElement element) {
+		element.findElement(By.xpath("./td/a")).click();
+		return PageFactory.initElements(driver, DetailContactOverlay.class);
+	}
+	
+	/**
+	 * Devuelve el Area del contacto
+	 * 
+	 * @param WebElement
+	 * @return String
+	 */
+	public String getContactArea(WebElement element) {
+		return element.findElement(By.xpath("./td[2]")).getText();
+	}
+	
+	/**
+	 * Devuelve la Posición del contacto
+	 * 
+	 * @param WebElement
+	 * @return String
+	 */
+	public String getContactPosition(WebElement element) {
+		return element.findElement(By.xpath("./td[3]")).getText();
+	}
+	
+	/**
+	 * Devuelve true si el contacto esta activo
+	 * 
+	 * @param WebElement
+	 * @return String
+	 */
+	public boolean isContactEnabled(WebElement element) {
+		return element.findElements(By.xpath("./td[4]/span[contains(@class, 'glyphicon-ok')]")).size() > 0;
+	}
+	
+	/**
+	 * Seleccionar Nuevo beneficio
+	 * 
+	 * @return NewBenefits
+	 */
+	public NewBenefits selectNewBenefit() {
+		newBenefit.click();
+		return PageFactory.initElements(driver, NewBenefits.class);
+	}
+	
+	/**
+	 * Seleccionar Nueva Sucursal
+	 * 
+	 * @return NewStore
+	 */
+	public NewStore selectNewStore() {
+		newStore.click();
+		return PageFactory.initElements(driver, NewStore.class);
 	}
 	
 }

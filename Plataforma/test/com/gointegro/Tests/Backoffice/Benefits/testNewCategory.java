@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,7 +28,7 @@ public class testNewCategory extends TestBase {
 		driver = AllTestsBackOfficeBenefits.getDriver();
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_new_category() {
 		String name = DataGenerator.nombreFile();
@@ -56,10 +55,12 @@ public class testNewCategory extends TestBase {
 		assertEquals(name, detail.getCatEN());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_check_home() {
-		String name = DataGenerator.nombreFile();
+		String nameES = DataGenerator.nombreFile();
+		String namePT = DataGenerator.nombreFile();
+		String nameEN = DataGenerator.nombreFile();
 		
 		loginBackoffice(driver);
 		
@@ -71,7 +72,7 @@ public class testNewCategory extends TestBase {
 		NewCategory newCategory = category.selectNewCategory();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newCategory.createCategory(name, name, name);
+		newCategory.createCategory(nameES, namePT, nameEN);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newCategory.selectSave();
@@ -80,19 +81,19 @@ public class testNewCategory extends TestBase {
 		category.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		category.searchCategory(name);
+		category.searchCategory(nameES);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		WebElement categoryElement = category.getCategoryElement(name);
+		WebElement categoryElement = category.getCategoryElement(nameES);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals(name, category.getNameES(categoryElement));
-		assertEquals(name, category.getNamePT(categoryElement));
-		assertEquals(name, category.getNameEN(categoryElement));
+		assertTrue(category.isNamePresent(categoryElement, nameES));
+		assertTrue(category.isNamePresent(categoryElement, namePT));
+		assertTrue(category.isNamePresent(categoryElement, nameEN));
 		assertTrue(category.isActive(categoryElement));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_save_and_new() {
 		String name = DataGenerator.nombreFile();
@@ -116,7 +117,7 @@ public class testNewCategory extends TestBase {
 		assertEquals(newCategory.getNewCategoryURL(), driver.getCurrentUrl());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_press_cancel() {
 		String name = DataGenerator.nombreFile();
@@ -140,7 +141,7 @@ public class testNewCategory extends TestBase {
 		assertEquals(category.getURL(), driver.getCurrentUrl());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_spanish_empty() {
 		String name = DataGenerator.nombreFile();
@@ -164,7 +165,7 @@ public class testNewCategory extends TestBase {
 		assertEquals("El campo Categoría en Español es obligatorio", newCategory.getSpanishError());		
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_portuguese_empty() {
 		String name = DataGenerator.nombreFile();
@@ -188,7 +189,7 @@ public class testNewCategory extends TestBase {
 		assertEquals("El campo Categoría en Portugués es obligatorio", newCategory.getPortugueseError());	
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_english_empty() {
 		String name = DataGenerator.nombreFile();
@@ -212,7 +213,7 @@ public class testNewCategory extends TestBase {
 		assertEquals("El campo Categoría en Inglés es obligatorio", newCategory.getEnglishError());		
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_spanish_max_char() {
 		String name = DataGenerator.nombreFile();
@@ -237,7 +238,7 @@ public class testNewCategory extends TestBase {
 		assertEquals("El campo Categoría en Español no puede superar los 80 caracteres", newCategory.getSpanishError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_portuguese_max_char() {
 		String name = DataGenerator.nombreFile();
@@ -262,7 +263,7 @@ public class testNewCategory extends TestBase {
 		assertEquals("El campo Categoría en Portugués no puede superar los 80 caracteres", newCategory.getPortugueseError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_english_max_char() {
 		String name = DataGenerator.nombreFile();
@@ -287,7 +288,7 @@ public class testNewCategory extends TestBase {
 		assertEquals("El campo Categoría en Inglés no puede superar los 80 caracteres", newCategory.getEnglishError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_category_disabled() {
 		String name = DataGenerator.nombreFile();

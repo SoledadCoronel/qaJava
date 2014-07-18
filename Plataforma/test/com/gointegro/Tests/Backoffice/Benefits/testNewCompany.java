@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,7 +49,7 @@ public class testNewCompany extends TestBase {
 		driver = AllTestsBackOfficeBenefits.getDriver();
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company() {
 		loginBackoffice(driver);
@@ -93,7 +92,7 @@ public class testNewCompany extends TestBase {
 		assertEquals(country, detail.getCountry());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_check_home() {
 		loginBackoffice(driver);
@@ -126,7 +125,7 @@ public class testNewCompany extends TestBase {
 	}
 
 
-	@Ignore
+	
 	@Test
 	public void test_create_company_title_max_chars() {
 		String name = StringUtils.getTextoLargo();
@@ -149,7 +148,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("El nombre del comercio no puede superar los 80 caracteres", newCompany.getNameError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_name_max_chars() {
 		String companyName = StringUtils.getTextoLargo();
@@ -172,7 +171,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("La razón social del comercio no puede superar los 80 caracteres", newCompany.getCompanyNameError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_description_max_chars() {
 		String description = StringUtils.getTextoLargo();
@@ -195,7 +194,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("La descripción del comercio no puede superar los 500 caracteres", newCompany.getDescriptionError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_create_company_empty_name() {
 		loginBackoffice(driver);
@@ -216,7 +215,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newCompany.getNameError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_create_company_empty_company_name() {
 		loginBackoffice(driver);
@@ -237,7 +236,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newCompany.getCompanyNameError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_empty_taxId() {
 		loginBackoffice(driver);
@@ -258,7 +257,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newCompany.getTaxIdError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_empty_phone() {
 		loginBackoffice(driver);
@@ -279,7 +278,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newCompany.getPhoneError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_empty_logo() {
 		loginBackoffice(driver);
@@ -300,7 +299,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newCompany.getLogoError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_empty_description() {
 		loginBackoffice(driver);
@@ -321,7 +320,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newCompany.getDescriptionError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_disabled() {
 		loginBackoffice(driver);
@@ -342,7 +341,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("No", detail.getActive());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_create_company_small_logo() {
 		fileupload = ConfigElements.getFileImageSmall();
@@ -365,7 +364,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("El tamaño de la imagen debe ser mayor a 188x95", newCompany.getLogoError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_create_company_invalid_url() {
 		String siteLink = "www.google.com/id=1?'";
@@ -388,7 +387,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("Ingrese una URL válida", newCompany.getWebSiteError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_without_address() {
 		loginBackoffice(driver);
@@ -412,7 +411,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("Por favor, complete con una ubicación", newCompany.getAddressError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_create_company_no_zipcode() {
 		loginBackoffice(driver);
@@ -436,7 +435,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("El código postal no puede estar vacío", newCompany.getAddressError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_images_small() {
 		String smallImg = ConfigElements.getFileImageSmall();
@@ -467,7 +466,7 @@ public class testNewCompany extends TestBase {
 		assertEquals("El tamaño de la imagen debe ser mayor a 600x306", newCompany.getImage3Error());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_create_company_with_tag() {
 		String tag1 = DataGenerator.nombreFile();
