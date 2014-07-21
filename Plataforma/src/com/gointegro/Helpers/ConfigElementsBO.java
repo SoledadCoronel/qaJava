@@ -23,6 +23,12 @@ public class ConfigElementsBO {
 	private static String webSiteAccount = "http://automationtestplatformregional.p2-stage.gointegro.com";
 	
 	private static String accountRegionalFather = "Automation Test Platform Regional";
+	
+	private static String accountRegionalFather2 = "Automation Test Platform 2 Regional";
+
+	public static String getAccountRegionalFather2() {
+		return accountRegionalFather2;
+	}
 
 	public static String getUser() {
 		return user;
