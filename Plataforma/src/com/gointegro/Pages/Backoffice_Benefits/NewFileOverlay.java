@@ -19,7 +19,7 @@ public class NewFileOverlay extends PageBase {
 	WebElement description;
 	
 	@FindBy (xpath = "//div[@data-fields='url']/div/div/span/div/div/span[2]/a/input")
-	WebElement imgUpload;
+	WebElement fileUpload;
 	
 	@FindBy(xpath = "//div[contains(@class, 'form-name')]/div/div/div")
 	WebElement nameErrorMsg;
@@ -51,8 +51,8 @@ public class NewFileOverlay extends PageBase {
 	 * @param fileupload
 	 */
 	public void fileUpload(String fileupload) {
-		AttachmentUploads.attachmentByElement(driver, imgUpload);
-		imgUpload.sendKeys(fileupload);
+		AttachmentUploads.attachmentByElement(driver, fileUpload);
+		fileUpload.sendKeys(fileupload);
 	}
 
 	/**

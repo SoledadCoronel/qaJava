@@ -117,7 +117,6 @@ public class NewBenefits extends PageBase {
 	 * Seleccionar Activo
 	 */
 	public void selectActive() {
-		System.out.println("text: ");
 		active.click();
 	}
 	

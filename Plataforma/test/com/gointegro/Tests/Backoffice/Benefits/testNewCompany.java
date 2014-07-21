@@ -452,13 +452,13 @@ public class testNewCompany extends TestBase {
 		newCompany.createNewCompany(name, companyName, taxId, phone, fax, fileupload, siteLink, description, address, zipCode, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newCompany.image1Upload(smallImg);
+		newCompany.image1UploadSmall(smallImg);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newCompany.image2Upload(smallImg);
+		newCompany.image2UploadSmall(smallImg);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newCompany.image3Upload(smallImg);
+		newCompany.image3UploadSmall(smallImg);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		assertEquals("El tamaño de la imagen debe ser mayor a 600x306", newCompany.getImage1Error());

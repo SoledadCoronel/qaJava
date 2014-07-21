@@ -97,6 +97,7 @@ public class NewStore extends NewCompany {
 		email.clear();
 		email.sendKeys(mail);
 	}
+	
 	/**
 	 * Seleccionar Tipo
 	 * 
@@ -159,7 +160,7 @@ public class NewStore extends NewCompany {
 	
 	public void makeFormVisible() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("document.getElementsByClassName('pac-container')[0].style.display = 'none'; document.getElementById('backoffice-overlay').style.display = 'none';");
+		js.executeScript("document.getElementsByTagName('body')[0].style.zIndex='900000000';document.getElementsByClassName('pac-container')[0].style.zIndex='-100';document.getElementsByClassName('backoffice-overlay')[0].style.zIndex='-100'; document.getElementsByClassName('pac-container')[0].style.display = 'none'; document.getElementById('backoffice-overlay').style.display = 'none';");
 	}
 	
 	public void createContact() {

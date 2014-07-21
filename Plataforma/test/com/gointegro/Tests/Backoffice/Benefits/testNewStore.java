@@ -47,7 +47,7 @@ public class testNewStore extends TestBase {
 		driver = AllTestsBackOfficeBenefits.getDriver();
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_store() {
 		NewStore newStore = selectNewStore();
@@ -59,18 +59,19 @@ public class testNewStore extends TestBase {
 		System.out.println("22: " + driver.findElement(By.xpath("//form[@class='form-horizontal']")).isDisplayed());
 		System.out.println("pri: " + driver.findElement(By.xpath("//form[@class='form-horizontal']")).isEnabled());
 		
+		newStore.selectContact();
+		
 		newStore.createFloor(floor);
 		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		//newStore.makeFormVisible();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newStore.createApartment(apartment);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		//String contact = newStore.selectContact();
-		newStore.createContact();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		System.out.println("text: " + driver.findElement(By.xpath("//body")).isDisplayed());
-		System.out.println("text22: " + driver.findElement(By.xpath("//body")).isEnabled());
+		System.out.println("1111: " + driver.findElement(By.xpath("//section[@class='backoffice-block']")).getAttribute("innerHTML"));
+		System.out.println("22222: " + driver.findElement(By.xpath("//*")).getAttribute("innerHTML"));
 		
 		
 		DetailStore detail = newStore.selectSave();
@@ -143,7 +144,7 @@ public class testNewStore extends TestBase {
 		
 	}
 
-	
+	@Ignore
 	@Test
 	public void test_new_store_name_empty() {
 		NewStore newStore = selectNewStore();
@@ -159,7 +160,7 @@ public class testNewStore extends TestBase {
 		
 	}
 
-	
+	@Ignore
 	@Test
 	public void test_new_store_name_max_char() {
 		name = StringUtils.getTextoLargo();
@@ -176,7 +177,7 @@ public class testNewStore extends TestBase {
 		assertEquals("El nombre de la sucursal no puede superar los 80 caracteres", newStore.getNameError());
 	}
 
-	
+	@Ignore
 	@Test
 	public void test_new_store_contact_empty() {
 		NewStore newStore = selectNewStore();
@@ -191,7 +192,7 @@ public class testNewStore extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newStore.getContactError());
 	}
 
-	
+	@Ignore
 	@Test
 	public void test_new_store_company_name_empty() {
 		NewStore newStore = selectNewStore();
@@ -206,7 +207,7 @@ public class testNewStore extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newStore.getCompanyNameError());
 	}
 
-	
+	@Ignore
 	@Test
 	public void test_new_store_company_name_max_char() {
 		companyName = StringUtils.getTextoLargo();
@@ -223,7 +224,7 @@ public class testNewStore extends TestBase {
 		assertEquals("La razón social de la sucursal no puede superar los 80 caracteres", newStore.getCompanyNameError());
 	}
 
-	
+	@Ignore
 	@Test
 	public void test_new_store_taxid_empty() {
 		NewStore newStore = selectNewStore();
@@ -238,7 +239,7 @@ public class testNewStore extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newStore.getTaxIdError());
 	}
 
-	
+	@Ignore
 	@Test
 	public void test_new_store_address_empty() {
 		NewStore newStore = selectNewStore();
@@ -253,7 +254,7 @@ public class testNewStore extends TestBase {
 		assertEquals("Por favor, complete con una ubicación", newStore.getAddressError());
 	}
 
-	
+	@Ignore
 	@Test
 	public void test_new_store_zipcode_empty() {
 		NewStore newStore = selectNewStore();

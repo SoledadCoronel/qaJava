@@ -49,18 +49,10 @@ public class DetailBenefits extends PageBase {
 	@FindBy(id = "description_ifr")
 	WebElement description;
 	
-	String tags = "tags";
-	
 	@FindBy(id = "restrictedPlatforms-input")
 	WebElement restrictedPlatforms_input;
 	
 	String category = "//section[@id='categories']";
-	
-	String redeemnig = "redeemingMethods";
-	
-	String validDays = "validDays";
-	
-	String paymentMethods = "paymentMethods";
 	
 	@FindBy(xpath = "//section[@id='files']/div/div/a")
 	WebElement newDocument;
@@ -188,7 +180,7 @@ public class DetailBenefits extends PageBase {
 	 * Devuelve true si el Tag existe
 	 */
 	public boolean isTagPresent(String name) {
-		return driver.findElement(By.id(tags)).getAttribute("innerHTML").contains(name);
+		return driver.findElement(By.id("tags")).getAttribute("innerHTML").contains(name);
 	}
 	
 	/**
@@ -220,21 +212,21 @@ public class DetailBenefits extends PageBase {
 	 * Devuelve true si el Modo de Acceso existe
 	 */
 	public boolean isRedeemingPresent(String name) {
-		return driver.findElement(By.id(redeemnig)).getAttribute("innerHTML").contains(name);
+		return driver.findElement(By.id("redeemnig")).getAttribute("innerHTML").contains(name);
 	}
 	
 	/**
 	 * Devuelve true si Dias Validos existe
 	 */
 	public boolean isValidDaysPresent(String name) {
-		return driver.findElement(By.id(validDays)).getAttribute("innerHTML").contains(name);
+		return driver.findElement(By.id("validDays")).getAttribute("innerHTML").contains(name);
 	}
 	
 	/**
 	 * Devuelve true si el Medios de Pago existe
 	 */
 	public boolean isPaymentMethodPresent(String name) {
-		return driver.findElement(By.id(paymentMethods)).getAttribute("innerHTML").contains(name);
+		return driver.findElement(By.id("paymentMethods")).getAttribute("innerHTML").contains(name);
 	}
 	
 	/**

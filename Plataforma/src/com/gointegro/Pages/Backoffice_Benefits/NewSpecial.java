@@ -4,8 +4,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Util.AttachmentUploads;
+import com.gointegro.Util.WaitTool;
 
 public class NewSpecial extends PageBase {
 	
@@ -42,6 +45,9 @@ public class NewSpecial extends PageBase {
 	@FindBy(xpath = "//section[@class='bottom-section-button-bar']/button[3]")
 	WebElement cancel;
 	
+	@FindBy (xpath = "//div[@data-fields='image']/div/div/span/div/div/span[2]/a/input")
+	WebElement fileUpload;
+	
 	@FindBy(xpath = "//div[@data-fields='image']/div/div/div")
 	WebElement imageErrorMsg;
 	
@@ -49,10 +55,20 @@ public class NewSpecial extends PageBase {
 	WebElement benefitsErrorMsg;
 	
 	@FindBy(name = "search-companies")
-	WebElement searchBenefits;
+	WebElement searchCompany;
 	
-	@FindBy(xpath = "//div[@id='search-companies']/span/button")
-	WebElement searchBenefitsBtn;
+	@FindBy(xpath = "//ul[@id='ui-id-1']/li")
+	WebElement searchCompanyDropDown;
+	
+	@FindBy(xpath = "//div[@class='selectable-benefits']/table/tbody/tr/td[4]/input")
+	WebElement selectBenefit;
+	
+	@FindBy(xpath = "//div[@class='col-sm-1']/a")
+	WebElement addBenefitBtn;
+	
+	@FindBy(xpath = "//div[@class='col-sm-1']/a[2]")
+	WebElement removeBenefitBtn;
+	
 	
 	/**
 	 * Constructor
@@ -78,6 +94,15 @@ public class NewSpecial extends PageBase {
 	public void completeSpanish(String name) {
 		spanish.clear();
 		spanish.sendKeys(name);
+	}
+	
+	/**
+	 * Devuelve el contenido del campo Español
+	 * 
+	 * @return String
+	 */
+	public String getSpanish() {
+		return spanish.getText();
 	}
 	
 	/**
@@ -130,7 +155,8 @@ public class NewSpecial extends PageBase {
 	
 	/**
 	 * Devuelve el mensaje de error de la imagen
-	 * @return
+	 * 
+	 * @return String
 	 */
 	public String getImageError() {
 		return imageErrorMsg.getText();
@@ -142,6 +168,36 @@ public class NewSpecial extends PageBase {
 	 */
 	public String getBenefitsError() {
 		return benefitsErrorMsg.getText();
+	}
+	
+	/**
+	 * Ingresar una imagen mayor a 188x95 para devolver un ImageCropOverlay
+	 * 
+	 * @param fileupload
+	 * @return ImageCropOverlay
+	 */
+	public ImageCropOverlay imageUpload(String fileupload) {
+		fileUpload(fileupload);
+		return PageFactory.initElements(driver, ImageCropOverlay.class);
+	}
+	
+	/**
+	 * Ingresar una imagen menor a 188x95 para devolver un ImageCropOverlay
+	 * 
+	 * @param fileupload
+	 */
+	public void imageUploadSmall(String fileupload) {
+		fileUpload(fileupload);
+	}
+	
+	/**
+	 * Subir un archivo
+	 * 
+	 * @param fileupload
+	 */
+	public void fileUpload(String fileupload) {
+		AttachmentUploads.attachmentByElement(driver, fileUpload);
+		fileUpload.sendKeys(fileupload);
 	}
 	
 	/**
@@ -169,7 +225,11 @@ public class NewSpecial extends PageBase {
 		completeEnglish(english);
 		selectDate(date);
 		if(!imgFile.isEmpty()) {
+			ImageCropOverlay imageCrop = imageUpload(imgFile);
+			WaitTool.waitForJQueryProcessing(driver, 5);
 			
+			imageCrop.selectSave();
+			WaitTool.waitForJQueryProcessing(driver, 5);
 		}
 		if(isDisabled) {
 			selectActive();
@@ -177,21 +237,46 @@ public class NewSpecial extends PageBase {
 	}
 	
 	/**
-	 * Buscar un beneficio
+	 * Buscar un Comercio
 	 * 
 	 * @param name
 	 */
-	public void completeSearchBenefits(String name) {
-		searchBenefits.clear();
-		searchBenefits.sendKeys(name);
-		searchBenefitsBtn.click();
+	public void completeSearchCompany(String name) {
+		searchCompany.clear();
+		searchCompany.sendKeys(name);
+		searchCompanyDropDown.click();
+	}
+	
+	/**
+	 * Seleccionar el primer beneficio
+	 */
+	public void selectFirstBenefit() {
+		selectBenefit.click();
+		addBenefit();
+	}
+	
+	/**
+	 * Seleccionar el boton para agregar beneficios
+	 */
+	public void addBenefit() {
+		addBenefitBtn.click();
+	}
+	
+	/**
+	 * Seleccionar el boton para remover beneficios
+	 */
+	public void removeBenefit() {
+		removeBenefitBtn.click();
 	}
 	
 	/**
 	 * Seleccionar el botón Guardar
+	 * 
+	 * @return DetailSpecial
 	 */
-	public void selectSave() {
+	public DetailSpecial selectSave() {
 		save.click();
+		return PageFactory.initElements(driver, DetailSpecial.class);
 	}
 	
 	/**
@@ -206,5 +291,14 @@ public class NewSpecial extends PageBase {
 	 */
 	public void selectCancel() {
 		cancel.click();
+	}
+	
+	/**
+	 * Seleccionar un beneficio
+	 * 
+	 * @param name
+	 */
+	public void selectBenefit(String name) {
+		
 	}
 }

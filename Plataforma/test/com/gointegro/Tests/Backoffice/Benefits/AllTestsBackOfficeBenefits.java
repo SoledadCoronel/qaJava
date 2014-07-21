@@ -11,15 +11,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testNewCompany.class,
-	testNewCategory.class,
-	testNewSubCategory.class,
+	//testNewCompany.class,
+	//testNewCategory.class,
+	//testNewSubCategory.class,
 	//testNewSpecial.class,
-	testNewContact.class,
-	testNewBenefit.class,
-	testNewFile.class,
-	testNewVisibleFile.class,
+	//testNewContact.class,
+	//testNewBenefit.class,
+	//testNewFile.class,
+	//testNewVisibleFile.class,
 	testNewStore.class,
+	//testNewTerminal.class,
+	//testEditCompany.class,
 })
 
 public class AllTestsBackOfficeBenefits {

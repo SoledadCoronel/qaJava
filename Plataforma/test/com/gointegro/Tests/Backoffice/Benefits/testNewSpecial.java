@@ -4,12 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Helpers.ConfigElementsBOBenefits;
+import com.gointegro.Pages.Backoffice_Benefits.DetailSpecial;
 import com.gointegro.Pages.Backoffice_Benefits.HomeBenefits;
 import com.gointegro.Pages.Backoffice_Benefits.NewSpecial;
 import com.gointegro.Pages.Backoffice_Benefits.SpecialList;
@@ -28,16 +29,16 @@ public class testNewSpecial extends TestBase {
 	String spanish = DataGenerator.nombreFile();
 	String portuguese = DataGenerator.nombreFile();
 	String english = DataGenerator.nombreFile();
-	String date = DataGenerator.fechaactual();
+	String date = DataGenerator.fechamanana();
 	String image = ConfigElements.getFileImagen();
-	String benefit = "";
+	String benefit = ConfigElementsBOBenefits.getCompanyName();
 	
 	@Before
 	public void setUp() {
 		driver = AllTestsBackOfficeBenefits.getDriver();
 	}
 
-	@Ignore //FALTA ASSERT
+	
 	@Test
 	public void test_new_special() {
 		loginBackoffice(driver);
@@ -55,16 +56,59 @@ public class testNewSpecial extends TestBase {
 		newSpecial.createSpecial(spanish, portuguese, english, date, image, false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newSpecial.selectSave();
+		newSpecial.completeSearchCompany(benefit);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
+		newSpecial.selectFirstBenefit();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		newSpecial.addBenefit();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DetailSpecial detail = newSpecial.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals(spanish, detail.getNameES());
+		assertEquals(portuguese, detail.getNamePT());
+		assertEquals(english, detail.getNameEN());
+		assertEquals("Si", detail.getActive());
+		//assertEquals(date, detail.getValidUntil());
+		assertTrue(detail.getImage().endsWith(".jpg"));
+		assertTrue(detail.isBenefitInList());
 	}
 	
-	@Ignore //FALTA ASSERT
+	
 	@Test
 	public void test_new_special_save_and_new() {
+		loginBackoffice(driver);
 		
+		HomeBenefits home = PageFactory.initElements(driver, HomeBenefits.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		SpecialList special = home.selectAdminSpecials();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		NewSpecial newSpecial = special.selectNewSpecial();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newSpecial.createSpecial(spanish, portuguese, english, date, image, false);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newSpecial.completeSearchCompany(benefit);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newSpecial.selectFirstBenefit();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newSpecial.addBenefit();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newSpecial.selectSaveAndNew();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(driver.getCurrentUrl().contains("/collection/create"));
+		assertTrue(newSpecial.getSpanish().isEmpty());
 	}
 	
 	
@@ -189,7 +233,7 @@ public class testNewSpecial extends TestBase {
 		assertEquals("El campo Categoría en Español no puede superar los 80 caracteres", newSpecial.getSpanishError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_special_portugues_max_char() {
 		String largeText = StringUtils.getTextoLargo(); 
@@ -215,7 +259,7 @@ public class testNewSpecial extends TestBase {
 		assertEquals("El campo Categoría en Portugués no puede superar los 80 caracteres", newSpecial.getPortugueseError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_special_english_max_char() {
 		String largeText = StringUtils.getTextoLargo(); 
@@ -241,10 +285,37 @@ public class testNewSpecial extends TestBase {
 		assertEquals("El campo Categoría en Inglés no puede superar los 80 caracteres", newSpecial.getEnglishError());
 	}
 	
-	@Ignore //FALTA ASSERT
+	
 	@Test
 	public void test_new_special_disabled() {
+		loginBackoffice(driver);
 		
+		HomeBenefits home = PageFactory.initElements(driver, HomeBenefits.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		SpecialList special = home.selectAdminSpecials();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		NewSpecial newSpecial = special.selectNewSpecial();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newSpecial.createSpecial(spanish, portuguese, english, date, image, true);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newSpecial.completeSearchCompany(benefit);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newSpecial.selectFirstBenefit();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newSpecial.addBenefit();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		DetailSpecial detail = newSpecial.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("No", detail.getActive());
 	}
 	
 	
@@ -273,6 +344,7 @@ public class testNewSpecial extends TestBase {
 		assertEquals("La fecha de vencimiento no puede ser menor a la fecha de hoy", newSpecial.getDateError());
 	}
 	
+	
 	@Test
 	public void test_new_special_without_benefit() {
 		loginBackoffice(driver);
@@ -299,7 +371,7 @@ public class testNewSpecial extends TestBase {
 	
 	@Test
 	public void test_new_special_small_image() {
-		image = ConfigElements.getFileImagen();
+		image = ConfigElements.getFileImageSmall();
 		
 		loginBackoffice(driver);
 		
@@ -313,10 +385,10 @@ public class testNewSpecial extends TestBase {
 		NewSpecial newSpecial = special.selectNewSpecial();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newSpecial.createSpecial(spanish, portuguese, english, date, image, false);
+		newSpecial.createSpecial(spanish, portuguese, english, date, "", false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newSpecial.selectSave();
+		newSpecial.imageUploadSmall(image);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("El tamaño de la imagen debe ser mayor a 973x267", newSpecial.getImageError());
