@@ -64,9 +64,9 @@ public class Login extends PageBase{
 	 * 
 	 * @param password
 	 */
-	/*private void completePassword (String password) {
+	private void completePassword (String password) {
 		passwordlogin.sendKeys(password);
-	}*/
+	}
 	
 	/**
 	 * Submit login
@@ -84,7 +84,8 @@ public class Login extends PageBase{
 	 */
 	public Home LoginPlatformNoReg(String username, String password) {
 		completeUsername(username);
-		//completePassword(password);
+		if (!password.isEmpty())
+			completePassword(password);
 		submitform();
 		
 		return PageFactory.initElements(driver, Home.class);
@@ -135,6 +136,13 @@ public class Login extends PageBase{
 	 */
 	public String getSignInContent() {
 		return signinncontent.getText();
+	}
+	
+	/**
+	 * Seleccionar el SignUp
+	 */
+	public void selectSignUp() {
+		signup.click();
 	}
 	
 }
