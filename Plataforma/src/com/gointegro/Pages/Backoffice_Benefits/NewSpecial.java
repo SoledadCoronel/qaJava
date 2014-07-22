@@ -61,7 +61,10 @@ public class NewSpecial extends PageBase {
 	WebElement searchCompanyDropDown;
 	
 	@FindBy(xpath = "//div[@class='selectable-benefits']/table/tbody/tr/td[4]/input")
-	WebElement selectBenefit;
+	WebElement selectableBenefits;
+	
+	@FindBy(xpath = "//div[@class='selected-benefits']/table/tbody/tr/td[4]/input")
+	WebElement selectedBenefits;
 	
 	@FindBy(xpath = "//div[@class='col-sm-1']/a")
 	WebElement addBenefitBtn;
@@ -205,7 +208,7 @@ public class NewSpecial extends PageBase {
 	 * 
 	 * @param date
 	 */
-	protected void selectDate(String date) {
+	public void selectDate(String date) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.getElementsByName('validUntil')[1].value='"+date+"'");
 	}
@@ -251,8 +254,16 @@ public class NewSpecial extends PageBase {
 	 * Seleccionar el primer beneficio
 	 */
 	public void selectFirstBenefit() {
-		selectBenefit.click();
+		selectableBenefits.click();
 		addBenefit();
+	}
+	
+	/**
+	 * Remover el primer beneficio del listado de agregados
+	 */
+	public void removefirstBenefit() {
+		selectedBenefits.click();
+		removeBenefit();
 	}
 	
 	/**

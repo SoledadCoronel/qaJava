@@ -47,7 +47,7 @@ public class testNewStore extends TestBase {
 		driver = AllTestsBackOfficeBenefits.getDriver();
 	}
 	
-	
+	@Ignore
 	@Test
 	public void test_new_store() {
 		NewStore newStore = selectNewStore();
@@ -144,7 +144,7 @@ public class testNewStore extends TestBase {
 		
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_new_store_name_empty() {
 		NewStore newStore = selectNewStore();
@@ -160,7 +160,7 @@ public class testNewStore extends TestBase {
 		
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_new_store_name_max_char() {
 		name = StringUtils.getTextoLargo();
@@ -177,7 +177,7 @@ public class testNewStore extends TestBase {
 		assertEquals("El nombre de la sucursal no puede superar los 80 caracteres", newStore.getNameError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_new_store_contact_empty() {
 		NewStore newStore = selectNewStore();
@@ -192,7 +192,7 @@ public class testNewStore extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newStore.getContactError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_new_store_company_name_empty() {
 		NewStore newStore = selectNewStore();
@@ -207,7 +207,7 @@ public class testNewStore extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newStore.getCompanyNameError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_new_store_company_name_max_char() {
 		companyName = StringUtils.getTextoLargo();
@@ -224,7 +224,7 @@ public class testNewStore extends TestBase {
 		assertEquals("La razón social de la sucursal no puede superar los 80 caracteres", newStore.getCompanyNameError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_new_store_taxid_empty() {
 		NewStore newStore = selectNewStore();
@@ -239,7 +239,7 @@ public class testNewStore extends TestBase {
 		assertEquals("Este campo no puede estar vacío", newStore.getTaxIdError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_new_store_address_empty() {
 		NewStore newStore = selectNewStore();
@@ -254,7 +254,7 @@ public class testNewStore extends TestBase {
 		assertEquals("Por favor, complete con una ubicación", newStore.getAddressError());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_new_store_zipcode_empty() {
 		NewStore newStore = selectNewStore();

@@ -104,6 +104,8 @@ public class DetailCompany extends PageBase {
 	@FindBy(xpath = "//section[@id='stores']/div/div/a")
 	WebElement newStore;
 	
+	String companyURL = ConfigElementsBO.getUrlBackoffice() + "/benefits/company/" + ConfigElementsBOBenefits.getCompanyId() + "/view"; 
+	
 	/**
 	 * Constructor
 	 * 
@@ -111,7 +113,14 @@ public class DetailCompany extends PageBase {
 	 */
 	public DetailCompany(WebDriver driver) {
 		super(driver);
-		URL = ConfigElementsBO.getUrlBackoffice() + "/benefits/company/" + ConfigElementsBOBenefits.getCompanyId() + "/view";
+		URL = companyURL;
+	}
+	
+	/**
+	 * Devuelve la URL de la vista
+	 */
+	public String getURL() {
+		return companyURL;
 	}
 	
 	/**

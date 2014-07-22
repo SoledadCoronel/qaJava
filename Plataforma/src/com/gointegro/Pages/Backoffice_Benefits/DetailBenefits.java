@@ -46,13 +46,13 @@ public class DetailBenefits extends PageBase {
 	@FindBy(id = "title")
 	WebElement title;
 	
-	@FindBy(id = "description_ifr")
+	@FindBy(id = "description")
 	WebElement description;
 	
 	@FindBy(id = "restrictedPlatforms-input")
 	WebElement restrictedPlatforms_input;
 	
-	String category = "//section[@id='categories']";
+	String category = "//section[@id='categories']/div/div/ul";
 	
 	@FindBy(xpath = "//section[@id='files']/div/div/a")
 	WebElement newDocument;
@@ -67,6 +67,20 @@ public class DetailBenefits extends PageBase {
 	String visibleFileList = "//section[@id='visible-files']/div/table/tbody";
 	
 	String visibleFileLink = "//section[@id='visible-files']/div/table/tbody/tr/td/a";
+	
+	String tags = "//section[@id='tags']/div/div/span";
+	
+	@FindBy(xpath = "//header[@class='backoffice-header']/div/div[2]/button")
+	WebElement edit;
+	
+	@FindBy(xpath = "//td[@id='redeemingMethods']/ul")
+	WebElement redeemingList;
+	
+	@FindBy(xpath = "//td[@id='validDays']/ul")
+	WebElement validDaysList;
+	
+	@FindBy(xpath = "//td[@id='paymentMethods']/ul")
+	WebElement paymentMethodsList;
 	
 	/**
 	 * 
@@ -184,6 +198,15 @@ public class DetailBenefits extends PageBase {
 	}
 	
 	/**
+	 * Devuelve true si la lista de Tags esta vacia
+	 * 
+	 * @return boolean
+	 */
+	public boolean isTagListEmpty() {
+		return driver.findElement(By.xpath(tags)).getText().isEmpty();
+	}
+	
+	/**
 	 * Obtener Titulo
 	 * 
 	 * @return String
@@ -209,7 +232,19 @@ public class DetailBenefits extends PageBase {
 	}
 	
 	/**
+	 * Devuelve true si la categoria existe
+	 * 
+	 * @return boolean
+	 */
+	public boolean isCategoryListEmpty() {
+		return driver.findElement(By.xpath(category)).getText().isEmpty();
+	}
+	
+	/**
 	 * Devuelve true si el Modo de Acceso existe
+	 * 
+	 * @param name
+	 * @return boolean
 	 */
 	public boolean isRedeemingPresent(String name) {
 		return driver.findElement(By.id("redeemnig")).getAttribute("innerHTML").contains(name);
@@ -217,6 +252,9 @@ public class DetailBenefits extends PageBase {
 	
 	/**
 	 * Devuelve true si Dias Validos existe
+	 * 
+	 * @param name
+	 * @return boolean
 	 */
 	public boolean isValidDaysPresent(String name) {
 		return driver.findElement(By.id("validDays")).getAttribute("innerHTML").contains(name);
@@ -224,9 +262,39 @@ public class DetailBenefits extends PageBase {
 	
 	/**
 	 * Devuelve true si el Medios de Pago existe
+	 * 
+	 * @param name
+	 * @return boolean
 	 */
 	public boolean isPaymentMethodPresent(String name) {
 		return driver.findElement(By.id("paymentMethods")).getAttribute("innerHTML").contains(name);
+	}
+	
+	/**
+	 * Devuelve true si el Modo de Acceso esta vacio
+	 * 
+	 * @return boolean
+	 */
+	public boolean isRedeemingListEmpty() {
+		return redeemingList.getText().isEmpty();
+	}
+	
+	/**
+	 * Devuelve true si Dias Validos esta vacio
+	 * 
+	 * @return boolean
+	 */
+	public boolean isValidDaysListEmpty() {
+		return validDaysList.getText().isEmpty();
+	}
+	
+	/**
+	 * Devuelve true si el Medios de Pago existe
+	 * 
+	 * @return boolean
+	 */
+	public boolean isPaymentMethodListEmpty() {
+		return paymentMethodsList.getText().isEmpty();
 	}
 	
 	/**
@@ -305,5 +373,15 @@ public class DetailBenefits extends PageBase {
 	 */
 	public boolean isVisibleFileEnabled() {
 		return driver.findElement(By.xpath(visibleFileList)).getAttribute("innerHTML").contains("glyphicon-ok");
+	}
+	
+	/**
+	 * Seleccionar Editar
+	 * 
+	 * @return NewBenefits
+	 */
+	public NewBenefits selectEdit() {
+		edit.click();
+		return PageFactory.initElements(driver, NewBenefits.class);
 	}
 }

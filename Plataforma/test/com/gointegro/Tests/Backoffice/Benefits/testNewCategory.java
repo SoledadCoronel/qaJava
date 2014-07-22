@@ -340,7 +340,7 @@ public class testNewCategory extends TestBase {
 		DetailCategory detail = newCategory.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertTrue(name, detail.isTagPresent(tag));
+		assertTrue(detail.isTagPresent(tag));
 	}
 	
 	@After

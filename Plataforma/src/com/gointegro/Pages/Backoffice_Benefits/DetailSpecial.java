@@ -3,6 +3,7 @@ package com.gointegro.Pages.Backoffice_Benefits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElementsBOBenefits;
 import com.gointegro.Pages.Base.PageBase;
@@ -29,6 +30,9 @@ public class DetailSpecial extends PageBase {
 	
 	@FindBy(xpath = "//section[@id='benefits']/div/table/tbody")
 	WebElement benefitsList;
+	
+	@FindBy(xpath = "//header[@class='backoffice-header']/div/div[2]/button")
+	WebElement edit;
 	
 	/**
 	 * Constructor
@@ -101,5 +105,14 @@ public class DetailSpecial extends PageBase {
 	public boolean isBenefitInList() {
 		return benefitsList.getAttribute("innerHTML").contains(ConfigElementsBOBenefits.getCompanyName());
 	}
-
+	
+	/**
+	 * Seleccionar Editar
+	 * 
+	 * @return NewSpecial
+	 */
+	public NewSpecial selectEdit() {
+		edit.click();
+		return PageFactory.initElements(driver, NewSpecial.class);
+	}
 }

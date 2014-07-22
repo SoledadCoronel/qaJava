@@ -39,7 +39,7 @@ public class testNewBenefit extends TestBase {
 	}
 	
 	
-	@Test  //Falla por una falla en los formatos de las fechas  https://gointegro.atlassian.net/browse/PLATAFORMAII-3444
+	@Test  //Falla por los formatos de las fechas  https://gointegro.atlassian.net/browse/PLATAFORMAII-3444
 	public void test_new_benefit() {
 		String category = "Autos"; 
 		String redeeming = "Mobile";

@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -103,6 +104,27 @@ public class NewBenefits extends PageBase {
 	
 	@FindBy(xpath = "//div[@id='ms-paymentMethods']/div/ul/li")
 	List<WebElement> paymentMethodsList;
+	
+	@FindBy(xpath = "//div[@class='container']/div/div")
+	WebElement saveError;
+	
+	@FindBy(xpath = "//div[@id='ms-redeemingMethods']/a")
+	WebElement addRedeemings;
+	
+	@FindBy(xpath = "//div[@id='ms-redeemingMethods']/a[2]")
+	WebElement removeRedeemings;
+	
+	@FindBy(xpath = "//div[@id='ms-validDays']/a")
+	WebElement addValidDays;
+	
+	@FindBy(xpath = "//div[@id='ms-validDays']/a[2]")
+	WebElement removeValidDays;
+	
+	@FindBy(xpath = "//div[@id='ms-paymentMethods']/a")
+	WebElement addPaymentMethods;
+	
+	@FindBy(xpath = "//div[@id='ms-paymentMethods']/a[2]")
+	WebElement removePaymentMethods;
 	
 	/**
 	 * Constructor
@@ -280,6 +302,18 @@ public class NewBenefits extends PageBase {
 	}
 	
 	/**
+	 * Remover Tags
+	 * 
+	 * @param times
+	 */
+	public void removeTags(int times) {
+		for (int i = 0; i < times; i++) {
+			tags.sendKeys(Keys.BACK_SPACE);
+			Sleeper.sleepTightInSeconds(1);
+		}
+	}
+	
+	/**
 	 * Crear beneficios
 	 * 
 	 * @param owner
@@ -422,6 +456,15 @@ public class NewBenefits extends PageBase {
 	}
 	
 	/**
+	 * Obtener el mensaje de error de guardar
+	 * 
+	 * @return String
+	 */
+	public String getSaveErrorMsg() {
+		return saveError.getText();
+	}
+	
+	/**
 	 * Seleccionar una categoria por el nombre
 	 * 
 	 * @param name
@@ -475,5 +518,47 @@ public class NewBenefits extends PageBase {
 				break;
 			}
 		}
+	}
+	
+	/**
+	 * Seleccionar Agregar Modo de Accesso
+	 */
+	public void addRedeeming() {
+		addRedeemings.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Modo de Accesso
+	 */
+	public void removeRedeeming() {
+		removeRedeemings.click();
+	}
+	
+	/**
+	 * Seleccionar Agregar Dias Validos
+	 */
+	public void addValidDays() {
+		addValidDays.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Dias Validos
+	 */
+	public void removeValidDays() {
+		removeValidDays.click();
+	}
+	
+	/**
+	 * Seleccionar Agregar Medios de Pago
+	 */
+	public void addPaymentMethods() {
+		addPaymentMethods.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Medios de Pago
+	 */
+	public void removePaymentMethods() {
+		removePaymentMethods.click();
 	}
 }
