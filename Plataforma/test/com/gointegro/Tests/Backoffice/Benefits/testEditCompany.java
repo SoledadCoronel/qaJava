@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -32,7 +31,7 @@ public class testEditCompany extends TestBase {
 		driver = AllTestsBackOfficeBenefits.getDriver();
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_disabled() {
 		DetailCompany detail = createCompany(false, false);
@@ -50,7 +49,7 @@ public class testEditCompany extends TestBase {
 		assertEquals("No", detail.getActive());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_name() {
 		String name = DataGenerator.nombreFile();
@@ -70,7 +69,7 @@ public class testEditCompany extends TestBase {
 		assertEquals(name, detail.getName());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_company_name() {
 		String companyName = DataGenerator.nombreFile();
@@ -90,7 +89,7 @@ public class testEditCompany extends TestBase {
 		assertEquals(companyName, detail.getCompanyName());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_taxId() {
 		String taxId = "56987522";
@@ -110,7 +109,7 @@ public class testEditCompany extends TestBase {
 		assertEquals(taxId, detail.getTaxId());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_phone() {
 		String phone = "46851235";
@@ -130,7 +129,7 @@ public class testEditCompany extends TestBase {
 		assertEquals(phone, detail.getPhone());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_fax() {
 		String fax = "01 514512321";
@@ -150,7 +149,7 @@ public class testEditCompany extends TestBase {
 		assertEquals(fax, detail.getFax());	
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_images() {
 		String images = ConfigElements.getFileImagen();
@@ -191,7 +190,7 @@ public class testEditCompany extends TestBase {
 		assertNotEquals(image3, detail.getImage3());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_logo() {
 		String image = ConfigElements.getFileImagen();
@@ -216,7 +215,7 @@ public class testEditCompany extends TestBase {
 		assertNotEquals(logo, detail.getLogo());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_website() {
 		String website = "http://www.algo.com";
@@ -236,7 +235,7 @@ public class testEditCompany extends TestBase {
 		assertEquals(website, detail.getWebSite());	
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_description() {
 		String description = DataGenerator.nombreFile();
@@ -256,7 +255,7 @@ public class testEditCompany extends TestBase {
 		assertEquals(description, detail.getDescription());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_address() {
 		String address = "Avenida Córdoba 5500, Buenos Aires, Argentina";
@@ -276,7 +275,7 @@ public class testEditCompany extends TestBase {
 		assertTrue(address.contains(detail.getStreet()));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_tags_empty() {
 		DetailCompany detail = createCompany(false, false);
@@ -294,7 +293,7 @@ public class testEditCompany extends TestBase {
 		assertTrue(detail.isTagListEmpty());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_tags() {
 		String tags = DataGenerator.nombreFile();
@@ -319,7 +318,7 @@ public class testEditCompany extends TestBase {
 		assertTrue(detail.isTagPresent(tags2));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_company_category_empty() {
 		DetailCompany detail = createCompany(false, true);
