@@ -64,6 +64,15 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isNamePresent() {
+		return name.isDisplayed();
+	}
+	
+	/**
 	 * Completar el surname
 	 * 
 	 * @param surname
@@ -74,6 +83,15 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isSurnamePresent() {
+		return surname.isDisplayed();
+	}
+	
+	/**
 	 * Completar el email
 	 * 
 	 * @param email
@@ -81,6 +99,15 @@ public class SignUp extends PageBase{
 	public void setEmail(String email) {
 		this.email.clear();
 		this.email.sendKeys(email);
+	}
+	
+	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isEmailPresent() {
+		return email.isDisplayed();
 	}
 	
 	/**
@@ -126,10 +153,28 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isBirthdatePresent() {
+		return birthdate.isDisplayed();
+	}
+	
+	/**
 	 * Completar el genero, por default M
 	 */
 	public void setGender() {
 		gender0.click();
+	}
+	
+	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isGenderPresent() {
+		return gender0.isDisplayed();
 	}
 	
 	/**
@@ -176,7 +221,7 @@ public class SignUp extends PageBase{
 	 */
 	public String getDocument() {
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
-		js1.executeScript("document.getElementById('email').disable=false");
+		js1.executeScript("document.getElementById('document').disable=false");
 		
 		return document.getAttribute("value");
 	}
