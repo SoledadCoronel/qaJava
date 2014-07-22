@@ -172,13 +172,39 @@ public class testNewTerminal extends TestBase {
 	@Ignore
 	@Test
 	public void test_new_terminal_save_and_new() {
+		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
+		detail.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newTerminal.createTerminal(terminal, operator, observation, false);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newTerminal.selectSaveAndNew();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertTrue(newTerminal.isNumberEmpty());
 	}
 	
 	@Ignore
 	@Test
 	public void test_new_terminal_cancel() {
+		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
+		detail.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newTerminal.createTerminal(terminal, operator, observation, false);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newTerminal.selectCancel();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertFalse(detail.isTerminalInList(terminal));
 	}
 	
 	

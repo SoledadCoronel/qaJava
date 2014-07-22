@@ -65,6 +65,15 @@ public class NewTerminalOverlay extends PageBase {
 	}
 	
 	/**
+	 * Devuelve el Número de terminal
+	 * 
+	 * @return boolean
+	 */
+	public boolean isNumberEmpty() {
+		return number.getText().isEmpty();
+	}
+	
+	/**
 	 * Completar Operador
 	 * 
 	 * @param name
