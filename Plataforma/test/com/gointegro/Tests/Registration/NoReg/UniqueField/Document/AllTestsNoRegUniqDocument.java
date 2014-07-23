@@ -10,7 +10,9 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
-@SuiteClasses({ testVerifDocEmailLogDoc.class })
+@SuiteClasses({ 
+	testVerifDocEmailLogDoc.class,
+	})
 public class AllTestsNoRegUniqDocument {
 	
 	private static WebDriver driver;

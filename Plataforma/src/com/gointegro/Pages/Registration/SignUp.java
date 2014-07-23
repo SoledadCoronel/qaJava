@@ -121,6 +121,15 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isDocumentPresent() {
+		return document.isDisplayed();
+	}
+	
+	/**
 	 * Completar el usernameid
 	 * 
 	 * @param usernameid
@@ -128,6 +137,15 @@ public class SignUp extends PageBase{
 	public void setUsernameId(String usernameid) {
 		this.usernameId.clear();
 		this.usernameId.sendKeys(usernameid);
+	}
+	
+	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isUsernameIdPresent() {
+		return usernameId.isDisplayed();
 	}
 	
 	/**
@@ -140,6 +158,24 @@ public class SignUp extends PageBase{
 		this.password.sendKeys(pwd);
 		this.repeatPassword.clear();
 		this.repeatPassword.sendKeys(pwd);
+	}
+	
+	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isPasswordPresent() {
+		return password.isDisplayed();
+	}
+	
+	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isRepeatPasswordPresent() {
+		return repeatPassword.isDisplayed();
 	}
 	
 	/**
