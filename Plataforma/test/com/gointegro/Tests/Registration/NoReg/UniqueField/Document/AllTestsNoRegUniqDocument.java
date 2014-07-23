@@ -13,8 +13,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @SuiteClasses({ 
 	//testVerifDocEmailLogDoc.class,
 	//testVerifDocEmailLogEmail.class,
-	testVerifDocEmailLogUsernameId.class,
+	//testVerifDocEmailLogUsernameId.class,
 	//testVerifDocLogDoc.class,
+	testVerifDocLogEmail.class
 	})
 public class AllTestsNoRegUniqDocument {
 	

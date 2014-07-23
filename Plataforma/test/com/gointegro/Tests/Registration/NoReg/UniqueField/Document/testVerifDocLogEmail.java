@@ -23,8 +23,8 @@ import com.gointegro.Tests.CommonMethods.CommonTestMethods;
 import com.gointegro.Util.WaitTool;
 import com.gointegro.Util.WorkbookUtils;
 
-public class testVerifDocLogDoc {
-
+public class testVerifDocLogEmail {
+	
 	private WebDriver driver;
 	
 	WorkbookUtils workbook = new WorkbookUtils();
@@ -49,10 +49,10 @@ public class testVerifDocLogDoc {
 	}
 
 	@Test
-	public void test_VerifDoc_LogDoc_WithoutGenderFNPass_row9() {
-		common.readxls(9);
+	public void test_VerifDoc_LogEmail_WithoutGenderFNPass_row33() {
+		common.readxls(33);
 		
-		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -81,7 +81,7 @@ public class testVerifDocLogDoc {
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -91,10 +91,10 @@ public class testVerifDocLogDoc {
 	}
 	
 	@Test
-	public void test_VerifDoc_LogDoc_WithoutGenderPass_row10() {
-		common.readxls(10);
+	public void test_VerifDoc_LogEmail_WithoutGenderPass_row34() {
+		common.readxls(34);
 		
-		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -126,7 +126,7 @@ public class testVerifDocLogDoc {
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -136,10 +136,10 @@ public class testVerifDocLogDoc {
 	}
 	
 	@Test
-	public void test_VerifDoc_LogDoc_WithoutFNPass_row11() {
-		common.readxls(11);
+	public void test_VerifDoc_LogEmail_WithoutFNPass_row35() {
+		common.readxls(35);
 		
-		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -171,7 +171,7 @@ public class testVerifDocLogDoc {
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -181,10 +181,10 @@ public class testVerifDocLogDoc {
 	}
 	
 	@Test
-	public void test_VerifDoc_LogDoc_WithoutPass_row12() {
-		common.readxls(12);
+	public void test_VerifDoc_LogEmail_WithoutPass_row36() {
+		common.readxls(36);
 		
-		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -218,7 +218,7 @@ public class testVerifDocLogDoc {
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -228,10 +228,10 @@ public class testVerifDocLogDoc {
 	}
 	
 	@Test
-	public void test_VerifDoc_LogDoc_WithoutGenderFN_row13() {
-		common.readxls(13);
+	public void test_VerifDoc_LogEmail_WithoutGenderFN_row37() {
+		common.readxls(37);
 		
-		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -263,7 +263,7 @@ public class testVerifDocLogDoc {
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -273,10 +273,10 @@ public class testVerifDocLogDoc {
 	}
 	
 	@Test
-	public void test_VerifDoc_LogDoc_WithoutGender_row14() {
-		common.readxls(14);
+	public void test_VerifDoc_LogEmail_WithoutGender_row38() {
+		common.readxls(38);
 		
-		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -311,7 +311,7 @@ public class testVerifDocLogDoc {
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -321,10 +321,10 @@ public class testVerifDocLogDoc {
 	}
 	
 	@Test
-	public void test_VerifDoc_LogDoc_WithoutFN_row15() {
-		common.readxls(15);
+	public void test_VerifDoc_LogEmail_WithoutFN_row39() {
+		common.readxls(39);
 		
-		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -359,7 +359,7 @@ public class testVerifDocLogDoc {
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -369,10 +369,10 @@ public class testVerifDocLogDoc {
 	}
 	
 	@Test
-	public void test_VerifDoc_LogDoc_row16() {
-		common.readxls(16);
+	public void test_VerifDoc_LogEmail_row40() {
+		common.readxls(40);
 		
-		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "-- Sin segundo campo de verificación", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -410,7 +410,7 @@ public class testVerifDocLogDoc {
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
