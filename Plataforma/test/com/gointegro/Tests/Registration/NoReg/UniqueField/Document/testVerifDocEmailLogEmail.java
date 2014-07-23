@@ -19,14 +19,13 @@ import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Pages.Platform.Profile;
 import com.gointegro.Pages.Registration.SignUp;
 import com.gointegro.Pages.Registration.Verification;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Tests.CommonMethods.CommonTestMethods;
 import com.gointegro.Util.WaitTool;
 import com.gointegro.Util.WorkbookUtils;
 
-public class testVerifDocEmailLogDoc extends TestBase{
-	
-	private WebDriver driver;
+public class testVerifDocEmailLogEmail {
+
+private WebDriver driver;
 	
 	WorkbookUtils workbook = new WorkbookUtils();
 	
@@ -50,10 +49,10 @@ public class testVerifDocEmailLogDoc extends TestBase{
 	}
 	
 	@Test
-	public void test_VerifDocEmail_LogDoc_WithoutGenderFNPass_row1() {
-		common.readxls(1);
+	public void test_VerifDocEmail_LogDoc_WithoutGenderFNPass_row17() {
+		common.readxls(17);
 		
-		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Documento");
+		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -82,7 +81,7 @@ public class testVerifDocEmailLogDoc extends TestBase{
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -92,10 +91,10 @@ public class testVerifDocEmailLogDoc extends TestBase{
 	}
 	
 	@Test
-	public void test_VerifDocEmail_LogDoc_WithoutGenderPass_row2() {
-		common.readxls(2);
+	public void test_VerifDocEmail_LogDoc_WithoutGenderPass_row18() {
+		common.readxls(18);
 		
-		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Documento");
+		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -127,7 +126,7 @@ public class testVerifDocEmailLogDoc extends TestBase{
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -137,10 +136,10 @@ public class testVerifDocEmailLogDoc extends TestBase{
 	}
 	
 	@Test
-	public void test_VerifDocEmail_LogDoc_WithoutFNPass_row3() {
-		common.readxls(3);
+	public void test_VerifDocEmail_LogDoc_WithoutFNPass_row19() {
+		common.readxls(19);
 		
-		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Documento");
+		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -172,7 +171,7 @@ public class testVerifDocEmailLogDoc extends TestBase{
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -182,10 +181,10 @@ public class testVerifDocEmailLogDoc extends TestBase{
 	}
 	
 	@Test
-	public void test_VerifDocEmail_LogDoc_WithoutPass_row4() {
-		common.readxls(4);
+	public void test_VerifDocEmail_LogDoc_WithoutPass_row20() {
+		common.readxls(20);
 		
-		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Documento");
+		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -219,7 +218,7 @@ public class testVerifDocEmailLogDoc extends TestBase{
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -229,10 +228,10 @@ public class testVerifDocEmailLogDoc extends TestBase{
 	}
 	
 	@Test
-	public void test_VerifDocEmail_LogDoc_WithoutGenderFN_row5() {
-		common.readxls(5);
+	public void test_VerifDocEmail_LogDoc_WithoutGenderFN_row21() {
+		common.readxls(21);
 		
-		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Documento");
+		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -264,7 +263,7 @@ public class testVerifDocEmailLogDoc extends TestBase{
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -274,10 +273,10 @@ public class testVerifDocEmailLogDoc extends TestBase{
 	}
 	
 	@Test
-	public void test_VerifDocEmail_LogDoc_WithoutGender_row6() {
-		common.readxls(6);
+	public void test_VerifDocEmail_LogDoc_WithoutGender_row22() {
+		common.readxls(22);
 		
-		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Documento");
+		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -312,7 +311,7 @@ public class testVerifDocEmailLogDoc extends TestBase{
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -322,10 +321,10 @@ public class testVerifDocEmailLogDoc extends TestBase{
 	}
 	
 	@Test
-	public void test_VerifDocEmail_LogDoc_WithoutFN_row7() {
-		common.readxls(7);
+	public void test_VerifDocEmail_LogDoc_WithoutFN_row23() {
+		common.readxls(23);
 		
-		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Documento");
+		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -360,7 +359,7 @@ public class testVerifDocEmailLogDoc extends TestBase{
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -370,10 +369,10 @@ public class testVerifDocEmailLogDoc extends TestBase{
 	}
 	
 	@Test
-	public void test_VerifDocEmail_LogDoc_row8() {
-		common.readxls(8);
+	public void test_VerifDocEmail_LogDoc_row24() {
+		common.readxls(24);
 		
-		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Documento");
+		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Documento", "Email", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -411,7 +410,7 @@ public class testVerifDocEmailLogDoc extends TestBase{
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
@@ -428,5 +427,4 @@ public class testVerifDocEmailLogDoc extends TestBase{
 		logout.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 	}
-
 }
