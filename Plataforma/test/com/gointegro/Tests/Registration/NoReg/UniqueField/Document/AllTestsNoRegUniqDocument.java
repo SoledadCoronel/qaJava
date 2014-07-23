@@ -17,9 +17,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	//testVerifDocLogDoc.class,
 	//testVerifDocLogEmail.class,
 	//testVerifDocLogUsernameId.class
-	testVerifDocUsernameIdLogDoc.class,
-	testVerifDocUsernameIdLogEmail.class,
-	testVerifDocUsernameIdLogUsernameId.class
+	//testVerifDocUsernameIdLogDoc.class,
+	//testVerifDocUsernameIdLogEmail.class,
+	//testVerifDocUsernameIdLogUsernameId.class,
+	testVerifEmailUsernameIdLogDoc.class,
+	testVerifEmailUsernameIdLogEmail.class,
+	testVerifEmailUsernameIdLogUsernameId.class
 	})
 public class AllTestsNoRegUniqDocument {
 	
