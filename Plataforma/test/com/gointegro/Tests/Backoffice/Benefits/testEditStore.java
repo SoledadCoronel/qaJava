@@ -301,16 +301,36 @@ public class testEditStore extends TestBase {
 		assertTrue(detail.isAreaTitlePresent(address2));
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_save_and_new() {
+		DetailStore detail = createStore();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		NewStore newStore = detail.selectEdit();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newStore.selectSaveAndNew();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(newStore.getName().isEmpty());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_cancel() {
+		DetailStore detail = createStore();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		NewStore newStore = detail.selectEdit();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newStore.selectCancel();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		DetailCompany company = PageFactory.initElements(driver, DetailCompany.class);
+		
+		assertEquals(company.getURL(), driver.getCurrentUrl());
 	}
 	
 	private DetailStore createStore() {

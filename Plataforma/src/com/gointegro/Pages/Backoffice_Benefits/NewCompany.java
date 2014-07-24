@@ -160,6 +160,13 @@ public class NewCompany extends PageBase {
 	}
 	
 	/**
+	 * Obtener el Nombre del comercio
+	 */
+	public String getName() {
+		return name.getText();
+	}
+	
+	/**
 	 * Completar Razón social
 	 */
 	public void createCompanyName(String name) {

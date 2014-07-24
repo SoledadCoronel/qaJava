@@ -12,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Suite.class)
 @SuiteClasses({
 	testDeleteAllWidgets.class,
-	/*testNewTextWidget.class,
+	testNewTextWidget.class,
 	testNewImageWidget.class,
 	testNewInstalledAppWidget.class,
 	testEditTextWidget.class,
@@ -22,7 +22,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testDeleteTextWidget.class,
 	testDeleteImageWidget.class,
 	testDeleteInstalledAppWidget.class,
-	*/
 })
 
 public class AllTestsWidgets {
