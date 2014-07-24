@@ -10,9 +10,9 @@ public class ConfigElementsRegistration {
 	
 	private static String platformurlUniqueFieldEmail = "registrationuniqemail.p2-stage.gointegro.com";
 	
-	private static String platformIdUniqueFieldUsernameId = "";
+	private static String platformIdUniqueFieldUsernameId = "432";
 	
-	private static String platformurlUniqueFieldUsernameId = "";
+	private static String platformurlUniqueFieldUsernameId = "registrationuniqusernameid.p2-stage.gointegro.com";
 	
 	private static String locationXls = "/home/gustavomoreira/Desktop/Data.xls";
 
