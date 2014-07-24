@@ -51,7 +51,7 @@ public class AllTestsNoRegUniqEmail {
 	
 	@AfterClass
 	public static void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 
 }
