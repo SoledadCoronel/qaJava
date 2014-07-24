@@ -52,7 +52,7 @@ public class testVerifEmailUsernameIdLogUsernameId {
 	public void test_VerifEmailUsernameId_LogUsernameId_WithoutGenderFNPass_row89() {
 		common.readxls(89);
 		
-		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Email");
+		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -95,7 +95,7 @@ public class testVerifEmailUsernameIdLogUsernameId {
 	public void test_VerifEmailUsernameId_LogUsernameId_WithoutGenderPass_row90() {
 		common.readxls(90);
 		
-		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Email");
+		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -141,7 +141,7 @@ public class testVerifEmailUsernameIdLogUsernameId {
 	public void test_VerifEmailUsernameId_LogUsernameId_WithoutFNPass_row91() {
 		common.readxls(91);
 		
-		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Email");
+		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -186,7 +186,7 @@ public class testVerifEmailUsernameIdLogUsernameId {
 	public void test_VerifEmailUsernameId_LogUsernameId_WithoutPass_row92() {
 		common.readxls(92);
 		
-		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Email");
+		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -234,7 +234,7 @@ public class testVerifEmailUsernameIdLogUsernameId {
 	public void test_VerifEmailUsernameId_LogUsernameId_WithoutGenderFN_row93() {
 		common.readxls(93);
 		
-		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Email");
+		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -280,7 +280,7 @@ public class testVerifEmailUsernameIdLogUsernameId {
 	public void test_VerifEmailUsernameId_LogUsernameId_WithoutGender_row94() {
 		common.readxls(94);
 		
-		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Email");
+		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -329,7 +329,7 @@ public class testVerifEmailUsernameIdLogUsernameId {
 	public void test_VerifEmailUsernameId_LogUsernameId_WithoutFN_row95() {
 		common.readxls(95);
 		
-		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Email");
+		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
@@ -378,7 +378,7 @@ public class testVerifEmailUsernameIdLogUsernameId {
 	public void test_VerifEmailUsernameId_LogUsernameId_row96() {
 		common.readxls(96);
 		
-		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Email");
+		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), true, "Email", "Id", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), workbook.getNombre(), 
