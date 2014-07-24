@@ -7,9 +7,13 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Pages.Backoffice_Benefits.DetailCompany;
 import com.gointegro.Pages.Backoffice_Benefits.DetailStore;
+import com.gointegro.Pages.Backoffice_Benefits.NewStore;
 import com.gointegro.Pages.Backoffice_Benefits.NewTerminalOverlay;
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Tests.Base.TestBase;
@@ -33,8 +37,7 @@ public class testNewTerminal extends TestBase {
 	
 	@Test
 	public void test_new_terminal() {
-		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
-		detail.open();
+		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
@@ -49,11 +52,10 @@ public class testNewTerminal extends TestBase {
 		assertTrue(detail.isTerminalInList(terminal));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_terminal_disabled() {
-		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
-		detail.open();
+		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
@@ -65,14 +67,15 @@ public class testNewTerminal extends TestBase {
 		newTerminal.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertTrue(detail.isTerminalInList(terminal));
+		WebElement terminalElement = detail.getTerminalElement(terminal);
+		
+		assertFalse(detail.isTerminalActive(terminalElement));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_terminal_number_empty() {
-		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
-		detail.open();
+		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
@@ -84,16 +87,15 @@ public class testNewTerminal extends TestBase {
 		newTerminal.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals("", newTerminal.getNumberError());
+		assertEquals("Este campo no puede estar vacío", newTerminal.getNumberError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_terminal_number_max_char() {
 		terminal = StringUtils.getTextoLargo();
 		
-		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
-		detail.open();
+		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
@@ -105,14 +107,13 @@ public class testNewTerminal extends TestBase {
 		newTerminal.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals("", newTerminal.getNumberError());
+		assertEquals("El número de terminal no puede superar los 80 caracteres", newTerminal.getNumberError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_terminal_operator_empty() {
-		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
-		detail.open();
+		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
@@ -124,16 +125,15 @@ public class testNewTerminal extends TestBase {
 		newTerminal.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals("", newTerminal.getOperatorError());
+		assertEquals("Este campo no puede estar vacío", newTerminal.getOperatorError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_terminal_operator_max_char() {
 		operator = StringUtils.getTextoLargo();
 		
-		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
-		detail.open();
+		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
@@ -145,16 +145,15 @@ public class testNewTerminal extends TestBase {
 		newTerminal.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals("", newTerminal.getOperatorError());
+		assertEquals("El operador de la terminal no puede superar los 80 caracteres", newTerminal.getOperatorError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_terminal_observations_max_char() {
 		observation = StringUtils.getTextoLargo();
 		
-		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
-		detail.open();
+		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
@@ -166,14 +165,13 @@ public class testNewTerminal extends TestBase {
 		newTerminal.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		assertEquals("", newTerminal.getObservationError());
+		assertEquals("El campo observaciones no puede superar los 500 caracteres", newTerminal.getObservationError());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_terminal_save_and_new() {
-		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
-		detail.open();
+		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
@@ -188,11 +186,10 @@ public class testNewTerminal extends TestBase {
 		assertTrue(newTerminal.isNumberEmpty());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_terminal_cancel() {
-		DetailStore detail = PageFactory.initElements(driver, DetailStore.class);
-		detail.open();
+		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
@@ -208,6 +205,34 @@ public class testNewTerminal extends TestBase {
 	}
 	
 	
+	private DetailStore createStore() {
+		String type = "Local";
+		String name = DataGenerator.nombreFile();
+		String companyName = DataGenerator.nombreFile();
+		String taxId = "654855551";
+		String phone = "15 84546655";
+		String email = "test@mail.com";
+		String siteLink = ConfigElements.getUrlTest();
+		String address = "Avenida Alvarez Thomas 198, Buenos Aires, Argentina";
+		String zipCode = "1222";
+		
+		loginBackoffice(driver);
+		
+		DetailCompany detail = PageFactory.initElements(driver, DetailCompany.class);
+		detail.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		NewStore newStore = detail.selectNewStore();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newStore.createNewStore(type, name, phone, companyName, taxId, email, siteLink, address, zipCode, false);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		return newStore.selectSave();
+	}
 	
 	@After
 	public void tearDown() {

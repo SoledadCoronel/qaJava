@@ -73,6 +73,12 @@ public class DetailBenefits extends PageBase {
 	@FindBy(xpath = "//header[@class='backoffice-header']/div/div[2]/button")
 	WebElement edit;
 	
+	@FindBy(xpath = "//section[@id='files']/div/table/tbody/tr/td[5]/a")
+	WebElement editFile;
+	
+	@FindBy(xpath = "//section[@id='visible-files']/div/table/tbody/tr/td[5]/a")
+	WebElement editVisibleFile;
+	
 	@FindBy(xpath = "//td[@id='redeemingMethods']/ul")
 	WebElement redeemingList;
 	
@@ -337,6 +343,16 @@ public class DetailBenefits extends PageBase {
 	}
 	
 	/**
+	 * Seleccionar el editar del primer Documento interno
+	 * 
+	 * @return NewFileOverlay
+	 */
+	public NewFileOverlay editFirstFile() {
+		editFile.click();
+		return PageFactory.initElements(driver, NewFileOverlay.class);
+	}
+	
+	/**
 	 * Seleccionar Nuevo Anexos Públicos
 	 * 
 	 * @return NewFileOverlay
@@ -373,6 +389,16 @@ public class DetailBenefits extends PageBase {
 	 */
 	public boolean isVisibleFileEnabled() {
 		return driver.findElement(By.xpath(visibleFileList)).getAttribute("innerHTML").contains("glyphicon-ok");
+	}
+
+	/**
+	 * Seleccionar el editar del primer Anexo publico
+	 * 
+	 * @return NewFileOverlay
+	 */
+	public NewFileOverlay editFirstVisibleFile() {
+		editVisibleFile.click();
+		return PageFactory.initElements(driver, NewFileOverlay.class);
 	}
 	
 	/**

@@ -8,8 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.gointegro.Util.WaitTool;
-
 public class DetailStore extends DetailCompany {
 	
 	@FindBy(id = "storeType")
@@ -26,6 +24,12 @@ public class DetailStore extends DetailCompany {
 	
 	@FindBy(xpath = "//section[@id='paymentMachines']/div/table/tbody/tr")
 	List<WebElement> terminalList;
+	
+	@FindBy(id = "accordion")
+	WebElement areaTitle;
+	
+	@FindBy(xpath = "//header[@class='backoffice-header']/div/div[2]/button")
+	WebElement edit;
 	
 	/**
 	 * Constructor 
@@ -58,6 +62,16 @@ public class DetailStore extends DetailCompany {
 	}
 	
 	/**
+	 * Devuelve true si el area esta presente
+	 * 
+	 * @param area
+	 * @return boolean
+	 */
+	public boolean isAreaTitlePresent(String area) {
+		return areaTitle.getText().contains(area);
+	}
+	
+	/**
 	 * Seleccionar Nuevo terminal
 	 * 
 	 * @return NewTerminalOverlay
@@ -76,14 +90,22 @@ public class DetailStore extends DetailCompany {
 	public WebElement getTerminalElement(String name) {
 		WebElement element = null;
 		
-		WaitTool.waitForElement(driver, By.xpath("//section[@id='paymentMachines']/div/table/tbody/tr"), 10);
-		
 		for(WebElement ele : terminalList) {
 			if(ele.findElements(By.xpath("./td/a")).size() > 0 && ele.findElement(By.xpath("./td/a")).getText().contains(name)) {
 				element = ele;
 			}
 		}
 		return element;
+	}
+	
+	/**
+	 * Devuelve true si el elemento esta activo
+	 * 
+	 * @param element
+	 * @return boolean
+	 */
+	public boolean isTerminalActive(WebElement element) {
+		return element.getAttribute("innerHTML").contains("glyphicon-ok");
 	}
 	
 	/**
@@ -101,5 +123,13 @@ public class DetailStore extends DetailCompany {
 			}
 		}
 		return isContactInList;
+	}
+	
+	/**
+	 * Seleccionar Editar
+	 */
+	public NewStore selectEdit() {
+		edit.click();
+		return PageFactory.initElements(driver, NewStore.class);
 	}
 }

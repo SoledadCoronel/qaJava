@@ -8,7 +8,7 @@ import com.gointegro.Pages.Base.PageBase;
 
 public class NewTerminalOverlay extends PageBase {
 	
-	@FindBy(id = "active")
+	@FindBy(xpath = "//div[contains(@class,'form-active')]/div/div/span/input")
 	WebElement active;
 	
 	@FindBy(id = "number")
@@ -20,13 +20,13 @@ public class NewTerminalOverlay extends PageBase {
 	@FindBy(id = "observations")
 	WebElement observations;
 	
-	@FindBy(xpath = "number")
+	@FindBy(xpath = "//div[contains(@class,'form-number')]/div/div/div")
 	WebElement numberError;
 	
-	@FindBy(xpath = "operator")
+	@FindBy(xpath = "//div[contains(@class,'form-operator')]/div/div/div")
 	WebElement operatorError;
 	
-	@FindBy(xpath = "observations")
+	@FindBy(xpath = "//div[contains(@class,'form-observations')]/div/div/div")
 	WebElement observationsError;
 	
 	@FindBy(xpath = "//section[@class='bottom-section-button-bar']/button[1]")

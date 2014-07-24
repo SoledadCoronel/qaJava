@@ -88,9 +88,11 @@ public class DetailCompany extends PageBase {
 	/**
 	 * OTROS
 	 */
-	String tags = "//section[@id='tags']/div/div/span";
+	@FindBy(xpath = "//section[@id='tags']/div/div/span")
+	WebElement tags;
 	
-	String category = "//section[@id='categories']/div/div/ul";
+	@FindBy(xpath = "//section[@id='categories']/div/div/ul")
+	WebElement category;
 	
 	@FindBy(xpath = "//section[@id='contacts']/div/div/a")
 	WebElement newContact;
@@ -318,7 +320,7 @@ public class DetailCompany extends PageBase {
 	 * @return boolean
 	 */
 	public boolean isTagPresent(String name) {
-		return driver.findElement(By.xpath(tags)).getAttribute("innerHTML").contains(name);
+		return tags.getAttribute("innerHTML").contains(name);
 	}
 	
 	/**
@@ -327,7 +329,7 @@ public class DetailCompany extends PageBase {
 	 * @return boolean
 	 */
 	public boolean isTagListEmpty() {
-		return driver.findElement(By.xpath(tags)).getText().isEmpty();
+		return tags.getText().isEmpty();
 	}
 	
 	/**
@@ -336,7 +338,7 @@ public class DetailCompany extends PageBase {
 	 * @return boolean
 	 */
 	public boolean isCategoryPresent(String name) {
-		return driver.findElement(By.xpath(category)).getAttribute("innerHTML").contains(name);
+		return category.getAttribute("innerHTML").contains(name);
 	}
 	
 	/**
@@ -345,7 +347,7 @@ public class DetailCompany extends PageBase {
 	 * @return boolean
 	 */
 	public boolean isCategoryListEmpty() {
-		return driver.findElement(By.xpath(category)).getText().isEmpty();
+		return category.getText().isEmpty();
 	}
 	
 	/**
