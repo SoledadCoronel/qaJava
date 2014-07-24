@@ -11,21 +11,24 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
-	//testVerifDocEmailLogDoc.class,
-	//testVerifDocEmailLogEmail.class,
-	//testVerifDocEmailLogUsernameId.class,
-	//testVerifDocLogDoc.class,
-	//testVerifDocLogEmail.class,
-	//testVerifDocLogUsernameId.class
-	//testVerifDocUsernameIdLogDoc.class,
-	//testVerifDocUsernameIdLogEmail.class,
-	//testVerifDocUsernameIdLogUsernameId.class,
-	//testVerifEmailUsernameIdLogDoc.class,
-	//testVerifEmailUsernameIdLogEmail.class,
-	//testVerifEmailUsernameIdLogUsernameId.class,
+	testVerifDocEmailLogDoc.class,
+	testVerifDocEmailLogEmail.class,
+	testVerifDocEmailLogUsernameId.class,
+	testVerifDocLogDoc.class,
+	testVerifDocLogEmail.class,
+	testVerifDocLogUsernameId.class,
+	testVerifDocUsernameIdLogDoc.class,
+	testVerifDocUsernameIdLogEmail.class,
+	testVerifDocUsernameIdLogUsernameId.class,
+	testVerifEmailUsernameIdLogDoc.class,
+	testVerifEmailUsernameIdLogEmail.class,
+	testVerifEmailUsernameIdLogUsernameId.class,
 	testVerifEmailLogDoc.class,
 	testVerifEmailLogEmail.class,
 	testVerifEmailLogUsernameId.class,
+	testVerifUsernameIdLogDoc.class,
+	testVerifUsernameIdLogEmail.class,
+	testVerifUsernameIdLogUsernameId.class,
 	})
 public class AllTestsNoRegUniqDocument {
 	
@@ -49,7 +52,7 @@ public class AllTestsNoRegUniqDocument {
 	
 	@AfterClass
 	public static void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 
 }
