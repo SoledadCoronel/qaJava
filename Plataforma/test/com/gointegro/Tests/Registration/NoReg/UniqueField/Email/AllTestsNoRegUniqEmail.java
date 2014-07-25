@@ -1,4 +1,4 @@
-package com.gointegro.Tests.Registration.NoReg.UniqueField.Document;
+package com.gointegro.Tests.Registration.NoReg.UniqueField.Email;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
-@SuiteClasses({ 
+@SuiteClasses({
 	testVerifDocEmailLogDoc.class,
 	testVerifDocEmailLogEmail.class,
 	testVerifDocEmailLogUsernameId.class,
@@ -20,17 +20,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testVerifDocUsernameIdLogDoc.class,
 	testVerifDocUsernameIdLogEmail.class,
 	testVerifDocUsernameIdLogUsernameId.class,
-	testVerifEmailUsernameIdLogDoc.class,
-	testVerifEmailUsernameIdLogEmail.class,
-	testVerifEmailUsernameIdLogUsernameId.class,
 	testVerifEmailLogDoc.class,
 	testVerifEmailLogEmail.class,
 	testVerifEmailLogUsernameId.class,
+	testVerifEmailUsernameIdLogDoc.class,
+	testVerifEmailUsernameIdLogEmail.class,
+	testVerifEmailUsernameIdLogUsernameId.class,
 	testVerifUsernameIdLogDoc.class,
 	testVerifUsernameIdLogEmail.class,
-	testVerifUsernameIdLogUsernameId.class,
-	})
-public class AllTestsNoRegUniqDocument {
+	testVerifUsernameIdLogUsernameId.class
+})
+public class AllTestsNoRegUniqEmail {
 	
 	private static WebDriver driver;
 	
@@ -46,9 +46,8 @@ public class AllTestsNoRegUniqDocument {
 	}
 	
 	public static void setDriver(WebDriver driver) {
-		AllTestsNoRegUniqDocument.driver = driver;
+		AllTestsNoRegUniqEmail.driver = driver;
 	}
-	
 	
 	@AfterClass
 	public static void tearDown() {

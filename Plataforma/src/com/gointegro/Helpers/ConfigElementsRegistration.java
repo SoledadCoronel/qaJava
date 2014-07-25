@@ -6,13 +6,13 @@ public class ConfigElementsRegistration {
 	
 	private static String platformurlUniqueFieldDocument = "registrationuniqdocument.p2-stage.gointegro.com";
 	
-	private static String platformIdUniqueFieldEmail = "";
+	private static String platformIdUniqueFieldEmail = "431";
 	
-	private static String platformurlUniqueFieldEmail = "";
+	private static String platformurlUniqueFieldEmail = "registrationuniqemail.p2-stage.gointegro.com";
 	
-	private static String platformIdUniqueFieldUsernameId = "";
+	private static String platformIdUniqueFieldUsernameId = "432";
 	
-	private static String platformurlUniqueFieldUsernameId = "";
+	private static String platformurlUniqueFieldUsernameId = "registrationuniqusernameid.p2-stage.gointegro.com";
 	
 	private static String locationXls = "/home/gustavomoreira/Desktop/Data.xls";
 
