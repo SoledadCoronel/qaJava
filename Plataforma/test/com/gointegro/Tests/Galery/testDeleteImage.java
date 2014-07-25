@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
@@ -185,7 +186,9 @@ public class testDeleteImage extends TestBase{
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
 		
-		WebDriver _driver = new FirefoxDriver();
+		FirefoxBinary firefox = new FirefoxBinary();
+		firefox.setEnvironmentProperty("DISPLAY", ":0");
+		WebDriver _driver = new FirefoxDriver(firefox,null);
 		
 		login(_driver);
 
