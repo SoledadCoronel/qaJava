@@ -69,11 +69,9 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		
 		signup.setUsernameId(workbook.getId());
-		
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -111,14 +109,10 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		
 		signup.setUsernameId(workbook.getId());
-		
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-		
-		
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -150,20 +144,16 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertTrue(signup.isGenderPresent());
-		
 		assertTrue(signup.isNamePresent());
 		assertTrue(signup.isSurnamePresent());
 		assertTrue(signup.isEmailPresent());
 		assertTrue(signup.isUsernameIdPresent());
 		
 		signup.setUsernameId(workbook.getId());
-		
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-		
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -196,7 +186,6 @@ private WebDriver driver;
 		
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isBirthdatePresent());
-		
 		assertTrue(signup.isNamePresent());
 		assertTrue(signup.isSurnamePresent());
 		assertTrue(signup.isEmailPresent());
@@ -206,12 +195,8 @@ private WebDriver driver;
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-
-		
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -250,13 +235,9 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		
 		signup.setUsernameId(workbook.getId());
-		
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-
-		
-		
 		signup.setPassword("integro12");
 		signup.setTyC();
 		
@@ -292,7 +273,6 @@ private WebDriver driver;
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
-		
 		assertTrue(signup.isNamePresent());
 		assertTrue(signup.isSurnamePresent());
 		assertTrue(signup.isEmailPresent());
@@ -302,10 +282,8 @@ private WebDriver driver;
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-		
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -339,7 +317,6 @@ private WebDriver driver;
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
-		
 		assertTrue(signup.isNamePresent());
 		assertTrue(signup.isSurnamePresent());
 		assertTrue(signup.isEmailPresent());
@@ -349,10 +326,8 @@ private WebDriver driver;
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-		
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -393,16 +368,12 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		
 		signup.setUsernameId(workbook.getId());
-		
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-		
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();

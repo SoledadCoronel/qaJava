@@ -72,9 +72,7 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
 		assertEquals(signup.getEmail(), workbook.getMail());
-		
 		
 		signup.setTyC();
 		
@@ -114,13 +112,10 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
 		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isBirthdatePresent());
 		
-		
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -160,12 +155,9 @@ private WebDriver driver;
 		
 		common.VerifRegistrationFields(signup);
 		assertEquals(signup.getEmail(), workbook.getMail());
-		
 		assertTrue(signup.isGenderPresent());
 		
-		
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -205,14 +197,11 @@ private WebDriver driver;
 		
 		common.VerifRegistrationFields(signup);
 		assertEquals(signup.getEmail(), workbook.getMail());
-		
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isBirthdatePresent());
 		
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -252,10 +241,8 @@ private WebDriver driver;
 		
 		common.VerifRegistrationFields(signup);
 		assertEquals(signup.getEmail(), workbook.getMail());
-		
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
-		
 		
 		signup.setPassword("integro12");
 		signup.setTyC();
@@ -296,16 +283,13 @@ private WebDriver driver;
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		
-		
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -345,15 +329,12 @@ private WebDriver driver;
 		
 		common.VerifRegistrationFields(signup);
 		assertEquals(signup.getEmail(), workbook.getMail());
-		
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		
-		
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -393,18 +374,14 @@ private WebDriver driver;
 		
 		common.VerifRegistrationFields(signup);
 		assertEquals(signup.getEmail(), workbook.getMail());
-		
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		
-		
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
