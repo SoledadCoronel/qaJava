@@ -72,9 +72,9 @@ public class testVerifEmailLogUsernameId {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		assertEquals(signup.getDocument(), workbook.getDocumento());
+		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isUsernameIdPresent());
+		
 		signup.setUsernameId(workbook.getId());
 		signup.setTyC();
 		
@@ -114,13 +114,12 @@ public class testVerifEmailLogUsernameId {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isUsernameIdPresent());
+		
 		signup.setUsernameId(workbook.getId());
-		
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -159,12 +158,12 @@ public class testVerifEmailLogUsernameId {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
+		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isUsernameIdPresent());
+		
 		signup.setUsernameId(workbook.getId());
-		
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -203,15 +202,14 @@ public class testVerifEmailLogUsernameId {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isUsernameIdPresent());
-		signup.setUsernameId(workbook.getId());
 		
+		signup.setUsernameId(workbook.getId());
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -250,12 +248,12 @@ public class testVerifEmailLogUsernameId {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-
+		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		assertTrue(signup.isUsernameIdPresent());
-		signup.setUsernameId(workbook.getId());
 		
+		signup.setUsernameId(workbook.getId());
 		signup.setPassword("integro12");
 		signup.setTyC();
 		
@@ -295,17 +293,15 @@ public class testVerifEmailLogUsernameId {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-
+		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		assertTrue(signup.isUsernameIdPresent());
+		
 		signup.setUsernameId(workbook.getId());
-		
-		
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -344,16 +340,15 @@ public class testVerifEmailLogUsernameId {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		assertTrue(signup.isUsernameIdPresent());
-		signup.setUsernameId(workbook.getId());
 		
+		signup.setUsernameId(workbook.getId());
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -392,19 +387,17 @@ public class testVerifEmailLogUsernameId {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		assertTrue(signup.isUsernameIdPresent());
+		
 		signup.setUsernameId(workbook.getId());
-		
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();

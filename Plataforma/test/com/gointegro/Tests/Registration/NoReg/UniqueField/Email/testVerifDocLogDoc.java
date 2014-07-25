@@ -74,7 +74,7 @@ public class testVerifDocLogDoc {
 		common.VerifRegistrationFields(signup);
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(signup.getDocument(), workbook.getDocumento());
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		
 		signup.setTyC();
 		
@@ -117,10 +117,9 @@ public class testVerifDocLogDoc {
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
 		assertTrue(signup.isBirthdatePresent());
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -162,10 +161,9 @@ public class testVerifDocLogDoc {
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
 		assertTrue(signup.isGenderPresent());
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -208,11 +206,10 @@ public class testVerifDocLogDoc {
 		assertEquals(workbook.getDocumento(), signup.getDocument());
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isBirthdatePresent());
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -255,7 +252,7 @@ public class testVerifDocLogDoc {
 		assertEquals(workbook.getDocumento(), signup.getDocument());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		
 		signup.setPassword("integro12");
 		signup.setTyC();
@@ -301,11 +298,10 @@ public class testVerifDocLogDoc {
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -349,7 +345,7 @@ public class testVerifDocLogDoc {
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		
 		signup.setPassword("integro12");
 		signup.setGender();
@@ -398,13 +394,11 @@ public class testVerifDocLogDoc {
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
-		
+		assertEquals(signup.getEmail(), workbook.getMail());
 		
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();

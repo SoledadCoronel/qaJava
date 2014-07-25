@@ -112,9 +112,7 @@ private WebDriver driver;
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
 		signup.setDocument(workbook.getDocumento());
-		
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -157,7 +155,6 @@ private WebDriver driver;
 		signup.setEmail(workbook.getMail());
 		signup.setDocument(workbook.getDocumento());
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -198,12 +195,9 @@ private WebDriver driver;
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-
 		signup.setDocument(workbook.getDocumento());
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -244,9 +238,7 @@ private WebDriver driver;
 		signup.setName(workbook.getNombre());
 		signup.setSurname(workbook.getApellido());
 		signup.setEmail(workbook.getMail());
-
 		signup.setDocument(workbook.getDocumento());
-		
 		signup.setPassword("integro12");
 		signup.setTyC();
 		
@@ -293,7 +285,6 @@ private WebDriver driver;
 		signup.setDocument(workbook.getDocumento());
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -338,7 +329,6 @@ private WebDriver driver;
 		signup.setDocument(workbook.getDocumento());
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -383,10 +373,8 @@ private WebDriver driver;
 		signup.setEmail(workbook.getMail());
 		signup.setDocument(workbook.getDocumento());
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
