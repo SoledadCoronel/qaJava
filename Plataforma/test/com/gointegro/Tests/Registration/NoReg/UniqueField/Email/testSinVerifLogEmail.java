@@ -51,10 +51,10 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutGenderFNPass_row153() {
 		common.readxls(153);
 		
-		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Login login = PageFactory.initElements(driver, Login.class);
@@ -80,7 +80,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/profile");
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
@@ -90,10 +90,10 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutGenderPass_row154() {
 		common.readxls(154);
 		
-		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Login login = PageFactory.initElements(driver, Login.class);
@@ -123,7 +123,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/profile");
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
@@ -133,10 +133,10 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutFNPass_row155() {
 		common.readxls(155);
 		
-		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Login login = PageFactory.initElements(driver, Login.class);
@@ -166,7 +166,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/profile");
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
@@ -176,10 +176,10 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutPass_row156() {
 		common.readxls(156);
 		
-		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Login login = PageFactory.initElements(driver, Login.class);
@@ -212,7 +212,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/profile");
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
@@ -222,10 +222,10 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutGenderFN_row157() {
 		common.readxls(157);
 		
-		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Login login = PageFactory.initElements(driver, Login.class);
@@ -256,7 +256,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/profile");
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
@@ -266,10 +266,10 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutGender_row158() {
 		common.readxls(158);
 		
-		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Login login = PageFactory.initElements(driver, Login.class);
@@ -302,7 +302,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/profile");
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
@@ -312,10 +312,10 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutFN_row159() {
 		common.readxls(159);
 		
-		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Login login = PageFactory.initElements(driver, Login.class);
@@ -347,7 +347,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/profile");
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
@@ -357,10 +357,10 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_row160() {
 		common.readxls(160);
 		
-		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		Login login = PageFactory.initElements(driver, Login.class);
@@ -395,7 +395,7 @@ private WebDriver driver;
 		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/profile");
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/profile");
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
@@ -403,7 +403,7 @@ private WebDriver driver;
 	
 	@After
 	public void tearDown() throws Exception {
-		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/auth/signout");
+		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/auth/signout");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
