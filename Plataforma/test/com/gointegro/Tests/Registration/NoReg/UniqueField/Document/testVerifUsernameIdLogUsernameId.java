@@ -75,9 +75,7 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		
-		
 		signup.setEmail(workbook.getMail());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -120,12 +118,8 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		
-		
 		signup.setEmail(workbook.getMail());
-		
-		
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -168,11 +162,8 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		
-		
 		signup.setEmail(workbook.getMail());
-		
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -216,13 +207,9 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		
-		
 		signup.setEmail(workbook.getMail());
-		
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -266,10 +253,7 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		
-		
 		signup.setEmail(workbook.getMail());
-		
-		
 		signup.setPassword("integro12");
 		signup.setTyC();
 		
@@ -315,12 +299,9 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		
-		
 		signup.setEmail(workbook.getMail());
-		
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -365,12 +346,9 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		
-		
 		signup.setEmail(workbook.getMail());
-		
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -416,14 +394,10 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		
-		
 		signup.setEmail(workbook.getMail());
-		
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();

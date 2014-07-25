@@ -72,9 +72,7 @@ public class testVerifEmailLogEmail {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		assertEquals(signup.getDocument(), workbook.getDocumento());
-		
+		assertEquals(workbook.getMail(), signup.getEmail());
 		
 		signup.setTyC();
 		
@@ -114,13 +112,10 @@ public class testVerifEmailLogEmail {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		
+		assertEquals(workbook.getMail(), signup.getEmail());
 		assertTrue(signup.isBirthdatePresent());
 		
-		
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -159,13 +154,10 @@ public class testVerifEmailLogEmail {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		
+		assertEquals(workbook.getMail(), signup.getEmail());
 		assertTrue(signup.isGenderPresent());
 		
-		
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -204,15 +196,13 @@ public class testVerifEmailLogEmail {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		
+		assertEquals(workbook.getMail(), signup.getEmail());
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isBirthdatePresent());
 		
 		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -251,11 +241,9 @@ public class testVerifEmailLogEmail {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		
+		assertEquals(workbook.getMail(), signup.getEmail());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
-		
 		
 		signup.setPassword("integro12");
 		signup.setTyC();
@@ -296,16 +284,13 @@ public class testVerifEmailLogEmail {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		
+		assertEquals(workbook.getMail(), signup.getEmail());
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		
-		
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -344,16 +329,13 @@ public class testVerifEmailLogEmail {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		
+		assertEquals(workbook.getMail(), signup.getEmail());
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		
-		
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -392,19 +374,15 @@ public class testVerifEmailLogEmail {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
-		
-		
+		assertEquals(workbook.getMail(), signup.getEmail());
 		assertTrue(signup.isGenderPresent());
 		assertTrue(signup.isBirthdatePresent());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		
-		
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
