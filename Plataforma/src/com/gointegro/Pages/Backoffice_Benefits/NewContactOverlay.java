@@ -201,9 +201,12 @@ public class NewContactOverlay extends PageBase {
 	
 	/**
 	 * Seleccionar Guardar
+	 * 
+	 * @return DetailCompany
 	 */
-	public void selectSave() {
+	public DetailCompany selectSave() {
 		save.click();
+		return PageFactory.initElements(driver, DetailCompany.class);
 	}
 	
 	/**

@@ -38,6 +38,9 @@ public class NewTerminalOverlay extends PageBase {
 	@FindBy(xpath = "//section[@class='bottom-section-button-bar']/button[3]")
 	WebElement cancel;
 	
+	@FindBy(xpath = "//section[@class='bottom-section-button-bar']/button[2]")
+	WebElement cancelOnEdit;
+	
 	/**
 	 * Constructor
 	 * 
@@ -159,5 +162,12 @@ public class NewTerminalOverlay extends PageBase {
 	 */
 	public void selectCancel() {
 		cancel.click();
+	}
+	
+	/**
+	 * Seleccionar el botón Cancelar
+	 */
+	public void selectCancelOnEdit() {
+		cancelOnEdit.click();
 	}
 }

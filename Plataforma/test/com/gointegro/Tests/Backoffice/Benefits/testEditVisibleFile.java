@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -29,7 +28,7 @@ public class testEditVisibleFile extends TestBase {
 		driver = AllTestsBackOfficeBenefits.getDriver();
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_visible_visible_file_disabled() {
 		DetailBenefits detail = createFile();
@@ -47,7 +46,7 @@ public class testEditVisibleFile extends TestBase {
 		assertFalse(detail.isVisibleFileEnabled());	
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_visible_file_name() {
 		String title = DataGenerator.nombreFile();

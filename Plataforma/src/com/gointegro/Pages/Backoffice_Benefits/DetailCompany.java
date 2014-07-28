@@ -106,6 +106,9 @@ public class DetailCompany extends PageBase {
 	@FindBy(xpath = "//section[@id='stores']/div/div/a")
 	WebElement newStore;
 	
+	@FindBy(xpath = "//section[@id='contacts']/div/table/tbody/tr")
+	WebElement contactList;
+	
 	String companyURL = ConfigElementsBO.getUrlBackoffice() + "/benefits/company/" + ConfigElementsBOBenefits.getCompanyId() + "/view"; 
 	
 	/**
@@ -384,6 +387,7 @@ public class DetailCompany extends PageBase {
 		for(WebElement ele : contactsList) {
 			if(ele.findElements(By.xpath("./td/a")).size() > 0 && ele.findElement(By.xpath("./td/a")).getText().contains(name)) {
 				element = ele;
+				break;
 			}
 		}
 		return element;
@@ -476,4 +480,15 @@ public class DetailCompany extends PageBase {
 		return PageFactory.initElements(driver, NewStore.class);
 	}
 	
+	/**
+	 * Seleccionar el Editar del contacto
+	 * 
+	 * @return NewContactOverlay
+	 */
+	public NewContactOverlay selectEditContact() {
+		if(contactList.findElements(By.xpath("./td/a")).size() > 0) {
+			contactList.findElement(By.xpath("./td[5]/a")).click();
+		}
+		return PageFactory.initElements(driver, NewContactOverlay.class);
+	}
 }

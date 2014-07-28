@@ -51,6 +51,9 @@ public class NewBenefits extends PageBase {
 	@FindBy(id = "description_ifr")
 	WebElement description;
 	
+	@FindBy(id = "exclusive")
+	WebElement exclusive;
+	
 	@FindBy(xpath = "//li[@class='tagit-new']/input")
 	WebElement tags;
 	
@@ -125,6 +128,27 @@ public class NewBenefits extends PageBase {
 	
 	@FindBy(xpath = "//div[@id='ms-paymentMethods']/a[2]")
 	WebElement removePaymentMethods;
+	
+	@FindBy(id = "exclusivePlatforms-input")
+	WebElement searchAccountsExclusive;
+	
+	@FindBy(xpath = "//div[@id='exclusivePlatforms']/div/div[2]/div/a")
+	WebElement addExclusivePlatforms;
+	
+	@FindBy(xpath = "//div[@id='exclusivePlatforms']/div/div[2]/div/a[2]")
+	WebElement removeExclusivePlatforms;
+	
+	@FindBy(id = "restrictedPlatforms-input")
+	WebElement searchAccountsRestricted;
+	
+	@FindBy(xpath = "//div[@id='restrictedPlatforms']/div/div[2]/div/a")
+	WebElement addRestrictedPlatforms;
+	
+	@FindBy(xpath = "//div[@id='restrictedPlatforms']/div/div[2]/div/a[2]")
+	WebElement removeRestrictedPlatforms;
+	
+	@FindBy(xpath = "//a[@id='ui-id-4']")
+	WebElement dropdownPlatform;
 	
 	/**
 	 * Constructor
@@ -560,5 +584,62 @@ public class NewBenefits extends PageBase {
 	 */
 	public void removePaymentMethods() {
 		removePaymentMethods.click();
+	}
+	
+	/**
+	 * Buscar una cuenta
+	 * 
+	 * @param name
+	 */
+	public void searchExclusivePlataform(String name) {
+		searchAccountsExclusive.sendKeys(name);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		dropdownPlatform.click();
+	}
+	
+	/**
+	 * Buscar una cuenta
+	 * 
+	 * @param name
+	 */
+	public void searchRestrictedPlataform(String name) {
+		searchAccountsRestricted.sendKeys(name);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		dropdownPlatform.click();
+	}
+	
+	/**
+	 * Seleccionar Agregar Plataforma restringida
+	 */
+	public void addRestricted() {
+		addRestrictedPlatforms.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Plataforma restringida
+	 */
+	public void removeRestricted() {
+		removeRestrictedPlatforms.click();
+	}
+	
+	/**
+	 * Seleccionar Agregar Plataforma exclusiva
+	 */
+	public void addExclusive() {
+		addExclusivePlatforms.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Plataforma exclusiva
+	 */
+	public void removeExclusive() {
+		removeExclusivePlatforms.click();
+	}
+	
+	/**
+	 * Seleccionar Es exclusivo
+	 */
+	public void selectExclusive() {
+		exclusive.click();
 	}
 }

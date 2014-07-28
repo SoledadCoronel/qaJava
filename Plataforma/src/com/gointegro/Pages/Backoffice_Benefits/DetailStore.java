@@ -25,6 +25,9 @@ public class DetailStore extends DetailCompany {
 	@FindBy(xpath = "//section[@id='paymentMachines']/div/table/tbody/tr")
 	List<WebElement> terminalList;
 	
+	@FindBy(xpath = "//section[@id='paymentMachines']/div/table/tbody/tr/td[4]/a")
+	WebElement editTerminal;
+	
 	@FindBy(id = "accordion")
 	WebElement areaTitle;
 	
@@ -93,9 +96,24 @@ public class DetailStore extends DetailCompany {
 		for(WebElement ele : terminalList) {
 			if(ele.findElements(By.xpath("./td/a")).size() > 0 && ele.findElement(By.xpath("./td/a")).getText().contains(name)) {
 				element = ele;
+				break;
 			}
 		}
 		return element;
+	}
+	
+	/**
+	 * Seleccionar el terminal
+	 * 
+	 * @param name
+	 */
+	public void selectTerminal(String name) {
+		for(WebElement ele : terminalList) {
+			if(ele.findElements(By.xpath("./td/a")).size() > 0 && ele.findElement(By.xpath("./td/a")).getText().contains(name)) {
+				ele.findElement(By.xpath("./td/a")).click();
+				break;
+			}
+		}
 	}
 	
 	/**
@@ -109,6 +127,19 @@ public class DetailStore extends DetailCompany {
 	}
 	
 	/**
+	 * Devuelve el operador
+	 * 
+	 * @param element
+	 * @return String
+	 */
+	public String getTerminalOperator(String name) {
+		WebElement element = getTerminalElement(name);
+		return element.findElement(By.xpath("./td[2]")).getText();
+	}
+	
+	
+	
+	/**
 	 * Devuelve true si el contacto esta presente
 	 * 
 	 * @param name
@@ -120,13 +151,24 @@ public class DetailStore extends DetailCompany {
 		for(WebElement ele : terminalList) {
 			if(ele.findElements(By.xpath("./td/a")).size() > 0 && ele.findElement(By.xpath("./td/a")).getText().contains(name)) {
 				isContactInList = true;
+				break;
 			}
 		}
 		return isContactInList;
 	}
 	
 	/**
-	 * Seleccionar Editar
+	 * Seleccionar Editar Terminal
+	 * 
+	 * @return NewTerminalOverlay
+	 */
+	public NewTerminalOverlay selectEditTerminal() {
+		editTerminal.click();
+		return PageFactory.initElements(driver, NewTerminalOverlay.class);
+	}
+	
+	/**
+	 * Seleccionar Editar Sucursal
 	 */
 	public NewStore selectEdit() {
 		edit.click();

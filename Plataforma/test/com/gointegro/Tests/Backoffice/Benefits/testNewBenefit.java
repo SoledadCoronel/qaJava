@@ -9,9 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Backoffice_Benefits.DetailBenefits;
 import com.gointegro.Pages.Backoffice_Benefits.DetailCompany;
 import com.gointegro.Pages.Backoffice_Benefits.NewBenefits;
+import com.gointegro.Pages.Backoffice_Benefits.SelectStoreOverlay;
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
@@ -39,7 +41,7 @@ public class testNewBenefit extends TestBase {
 	}
 	
 	
-	@Test  //Falla por los formatos de las fechas  https://gointegro.atlassian.net/browse/PLATAFORMAII-3444
+	@Test  
 	public void test_new_benefit() {
 		String category = "Autos"; 
 		String redeeming = "Mobile";
@@ -363,6 +365,80 @@ public class testNewBenefit extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("La descripción no puede superar los 500 caracteres", newBenefit.getDescriptionErrorMsg());
+	}
+	
+	
+	@Test
+	public void test_new_benefit_associate_store() {
+		NewBenefits newBenefit = goToCompany();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		DetailBenefits detail = newBenefit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		SelectStoreOverlay selectStore = detail.selectRelateStore();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		String storeName = selectStore.selectFirstStore();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		selectStore.selectClose();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(detail.isStoreInList(storeName));
+	}
+	
+	@Test
+	public void test_new_benefit_restricted() {
+		String parts[] = ConfigElementsBO.getAccountPlatformTestName().split(" ");
+		String platform = parts[1] + " " + parts[2];
+		
+		NewBenefits newBenefit = goToCompany();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.searchRestrictedPlataform(platform);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.addRestricted();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		DetailBenefits detail = newBenefit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(detail.isRestrictedPlatformInList(platform));
+	}
+	
+	
+	@Test
+	public void test_new_benefit_exclusive() {
+		String parts[] = ConfigElementsBO.getAccountPlatformTestName().split(" ");
+		String platform = parts[1] + " " + parts[2];
+		
+		NewBenefits newBenefit = goToCompany();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.selectExclusive();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.searchExclusivePlataform(platform);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.addExclusive();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		DetailBenefits detail = newBenefit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(detail.isExclusivePlatformInList(platform));
 	}
 	
 	@After

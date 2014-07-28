@@ -9,15 +9,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Backoffice_Benefits.DetailBenefits;
 import com.gointegro.Pages.Backoffice_Benefits.DetailCompany;
 import com.gointegro.Pages.Backoffice_Benefits.NewBenefits;
+import com.gointegro.Pages.Backoffice_Benefits.SelectStoreOverlay;
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.WaitTool;
 
 public class testEditBenefit extends TestBase {
+	
+	String parts[] = ConfigElementsBO.getAccountPlatformTestName().split(" ");
+	String platform = parts[1] + " " + parts[2];
 	
 	private WebDriver driver;
 	
@@ -29,7 +34,7 @@ public class testEditBenefit extends TestBase {
 	
 	@Test
 	public void test_edit_benefit_disabled() {
-		DetailBenefits detail = createBenefit(true, false, false, false, "");
+		DetailBenefits detail = createBenefit(true, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -47,7 +52,7 @@ public class testEditBenefit extends TestBase {
 	
 	@Test
 	public void test_edit_benefit_enabled_without_store() {
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -67,7 +72,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_owner() {
 		String name = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -87,7 +92,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_name() {
 		String name = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -107,7 +112,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_target_user() {
 		String target = "Empleados";
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -127,7 +132,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_discount() {
 		String discount = "85%";
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -145,7 +150,7 @@ public class testEditBenefit extends TestBase {
 	
 	@Test
 	public void test_edit_benefit_highlighted() {
-		DetailBenefits detail = createBenefit(false, true, false, false, "");
+		DetailBenefits detail = createBenefit(false, true, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -165,7 +170,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_validFrom() {
 		String date = "12/12/2020";
 				
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -185,7 +190,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_add_expire() {
 		String date = "12/12/2020";
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -209,7 +214,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_remove_expire() {
 		String date = DataGenerator.fechamanana();
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, date);
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, date);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -233,7 +238,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_benefitCode() {
 		String code = "23d23d333x";
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -251,7 +256,7 @@ public class testEditBenefit extends TestBase {
 	
 	@Test
 	public void test_edit_benefit_remove_access_info() {
-		DetailBenefits detail = createBenefit(false, false, true, false, "");
+		DetailBenefits detail = createBenefit(false, false, true, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -279,7 +284,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_title() {
 		String title = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -299,7 +304,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_description() {
 		String description = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -317,7 +322,7 @@ public class testEditBenefit extends TestBase {
 	
 	@Test
 	public void test_edit_benefit_tags_empty() {
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -335,7 +340,7 @@ public class testEditBenefit extends TestBase {
 	
 	@Test
 	public void test_edit_benefit_category_empty() {
-		DetailBenefits detail = createBenefit(false, false, false, true, "");
+		DetailBenefits detail = createBenefit(false, false, false, true, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -353,7 +358,7 @@ public class testEditBenefit extends TestBase {
 	
 	@Test
 	public void test_edit_benefit_save_and_new() {
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -370,7 +375,7 @@ public class testEditBenefit extends TestBase {
 	public void test_edit_benefit_cancel() {
 		String name = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(false, false, false, false, "");
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -387,7 +392,75 @@ public class testEditBenefit extends TestBase {
 		assertEquals(detailCompany.getURL(), driver.getCurrentUrl());
 	}
 	
-	private DetailBenefits createBenefit(boolean isActive, boolean isHighlighted, boolean hasAccessInfo, boolean hasCategory, String validUntil) {
+	
+	@Test
+	public void test_edit_benefit_remove_exclusive() {
+		DetailBenefits detail = createBenefit(false, false, false, false, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		NewBenefits newBenefit = detail.selectEdit();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.selectExclusive();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.removeExclusive();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertFalse(detail.isExclusivePlatformInList(platform));
+	}
+	
+	
+	@Test
+	public void test_edit_benefit_remove_restricted() {
+		DetailBenefits detail = createBenefit(false, false, false, false, false, true, "");
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		NewBenefits newBenefit = detail.selectEdit();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.removeRestricted();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertFalse(detail.isRestrictedPlatformInList(platform));
+	}
+	
+	@Test
+	public void test_edit_benefit_remove_store() {
+		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		SelectStoreOverlay selectStore = detail.selectRelateStore();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		String storeName = selectStore.selectFirstStore();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		selectStore.selectClose();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(detail.isStoreInList(storeName));
+		
+		detail.selectRelateStore();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		selectStore.selectFirstStore();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		selectStore.selectClose();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertFalse(detail.isStoreInList(storeName));
+	}
+	
+	
+	private DetailBenefits createBenefit(boolean isActive, boolean isHighlighted, boolean hasAccessInfo, boolean hasCategory, boolean isExclusive, boolean isRestricted, String validUntil) {
 		String owner = DataGenerator.nombreFile();
 		String name = DataGenerator.nombreFile();
 		String targetUser = "Clientes";
@@ -401,7 +474,7 @@ public class testEditBenefit extends TestBase {
 		String redeeming = "Mobile";
 		String validDays = "Martes";
 		String paymentMethod = "Tarjeta de débito";
-		
+
 		loginBackoffice(driver);
 		
 		DetailCompany detail = PageFactory.initElements(driver, DetailCompany.class);
@@ -436,6 +509,25 @@ public class testEditBenefit extends TestBase {
 		if(hasCategory) {
 			newBenefit.selectCategory(category);
 			WaitTool.waitForJQueryProcessing(driver, 5);
+		}
+		
+		if(isExclusive) {
+			newBenefit.selectExclusive();
+			WaitTool.waitForJQueryProcessing(driver, 10);
+			
+			newBenefit.searchExclusivePlataform(platform);
+			WaitTool.waitForJQueryProcessing(driver, 10);
+			
+			newBenefit.addExclusive();
+			WaitTool.waitForJQueryProcessing(driver, 10);
+		}
+		
+		if(isRestricted) {
+			newBenefit.searchRestrictedPlataform(platform);
+			WaitTool.waitForJQueryProcessing(driver, 10);
+			
+			newBenefit.addRestricted();
+			WaitTool.waitForJQueryProcessing(driver, 10);
 		}
 		
 		return newBenefit.selectSave();

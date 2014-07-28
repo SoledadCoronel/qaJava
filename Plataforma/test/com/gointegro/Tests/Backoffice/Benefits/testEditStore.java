@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -28,7 +27,7 @@ public class testEditStore extends TestBase {
 		driver = AllTestsBackOfficeBenefits.getDriver();
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_store_type() {
 		String type = "Online";
@@ -52,7 +51,7 @@ public class testEditStore extends TestBase {
 		assertEquals(type, detail.getType());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_disabled() {
 		DetailStore detail = createStore();
@@ -70,7 +69,7 @@ public class testEditStore extends TestBase {
 		assertEquals("No", detail.getActive());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_name() {
 		String name = DataGenerator.nombreFile();
@@ -90,7 +89,7 @@ public class testEditStore extends TestBase {
 		assertEquals(name, detail.getName());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_contact() {
 		String name = DataGenerator.nombreFile();
@@ -114,7 +113,7 @@ public class testEditStore extends TestBase {
 		assertEquals(name + " " + surname, detail.getContact());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_phone() {
 		String phone = DataGenerator.nombreFile();
@@ -134,7 +133,7 @@ public class testEditStore extends TestBase {
 		assertEquals(phone, detail.getPhone());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_company_name() {
 		String companyName = DataGenerator.nombreFile();
@@ -154,7 +153,7 @@ public class testEditStore extends TestBase {
 		assertEquals(companyName, detail.getCompanyName());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_taxId() {
 		String taxId = "20-198154562-5";
@@ -174,7 +173,7 @@ public class testEditStore extends TestBase {
 		assertEquals(taxId, detail.getTaxId());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_email() {
 		String email = "untest@gmail.com";
@@ -194,7 +193,7 @@ public class testEditStore extends TestBase {
 		assertEquals(email, detail.getEmail());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_web_site() {
 		String email = "untest@gmail.com";
@@ -214,7 +213,7 @@ public class testEditStore extends TestBase {
 		assertEquals(email, detail.getEmail());
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_address() {
 		String address = "Avenida Córdoba 5500, Buenos Aires, Argentina";
@@ -234,7 +233,7 @@ public class testEditStore extends TestBase {
 		assertTrue(address.contains(detail.getStreet()));
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_store_zip_code() {
 		String zipcode = "1358";

@@ -49,8 +49,11 @@ public class DetailBenefits extends PageBase {
 	@FindBy(id = "description")
 	WebElement description;
 	
-	@FindBy(id = "restrictedPlatforms-input")
-	WebElement restrictedPlatforms_input;
+	@FindBy(xpath = "//div/section[contains(@class, 'benefit-restricted-platforms')]")
+	WebElement restrictedPlatforms;
+	
+	@FindBy(xpath = "//section[contains(@class, 'benefit-exclusive-platforms')]")
+	WebElement exclusivePlatforms;
 	
 	String category = "//section[@id='categories']/div/div/ul";
 	
@@ -70,6 +73,8 @@ public class DetailBenefits extends PageBase {
 	
 	String tags = "//section[@id='tags']/div/div/span";
 	
+	String storeList = "//section[@id='stores']/div/table/tbody";
+	
 	@FindBy(xpath = "//header[@class='backoffice-header']/div/div[2]/button")
 	WebElement edit;
 	
@@ -87,6 +92,9 @@ public class DetailBenefits extends PageBase {
 	
 	@FindBy(xpath = "//td[@id='paymentMethods']/ul")
 	WebElement paymentMethodsList;
+	
+	@FindBy(xpath = "//section[@id='stores']/div/div/a")
+	WebElement relateStore;
 	
 	/**
 	 * 
@@ -253,7 +261,7 @@ public class DetailBenefits extends PageBase {
 	 * @return boolean
 	 */
 	public boolean isRedeemingPresent(String name) {
-		return driver.findElement(By.id("redeemnig")).getAttribute("innerHTML").contains(name);
+		return driver.findElement(By.id("redeemingMethods")).getAttribute("innerHTML").contains(name);
 	}
 	
 	/**
@@ -409,5 +417,47 @@ public class DetailBenefits extends PageBase {
 	public NewBenefits selectEdit() {
 		edit.click();
 		return PageFactory.initElements(driver, NewBenefits.class);
+	}
+	
+	/**
+	 * Seleccionar Relacionar y desrelacionar sucursales al beneficio
+	 * @return
+	 */
+	public SelectStoreOverlay selectRelateStore() {
+		relateStore.click();
+		return PageFactory.initElements(driver, SelectStoreOverlay.class);
+	}
+	
+	/**
+	 * Devuelve true si la sucursal se encuntra en la lista
+	 * 
+	 * @return boolean
+	 */
+	public boolean isStoreInList(String name) {
+		boolean isStore = false;
+		if(driver.findElements(By.xpath(storeList)).size() > 0 && driver.findElement(By.xpath(storeList)).getAttribute("innerHTML").contains(name)) {
+			isStore = true;
+		}
+		return isStore;
+	}
+	
+	/**
+	 * Devuelve true si la plataforma se encuentra en la lista
+	 * 
+	 * @param name
+	 * @return boolean
+	 */
+	public boolean isRestrictedPlatformInList(String name) {
+		return restrictedPlatforms.getAttribute("innerHTML").contains(name);
+	}
+	
+	/**
+	 * Devuelve true si la plataforma se encuentra en la lista
+	 * 
+	 * @param name
+	 * @return boolean
+	 */
+	public boolean isExclusivePlatformInList(String name) {
+		return exclusivePlatforms.getAttribute("innerHTML").contains(name);
 	}
 }
