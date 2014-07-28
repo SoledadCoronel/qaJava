@@ -72,10 +72,10 @@ public class testVerifDocUsernameIdLogDoc {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
+		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
-		
 		
 		signup.setTyC();
 		
@@ -115,13 +115,13 @@ public class testVerifDocUsernameIdLogDoc {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
+		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
 		assertTrue(signup.isBirthdatePresent());
 		
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -160,13 +160,13 @@ public class testVerifDocUsernameIdLogDoc {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
+		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
 		assertTrue(signup.isGenderPresent());
 		
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -205,6 +205,7 @@ public class testVerifDocUsernameIdLogDoc {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
+		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
@@ -213,7 +214,6 @@ public class testVerifDocUsernameIdLogDoc {
 		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -252,12 +252,12 @@ public class testVerifDocUsernameIdLogDoc {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
+		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
-		
 		
 		signup.setPassword("integro12");
 		signup.setTyC();
@@ -298,6 +298,7 @@ public class testVerifDocUsernameIdLogDoc {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
+		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
@@ -308,7 +309,6 @@ public class testVerifDocUsernameIdLogDoc {
 		
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -347,6 +347,7 @@ public class testVerifDocUsernameIdLogDoc {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
+		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
@@ -354,10 +355,8 @@ public class testVerifDocUsernameIdLogDoc {
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		
-		
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -396,6 +395,7 @@ public class testVerifDocUsernameIdLogDoc {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		common.VerifRegistrationFields(signup);
+		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		assertTrue(signup.isDocumentPresent());
 		assertEquals(workbook.getDocumento(), signup.getDocument());
@@ -405,10 +405,8 @@ public class testVerifDocUsernameIdLogDoc {
 		assertTrue(signup.isRepeatPasswordPresent());
 		
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();

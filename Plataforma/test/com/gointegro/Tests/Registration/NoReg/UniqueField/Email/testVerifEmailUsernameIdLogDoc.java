@@ -57,7 +57,7 @@ private WebDriver driver;
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), workbook.getNombre(), 
 				workbook.getMail(), workbook.getFechanac(), workbook.getApellido(), workbook.getId(), 
-				workbook.getDocumento());
+				"");
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -77,6 +77,7 @@ private WebDriver driver;
 		assertTrue(signup.isUsernameIdPresent());
 		assertEquals(workbook.getId(), signup.getUsernameId());
 		
+		signup.setDocument(workbook.getDocumento());
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -100,7 +101,7 @@ private WebDriver driver;
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), workbook.getNombre(), 
 				workbook.getMail(), "", workbook.getApellido(), workbook.getId(), 
-				workbook.getDocumento());
+				"");
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -122,7 +123,7 @@ private WebDriver driver;
 		assertTrue(signup.isBirthdatePresent());
 		
 		signup.setBirthdate(workbook.getFechanac());
-		
+		signup.setDocument(workbook.getDocumento());
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -146,7 +147,7 @@ private WebDriver driver;
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), workbook.getNombre(), 
 				workbook.getMail(), workbook.getFechanac(), workbook.getApellido(), workbook.getId(), 
-				workbook.getDocumento());
+				"");
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -168,7 +169,7 @@ private WebDriver driver;
 		assertTrue(signup.isGenderPresent());
 		
 		signup.setGender();
-		
+		signup.setDocument(workbook.getDocumento());
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -192,7 +193,7 @@ private WebDriver driver;
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), workbook.getNombre(), 
 				workbook.getMail(), "", workbook.getApellido(), workbook.getId(), 
-				workbook.getDocumento());
+				"");
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -216,7 +217,7 @@ private WebDriver driver;
 		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
+		signup.setDocument(workbook.getDocumento());
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -240,7 +241,7 @@ private WebDriver driver;
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), workbook.getNombre(), 
 				workbook.getMail(), workbook.getFechanac(), workbook.getApellido(), workbook.getId(), 
-				workbook.getDocumento());
+				"");
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -262,6 +263,7 @@ private WebDriver driver;
 		assertTrue(signup.isPasswordPresent());
 		assertTrue(signup.isRepeatPasswordPresent());
 		
+		signup.setDocument(workbook.getDocumento());
 		signup.setPassword("integro12");
 		signup.setTyC();
 		
@@ -286,7 +288,7 @@ private WebDriver driver;
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), workbook.getNombre(), 
 				workbook.getMail(), "", workbook.getApellido(), workbook.getId(), 
-				workbook.getDocumento());
+				"");
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -311,7 +313,7 @@ private WebDriver driver;
 		
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
+		signup.setDocument(workbook.getDocumento());
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -335,7 +337,7 @@ private WebDriver driver;
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), workbook.getNombre(), 
 				workbook.getMail(), workbook.getFechanac(), workbook.getApellido(), workbook.getId(), 
-				workbook.getDocumento());
+				"");
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -360,7 +362,7 @@ private WebDriver driver;
 		
 		signup.setPassword("integro12");
 		signup.setGender();
-		
+		signup.setDocument(workbook.getDocumento());
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -384,7 +386,7 @@ private WebDriver driver;
 		
 		common.createUserBO(ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), workbook.getNombre(), 
 				workbook.getMail(), "", workbook.getApellido(), workbook.getId(), 
-				workbook.getDocumento());
+				"");
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -409,10 +411,9 @@ private WebDriver driver;
 		assertTrue(signup.isRepeatPasswordPresent());
 		
 		signup.setPassword("integro12");
-		
+		signup.setDocument(workbook.getDocumento());
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();

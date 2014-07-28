@@ -164,7 +164,6 @@ public class testVerifDocEmailLogDoc {
 		assertTrue(signup.isGenderPresent());
 		
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -211,7 +210,6 @@ public class testVerifDocEmailLogDoc {
 		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -304,7 +302,6 @@ public class testVerifDocEmailLogDoc {
 		
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -352,7 +349,6 @@ public class testVerifDocEmailLogDoc {
 		
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -400,10 +396,8 @@ public class testVerifDocEmailLogDoc {
 		assertTrue(signup.isRepeatPasswordPresent());
 		
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();

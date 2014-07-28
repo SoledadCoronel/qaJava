@@ -124,7 +124,6 @@ public class testVerifDocLogUsernameId {
 		signup.setUsernameId(workbook.getId());
 		signup.setEmail(workbook.getMail());
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -171,7 +170,6 @@ public class testVerifDocLogUsernameId {
 		signup.setUsernameId(workbook.getId());
 		signup.setEmail(workbook.getMail());
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -220,7 +218,6 @@ public class testVerifDocLogUsernameId {
 		signup.setEmail(workbook.getMail());
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -317,7 +314,6 @@ public class testVerifDocLogUsernameId {
 		signup.setEmail(workbook.getMail());
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -367,7 +363,6 @@ public class testVerifDocLogUsernameId {
 		signup.setEmail(workbook.getMail());
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -417,7 +412,6 @@ public class testVerifDocLogUsernameId {
 		signup.setUsernameId(workbook.getId());
 		signup.setEmail(workbook.getMail());
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
 		

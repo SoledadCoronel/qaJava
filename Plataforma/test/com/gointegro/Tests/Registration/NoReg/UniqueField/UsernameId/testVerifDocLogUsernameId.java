@@ -124,7 +124,6 @@ private WebDriver driver;
 		
 		signup.setEmail(workbook.getMail());
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -171,7 +170,6 @@ private WebDriver driver;
 		
 		signup.setEmail(workbook.getMail());
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -220,7 +218,6 @@ private WebDriver driver;
 		signup.setEmail(workbook.getMail());
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -313,11 +310,9 @@ private WebDriver driver;
 		assertTrue(signup.isRepeatPasswordPresent());
 		assertTrue(signup.isUsernameIdPresent());
 		
-		
 		signup.setEmail(workbook.getMail());
 		signup.setPassword("integro12");
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -367,7 +362,6 @@ private WebDriver driver;
 		signup.setEmail(workbook.getMail());
 		signup.setPassword("integro12");
 		signup.setGender();
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
@@ -417,10 +411,8 @@ private WebDriver driver;
 		
 		signup.setEmail(workbook.getMail());
 		signup.setPassword("integro12");
-		
 		signup.setGender();
 		signup.setBirthdate(workbook.getFechanac());
-		
 		signup.setTyC();
 		
 		login = signup.selectRegister();
