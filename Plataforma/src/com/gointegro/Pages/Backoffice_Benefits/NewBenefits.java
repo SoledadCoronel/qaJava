@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -49,6 +50,9 @@ public class NewBenefits extends PageBase {
 	
 	@FindBy(id = "description_ifr")
 	WebElement description;
+	
+	@FindBy(id = "exclusive")
+	WebElement exclusive;
 	
 	@FindBy(xpath = "//li[@class='tagit-new']/input")
 	WebElement tags;
@@ -104,6 +108,48 @@ public class NewBenefits extends PageBase {
 	@FindBy(xpath = "//div[@id='ms-paymentMethods']/div/ul/li")
 	List<WebElement> paymentMethodsList;
 	
+	@FindBy(xpath = "//div[@class='container']/div/div")
+	WebElement saveError;
+	
+	@FindBy(xpath = "//div[@id='ms-redeemingMethods']/a")
+	WebElement addRedeemings;
+	
+	@FindBy(xpath = "//div[@id='ms-redeemingMethods']/a[2]")
+	WebElement removeRedeemings;
+	
+	@FindBy(xpath = "//div[@id='ms-validDays']/a")
+	WebElement addValidDays;
+	
+	@FindBy(xpath = "//div[@id='ms-validDays']/a[2]")
+	WebElement removeValidDays;
+	
+	@FindBy(xpath = "//div[@id='ms-paymentMethods']/a")
+	WebElement addPaymentMethods;
+	
+	@FindBy(xpath = "//div[@id='ms-paymentMethods']/a[2]")
+	WebElement removePaymentMethods;
+	
+	@FindBy(id = "exclusivePlatforms-input")
+	WebElement searchAccountsExclusive;
+	
+	@FindBy(xpath = "//div[@id='exclusivePlatforms']/div/div[2]/div/a")
+	WebElement addExclusivePlatforms;
+	
+	@FindBy(xpath = "//div[@id='exclusivePlatforms']/div/div[2]/div/a[2]")
+	WebElement removeExclusivePlatforms;
+	
+	@FindBy(id = "restrictedPlatforms-input")
+	WebElement searchAccountsRestricted;
+	
+	@FindBy(xpath = "//div[@id='restrictedPlatforms']/div/div[2]/div/a")
+	WebElement addRestrictedPlatforms;
+	
+	@FindBy(xpath = "//div[@id='restrictedPlatforms']/div/div[2]/div/a[2]")
+	WebElement removeRestrictedPlatforms;
+	
+	@FindBy(xpath = "//a[@id='ui-id-4']")
+	WebElement dropdownPlatform;
+	
 	/**
 	 * Constructor
 	 * 
@@ -117,7 +163,6 @@ public class NewBenefits extends PageBase {
 	 * Seleccionar Activo
 	 */
 	public void selectActive() {
-		System.out.println("text: ");
 		active.click();
 	}
 	
@@ -281,6 +326,18 @@ public class NewBenefits extends PageBase {
 	}
 	
 	/**
+	 * Remover Tags
+	 * 
+	 * @param times
+	 */
+	public void removeTags(int times) {
+		for (int i = 0; i < times; i++) {
+			tags.sendKeys(Keys.BACK_SPACE);
+			Sleeper.sleepTightInSeconds(1);
+		}
+	}
+	
+	/**
 	 * Crear beneficios
 	 * 
 	 * @param owner
@@ -423,6 +480,15 @@ public class NewBenefits extends PageBase {
 	}
 	
 	/**
+	 * Obtener el mensaje de error de guardar
+	 * 
+	 * @return String
+	 */
+	public String getSaveErrorMsg() {
+		return saveError.getText();
+	}
+	
+	/**
 	 * Seleccionar una categoria por el nombre
 	 * 
 	 * @param name
@@ -476,5 +542,104 @@ public class NewBenefits extends PageBase {
 				break;
 			}
 		}
+	}
+	
+	/**
+	 * Seleccionar Agregar Modo de Accesso
+	 */
+	public void addRedeeming() {
+		addRedeemings.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Modo de Accesso
+	 */
+	public void removeRedeeming() {
+		removeRedeemings.click();
+	}
+	
+	/**
+	 * Seleccionar Agregar Dias Validos
+	 */
+	public void addValidDays() {
+		addValidDays.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Dias Validos
+	 */
+	public void removeValidDays() {
+		removeValidDays.click();
+	}
+	
+	/**
+	 * Seleccionar Agregar Medios de Pago
+	 */
+	public void addPaymentMethods() {
+		addPaymentMethods.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Medios de Pago
+	 */
+	public void removePaymentMethods() {
+		removePaymentMethods.click();
+	}
+	
+	/**
+	 * Buscar una cuenta
+	 * 
+	 * @param name
+	 */
+	public void searchExclusivePlataform(String name) {
+		searchAccountsExclusive.sendKeys(name);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		dropdownPlatform.click();
+	}
+	
+	/**
+	 * Buscar una cuenta
+	 * 
+	 * @param name
+	 */
+	public void searchRestrictedPlataform(String name) {
+		searchAccountsRestricted.sendKeys(name);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		dropdownPlatform.click();
+	}
+	
+	/**
+	 * Seleccionar Agregar Plataforma restringida
+	 */
+	public void addRestricted() {
+		addRestrictedPlatforms.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Plataforma restringida
+	 */
+	public void removeRestricted() {
+		removeRestrictedPlatforms.click();
+	}
+	
+	/**
+	 * Seleccionar Agregar Plataforma exclusiva
+	 */
+	public void addExclusive() {
+		addExclusivePlatforms.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Plataforma exclusiva
+	 */
+	public void removeExclusive() {
+		removeExclusivePlatforms.click();
+	}
+	
+	/**
+	 * Seleccionar Es exclusivo
+	 */
+	public void selectExclusive() {
+		exclusive.click();
 	}
 }

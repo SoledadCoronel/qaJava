@@ -46,21 +46,16 @@ public class DetailBenefits extends PageBase {
 	@FindBy(id = "title")
 	WebElement title;
 	
-	@FindBy(id = "description_ifr")
+	@FindBy(id = "description")
 	WebElement description;
 	
-	String tags = "tags";
+	@FindBy(xpath = "//div/section[contains(@class, 'benefit-restricted-platforms')]")
+	WebElement restrictedPlatforms;
 	
-	@FindBy(id = "restrictedPlatforms-input")
-	WebElement restrictedPlatforms_input;
+	@FindBy(xpath = "//section[contains(@class, 'benefit-exclusive-platforms')]")
+	WebElement exclusivePlatforms;
 	
-	String category = "//section[@id='categories']";
-	
-	String redeemnig = "redeemingMethods";
-	
-	String validDays = "validDays";
-	
-	String paymentMethods = "paymentMethods";
+	String category = "//section[@id='categories']/div/div/ul";
 	
 	@FindBy(xpath = "//section[@id='files']/div/div/a")
 	WebElement newDocument;
@@ -75,6 +70,31 @@ public class DetailBenefits extends PageBase {
 	String visibleFileList = "//section[@id='visible-files']/div/table/tbody";
 	
 	String visibleFileLink = "//section[@id='visible-files']/div/table/tbody/tr/td/a";
+	
+	String tags = "//section[@id='tags']/div/div/span";
+	
+	String storeList = "//section[@id='stores']/div/table/tbody";
+	
+	@FindBy(xpath = "//header[@class='backoffice-header']/div/div[2]/button")
+	WebElement edit;
+	
+	@FindBy(xpath = "//section[@id='files']/div/table/tbody/tr/td[5]/a")
+	WebElement editFile;
+	
+	@FindBy(xpath = "//section[@id='visible-files']/div/table/tbody/tr/td[5]/a")
+	WebElement editVisibleFile;
+	
+	@FindBy(xpath = "//td[@id='redeemingMethods']/ul")
+	WebElement redeemingList;
+	
+	@FindBy(xpath = "//td[@id='validDays']/ul")
+	WebElement validDaysList;
+	
+	@FindBy(xpath = "//td[@id='paymentMethods']/ul")
+	WebElement paymentMethodsList;
+	
+	@FindBy(xpath = "//section[@id='stores']/div/div/a")
+	WebElement relateStore;
 	
 	/**
 	 * 
@@ -188,7 +208,16 @@ public class DetailBenefits extends PageBase {
 	 * Devuelve true si el Tag existe
 	 */
 	public boolean isTagPresent(String name) {
-		return driver.findElement(By.id(tags)).getAttribute("innerHTML").contains(name);
+		return driver.findElement(By.id("tags")).getAttribute("innerHTML").contains(name);
+	}
+	
+	/**
+	 * Devuelve true si la lista de Tags esta vacia
+	 * 
+	 * @return boolean
+	 */
+	public boolean isTagListEmpty() {
+		return driver.findElement(By.xpath(tags)).getText().isEmpty();
 	}
 	
 	/**
@@ -217,24 +246,69 @@ public class DetailBenefits extends PageBase {
 	}
 	
 	/**
+	 * Devuelve true si la categoria existe
+	 * 
+	 * @return boolean
+	 */
+	public boolean isCategoryListEmpty() {
+		return driver.findElement(By.xpath(category)).getText().isEmpty();
+	}
+	
+	/**
 	 * Devuelve true si el Modo de Acceso existe
+	 * 
+	 * @param name
+	 * @return boolean
 	 */
 	public boolean isRedeemingPresent(String name) {
-		return driver.findElement(By.id(redeemnig)).getAttribute("innerHTML").contains(name);
+		return driver.findElement(By.id("redeemingMethods")).getAttribute("innerHTML").contains(name);
 	}
 	
 	/**
 	 * Devuelve true si Dias Validos existe
+	 * 
+	 * @param name
+	 * @return boolean
 	 */
 	public boolean isValidDaysPresent(String name) {
-		return driver.findElement(By.id(validDays)).getAttribute("innerHTML").contains(name);
+		return driver.findElement(By.id("validDays")).getAttribute("innerHTML").contains(name);
 	}
 	
 	/**
 	 * Devuelve true si el Medios de Pago existe
+	 * 
+	 * @param name
+	 * @return boolean
 	 */
 	public boolean isPaymentMethodPresent(String name) {
-		return driver.findElement(By.id(paymentMethods)).getAttribute("innerHTML").contains(name);
+		return driver.findElement(By.id("paymentMethods")).getAttribute("innerHTML").contains(name);
+	}
+	
+	/**
+	 * Devuelve true si el Modo de Acceso esta vacio
+	 * 
+	 * @return boolean
+	 */
+	public boolean isRedeemingListEmpty() {
+		return redeemingList.getText().isEmpty();
+	}
+	
+	/**
+	 * Devuelve true si Dias Validos esta vacio
+	 * 
+	 * @return boolean
+	 */
+	public boolean isValidDaysListEmpty() {
+		return validDaysList.getText().isEmpty();
+	}
+	
+	/**
+	 * Devuelve true si el Medios de Pago existe
+	 * 
+	 * @return boolean
+	 */
+	public boolean isPaymentMethodListEmpty() {
+		return paymentMethodsList.getText().isEmpty();
 	}
 	
 	/**
@@ -277,6 +351,16 @@ public class DetailBenefits extends PageBase {
 	}
 	
 	/**
+	 * Seleccionar el editar del primer Documento interno
+	 * 
+	 * @return NewFileOverlay
+	 */
+	public NewFileOverlay editFirstFile() {
+		editFile.click();
+		return PageFactory.initElements(driver, NewFileOverlay.class);
+	}
+	
+	/**
 	 * Seleccionar Nuevo Anexos Públicos
 	 * 
 	 * @return NewFileOverlay
@@ -313,5 +397,67 @@ public class DetailBenefits extends PageBase {
 	 */
 	public boolean isVisibleFileEnabled() {
 		return driver.findElement(By.xpath(visibleFileList)).getAttribute("innerHTML").contains("glyphicon-ok");
+	}
+
+	/**
+	 * Seleccionar el editar del primer Anexo publico
+	 * 
+	 * @return NewFileOverlay
+	 */
+	public NewFileOverlay editFirstVisibleFile() {
+		editVisibleFile.click();
+		return PageFactory.initElements(driver, NewFileOverlay.class);
+	}
+	
+	/**
+	 * Seleccionar Editar
+	 * 
+	 * @return NewBenefits
+	 */
+	public NewBenefits selectEdit() {
+		edit.click();
+		return PageFactory.initElements(driver, NewBenefits.class);
+	}
+	
+	/**
+	 * Seleccionar Relacionar y desrelacionar sucursales al beneficio
+	 * @return
+	 */
+	public SelectStoreOverlay selectRelateStore() {
+		relateStore.click();
+		return PageFactory.initElements(driver, SelectStoreOverlay.class);
+	}
+	
+	/**
+	 * Devuelve true si la sucursal se encuntra en la lista
+	 * 
+	 * @return boolean
+	 */
+	public boolean isStoreInList(String name) {
+		boolean isStore = false;
+		if(driver.findElements(By.xpath(storeList)).size() > 0 && driver.findElement(By.xpath(storeList)).getAttribute("innerHTML").contains(name)) {
+			isStore = true;
+		}
+		return isStore;
+	}
+	
+	/**
+	 * Devuelve true si la plataforma se encuentra en la lista
+	 * 
+	 * @param name
+	 * @return boolean
+	 */
+	public boolean isRestrictedPlatformInList(String name) {
+		return restrictedPlatforms.getAttribute("innerHTML").contains(name);
+	}
+	
+	/**
+	 * Devuelve true si la plataforma se encuentra en la lista
+	 * 
+	 * @param name
+	 * @return boolean
+	 */
+	public boolean isExclusivePlatformInList(String name) {
+		return exclusivePlatforms.getAttribute("innerHTML").contains(name);
 	}
 }

@@ -128,6 +128,12 @@ public class NewCompany extends PageBase {
 	@FindBy(xpath = "//div[@id='ms-categories']/div/ul/li")
 	List<WebElement> categoryList;
 	
+	@FindBy(xpath = "//div[@id='ms-categories']/a")
+	WebElement addCategoryBtn;
+	
+	@FindBy(xpath = "//div[@id='ms-categories']/a[2]")
+	WebElement removeCategoryBtn;
+	
 	
 	/**
 	 * Constructor
@@ -151,6 +157,13 @@ public class NewCompany extends PageBase {
 	public void createName(String title) {
 		name.clear();
 		name.sendKeys(title);
+	}
+	
+	/**
+	 * Obtener el Nombre del comercio
+	 */
+	public String getName() {
+		return name.getText();
 	}
 	
 	/**
@@ -302,6 +315,18 @@ public class NewCompany extends PageBase {
 	}
 	
 	/**
+	 * Remover Tags
+	 * 
+	 * @param times
+	 */
+	public void removeTags(int times) {
+		for (int i = 0; i < times; i++) {
+			tags.sendKeys(Keys.BACK_SPACE);
+			Sleeper.sleepTightInSeconds(1);
+		}
+	}
+	
+	/**
 	 * Ingresar una imagen menor a 188x95 para devolver un error
 	 * 
 	 * @param fileupload
@@ -326,7 +351,7 @@ public class NewCompany extends PageBase {
 	 * 
 	 * @param fileupload
 	 */
-	public void image1Upload(String fileupload) {
+	public void image1UploadSmall(String fileupload) {
 		fileUpload(fileupload, image1UploadBtn, image1UploadInput);
 	}
 	
@@ -334,18 +359,51 @@ public class NewCompany extends PageBase {
 	 * Subir imagen a Imagen 1
 	 * 
 	 * @param fileupload
+	 * @return ImageCropOverlay
 	 */
-	public void image2Upload(String fileupload) {
+	public ImageCropOverlay image1Upload(String fileupload) {
+		fileUpload(fileupload, image1UploadBtn, image1UploadInput);
+		return PageFactory.initElements(driver, ImageCropOverlay.class);
+	}
+	 
+	/**
+	 * Subir imagen a Imagen 2
+	 * 
+	 * @param fileupload
+	 */
+	public void image2UploadSmall(String fileupload) {
 		fileUpload(fileupload, image2UploadBtn, image2UploadInput);
 	}
 	
 	/**
-	 * Subir imagen a Imagen 1
+	 * Subir imagen a Imagen 2
+	 * 
+	 * @param fileupload
+	 * @return ImageCropOverlay
+	 */
+	public ImageCropOverlay image2Upload(String fileupload) {
+		fileUpload(fileupload, image2UploadBtn, image2UploadInput);
+		return PageFactory.initElements(driver, ImageCropOverlay.class);
+	}
+	
+	/**
+	 * Subir imagen a Imagen 3
 	 * 
 	 * @param fileupload
 	 */
-	public void image3Upload(String fileupload) {
+	public void image3UploadSmall(String fileupload) {
 		fileUpload(fileupload, image3UploadBtn, image3UploadInput);
+	}
+	
+	/**
+	 * Subir imagen a Imagen 3
+	 * 
+	 * @param fileupload
+	 * @return ImageCropOverlay
+	 */
+	public ImageCropOverlay image3Upload(String fileupload) {
+		fileUpload(fileupload, image3UploadBtn, image3UploadInput);
+		return PageFactory.initElements(driver, ImageCropOverlay.class);
 	}
 	
 	/**
@@ -473,4 +531,19 @@ public class NewCompany extends PageBase {
 			}
 		}
 	}
+	
+	/**
+	 * Seleccionar el boton para agregar Categorias
+	 */
+	public void addCategory() {
+		addCategoryBtn.click();
+	}
+	
+	/**
+	 * Seleccionar el boton para remover Categorias
+	 */
+	public void removeCategory() {
+		removeCategoryBtn.click();
+	}	
+	
 }

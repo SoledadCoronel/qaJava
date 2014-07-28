@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 
@@ -34,6 +35,9 @@ public class DetailCategory extends PageBase {
 	List<WebElement> subcategoryList;
 	
 	String tags = "//section[@id='tags']/div/div";
+	
+	@FindBy(xpath = "//header[@class='backoffice-header']/div/div[2]/button")
+	WebElement edit;
 	
 	/**
 	 * Constructor
@@ -111,5 +115,15 @@ public class DetailCategory extends PageBase {
 			}
 		}
 		return isSubInList;
+	}
+	
+	/**
+	 * Seleccionar Editar
+	 * 
+	 * @return NewCategory
+	 */
+	public NewCategory selectEdit() {
+		edit.click();
+		return PageFactory.initElements(driver, NewCategory.class);
 	}
 }

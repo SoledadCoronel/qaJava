@@ -3,6 +3,7 @@ package com.gointegro.Pages.Backoffice_Benefits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Util.AttachmentUploads;
@@ -19,7 +20,7 @@ public class NewFileOverlay extends PageBase {
 	WebElement description;
 	
 	@FindBy (xpath = "//div[@data-fields='url']/div/div/span/div/div/span[2]/a/input")
-	WebElement imgUpload;
+	WebElement fileUpload;
 	
 	@FindBy(xpath = "//div[contains(@class, 'form-name')]/div/div/div")
 	WebElement nameErrorMsg;
@@ -51,8 +52,8 @@ public class NewFileOverlay extends PageBase {
 	 * @param fileupload
 	 */
 	public void fileUpload(String fileupload) {
-		AttachmentUploads.attachmentByElement(driver, imgUpload);
-		imgUpload.sendKeys(fileupload);
+		AttachmentUploads.attachmentByElement(driver, fileUpload);
+		fileUpload.sendKeys(fileupload);
 	}
 
 	/**
@@ -82,6 +83,23 @@ public class NewFileOverlay extends PageBase {
 		description.sendKeys(desctext);
 	}
 	
+	/**
+	 * Obtner Descripción
+	 * 
+	 * @return String
+	 */
+	public String getDescription() {
+		return description.getText();
+	}
+	
+	/**
+	 * Crear archivo
+	 * 
+	 * @param name
+	 * @param description
+	 * @param fileupload
+	 * @param isEnabled
+	 */
 	public void createFile(String name, String description, String fileupload, boolean isEnabled) {
 		createName(name);
 		createDescription(description);
@@ -94,9 +112,12 @@ public class NewFileOverlay extends PageBase {
 	
 	/**
 	 * Seleccionar el botón Guardar
+	 * 
+	 * @return DetailBenefits
 	 */
-	public void selectSave() {
+	public DetailBenefits selectSave() {
 		save.click();
+		return PageFactory.initElements(driver, DetailBenefits.class);
 	}
 	
 	/**

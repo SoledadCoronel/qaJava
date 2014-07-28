@@ -4,9 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -47,7 +45,7 @@ public class testNewStore extends TestBase {
 		driver = AllTestsBackOfficeBenefits.getDriver();
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_new_store() {
 		NewStore newStore = selectNewStore();
@@ -56,8 +54,8 @@ public class testNewStore extends TestBase {
 		newStore.createNewStore(type, name, phone, companyName, taxId, email, siteLink, address, zipCode, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		System.out.println("22: " + driver.findElement(By.xpath("//form[@class='form-horizontal']")).isDisplayed());
-		System.out.println("pri: " + driver.findElement(By.xpath("//form[@class='form-horizontal']")).isEnabled());
+		String contact = newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newStore.createFloor(floor);
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -65,21 +63,13 @@ public class testNewStore extends TestBase {
 		newStore.createApartment(apartment);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		//String contact = newStore.selectContact();
-		newStore.createContact();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		System.out.println("text: " + driver.findElement(By.xpath("//body")).isDisplayed());
-		System.out.println("text22: " + driver.findElement(By.xpath("//body")).isEnabled());
-		
-		
 		DetailStore detail = newStore.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Si", detail.getActive());
 		assertEquals(type, detail.getType());
 		assertEquals(name, detail.getName());
-		//assertEquals(contact, detail.getContact());
+		assertEquals(contact, detail.getContact());
 		assertEquals(phone, detail.getPhone());
 		assertEquals(companyName, detail.getCompanyName());
 		assertEquals(taxId, detail.getTaxId());
@@ -95,11 +85,11 @@ public class testNewStore extends TestBase {
 		assertEquals(country, detail.getCountry());
 	}
 	
-	@Ignore
-	@Test  //FALTA ASSERT
+	
+	@Test  
 	public void test_new_store_type_online() {
 		type = "Online";
-		address = "Buenos Aires, Argentina";
+		address = "Ciudad Autónoma de Buenos Aires, Buenos Aires";
 		
 		NewStore newStore = selectNewStore();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -107,23 +97,22 @@ public class testNewStore extends TestBase {
 		newStore.createNewStore(type, name, phone, companyName, taxId, email, siteLink, address, "", false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		//newStore.createContact();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		DetailStore detail = newStore.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Si", detail.getActive());
 		assertEquals(type, detail.getType());
-		assertEquals(name, detail.getName());
-		
+		assertTrue(detail.isAreaTitlePresent(address));
 	}
 	
-	@Ignore
-	@Test   //FALTA ASSERT
+	
+	@Test   
 	public void test_new_store_type_phone() {
 		type = "Telefónica";
-		address = "Buenos Aires, Argentina";
+		address = "Ciudad Autónoma de Buenos Aires, Buenos Aires";
 		
 		NewStore newStore = selectNewStore();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -131,16 +120,15 @@ public class testNewStore extends TestBase {
 		newStore.createNewStore(type, name, phone, companyName, taxId, email, siteLink, address, "", false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		//newStore.createContact();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		DetailStore detail = newStore.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Si", detail.getActive());
 		assertEquals(type, detail.getType());
-		assertEquals(name, detail.getName());
-		
+		assertTrue(detail.isAreaTitlePresent(address));
 	}
 
 	
@@ -152,11 +140,13 @@ public class testNewStore extends TestBase {
 		newStore.createNewStore(type, "", phone, companyName, taxId, email, siteLink, address, zipCode, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		newStore.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Este campo no puede estar vacío", newStore.getNameError());
-		
+		assertEquals("Este campo no puede estar vacío", newStore.getNameError());	
 	}
 
 	
@@ -168,6 +158,9 @@ public class testNewStore extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newStore.createNewStore(type, name, phone, companyName, taxId, email, siteLink, address, zipCode, false);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newStore.selectContact();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newStore.selectSave();
@@ -200,6 +193,9 @@ public class testNewStore extends TestBase {
 		newStore.createNewStore(type, name, phone, "", taxId, email, siteLink, address, zipCode, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		newStore.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
@@ -217,6 +213,9 @@ public class testNewStore extends TestBase {
 		newStore.createNewStore(type, name, phone, companyName, taxId, email, siteLink, address, zipCode, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		newStore.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
@@ -230,6 +229,9 @@ public class testNewStore extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newStore.createNewStore(type, name, phone, companyName, "", email, siteLink, address, zipCode, false);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newStore.selectContact();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newStore.selectSave();
@@ -247,6 +249,9 @@ public class testNewStore extends TestBase {
 		newStore.createNewStore(type, name, phone, companyName, taxId, email, siteLink, "", zipCode, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		newStore.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
@@ -262,17 +267,21 @@ public class testNewStore extends TestBase {
 		newStore.createNewStore(type, name, phone, companyName, taxId, email, siteLink, address, "", false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
+		newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		newStore.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("El código postal no puede estar vacío", newStore.getAddressError());
 	}
 
-	@Ignore
-	@Test  //FALTA ASSERT
+	
+	@Test  
 	public void test_new_store_add_new_area() {
 		type = "Online";
-		address = "Buenos Aires, Argentina";
+		address = "Ciudad Autónoma de Buenos Aires, Buenos Aires";
+		String address2 = "Córdoba, Argentina";
 		
 		NewStore newStore = selectNewStore();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -280,22 +289,16 @@ public class testNewStore extends TestBase {
 		newStore.createNewStore(type, name, phone, companyName, taxId, email, siteLink, "", "", false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		//newStore.createContact();
+		newStore.selectContact();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newStore.createAddressArea(address);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newStore.selectAddNewArea();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newStore.selectCollapseArea1();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		newStore.createAddressArea(address);
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		newStore.selectCollapseArea2();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		newStore.createAddressArea2(address);
+		newStore.createAddressArea2(address2);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		DetailStore detail = newStore.selectSave();
@@ -303,7 +306,8 @@ public class testNewStore extends TestBase {
 		
 		assertEquals("Si", detail.getActive());
 		assertEquals(type, detail.getType());
-		assertEquals(name, detail.getName());
+		assertTrue(detail.isAreaTitlePresent(address));
+		assertTrue(detail.isAreaTitlePresent(address2));
 	}
 	
 	private NewStore selectNewStore() {

@@ -33,8 +33,9 @@ public class DetailContactListOverlay extends PageBase {
 		
 		for(WebElement ele : contactList) {
 			if(ele.findElements(By.xpath("./td/a")).size() > 0) {
-				ele.findElement(By.xpath("./td/a")).click();
 				name = ele.findElement(By.xpath("./td/a")).getText();
+				ele.findElement(By.xpath("./td/a")).click();
+				break;
 			}
 		}
 		return name;

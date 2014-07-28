@@ -1,7 +1,9 @@
 package com.gointegro.Pages.Backoffice_Benefits;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -161,7 +163,19 @@ public class NewCategory extends PageBase {
 	 * @param name
 	 */
 	public void completeTags(String name) {
-		tags.clear();
 		tags.sendKeys(name);
+		tags.sendKeys(Keys.RETURN);
+	}
+	
+	/**
+	 * Remover Tags
+	 * 
+	 * @param times
+	 */
+	public void removeTags(int times) {
+		for (int i = 0; i < times; i++) {
+			tags.sendKeys(Keys.BACK_SPACE);
+			Sleeper.sleepTightInSeconds(1);
+		}
 	}
 }

@@ -88,9 +88,11 @@ public class DetailCompany extends PageBase {
 	/**
 	 * OTROS
 	 */
-	String tags = "//section[@id='tags']";
+	@FindBy(xpath = "//section[@id='tags']/div/div/span")
+	WebElement tags;
 	
-	String category = "//section[@id='categories']";
+	@FindBy(xpath = "//section[@id='categories']/div/div/ul")
+	WebElement category;
 	
 	@FindBy(xpath = "//section[@id='contacts']/div/div/a")
 	WebElement newContact;
@@ -104,6 +106,11 @@ public class DetailCompany extends PageBase {
 	@FindBy(xpath = "//section[@id='stores']/div/div/a")
 	WebElement newStore;
 	
+	@FindBy(xpath = "//section[@id='contacts']/div/table/tbody/tr")
+	WebElement contactList;
+	
+	String companyURL = ConfigElementsBO.getUrlBackoffice() + "/benefits/company/" + ConfigElementsBOBenefits.getCompanyId() + "/view"; 
+	
 	/**
 	 * Constructor
 	 * 
@@ -111,11 +118,20 @@ public class DetailCompany extends PageBase {
 	 */
 	public DetailCompany(WebDriver driver) {
 		super(driver);
-		URL = ConfigElementsBO.getUrlBackoffice() + "/benefits/company/" + ConfigElementsBOBenefits.getCompanyId() + "/view";
+		URL = companyURL;
+	}
+	
+	/**
+	 * Devuelve la URL de la vista
+	 */
+	public String getURL() {
+		return companyURL;
 	}
 	
 	/**
 	 * Devuelve Activo
+	 * 
+	 * @return String
 	 */
 	public String getActive() {
 		return active.getText();
@@ -123,6 +139,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Nombre del comercio
+	 * 
+	 * @return String
 	 */
 	public String getName() {
 		return name.getText();
@@ -130,6 +148,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Razón social
+	 * 
+	 * @return String
 	 */
 	public String getCompanyName() {
 		return companyName.getText();
@@ -137,6 +157,8 @@ public class DetailCompany extends PageBase {
 
 	/**
 	 * Devuelve CUIT
+	 * 
+	 * @return String
 	 */
 	public String getTaxId() {
 		return taxId.getText();
@@ -144,6 +166,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Teléfono
+	 * 
+	 * @return String
 	 */
 	public String getPhone() {
 		return phone.getText();
@@ -151,6 +175,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Fax
+	 * 
+	 * @return String
 	 */
 	public String getFax() {
 		return fax.getText();
@@ -158,6 +184,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Sitio web
+	 * 
+	 * @return String
 	 */
 	public String getWebSite() {
 		return siteLink.getText();
@@ -165,6 +193,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Logo
+	 * 
+	 * @return String
 	 */
 	public String getLogo() {
 		return logo.getText();
@@ -172,6 +202,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Imagen 1
+	 * 
+	 * @return String
 	 */
 	public String getImage1() {
 		return image1.getText();
@@ -179,6 +211,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Imagen 2
+	 * 
+	 * @return String
 	 */
 	public String getImage2() {
 		return image2.getText();
@@ -186,15 +220,17 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Imagen 3
+	 * 
+	 * @return String
 	 */
 	public String getImage3() {
 		return image3.getText();
 	}
 	
-	
-	
 	/**
 	 * Devuelve Descripción
+	 * 
+	 * @return String
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -202,6 +238,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Calle
+	 * 
+	 * @return String
 	 */
 	public String getStreet() {
 		return street.getText();
@@ -209,6 +247,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Altura
+	 * 
+	 * @return String
 	 */
 	public String getStreetNumber() {
 		return streetNumber.getText();
@@ -216,6 +256,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Piso/Oficina/Local
+	 * 
+	 * @return String
 	 */
 	public String getFloor() {
 		return floor.getText();
@@ -223,6 +265,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Departamento
+	 * 
+	 * @return String
 	 */
 	public String getApartment() {
 		return apartment.getText();
@@ -230,6 +274,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Código Postal
+	 * 
+	 * @return String
 	 */
 	public String getZipCode() {
 		return zipCode.getText();
@@ -237,6 +283,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Distrito
+	 * 
+	 * @return String
 	 */
 	public String getDistrict() {
 		return district.getText();
@@ -244,6 +292,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Localidad
+	 * 
+	 * @return String
 	 */
 	public String getCity() {
 		return city.getText();
@@ -251,6 +301,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Provincia
+	 * 
+	 * @return String
 	 */
 	public String getProvince() {
 		return province.getText();
@@ -258,6 +310,8 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve Pais
+	 * 
+	 * @return String
 	 */
 	public String getCountry() {
 		return country.getText();
@@ -265,16 +319,38 @@ public class DetailCompany extends PageBase {
 	
 	/**
 	 * Devuelve true si el Tag existe
+	 * 
+	 * @return boolean
 	 */
 	public boolean isTagPresent(String name) {
-		return driver.findElement(By.xpath(tags)).getAttribute("innerHTML").contains(name);
+		return tags.getAttribute("innerHTML").contains(name);
+	}
+	
+	/**
+	 * Devuelve true si la lista de Tags esta vacia
+	 * 
+	 * @return boolean
+	 */
+	public boolean isTagListEmpty() {
+		return tags.getText().isEmpty();
 	}
 	
 	/**
 	 * Devuelve true si la categoria existe
+	 * 
+	 * @return boolean
 	 */
 	public boolean isCategoryPresent(String name) {
-		return driver.findElement(By.xpath(category)).getAttribute("innerHTML").contains(name);
+		return category.getAttribute("innerHTML").contains(name);
+	}
+	
+	/**
+	 * Devuelve true si la categoria existe
+	 * 
+	 * @return boolean
+	 */
+	public boolean isCategoryListEmpty() {
+		return category.getText().isEmpty();
 	}
 	
 	/**
@@ -311,6 +387,7 @@ public class DetailCompany extends PageBase {
 		for(WebElement ele : contactsList) {
 			if(ele.findElements(By.xpath("./td/a")).size() > 0 && ele.findElement(By.xpath("./td/a")).getText().contains(name)) {
 				element = ele;
+				break;
 			}
 		}
 		return element;
@@ -403,4 +480,15 @@ public class DetailCompany extends PageBase {
 		return PageFactory.initElements(driver, NewStore.class);
 	}
 	
+	/**
+	 * Seleccionar el Editar del contacto
+	 * 
+	 * @return NewContactOverlay
+	 */
+	public NewContactOverlay selectEditContact() {
+		if(contactList.findElements(By.xpath("./td/a")).size() > 0) {
+			contactList.findElement(By.xpath("./td[5]/a")).click();
+		}
+		return PageFactory.initElements(driver, NewContactOverlay.class);
+	}
 }

@@ -1,6 +1,5 @@
 package com.gointegro.Pages.Backoffice_Benefits;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.browserlaunchers.Sleeper;
@@ -20,6 +19,12 @@ public class NewStore extends NewCompany {
 	
 	@FindBy(id = "contact-list")
 	WebElement contact;
+	
+	@FindBy(id = "contact-create")
+	WebElement createContact;
+	
+	@FindBy(xpath = "//span[@class='overlay-label']/div/span/a")
+	WebElement removeContact;
 	
 	@FindBy(name = "txt-search")
 	WebElement address;
@@ -44,12 +49,6 @@ public class NewStore extends NewCompany {
 	
 	@FindBy(xpath = "//div[@id='accordion']/div[2]/div[2]/div/div[2]/div/div/div/input")
 	WebElement addressArea2;
-	
-	@FindBy(xpath = "//div[@id='accordion']/div[1]/div/h4/a")
-	WebElement collapseArea1;
-	
-	@FindBy(xpath = "//div[@id='accordion']/div[2]/div/h4/a")
-	WebElement collapseArea2;
 	
 	/**
 	 * Constructor
@@ -97,6 +96,7 @@ public class NewStore extends NewCompany {
 		email.clear();
 		email.sendKeys(mail);
 	}
+	
 	/**
 	 * Seleccionar Tipo
 	 * 
@@ -141,6 +141,27 @@ public class NewStore extends NewCompany {
 	}
 	
 	/**
+	 * Seleccionar remover contacto
+	 */
+	public void removeContact() {
+		removeContact.click();
+	}
+	
+	public void createContact(String name, String surname) {
+		createContact.click();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		NewContactForStore newContact = PageFactory.initElements(driver, NewContactForStore.class);
+		newContact.createFirstName(name);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContact.createSurname(surname);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newContact.selectSave();
+	}
+	
+	/**
 	 * Seleccionar lista de Contactos
 	 * 
 	 * @return String
@@ -155,16 +176,6 @@ public class NewStore extends NewCompany {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		return contactName;
-	}
-	
-	public void makeFormVisible() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("document.getElementsByClassName('pac-container')[0].style.display = 'none'; document.getElementById('backoffice-overlay').style.display = 'none';");
-	}
-	
-	public void createContact() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("document.getElementsByName('input-contact')[0].removeAttribute('readonly'); document.getElementsByName('contact')[0].value = '802'");
 	}
 	
 	/**
@@ -200,19 +211,5 @@ public class NewStore extends NewCompany {
 	 */
 	public void selectAddNewArea() {
 		addNewArea.click();
-	}
-	
-	/**
-	 * Seleccionar el botón Ingresar un área geográfica
-	 */
-	public void selectCollapseArea1() {
-		collapseArea1.click();
-	}
-	
-	/**
-	 * Seleccionar el botón Ingresar un área geográfica
-	 */
-	public void selectCollapseArea2() {
-		collapseArea2.click();
 	}
 }
