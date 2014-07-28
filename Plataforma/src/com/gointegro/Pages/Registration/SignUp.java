@@ -64,6 +64,15 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isNamePresent() {
+		return name.isDisplayed();
+	}
+	
+	/**
 	 * Completar el surname
 	 * 
 	 * @param surname
@@ -71,6 +80,15 @@ public class SignUp extends PageBase{
 	public void setSurname(String surname) {
 		this.surname.clear();
 		this.surname.sendKeys(surname);
+	}
+	
+	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isSurnamePresent() {
+		return surname.isDisplayed();
 	}
 	
 	/**
@@ -84,6 +102,15 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isEmailPresent() {
+		return email.isDisplayed();
+	}
+	
+	/**
 	 * Completar el documento
 	 * 
 	 * @param document
@@ -94,6 +121,15 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isDocumentPresent() {
+		return document.isDisplayed();
+	}
+	
+	/**
 	 * Completar el usernameid
 	 * 
 	 * @param usernameid
@@ -101,6 +137,15 @@ public class SignUp extends PageBase{
 	public void setUsernameId(String usernameid) {
 		this.usernameId.clear();
 		this.usernameId.sendKeys(usernameid);
+	}
+	
+	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isUsernameIdPresent() {
+		return usernameId.isDisplayed();
 	}
 	
 	/**
@@ -116,6 +161,24 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isPasswordPresent() {
+		return password.isDisplayed();
+	}
+	
+	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isRepeatPasswordPresent() {
+		return repeatPassword.isDisplayed();
+	}
+	
+	/**
 	 * Completar fecha nacimiento
 	 * 
 	 * @param date
@@ -126,10 +189,28 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isBirthdatePresent() {
+		return birthdate.isDisplayed();
+	}
+	
+	/**
 	 * Completar el genero, por default M
 	 */
 	public void setGender() {
 		gender0.click();
+	}
+	
+	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isGenderPresent() {
+		return gender0.isDisplayed();
 	}
 	
 	/**
@@ -176,7 +257,7 @@ public class SignUp extends PageBase{
 	 */
 	public String getDocument() {
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
-		js1.executeScript("document.getElementById('email').disable=false");
+		js1.executeScript("document.getElementById('document').disable=false");
 		
 		return document.getAttribute("value");
 	}
