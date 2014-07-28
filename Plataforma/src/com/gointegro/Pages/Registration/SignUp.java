@@ -229,6 +229,15 @@ public class SignUp extends PageBase{
 	}
 	
 	/**
+	 * Verificar que el campo se muestre
+	 * 
+	 * @return boolean
+	 */
+	public boolean isPlatformPresent() {
+		return platform.isDisplayed();
+	}
+	
+	/**
 	 * Aceptar tyc
 	 */
 	public void setTyC() {
