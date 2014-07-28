@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.gointegro.Pages.Base.PageBase;
 import com.gointegro.Pages.Platform.Login;
@@ -43,6 +44,9 @@ public class SignUp extends PageBase{
 	
 	@FindBy (id = "submitRegistration")
 	private WebElement submitRegistration;
+	
+	@FindBy (id = "platform")
+	private WebElement platform;
 
 	/**
 	 * Constructor
@@ -211,6 +215,17 @@ public class SignUp extends PageBase{
 	 */
 	public boolean isGenderPresent() {
 		return gender0.isDisplayed();
+	}
+	
+	/**
+	 * Seleccionar la plataforma a registrarse
+	 * 
+	 * @param value
+	 */
+	public void selectPlatform(String value) {
+		Select select = new Select(platform);
+		
+		select.selectByValue(value);
 	}
 	
 	/**
