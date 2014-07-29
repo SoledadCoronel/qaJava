@@ -23,9 +23,9 @@ import com.gointegro.Tests.CommonMethods.CommonTestMethods;
 import com.gointegro.Util.WaitTool;
 import com.gointegro.Util.WorkbookUtils;
 
-public class testSinVerifLogDoc {
+public class testSinVerifLogEmail {
 
-private WebDriver driver;
+	private WebDriver driver;
 	
 	WorkbookUtils workbook = new WorkbookUtils();
 	
@@ -49,10 +49,10 @@ private WebDriver driver;
 	}
 
 	@Test
-	public void test_SinVerif_LogDoc_WithoutGenderFNPass_row1() {
-		common.readxls(1);
+	public void test_SinVerif_LogDoc_WithoutGenderFNPass_row9() {
+		common.readxls(9);
 		
-		common.configAccount(false, false, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Documento");
+		common.configAccount(false, false, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getUniqueFieldDocumentAccountUrl());
@@ -98,7 +98,7 @@ private WebDriver driver;
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		PlatformSelectOverlay overlay = PageFactory.initElements(driver, PlatformSelectOverlay.class);
@@ -114,10 +114,10 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutGenderPass_row2() {
-		common.readxls(2);
+	public void test_SinVerif_LogDoc_WithoutGenderPass_row10() {
+		common.readxls(10);
 		
-		common.configAccount(true, false, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Documento");
+		common.configAccount(true, false, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getUniqueFieldDocumentAccountUrl());
@@ -167,7 +167,7 @@ private WebDriver driver;
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		PlatformSelectOverlay overlay = PageFactory.initElements(driver, PlatformSelectOverlay.class);
@@ -183,10 +183,10 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutFNPass_row3() {
-		common.readxls(3);
+	public void test_SinVerif_LogDoc_WithoutFNPass_row11() {
+		common.readxls(11);
 		
-		common.configAccount(false, true, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Documento");
+		common.configAccount(false, true, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getUniqueFieldDocumentAccountUrl());
@@ -236,7 +236,7 @@ private WebDriver driver;
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		PlatformSelectOverlay overlay = PageFactory.initElements(driver, PlatformSelectOverlay.class);
@@ -252,10 +252,10 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutPass_row4() {
-		common.readxls(4);
+	public void test_SinVerif_LogDoc_WithoutPass_row12() {
+		common.readxls(12);
 		
-		common.configAccount(true, true, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Documento");
+		common.configAccount(true, true, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getUniqueFieldDocumentAccountUrl());
@@ -309,7 +309,7 @@ private WebDriver driver;
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "");
+		login.LoginPlatformNoReg(workbook.getMail(), "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		PlatformSelectOverlay overlay = PageFactory.initElements(driver, PlatformSelectOverlay.class);
@@ -325,10 +325,10 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutGenderFN_row5() {
-		common.readxls(5);
+	public void test_SinVerif_LogDoc_WithoutGenderFN_row13() {
+		common.readxls(13);
 		
-		common.configAccount(false, false, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Documento");
+		common.configAccount(false, false, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getUniqueFieldDocumentAccountUrl());
@@ -380,7 +380,7 @@ private WebDriver driver;
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		PlatformSelectOverlay overlay = PageFactory.initElements(driver, PlatformSelectOverlay.class);
@@ -396,10 +396,10 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutGender_row6() {
-		common.readxls(6);
+	public void test_SinVerif_LogDoc_WithoutGender_row14() {
+		common.readxls(14);
 		
-		common.configAccount(true, false, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Documento");
+		common.configAccount(true, false, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getUniqueFieldDocumentAccountUrl());
@@ -455,7 +455,7 @@ private WebDriver driver;
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		PlatformSelectOverlay overlay = PageFactory.initElements(driver, PlatformSelectOverlay.class);
@@ -471,10 +471,10 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutFN_row7() {
-		common.readxls(7);
+	public void test_SinVerif_LogDoc_WithoutFN_row15() {
+		common.readxls(15);
 		
-		common.configAccount(false, true, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Documento");
+		common.configAccount(false, true, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getUniqueFieldDocumentAccountUrl());
@@ -530,7 +530,7 @@ private WebDriver driver;
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		PlatformSelectOverlay overlay = PageFactory.initElements(driver, PlatformSelectOverlay.class);
@@ -546,10 +546,10 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutPass_row8() {
-		common.readxls(8);
+	public void test_SinVerif_LogDoc_WithoutPass_row16() {
+		common.readxls(16);
 		
-		common.configAccount(true, true, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Documento");
+		common.configAccount(true, true, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Email");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getUniqueFieldDocumentAccountUrl());
@@ -609,7 +609,7 @@ private WebDriver driver;
 		login = signup.selectRegister();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		login.LoginPlatformNoReg(workbook.getDocumento(), "integro12");
+		login.LoginPlatformNoReg(workbook.getMail(), "integro12");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		PlatformSelectOverlay overlay = PageFactory.initElements(driver, PlatformSelectOverlay.class);

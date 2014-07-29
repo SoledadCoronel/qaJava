@@ -12,6 +12,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 @RunWith(Suite.class)
 @SuiteClasses({
 	testSinVerifLogDoc.class,
+	testSinVerifLogEmail.class,
+	testSinVerifLogUsernameId.class,
 })
 public class AllTestsRegUniqDocument {
 	
