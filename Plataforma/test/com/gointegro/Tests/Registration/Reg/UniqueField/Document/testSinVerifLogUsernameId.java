@@ -50,7 +50,7 @@ private WebDriver driver;
 
 	@Test
 	public void test_SinVerif_LogDoc_WithoutGenderFNPass_row17() {
-		common.readxls(9);
+		common.readxls(17);
 		
 		common.configAccount(false, false, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -118,8 +118,8 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutGenderPass_row10() {
-		common.readxls(10);
+	public void test_SinVerif_LogDoc_WithoutGenderPass_row18() {
+		common.readxls(18);
 		
 		common.configAccount(true, false, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -191,8 +191,8 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutFNPass_row11() {
-		common.readxls(11);
+	public void test_SinVerif_LogDoc_WithoutFNPass_row19() {
+		common.readxls(19);
 		
 		common.configAccount(false, true, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -264,8 +264,8 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutPass_row12() {
-		common.readxls(12);
+	public void test_SinVerif_LogDoc_WithoutPass_row20() {
+		common.readxls(20);
 		
 		common.configAccount(true, true, false, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -341,8 +341,8 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutGenderFN_row13() {
-		common.readxls(13);
+	public void test_SinVerif_LogDoc_WithoutGenderFN_row21() {
+		common.readxls(21);
 		
 		common.configAccount(false, false, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -416,8 +416,8 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutGender_row14() {
-		common.readxls(14);
+	public void test_SinVerif_LogDoc_WithoutGender_row22() {
+		common.readxls(22);
 		
 		common.configAccount(true, false, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -495,8 +495,8 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutFN_row15() {
-		common.readxls(15);
+	public void test_SinVerif_LogDoc_WithoutFN_row23() {
+		common.readxls(23);
 		
 		common.configAccount(false, true, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -574,8 +574,8 @@ private WebDriver driver;
 	}
 	
 	@Test
-	public void test_SinVerif_LogDoc_WithoutPass_row16() {
-		common.readxls(16);
+	public void test_SinVerif_LogDoc_WithoutPass_row24() {
+		common.readxls(24);
 		
 		common.configAccount(true, true, true, ConfigElementsRegistration.getUniqueFieldDocumentAccountId(), false, "", "", "Id");
 		WaitTool.waitForJQueryProcessing(driver, 10);
