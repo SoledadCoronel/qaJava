@@ -13,10 +13,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Platform.AplicationAdd;
 import com.gointegro.Pages.Platform.AplicationInstall;
 import com.gointegro.Pages.Platform.Home;
 import com.gointegro.Pages.Platform.Logout;
+import com.gointegro.Pages.Widgets.BenefitFilterDetail;
 import com.gointegro.Pages.Workspace.WorkspaceCreate;
 import com.gointegro.Pages.Workspace.WorkspaceList;
 import com.gointegro.Tests.Base.TestBase;
@@ -460,6 +462,266 @@ public class testAddApplications extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertNotEquals(appURL, driver.getCurrentUrl());
+	}
+	
+	
+	@Test
+	public void test_add_application_benefit_map() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
+		
+		AplicationAdd appAdd = PageFactory.initElements(driver, AplicationAdd.class);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AplicationInstall appInstall = appAdd.selectInstallBenefitsCategoryMap();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.completeInstallApp(appTitle, description, true, false, false);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertTrue(workList.isApplicationInWorkspace(title, appTitle));
+		assertTrue(driver.getCurrentUrl().contains("benefits"));
+	}
+	
+	
+	@Test
+	public void test_add_application_benefit_map_private() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, true, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		AplicationAdd appAdd = PageFactory.initElements(driver, AplicationAdd.class);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AplicationInstall appInstall = appAdd.selectInstallBenefitsCategoryMap();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.completeInstallApp(appTitle, description, false, false, false);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		String appURL = driver.getCurrentUrl();
+		
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		loginBasicUser(driver);
+		
+		driver.get(appURL);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertNotEquals(appURL, driver.getCurrentUrl());
+	}
+	
+	
+	@Test
+	public void test_add_application_benefit_filter_category_empty() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		AplicationAdd appAdd = PageFactory.initElements(driver, AplicationAdd.class);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AplicationInstall appInstall = appAdd.selectInstallBenefitsFilter();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.completeInstallBenefitFilter(appTitle, description, true, false, false);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		appInstall.saveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		assertEquals("Debe seleccionar al menos una categoria", appInstall.getCategoriesError());
+	}
+	
+	
+	@Test
+	public void test_add_application_benefit_filter() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		String fileupload = ConfigElements.getFileImagen();
+		String address = "Córdoba, Córdoba, Argentina";
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		AplicationAdd appAdd = PageFactory.initElements(driver, AplicationAdd.class);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AplicationInstall appInstall = appAdd.selectInstallBenefitsFilter();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.fileUpload(fileupload);
+		
+		appInstall.completeInstallBenefitFilter(appTitle, description, true, true, false);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		appInstall.addLocation(address);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		appInstall.saveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		BenefitFilterDetail benefitDetail = PageFactory.initElements(driver, BenefitFilterDetail.class);
+		
+		assertTrue(benefitDetail.isImagePresent());
+		assertTrue(address.contains(benefitDetail.getLocation()));
+		
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
+		
+		assertTrue(workList.isApplicationInWorkspace(title, appTitle));
+	}
+	
+	
+	@Test
+	public void test_add_application_benefit_filter_with_special() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, false, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		AplicationAdd appAdd = PageFactory.initElements(driver, AplicationAdd.class);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AplicationInstall appInstall = appAdd.selectInstallBenefitsFilter();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.completeInstallBenefitFilter(appTitle, description, true, false, true);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		appInstall.saveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		BenefitFilterDetail benefitDetail = PageFactory.initElements(driver, BenefitFilterDetail.class);
+		
+		assertTrue(benefitDetail.isSpecialFilterPresent());
+	}
+	
+	
+	@Test
+	public void test_add_application_benefit_filter_private() {
+		String title = DataGenerator.nombreFile();
+		String description = StringUtils.getTextoLargo();
+		String appTitle = DataGenerator.nombreFile();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.openWorkspaceEnv();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WorkspaceCreate workspace = home.workspaceCreate();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.createWorkspace(title, description, true, true, "");
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		workspace.selectSaveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		AplicationAdd appAdd = PageFactory.initElements(driver, AplicationAdd.class);
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		AplicationInstall appInstall = appAdd.selectInstallBenefitsFilter();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		
+		appInstall.completeInstallBenefitFilter(appTitle, description, true, false, true);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		appInstall.saveBtn();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		String appURL = driver.getCurrentUrl();
+		
+		Logout logout = PageFactory.initElements(driver, Logout.class);
+		logout.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		loginBasicUser(driver);
+		
+		driver.get(appURL);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertNotEquals(appURL, driver.getCurrentUrl());	
 	}
 	
 	private void createApp(WorkspaceList workList, String title, String appTitle) {

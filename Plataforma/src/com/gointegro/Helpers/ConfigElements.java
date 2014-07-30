@@ -15,11 +15,11 @@ public class ConfigElements {
 	
 	private static String URL = "https://nahuel.p2-stage.gointegro.com";
 	
-	private static String platformname = "Go&Connection";
+	private static String platformname = "Go@Connection";
 	
 	private static String username = "gustavo.moreira@gointegro.com";
 	
-	private static String password = "integro00";
+	private static String password = ""; //integro00
 	
 	private static String nombreUsuario = "Gustavo Moreira";
 	
@@ -27,13 +27,13 @@ public class ConfigElements {
 	
 	private static String workspace_id = "696";
 	
-	private static String FileImagen = "/home/gustavomoreira/Pictures/Otro/Explosions-In-The-Sky.jpg";
+	private static String FileImagen = "/Users/Gointegro/Pictures/logo.jpg";
 	
-	private static String FileImageSmall = "/home/gustavomoreira/Pictures/Otro/small.jpg";
+	private static String FileImageSmall = "/Users/Gointegro/Pictures/small.jpg";
 	
-	private static String FileImagenChange = "/home/gustavomoreira/Pictures/Otro/business-cat.jpg";
+	private static String FileImagenChange = "/Users/Gointegro/Pictures/sound_room.jpg";
 	
-	private static String FileMP4Video= "/home/gustavomoreira/Videos/The_Moon-Close-up.mp4";
+	private static String FileMP4Video= "/Users/Gointegro/Movies/The_Moon-Close-up.mp4";
 	
 	private static String nameOtherUser = "Juan Jose Toledo";
 	

@@ -18,6 +18,13 @@ public class AplicationAdd extends PageBase{
 	
 	@FindBy (xpath = "//button[contains(@alt,'Instalar Celebraciones')]")
 	private WebElement installCelebration;
+	
+	@FindBy (xpath = "//button[contains(@alt,'Instalar Mapa de Categorías de Beneficios')]")
+	private WebElement installBenefitMap;
+	
+	@FindBy (xpath = "//button[contains(@alt,'Instalar Filtro Beneficios')]")
+	private WebElement installBenefitFilter;
+	
 	@FindBy (xpath = "//button[contains(@alt,'Instalar Novedades')]")
 	private WebElement installNews;
 	
@@ -67,6 +74,28 @@ public class AplicationAdd extends PageBase{
 	 */
 	public AplicationInstall selectInstallCelebration() {
 		installCelebration.click();
+		
+		return PageFactory.initElements(driver, AplicationInstall.class);
+	}
+	
+	/**
+	 * Seleccionar Instalar App de Mapa de Categorias de Beneficios
+	 * 
+	 * @return {@link AplicationInstall}
+	 */
+	public AplicationInstall selectInstallBenefitsCategoryMap() {
+		installBenefitMap.click();
+		
+		return PageFactory.initElements(driver, AplicationInstall.class);
+	}
+	
+	/**
+	 * Seleccionar Instalar App Filtro de Beneficios
+	 * 
+	 * @return {@link AplicationInstall}
+	 */
+	public AplicationInstall selectInstallBenefitsFilter() {
+		installBenefitFilter.click();
 		
 		return PageFactory.initElements(driver, AplicationInstall.class);
 	}

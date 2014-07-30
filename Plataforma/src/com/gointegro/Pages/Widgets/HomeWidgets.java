@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
+import com.gointegro.Helpers.ConfigElementsWidgets;
 import com.gointegro.Pages.Base.PageBase;
 
 public class HomeWidgets extends PageBase {
@@ -50,7 +51,7 @@ public class HomeWidgets extends PageBase {
 	 */
 	public HomeWidgets(WebDriver driver) {
 		super(driver);
-		URL = ConfigElements.getURL() + "/environment/ideas";
+		URL = ConfigElements.getURL() + "/environment/" + ConfigElementsWidgets.getNameEnviroment();
 	}
 	
 	/**

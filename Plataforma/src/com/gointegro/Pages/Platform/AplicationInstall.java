@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Util.AttachmentUploads;
+import com.gointegro.Util.WaitTool;
 
 public class AplicationInstall extends PageBase{
 	
@@ -21,8 +23,8 @@ public class AplicationInstall extends PageBase{
 	@FindBy (name = "disable")
 	protected WebElement radioactive;
 	
-	@FindBy (xpath = "//input[@name='disable'][2]")
-	protected WebElement radiodesactive;
+	@FindBy (xpath = "//div[@class='controls']/label[2]/input")
+	protected WebElement radiodisactive;
 	
 	@FindBy (id = "socialEnabled")
 	protected WebElement socialEnabled;
@@ -53,7 +55,31 @@ public class AplicationInstall extends PageBase{
 	
 	@FindBy(xpath = "//div[@id='install-app-view']/div")
 	protected WebElement saveErrorMsg;
-
+	
+	@FindBy(xpath = "//div[@id='tree-categories-list']/ul[1]/li/label")
+	protected WebElement category;
+	
+	@FindBy(xpath = "//span[@id='categories-error']")
+	protected WebElement categoryErrorMsg;
+	
+	@FindBy(xpath = "//input[@id='categories-list_1_select_all']")
+	protected WebElement subcategory;
+	
+	@FindBy(id= "collections-radio")
+	protected WebElement benefitSpecials;
+	
+	@FindBy (id = "attachmentUpload")
+	protected WebElement attachementupload;
+	
+	@FindBy (className = "has-locations")
+	protected WebElement locations;
+	
+	@FindBy (name = "txt-search")
+	protected WebElement locationInput;
+	
+	@FindBy (xpath = "//ul[@id='-list']/li/div/div/button")
+	protected WebElement locationBtn;
+	
 	/**
 	 * Constructor
 	 * 
@@ -109,8 +135,8 @@ public class AplicationInstall extends PageBase{
 	/**
 	 * Seleccionar Estado Desactivada
 	 */
-	protected void selectDesactive() {
-		radiodesactive.click();
+	protected void selectDisactive() {
+		radiodisactive.click();
 	}
 	
 	/**
@@ -122,7 +148,7 @@ public class AplicationInstall extends PageBase{
 		if (status)
 			selectActive();
 		else
-			selectDesactive();
+			selectDisactive();
 	}
 	
 	/**
@@ -256,4 +282,89 @@ public class AplicationInstall extends PageBase{
 		return saveErrorMsg.getText();
 	}
 
+	/**
+	 * Completar los campos de Filtro Beneficios
+	 * 
+	 * @param name
+	 * @param descr
+	 * @param status
+	 */
+	public void completeInstallBenefitFilter(String name, String descr, boolean isEnabled, boolean hasCategories, boolean hasSpecial) {
+		setAppName(name);
+		setDescription(descr);
+		setStatus(isEnabled);
+		
+		if(hasCategories) {
+			selectFirstBenefitCategory();
+			WaitTool.waitForJQueryProcessing(driver, 5);
+			
+			selectFirstBenefitSubCategory();
+		}
+		else if(hasSpecial) {
+			selectBenefitSpecials();
+		}
+		
+	}	
+	
+	/**
+	 * Seleccionar la primera categoria de Filtro Beneficios 
+	 */
+	public void selectFirstBenefitCategory() {
+		category.click();
+	}
+	
+	/**
+	 * Seleccionar todas las subCategorias de la primera categoria de Filtro Beneficios 
+	 */
+	public void selectFirstBenefitSubCategory() {
+		subcategory.click();
+	}
+	
+	/**
+	 * Seleccionar el tipo de filtro Especiales de Filtro Beneficios
+	 */
+	public void selectBenefitSpecials() {
+		benefitSpecials.click();
+	}
+	
+	/**
+	 * Devuelve el mensaje de error de categorias
+	 * 
+	 * @return String
+	 */
+	public String getCategoriesError() {
+		return categoryErrorMsg.getText();
+	}
+	
+	/**
+	 * Ingresar una imagen miniatura
+	 * 
+	 * @param fileupload
+	 */
+	public void fileUpload(String fileupload) {
+		AttachmentUploads.SocialWallAttachment(driver);
+		attachementupload.sendKeys(fileupload);
+		AttachmentUploads.waitBar(driver);
+	}
+	
+	/**
+	 * Seleccionar Ubicaciones de Filtro Beneficios
+	 */
+	public void selectBenefitLocations() {
+		locations.click();
+	}
+	
+	/**
+	 * Completar Ubicaciones
+	 * 
+	 * @param address
+	 */
+	public void addLocation(String address) {
+		selectBenefitLocations();
+		
+		locationInput.clear();
+		locationInput.sendKeys(address);
+		
+		locationBtn.click();
+	}
 }
