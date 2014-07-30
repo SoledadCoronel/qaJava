@@ -40,6 +40,7 @@ public class testNewPlatformStandard extends TestBase{
 	String googlea = DataGenerator.nombreFile();
 	boolean uservisib = false;
 	boolean socialact = true;
+	boolean country = true;
 	String timezone = "Africa/Dakar";
 	String tyc = DataGenerator.nombreFile();
 	String htmllog = DataGenerator.nombreFile();
@@ -106,7 +107,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation("", filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -136,7 +137,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -168,7 +169,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -190,7 +191,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -220,7 +221,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, "", industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -250,7 +251,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -282,7 +283,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -314,7 +315,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -335,7 +336,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname2, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -364,7 +365,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, "", videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -392,7 +393,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, "asd", videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -420,7 +421,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, "", storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -448,7 +449,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, "asd", storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -476,7 +477,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, "", web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -504,7 +505,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, "asd", web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -532,7 +533,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, "Seleccione", userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -560,7 +561,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, "Seleccione", 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -591,7 +592,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				true, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				true, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -627,7 +628,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, false, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, false, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -659,7 +660,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, "", uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, "", uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -690,7 +691,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, false, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, false, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -721,7 +722,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, "Ninguna", tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, "Ninguna", tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -752,7 +753,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, "", htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, "", country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -782,7 +783,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -819,7 +820,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -850,7 +851,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -881,7 +882,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -912,7 +913,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -943,7 +944,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -974,7 +975,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1005,7 +1006,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1036,7 +1037,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1065,7 +1066,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1102,7 +1103,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1139,7 +1140,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1173,7 +1174,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1208,7 +1209,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1246,7 +1247,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1284,7 +1285,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1316,7 +1317,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1348,7 +1349,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1380,7 +1381,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1412,7 +1413,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1444,7 +1445,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1476,7 +1477,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -1508,7 +1509,7 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		

@@ -1,7 +1,5 @@
 package com.gointegro.Pages.Backoffice_Platform;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -82,7 +80,7 @@ public class CreatePlatform extends PageBase{
 	protected WebElement targetUserType;
 	
 	@FindBy (name = "countries")
-	protected List<WebElement> countries;
+	protected WebElement countries;
 	
 	@FindBy (xpath = "//div[contains(@class,'error-message-container')]/span")
 	protected WebElement errormessage;
@@ -361,7 +359,7 @@ public class CreatePlatform extends PageBase{
 	 */
 	public void completeBasicInformation(String platname, String imgsize, String videosize, 
 			String storagesize, String web, String indus, String range, boolean disablestatus, 
-			String code, boolean uservisstatus, boolean socialstatus, String time, String tyc, String htmllog) {
+			String code, boolean uservisstatus, boolean socialstatus, String time, String tyc, boolean country, String htmllog) {
 		setPlatformName(platname);
 		setImageSize(imgsize);
 		setVideoSize(videosize);
@@ -375,6 +373,9 @@ public class CreatePlatform extends PageBase{
 		setSocialEnabled(socialstatus);
 		setTimeZone(time);
 		setTermsAndConditions(tyc);
+		if(country) {
+			selectCountry();
+		}
 		if (!htmllog.isEmpty())
 			setHtmlLogin(htmllog);
 	}
@@ -486,6 +487,13 @@ public class CreatePlatform extends PageBase{
 	
 	public void tycSelectBold() {
 		driver.findElement(By.id("c1_htmlLogin_bold")).click();
+	}
+	
+	/**
+	 * Seleccionar el primer pais
+	 */
+	public void selectCountry() {
+		countries.findElement(By.xpath("./li/input")).click();
 	}
 
 }

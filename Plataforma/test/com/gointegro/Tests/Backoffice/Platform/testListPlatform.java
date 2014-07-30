@@ -242,6 +242,7 @@ public class testListPlatform extends TestBase{
 		String googlea = DataGenerator.nombreFile();
 		boolean uservisib = false;
 		boolean socialact = true;
+		boolean country = true;
 		String timezone = "Africa/Dakar";
 		String tyc = DataGenerator.nombreFile();
 		String htmllog = DataGenerator.nombreFile();
@@ -276,7 +277,7 @@ public class testListPlatform extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
