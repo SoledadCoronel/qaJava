@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestWatcher;
@@ -47,7 +46,7 @@ public class testEditApplications extends TestBase {
 		driver = AllTestsWorkspace.getDriver();
 	}
 
-	@Ignore
+	
 	@Test
 	public void test_edit_application_title_empty () {
 		String title = DataGenerator.nombreFile();
@@ -93,7 +92,7 @@ public class testEditApplications extends TestBase {
 		assertEquals("Ingrese el nombre de la aplicación", appInstall.getTitleErrorMsg());
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_application_title() {
 		String title = DataGenerator.nombreFile();
@@ -139,7 +138,7 @@ public class testEditApplications extends TestBase {
 		assertTrue(workList.isApplicationInWorkspace(title, appTitle2));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_application_change_order () {
 		String title = DataGenerator.nombreFile();
@@ -193,7 +192,7 @@ public class testEditApplications extends TestBase {
 		assertEquals(appTitle2, workList.getFirstAppName(title));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void test_edit_application_change_to_deactivated_access_url() {
 		String title = DataGenerator.nombreFile();

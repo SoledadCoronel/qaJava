@@ -62,7 +62,7 @@ public class AplicationInstall extends PageBase{
 	@FindBy(xpath = "//span[@id='categories-error']")
 	protected WebElement categoryErrorMsg;
 	
-	@FindBy(xpath = "//input[@id='categories-list_2']")  //@FindBy(xpath = "//input[@id='categories-list_1_select_all']")
+	@FindBy(xpath = "//input[@id='categories-list_1_select_all']")
 	protected WebElement subcategory;
 	
 	@FindBy(id= "collections-radio")

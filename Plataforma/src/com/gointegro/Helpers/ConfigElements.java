@@ -19,7 +19,7 @@ public class ConfigElements {
 	
 	private static String username = "gustavo.moreira@gointegro.com";
 	
-	private static String password = "integro00";
+	private static String password = ""; //integro00
 	
 	private static String nombreUsuario = "Gustavo Moreira";
 	
@@ -29,7 +29,7 @@ public class ConfigElements {
 	
 	private static String FileImagen = "/Users/Gointegro/Pictures/logo.jpg";
 	
-	private static String FileImageSmall = "/Users/Gointegro//small.jpg";
+	private static String FileImageSmall = "/Users/Gointegro/Pictures/small.jpg";
 	
 	private static String FileImagenChange = "/Users/Gointegro/Pictures/sound_room.jpg";
 	
