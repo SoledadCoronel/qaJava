@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.gointegro.Pages.Base.PageBase;
 
@@ -17,6 +18,9 @@ public class Verification extends PageBase{
 	
 	@FindBy (id = "verificationSubmit")
 	private WebElement verificationSubmit;
+	
+	@FindBy (id = "_platform")
+	private WebElement platform;
 
 	/**
 	 * Constructor
@@ -67,6 +71,17 @@ public class Verification extends PageBase{
 		if (!value2.isEmpty())
 			complete_verificationValue2(value2);
 		
+	}
+	
+	/**
+	 * Seleccionar una plataforma
+	 * 
+	 * @param platformvalue
+	 */
+	public void selectPlatform(String platformvalue) {
+		Select select = new Select(platform);
+		
+		select.selectByValue(platformvalue);
 	}
 
 }

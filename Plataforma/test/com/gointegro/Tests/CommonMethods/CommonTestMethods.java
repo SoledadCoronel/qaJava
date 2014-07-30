@@ -12,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Backoffice.RegistrationConfig;
+import com.gointegro.Pages.Backoffice_Account.EditAccountRegional;
 import com.gointegro.Pages.Backoffice_Platform.EditPlatform;
 import com.gointegro.Pages.Backoffice_User.CreateUser;
 import com.gointegro.Pages.Registration.SignUp;
@@ -29,6 +30,12 @@ public class CommonTestMethods extends TestBase{
 	
 	private WebDriver driver;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param workbook
+	 * @param driver
+	 */
 	public CommonTestMethods(WorkbookUtils workbook, WebDriver driver) {
 		super();
 		this.workbook = workbook;
@@ -59,6 +66,30 @@ public class CommonTestMethods extends TestBase{
 		reg.completeConfigRegistration(true, false, birthdate, gender, verifstatus, fieldver1, fieldver2, identity, password, true, false, "");
 		edit.selectSave();
 	}
+	
+	/**
+	 * Configurar la cuenta para el test
+	 * 
+	 * @param birthdate
+	 * @param gender
+	 * @param password
+	 * @param idaccount
+	 * @param verifstatus
+	 * @param fieldver1
+	 * @param fieldver2
+	 * @param identity
+	 */
+	public void configAccount(boolean birthdate, boolean gender, boolean password, String idaccount, boolean verifstatus,
+			String fieldver1, String fieldver2, String identity) {
+		loginBackoffice(driver);
+		driver.get(ConfigElementsBO.getUrlBackoffice()+"/account/"+idaccount+"/edit");
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		EditAccountRegional edit = PageFactory.initElements(driver, EditAccountRegional.class);
+		RegistrationConfig reg = PageFactory.initElements(driver, RegistrationConfig.class);
+		reg.completeConfigRegistration(true, false, birthdate, gender, verifstatus, fieldver1, fieldver2, identity, password, true, false, "");
+		edit.selectSave();
+	}
+	
 	
 	/**
 	 * Completar el usario en bo
