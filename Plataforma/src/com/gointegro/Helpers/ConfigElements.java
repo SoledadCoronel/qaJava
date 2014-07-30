@@ -19,7 +19,7 @@ public class ConfigElements {
 	
 	private static String username = "gustavo.moreira@gointegro.com";
 	
-	private static String password = ""; //integro00
+	private static String password = ""; //integro00 //otrooo
 	
 	private static String nombreUsuario = "Gustavo Moreira";
 	
