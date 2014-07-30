@@ -134,7 +134,7 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='content']/div[43]/div[2]")
 	private WebElement coloricon;
 	
-	@FindBy (xpath = "//div[contains(@class,'signin-customisation-html-view')]/div[2]/p")
+	@FindBy (xpath = "//div[contains(@class,'signin-customisation-html-view')]/div[2]")
 	protected WebElement htmlsignin;
 
 	/**

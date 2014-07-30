@@ -36,6 +36,7 @@ public class testNewPlatformRegional extends TestBase{
 	String googlea = DataGenerator.nombreFile();
 	boolean uservisib = false;
 	boolean socialact = true;
+	boolean country = true;
 	String timezone = "Africa/Dakar";
 	String tyc = DataGenerator.nombreFile();
 	String htmllog = "";
@@ -77,7 +78,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation("", filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -96,7 +97,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PlatformDetail detail = newplat.selectSave();
 		
@@ -119,7 +120,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -130,7 +131,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -150,7 +151,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, "", industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -170,7 +171,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -191,7 +192,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -212,7 +213,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -223,7 +224,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname2, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -242,7 +243,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, "", videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -259,7 +260,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, "asdasd", videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -276,7 +277,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, "", storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -293,7 +294,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, "ssss", storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -310,7 +311,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, "", web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -327,7 +328,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, "gygy", web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -344,7 +345,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, "Seleccione", userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -361,7 +362,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, "Seleccione", 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		
@@ -381,7 +382,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				true, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				true, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -406,7 +407,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, false, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, false, socialact, timezone, tyc, country, htmllog);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -427,7 +428,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, "", uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, "", uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -448,7 +449,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, false, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, false, timezone, tyc, country, htmllog);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -469,7 +470,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, "Ninguna", tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, "Ninguna", tyc, country, htmllog);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -490,7 +491,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, "", htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, "", country, htmllog);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -511,7 +512,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -543,7 +544,7 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);

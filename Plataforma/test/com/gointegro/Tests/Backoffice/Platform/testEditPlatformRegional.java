@@ -37,6 +37,7 @@ public class testEditPlatformRegional extends TestBase{
 	String googlea = DataGenerator.nombreFile();
 	boolean uservisib = false;
 	boolean socialact = true;
+	boolean country = true;
 	String timezone = "Africa/Dakar";
 	String tyc = DataGenerator.nombreFile();
 	String htmllog = "";
@@ -95,7 +96,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation("", filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -115,7 +116,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformnamechanged, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -139,7 +140,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -160,7 +161,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, "", industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -180,7 +181,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -201,7 +202,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -224,7 +225,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname2, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -244,7 +245,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, "", videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -263,7 +264,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, "asdasd", videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -282,7 +283,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, "", storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -301,7 +302,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, "dasd", storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -320,7 +321,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, "", web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -339,7 +340,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, "asdsad", web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -358,7 +359,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, "Seleccione", userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -377,7 +378,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, "Seleccione", 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		
@@ -396,7 +397,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				true, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				true, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -420,7 +421,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, false, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, false, socialact, timezone, tyc, country, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -440,7 +441,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, "", uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, "", uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -460,7 +461,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, false, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, false, timezone, tyc, country, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -480,7 +481,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, "Ninguna", tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, "Ninguna", tyc, country, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -500,7 +501,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, "", htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, "", country, htmllog);
 		
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -520,7 +521,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -552,7 +553,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -575,7 +576,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname2, filesize, videosize, storage, web2, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		edit.selectCancel();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -602,7 +603,7 @@ public class testEditPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);

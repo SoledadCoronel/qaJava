@@ -14,7 +14,7 @@ public class ConfigElementsBO {
 	
 	private static String hostname = ".p2-stage.gointegro.com";
 	
-	private static String accountPlatformTestName = "Automation Test Platform";
+	private static String accountPlatformTestName = "Fresenius Medical Care";
 	
 	private static String accountRegionalId = "215";
 
