@@ -74,7 +74,7 @@ public class testNewCategory extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		AdminCategoryContent admin = home.adminCategory();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 
 		admin.createCategory(categoryname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -257,9 +257,6 @@ public class testNewCategory extends TestBase{
 				
 		assertEquals("El nombre de la categoría debe contener como máximo 80 caracteres", categoryOverlay.getCategoryNameError());
 	}
-	
-	
-	
 	
 	@After
 	public void tearDown() {
