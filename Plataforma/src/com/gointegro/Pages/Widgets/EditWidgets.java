@@ -33,6 +33,8 @@ public class EditWidgets extends PageBase {
 	
 	String imagesCarouselEdited = "./li/div/div/div/div/div";
 	
+	String galleryCarousel = "gallery-carousel";
+	
 	String imagesCarousel = "./div[2]/div/div/div/div";
 	
 	String optionsBtn = "icon-pencil";
@@ -237,7 +239,7 @@ public class EditWidgets extends PageBase {
 		String galleryAppId = "";
 		
 		for(WebElement element : widgetsList) {
-			if(element.getAttribute("class").contains("gallery.carousel")) {
+			if(element.getAttribute("class").contains(galleryCarousel)) {
 				if(element.findElements(By.xpath(installedAppGalleryTitle)).size() > 0) {
 					if(element.findElement(By.xpath(installedAppGalleryTitle)).getText().contains(name)) {
 						galleryAppId = element.getAttribute("data-id");
@@ -277,10 +279,10 @@ public class EditWidgets extends PageBase {
 		WebElement galleryElment= null;
 		
 		for(WebElement element : widgetsList) {
-			if(element.getAttribute("class").contains("gallery.carousel")) {
+			if(element.getAttribute("class").contains(galleryCarousel)) {
 				if(element.findElements(By.xpath(installedAppGalleryTitle)).size() > 0) {
 					if(element.findElement(By.xpath(installedAppGalleryTitle)).getText().contains(name)) {
-						galleryElment= element;
+						galleryElment = element;
 						break;		
 					}
 				}
@@ -300,7 +302,7 @@ public class EditWidgets extends PageBase {
 		
 		for(WebElement element : widgetsList) {
 			
-			if(element.getAttribute("class").contains("celebration.feed")) {
+			if(element.getAttribute("class").contains("celebration-feed")) {
 				if(element.findElements(By.xpath(celebAppTitle)).size() > 0 ) {
 					if(element.findElement(By.xpath(celebAppTitle)).getText().contains(name)) {
 						isInstalledAppInList= true;

@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	testDeleteAllWidgets.class,
+	/*testDeleteAllWidgets.class,
 	testNewTextWidget.class,
 	testNewImageWidget.class,
 	testNewInstalledAppWidget.class,
@@ -20,7 +20,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testOrderSizeWidgets.class,
 	testEditInstalledAppWidget.class,
 	testDeleteTextWidget.class,
-	testDeleteImageWidget.class,
+	testDeleteImageWidget.class,*/
 	testDeleteInstalledAppWidget.class,
 })
 
