@@ -296,7 +296,7 @@ public class HomeWidgets extends PageBase {
 			if(element.getAttribute("class").contains("celebration-feed")) {
 				if(element.findElements(By.xpath(installedAppTitle)).size() > 0 ) {
 					if(element.findElement(By.xpath(installedAppTitle)).getText().contains(name)) {
-						isInstalledAppInList= true;
+						isInstalledAppInList = true;
 						break;
 					}
 				}
@@ -338,12 +338,150 @@ public class HomeWidgets extends PageBase {
 		
 		for(WebElement element : widgetsList) {
 			if(element.getAttribute("class").contains("gallery.carousel") && element.getAttribute("data-id").contains(appId)) {
-				isInstalledAppInList= true;
+				isInstalledAppInList = true;
 				break;		
 			}
 		}
 		return isInstalledAppInList;
 	}
 	
+	/**
+	 * Devuelve si una Aplicación se encuentra en la lista de widgets buscando por el titulo
+	 * 
+	 * @param String
+	 * @return Boolean
+	 */
+	public Boolean isBenefitCategoryWidgetInList(String name) {
+		Boolean isBenefitAppInList = false;
+		
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("benefits-category") && element.getAttribute("innerHTML").contains(name)) {
+				isBenefitAppInList = true;
+				break;		
+			}
+		}
+		return isBenefitAppInList;
+	}
 	
+	/**
+	 * Devuelve si una Aplicación se encuentra en la lista de widgets buscando por el titulo
+	 * 
+	 * @param String
+	 * @return Boolean
+	 */
+	public Boolean isBenefitSpecialWidgetInList(String name) {
+		Boolean isBenefitAppInList = false;
+		
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("benefits-collection") && element.getAttribute("innerHTML").contains(name)) {
+				isBenefitAppInList = true;
+				break;		
+			}
+		}
+		return isBenefitAppInList;
+	}
+	
+	/**
+	 * Devuelve si una Aplicación se encuentra en la lista de widgets buscando por el titulo
+	 * 
+	 * @param String
+	 * @return Boolean
+	 */
+	public Boolean isBenefitHighlightedWidgetInList(String name) {
+		Boolean isBenefitAppInList = false;
+		
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("benefits-selected") && element.getAttribute("innerHTML").contains(name)) {
+				isBenefitAppInList = true;
+				break;		
+			}
+		}
+		return isBenefitAppInList;
+	}
+	
+	/**
+	 * Devuelve si una Aplicación se encuentra en la lista de widgets buscando por el titulo
+	 * 
+	 * @param String
+	 * @return Boolean
+	 */
+	public Boolean isBenefitRankingWidgetInList(String name) {
+		Boolean isBenefitAppInList = false;
+		
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("benefits-ranking") && element.findElement(By.xpath("./div/div")).getAttribute("innerHTML").contains(name)) {
+				isBenefitAppInList = true;
+				break;		
+			}
+		}
+		return isBenefitAppInList;
+	}
+	
+	/**
+	 * Devuelve un WebElement del widget buscando por titulo
+	 * 
+	 * @param String
+	 * @return WebElement
+	 */
+	public WebElement getBenefitCategoryWidgetElementByTitle(String name) {
+		WebElement widget = null;
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("benefits-category") && element.getAttribute("innerHTML").contains(name)) {
+				widget = element;
+				break;
+			}	
+		}
+		return widget;
+	}
+	
+	/**
+	 * Devuelve un WebElement del widget buscando por titulo
+	 * 
+	 * @param String
+	 * @return WebElement
+	 */
+	public WebElement getBenefitSpecialWidgetElementByTitle(String name) {
+		WebElement widget = null;
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("benefits-collection") && element.getAttribute("innerHTML").contains(name)) {
+				widget = element;
+				break;
+			}	
+		}
+		return widget;
+	}
+	
+	/**
+	 * Devuelve un WebElement del widget buscando por titulo
+	 * 
+	 * @param String
+	 * @return WebElement
+	 */
+	public WebElement getBenefitHighlightedWidgetElementByTitle(String name) {
+		WebElement widget = null;
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("benefits-selected") && element.getAttribute("innerHTML").contains(name)) {
+				widget = element;
+				break;
+			}	
+		}
+		return widget;
+	}
+	
+	/**
+	 * Devuelve un WebElement del widget buscando por titulo
+	 * 
+	 * @param String
+	 * @return WebElement
+	 */
+	public WebElement getBenefitRankingWidgetElementByTitle(String name) {
+		WebElement widget = null;
+		for(WebElement element : widgetsList) {
+			if(element.getAttribute("class").contains("benefits-ranking") && element.getAttribute("innerHTML").contains(name)) {
+				widget = element;
+				break;
+			}	
+		}
+		return widget;
+	}
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,9 +25,6 @@ public class NewModuleOverlay extends PageBase {
 	
 	@FindBy(className = "installed-app-radio")
 	WebElement installedRadioBtn;
-	
-	@FindBy(className = "benefits-app-radio")
-	WebElement benefitsRadioBtn;
 	
 	@FindBy(xpath = "//div[@id='new-module-standard-img']/div[3]/button[2]")
 	WebElement cancelBtn;
@@ -103,6 +101,52 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(xpath = "//div[@id='mce_17']/button")
 	WebElement tinyLink;
 	
+	//WIDGET BENEFITS
+	@FindBy(className = "benefits-app-radio")
+	WebElement benefitsRadioBtn;
+	
+	@FindBy(id = "radio-categories")
+	WebElement benefitCategoryRadioBtn;
+	
+	@FindBy(id = "radio-collection")
+	WebElement benefitSpecialRadioBtn;
+	
+	@FindBy(id = "radio-selected")
+	WebElement benefitHighlightedRadioBtn;
+	
+	@FindBy(id = "radio-ranking")
+	WebElement benefitRankingRadioBtn;
+	
+	@FindBy(className = "select-parent-tree")
+	WebElement allCategory;
+	
+	@FindBy(xpath = "//div[@class='categories-tree']/div/ul[1]/li/label")
+	WebElement firstCategory;
+	
+	@FindBy(xpath = "//div[@data-fields='categories']/div/div/div")
+	WebElement benefitsCategoryError;
+	
+	@FindBy(className = "has-locations")
+	WebElement locations;
+	
+	@FindBy(className = "help-block")
+	WebElement locationError;
+	
+	@FindBy (name = "txt-search")
+	WebElement locationInput;
+	
+	@FindBy (xpath = "//button[contains(@class, 'search-btn')]")
+	WebElement locationBtn;
+	
+	@FindBy(className = "checkbox-benefit")
+	WebElement discount;
+	
+	@FindBy(name = "txt-search")
+	WebElement searchInput;
+	
+	@FindBy (xpath = "//button[contains(@class, 'search-btn')]")
+	WebElement searchBtn;
+	
 	/**
 	 * Constructor
 	 * 
@@ -130,14 +174,6 @@ public class NewModuleOverlay extends PageBase {
 	}
 	
 	/**
-	 * Seleccionar la opción Beneficios y Continuar
-	 */
-	public void selectBenefits() {
-		benefitsRadioBtn.click();
-		selectContinue();
-	}
-
-	/**
 	 * Seleccionar el botón Continuar
 	 */
 	private void selectContinue() {
@@ -146,9 +182,12 @@ public class NewModuleOverlay extends PageBase {
 	
 	/**
 	 * Seleccionar el botón Finalizar
+	 * 
+	 * @return HomeWidgets
 	 */
-	public void selectFinishBtn() {
+	public HomeWidgets selectFinishBtn() {
 		finishBtn.click();
+		return PageFactory.initElements(driver, HomeWidgets.class);
 	}
 	
 	/**
@@ -472,4 +511,115 @@ public class NewModuleOverlay extends PageBase {
 		return galleryNoImageErrorMsg.getText();
 	}
 	
+	
+	/**
+	 *  MÓDULO DE BENEFICIOS
+	 *  
+	 */
+	
+	/**
+	 * Seleccionar la opción Beneficios y Continuar
+	 */
+	public void selectBenefits() {
+		benefitsRadioBtn.click();
+		selectContinue();
+	}
+	
+	/**
+	 * Seleccionar la opción Categoria y Continuar
+	 */
+	public void selectBenefitCategory() {
+		benefitCategoryRadioBtn.click();
+		selectContinue();
+	}
+	
+	/**
+	 * Seleccionar la opción Especiales y Continuar
+	 */
+	public void selectBenefitSpecial() {
+		benefitSpecialRadioBtn.click();
+		selectContinue();
+	}
+	
+	/**
+	 * Seleccionar la opción Destacados y Continuar
+	 */
+	public void selectBenefitHighlighted() {
+		benefitHighlightedRadioBtn.click();
+		selectContinue();
+	}
+	
+	/**
+	 * Seleccionar la opción Rankings y Continuar
+	 */
+	public void selectBenefitRanking() {
+		benefitRankingRadioBtn.click();
+		selectContinue();
+	}
+	
+	/**
+	 * Seleccionar la primera categoria en Beneficios
+	 */
+	public void selectFirstCategory() {
+		firstCategory.click();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		allCategory.click();
+	}
+	
+	/**
+	 * Devuelve el mensaje de error de la categoria en Beneficios
+	 * 
+	 * @return String
+	 */
+	public String getBenefitCategoryErrorMsg() {
+		return benefitsCategoryError.getText();
+	}
+	
+	/**
+	 * Seleccionar Ubicaciones
+	 */
+	public void selectBenefitLocations() {
+		locations.click();
+	}
+	
+	/**
+	 * Devuelve el mensaje de error de Ubicaciones en Beneficios
+	 */
+	public String getLocationError() {
+		return locationError.getText();
+	}
+	
+	/**
+	 * Completar Ubicaciones
+	 * 
+	 * @param address
+	 */
+	public void addLocation(String address) {
+		selectBenefitLocations();
+		
+		locationInput.clear();
+		locationInput.sendKeys(address);
+		
+		locationBtn.click();
+	}
+	
+	/**
+	 * Seleccionar un beneficio en el widget Destacado
+	 */
+	public void selectDiscount() {
+		discount.click();
+	}
+	
+	/**
+	 * Busca y selecciona un beneficio en el widget Destacado
+	 */
+	public void searchDiscount(String name) {
+		searchInput.clear();
+		searchInput.sendKeys(name);
+		
+		searchBtn.click();
+		
+		selectDiscount();
+	}
 }

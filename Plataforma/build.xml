@@ -68,7 +68,7 @@
 	</path>
 
 	<target name="all" depends="Galery, Celebration, Content, News, 
-		Social, Widgets, Workspace, Collaborators, BOPlatform" />
+		Social, Widgets, Workspace, Collaborators, BOPlatform, BOBenefits" />
 
 	<target name="init">
 		<mkdir dir="bin" />
@@ -235,95 +235,118 @@
 	</target>
 	
 	<target name="Workspace">
-			<delete dir="report/reportWorkspace" />
-			<mkdir dir="report/reportWorkspace" />
-			<mkdir dir="report/reportWorkspace/xml" />
-			<junit printsummary="yes" haltonfailure="no" fork="yes">
-				<classpath>
-					<pathelement location="bin" />
-					<path refid="Platform.classpath" />
-					<path location="${jar.dir}/${ant.project.name}.jar" />
-				</classpath>
+		<delete dir="report/reportWorkspace" />
+		<mkdir dir="report/reportWorkspace" />
+		<mkdir dir="report/reportWorkspace/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
 
-				<test name="com.gointegro.Tests.Workspace.AllTestsWorkspace" haltonfailure="no" todir="report/reportWorkspace/xml" outfile="TEST-result">
-					<formatter type="xml" />
-				</test>
-			</junit>
-			<junitreport todir="report/reportWorkspace">
-				<fileset dir="report/reportWorkspace/xml">
-					<include name="TEST*.xml" />
-				</fileset>
-				<report format="frames" todir="report/reportWorkspace/html" />
-			</junitreport>
-		</target>
+			<test name="com.gointegro.Tests.Workspace.AllTestsWorkspace" haltonfailure="no" todir="report/reportWorkspace/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="report/reportWorkspace">
+			<fileset dir="report/reportWorkspace/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="report/reportWorkspace/html" />
+		</junitreport>
+	</target>
 	
 	<target name="Profile">
-				<delete dir="report/reportProfile" />
-				<mkdir dir="report/reportProfile" />
-				<mkdir dir="report/reportProfile/xml" />
-				<junit printsummary="yes" haltonfailure="no" fork="yes">
-					<classpath>
-						<pathelement location="bin" />
-						<path refid="Platform.classpath" />
-						<path location="${jar.dir}/${ant.project.name}.jar" />
-					</classpath>
+		<delete dir="report/reportProfile" />
+		<mkdir dir="report/reportProfile" />
+		<mkdir dir="report/reportProfile/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
 
-					<test name="com.gointegro.Tests.Profile.AllTestsProfile" haltonfailure="no" todir="report/reportProfile/xml" outfile="TEST-result">
-						<formatter type="xml" />
-					</test>
-				</junit>
-				<junitreport todir="report/reportProfile">
-					<fileset dir="report/reportProfile/xml">
-						<include name="TEST*.xml" />
-					</fileset>
-					<report format="frames" todir="report/reportProfile/html" />
-				</junitreport>
-			</target>
+			<test name="com.gointegro.Tests.Profile.AllTestsProfile" haltonfailure="no" todir="report/reportProfile/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="report/reportProfile">
+			<fileset dir="report/reportProfile/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="report/reportProfile/html" />
+		</junitreport>
+	</target>
 	
 	<target name="Collaborators">
-					<delete dir="report/reportCollaborators" />
-					<mkdir dir="report/reportCollaborators" />
-					<mkdir dir="report/reportCollaborators/xml" />
-					<junit printsummary="yes" haltonfailure="no" fork="yes">
-						<classpath>
-							<pathelement location="bin" />
-							<path refid="Platform.classpath" />
-							<path location="${jar.dir}/${ant.project.name}.jar" />
-						</classpath>
+		<delete dir="report/reportCollaborators" />
+		<mkdir dir="report/reportCollaborators" />
+		<mkdir dir="report/reportCollaborators/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
 
-						<test name="com.gointegro.Tests.Collaborators.AllTestsCollaborators" haltonfailure="no" todir="report/reportCollaborators/xml" outfile="TEST-result">
-							<formatter type="xml" />
-						</test>
-					</junit>
-					<junitreport todir="report/reportCollaborators">
-						<fileset dir="report/reportCollaborators/xml">
-							<include name="TEST*.xml" />
-						</fileset>
-						<report format="frames" todir="report/reportCollaborators/html" />
-					</junitreport>
-				</target>
+			<test name="com.gointegro.Tests.Collaborators.AllTestsCollaborators" haltonfailure="no" todir="report/reportCollaborators/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="report/reportCollaborators">
+			<fileset dir="report/reportCollaborators/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="report/reportCollaborators/html" />
+		</junitreport>
+	</target>
 	
 	<target name="BOPlatform">
-						<delete dir="report/reportBOPlatform" />
-						<mkdir dir="report/reportBOPlatform" />
-						<mkdir dir="report/reportBOPlatform/xml" />
-						<junit printsummary="yes" haltonfailure="no" fork="yes">
-							<classpath>
-								<pathelement location="bin" />
-								<path refid="Platform.classpath" />
-								<path location="${jar.dir}/${ant.project.name}.jar" />
-							</classpath>
+		<delete dir="report/reportBOPlatform" />
+		<mkdir dir="report/reportBOPlatform" />
+		<mkdir dir="report/reportBOPlatform/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
 
-							<test name="com.gointegro.Tests.Backoffice.Platform.AllTestsBackofficePlatform" haltonfailure="no" todir="report/reportBOPlatform/xml" outfile="TEST-result">
-								<formatter type="xml" />
-							</test>
-						</junit>
-						<junitreport todir="report/reportBOPlatform">
-							<fileset dir="report/reportBOPlatform/xml">
-								<include name="TEST*.xml" />
-							</fileset>
-							<report format="frames" todir="report/reportBOPlatform/html" />
-						</junitreport>
-					</target>
+			<test name="com.gointegro.Tests.Backoffice.Platform.AllTestsBackofficePlatform" haltonfailure="no" todir="report/reportBOPlatform/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="report/reportBOPlatform">
+			<fileset dir="report/reportBOPlatform/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="report/reportBOPlatform/html" />
+		</junitreport>
+	</target>
+	
+	<target name="BOBenefits">
+		<delete dir="report/reportBOBenefits" />
+		<mkdir dir="report/reportBOBenefits" />
+		<mkdir dir="report/reportBOBenefits/xml" />
+		<junit printsummary="yes" haltonfailure="no" fork="yes">
+			<classpath>
+				<pathelement location="bin" />
+				<path refid="Platform.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+
+			<test name="com.gointegro.Tests.Backoffice.Platform.AllTestsBackOfficeBenefits" haltonfailure="no" todir="report/reportBOBenefits/xml" outfile="TEST-result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+		<junitreport todir="report/reportBOBenefits">
+			<fileset dir="report/reportBOBenefits/xml">
+				<include name="TEST*.xml" />
+			</fileset>
+			<report format="frames" todir="report/reportBOBenefits/html" />
+		</junitreport>
+	</target>
 
 </project>
