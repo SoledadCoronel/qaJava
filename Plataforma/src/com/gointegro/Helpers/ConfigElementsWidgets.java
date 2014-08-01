@@ -2,9 +2,9 @@ package com.gointegro.Helpers;
 
 public class ConfigElementsWidgets {
 
-	private static String widgetsCelebrationAppId = "1990";
+	private static String widgetsCelebrationAppId = "5245";
 	
-	private static String widgetsGalleryAppId = "1991";
+	private static String widgetsGalleryAppId = "5244";
 	
 	private static String nombreEspacio = "Automation Apps";
 	

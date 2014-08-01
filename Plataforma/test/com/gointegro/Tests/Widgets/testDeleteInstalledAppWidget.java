@@ -208,7 +208,7 @@ public class testDeleteInstalledAppWidget extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 60);
 		
 		WebElement widgetElement = editWidget.getGalleryAppWidgetElement(title);
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		//Elimino el widget
 		DeleteOverlay deteleOverlay = editWidget.selectDeleteWidget(widgetElement);

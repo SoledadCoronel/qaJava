@@ -22,6 +22,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 	testDeleteTextWidget.class,
 	testDeleteImageWidget.class,
 	testDeleteInstalledAppWidget.class,
+	testNewBenefitWidget.class,
+	testEditBenefitWidget.class,
 })
 
 public class AllTestsWidgets {
