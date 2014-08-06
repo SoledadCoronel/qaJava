@@ -201,7 +201,7 @@ public class testEditPlatformStandard extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, false, htmllog);
 		
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);

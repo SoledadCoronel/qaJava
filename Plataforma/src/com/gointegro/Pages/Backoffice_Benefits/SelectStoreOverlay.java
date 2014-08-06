@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
 
@@ -42,9 +43,12 @@ public class SelectStoreOverlay extends PageBase {
 	
 	/**
 	 * Seleccionar Cerrar Modal
+	 * 
+	 * @return DetailBenefits
 	 */
-	public void selectClose() {
+	public DetailBenefits selectClose() {
 		close.click();
+		return PageFactory.initElements(driver, DetailBenefits.class);
 	}
 
 }

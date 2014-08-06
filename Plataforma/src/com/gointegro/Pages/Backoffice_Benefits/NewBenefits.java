@@ -150,6 +150,9 @@ public class NewBenefits extends PageBase {
 	@FindBy(xpath = "//a[@id='ui-id-4']")
 	WebElement dropdownPlatform;
 	
+	@FindBy(xpath = "//button[@data-toggle='modal']")
+	WebElement confirmActive;
+	
 	/**
 	 * Constructor
 	 * 
@@ -641,5 +644,12 @@ public class NewBenefits extends PageBase {
 	 */
 	public void selectExclusive() {
 		exclusive.click();
+	}
+	
+	/**
+	 * Seleccionar el botón Confirmar del modal Activación del Beneficio
+	 */
+	public void confirmActive() {
+		confirmActive.click();
 	}
 }

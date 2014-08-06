@@ -37,7 +37,28 @@ public class testEditBenefit extends TestBase {
 		DetailBenefits detail = createBenefit(true, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
+		SelectStoreOverlay selectStore = detail.selectRelateStore();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		selectStore.selectFirstStore();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		selectStore.selectClose();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
 		NewBenefits newBenefit = detail.selectEdit();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.selectActive();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+
+		newBenefit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newBenefit.confirmActive();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newBenefit.selectActive();
