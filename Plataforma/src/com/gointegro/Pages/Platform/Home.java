@@ -39,6 +39,12 @@ public class Home extends PageBase{
 	@FindBy(xpath = "//li[@class='profile-pic open']/ul/li[1]/a")
 	private WebElement myProfileBtn;
 	
+	@FindBy(name = "q")
+	private WebElement searchField;
+	
+	@FindBy(id = "search-button")
+	private WebElement searchButton;
+	
 	private String workspaceURL = ConfigElements.getURL() + "/environment/" + ConfigElementsWorkspace.getEnvironmentName();
 
 	/**
@@ -112,5 +118,19 @@ public class Home extends PageBase{
 		selectProfileDropDown();
 		selectMyProfileBtn();
 		return PageFactory.initElements(driver, Profile.class);
+	}
+	
+	/**
+	 * Hacer una búsqueda
+	 * 	
+	 * @param text
+	 * @return SearchResult
+	 */
+	public SearchResult searchForText(String text) {
+		searchField.clear();
+		searchField.sendKeys(text);
+		
+		searchButton.click();
+		return PageFactory.initElements(driver, SearchResult.class);
 	}
 }
