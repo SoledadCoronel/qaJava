@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Backoffice_Benefits.CategoriesList;
+import com.gointegro.Pages.Backoffice_Benefits.DetailCategory;
 import com.gointegro.Pages.Backoffice_Benefits.DetailCompany;
 import com.gointegro.Pages.Backoffice_Benefits.HomeBenefits;
 import com.gointegro.Pages.Backoffice_Benefits.NewCategory;
@@ -501,6 +502,7 @@ public class testNewCompany extends TestBase {
 	@Test
 	public void test_create_company_with_category() {
 		String nameCat = DataGenerator.nombreFile();
+		String nameSubcat = DataGenerator.nombreFile();
 		
 		loginBackoffice(driver);
 		
@@ -513,6 +515,15 @@ public class testNewCompany extends TestBase {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newCategory.createCategory(nameCat, nameCat, nameCat);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		DetailCategory detail = newCategory.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		detail.selectNewSubCategory();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newCategory.createCategory(nameSubcat, nameSubcat, nameSubcat);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newCategory.selectSave();

@@ -14,7 +14,7 @@ public class ConfigElementsRegistration {
 	
 	private static String platformurlUniqueFieldUsernameId = "registrationuniqusernameid.p2-stage.gointegro.com";
 	
-	private static String locationXls = "/home/gustavomoreira/Desktop/Data.xls";
+	private static String locationXls = "/Users/Gointegro/Documents/Data.xls";
 	
 	private static String UniqueFieldDocumentAccountId = "";
 	

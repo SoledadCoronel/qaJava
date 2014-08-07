@@ -526,7 +526,7 @@ public class NewCompany extends PageBase {
 	public void selectCategory(String name) {
 		for(WebElement element : categoryList) {
 			if(element.getAttribute("innerHTML").contains(name)) {
-				element.findElement(By.xpath("./span")).click();
+				element.findElement(By.xpath("./ul/li")).click();
 				break;
 			}
 		}
