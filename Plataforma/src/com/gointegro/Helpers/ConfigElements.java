@@ -43,7 +43,7 @@ public class ConfigElements {
 	
 	private static String urlTest = "http://www.w3schools.com/";
 	
-	private static String fileNoImage = "/home/gustavomoreira/Documents/Rationomics.pdf";
+	private static String fileNoImage = "/Users/Gointegro/Documents/Rationomics.pdf";
 	
 	private static String otherUser = "federico.niveiro@gointegro.com";
 	
@@ -55,7 +55,7 @@ public class ConfigElements {
 	
 	private static String slugMiPerfil = "gustavo-moreira";
 	
-	private static String fileDownloadLocation = "/home/gustavomoreira/Desktop/";
+	private static String fileDownloadLocation = "/Users/Gointegro/Desktop/";
 
 	
 	/** Get */

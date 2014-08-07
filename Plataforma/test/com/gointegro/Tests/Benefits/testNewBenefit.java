@@ -123,6 +123,7 @@ public class testNewBenefit extends TestBase {
 		assertEquals("0 resultados", search.getResultsFoundMsg());
 	}
 	
+	
 	@Test
 	public void test_new_benefit_user_type_employee() {
 		String targetUser = "Empleados";
@@ -135,6 +136,92 @@ public class testNewBenefit extends TestBase {
 		
 		newBenefit.selectActive();
 		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newBenefit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newBenefit.confirmActive();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		Logout logOut = PageFactory.initElements(driver, Logout.class);
+		logOut.open();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		SearchResult search = home.searchForText(title);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("1 resultados", search.getResultsFoundMsg());
+	}
+	
+	
+	@Test
+	public void test_new_benefit_restricted_platform() {
+		String platform = "GoIntegro";
+		String targetUser = "General";
+		
+		DetailBenefits detail = createBenefit(targetUser);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		NewBenefits newBenefit = detail.selectEdit();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.selectActive();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newBenefit.searchRestrictedPlataform(platform);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.addRestricted();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newBenefit.confirmActive();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		Logout logOut = PageFactory.initElements(driver, Logout.class);
+		logOut.open();
+		
+		login(driver);
+		
+		Home home = PageFactory.initElements(driver, Home.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		SearchResult search = home.searchForText(title);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		assertEquals("0 resultados", search.getResultsFoundMsg());
+	}
+	
+	@Test
+	public void test_new_benefit_exclusive_platform() {
+		String platform = "GoIntegro";
+		String targetUser = "General";
+		
+		DetailBenefits detail = createBenefit(targetUser);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		NewBenefits newBenefit = detail.selectEdit();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.selectActive();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newBenefit.selectExclusive();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newBenefit.searchExclusivePlataform(platform);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.addExclusive();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newBenefit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 5);
