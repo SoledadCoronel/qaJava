@@ -691,7 +691,9 @@ public class testNewPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, false, timezone, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+		
+		newplat.selectSocial();
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		

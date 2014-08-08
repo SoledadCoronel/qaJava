@@ -13,7 +13,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsBO;
+import com.gointegro.Pages.Backoffice.PersonalizationConfig;
 import com.gointegro.Pages.Backoffice_Platform.CreatePlatformRegional;
 import com.gointegro.Pages.Backoffice_Platform.PlatformDetail;
 import com.gointegro.Pages.Platform.Logout;
@@ -40,6 +42,19 @@ public class testNewPlatformRegional extends TestBase{
 	String timezone = "Africa/Dakar";
 	String tyc = DataGenerator.nombreFile();
 	String htmllog = "";
+	
+	String uniquefield = "Documento";
+	String logourl = ConfigElements.getFileImagen();
+	String logofooter  = ConfigElements.getFileImagen();
+	String banner = ConfigElements.getFileImagen();
+	boolean showusermail = false;
+	String backgroundcolor = "#aaaaaa";
+	String BgColorHeaderFooter = "#aaaaaa";
+	String FontColor = "#aaaaaa";
+	String buttonFontColor = "#aaaaaa";
+	String buttonBackgroundColor = "#aaaaaa";
+	String defaultBorderColor = "#aaaaaa";
+	String iconsColor = "White";
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -99,6 +114,12 @@ public class testNewPlatformRegional extends TestBase{
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
 		PlatformDetail detail = newplat.selectSave();
 		
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -122,6 +143,12 @@ public class testNewPlatformRegional extends TestBase{
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
@@ -132,6 +159,10 @@ public class testNewPlatformRegional extends TestBase{
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
 		
 		newplat.selectSave();
 		
@@ -172,6 +203,12 @@ public class testNewPlatformRegional extends TestBase{
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -215,6 +252,12 @@ public class testNewPlatformRegional extends TestBase{
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
@@ -226,8 +269,11 @@ public class testNewPlatformRegional extends TestBase{
 		newplat.completeBasicInformation(platformname2, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
-		newplat.selectSave();
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
 		
+		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("La URL ingresada ya está siendo utilizada en el sistema.",newplat.getErrorMessage());
@@ -384,6 +430,12 @@ public class testNewPlatformRegional extends TestBase{
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				true, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
@@ -409,6 +461,12 @@ public class testNewPlatformRegional extends TestBase{
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, false, socialact, timezone, tyc, country, htmllog);
 		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
@@ -429,6 +487,13 @@ public class testNewPlatformRegional extends TestBase{
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, "", uservisib, socialact, timezone, tyc, country, htmllog);
+
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -449,7 +514,15 @@ public class testNewPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, false, timezone, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+		
+		newplat.selectSocial();
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -514,6 +587,12 @@ public class testNewPlatformRegional extends TestBase{
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
+		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
@@ -545,6 +624,12 @@ public class testNewPlatformRegional extends TestBase{
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
 		
 		newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);

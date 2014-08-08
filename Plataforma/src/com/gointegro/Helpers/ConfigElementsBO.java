@@ -18,7 +18,7 @@ public class ConfigElementsBO {
 	
 	private static String accountRegionalId = "215";
 
-	private static String accountRegionalName = "Automation Test Platform Regional Hija";
+	private static String accountRegionalName = "Nueva EPS Colombia";
 	
 	private static String webSiteAccount = "http://automationtestplatformregional.p2-stage.gointegro.com";
 	

@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Util.WaitTool;
 
 public class CreatePlatform extends PageBase{
 	
@@ -237,9 +238,22 @@ public class CreatePlatform extends PageBase{
 	protected void setSocialEnabled(boolean status) {
 		if (status && socialEnabled.getAttribute("checked") == null)
 			socialEnabled.click();
-		else if (!status && socialEnabled.getAttribute("checked") != null)
+		else if (!status && socialEnabled.getAttribute("checked") != null) {
 			socialEnabled.click();
+			WaitTool.waitForJQueryProcessing(driver, 5);
+			
+			SocialDisabledOverlay socialOverlay = PageFactory.initElements(driver, SocialDisabledOverlay.class);
+			socialOverlay.selectClose();
+		}
+			
 		else {}
+	}
+	
+	/**
+	 * Seleccionar Social
+	 */
+	public void selectSocial() {
+		socialEnabled.click();
 	}
 	
 	/**
