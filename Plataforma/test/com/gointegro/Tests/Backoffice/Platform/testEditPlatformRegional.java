@@ -13,7 +13,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsBO;
+import com.gointegro.Pages.Backoffice.PersonalizationConfig;
 import com.gointegro.Pages.Backoffice_Platform.CreatePlatformRegional;
 import com.gointegro.Pages.Backoffice_Platform.EditPlatform;
 import com.gointegro.Pages.Backoffice_Platform.PlatformDetail;
@@ -37,10 +39,23 @@ public class testEditPlatformRegional extends TestBase{
 	String googlea = DataGenerator.nombreFile();
 	boolean uservisib = false;
 	boolean socialact = true;
-	boolean country = true;
+	boolean country = false;
 	String timezone = "Africa/Dakar";
 	String tyc = DataGenerator.nombreFile();
 	String htmllog = "";
+	
+	String uniquefield = "Documento";
+	String logourl = ConfigElements.getFileImagen();
+	String logofooter  = ConfigElements.getFileImagen();
+	String banner = ConfigElements.getFileImagen();
+	boolean showusermail = false;
+	String backgroundcolor = "#aaaaaa";
+	String BgColorHeaderFooter = "#aaaaaa";
+	String FontColor = "#aaaaaa";
+	String buttonFontColor = "#aaaaaa";
+	String buttonBackgroundColor = "#aaaaaa";
+	String defaultBorderColor = "#aaaaaa";
+	String iconsColor = "White";
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -140,7 +155,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web2, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, false, htmllog);
 		
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -397,7 +412,13 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				true, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+				true, googlea, uservisib, socialact, timezone, tyc, false, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -461,7 +482,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, false, timezone, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, false, timezone, tyc, false, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -521,7 +542,7 @@ public class testEditPlatformRegional extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, false, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -603,7 +624,13 @@ public class testEditPlatformRegional extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, true, htmllog);
+		
+		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
+		
+		person.completePersonalization(uniquefield, logourl, logofooter, banner, 
+				showusermail, backgroundcolor, BgColorHeaderFooter, FontColor, buttonFontColor, buttonBackgroundColor, 
+				defaultBorderColor, iconsColor);
 		
 		PlatformDetail detail = newplat.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);

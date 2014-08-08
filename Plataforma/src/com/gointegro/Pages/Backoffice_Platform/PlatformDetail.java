@@ -41,31 +41,31 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='content']/div[10]/div[2]")
 	private WebElement mobileactivationcode;
 	
-	@FindBy(xpath = "//div[@id='content']/div[11]/div[2]")
+	@FindBy(xpath = "//div[@id='content']/div[12]/div[2]")
 	private WebElement timezone;
 	
-	@FindBy(xpath = "//div[@id='content']/div[12]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[13]/div/span")
 	private WebElement disableplatform;
 	
-	@FindBy(xpath = "//div[@id='content']/div[13]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[14]/div/span")
 	private WebElement userVisibility;
 	
-	@FindBy(xpath = "//div[@id='content']/div[14]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[15]/div/span")
 	private WebElement socialEnabled;
 	
-	@FindBy(xpath = "//div[@id='content']/div[15]/div[2]")
+	@FindBy(xpath = "//div[@id='content']/div[16]/div[2]")
 	private WebElement googleanalytics;
 	
-	@FindBy(xpath = "//div[@id='content']/div[16]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[17]/div/span")
 	private WebElement defaultrole;
 	
-	@FindBy(xpath = "//div[@id='content']/div[17]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[18]/div/span")
 	private WebElement defaultlang;
 	
-	@FindBy(xpath = "//div[@id='content']/div[18]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[19]/div/span")
 	private WebElement benefitsenabled;
 	
-	@FindBy(xpath = "//div[@id='content']/div[19]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[20]/div/span")
 	private WebElement userstype;
 	
 	@FindBy(xpath = "//div[@id='login-type']/div[2]")
@@ -77,7 +77,7 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='recover-password']/div[2]/span")
 	private WebElement recoverpassword;
 	
-	@FindBy(xpath = "//div[@id='content']/div[24]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[25]/div/span")
 	private WebElement registration;
 	
 	@FindBy(xpath = "//div[@id='uses-htmlSignUp']/div[2]/p")
@@ -98,10 +98,10 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='content']/div[30]/div")
 	private WebElement verification;
 	
-	@FindBy(xpath = "//div[@id='content']/div[31]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[32]/div[2]/span")
 	private WebElement uniquefield;
 	
-	@FindBy(xpath = "//div[@id='content']/div[32]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[33]/div/span")
 	private WebElement showusersmail;
 	
 	@FindBy(xpath = "//div[@id='principal-logo']/div[2]/img")

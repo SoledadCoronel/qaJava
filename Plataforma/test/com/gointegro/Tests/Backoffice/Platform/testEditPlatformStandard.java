@@ -46,7 +46,7 @@ public class testEditPlatformStandard extends TestBase{
 	String googlea = DataGenerator.nombreFile();
 	boolean uservisib = false;
 	boolean socialact = true;
-	boolean country = true;
+	boolean country = false;
 	String timezone = "Africa/Dakar";
 	String tyc = DataGenerator.nombreFile();
 	String htmllog = DataGenerator.nombreFile();
@@ -508,6 +508,7 @@ public class testEditPlatformStandard extends TestBase{
 		assertEquals("", detail.getGoogleCode());
 	}
 	
+	
 	@Test
 	public void test_edit_platform_social_disabled() {
 		platformname = DataGenerator.nombreFile();
@@ -520,7 +521,7 @@ public class testEditPlatformStandard extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, false, timezone, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, false, timezone, tyc, false, htmllog);
 		
 		detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -843,7 +844,7 @@ public class testEditPlatformStandard extends TestBase{
 		EditPlatform edit = detail.selectEditar();
 		
 		edit.completeBasicInformation(platformname2, filesize2, videosize, storage2, web2, industry2, userRange2, 
-				disablestatus, googlea, uservisib, socialact, timezone2, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone2, tyc, false, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
@@ -921,7 +922,7 @@ public class testEditPlatformStandard extends TestBase{
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
-				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
+				disablestatus, googlea, uservisib, socialact, timezone, tyc, true, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
 		
