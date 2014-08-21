@@ -1,41 +1,35 @@
 package com.gointegro.Tests.Benefits;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
-@RunWith(Suite.class)
-@SuiteClasses({ 
-	testNewBenefit.class,
-	})
+import com.gointegro.Tests.Base.TestBase;
 
-public class AllTestsBenefits {
+public class AllTestsBenefits extends TestBase {
 	
 private static WebDriver driver;
-
-@BeforeClass
-public static void setUp(){
-	FirefoxBinary firefox = new FirefoxBinary();
-	firefox.setEnvironmentProperty("DISPLAY", ":0");
-	setDriver(new FirefoxDriver(firefox,null));
-}
-
-public static WebDriver getDriver() {
-	return driver;
-}
-
-public static void setDriver(WebDriver driver) {
-	AllTestsBenefits.driver = driver;
-}
-
-@AfterClass
- public static void tearDown() {
-	driver.quit();
-}
+	
+	@BeforeClass
+	public static void setUpClass(){
+		FirefoxBinary firefox = new FirefoxBinary();
+		firefox.setEnvironmentProperty("DISPLAY", ":0");
+		setDriver(new FirefoxDriver(firefox,null));
+	}
+	
+	public static WebDriver getDriver() {
+		return driver;
+	}
+	
+	public static void setDriver(WebDriver driver) {
+		AllTestsBenefits.driver = driver;
+	}
+	
+	@AfterClass
+	 public static void tearDownClass() {
+		driver.quit();
+	}
 
 }

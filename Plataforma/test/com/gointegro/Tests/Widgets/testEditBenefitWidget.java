@@ -3,10 +3,7 @@ package com.gointegro.Tests.Widgets;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
@@ -15,16 +12,18 @@ import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Pages.Widgets.EditWidgets;
 import com.gointegro.Pages.Widgets.HomeWidgets;
 import com.gointegro.Pages.Widgets.NewModuleOverlay;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.WaitTool;
 
-public class testEditBenefitWidget extends TestBase {
+public class testEditBenefitWidget extends AllTestsWidgets {
 	
 	String title = DataGenerator.nombreFile();
 	
@@ -40,9 +39,9 @@ public class testEditBenefitWidget extends TestBase {
 		}
 	};
 	
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsWidgets.getDriver();
+		driver = getDriver();
 	}
 	
 	
@@ -626,7 +625,7 @@ public class testEditBenefitWidget extends TestBase {
 		return newModule;
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
 		logOut.open();

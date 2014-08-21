@@ -23,7 +23,7 @@ import com.gointegro.Pages.Social.TagFeed;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.WaitTool;
 
-public class testHashtagComment {
+public class testHashtagComment extends AllTests {
 	
 	private WebDriver driver;
 
@@ -39,10 +39,10 @@ public class testHashtagComment {
 	
 	@Before
 	public void setUp() {
-		driver = AllTests.getDriver();
+		driver = getDriver();
 	}
 
-	@Test
+	@Test  //no funciona 30/04 https://gointegro.atlassian.net/browse/PLATAFORMAII-2889
 	public void test_hashtag_comment() {
 		String textopost = DataGenerator.horaactual();
 		String commentpost = "#hashtag2 "+DataGenerator.nombreFile();

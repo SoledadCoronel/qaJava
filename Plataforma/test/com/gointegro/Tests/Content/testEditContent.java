@@ -5,10 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
@@ -16,17 +13,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Pages.Content.ContentList;
 import com.gointegro.Pages.Content.HomeContent;
 import com.gointegro.Pages.Content.NewContent;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
-public class testEditContent extends TestBase{
+public class testEditContent extends AllTestsContent {
 	
 	private WebDriver driver;
 	
@@ -40,9 +39,9 @@ public class testEditContent extends TestBase{
 		}
 	};
 	
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsContent.getDriver();
+		driver = getDriver();
 	}
 	
 	
@@ -455,7 +454,7 @@ public class testEditContent extends TestBase{
 	}
 	
 		
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();

@@ -4,16 +4,16 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Platform.Home;
@@ -22,12 +22,11 @@ import com.gointegro.Pages.Profile.FileTab;
 import com.gointegro.Pages.Profile.Profile;
 import com.gointegro.Pages.Social.PostForm;
 import com.gointegro.Pages.Social.SocialWall;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.FileDownloader;
 import com.gointegro.Util.WaitTool;
 
-public class testNewFile extends TestBase {
+public class testNewFile extends AllTestsProfile {
 	
 	private WebDriver driver;
 	
@@ -41,9 +40,9 @@ public class testNewFile extends TestBase {
 		}
 	};
 
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsProfile.getDriver();
+		driver = getDriver();
 	}
 	
 	@Test
@@ -205,7 +204,7 @@ public class testNewFile extends TestBase {
 		assertTrue(social.isFileInList(name));
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
 		logOut.open();
