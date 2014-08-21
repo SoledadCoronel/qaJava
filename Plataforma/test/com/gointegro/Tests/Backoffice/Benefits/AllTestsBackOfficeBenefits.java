@@ -1,44 +1,19 @@
 package com.gointegro.Tests.Backoffice.Benefits;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
-@RunWith(Suite.class)
-@SuiteClasses({
-	testNewCompany.class,
-	testNewCategory.class,
-	testNewSubCategory.class,
-	testNewSpecial.class,
-	testNewContact.class,
-	testNewBenefit.class,
-	testNewFile.class,
-	testNewVisibleFile.class,
-	testNewStore.class,
-	testNewTerminal.class,
-	testEditCompany.class,
-	testEditCategory.class,
-	testEditBenefit.class,
-	testEditSpecial.class,
-	testEditFile.class,
-	testEditVisibleFile.class,
-	testEditStore.class,
-	testEditTerminal.class,
-	testEditContact.class,
-	testEditSubcategory.class,
-})
+import com.gointegro.Tests.Base.TestBase;
 
-public class AllTestsBackOfficeBenefits {
+public class AllTestsBackOfficeBenefits extends TestBase {
 
 	private static WebDriver driver;
 	
 	@BeforeClass
-	public static void setUp(){
+	public static void setUpClass(){
 		FirefoxBinary firefox = new FirefoxBinary();
 		firefox.setEnvironmentProperty("DISPLAY", ":0");
 		setDriver(new FirefoxDriver(firefox,null));
@@ -53,7 +28,7 @@ public class AllTestsBackOfficeBenefits {
 	}
 	
 	@AfterClass
-	 public static void tearDown() {
+	 public static void tearDownClass() {
 		driver.quit();
 	}
 }

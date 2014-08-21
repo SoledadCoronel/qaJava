@@ -2,16 +2,16 @@ package com.gointegro.Tests.Backoffice.Platform;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsBO;
@@ -19,12 +19,11 @@ import com.gointegro.Pages.Backoffice.PersonalizationConfig;
 import com.gointegro.Pages.Backoffice_Platform.CreatePlatformRegional;
 import com.gointegro.Pages.Backoffice_Platform.PlatformDetail;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
-public class testNewPlatformRegional extends TestBase{
+public class testNewPlatformRegional extends AllTestsBackofficePlatform {
 	
 	private WebDriver driver;
 	String platformname = DataGenerator.nombreFile();
@@ -66,9 +65,9 @@ public class testNewPlatformRegional extends TestBase{
 		}
 	};
 	
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsBackofficePlatform.getDriver();
+		driver = getDriver();
 	}
 	
 	@Test
@@ -654,7 +653,7 @@ public class testNewPlatformRegional extends TestBase{
 		assertNotEquals(urlCreate, driver.getCurrentUrl());
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();

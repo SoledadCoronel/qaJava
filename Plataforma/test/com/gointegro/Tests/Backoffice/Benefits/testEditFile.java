@@ -2,11 +2,11 @@ package com.gointegro.Tests.Backoffice.Benefits;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Backoffice_Benefits.DetailBenefits;
@@ -14,17 +14,16 @@ import com.gointegro.Pages.Backoffice_Benefits.DetailCompany;
 import com.gointegro.Pages.Backoffice_Benefits.NewBenefits;
 import com.gointegro.Pages.Backoffice_Benefits.NewFileOverlay;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.WaitTool;
 
-public class testEditFile extends TestBase {
+public class testEditFile extends AllTestsBackOfficeBenefits {
 	
 	private WebDriver driver;
 	
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsBackOfficeBenefits.getDriver();
+		driver = getDriver();
 	}
 	
 	
@@ -161,7 +160,7 @@ public class testEditFile extends TestBase {
 		return newFile.selectSave();
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
 		logOut.open();

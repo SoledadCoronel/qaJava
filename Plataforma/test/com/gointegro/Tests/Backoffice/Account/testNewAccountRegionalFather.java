@@ -2,16 +2,16 @@ package com.gointegro.Tests.Backoffice.Account;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Helpers.ConfigElementsBO;
@@ -22,11 +22,10 @@ import com.gointegro.Pages.Backoffice_Account.CreateAccountHome;
 import com.gointegro.Pages.Backoffice_Account.CreateAccountRegional;
 import com.gointegro.Pages.Platform.Login;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.WaitTool;
 
-public class testNewAccountRegionalFather extends TestBase {
+public class testNewAccountRegionalFather extends AllTestsAccount {
 
 	private WebDriver driver;
 
@@ -66,9 +65,9 @@ public class testNewAccountRegionalFather extends TestBase {
 		}
 	};
 
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsAccount.getDriver();
+		driver = getDriver();
 	}
 	
 	@Test
@@ -809,7 +808,7 @@ public class testNewAccountRegionalFather extends TestBase {
 		assertNotEquals(url, driver.getCurrentUrl());
 	}
 
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();

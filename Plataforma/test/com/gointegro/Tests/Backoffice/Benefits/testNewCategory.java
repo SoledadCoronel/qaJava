@@ -2,30 +2,29 @@ package com.gointegro.Tests.Backoffice.Benefits;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Pages.Backoffice_Benefits.CategoriesList;
 import com.gointegro.Pages.Backoffice_Benefits.DetailCategory;
 import com.gointegro.Pages.Backoffice_Benefits.HomeBenefits;
 import com.gointegro.Pages.Backoffice_Benefits.NewCategory;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
-public class testNewCategory extends TestBase {
+public class testNewCategory extends AllTestsBackOfficeBenefits {
 	
 	private WebDriver driver;
 	
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsBackOfficeBenefits.getDriver();
+		driver = getDriver();
 	}
 
 	
@@ -343,7 +342,7 @@ public class testNewCategory extends TestBase {
 		assertTrue(detail.isTagPresent(tag));
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
 		logOut.open();
