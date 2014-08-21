@@ -2,16 +2,16 @@ package com.gointegro.Tests.Workspace;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Pages.Platform.Home;
 import com.gointegro.Pages.Platform.Logout;
@@ -19,12 +19,11 @@ import com.gointegro.Pages.Workspace.AdminWorkspace;
 import com.gointegro.Pages.Workspace.DeleteOverlay;
 import com.gointegro.Pages.Workspace.WorkspaceCreate;
 import com.gointegro.Pages.Workspace.WorkspaceList;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
-public class testDeleteWorkspace extends TestBase {
+public class testDeleteWorkspace extends AllTestsWorkspace {
 	
 	private WebDriver driver;
 	
@@ -38,9 +37,9 @@ public class testDeleteWorkspace extends TestBase {
 		}
 	};
 	
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsWorkspace.getDriver();
+		driver = getDriver();
 	}
 
 	
@@ -182,7 +181,7 @@ public class testDeleteWorkspace extends TestBase {
 	}
 	
 	
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();

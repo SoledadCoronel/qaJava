@@ -1,27 +1,19 @@
 package com.gointegro.Tests.Profile;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
-@RunWith(Suite.class)
-@SuiteClasses({
-	testNewFile.class,
-	testDeleteFile.class,
-	testEditProfileData.class,
-})
+import com.gointegro.Tests.Base.TestBase;
 
-public class AllTestsProfile {
+public class AllTestsProfile extends TestBase {
 
 private static WebDriver driver;
 	
 	@BeforeClass
-	public static void setUp(){
+	public static void setUpClass(){
 		FirefoxBinary firefox = new FirefoxBinary();
 		firefox.setEnvironmentProperty("DISPLAY", ":0");
 		setDriver(new FirefoxDriver(firefox,null));
@@ -36,7 +28,7 @@ private static WebDriver driver;
 	}
 	
 	@AfterClass
-	 public static void tearDown() {
+	 public static void tearDownClass() {
 		driver.quit();
 	}
 }

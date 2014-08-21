@@ -2,16 +2,16 @@ package com.gointegro.Tests.Celebration;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Celebration.AdminCategory;
@@ -24,7 +24,7 @@ import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
-public class testNewCategory {
+public class testNewCategory extends AllTestsCelebration {
 	
 	private WebDriver driver;
 
@@ -38,9 +38,9 @@ public class testNewCategory {
 		}
 	};
 	
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsCelebration.getDriver();
+		driver = getDriver();
 	}
 
 	@Test
@@ -399,7 +399,7 @@ public class testNewCategory {
 		assertFalse(newevent.getCategoryPresent().contains(categoryname));
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();
