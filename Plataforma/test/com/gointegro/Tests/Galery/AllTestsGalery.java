@@ -1,31 +1,19 @@
 package com.gointegro.Tests.Galery;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
-@RunWith(Suite.class)
-@SuiteClasses({
-	testNewAlbum.class,
-	testEditAlbumName.class,
-	testDeleteAlbum.class,
-	testUploadFile.class,
-	testImageDetail.class,
-	testDeleteImage.class,
-	testSetAsCover.class,
-	testOrderAlbum.class
-})
-public class AllTestsGalery {
+import com.gointegro.Tests.Base.TestBase;
+
+public class AllTestsGalery extends TestBase {
 	
 private static WebDriver driver;
 	
 	@BeforeClass
-	public static void setUp() {
+	public static void setUpClass() {
 		FirefoxBinary firefox = new FirefoxBinary();
 		firefox.setEnvironmentProperty("DISPLAY", ":0");
 		setDriver(new FirefoxDriver(firefox,null));
@@ -40,7 +28,7 @@ private static WebDriver driver;
 	}
 	
 	@AfterClass
-	public static void tearDown() {
+	public static void tearDownClass() {
 		driver.quit();
 	}
 

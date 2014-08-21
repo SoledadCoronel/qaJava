@@ -2,17 +2,16 @@ package com.gointegro.Tests.Galery;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Pages.Galery.AdminAlbum;
 import com.gointegro.Pages.Galery.AlbumDetail;
@@ -20,12 +19,11 @@ import com.gointegro.Pages.Galery.EditAlbum;
 import com.gointegro.Pages.Galery.HomeGalery;
 import com.gointegro.Pages.Galery.NewAlbumOverlay;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.StringUtils;
 import com.gointegro.Util.WaitTool;
 
-public class testEditAlbumName extends TestBase {
+public class testEditAlbumName extends AllTestsGalery {
 
 	private WebDriver driver;
 
@@ -39,9 +37,9 @@ public class testEditAlbumName extends TestBase {
 		}
 	};
 
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsGalery.getDriver();
+		driver = getDriver();
 	}
 
 	@Test
@@ -290,8 +288,7 @@ public class testEditAlbumName extends TestBase {
 		assertEquals(albumnameedit, detail.getAlbumTitle());
 	}
 
-	@Ignore
-	@Test
+	@Test(enabled = false)
 	public void test_edit_album_special_char() {
 		String albumname = DataGenerator.nombreFile();
 		String albumnameedit = StringUtils.getCaracteresEspeciales();
@@ -497,7 +494,7 @@ public class testEditAlbumName extends TestBase {
 		home.open();
 	}
 
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logout = PageFactory.initElements(driver, Logout.class);
 		logout.open();

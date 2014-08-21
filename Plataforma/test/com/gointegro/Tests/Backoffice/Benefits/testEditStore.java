@@ -3,28 +3,27 @@ package com.gointegro.Tests.Backoffice.Benefits;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Backoffice_Benefits.DetailCompany;
 import com.gointegro.Pages.Backoffice_Benefits.DetailStore;
 import com.gointegro.Pages.Backoffice_Benefits.NewStore;
 import com.gointegro.Pages.Platform.Logout;
-import com.gointegro.Tests.Base.TestBase;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.WaitTool;
 
-public class testEditStore extends TestBase {
+public class testEditStore extends AllTestsBackOfficeBenefits {
 	
 	private WebDriver driver;
 	
-	@Before
+	@BeforeMethod
 	public void setUp() {
-		driver = AllTestsBackOfficeBenefits.getDriver();
+		driver = getDriver();
 	}
 	
 	
@@ -361,7 +360,7 @@ public class testEditStore extends TestBase {
 		return newStore.selectSave();
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() {
 		Logout logOut = PageFactory.initElements(driver, Logout.class);
 		logOut.open();

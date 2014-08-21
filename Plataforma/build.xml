@@ -4,7 +4,7 @@
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. -->
-<project basedir="." default="all" name="Platform">
+<project basedir="." default="runAll" name="Platform">
 	<property environment="env" />
 	<property name="build-dir" location="build" />
 	<property name="classes-dir" value="${build-dir}/classes" />
@@ -16,58 +16,18 @@
 	<property name="target" value="1.7" />
 	<property name="source" value="1.7" />
 	<path id="JUnit 4.libraryclasspath">
-		<pathelement location="/home/tester/Junit/junit-4.11.jar" />
-		<pathelement location="/home/tester/Junit/hamcrest-core-1.3.jar" />
+		<pathelement location="/Users/Gointegro/Documents/Libs/junit-4.11.jar" />
+		<pathelement location="/Users/Gointegro/Documents/Libs/hamcrest-core-1.3.jar" />
 	</path>
-	<path id="Platform.classpath">
+	<path id="Libs.classpath">
 		<pathelement location="bin" />
-		<pathelement location="/home/tester/selenium/selenium-java-2.41.0.jar" />
-		<pathelement location="/home/tester/selenium/selenium-java-2.41.0-srcs.jar" />
-		<pathelement location="/home/tester/selenium/libs/apache-mime4j-0.6.jar" />
-		<pathelement location="/home/tester/selenium/libs/bsh-1.3.0.jar" />
-		<pathelement location="/home/tester/selenium/libs/cglib-nodep-2.1_3.jar" />
-		<pathelement location="/home/tester/selenium/libs/commons-codec-1.8.jar" />
-		<pathelement location="/home/tester/selenium/libs/commons-collections-3.2.1.jar" />
-		<pathelement location="/home/tester/selenium/libs/commons-exec-1.1.jar" />
-		<pathelement location="/home/tester/selenium/libs/commons-io-2.2.jar" />
-		<pathelement location="/home/tester/selenium/libs/commons-jxpath-1.3.jar" />
-		<pathelement location="/home/tester/selenium/libs/commons-lang3-3.1.jar" />
-		<pathelement location="/home/tester/selenium/libs/commons-logging-1.1.1.jar" />
-		<pathelement location="/home/tester/selenium/libs/cssparser-0.9.11.jar" />
-		<pathelement location="/home/tester/selenium/libs/guava-15.0.jar" />
-		<pathelement location="/home/tester/selenium/libs/hamcrest-core-1.3.jar" />
-		<pathelement location="/home/tester/selenium/libs/hamcrest-library-1.3.jar" />
-		<pathelement location="/home/tester/selenium/libs/htmlunit-2.13.jar" />
-		<pathelement location="/home/tester/selenium/libs/htmlunit-core-js-2.13.jar" />
-		<pathelement location="/home/tester/selenium/libs/httpclient-4.3.1.jar" />
-		<pathelement location="/home/tester/selenium/libs/httpcore-4.3.jar" />
-		<pathelement location="/home/tester/selenium/libs/httpmime-4.3.1.jar" />
-		<pathelement location="/home/tester/selenium/libs/ini4j-0.5.2.jar" />
-		<pathelement location="/home/tester/selenium/libs/jcommander-1.29.jar" />
-		<pathelement location="/home/tester/selenium/libs/jetty-websocket-8.1.8.jar" />
-		<pathelement location="/home/tester/selenium/libs/jna-3.4.0.jar" />
-		<pathelement location="/home/tester/selenium/libs/jna-platform-3.4.0.jar" />
-		<pathelement location="/home/tester/selenium/libs/json-20080701.jar" />
-		<pathelement location="/home/tester/selenium/libs/junit-dep-4.11.jar" />
-		<pathelement location="/home/tester/selenium/libs/nekohtml-1.9.19.jar" />
-		<pathelement location="/home/tester/selenium/libs/netty-3.5.7.Final.jar" />
-		<pathelement location="/home/tester/selenium/libs/operadriver-1.5.jar" />
-		<pathelement location="/home/tester/selenium/libs/phantomjsdriver-1.1.0.jar" />
-		<pathelement location="/home/tester/selenium/libs/protobuf-java-2.4.1.jar" />
-		<pathelement location="/home/tester/selenium/libs/sac-1.3.jar" />
-		<pathelement location="/home/tester/selenium/libs/serializer-2.7.1.jar" />
-		<pathelement location="/home/tester/selenium/libs/testng-6.8.5.jar" />
-		<pathelement location="/home/tester/selenium/libs/xalan-2.7.1.jar" />
-		<pathelement location="/home/tester/selenium/libs/xercesImpl-2.10.0.jar" />
-		<pathelement location="/home/tester/selenium/libs/xml-apis-1.4.01.jar" />
-		<pathelement location="/home/tester/Logback/logback-access-1.1.2.jar" />
-		<pathelement location="/home/tester/Logback/logback-access-1.1.2-sources.jar" />
-		<pathelement location="/home/tester/Logback/logback-classic-1.1.2.jar" />
-		<pathelement location="/home/tester/Logback/logback-core-1.1.2.jar" />
-		<pathelement location="/home/tester/Logback/slf4j-api-1.7.6.jar" />
-		<pathelement location="/home/tester/Downloads/jxl.jar" />
+		<fileset dir="/Users/Gointegro/Documents/Libs">
+		        <include name="**/*.jar"/>
+		</fileset>
 		<path refid="JUnit 4.libraryclasspath" />
 	</path>
+	
+	<taskdef resource="testngtasks" classpath="/Users/Gointegro/Documents/Libs/testng-6.8.5.jar" />
 
 	<target name="all" depends="Galery, Celebration, Content, News, 
 		Social, Widgets, Workspace, Collaborators, BOPlatform, BOBenefits" />
@@ -96,7 +56,11 @@
 		</javac>
 	</target>
 
-
+	<target name="runAll" depends="compile"> 
+		<testng classpathref="Libs.classpath" suitename="suite1"> 
+			<xmlfileset dir="${basedir}" includes="testng.xml"/> 
+		</testng> 
+	</target> 
 
 	<target name="Galery" depends="compile">
 		<delete dir="report/reportGalery" />
