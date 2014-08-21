@@ -19,7 +19,7 @@
 		<pathelement location="/Users/Gointegro/Documents/Libs/junit-4.11.jar" />
 		<pathelement location="/Users/Gointegro/Documents/Libs/hamcrest-core-1.3.jar" />
 	</path>
-	<path id="Libs.classpath">
+	<path id="Platform.classpath">
 		<pathelement location="bin" />
 		<fileset dir="/Users/Gointegro/Documents/Libs">
 		        <include name="**/*.jar"/>
@@ -57,7 +57,7 @@
 	</target>
 
 	<target name="runAll" depends="compile"> 
-		<testng classpathref="Libs.classpath" suitename="suite1"> 
+		<testng classpathref="Platform.classpath" suitename="suite1"> 
 			<xmlfileset dir="${basedir}" includes="testng.xml"/> 
 		</testng> 
 	</target> 
