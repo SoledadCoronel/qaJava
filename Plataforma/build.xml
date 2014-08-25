@@ -9,6 +9,7 @@
 	<property name="build-dir" location="build" />
 	<property name="classes-dir" value="${build-dir}/classes" />
 	<property name="dist-dir" location="dist" />
+	<property name="tmp.dir" location="tmp" />
 	<property name="lib-dir" value="lib" />
 	<property name="jar.dir" value="${build-dir}/jar" />
 	<property name="main-class" value="android.HelloServer" />
@@ -62,6 +63,53 @@
 		</testng> 
 	</target> 
 
+	<target name="run-single-test" depends="compile"
+                description="run a specific test. Requires class.name property set to fully qualified name of test class and test.name property set to method name">
+        <condition property="propsSpecified">
+        <and>
+                <isset property="class.name" />
+                <isset property="test.name" />
+        </and>
+        </condition>
+        <fail unless="propsSpecified" 
+            message="class.name and/or test.name property not specified."/>
+        <copy todir="${tmp.dir}" file="singletest.xml" overwrite="true">
+        <filterset>
+                 <filter token="CLASS" value="${class.name}"/>
+                 <filter token="TEST" value="${test.name}"/>
+        </filterset>
+        </copy>
+           <testng classpathref="Platform.classpath"
+                   outputDir="${results.dir}/${DSTAMP}.${TSTAMP}-single-test-${class.name}-${test.name}"
+                   workingDir="${results.dir}/${DSTAMP}.${TSTAMP}-single-test-${class.name}-${test.name}"
+                   verbose="2">
+              <xmlfileset dir="${tmp.dir}" includes="singletest.xml" />
+              <jvmarg value="-Xmx1024m"/>
+           </testng>
+        </target>
+
+	
+	<target name="run-class" depends="compile"
+	        description="run all methods in a specific test class. Requires class.name property to be set to fully qualified name of class">
+	   <condition property="classNameSpecified">
+	      <isset property="class.name" />
+	   </condition>
+	   <fail unless="classNameSpecified"
+	         message="class.name property not specified. Don't know which test class to run."/>
+	   <copy todir="${tmp.dir}" file="singleclass.xml" overwrite="true">
+	      <filterset>
+	         <filter token="CLASS" value="${class.name}"/>
+	      </filterset>
+	   </copy>
+	   <testng classpathref="Platform.classpath"
+	           outputDir="${tmp.dir}/${DSTAMP}.${TSTAMP}-class"
+	           workingDir="${tmp.dir}/${DSTAMP}.${TSTAMP}-class"
+	   		   verbose="2">
+	      <jvmarg value="-Xmx1024m"/>
+	      <xmlfileset dir="${tmp.dir}" includes="singleclass.xml" />
+	   </testng>
+	</target>
+	
 	<target name="Galery" depends="compile">
 		<delete dir="report/reportGalery" />
 		<mkdir dir="report/reportGalery" />
