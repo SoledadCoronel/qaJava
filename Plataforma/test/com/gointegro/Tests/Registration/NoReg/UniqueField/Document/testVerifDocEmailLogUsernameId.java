@@ -2,16 +2,11 @@ package com.gointegro.Tests.Registration.NoReg.UniqueField.Document;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TestWatcher;
-import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElementsRegistration;
 import com.gointegro.Pages.Platform.Login;
@@ -23,25 +18,15 @@ import com.gointegro.Tests.CommonMethods.CommonTestMethods;
 import com.gointegro.Util.WaitTool;
 import com.gointegro.Util.WorkbookUtils;
 
-public class testVerifDocEmailLogUsernameId {
+public class testVerifDocEmailLogUsernameId extends AllTestsNoRegUniqDocument {
 
-private WebDriver driver;
+	private WebDriver driver;
 	
 	WorkbookUtils workbook = new WorkbookUtils();
 	
 	CommonTestMethods common;
 	
-	private final Logger logger = LoggerFactory.getLogger(getClass());
-
-	@Rule
-	public TestWatcher testWatcher = new TestWatcher() {
-		@Override
-		protected void starting(final Description description) {
-			logger.info(description.getMethodName());
-		}
-	};
-
-	@Before
+	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = AllTestsNoRegUniqDocument.getDriver();
 		CommonTestMethods common = new CommonTestMethods(workbook, driver);
@@ -428,7 +413,7 @@ private WebDriver driver;
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() throws Exception {
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/auth/signout");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -436,5 +421,4 @@ private WebDriver driver;
 		logout.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 	}
-
 }
