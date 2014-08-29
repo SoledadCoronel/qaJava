@@ -1,44 +1,19 @@
 package com.gointegro.Tests.Registration.NoReg.UniqueField.UsernameId;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
-@RunWith(Suite.class)
-@SuiteClasses({
-	testVerifDocEmailLogDoc.class,
-	testVerifDocEmailLogEmail.class,
-	testVerifDocEmailLogUsernameId.class,
-	testVerifDocLogDoc.class,
-	testVerifDocLogEmail.class,
-	testVerifDocLogUsernameId.class,
-	testVerifDocUsernameIdLogDoc.class,
-	testVerifDocUsernameIdLogEmail.class,
-	testVerifDocUsernameIdLogUsernameId.class,
-	testVerifEmailLogDoc.class,
-	testVerifEmailLogEmail.class,
-	testVerifEmailLogUsernameId.class,
-	testVerifEmailUsernameIdLogDoc.class,
-	testVerifEmailUsernameIdLogEmail.class,
-	testVerifEmailUsernameIdLogUsernameId.class,
-	testVerifUsernameIdLogDoc.class,
-	testVerifUsernameIdLogEmail.class,
-	testVerifUsernameIdLogUsernameId.class,
-	testSinVerifLogDoc.class,
-	testSinVerifLogEmail.class,
-	testSinVerifLogUsernameId.class
-})
-public class AllTestsNoRegUniqUsernameId {
+import com.gointegro.Tests.Base.TestBase;
+
+public class AllTestsNoRegUniqUsernameId extends TestBase {
 	
 	private static WebDriver driver;
 	
 	@BeforeClass
-	public static void setUp() {
+	public static void setUpClass() {
 		FirefoxBinary firefox = new FirefoxBinary();
 		firefox.setEnvironmentProperty("DISPLAY", ":0");
 		setDriver(new FirefoxDriver(firefox,null));
@@ -53,7 +28,7 @@ public class AllTestsNoRegUniqUsernameId {
 	}
 	
 	@AfterClass
-	public static void tearDown() {
+	public static void tearDownClass() {
 		driver.quit();
 	}
 

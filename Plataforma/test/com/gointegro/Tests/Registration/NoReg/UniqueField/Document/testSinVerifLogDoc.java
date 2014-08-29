@@ -2,16 +2,11 @@ package com.gointegro.Tests.Registration.NoReg.UniqueField.Document;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TestWatcher;
-import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElementsRegistration;
 import com.gointegro.Pages.Platform.Login;
@@ -22,7 +17,7 @@ import com.gointegro.Tests.CommonMethods.CommonTestMethods;
 import com.gointegro.Util.WaitTool;
 import com.gointegro.Util.WorkbookUtils;
 
-public class testSinVerifLogDoc {
+public class testSinVerifLogDoc extends AllTestsNoRegUniqDocument {
 
 	private WebDriver driver;
 	
@@ -30,19 +25,9 @@ public class testSinVerifLogDoc {
 	
 	CommonTestMethods common;
 	
-	private final Logger logger = LoggerFactory.getLogger(getClass());
-
-	@Rule
-	public TestWatcher testWatcher = new TestWatcher() {
-		@Override
-		protected void starting(final Description description) {
-			logger.info(description.getMethodName());
-		}
-	};
-
-	@Before
+	@BeforeMethod
 	public void setUp() throws Exception {
-		driver = AllTestsNoRegUniqDocument.getDriver();
+		driver = getDriver();
 		CommonTestMethods common = new CommonTestMethods(workbook, driver);
 		this.common = common;
 	}
@@ -51,7 +36,7 @@ public class testSinVerifLogDoc {
 	public void test_SinVerif_LogDoc_WithoutGenderFNPass_row145() {
 		common.readxls(145);
 		
-		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
@@ -90,7 +75,7 @@ public class testSinVerifLogDoc {
 	public void test_SinVerif_LogDoc_WithoutGenderPass_row146() {
 		common.readxls(146);
 		
-		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
@@ -131,7 +116,7 @@ public class testSinVerifLogDoc {
 	public void test_SinVerif_LogDoc_WithoutFNPass_row147() {
 		common.readxls(147);
 		
-		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
@@ -173,7 +158,7 @@ public class testSinVerifLogDoc {
 	public void test_SinVerif_LogDoc_WithoutPass_row148() {
 		common.readxls(148);
 		
-		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
@@ -217,7 +202,7 @@ public class testSinVerifLogDoc {
 	public void test_SinVerif_LogDoc_WithoutGenderFN_row149() {
 		common.readxls(149);
 		
-		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
@@ -259,7 +244,7 @@ public class testSinVerifLogDoc {
 	public void test_SinVerif_LogDoc_WithoutGender_row150() {
 		common.readxls(150);
 		
-		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
@@ -304,7 +289,7 @@ public class testSinVerifLogDoc {
 	public void test_SinVerif_LogDoc_WithoutFN_row151() {
 		common.readxls(151);
 		
-		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
@@ -348,7 +333,7 @@ public class testSinVerifLogDoc {
 	public void test_SinVerif_LogDoc_row152() {
 		common.readxls(152);
 		
-		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldDocument(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument());
@@ -390,7 +375,7 @@ public class testSinVerifLogDoc {
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() throws Exception {
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldDocument()+"/auth/signout");
 		WaitTool.waitForJQueryProcessing(driver, 10);

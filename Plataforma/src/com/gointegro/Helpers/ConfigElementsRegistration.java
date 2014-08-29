@@ -2,55 +2,55 @@ package com.gointegro.Helpers;
 
 public class ConfigElementsRegistration {
 	
-	private static String platformIdUniqueFieldDocument = "430";
+	private static String platformIdUniqueFieldDocument = "1527";
 	
-	private static String platformurlUniqueFieldDocument = "registrationuniqdocument.p2-stage.gointegro.com";
+	private static String platformurlUniqueFieldDocument = "registrationuniqdocument3.p2-stage.gointegro.com";
 	
-	private static String platformIdUniqueFieldEmail = "431";
+	private static String platformIdUniqueFieldEmail = "1528";
 	
-	private static String platformurlUniqueFieldEmail = "registrationuniqemail.p2-stage.gointegro.com";
+	private static String platformurlUniqueFieldEmail = "registrationuniqemail3.p2-stage.gointegro.com";
 	
-	private static String platformIdUniqueFieldUsernameId = "432";
+	private static String platformIdUniqueFieldUsernameId = "1529";
 	
-	private static String platformurlUniqueFieldUsernameId = "registrationuniqusernameid.p2-stage.gointegro.com";
+	private static String platformurlUniqueFieldUsernameId = "registrationuniqusernameid3.p2-stage.gointegro.com";
 	
 	private static String locationXls = "/Users/Gointegro/Documents/Data.xls";
 	
-	private static String UniqueFieldDocumentAccountId = "";
+	private static String UniqueFieldDocumentAccountId = "624";
 	
-	private static String UniqueFieldDocumentAccountUrl = "";
+	private static String UniqueFieldDocumentAccountUrl = "https://www.regionaluniquedocument2.p2-stage.gointegro.com";
 	
-	private static String UniqueFieldDocumentPlatformChild1Id = "";
+	private static String UniqueFieldDocumentPlatformChild1Id = "1531";
 	
-	private static String UniqueFieldDocumentPlatformChild1Url = "";
+	private static String UniqueFieldDocumentPlatformChild1Url = "uniquedocumentplatchild1.nahuel.p2-stage.gointegro.com";
 	
-	private static String UniqueFieldDocumentPlatformChild2Id = "";
+	private static String UniqueFieldDocumentPlatformChild2Id = "1533";
 	
-	private static String UniqueFieldDocumentPlatformChild2Url = "";
+	private static String UniqueFieldDocumentPlatformChild2Url = "uniquedocumentplatchild2.nahuel.p2-stage.gointegro.com";
 	
-	private static String UniqueFieldEmailAccountId = "";
+	private static String UniqueFieldEmailAccountId = "626";
 	
-	private static String UniqueFieldEmailAccountUrl = "";
+	private static String UniqueFieldEmailAccountUrl = "https://www.regionaluniqueemail.p2-stage.gointegro.com";
 	
-	private static String UniqueFieldEmailPlatformChild1Id = "";
+	private static String UniqueFieldEmailPlatformChild1Id = "1534";
 	
-	private static String UniqueFieldEmailPlatformChild1Url = "";
+	private static String UniqueFieldEmailPlatformChild1Url = "uniqueemailplatchild1.nahuel.p2-stage.gointegro.com";
 	
-	private static String UniqueFieldEmailPlatformChild2Id = "";
+	private static String UniqueFieldEmailPlatformChild2Id = "1535";
 	
-	private static String UniqueFieldEmailPlatformChild2Url = "";
+	private static String UniqueFieldEmailPlatformChild2Url = "uniqueemailplatchild2.nahuel.p2-stage.gointegro.com";
 	
-	private static String UniqueFieldUsernameIdAccountId = "";
+	private static String UniqueFieldUsernameIdAccountId = "628";
 	
-	private static String UniqueFieldUsernameIdAccountUrl = "";
+	private static String UniqueFieldUsernameIdAccountUrl = "https://www.regionaluniqueeuser.p2-stage.gointegro.com ";
 	
-	private static String UniqueFieldUsernameIdPlatformChild1Id = "";
+	private static String UniqueFieldUsernameIdPlatformChild1Id = "1536";
 	
-	private static String UniqueFieldUsernameIdPlatformChild1Url = "";
+	private static String UniqueFieldUsernameIdPlatformChild1Url = "uniqueusernameplatchild1.nahuel.p2-stage.gointegro.com";
 	
-	private static String UniqueFieldUsernameIdPlatformChild2Id = "";
+	private static String UniqueFieldUsernameIdPlatformChild2Id = "1537";
 	
-	private static String UniqueFieldUsernameIdPlatformChild2Url = "";
+	private static String UniqueFieldUsernameIdPlatformChild2Url = "uniqueusernameplatchild2.nahuel.p2-stage.gointegro.com";
 
 	public static String getPlatformIdUniqueFieldDocument() {
 		return platformIdUniqueFieldDocument;

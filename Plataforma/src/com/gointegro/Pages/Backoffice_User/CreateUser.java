@@ -121,7 +121,7 @@ public class CreateUser extends PageBase{
 	 */
 	protected void setAdmission(String admissiondate) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("document.getElementById('adminssion').value='"+admissiondate+"'");
+		js.executeScript("document.getElementById('admission').value='"+admissiondate+"'");
 	}
 	
 	/**

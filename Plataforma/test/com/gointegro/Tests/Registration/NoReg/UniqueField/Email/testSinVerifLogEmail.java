@@ -2,16 +2,11 @@ package com.gointegro.Tests.Registration.NoReg.UniqueField.Email;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TestWatcher;
-import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElementsRegistration;
 import com.gointegro.Pages.Platform.Login;
@@ -22,27 +17,17 @@ import com.gointegro.Tests.CommonMethods.CommonTestMethods;
 import com.gointegro.Util.WaitTool;
 import com.gointegro.Util.WorkbookUtils;
 
-public class testSinVerifLogEmail {
+public class testSinVerifLogEmail extends AllTestsNoRegUniqEmail {
 
-private WebDriver driver;
+	private WebDriver driver;
 	
 	WorkbookUtils workbook = new WorkbookUtils();
 	
 	CommonTestMethods common;
 	
-	private final Logger logger = LoggerFactory.getLogger(getClass());
-
-	@Rule
-	public TestWatcher testWatcher = new TestWatcher() {
-		@Override
-		protected void starting(final Description description) {
-			logger.info(description.getMethodName());
-		}
-	};
-
-	@Before
+	@BeforeMethod
 	public void setUp() throws Exception {
-		driver = AllTestsNoRegUniqEmail.getDriver();
+		driver = getDriver();
 		CommonTestMethods common = new CommonTestMethods(workbook, driver);
 		this.common = common;
 	}
@@ -51,7 +36,7 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutGenderFNPass_row153() {
 		common.readxls(153);
 		
-		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
@@ -88,7 +73,7 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutGenderPass_row154() {
 		common.readxls(154);
 		
-		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, false, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
@@ -127,7 +112,7 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutFNPass_row155() {
 		common.readxls(155);
 		
-		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
@@ -166,7 +151,7 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutPass_row156() {
 		common.readxls(156);
 		
-		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, true, false, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
@@ -207,7 +192,7 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutGenderFN_row157() {
 		common.readxls(157);
 		
-		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
@@ -247,7 +232,7 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutGender_row158() {
 		common.readxls(158);
 		
-		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, false, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
@@ -290,7 +275,7 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_WithoutFN_row159() {
 		common.readxls(159);
 		
-		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(false, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
@@ -332,7 +317,7 @@ private WebDriver driver;
 	public void test_SinVerif_LogEmail_row160() {
 		common.readxls(160);
 		
-		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "Id", "-- Sin segundo campo de verificación", "Documento");
+		common.configPlatform(true, true, true, ConfigElementsRegistration.getPlatformIdUniqueFieldEmail(), false, "", "", "Documento");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail());
@@ -372,7 +357,7 @@ private WebDriver driver;
 		assertEquals(workbook.getNombre()+" "+workbook.getApellido(), profile.getUserName());
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() throws Exception {
 		driver.get(ConfigElementsRegistration.getPlatformurlUniqueFieldEmail()+"/auth/signout");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -380,5 +365,4 @@ private WebDriver driver;
 		logout.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 	}
-
 }
