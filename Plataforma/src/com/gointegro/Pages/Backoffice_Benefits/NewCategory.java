@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Util.WaitTool;
 
 public class NewCategory extends PageBase {
 
@@ -44,6 +45,18 @@ public class NewCategory extends PageBase {
 	
 	@FindBy(xpath = "//section[@class='bottom-section-button-bar']/button[3]")
 	WebElement cancel;
+	
+	@FindBy(id = "restrictedPlatforms-input")
+	WebElement searchAccountsRestricted;
+	
+	@FindBy(xpath = "//div[@id='restrictedPlatforms']/div/div[2]/div/a")
+	WebElement addRestrictedPlatforms;
+	
+	@FindBy(xpath = "//div[@id='restrictedPlatforms']/div/div[2]/div/a[2]")
+	WebElement removeRestrictedPlatforms;
+	
+	@FindBy(xpath = "//a[@id='ui-id-3']")
+	WebElement dropdownPlatform;
 	
 	String categoryURL = ConfigElementsBO.getUrlBackoffice() + "/benefits/category/create";
 	/**
@@ -177,5 +190,30 @@ public class NewCategory extends PageBase {
 			tags.sendKeys(Keys.BACK_SPACE);
 			Sleeper.sleepTightInSeconds(1);
 		}
+	}
+	
+	/**
+	 * Buscar una cuenta
+	 * 
+	 * @param name
+	 */
+	public void searchRestrictedPlataform(String name) {
+		searchAccountsRestricted.sendKeys(name);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		dropdownPlatform.click();
+	}
+	
+	/**
+	 * Seleccionar Agregar Plataforma restringida
+	 */
+	public void addRestricted() {
+		addRestrictedPlatforms.click();
+	}
+	
+	/**
+	 * Seleccionar Remover Plataforma restringida
+	 */
+	public void removeRestricted() {
+		removeRestrictedPlatforms.click();
 	}
 }

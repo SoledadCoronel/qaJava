@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.gointegro.Helpers.ConfigElementsBO;
 import com.gointegro.Pages.Backoffice_Benefits.CategoriesList;
 import com.gointegro.Pages.Backoffice_Benefits.DetailCategory;
 import com.gointegro.Pages.Backoffice_Benefits.HomeBenefits;
@@ -340,6 +341,37 @@ public class testNewCategory extends AllTestsBackOfficeBenefits {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertTrue(detail.isTagPresent(tag));
+	}
+	
+	@Test
+	public void test_new_category_restricted(){
+		String name = DataGenerator.nombreFile();
+		String parts[] = ConfigElementsBO.getAccountPlatformTestName().split(" ");
+		String platform = parts[1] + " " + parts[2];
+		
+		loginBackoffice(driver);
+		
+		HomeBenefits home = PageFactory.initElements(driver, HomeBenefits.class);
+		home.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		CategoriesList category = home.selectAdminCategory();
+		NewCategory newCategory = category.selectNewCategory();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newCategory.createCategory(name, name, name);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newCategory.searchRestrictedPlataform(platform);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newCategory.addRestricted();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		DetailCategory detail = newCategory.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 30);
+		
+		assertTrue(detail.isRestrictedPlatformInList(platform));
 	}
 	
 	@AfterMethod

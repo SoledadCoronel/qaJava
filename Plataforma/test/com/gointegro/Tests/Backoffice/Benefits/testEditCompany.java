@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import com.gointegro.Helpers.ConfigElements;
 import com.gointegro.Pages.Backoffice_Benefits.CategoriesList;
+import com.gointegro.Pages.Backoffice_Benefits.DetailCategory;
 import com.gointegro.Pages.Backoffice_Benefits.DetailCompany;
 import com.gointegro.Pages.Backoffice_Benefits.HomeBenefits;
 import com.gointegro.Pages.Backoffice_Benefits.ImageCropOverlay;
@@ -360,7 +361,6 @@ public class testEditCompany extends AllTestsBackOfficeBenefits {
 		newCompany.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertTrue(detail.isCategoryPresent(nameCat));
 		assertTrue(detail.isCategoryPresent(nameCat2));
 	}
 	
@@ -434,6 +434,8 @@ public class testEditCompany extends AllTestsBackOfficeBenefits {
 	}
 	
 	private void createCategory(String name) {
+		String subcat = DataGenerator.nombreFile();
+		
 		HomeBenefits home = PageFactory.initElements(driver, HomeBenefits.class);
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 20);
@@ -447,6 +449,15 @@ public class testEditCompany extends AllTestsBackOfficeBenefits {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newCategory.createCategory(nameCat, nameCat, nameCat);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		DetailCategory detail = newCategory.selectSave();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		detail.selectNewSubCategory();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newCategory.createCategory(subcat, subcat, subcat);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newCategory.selectSave();
