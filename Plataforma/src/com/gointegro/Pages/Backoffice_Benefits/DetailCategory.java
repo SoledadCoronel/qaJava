@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.gointegro.Pages.Base.PageBase;
+import com.gointegro.Util.WaitTool;
 
 public class DetailCategory extends PageBase {
 	
@@ -38,6 +39,9 @@ public class DetailCategory extends PageBase {
 	
 	@FindBy(xpath = "//header[@class='backoffice-header']/div/div[2]/button")
 	WebElement edit;
+	
+	@FindBy(xpath = "//section[contains(@class, 'category-restricted-platforms')]")
+	WebElement restrictedPlatforms;
 	
 	/**
 	 * Constructor
@@ -125,5 +129,16 @@ public class DetailCategory extends PageBase {
 	public NewCategory selectEdit() {
 		edit.click();
 		return PageFactory.initElements(driver, NewCategory.class);
+	}
+	
+	/**
+	 * Devuelve true si la plataforma se encuentra en la lista
+	 * 
+	 * @param name
+	 * @return boolean
+	 */
+	public boolean isRestrictedPlatformInList(String name) {
+		WaitTool.waitForElementPresent(driver, By.xpath("//section[contains(@class, 'category-restricted-platforms')]/div/table"), 10);
+		return restrictedPlatforms.getAttribute("innerHTML").contains(name);
 	}
 }

@@ -71,7 +71,7 @@ public class DetailStore extends DetailCompany {
 	 * @return boolean
 	 */
 	public boolean isAreaTitlePresent(String area) {
-		return areaTitle.getText().contains(area);
+		return areaTitle.getAttribute("innerHTML").contains(area);
 	}
 	
 	/**
