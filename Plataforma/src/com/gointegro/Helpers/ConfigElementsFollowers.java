@@ -13,11 +13,11 @@ public class ConfigElementsFollowers {
 	
 	//1 sigue a 2
 	
-	private static String follower1 = "gustavo.moreira@gointegro.com";
+	private static String follower1 = "diogo.darosa@gointegro.com";
 	
 	private static String follower2 = "constanza.luciani@gointegro.com";
 	
-	private static String follower1name = "Gustavo Moreira";
+	private static String follower1name = "Diogo da Rosa Hertzberg";
 	
 	private static String follower2name = "Constanza Luciani";
 	

@@ -2,9 +2,9 @@ package com.gointegro.Helpers;
 
 public class ConfigElementsBOBenefits {
 
-	private static String companyID = "598";
+	private static String companyID = "2969";
 	
-	private static String companyName = "Automation Test";
+	private static String companyName = "Fits Gym";
 	
 	public static String getCompanyId() {
 		return companyID;

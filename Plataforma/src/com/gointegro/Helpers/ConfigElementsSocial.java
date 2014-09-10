@@ -4,7 +4,7 @@ public class ConfigElementsSocial {
 	
 	private static String SocialApp = "AutoSocialApp";
 	
-	private static String idAppSocial = "5212";
+	private static String idAppSocial = "9692";
 	
 	public static String getIdAppSocial () {
 		return idAppSocial;
