@@ -92,7 +92,7 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(id = "empty-contents-error")
 	WebElement categoryErrorMsg;
 	
-	@FindBy(xpath = "div[@class='widget-type-form']/div[5]")
+	@FindBy(xpath = "//div[@class='widget-type-form']/div[contains(@class, 'data-error')]")
 	WebElement galleryNoImageErrorMsg;
 	
 	@FindBy(xpath = "//div[@class='widget-type-form']/div[4]/div/span[2]")
@@ -126,7 +126,7 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(xpath = "//div[@data-fields='categories']/div/div/div")
 	WebElement benefitsCategoryError;
 	
-	@FindBy(className = "has-locations")
+	@FindBy(className = "has-locations-checkbox")
 	WebElement locations;
 	
 	@FindBy(className = "help-block")

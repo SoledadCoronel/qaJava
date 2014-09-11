@@ -32,6 +32,8 @@ public class HomeWidgets extends PageBase {
 	@FindBy(xpath = "//*[@id='environmentHome']/div[2]/ul/li")
 	List<WebElement> widgetsList;
 	
+	String celebFeed = "celebration-feed";
+	
 	String textHTMLTitle = "./div/div/div/header";
 	
 	String textHTMLDescription = "./div/div/div/div/p";
@@ -293,7 +295,7 @@ public class HomeWidgets extends PageBase {
 		Boolean isInstalledAppInList = false;
 		
 		for(WebElement element : widgetsList) {
-			if(element.getAttribute("class").contains("celebration-feed")) {
+			if(element.getAttribute("class").contains(celebFeed)) {
 				if(element.findElements(By.xpath(installedAppTitle)).size() > 0 ) {
 					if(element.findElement(By.xpath(installedAppTitle)).getText().contains(name)) {
 						isInstalledAppInList = true;
@@ -315,7 +317,7 @@ public class HomeWidgets extends PageBase {
 		WebElement celebrationElement = null;
 		
 		for(WebElement element : widgetsList) {
-			if(element.getAttribute("class").contains("celebration.feed")) {
+			if(element.getAttribute("class").contains(celebFeed)) {
 				if(element.findElements(By.xpath(installedAppTitle)).size() > 0 ) {
 					if(element.findElement(By.xpath(installedAppTitle)).getText().contains(name)) {
 						celebrationElement = element;
@@ -337,7 +339,7 @@ public class HomeWidgets extends PageBase {
 		Boolean isInstalledAppInList = false;
 		
 		for(WebElement element : widgetsList) {
-			if(element.getAttribute("class").contains("gallery.carousel") && element.getAttribute("data-id").contains(appId)) {
+			if(element.getAttribute("class").contains("gallery-carousel") && element.getAttribute("data-id").contains(appId)) {
 				isInstalledAppInList = true;
 				break;		
 			}

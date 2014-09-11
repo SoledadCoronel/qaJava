@@ -313,7 +313,7 @@ public class testNewBenefitWidget extends AllTestsWidgets {
 	
 	@Test
 	public void test_new_benefit_highlighted_search() {
-		String discount = "Subway";
+		String discount = "Sony";
 		
 		NewModuleOverlay newModule = selectBenefitWidget();
 		WaitTool.waitForJQueryProcessing(driver, 5);
