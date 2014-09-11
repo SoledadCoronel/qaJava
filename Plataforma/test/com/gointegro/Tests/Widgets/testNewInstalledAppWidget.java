@@ -71,7 +71,7 @@ public class testNewInstalledAppWidget extends AllTestsWidgets {
 		
 		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
-		
+				
 		newModule.selectFinishBtn();
 		WaitTool.waitForJQueryProcessing(driver, 20);
 		
@@ -84,8 +84,6 @@ public class testNewInstalledAppWidget extends AllTestsWidgets {
 	
 	@Test
 	public void test_new_app_celebration_title_empty() {
-		String title = "";
-		
 		login(driver);
 		
 		HomeWidgets home = PageFactory.initElements(driver, HomeWidgets.class);
@@ -108,9 +106,6 @@ public class testNewInstalledAppWidget extends AllTestsWidgets {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newModule.selectVisibleTitle();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		
-		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newModule.selectFinishBtn();
@@ -287,10 +282,26 @@ public class testNewInstalledAppWidget extends AllTestsWidgets {
 		assertEquals("Seleccione al menos una imagen.", newModule.getNoImageErrorMsg());
 	}
 
+	private boolean isAlertPresent(){
+	     try{
+	         driver.switchTo().alert();
+	         return true;
+	     }
+	     catch(Exception e){
+	    	 return false;
+	     }
+   }
+	
 	@AfterMethod
 	public void tearDown() {
-		Logout logout = PageFactory.initElements(driver, Logout.class);
-		logout.open();
+		Logout logOut = PageFactory.initElements(driver, Logout.class);
+		logOut.open();
+		
+		if(isAlertPresent()) {
+			driver.switchTo().alert();
+	        driver.switchTo().alert().accept();
+	        driver.switchTo().defaultContent();
+		}
 	}
 
 }
