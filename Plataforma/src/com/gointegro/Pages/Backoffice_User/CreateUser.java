@@ -60,8 +60,44 @@ public class CreateUser extends PageBase{
 	@FindBy (id = "save")
 	protected WebElement save;
 	
+	@FindBy (id = "save-and-new")
+	protected WebElement saveAndNew;
+	
 	@FindBy (id = "cancel")
 	protected WebElement cancel;
+	
+	//ERRORS
+	@FindBy(xpath = "//div[contains(@class, 'field-name')]/div/div[1]")
+	WebElement nameError;
+	
+	@FindBy(xpath = "//div[contains(@class, 'field-surname')]/div/div[1]")
+	WebElement surnameError;
+	
+	@FindBy(xpath = "//div[contains(@class, 'field-document')]/div/div[1]")
+	WebElement documentError;
+	
+	@FindBy(xpath = "//div[contains(@class, 'field-email')]/div/div[1]")
+	WebElement emailError;
+	
+	@FindBy(xpath = "//div[contains(@class, 'field-birthdate')]/div/div[1]")
+	WebElement birthdateError;
+	
+	@FindBy(xpath = "//div[contains(@class, 'field-phone')]/div/div")
+	WebElement phoneError;
+	
+	@FindBy(xpath = "//div[contains(@class, 'field-cellphone')]/div/div")
+	WebElement cellphoneError;
+	
+	@FindBy(xpath = "//div[contains(@class, 'field-usernameId')]/div/div")
+	WebElement usernameIdError;
+	
+	@FindBy(xpath = "//div[contains(@class, 'field-registeredDate')]/div/div[1]")
+	WebElement registeredDateError;
+	
+	@FindBy(xpath = "//div[contains(@class, 'alert-error')]/span")
+	WebElement alertError;
+	
+	String createURL = ConfigElementsBO.getUrlBackoffice()+"/platforms/"+ConfigElementsBO.getPlatformId()+"/user/create"; 
 
 	/**
 	 * Constructor
@@ -70,13 +106,20 @@ public class CreateUser extends PageBase{
 	 */
 	public CreateUser(WebDriver driver) {
 		super(driver);
-		URL = ConfigElementsBO.getUrlBackoffice()+"/platforms/"+ConfigElementsBO.getPlatformId()+"/user/create";
+		URL = createURL;
+	}
+	
+	/**
+	 * Obtener la URL de crear usuario
+	 */
+	public String getURL() {
+		return createURL;
 	}
 	
 	/**
 	 * Seleccionar enabled
 	 */
-	protected void selectEnabled(boolean status) {
+	public void selectEnabled(boolean status) {
 		if (status && enabled.getAttribute("checked") == null)
 			enabled.click();
 		else if (!status && enabled.getAttribute("checked") != null)
@@ -89,9 +132,17 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param name
 	 */
-	protected void setName(String name) {
+	public void setName(String name) {
 		this.name.clear();
 		this.name.sendKeys(name);
+	}
+	
+	/**
+	 * Obtener el nombre
+	 * @return String
+	 */
+	public String getName() {
+		return name.getText();
 	}
 	
 	/**
@@ -99,7 +150,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param surname
 	 */
-	protected void setSurname(String surname) {
+	public void setSurname(String surname) {
 		this.surname.clear();
 		this.surname.sendKeys(surname);
 	}
@@ -109,7 +160,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param email
 	 */
-	protected void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email.clear();
 		this.email.sendKeys(email);
 	}
@@ -119,7 +170,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param admissiondate
 	 */
-	protected void setAdmission(String admissiondate) {
+	public void setAdmission(String admissiondate) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.getElementById('admission').value='"+admissiondate+"'");
 	}
@@ -129,7 +180,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param document
 	 */
-	protected void setDocument(String document) {
+	public void setDocument(String document) {
 		this.document.clear();
 		this.document.sendKeys(document);
 	}
@@ -139,7 +190,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param birthdate
 	 */
-	protected void setBirthDate(String birthdate) {
+	public void setBirthDate(String birthdate) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.getElementById('birthdate').value='"+birthdate+"'");
 	}
@@ -149,7 +200,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param gender
 	 */
-	protected void setGender(String gender) {
+	public void setGender(String gender) {
 		Select select = new Select(this.gender);
 		select.selectByVisibleText(gender);
 	}
@@ -159,7 +210,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param phone
 	 */
-	protected void setPhone(String phone) {
+	public void setPhone(String phone) {
 		this.phone.clear();
 		this.phone.sendKeys(phone);
 	}
@@ -169,7 +220,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param cellphone
 	 */
-	protected void setCellphone(String cellphone) {
+	public void setCellphone(String cellphone) {
 		this.cellphone.clear();
 		this.cellphone.sendKeys(cellphone);
 	}
@@ -179,7 +230,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param usernameid
 	 */
-	protected void setUsernameId(String usernameid) {
+	public void setUsernameId(String usernameid) {
 		this.usernameId.clear();
 		this.usernameId.sendKeys(usernameid);
 	}
@@ -189,7 +240,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param regstatus
 	 */
-	protected void setRegistered(boolean regstatus) {
+	public void setRegistered(boolean regstatus) {
 		if (regstatus && registered.getAttribute("checked") == null)
 			registered.click();
 		else if (!regstatus && registered.getAttribute("checked") != null)
@@ -202,7 +253,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param regdate
 	 */
-	protected void setRegistedDate(String regdate) {
+	public void setRegistedDate(String regdate) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.getElementById('registeredDate').value='"+regdate+"'");
 	}
@@ -212,7 +263,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param integrationid
 	 */
-	protected void setintegrationId(String integrationid) {
+	public void setintegrationId(String integrationid) {
 		this.integrationId.clear();
 		this.integrationId.sendKeys(integrationid);
 	}
@@ -222,7 +273,7 @@ public class CreateUser extends PageBase{
 	 * 
 	 * @param role
 	 */
-	protected void selectRole(String role) {
+	public void selectRole(String role) {
 		Select select = new Select(this.role);
 		select.selectByVisibleText(role);
 	}
@@ -256,14 +307,18 @@ public class CreateUser extends PageBase{
 		setAdmission(admissiondate);
 		setDocument(document);
 		setBirthDate(birthdate);
-		setGender(gender);
+		if(!gender.isEmpty()) {
+			setGender(gender);
+		}
 		setPhone(phone);
 		setCellphone(cellphone);
 		setUsernameId(usernameid);
 		setRegistered(regstatus);
 		setRegistedDate(regdate);
 		setintegrationId(integrationid);
-		selectRole(role);
+		if(!role.isEmpty()) {
+			selectRole(role);
+		}
 	}
 	
 	/**
@@ -276,5 +331,107 @@ public class CreateUser extends PageBase{
 		
 		return PageFactory.initElements(driver, UserDetail.class);
 	}
+	
+	/**
+	 * Cancelar
+	 * 
+	 * @return {@link UserList}
+	 */
+	public UserList selectCancel() {
+		cancel.click();
+		
+		return PageFactory.initElements(driver, UserList.class);
+	}
+	
 
+	/**
+	 * Guardar y nuevo
+	 * 
+	 * @return {@link CreateUser}
+	 */
+	public CreateUser selectSaveAndNew() {
+		saveAndNew.click();
+		
+		return PageFactory.initElements(driver, CreateUser.class);
+	}
+
+	/**
+	 * Obtener el mensaje de error del apellido
+	 * @return String
+	 */
+	public String getNameError() {
+		return nameError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del apellido
+	 * @return String
+	 */
+	public String getSurnameError() {
+		return surnameError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del documento
+	 * @return String
+	 */
+	public String getDocumentError() {
+		return documentError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del email
+	 * @return String
+	 */
+	public String getEmailError() {
+		return emailError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del Fecha de nacimiento
+	 * @return String
+	 */
+	public String getBirthdateError() {
+		return birthdateError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del telefono
+	 * @return String
+	 */
+	public String getPhoneError() {
+		return phoneError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del celular
+	 * @return String
+	 */
+	public String getCellphoneError() {
+		return cellphoneError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error del Id de usuario
+	 * @return
+	 */
+	public String getUsernameIdError() {
+		return usernameIdError.getText();
+	}
+	
+	/**
+	 * Obtener el mensaje de error de fecha de registro
+	 * @return
+	 */
+	public String getRegisteredDateError() {
+		return registeredDateError.getText();
+	}
+	
+	/**
+	 * Obtner el alerta de error
+	 * @return
+	 */
+	public String getAlertError() {
+		return alertError.getText();
+	}
 }

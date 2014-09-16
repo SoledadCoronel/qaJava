@@ -10,7 +10,7 @@ public class ConfigElementsBO {
 	
 	private static String accountId = "213";
 	
-	private static String platformId = "";
+	private static String platformId = "209";
 	
 	private static String hostname = ".p2-stage.gointegro.com";
 	
