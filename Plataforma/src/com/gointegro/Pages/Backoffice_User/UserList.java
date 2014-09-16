@@ -2,7 +2,6 @@ package com.gointegro.Pages.Backoffice_User;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,8 +13,8 @@ import com.gointegro.Util.WaitTool;
 
 public class UserList extends PageBase{
 	
-	@FindBy (name = "filters[surname]")
-	private WebElement filtersurname;
+	@FindBy (name = "filters[queryString]")
+	private WebElement filter;
 	
 	@FindBy (className = "icon-plus")
 	private WebElement newuserbtn;
@@ -29,7 +28,7 @@ public class UserList extends PageBase{
 	@FindBy (xpath = "//tr[@class='empty']/td")
 	private WebElement empty;
 	
-	@FindBy (id = "surname-filter-btn-submit")
+	@FindBy (id = "queryString-filter-btn-submit")
 	private WebElement filtersubmit;
 	
 	String tablexpath = "./td";
@@ -45,18 +44,18 @@ public class UserList extends PageBase{
 	}
 	
 	/**
-	 * Obtener el elemento del listado por apellido
+	 * Obtener el elemento del listado
 	 * 
 	 * @param name
 	 * 
 	 * @return {@link WebElement}
 	 */
-	private WebElement getElementInListBySurname(String name) {
+	private WebElement getElementInList(String name) {
 		WebElement e = null;
 		
 		for (WebElement element : basicgrid) {
-			if (element.findElement(By.xpath(tablexpath)).getText().contains(name)) {
-				e = element.findElement(By.xpath(tablexpath));
+			if (element.getAttribute("innerHTML").contains(name)) {
+				e = element;
 				break;
 			}
 		}
@@ -73,9 +72,9 @@ public class UserList extends PageBase{
 	 * 
 	 * @param name
 	 */
-	private void setFilterSurname(String name) {
-		filtersurname.clear();
-		filtersurname.sendKeys(name);
+	private void setFilter(String name) {
+		filter.clear();
+		filter.sendKeys(name);
 		filtersubmit.click();
 		
 		WaitTool.waitForJQueryProcessing(driver, 15);
@@ -86,14 +85,16 @@ public class UserList extends PageBase{
 	 * 
 	 * @param name
 	 * 
-	 * @return String
+	 * @return boolean
 	 */
-	public String searchPlatformBySurname(String name) {
+	public boolean searchUser(String name) {
 		if (!name.isEmpty())
-			setFilterSurname(name);
+			setFilter(name);
 		
-		WebElement platformname = getElementInListBySurname(name);
-		return platformname.getText();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WebElement platformname = getElementInList(name);
+		return platformname.getText().contains(name);
 	}
 	
 	/**
