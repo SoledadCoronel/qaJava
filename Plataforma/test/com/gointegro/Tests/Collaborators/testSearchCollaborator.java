@@ -91,7 +91,7 @@ public class testSearchCollaborator extends AllTestsCollaborators {
 		
 		String userProfileURL = ConfigElements.getURL() + "/profile/" + ConfigElements.getSlugMiPerfil();
 		
-		assertEquals(userProfileURL, driver.getCurrentUrl());
+		assertEquals(userProfileURL.toLowerCase(), driver.getCurrentUrl().toLowerCase());
 	}
 	
 	

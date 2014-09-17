@@ -130,6 +130,8 @@ public class NewContent extends PageBase {
 		
 		Sleeper.sleepTightInSeconds(10);
 		WaitTool.waitForJQueryProcessing(driver, 10);	
+		
+		driver.switchTo().defaultContent();
 	}
 	
 	/**
