@@ -392,10 +392,26 @@ public class testDeleteImage extends AllTestsGalery {
 		home.open();
 	}
 	
+	private boolean isAlertPresent(){
+	     try{
+	         driver.switchTo().alert();
+	         return true;
+	     }
+	     catch(Exception e){
+	    	 return false;
+	     }
+   }
+	
 	@AfterMethod
 	public void tearDown() {
-		Logout logout = PageFactory.initElements(driver, Logout.class);
-		logout.open();
+		Logout logOut = PageFactory.initElements(driver, Logout.class);
+		logOut.open();
+		
+		if(isAlertPresent()) {
+			driver.switchTo().alert();
+	        driver.switchTo().alert().accept();
+	        driver.switchTo().defaultContent();
+		}
 	}
 
 }
