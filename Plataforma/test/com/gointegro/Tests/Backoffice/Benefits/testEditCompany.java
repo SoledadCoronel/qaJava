@@ -24,8 +24,6 @@ public class testEditCompany extends AllTestsBackOfficeBenefits {
 	
 	private WebDriver driver;
 	
-	String nameCat = DataGenerator.nombreFile();
-	
 	@BeforeMethod
 	public void setUp() {
 		driver = getDriver();
@@ -379,11 +377,12 @@ public class testEditCompany extends AllTestsBackOfficeBenefits {
 		String floor = "7";
 		String apartment = "5A";
 		String fileupload = ConfigElements.getFileImagen();
+		String nameCat = DataGenerator.nombreFile();
 		
 		loginBackoffice(driver);
 		
 		if(withCategory) {
-			createCategory("");
+			createCategory(nameCat);
 		}
 		
 		HomeBenefits home = PageFactory.initElements(driver, HomeBenefits.class);
@@ -440,15 +439,11 @@ public class testEditCompany extends AllTestsBackOfficeBenefits {
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 20);
 		
-		if(!name.isEmpty()) {
-			nameCat = name;
-		}
-		
 		CategoriesList category = home.selectAdminCategory();
 		NewCategory newCategory = category.selectNewCategory();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newCategory.createCategory(nameCat, nameCat, nameCat);
+		newCategory.createCategory(name, name, name);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		DetailCategory detail = newCategory.selectSave();

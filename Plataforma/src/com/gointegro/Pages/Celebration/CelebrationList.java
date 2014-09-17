@@ -207,6 +207,16 @@ public class CelebrationList extends PageBase{
 	}
 	
 	/**
+	 * Verifica si el nombre esta en la lista
+	 * 
+	 * @param name
+	 * @return boolean
+	 */
+	public boolean isCollaboratorInList(String name) {
+		return driver.findElement(By.xpath("//div[contains(@class, 'events-list')]")).getAttribute("innerHTML").contains(name);
+	}
+	
+	/**
 	 * Verifica si la imagen es visible 
 	 * 
 	 * @return boolean
