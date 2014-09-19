@@ -147,7 +147,7 @@ public class NewBenefits extends PageBase {
 	@FindBy(xpath = "//div[@id='restrictedPlatforms']/div/div[2]/div/a[2]")
 	WebElement removeRestrictedPlatforms;
 	
-	@FindBy(xpath = "//a[@id='ui-id-4']")
+	@FindBy(xpath = "//li[@class='ui-menu-item']")
 	WebElement dropdownPlatform;
 	
 	@FindBy(xpath = "//button[@data-toggle='modal']")

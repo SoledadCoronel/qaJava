@@ -104,12 +104,12 @@ public class testNewContact extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_contact_name_special_char() {
-		contactName = StringUtils.getCaracteresEspeciales();
+		String newcontactName = StringUtils.getCaracteresEspeciales();
 		
 		NewContactOverlay newContact = createCompany();
 		WaitTool.waitForJQueryProcessing(driver, 20);
 		
-		DetailCompany detail = newContact.createContact(contactName, surname, document, phone, area, cellphone, position, email, observation, false);
+		DetailCompany detail = newContact.createContact(newcontactName, surname, document, phone, area, cellphone, position, email, observation, false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newContact.selectSave();
@@ -169,12 +169,12 @@ public class testNewContact extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_contact_email_invalid() {
-		email = DataGenerator.nombreFile();
+		String newemail = DataGenerator.nombreFile();
 		
 		NewContactOverlay newContact = createCompany();
 		WaitTool.waitForJQueryProcessing(driver, 20);
 		
-		newContact.createContact(contactName, surname, document, phone, area, cellphone, position, email, observation, false);
+		newContact.createContact(contactName, surname, document, phone, area, cellphone, position, newemail, observation, false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newContact.selectSave();

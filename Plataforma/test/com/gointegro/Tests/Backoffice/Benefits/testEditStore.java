@@ -33,7 +33,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String area = "Córdoba, Argentina";
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -54,7 +54,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	@Test
 	public void test_edit_store_disabled() {
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -74,7 +74,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String name = DataGenerator.nombreFile();
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -95,7 +95,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String surname = DataGenerator.nombreFile();
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -118,7 +118,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String phone = DataGenerator.nombreFile();
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -138,7 +138,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String companyName = DataGenerator.nombreFile();
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -158,7 +158,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String taxId = "20-198154562-5";
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -178,7 +178,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String email = "untest@gmail.com";
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -198,7 +198,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String email = "untest@gmail.com";
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -218,7 +218,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String address = "Avenida Córdoba 5500, Buenos Aires, Argentina";
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -238,7 +238,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 		String zipcode = "1358";
 		
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -303,7 +303,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	@Test
 	public void test_edit_store_save_and_new() {
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -318,7 +318,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	@Test
 	public void test_edit_store_cancel() {
 		DetailStore detail = createStore();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewStore newStore = detail.selectEdit();
 		WaitTool.waitForJQueryProcessing(driver, 5);

@@ -64,6 +64,10 @@ public class testPostFileNoImagen extends AllTests {
 		PostForm post = PageFactory.initElements(driver, PostForm.class);
 		post.completePostFile(textopost, title, ConfigElements.getFileNoImage());
 		WaitTool.setImplicitWait(driver, 3);
+		
+		social.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
 		
 		assertEquals(textopost, feeds.getFeedContent());
@@ -110,6 +114,10 @@ public class testPostFileNoImagen extends AllTests {
 		PostForm post = PageFactory.initElements(driver, PostForm.class);
 		post.completePostFile(textopost, title, ConfigElements.getFileNoImage());
 		WaitTool.setImplicitWait(driver, 3);
+		
+		appsocial.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
 		
 		assertEquals(textopost, feeds.getFeedContent());
