@@ -91,7 +91,7 @@ public class testNewTerminal extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_terminal_number_max_char() {
-		terminal = StringUtils.getTextoLargo();
+		String newterminal = StringUtils.getTextoLargo();
 		
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -99,7 +99,7 @@ public class testNewTerminal extends AllTestsBackOfficeBenefits {
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newTerminal.createTerminal(terminal, operator, observation, false);
+		newTerminal.createTerminal(newterminal, operator, observation, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newTerminal.selectSave();
@@ -129,7 +129,7 @@ public class testNewTerminal extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_terminal_operator_max_char() {
-		operator = StringUtils.getTextoLargo();
+		String newoperator = StringUtils.getTextoLargo();
 		
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -137,7 +137,7 @@ public class testNewTerminal extends AllTestsBackOfficeBenefits {
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newTerminal.createTerminal(terminal, operator, observation, false);
+		newTerminal.createTerminal(terminal, newoperator, observation, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newTerminal.selectSave();
@@ -149,7 +149,7 @@ public class testNewTerminal extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_terminal_observations_max_char() {
-		observation = StringUtils.getTextoLargo();
+		String newobservation = StringUtils.getTextoLargo();
 		
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -157,7 +157,7 @@ public class testNewTerminal extends AllTestsBackOfficeBenefits {
 		NewTerminalOverlay newTerminal = detail.selectNewTerminal();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
-		newTerminal.createTerminal(terminal, operator, observation, false);
+		newTerminal.createTerminal(terminal, operator, newobservation, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newTerminal.selectSave();

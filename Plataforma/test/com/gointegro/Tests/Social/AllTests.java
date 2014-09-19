@@ -3,6 +3,8 @@ package com.gointegro.Tests.Social;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -14,9 +16,14 @@ public class AllTests extends TestBase {
 	
 	@BeforeClass
 	public static void setUpClass(){
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, 
+		   org.openqa.selenium.UnexpectedAlertBehaviour.ACCEPT);
+		
 		FirefoxBinary firefox = new FirefoxBinary();
+		
 		firefox.setEnvironmentProperty("DISPLAY", ":0");
-		setDriver(new FirefoxDriver(firefox,null));
+		setDriver(new FirefoxDriver (firefox,null, cap));
 	}
 
 	public static WebDriver getDriver() {

@@ -1,5 +1,6 @@
 package com.gointegro.Pages.Backoffice_Benefits;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.browserlaunchers.Sleeper;
@@ -65,6 +66,15 @@ public class NewStore extends NewCompany {
 	 */
 	public void createNewStore(String type, String name, String phone, String companyName, String taxId, String email, String siteLink, String address, String zipcode, Boolean isDisabled) {
 		selectType(type);
+		
+		if(!zipcode.isEmpty()) {
+			createZipCode(zipcode);
+		}
+		
+		if(!address.isEmpty()) {
+			createAddress(address);
+		}
+		
 		createName(name);
 		createPhone(phone);
 		createCompanyName(companyName);
@@ -74,14 +84,6 @@ public class NewStore extends NewCompany {
 		
 		if(isDisabled) {
 			selectActive();
-		}
-		
-		if(!address.isEmpty()) {
-			createAddress(address);
-		}
-		
-		if(!zipcode.isEmpty()) {
-			createZipCode(zipcode);
 		}
 		
 		Sleeper.sleepTightInSeconds(2);
@@ -114,8 +116,17 @@ public class NewStore extends NewCompany {
 		address.clear();
 		address.sendKeys(name);
 		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		address.sendKeys(Keys.ARROW_DOWN);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		address.sendKeys(Keys.RETURN);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		addressBtn.click();
 		WaitTool.waitForJQueryProcessing(driver, 5);
+		addressBtn.click();
+		
 	}
 	
 	/**
@@ -125,6 +136,13 @@ public class NewStore extends NewCompany {
 		addressArea.clear();
 		addressArea.sendKeys(name);
 		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		addressArea.sendKeys(Keys.ARROW_DOWN);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		addressArea.sendKeys(Keys.RETURN);
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		addressBtn.click();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 	}

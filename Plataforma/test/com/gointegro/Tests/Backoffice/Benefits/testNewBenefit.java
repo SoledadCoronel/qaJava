@@ -42,7 +42,7 @@ public class testNewBenefit extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_benefit() {
-		String category = "Autos"; 
+		String category = "Deportes"; 
 		String redeeming = "Mobile";
 		String validDays = "Martes";
 		String paymentMethod = "Tarjeta de débito";
@@ -120,12 +120,12 @@ public class testNewBenefit extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_benefit_owner_max_char() {
-		owner = StringUtils.getTextoLargo();
+		String newowner = StringUtils.getTextoLargo();
 		
 		NewBenefits newBenefit = goToCompany();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
+		newBenefit.createBenefit(newowner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newBenefit.selectSave();
@@ -152,12 +152,12 @@ public class testNewBenefit extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_benefit_name_max_char() {
-		name = StringUtils.getTextoLargo();
+		String newname = StringUtils.getTextoLargo();
 		
 		NewBenefits newBenefit = goToCompany();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
+		newBenefit.createBenefit(owner, newname, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newBenefit.selectSave();
@@ -184,13 +184,13 @@ public class testNewBenefit extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_benefit_discount_promo() {
-		discount = "PROMO";
+		String newdiscount = "PROMO";
 		String value = "17";
 		
 		NewBenefits newBenefit = goToCompany();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
+		newBenefit.createBenefit(owner, name, targetUser, newdiscount, validFrom, "", fileupload, true, benefitCode, title, desc);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newBenefit.createValue(value);
@@ -220,13 +220,13 @@ public class testNewBenefit extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_benefit_validfrom_invalid() {
-		validFrom = DataGenerator.fechamanana();
-		validUntil = DataGenerator.fechaactual();
+		String newvalidFrom = DataGenerator.fechamanana();
+		String newvalidUntil = DataGenerator.fechaactual();
 		
 		NewBenefits newBenefit = goToCompany();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, validUntil, fileupload, true, benefitCode, title, desc);
+		newBenefit.createBenefit(owner, name, targetUser, discount, newvalidFrom, newvalidUntil, fileupload, true, benefitCode, title, desc);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newBenefit.selectSave();
@@ -271,12 +271,12 @@ public class testNewBenefit extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_benefit_description_image_small() {
-		fileupload = ConfigElements.getFileImageSmall();
+		String smallImage = ConfigElements.getFileImageSmall();
 		
 		NewBenefits newBenefit = goToCompany();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newBenefit.uploadSmallImg(fileupload);
+		newBenefit.uploadSmallImg(smallImage);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("El tamaño de la imagen debe ser mayor a 600x306", newBenefit.getImageErrorMsg());
@@ -320,12 +320,12 @@ public class testNewBenefit extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_benefit_title_max_char() {
-		title = StringUtils.getTextoLargo();
+		String newtitle = StringUtils.getTextoLargo();
 		
 		NewBenefits newBenefit = goToCompany();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
+		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, newtitle, desc);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newBenefit.selectSave();
@@ -352,12 +352,12 @@ public class testNewBenefit extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_benefit_description_max_char() {
-		desc = StringUtils.getTextoLargo();
+		String largedesc = StringUtils.getTextoLargo();
 		
 		NewBenefits newBenefit = goToCompany();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, desc);
+		newBenefit.createBenefit(owner, name, targetUser, discount, validFrom, "", fileupload, true, benefitCode, title, largedesc);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newBenefit.selectSave();
