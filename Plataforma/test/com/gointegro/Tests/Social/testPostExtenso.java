@@ -52,8 +52,7 @@ public class testPostExtenso extends AllTests {
 		driver = getDriver();
 	}
 
-	//En social wall el test tira un alerta "Unresponsive script.." cuando se corre los tests en paralelo, frenando la regresion.
-	@Test(enabled = false)
+	@Test
 	public void test_post_extenso_en_social_wall() {
 		String textopost = DataGenerator.horaactual()+StringUtils.getTextoLargo();
 		

@@ -27,7 +27,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_type() {
 		String type = "Online";
 		String area = "Córdoba, Argentina";
@@ -51,7 +51,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_disabled() {
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -69,7 +69,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_name() {
 		String name = DataGenerator.nombreFile();
 		
@@ -89,7 +89,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_contact() {
 		String name = DataGenerator.nombreFile();
 		String surname = DataGenerator.nombreFile();
@@ -113,7 +113,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_phone() {
 		String phone = DataGenerator.nombreFile();
 		
@@ -133,7 +133,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_company_name() {
 		String companyName = DataGenerator.nombreFile();
 		
@@ -153,7 +153,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_taxId() {
 		String taxId = "20-198154562-5";
 		
@@ -173,7 +173,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_email() {
 		String email = "untest@gmail.com";
 		
@@ -193,7 +193,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_web_site() {
 		String email = "untest@gmail.com";
 		
@@ -213,7 +213,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_address() {
 		String address = "Avenida Córdoba 5500, Buenos Aires, Argentina";
 		
@@ -233,7 +233,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_zip_code() {
 		String zipcode = "1358";
 		
@@ -253,7 +253,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_area() {
 		String type = "Online";
 		String name = DataGenerator.nombreFile();
@@ -300,7 +300,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_save_and_new() {
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -315,7 +315,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test(enabled = true)
+	@Test
 	public void test_edit_store_cancel() {
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 10);
