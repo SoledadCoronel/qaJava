@@ -217,24 +217,26 @@ public class testPostEliminar extends AllTests {
 		post.waitForLinkLoad();
 		post.submitPostLink();
 		
-		WaitTool.setImplicitWait(driver, 3);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
 		assertEquals(textopost, feeds.getFeedContent());
+		
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		assertEquals(ConfigElements.getUrlTest(), feeds.getURLFeed());
 		social.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 30);
 		feeds.deletePost();
-		WaitTool.waitForJQueryProcessing(driver, 5);
-		social.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		WaitTool.waitForJQueryProcessing(driver, 40);
 		assertNotEquals(textopost, feeds.getFeedContent());
+		
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		assertNotEquals(textopost, feeds.getFeedContent());
+		
 		assertNotEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
 	
@@ -257,13 +259,13 @@ public class testPostEliminar extends AllTests {
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		social.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
@@ -285,9 +287,8 @@ public class testPostEliminar extends AllTests {
 		social.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		feeds.deletePost();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		social.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		WaitTool.waitForJQueryProcessing(driver, 30);
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		

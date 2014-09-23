@@ -66,7 +66,7 @@ public class testCommentEliminar extends AllTests {
 		
 		comment.deleteCommment();
 		WaitTool.waitForJQueryProcessing(driver, 5);
-		assertNotEquals(commentpost, comment.getTextComment());
+		assertFalse(comment.isCommentBoxPresent());
 		
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
@@ -75,7 +75,7 @@ public class testCommentEliminar extends AllTests {
 		
 		assertFalse(feeds.getPublicoEn().contains(ConfigElements.getNombreUsuario()+" comentó la publicación de "+ConfigElements.getNombreUsuario()));
 		assertEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
-		assertNotEquals(commentpost, comment.getTextComment());
+		assertFalse(comment.isCommentBoxPresent());
 	}
 	
 	@Test
@@ -99,8 +99,9 @@ public class testCommentEliminar extends AllTests {
 		
 		comment.deleteCommment();
 		WaitTool.waitForJQueryProcessing(driver, 5);
-		assertNotEquals(commentpost, comment.getTextComment());
 		
+		
+		assertFalse(comment.isCommentBoxPresent());
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
@@ -108,7 +109,7 @@ public class testCommentEliminar extends AllTests {
 		
 		assertFalse(feeds.getPublicoEn().contains(ConfigElements.getNombreUsuario()+" comentó la publicación de "+ConfigElements.getNombreUsuario()));
 		assertEquals(ConfigElements.getNombreEspacio()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
-		assertNotEquals(commentpost, comment.getTextComment());
+		assertFalse(comment.isCommentBoxPresent());
 	}
 	
 	@Test
@@ -132,7 +133,7 @@ public class testCommentEliminar extends AllTests {
 		
 		comment.deleteCommment();
 		WaitTool.waitForJQueryProcessing(driver, 5);
-		assertNotEquals(commentpost, comment.getTextComment());
+		assertFalse(comment.isCommentBoxPresent());
 	}
 	
 	@Test
@@ -156,7 +157,7 @@ public class testCommentEliminar extends AllTests {
 		
 		comment.deleteCommment();
 		WaitTool.waitForJQueryProcessing(driver, 5);
-		assertNotEquals(commentpost, comment.getTextComment());
+		assertFalse(comment.isCommentBoxPresent());
 		
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
@@ -165,7 +166,7 @@ public class testCommentEliminar extends AllTests {
 		
 		assertFalse(feeds.getPublicoEn().contains(ConfigElements.getNombreUsuario()+" comentó la publicación de "+ConfigElements.getNombreUsuario()));
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó en el muro de "+ConfigElements.getNameOtherUser()+"\n"+textopost, feeds.getPublicoEn());
-		assertNotEquals(commentpost, comment.getTextComment());
+		assertFalse(comment.isCommentBoxPresent());
 	}
 	
 	private Comment createComment(String commentpost) {

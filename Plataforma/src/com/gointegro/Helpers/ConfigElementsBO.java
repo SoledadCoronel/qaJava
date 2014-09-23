@@ -4,7 +4,7 @@ public class ConfigElementsBO {
 	
 	private static String user = "admin";
 	
-	private static String passw = "c4stl3bl4ck";
+	private static String passw = "m4rt3ll";
 	
 	private static String urlBackoffice = ConfigElements.getURL()+"/backoffice";
 	

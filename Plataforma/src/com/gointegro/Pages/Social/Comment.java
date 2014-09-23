@@ -24,7 +24,9 @@ public class Comment extends PageBase{
 	
 	private String commentBox = "comment-content";
 	
-	@FindBy (css = "p.comment-content")
+	String firstPost = "//section[contains(@class, 'all-feeds')]/section[1]";
+	
+	@FindBy (xpath = "//p[@class='comment-content']")
 	private WebElement commentcreated;
 	
 	@FindBy (name = "comment-delete")
@@ -78,7 +80,8 @@ public class Comment extends PageBase{
 	 * 
 	 * */
 	public Boolean isCommentBoxPresent() {
-		return driver.findElements(By.name(commentBox)).size() > 0;
+		WebElement firstPostElement = driver.findElement(By.xpath(firstPost));
+		return firstPostElement.findElements(By.className(commentBox)).size() > 0;
 	}
 	
 	/**
