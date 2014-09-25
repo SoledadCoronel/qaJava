@@ -17,6 +17,8 @@ public class AllTestsBackOfficeBenefits extends TestBase {
 		FirefoxBinary firefox = new FirefoxBinary();
 		firefox.setEnvironmentProperty("DISPLAY", ":0");
 		setDriver(new FirefoxDriver(firefox,null));
+		
+		driver.manage().window().maximize();
 	}
 
 	public static WebDriver getDriver() {
