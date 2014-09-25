@@ -108,7 +108,7 @@ public class testNewCompany extends AllTestsBackOfficeBenefits {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newCompany.selectSave();
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 20);
@@ -344,7 +344,7 @@ public class testNewCompany extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_create_company_small_logo() {
-		fileupload = ConfigElements.getFileImageSmall();
+		String newfileupload = ConfigElements.getFileImageSmall();
 		
 		loginBackoffice(driver);
 		
@@ -355,7 +355,7 @@ public class testNewCompany extends AllTestsBackOfficeBenefits {
 		NewCompany newCompany = home.selectNewCompany();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newCompany.logoUploadSmallImg(fileupload);
+		newCompany.logoUploadSmallImg(newfileupload);
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		newCompany.createNewCompany(name, companyName, taxId, phone, fax, "", siteLink, description, address, zipCode, false);

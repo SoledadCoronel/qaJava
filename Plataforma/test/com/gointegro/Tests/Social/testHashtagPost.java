@@ -98,8 +98,13 @@ public class testHashtagPost extends AllTests {
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		feeds.waitDeleteAction();
+		
+		driver.get(ConfigElements.getURL());
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreEspacio()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
@@ -133,6 +138,9 @@ public class testHashtagPost extends AllTests {
 		
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
+		
+		driver.get(ConfigElements.getURL());
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		profile.open();
 		feeds = PageFactory.initElements(driver, WallFeeds.class);
@@ -184,7 +192,7 @@ public class testHashtagPost extends AllTests {
 		assertEquals(textopost, feeds.getFeedContent());
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		TagFeed tagfeeds = feeds.selectHashtag("#hashtag2");
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(textopost, tagfeeds.getFeedContent());
 		assertEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, tagfeeds.getFeedFullContent());
@@ -272,7 +280,7 @@ public class testHashtagPost extends AllTests {
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		TagFeed tagfeeds = feeds.selectHashtag("#hashtag2");
-		WaitTool.waitForJQueryProcessing(driver, 5);
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals(textopost, tagfeeds.getFeedContent());
 		assertEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, tagfeeds.getFeedFullContent());
