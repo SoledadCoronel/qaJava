@@ -6,7 +6,6 @@ import org.junit.Rule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +52,7 @@ public class testPostEliminar extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test(enabled = true)
+	@Test
 	public void test_Eliminar_post_en_Social_wall() {
 		String textopost = DataGenerator.horaactual();
 		
@@ -85,7 +84,7 @@ public class testPostEliminar extends AllTests {
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
 	
-	@Test(enabled = true)
+	@Test
 	public void test_Eliminar_post_en_social_app() {
 		String textopost = DataGenerator.horaactual();
 		
@@ -117,7 +116,7 @@ public class testPostEliminar extends AllTests {
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
 	
-	@Test(enabled = true)
+	@Test
 	public void test_Eliminar_post_en_mi_perfil() {
 		String textopost = DataGenerator.horaactual();
 		
@@ -143,7 +142,7 @@ public class testPostEliminar extends AllTests {
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
 	
-	@Test(enabled = true)
+	@Test
 	public void test_Eliminar_post_otro_perfil() {
 		String textopost = DataGenerator.horaactual();
 		
@@ -175,7 +174,7 @@ public class testPostEliminar extends AllTests {
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
 	
-	@Test(enabled = true)
+	@Test
 	public void test_Eliminar_post_cancelar() {
 		String textopost = DataGenerator.horaactual();
 		
@@ -203,7 +202,7 @@ public class testPostEliminar extends AllTests {
 		assertEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
 	
-	@Test(enabled = true)
+	@Test
 	public void test_Eliminar_post_vinculo() {
 		String textopost = DataGenerator.horaactual();
 		
@@ -241,7 +240,7 @@ public class testPostEliminar extends AllTests {
 		assertNotEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
 	
-	@Test(enabled = true)
+	@Test
 	public void test_Eliminar_post_imagen() {
 		String textopost = DataGenerator.horaactual();
 		
@@ -274,7 +273,7 @@ public class testPostEliminar extends AllTests {
 		assertNotEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
 	
-	@Test(enabled = true)
+	@Test
 	public void test_Eliminar_post_file() {
 		String textopost = DataGenerator.horaactual();
 		String title = DataGenerator.nombreFile();
@@ -306,7 +305,7 @@ public class testPostEliminar extends AllTests {
 		assertNotEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
 	
-	@Test(enabled = true)
+	@Test
 	public void test_Eliminar_post_extenso() {
 		String textopost = DataGenerator.horaactual()+StringUtils.getTextoLargo();
 		
