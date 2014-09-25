@@ -65,6 +65,11 @@ public class testPostFileNoImagen extends AllTests {
 		post.completePostFile(textopost, title, ConfigElements.getFileNoImage());
 		WaitTool.setImplicitWait(driver, 3);
 		
+		Profile profile = PageFactory.initElements(driver, Profile.class);
+		//Abro otra pagina cualquiera antes de volver a recargar appsocial (falla si no lo hago)
+		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		social.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
@@ -75,7 +80,6 @@ public class testPostFileNoImagen extends AllTests {
 		assertEquals(title, feeds.getFileName());
 		assertEquals("Descargar "+title, feeds.getDescargarFile());
 		
-		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
 		
 		assertEquals(textopost, feeds.getFeedContent());
@@ -115,8 +119,13 @@ public class testPostFileNoImagen extends AllTests {
 		post.completePostFile(textopost, title, ConfigElements.getFileNoImage());
 		WaitTool.setImplicitWait(driver, 3);
 		
+		Profile profile = PageFactory.initElements(driver, Profile.class);
+		//Abro otra pagina cualquiera antes de volver a recargar appsocial (falla si no lo hago)
+		profile.open();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		appsocial.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 20);
 		
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
 		
@@ -125,7 +134,6 @@ public class testPostFileNoImagen extends AllTests {
 		assertEquals(title, feeds.getFileName());
 		assertEquals("Descargar "+title, feeds.getDescargarFile());
 		
-		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
 		
 		assertEquals(textopost, feeds.getFeedContent());
@@ -169,6 +177,10 @@ public class testPostFileNoImagen extends AllTests {
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		assertEquals(title, feeds.getFileName());
 		assertEquals("Descargar "+title, feeds.getDescargarFile());
+		
+		//Abro otra pagina cualquiera antes de volver a recargar appsocial (falla si no lo hago)
+		driver.get(ConfigElements.getURL());
+		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		profile.open();
 		WaitTool.setImplicitWait(driver, 3);

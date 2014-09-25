@@ -162,6 +162,9 @@ public class testPostVinculo extends AllTests {
 		assertEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		assertEquals(ConfigElements.getUrlTest(), feeds.getURLFeed());
 		
+		driver.get(ConfigElements.getURL());
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
 		profile.open();
 		WaitTool.setImplicitWait(driver, 3);
 		feeds = PageFactory.initElements(driver, WallFeeds.class);
