@@ -185,12 +185,12 @@ public class testNewContact extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_contact_observation_max_char() {
-		observation = StringUtils.getTextoLargo();
+		String newobservation = StringUtils.getTextoLargo();
 		
 		NewContactOverlay newContact = createCompany();
 		WaitTool.waitForJQueryProcessing(driver, 20);
 		
-		newContact.createContact(contactName, surname, document, phone, area, cellphone, position, email, observation, false);
+		newContact.createContact(contactName, surname, document, phone, area, cellphone, position, email, newobservation, false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newContact.selectSave();

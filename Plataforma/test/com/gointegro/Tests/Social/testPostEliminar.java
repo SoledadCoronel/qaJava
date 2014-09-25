@@ -252,12 +252,15 @@ public class testPostEliminar extends AllTests {
 		PostForm post = PageFactory.initElements(driver, PostForm.class);
 		post.completePostFileImagen(textopost, ConfigElements.getFileImagen());
 		WaitTool.setImplicitWait(driver, 3);
+		
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
+		feeds.waitForPost(textopost);
 		
 		feeds.deletePost();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
+		
 		social.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		assertNotEquals(textopost, feeds.getFeedContent());
@@ -265,7 +268,7 @@ public class testPostEliminar extends AllTests {
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 60);
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}
@@ -283,18 +286,21 @@ public class testPostEliminar extends AllTests {
 		PostForm post = PageFactory.initElements(driver, PostForm.class);
 		post.completePostFile(textopost, title, ConfigElements.getFileNoImage());
 		WaitTool.setImplicitWait(driver, 3);
+		
 		WallFeeds feeds = PageFactory.initElements(driver, WallFeeds.class);
 		social.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		feeds.deletePost();
+		WaitTool.waitForJQueryProcessing(driver, 20);
+		feeds.waitForPost(textopost);
 		
-		WaitTool.waitForJQueryProcessing(driver, 30);
+		feeds.deletePost();
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 		
 		Profile profile = PageFactory.initElements(driver, Profile.class);
 		profile.open();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 60);
 		assertNotEquals(textopost, feeds.getFeedContent());
 		assertNotEquals(ConfigElements.getNombrePlataforma()+" > "+ConfigElements.getNombreUsuario()+" publicó\n"+textopost, feeds.getPublicoEn());
 	}

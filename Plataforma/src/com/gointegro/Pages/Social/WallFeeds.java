@@ -24,6 +24,8 @@ public class WallFeeds extends PageBase {
 	@FindBy (css = "span.social-feed-content")
 	private WebElement feedcontent;
 	
+	String firstPost = "//span[@class='social-feed-content']";
+	
 	@FindBy (css = "p.feed-content > span")
 	private WebElement publicoen;
 	
@@ -221,6 +223,14 @@ public class WallFeeds extends PageBase {
 	public void deletePost() {
 		selectDeletePost();
 		selectConfirmDeletePost();
+	}
+	
+	/**
+	 * Esperar que el post se cargue
+	 * @param content
+	 */
+	public void waitForPost(String content) {
+		WaitTool.waitForTextPresent(driver, By.xpath(firstPost), content, 20);
 	}
 	
 	/**
