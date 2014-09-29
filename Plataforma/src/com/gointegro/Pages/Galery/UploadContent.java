@@ -118,7 +118,7 @@ public class UploadContent extends PageBase{
 	 */
 	public void selectSave() {
 		savebtn.click();
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 30);
 	}
 	
 	/**

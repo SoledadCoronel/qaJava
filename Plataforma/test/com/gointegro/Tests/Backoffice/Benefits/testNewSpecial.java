@@ -320,7 +320,7 @@ public class testNewSpecial extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_special_expiration_date_yesterday() {
-		date = DateTool.getYesterday();
+		String newdate = DateTool.getYesterday();
 		
 		loginBackoffice(driver);
 		
@@ -334,7 +334,7 @@ public class testNewSpecial extends AllTestsBackOfficeBenefits {
 		NewSpecial newSpecial = special.selectNewSpecial();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newSpecial.createSpecial(spanish, portuguese, english, date, image, false);
+		newSpecial.createSpecial(spanish, portuguese, english, newdate, image, false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newSpecial.selectSave();
@@ -370,7 +370,7 @@ public class testNewSpecial extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_new_special_small_image() {
-		image = ConfigElements.getFileImageSmall();
+		String newimage = ConfigElements.getFileImageSmall();
 		
 		loginBackoffice(driver);
 		
@@ -387,7 +387,7 @@ public class testNewSpecial extends AllTestsBackOfficeBenefits {
 		newSpecial.createSpecial(spanish, portuguese, english, date, "", false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newSpecial.imageUploadSmall(image);
+		newSpecial.imageUploadSmall(newimage);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("El tamaño de la imagen debe ser mayor a 973x267", newSpecial.getImageError());

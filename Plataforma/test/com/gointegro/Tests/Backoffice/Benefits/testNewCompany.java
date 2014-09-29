@@ -367,7 +367,7 @@ public class testNewCompany extends AllTestsBackOfficeBenefits {
 	
 	@Test
 	public void test_create_company_invalid_url() {
-		String siteLink = "www.google.com/id=1?'";
+		String siteLink = "wwwgooglecom'";
 		
 		loginBackoffice(driver);
 		
