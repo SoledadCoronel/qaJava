@@ -51,7 +51,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_store_disabled() {
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -300,7 +300,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_store_save_and_new() {
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -315,7 +315,7 @@ public class testEditStore extends AllTestsBackOfficeBenefits {
 	}
 
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_store_cancel() {
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 10);

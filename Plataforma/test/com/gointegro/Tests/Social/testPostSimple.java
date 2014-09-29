@@ -56,7 +56,7 @@ public class testPostSimple extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_Crear_Post_Simple_en_Social_Wall() {
 		String textopost = DataGenerator.horaactual();
 		

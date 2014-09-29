@@ -42,7 +42,7 @@ public class testFollowPost extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_follow_post_unfollow_link() {
 		String textopost = DataGenerator.horaactual();
 		String commentpost = DataGenerator.nombreFile();

@@ -45,7 +45,7 @@ public class testCommentEliminar extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_eliminar_comentario_social_wall() {
 		String textopost = DataGenerator.horaactual();
 		String commentpost = DataGenerator.nombreFile();

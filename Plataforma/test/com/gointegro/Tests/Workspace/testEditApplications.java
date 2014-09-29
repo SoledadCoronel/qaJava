@@ -92,7 +92,7 @@ public class testEditApplications extends AllTestsWorkspace {
 	}
 	
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_edit_application_title() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();

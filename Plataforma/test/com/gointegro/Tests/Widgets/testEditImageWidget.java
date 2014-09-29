@@ -179,7 +179,7 @@ public class testEditImageWidget extends AllTestsWidgets {
 		WaitTool.waitForJQueryProcessing(driver, 60);
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_edit_banner_change_image() {
 		String title = DataGenerator.nombreFile();
 		String imageFile = ConfigElements.getFileImagen();

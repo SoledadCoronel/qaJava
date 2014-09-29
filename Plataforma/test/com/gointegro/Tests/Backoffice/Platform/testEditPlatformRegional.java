@@ -71,7 +71,7 @@ public class testEditPlatformRegional extends AllTestsBackofficePlatform {
 		driver = getDriver();
 	}
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_platform_regional_verify() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
@@ -529,7 +529,7 @@ public class testEditPlatformRegional extends AllTestsBackofficePlatform {
 		assertEquals("Por favor, ingrese los Términos y Condiciones.", edit.getErrorTermsAndConditions());
 	}
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_platform_regional() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
@@ -581,7 +581,7 @@ public class testEditPlatformRegional extends AllTestsBackofficePlatform {
 		assertEquals("La URL ingresada ya está siendo utilizada en el sistema.", edit.getErrorMessage());
 	}
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_platform_regional_cancel() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();

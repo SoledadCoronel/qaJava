@@ -33,7 +33,7 @@ public class testCelebrationWorkspaces extends AllTestsCelebration {
 		driver = getDriver();
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_public_autojoin_workspace_celebration() {
 		String workspaceTitle = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();

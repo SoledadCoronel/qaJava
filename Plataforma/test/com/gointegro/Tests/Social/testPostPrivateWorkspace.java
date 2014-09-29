@@ -46,7 +46,7 @@ public class testPostPrivateWorkspace extends AllTests {
 	}
 
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_Post_simple_en_workspace_privado() {
 		String textopost = DataGenerator.horaactual();
 		

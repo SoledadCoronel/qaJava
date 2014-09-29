@@ -45,7 +45,7 @@ public class testAddApplications extends AllTestsWorkspace {
 	}
 
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_add_application_gallery() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
@@ -225,7 +225,7 @@ public class testAddApplications extends AllTestsWorkspace {
 	}
 	
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_add_application_content() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
@@ -262,7 +262,7 @@ public class testAddApplications extends AllTestsWorkspace {
 	}
 	
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_add_application_news() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
@@ -299,7 +299,7 @@ public class testAddApplications extends AllTestsWorkspace {
 	}
 	
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_add_application_social() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
@@ -377,7 +377,7 @@ public class testAddApplications extends AllTestsWorkspace {
 	}
 	
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_add_application_celebrations() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
@@ -464,7 +464,7 @@ public class testAddApplications extends AllTestsWorkspace {
 	}
 	
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_add_application_benefit_map() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();

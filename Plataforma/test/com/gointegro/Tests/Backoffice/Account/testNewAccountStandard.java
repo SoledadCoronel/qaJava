@@ -188,7 +188,7 @@ public class testNewAccountStandard extends AllTestsAccount {
 		assertEquals("El ID de Salesforce ingresado pertenece a otra cuenta.", standard.getErrorMsj());
 	}
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_new_account_standard_cancel() {
 		
 		loginBackoffice(driver);

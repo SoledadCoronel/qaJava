@@ -773,7 +773,7 @@ public class testNewAccountRegionalFather extends AllTestsAccount {
 		assertEquals("usernameId", detail.getUserField());
 	}
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_new_account_regional_father_cancel() {
 		String accountname = "Z" + DataGenerator.nombreFile();
 		String web = "http://" + DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
