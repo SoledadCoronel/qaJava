@@ -21,6 +21,7 @@ import com.gointegro.Pages.Galery.ImageDetail;
 import com.gointegro.Pages.Galery.NewAlbumOverlay;
 import com.gointegro.Pages.Galery.UploadContent;
 import com.gointegro.Pages.Platform.Logout;
+import com.gointegro.Util.AttachmentUploads;
 import com.gointegro.Util.DataGenerator;
 import com.gointegro.Util.WaitTool;
 
@@ -125,7 +126,7 @@ public class testUploadFile extends AllTestsGalery {
 		}
 	}
 	
-	@Test(enabled = false)
+	@Test
 	public void test_upload_file_delete() {
 		String testfile = ConfigElements.getFileImagen();
 		
@@ -365,6 +366,8 @@ public class testUploadFile extends AllTestsGalery {
 		upload.setOtherFile(testfile);
 		
 		upload.selectSave();
+		AttachmentUploads.waitBar(driver);
+		
 		
 		home.open();
 		WaitTool.waitForJQueryProcessing(driver, 5);

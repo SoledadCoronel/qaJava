@@ -159,7 +159,7 @@ public class testNewVisibleFile extends AllTestsBackOfficeBenefits {
 		newFile.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertFalse(detail.getFileLink().isEmpty());
+		assertFalse(detail.getVisibleFileLink().isEmpty());
 	}
 	
 	private DetailBenefits createBenefit() {
