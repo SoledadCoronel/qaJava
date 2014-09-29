@@ -77,7 +77,7 @@ public class testDeleteAlbum extends AllTestsGalery {
 		assertFalse(home.getAlbumNameSideBar(albumname));
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_delete_album_admin_cancel() {
 		String albumname = DataGenerator.nombreFile();
 		
@@ -148,7 +148,7 @@ public class testDeleteAlbum extends AllTestsGalery {
 		assertFalse(home.getAlbumNameSideBar(albumname));
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_delete_album_detail() {
 		String albumname = DataGenerator.nombreFile();
 		
@@ -179,7 +179,7 @@ public class testDeleteAlbum extends AllTestsGalery {
 		assertFalse(home.getAlbumNameSideBar(albumname));
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_delete_album_detail_cancel() {
 		String albumname = DataGenerator.nombreFile();
 		
@@ -242,7 +242,7 @@ public class testDeleteAlbum extends AllTestsGalery {
 		assertFalse(home.getAlbumNameSideBar(albumname));
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_delete_album_access() {
 		String albumname = DataGenerator.nombreFile();
 		

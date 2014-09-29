@@ -77,7 +77,7 @@ public class testNewSpecial extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_new_special_save_and_new() {
 		loginBackoffice(driver);
 		
@@ -111,7 +111,7 @@ public class testNewSpecial extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_new_special_press_cancel() {
 		loginBackoffice(driver);
 		

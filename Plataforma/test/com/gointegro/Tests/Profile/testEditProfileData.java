@@ -41,7 +41,7 @@ public class testEditProfileData extends AllTestsProfile {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_edit_profile_birthdate() {
 		Random rand = new Random();
 		String day = Integer.toString(rand.nextInt(31)+1);

@@ -42,7 +42,7 @@ public class testListAccount extends AllTestsAccount {
 		driver = getDriver();
 	}
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_list_account_search() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);

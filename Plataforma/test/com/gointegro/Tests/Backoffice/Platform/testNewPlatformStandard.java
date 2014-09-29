@@ -1531,7 +1531,7 @@ public class testNewPlatformStandard extends AllTestsBackofficePlatform {
 		assertFalse(detail.getSrcSecondaryLogo().isEmpty());
 	}
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_new_platform_cancel() {
 		loginBackoffice(driver);
 		

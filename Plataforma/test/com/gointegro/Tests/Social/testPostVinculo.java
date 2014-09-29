@@ -51,7 +51,7 @@ public class testPostVinculo extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_Postear_Vinculo_en_social_wall() {
 		String textopost = DataGenerator.horaactual();
 		

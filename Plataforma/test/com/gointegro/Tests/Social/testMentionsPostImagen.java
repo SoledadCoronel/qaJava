@@ -44,7 +44,7 @@ public class testMentionsPostImagen extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_mention_post_img_en_social_wall() {
 		String textopost = DataGenerator.horaactual();
 		

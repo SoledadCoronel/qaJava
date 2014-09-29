@@ -52,7 +52,7 @@ public class testPostEliminar extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_Eliminar_post_en_Social_wall() {
 		String textopost = DataGenerator.horaactual();
 		

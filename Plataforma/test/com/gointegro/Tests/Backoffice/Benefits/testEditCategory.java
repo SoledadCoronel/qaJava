@@ -44,7 +44,7 @@ public class testEditCategory extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_category_enabled() {
 		String name = DataGenerator.nombreFile();
 		
@@ -217,7 +217,7 @@ public class testEditCategory extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_category_cancel() {
 		String newName = DataGenerator.nombreFile();
 		

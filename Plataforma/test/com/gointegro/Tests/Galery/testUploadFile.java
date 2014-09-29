@@ -43,7 +43,7 @@ public class testUploadFile extends AllTestsGalery {
 		driver = getDriver();
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_upload_file_select_album() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();
@@ -200,7 +200,7 @@ public class testUploadFile extends AllTestsGalery {
 		}
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_upload_file_cancel() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();

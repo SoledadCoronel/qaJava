@@ -45,7 +45,7 @@ public class testMentionsComment extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_mention_comment_en_social_wall() {
 		String textopost = DataGenerator.horaactual();
 		String commentpost = DataGenerator.nombreFile();

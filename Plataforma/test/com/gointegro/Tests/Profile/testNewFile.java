@@ -45,7 +45,7 @@ public class testNewFile extends AllTestsProfile {
 		driver = getDriver();
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_profile_upload_file() {
 		String file = ConfigElements.getFileImagen();
 		String date = DataGenerator.fechaactual();

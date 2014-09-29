@@ -47,7 +47,7 @@ public class testDeleteImage extends AllTestsGalery {
 		driver = getDriver();
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_delete_img_detail() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();
@@ -78,7 +78,7 @@ public class testDeleteImage extends AllTestsGalery {
 		assertEquals(0, detail.albumsize());
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_delete_img_detail_cancel() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();

@@ -44,7 +44,7 @@ public class testSharePostEspecial extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_share_post_imagen() {
 		String textopost = DataGenerator.horaactual();
 		String textoshare = DataGenerator.horaactual()+" share";

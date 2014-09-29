@@ -822,7 +822,7 @@ public class testEditPlatformStandard extends AllTestsBackofficePlatform {
 		assertFalse(login.isSignUpPresent());
 	}
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_platform() {
 		//Prueba cambiandole unicamente el nombre, web,storage,filesize,industria y rango de usuarios.
 		platformname = DataGenerator.nombreFile();
@@ -869,7 +869,7 @@ public class testEditPlatformStandard extends AllTestsBackofficePlatform {
 		assertEquals(htmllog, detail.getHtmlLogin());
 	}
 	
-	@Test
+	@Test(groups = {"BOFunctTest"})
 	public void test_edit_platform_cancel() {
 		platformname = DataGenerator.nombreFile();
 		web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();

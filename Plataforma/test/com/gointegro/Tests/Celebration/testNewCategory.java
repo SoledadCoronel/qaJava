@@ -340,7 +340,7 @@ public class testNewCategory extends AllTestsCelebration {
 		assertTrue(newevent.getCategoryPresent().contains(categoryname));
 	}
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_new_category_cancel_overlay() {
 		String categoryname = DataGenerator.nombreFile();
 		

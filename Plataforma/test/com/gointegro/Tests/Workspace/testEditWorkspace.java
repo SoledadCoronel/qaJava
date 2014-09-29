@@ -44,7 +44,7 @@ public class testEditWorkspace extends AllTestsWorkspace {
 	}
 
 	
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_edit_workspace_change_to_deactivated() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();

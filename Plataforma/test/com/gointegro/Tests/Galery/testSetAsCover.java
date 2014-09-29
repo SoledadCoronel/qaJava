@@ -42,7 +42,7 @@ public class testSetAsCover extends AllTestsGalery {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_set_as_cover() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();

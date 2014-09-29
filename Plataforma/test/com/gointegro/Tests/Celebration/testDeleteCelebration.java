@@ -43,7 +43,7 @@ public class testDeleteCelebration extends AllTestsCelebration {
 		driver = getDriver();
 	}
 
-	@Test
+	@Test(groups = {"FunctTest"})
 	public void test_delete_event() {
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  DataGenerator.nombreFile();
