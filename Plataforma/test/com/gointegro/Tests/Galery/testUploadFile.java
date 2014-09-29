@@ -125,7 +125,7 @@ public class testUploadFile extends AllTestsGalery {
 		}
 	}
 	
-	@Test
+	@Test(enabled = false)
 	public void test_upload_file_delete() {
 		String testfile = ConfigElements.getFileImagen();
 		
