@@ -94,7 +94,7 @@ public class testNewCategory extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_category_save_and_new() {
 		String name = DataGenerator.nombreFile();
 		
@@ -118,7 +118,7 @@ public class testNewCategory extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_category_press_cancel() {
 		String name = DataGenerator.nombreFile();
 		

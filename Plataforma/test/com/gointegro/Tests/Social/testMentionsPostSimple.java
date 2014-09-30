@@ -45,7 +45,7 @@ public class testMentionsPostSimple extends AllTests {
 	}
 
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_mention_en_social_wall() {
 		String textopost = DataGenerator.horaactual();
 		

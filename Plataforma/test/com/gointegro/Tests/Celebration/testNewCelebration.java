@@ -467,7 +467,7 @@ public class testNewCelebration extends AllTestsCelebration {
 		assertNotEquals("", celebrationlist.srcLightBoxImg());
 	}
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_new_event_cancel() {
 		Login login = PageFactory.initElements(driver, Login.class);
 		login.open();

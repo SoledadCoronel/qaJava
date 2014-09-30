@@ -167,7 +167,7 @@ public class testNewTerminal extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_terminal_save_and_new() {
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);
@@ -185,7 +185,7 @@ public class testNewTerminal extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_terminal_cancel() {
 		DetailStore detail = createStore();
 		WaitTool.waitForJQueryProcessing(driver, 5);

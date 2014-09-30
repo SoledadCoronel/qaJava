@@ -45,7 +45,7 @@ public class testEditBenefitWidget extends AllTestsWidgets {
 	}
 	
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_edit_benefit_category() {
 		String newName = DataGenerator.nombreFile();
 		

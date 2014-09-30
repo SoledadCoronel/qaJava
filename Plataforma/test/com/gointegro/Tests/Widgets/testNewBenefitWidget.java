@@ -42,7 +42,7 @@ public class testNewBenefitWidget extends AllTestsWidgets {
 	}
 	
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_new_benefit_category() {
 		NewModuleOverlay newModule = selectBenefitWidget();
 		WaitTool.waitForJQueryProcessing(driver, 5);

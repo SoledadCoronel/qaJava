@@ -23,7 +23,7 @@ public class testEditUser extends AllTestsBackofficePlatform {
 		driver = getDriver();
 	}
 
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_user_name() {
 		String newName = DataGenerator.nombreFile();
 		

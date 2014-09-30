@@ -41,7 +41,7 @@ public class testEditInstalledAppWidget extends AllTestsWidgets {
 	}
 
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_edit_app_celebration_title_with_text() {
 		String title = DataGenerator.nombreFile();
 		String title2 = DataGenerator.nombreFile();

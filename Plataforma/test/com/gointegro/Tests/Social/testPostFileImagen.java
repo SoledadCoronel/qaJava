@@ -44,7 +44,7 @@ public class testPostFileImagen extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_Post_File_Imagen_en_Social_Wall() {
 		String textopost = DataGenerator.horaactual();
 		

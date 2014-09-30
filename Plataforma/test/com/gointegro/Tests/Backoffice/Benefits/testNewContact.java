@@ -199,7 +199,7 @@ public class testNewContact extends AllTestsBackOfficeBenefits {
 		assertEquals("El campo observaciones no puede superar los 500 caracteres", newContact.getObservationsErrorMsg());
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_contact_save_and_new() {
 		NewContactOverlay newContact = createCompany();
 		WaitTool.waitForJQueryProcessing(driver, 20);
@@ -213,7 +213,7 @@ public class testNewContact extends AllTestsBackOfficeBenefits {
 		assertTrue(newContact.isNameInputEmpty());
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_contact_cancel() {
 		NewContactOverlay newContact = createCompany();
 		WaitTool.waitForJQueryProcessing(driver, 20);

@@ -71,7 +71,7 @@ public class testEditAccountRegionalFather extends AllTestsAccount {
 		driver = getDriver();
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_account_regional_father_verify() {
 		String accountname = "Z" + DataGenerator.nombreFile();
 		String web = "http://" + DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
@@ -496,7 +496,7 @@ public class testEditAccountRegionalFather extends AllTestsAccount {
 		assertEquals("usernameId", detail.getUserField());
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_account_regional_father_cancel() {
 		String accountname = "Z" + DataGenerator.nombreFile();
 		String web = "http://" + DataGenerator.nombreFile()+ConfigElementsBO.getHostName();

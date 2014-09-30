@@ -636,7 +636,7 @@ public class testNewPlatformRegional extends AllTestsBackofficePlatform {
 		assertEquals("La URL ingresada ya está siendo utilizada en el sistema.", newplat.getErrorMessage());
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_platform_regional_cancel() {
 		loginBackoffice(driver);
 		

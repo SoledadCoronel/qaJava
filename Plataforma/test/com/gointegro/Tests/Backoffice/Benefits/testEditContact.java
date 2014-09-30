@@ -98,7 +98,7 @@ public class testEditContact extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_contact() {
 		String contactName = DataGenerator.nombreFile();
 		String surname = DataGenerator.nombreFile();

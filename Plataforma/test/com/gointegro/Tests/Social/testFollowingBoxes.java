@@ -41,7 +41,7 @@ public class testFollowingBoxes extends AllTests {
 		driver = getDriver();
 	}
 
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_following_box() {
 		Login login = PageFactory.initElements(driver, Login.class);
 		login.open();

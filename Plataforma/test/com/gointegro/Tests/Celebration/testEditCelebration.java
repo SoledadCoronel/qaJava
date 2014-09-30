@@ -45,7 +45,7 @@ public class testEditCelebration extends AllTestsCelebration {
 		driver = getDriver();
 	}
 
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_edit_event_verify_data() {
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  DataGenerator.nombreFile();
@@ -692,7 +692,7 @@ public class testEditCelebration extends AllTestsCelebration {
 		assertEquals("La fecha no puede estar vacía", editevent.getDateErrorMsj());
 	}
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_edit_event_cancel() {
 		String collaborator = ConfigElements.getNombreUsuario();
 		String celebrationtitle =  DataGenerator.nombreFile();

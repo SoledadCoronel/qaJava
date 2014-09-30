@@ -43,7 +43,7 @@ public class testListPlatform extends AllTestsBackofficePlatform {
 		driver = getDriver();
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_list_platform_search_name() {
 		String platformname = DataGenerator.nombreFile();
 		String web = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();

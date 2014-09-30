@@ -40,7 +40,7 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
 		driver = getDriver();
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_account_standard_verify() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);
@@ -203,7 +203,7 @@ private final Logger logger = LoggerFactory.getLogger(getClass());
 		assertEquals("El ID de Salesforce ingresado pertenece a otra cuenta.", edit.getErrorMsj());
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_account_standard_cancel() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);

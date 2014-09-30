@@ -44,7 +44,7 @@ public class testCategoryAutomatic extends AllTestsCelebration {
 		driver = getDriver();
 	}
 
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_auto_category() {
 		String categoryname = DataGenerator.nombreFile();
 		String collaborator = ConfigElements.getNombreUsuario();

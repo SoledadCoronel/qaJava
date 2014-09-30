@@ -31,7 +31,7 @@ public class testEditBenefit extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_benefit_disabled() {
 		DetailBenefits detail = createBenefit(true, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -376,7 +376,7 @@ public class testEditBenefit extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_benefit_save_and_new() {
 		DetailBenefits detail = createBenefit(false, false, false, false, false, false, "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -391,7 +391,7 @@ public class testEditBenefit extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_benefit_cancel() {
 		String name = DataGenerator.nombreFile();
 		

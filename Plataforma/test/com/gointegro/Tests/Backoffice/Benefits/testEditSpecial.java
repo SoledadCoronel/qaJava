@@ -66,7 +66,7 @@ public class testEditSpecial extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_special_spanish() {
 		String name = DataGenerator.nombreFile();
 		
@@ -144,7 +144,7 @@ public class testEditSpecial extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_special_save_and_new() {
 		DetailSpecial detail = createSpecial();
 		WaitTool.waitForJQueryProcessing(driver, 10);
@@ -160,7 +160,7 @@ public class testEditSpecial extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_special_cancel() {
 		String name = DataGenerator.nombreFile();
 		

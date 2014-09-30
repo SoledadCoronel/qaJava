@@ -463,7 +463,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		assertEquals("La fecha ingresada no puede ser mayor a la fecha actual.", newUser.getRegisteredDateError());
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_user_cancel() {
 		loginBackoffice(driver);
 		
@@ -480,7 +480,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		assertNotEquals(newUser.getURL(), driver.getCurrentUrl());
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_user_save_and_new() {
 		loginBackoffice(driver);
 		

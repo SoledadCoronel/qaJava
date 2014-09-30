@@ -43,7 +43,7 @@ public class testDeleteFile extends AllTestsProfile {
 		driver = getDriver();
 	}
 
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_delete_file() {
 		String file = ConfigElements.getFileImagen();
 		String title = DataGenerator.nombreFile();

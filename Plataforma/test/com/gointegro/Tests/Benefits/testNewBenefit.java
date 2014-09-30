@@ -59,7 +59,7 @@ public class testNewBenefit extends AllTestsBenefits {
 	}
 	
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_new_benefit_check_front() {
 		String redeemingName = "Celular";
 		String targetUser = "General";

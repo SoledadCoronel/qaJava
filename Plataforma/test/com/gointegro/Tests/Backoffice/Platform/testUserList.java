@@ -24,7 +24,7 @@ public class testUserList extends AllTestsBackofficePlatform {
 		driver = getDriver();
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test(enabled = true)
 	public void test_search_user_by_name() {
 		String name = DataGenerator.nombreFile();
 		String surname = DataGenerator.nombreFile();
@@ -41,7 +41,7 @@ public class testUserList extends AllTestsBackofficePlatform {
 		assertTrue(list.searchUser(name));
 	}
 	
-	@Test
+	@Test(enabled = true)
 	public void test_search_user_by_surname() {
 		String name = DataGenerator.nombreFile();
 		String surname = DataGenerator.nombreFile();

@@ -117,7 +117,7 @@ public class testNewFile extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_file_cancel() {
 		String name = DataGenerator.nombreFile();
 		String desc = DataGenerator.nombreFile();

@@ -44,7 +44,7 @@ public class testEditCategory extends AllTestsCelebration {
 		driver = getDriver();
 	}
 
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_edit_category() {
 		String categoryname = DataGenerator.nombreFile();
 		String categorynameedited = DataGenerator.nombreFile();
@@ -152,7 +152,7 @@ public class testEditCategory extends AllTestsCelebration {
 		assertEquals("El nombre de la categoría ya existe", admincategory.getSaveError());
 	}
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_edit_category_cancel() {
 		String categoryname = DataGenerator.nombreFile();
 		String categorynameedited = DataGenerator.nombreFile();

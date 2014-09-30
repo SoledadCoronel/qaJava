@@ -42,7 +42,7 @@ public class testEditAlbumName extends AllTestsGalery {
 		driver = getDriver();
 	}
 
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_edit_album_admin_text() {
 		String albumname = DataGenerator.nombreFile();
 
@@ -419,7 +419,7 @@ public class testEditAlbumName extends AllTestsGalery {
 		}
 	}
 
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_edit_album_cancel() {
 		String albumname = DataGenerator.nombreFile();
 		String albumnameedit = DataGenerator.nombreFile();

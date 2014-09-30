@@ -37,7 +37,7 @@ public class testDeleteAllWidgets extends AllTestsWidgets {
 		driver = getDriver();
 	}
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_delete_all_widgets() {
 		login(driver);
 		

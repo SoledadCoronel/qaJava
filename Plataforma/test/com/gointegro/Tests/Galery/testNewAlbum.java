@@ -174,7 +174,7 @@ public class testNewAlbum extends AllTestsGalery {
 		assertFalse(home.getAlbumNameSideBar(albumname));
 	}
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_new_album_admin() {
 		String albumname = DataGenerator.nombreFile();
 		
@@ -296,7 +296,7 @@ public class testNewAlbum extends AllTestsGalery {
 		assertTrue(home.getAlbumNameSideBar(albumname));
 	}
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_new_album_admin_cancel() {
 		String albumname = DataGenerator.nombreFile();
 		

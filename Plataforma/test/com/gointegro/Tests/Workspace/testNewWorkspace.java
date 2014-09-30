@@ -266,7 +266,7 @@ public class testNewWorkspace extends AllTestsWorkspace {
 	}
 	
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_create_workspace_private_with_basic_user() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();
@@ -325,7 +325,7 @@ public class testNewWorkspace extends AllTestsWorkspace {
 	}
 
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_create_workspace_join_basic_user() {
 		String title = DataGenerator.nombreFile();
 		String description = StringUtils.getTextoLargo();

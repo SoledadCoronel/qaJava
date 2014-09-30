@@ -36,7 +36,7 @@ public class testDeleteAll extends AllTestsWorkspace {
 	}
 	
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_delete_all_workspaces() {
 		login(driver);
 		

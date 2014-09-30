@@ -45,7 +45,7 @@ public class testImageDetail extends AllTestsGalery {
 		driver = getDriver();
 	}
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_img_detail_view() {
 		String albumname = DataGenerator.nombreFile();
 		String testfile = ConfigElements.getFileImagen();

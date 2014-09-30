@@ -38,7 +38,7 @@ public class testSearchCollaborator extends AllTestsCollaborators {
 	}
 
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_search_by_first_name() {
 		String nameParts[] = ConfigElements.getNombreUsuario().split("\\s");
 		String name = nameParts[0];

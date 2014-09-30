@@ -46,7 +46,7 @@ public class testEditVisibleFile extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_visible_file_name() {
 		String title = DataGenerator.nombreFile();
 		
@@ -106,7 +106,7 @@ public class testEditVisibleFile extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_visible_file_cancel() {
 		String title = DataGenerator.nombreFile();
 		

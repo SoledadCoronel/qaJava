@@ -30,7 +30,7 @@ public class testEditCompany extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_company_disabled() {
 		DetailCompany detail = createCompany(false, false);
 		WaitTool.waitForJQueryProcessing(driver, 5);

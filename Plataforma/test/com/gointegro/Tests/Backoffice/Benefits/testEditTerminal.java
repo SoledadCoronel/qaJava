@@ -138,7 +138,7 @@ public class testEditTerminal extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_terminal_check_modal() {
 		terminal = "67";
 		operator = DataGenerator.nombreFile();

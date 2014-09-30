@@ -45,7 +45,7 @@ public class testEditNews extends AllTestsNews {
 	}
 
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_edit_news_title_with_text() {
 		String titleText1 = DataGenerator.nombreFile();
 		String titleText2 = DataGenerator.nombreFile();

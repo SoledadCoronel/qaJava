@@ -88,7 +88,7 @@ public class testNewBenefit extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_benefit_save_and_new() {
 		NewBenefits newBenefit = goToCompany();
 		WaitTool.waitForJQueryProcessing(driver, 10);

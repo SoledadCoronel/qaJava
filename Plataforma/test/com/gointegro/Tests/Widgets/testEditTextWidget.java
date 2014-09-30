@@ -42,7 +42,7 @@ public class testEditTextWidget extends AllTestsWidgets {
 	}
 	
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_text_edit_title_with_text() {
 		String title = DataGenerator.nombreFile();
 		String title2 = DataGenerator.nombreFile();

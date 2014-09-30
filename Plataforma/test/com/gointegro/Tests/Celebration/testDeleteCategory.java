@@ -80,7 +80,7 @@ public class testDeleteCategory extends AllTestsCelebration {
 		assertFalse(newevent.getCategoryPresent().contains(categoryname));
 	}
 	
-	@Test(groups = {"FunctTest"})
+	@Test
 	public void test_delete_category_automation() {
 		String categoryname = DataGenerator.nombreFile();
 		

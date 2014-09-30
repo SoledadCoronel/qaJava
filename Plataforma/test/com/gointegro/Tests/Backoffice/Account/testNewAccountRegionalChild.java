@@ -41,7 +41,7 @@ public class testNewAccountRegionalChild extends AllTestsAccount {
 		driver = getDriver();
 	}
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_new_account_regional_child() {
 		String accountname = "Z"+DataGenerator.nombreFile();
 		String salesforceid = DataGenerator.nombreFile().substring(0, 15);

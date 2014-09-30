@@ -27,7 +27,7 @@ public class testEditFile extends AllTestsBackOfficeBenefits {
 	}
 	
 	
-	@Test(groups = {"BOFunctTest"})
+	@Test
 	public void test_edit_file_disabled() {
 		DetailBenefits detail = createFile();
 		WaitTool.waitForJQueryProcessing(driver, 5);
