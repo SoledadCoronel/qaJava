@@ -616,6 +616,9 @@ public class testEditNews extends AllTestsNews {
 		
 		assertEquals(titleText, detail.getTitle());
 		assertEquals(descriptionText, detail.getDescription());
+		
+		System.out.println("text: " + comment.isCommentBoxPresent());
+		
 		assertTrue(comment.isCommentBoxPresent());
 		
 		//Edito la novedad

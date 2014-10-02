@@ -124,8 +124,8 @@ public class testEditCelebration extends AllTestsCelebration {
 		assertEquals(categoryname, celebrationlist.getCategory());
 		assertEquals(celebrationtitle, celebrationlist.getTitle());
 		assertEquals(descriptiontext, celebrationlist.getDescription());
-		assertEquals(collaborator+" y otra persona más", celebrationlist.getCollaboratonName()); //Falla siempre hasta que javier arregle JS unified
-		assertEquals(collaborator, celebrationlist.getImgAlt());
+		assertEquals(newcollaborator+" y otra persona más", celebrationlist.getCollaboratonName());
+		assertEquals(newcollaborator, celebrationlist.getImgAlt());
 		assertEquals(date, celebrationlist.getTodayDate());
 		
 		EventCollaboratorOverlay eventcolaboverlay = celebrationlist.selectCollaboratosList();

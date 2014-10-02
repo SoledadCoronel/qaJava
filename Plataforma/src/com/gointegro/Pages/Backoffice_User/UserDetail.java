@@ -9,56 +9,53 @@ import com.gointegro.Pages.Base.PageBase;
 
 public class UserDetail extends PageBase{
 
-	@FindBy (xpath = "//div[@id='enabled-info']/span")
+	@FindBy (id = "enabled")
 	WebElement enabled;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[1]/div[4]/span")
+	@FindBy (id = "name")
 	WebElement name;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[1]/div[6]/span")
+	@FindBy (id = "surname")
 	WebElement surname;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[1]/div[8]/span")
+	@FindBy (id = "email")
 	WebElement email;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[1]/div[10]/span")
+	@FindBy (id = "admission")
 	WebElement admission;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[2]/div[2]/span")
+	@FindBy (id = "document")
 	WebElement document;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[1]/div[12]/span")
+	@FindBy (id = "birthdate")
 	WebElement birthdate;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[2]/div[4]/span")
+	@FindBy (id = "gender")
 	WebElement gender;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[2]/div[6]/span")
+	@FindBy (id = "phone")
 	WebElement phone;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[2]/div[8]/span")
+	@FindBy (id = "cellphone")
 	WebElement cellphone;
 	
-	@FindBy (xpath = "//div[@id='content']/div[5]/div/span[2]/div[10]/span")
+	@FindBy (id = "role")
 	WebElement role;
 	
-	@FindBy (xpath = "//div[@id='content']/div[7]/div/div[2]/span")
+	@FindBy (id = "usernameId")
 	WebElement usernameId;
 	
-	@FindBy (xpath = "//div[@id='content']/div[7]/div[2]/div[2]/span")
+	@FindBy (id = "registered")
 	WebElement registered;
 	
-	@FindBy (xpath = "//div[@id='content']/div[7]/div[3]/div[2]/span")
+	@FindBy (id = "registeredDate")
 	WebElement registeredDate;
 	
-	@FindBy (xpath = "//div[@id='content']/div[7]/div[4]/div[2]/span")
+	@FindBy (id = "integrationId")
 	WebElement integrationId;
 	
-	@FindBy (xpath = "//div[@class='btn-group']/a[1]")
+	@FindBy (xpath = "//button[contains(@class, 'edit-link')]")
 	WebElement edit;
-	
-	@FindBy (xpath = "//div[@class='btn-group']/a[2]")
-	WebElement delete;
 	
 	public UserDetail(WebDriver driver) {
 		super(driver);
@@ -189,15 +186,6 @@ public class UserDetail extends PageBase{
 	 */
 	public CreateUser selectEdit() {
 		edit.click();
-		return PageFactory.initElements(driver, CreateUser.class);
-	}
-	
-	/**
-	 * Seleccionar Eliminar
-	 * @return CreateUser
-	 */
-	public CreateUser selectDelete() {
-		delete.click();
 		return PageFactory.initElements(driver, CreateUser.class);
 	}
 }

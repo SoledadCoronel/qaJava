@@ -22,7 +22,7 @@ public class UserList extends PageBase{
 	@FindBy (className = "icon-backward")
 	private WebElement backbtn;
 	
-	@FindBy(xpath = "//div[@id='basic-grid']/table/tbody/tr")
+	@FindBy(xpath = "//div[@class='backgrid-user-list']/table/tbody/tr")
 	List <WebElement> basicgrid;
 	
 	@FindBy (xpath = "//tr[@class='empty']/td")

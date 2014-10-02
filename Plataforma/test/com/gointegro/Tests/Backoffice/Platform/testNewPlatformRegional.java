@@ -439,10 +439,6 @@ public class testNewPlatformRegional extends AllTestsBackofficePlatform {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Si", detail.getDisablePlatform());
-		
-		driver.get(web);
-		
-		assertTrue(driver.getPageSource().contains("La plataforma se encuentra en mantenimiento, por favor vuelve a ingresar más tarde."));
 	}
 	
 	@Test
