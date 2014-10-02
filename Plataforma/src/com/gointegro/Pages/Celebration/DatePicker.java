@@ -1,5 +1,7 @@
 package com.gointegro.Pages.Celebration;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +27,9 @@ public class DatePicker extends PageBase{
 	@FindBy (className = "datepicker-switch")
 	private WebElement month;
 	
+	@FindBy (xpath = "//div[@class='datepicker-days']/table/tbody/tr")
+	List<WebElement> days;
+	
 	/**
 	 * Constructor
 	 * 
@@ -42,8 +47,8 @@ public class DatePicker extends PageBase{
 	 */
 	public void selectMonth(String date) {
 		String monthtext = DateTool.getMonthText(date);
-		String yeartext = DateTool.getYearText(date);		
-		while (!month.getText().equals(monthtext+" "+yeartext)) {
+		
+		while (!month.getText().contains(monthtext)) {
 			next.click();
 			if (month.getText().contains("2016")) {
 				break;
@@ -58,8 +63,14 @@ public class DatePicker extends PageBase{
 	 */
 	public void selectDay(String StringDate) {
 		String daytext = DateTool.getDayText(StringDate);
-		//No se puede usar annotations, por eso volvemos al driver.findelement
-		driver.findElement(By.xpath("//div[@class='datepicker-days']//td[contains(text(),'"+daytext+"')]")).click();
+		String dayNumber = DateTool.removeZeroInt(daytext);
+		
+		for(WebElement day : days) {
+			if(day.findElements(By.xpath("/td[class='day']")).size() > 0 && day.findElement(By.xpath("/td[class='day']")).getText().contentEquals(dayNumber)) {
+				day.findElement(By.xpath("/td[class='day']")).click();
+				break;
+			}
+		}
 	}
 
 }

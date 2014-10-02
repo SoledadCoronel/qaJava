@@ -50,7 +50,7 @@ public class testEditUser extends AllTestsBackofficePlatform {
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Campo obligatorio.", edit.getNameError());
+		assertEquals("Este campo no puede estar vacío", edit.getNameError());
 	}
 	
 	@Test
@@ -80,7 +80,7 @@ public class testEditUser extends AllTestsBackofficePlatform {
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Campo obligatorio.", edit.getSurnameError());
+		assertEquals("Este campo no puede estar vacío", edit.getSurnameError());
 	}
 	
 	@Test
@@ -113,7 +113,7 @@ public class testEditUser extends AllTestsBackofficePlatform {
 		UserDetail detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("No posee", detail.getEmail());
+		assertTrue(detail.getEmail().isEmpty());
 	}
 	
 	@Test
@@ -127,7 +127,7 @@ public class testEditUser extends AllTestsBackofficePlatform {
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Un usuario registrado no puede tener el email vacío.", edit.getEmailError());
+		assertEquals("Un usuario registrado no puede tener el correo electrónico vacío", edit.getAlertError());
 	}
 	
 	@Test
@@ -157,7 +157,7 @@ public class testEditUser extends AllTestsBackofficePlatform {
 		edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("El documento no puede estar vacío", edit.getAlertError());
+		assertEquals("El documento no puede ser vacío porque es el campo único de la plataforma", edit.getAlertError());
 	}
 	
 	@Test
@@ -230,7 +230,7 @@ public class testEditUser extends AllTestsBackofficePlatform {
 		UserDetail detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("No posee", detail.getPhone());
+		assertTrue(detail.getPhone().isEmpty());
 	}
 	
 	@Test
@@ -259,7 +259,7 @@ public class testEditUser extends AllTestsBackofficePlatform {
 		UserDetail detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("No posee", detail.getCellphone());
+		assertTrue(detail.getCellphone().isEmpty());
 	}
 	
 	@Test
@@ -273,7 +273,7 @@ public class testEditUser extends AllTestsBackofficePlatform {
 		UserDetail detail = edit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("F", detail.getGender());
+		assertEquals("Femenino", detail.getGender());
 	}
 	
 	@Test

@@ -212,6 +212,7 @@ public class testEditPlatformStandard extends AllTestsBackofficePlatform {
 	@Test
 	public void test_edit_platform_web_empty() {
 		platformname = DataGenerator.nombreFile();
+		web = platformname+ConfigElementsBO.getHostName();
 		
 		loginBackoffice(driver);
 		
@@ -461,10 +462,6 @@ public class testEditPlatformStandard extends AllTestsBackofficePlatform {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		assertEquals("Si", detail.getDisablePlatform());
-		
-		driver.get(web);
-		
-		assertTrue(driver.getPageSource().contains("La plataforma se encuentra en mantenimiento, por favor vuelve a ingresar más tarde."));
 	}
 	
 	@Test

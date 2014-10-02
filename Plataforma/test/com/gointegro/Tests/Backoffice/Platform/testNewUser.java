@@ -20,7 +20,6 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	private WebDriver driver;
 	String name = DataGenerator.nombreFile();
 	String surname = DataGenerator.nombreFile();
-	String document = DataGenerator.nombreFile();
 	String email = DataGenerator.nombreFile() + "@mail.com";
 	String adminissionDate = "09/10/2010";
 	String birthdate = "04/11/1990";
@@ -40,6 +39,8 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	
 	@Test
 	public void test_new_user() {
+		String document = DataGenerator.nombreFile();
+		
 		loginBackoffice(driver);
 		
 		CreateUser newUser = PageFactory.initElements(driver, CreateUser.class);
@@ -59,7 +60,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		assertEquals(email, detail.getEmail());
 		assertEquals(adminissionDate, detail.getAdmission());
 		assertEquals(birthdate, detail.getBirthdate());
-		assertEquals("M", detail.getGender());
+		assertEquals(gender, detail.getGender());
 		assertEquals(phone, detail.getPhone());
 		assertEquals(cellphone, detail.getCellphone());
 		assertEquals(usernameId, detail.getUsernameId());
@@ -71,23 +72,27 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	
 	@Test
 	public void test_new_user_without_name() {
+		String document = DataGenerator.nombreFile();
+		
 		loginBackoffice(driver);
 		
 		CreateUser newUser = PageFactory.initElements(driver, CreateUser.class);
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, "", surname, "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, "", surname, "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Campo obligatorio.", newUser.getNameError());
+		assertEquals("Este campo no puede estar vacío", newUser.getNameError());
 	}
 	
 	@Test
 	public void test_new_user_name_invalid() {
+		String document = DataGenerator.nombreFile();
+		
 		String localname = "399";
 		
 		loginBackoffice(driver);
@@ -96,18 +101,20 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, localname, surname, "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, localname, surname, "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Ingrese un nombre válido", newUser.getNameError());
+		assertEquals("Por favor ingrese un nombre válido", newUser.getNameError());
 		
 	}
 	
 	@Test
 	public void test_new_user_name_max_char() {
+		String document = DataGenerator.nombreFile();
+		
 		String localname = StringUtils.getTextoLargo();
 		
 		loginBackoffice(driver);
@@ -116,17 +123,18 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, localname, surname, "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, localname, surname, "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("El campo debe contener como máximo 80 caracteres", newUser.getNameError());
+		assertEquals("Este campo no puede superar los 80 caracteres", newUser.getNameError());
 	}
 	
 	@Test
 	public void test_new_user_name_min_char() {
+		String document = DataGenerator.nombreFile();
 		String localname = "a";
 		
 		loginBackoffice(driver);
@@ -135,34 +143,37 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, localname, surname, "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, localname, surname, "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Ingrese un nombre válido", newUser.getNameError());
+		assertEquals("Por favor ingrese un nombre válido", newUser.getNameError());
 	}
 	
 	@Test
 	public void test_new_user_without_surname() {
+		String document = DataGenerator.nombreFile();
+		
 		loginBackoffice(driver);
 		
 		CreateUser newUser = PageFactory.initElements(driver, CreateUser.class);
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, "", "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, name, "", "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Campo obligatorio.", newUser.getSurnameError());
+		assertEquals("Este campo no puede estar vacío", newUser.getSurnameError());
 	}
 	
 	@Test
 	public void test_new_user_surname_invalid() {
+		String document = DataGenerator.nombreFile();
 		String localSurname = "smi234rew3";
 		
 		loginBackoffice(driver);
@@ -171,17 +182,18 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, localSurname, "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, name, localSurname, "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Ingrese un apellido válido", newUser.getSurnameError());
+		assertEquals("Por favor ingrese un apellido válido", newUser.getSurnameError());
 	}
 	
 	@Test
 	public void test_new_user_surname_max_char() {
+		String document = DataGenerator.nombreFile();
 		String localSurname = StringUtils.getTextoLargo();
 		
 		loginBackoffice(driver);
@@ -190,17 +202,18 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, localSurname, "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, name, localSurname, "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("El campo debe contener como máximo 80 caracteres", newUser.getSurnameError());
+		assertEquals("Este campo no puede superar los 80 caracteres", newUser.getSurnameError());
 	}
 	
 	@Test
 	public void test_new_user_surname_min_char() {
+		String document = DataGenerator.nombreFile();
 		String localSurname = "a";
 		
 		loginBackoffice(driver);
@@ -209,13 +222,13 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, localSurname, "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, name, localSurname, "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Ingrese un apellido válido", newUser.getSurnameError());
+		assertEquals("Por favor ingrese un apellido válido", newUser.getSurnameError());
 	}
 	
 	@Test
@@ -232,7 +245,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Campo obligatorio.", newUser.getDocumentError());
+		assertEquals("El documento no puede ser vacío porque es el campo único de la plataforma", newUser.getAlertError());
 	}
 	
 	@Test
@@ -294,6 +307,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	
 	@Test
 	public void test_new_user_email_invalid() {
+		String document = DataGenerator.nombreFile();
 		String localEmail = "asdlk@lll.asldkj@asld";
 		
 		loginBackoffice(driver);
@@ -302,7 +316,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, localEmail, "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, name, surname, localEmail, "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
@@ -313,6 +327,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	
 	@Test
 	public void test_new_user_birthdate_invalid() {
+		String document = DataGenerator.nombreFile();
 		String localDate = "01/01/2099";
 		
 		loginBackoffice(driver);
@@ -327,11 +342,12 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("La fecha de nacimiento ingresada es inválida.", newUser.getBirthdateError());
+		assertEquals("La fecha de nacimiento ingresada es inválida", newUser.getBirthdateError());
 	}
 	
 	@Test
 	public void test_new_user_phone_invalid() {
+		String document = DataGenerator.nombreFile();
 		String number = "09asd8s99";
 		
 		loginBackoffice(driver);
@@ -340,7 +356,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, "", "", document, "", "", number, "", "", false, "", "", "");
+		newUser.completeInformation(true, name, surname, "", "", document, birthdate, "", number, "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
@@ -351,6 +367,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	
 	@Test
 	public void test_new_user_phone_max_chars() {
+		String document = DataGenerator.nombreFile();
 		String number = StringUtils.getTextoLargo();
 		
 		loginBackoffice(driver);
@@ -359,7 +376,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, "", "", document, "", "", number, "", "", false, "", "", "");
+		newUser.completeInformation(true, name, surname, "", "", document, birthdate, "", number, "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
@@ -370,6 +387,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	
 	@Test
 	public void test_new_user_cellphone_invalid() {
+		String document = DataGenerator.nombreFile();
 		String number = "987sd888";
 		
 		loginBackoffice(driver);
@@ -378,7 +396,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, "", "", document, "", "", "", number, "", false, "", "", "");
+		newUser.completeInformation(true, name, surname, "", "", document, birthdate, "", "", number, "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
@@ -389,6 +407,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	
 	@Test
 	public void test_new_user_cellphone_max_chars() {
+		String document = DataGenerator.nombreFile();
 		String number = StringUtils.getTextoLargo();
 		
 		loginBackoffice(driver);
@@ -397,7 +416,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, "", "", document, "", "", "", number, "", false, "", "", "");
+		newUser.completeInformation(true, name, surname, "", "", document, birthdate, "", "", number, "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
@@ -408,6 +427,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	
 	@Test
 	public void test_new_user_userId_invalid() {
+		String document = DataGenerator.nombreFile();
 		String userId = "a<>234";
 		
 		loginBackoffice(driver);
@@ -416,17 +436,18 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, "", "", document, "", "", "", "", userId, false, "", "", "");
+		newUser.completeInformation(true, name, surname, "", "", document, birthdate, "", "", "", userId, false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Ingresar números y/o letras, sin espacios y como máximo 80 caracteres.", newUser.getUsernameIdError());
+		assertEquals("Ingresar números y/o letras, sin espacios y como máximo 80 caracteres", newUser.getUsernameIdError());
 	}
 	
 	@Test
 	public void test_new_user_userId_max_chars() {
+		String document = DataGenerator.nombreFile();
 		String userId = StringUtils.getTextoLargo();
 		
 		loginBackoffice(driver);
@@ -435,17 +456,18 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, "", "", document, "", "", "", "", userId, false, "", "", "");
+		newUser.completeInformation(true, name, surname, "", "", document, birthdate, "", "", "", userId, false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("Ingresar números y/o letras, sin espacios y como máximo 80 caracteres.", newUser.getUsernameIdError());
+		assertEquals("Ingresar números y/o letras, sin espacios y como máximo 80 caracteres", newUser.getUsernameIdError());
 	}
 	
 	@Test
 	public void test_new_user_registeredDate_invalid() {
+		String document = DataGenerator.nombreFile();
 		String localDate = "05/05/2099";
 		
 		loginBackoffice(driver);
@@ -454,24 +476,26 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, "", "", document, "", "", "", "", "", false, localDate, "", "");
+		newUser.completeInformation(true, name, surname, "", "", document, birthdate, "", "", "", "", false, localDate, "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		assertEquals("La fecha ingresada no puede ser mayor a la fecha actual.", newUser.getRegisteredDateError());
+		assertEquals("La fecha ingresada no puede ser mayor a la fecha actual", newUser.getRegisteredDateError());
 	}
 	
 	@Test
 	public void test_new_user_cancel() {
+		String document = DataGenerator.nombreFile();
+		
 		loginBackoffice(driver);
 		
 		CreateUser newUser = PageFactory.initElements(driver, CreateUser.class);
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, name, surname, "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectCancel();
@@ -482,13 +506,15 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	
 	@Test
 	public void test_new_user_save_and_new() {
+		String document = DataGenerator.nombreFile();
+		
 		loginBackoffice(driver);
 		
 		CreateUser newUser = PageFactory.initElements(driver, CreateUser.class);
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, "", "", document, "", "", "", "", "", false, "", "", "");
+		newUser.completeInformation(true, name, surname, "", "", document, birthdate, "", "", "", "", false, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSaveAndNew();
@@ -498,7 +524,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 	}
 
 	@Test
-	public void test_edit_user_existent_name() {
+	public void test_new_user_existent_name() {
 		String name = DataGenerator.nombreFile();
 		String document = DataGenerator.nombreFile();
 		String email = DataGenerator.nombreFile() + "@mail.com";
@@ -510,7 +536,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, email, "", document, "", "", "", "", "", true, "", "", "");
+		newUser.completeInformation(true, name, surname, email, "", document, birthdate, "", "", "", "", true, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();
@@ -519,7 +545,7 @@ public class testNewUser extends AllTestsBackofficePlatform {
 		newUser.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newUser.completeInformation(true, name, surname, email, "", document, "", "", "", "", "", true, "", "", "");
+		newUser.completeInformation(true, name, surname, email, "", document, birthdate, "", "", "", "", true, "", "", "");
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newUser.selectSave();

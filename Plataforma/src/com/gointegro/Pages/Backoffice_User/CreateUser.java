@@ -57,44 +57,44 @@ public class CreateUser extends PageBase{
 	@FindBy (id = "role")
 	protected WebElement role;
 	
-	@FindBy (id = "save")
+	@FindBy(xpath = "//section[@class='bottom-section-button-bar']/button[1]")
 	protected WebElement save;
 	
-	@FindBy (id = "save-and-new")
+	@FindBy(xpath = "//section[@class='bottom-section-button-bar']/button[2]")
 	protected WebElement saveAndNew;
 	
-	@FindBy (id = "cancel")
+	@FindBy(xpath = "//section[@class='bottom-section-button-bar']/button[3]")
 	protected WebElement cancel;
 	
 	//ERRORS
-	@FindBy(xpath = "//div[contains(@class, 'field-name')]/div/div[1]")
+	@FindBy(xpath = "//div[contains(@class, 'form-name')]/div/div/div")
 	WebElement nameError;
 	
-	@FindBy(xpath = "//div[contains(@class, 'field-surname')]/div/div[1]")
+	@FindBy(xpath = "//div[contains(@class, 'form-surname')]/div/div/div")
 	WebElement surnameError;
 	
-	@FindBy(xpath = "//div[contains(@class, 'field-document')]/div/div[1]")
+	@FindBy(xpath = "//div[contains(@class, 'form-document')]/div/div/div")
 	WebElement documentError;
 	
-	@FindBy(xpath = "//div[contains(@class, 'field-email')]/div/div[1]")
+	@FindBy(xpath = "//div[contains(@class, 'form-email')]/div/div/div")
 	WebElement emailError;
 	
-	@FindBy(xpath = "//div[contains(@class, 'field-birthdate')]/div/div[1]")
+	@FindBy(xpath = "//div[contains(@class,'form-birthdate')]/div/div/div")
 	WebElement birthdateError;
 	
-	@FindBy(xpath = "//div[contains(@class, 'field-phone')]/div/div")
+	@FindBy(xpath = "//div[contains(@class, 'form-phone')]/div/div/div")
 	WebElement phoneError;
 	
-	@FindBy(xpath = "//div[contains(@class, 'field-cellphone')]/div/div")
+	@FindBy(xpath = "//div[contains(@class, 'form-cellphone')]/div/div/div")
 	WebElement cellphoneError;
 	
-	@FindBy(xpath = "//div[contains(@class, 'field-usernameId')]/div/div")
+	@FindBy(xpath = "//div[contains(@class, 'form-usernameId')]/div/div/div")
 	WebElement usernameIdError;
 	
-	@FindBy(xpath = "//div[contains(@class, 'field-registeredDate')]/div/div[1]")
+	@FindBy(xpath = "//div[contains(@class, 'form-registeredDate')]/div/div/div")
 	WebElement registeredDateError;
 	
-	@FindBy(xpath = "//div[contains(@class, 'alert-error')]/span")
+	@FindBy(xpath = "//div[contains(@class, 'alert-error')]")
 	WebElement alertError;
 	
 	String createURL = ConfigElementsBO.getUrlBackoffice()+"/platforms/"+ConfigElementsBO.getPlatformId()+"/user/create"; 
@@ -172,7 +172,7 @@ public class CreateUser extends PageBase{
 	 */
 	public void setAdmission(String admissiondate) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("document.getElementById('admission').value='"+admissiondate+"'");
+		js.executeScript("document.getElementsByName('admission')[1].value='"+admissiondate+"'");
 	}
 	
 	/**
@@ -192,7 +192,7 @@ public class CreateUser extends PageBase{
 	 */
 	public void setBirthDate(String birthdate) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("document.getElementById('birthdate').value='"+birthdate+"'");
+		js.executeScript("document.getElementsByName('birthdate')[1].value='"+birthdate+"'");
 	}
 	
 	/**
@@ -255,7 +255,7 @@ public class CreateUser extends PageBase{
 	 */
 	public void setRegistedDate(String regdate) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("document.getElementById('registeredDate').value='"+regdate+"'");
+		js.executeScript("document.getElementsByName('registeredDate')[1].value='"+regdate+"'");
 	}
 	
 	/**

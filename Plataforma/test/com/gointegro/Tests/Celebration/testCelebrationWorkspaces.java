@@ -68,7 +68,7 @@ public class testCelebrationWorkspaces extends AllTestsCelebration {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newcat.createCategory(categoryname, true);
-		Sleeper.sleepTightInSeconds(180);
+		Sleeper.sleepTightInSeconds(5);
 		
 		String appURL = driver.getCurrentUrl();
 		
@@ -85,7 +85,7 @@ public class testCelebrationWorkspaces extends AllTestsCelebration {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		driver.get(appURL);
-		WaitTool.waitForJQueryProcessing(driver, 10);
+		WaitTool.waitForJQueryProcessing(driver, 30);
 		
 		CelebrationList celebrationlist = homeCeleb.selectCategoryInSideBar(categoryname);
 		WaitTool.waitForJQueryProcessing(driver, 5);
