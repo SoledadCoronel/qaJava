@@ -143,7 +143,7 @@ public class testAddApplications extends AllTestsWorkspace {
 		
 		WorkspaceList workList = PageFactory.initElements(driver, WorkspaceList.class);
 		
-		for(int i=0; i< visibleApps; i++) {
+		for(int i=0; i<= visibleApps; i++) {
 			createApp(workList, title, DataGenerator.nombreFile());
 			WaitTool.waitForJQueryProcessing(driver, 10);
 		}
@@ -575,6 +575,9 @@ public class testAddApplications extends AllTestsWorkspace {
 		
 		appInstall.completeInstallBenefitFilter(appTitle, description, true, false, false);
 		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		appInstall.selectCategoryAndSubcategory();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		appInstall.saveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 5);

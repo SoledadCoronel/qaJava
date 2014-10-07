@@ -6,6 +6,7 @@ import org.junit.Rule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.browserlaunchers.Sleeper;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -366,6 +367,8 @@ public class testNewWorkspace extends AllTestsWorkspace {
 		
 		JoinWorkSpace joinWorkspace = home.selectJoinWorkspace();
 		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		Sleeper.sleepTightInSeconds(2);
 		
 		assertTrue(joinWorkspace.isWorkspaceInList(title));
 		assertFalse(workList.isWorkspaceInList(title));
