@@ -20,7 +20,7 @@ public class AplicationInstall extends PageBase{
 	@FindBy (id = "selected-icon")
 	protected WebElement selectedicon;
 	
-	@FindBy (name = "disable")
+	@FindBy (xpath = "//div[@class='controls']/label[1]/input")
 	protected WebElement radioactive;
 	
 	@FindBy (xpath = "//div[@class='controls']/label[2]/input")
@@ -59,10 +59,13 @@ public class AplicationInstall extends PageBase{
 	@FindBy(xpath = "//div[@id='tree-categories-list']/ul[1]/li/label")
 	protected WebElement category;
 	
+	@FindBy(id = "categories-radio")
+	protected WebElement categoryAndSubcategory;
+	
 	@FindBy(xpath = "//span[@id='categories-error']")
 	protected WebElement categoryErrorMsg;
 	
-	@FindBy(xpath = "//input[@id='categories-list_1_select_all']")
+	@FindBy(xpath = "//input[@id='categories-list_1']")
 	protected WebElement subcategory;
 	
 	@FindBy(id= "collections-radio")
@@ -71,13 +74,13 @@ public class AplicationInstall extends PageBase{
 	@FindBy (id = "attachmentUpload")
 	protected WebElement attachementupload;
 	
-	@FindBy (className = "has-locations")
+	@FindBy (xpath = "//input[contains(@class, 'custom-radio')]")
 	protected WebElement locations;
 	
 	@FindBy (name = "txt-search")
 	protected WebElement locationInput;
 	
-	@FindBy (xpath = "//ul[@id='-list']/li/div/div/button")
+	@FindBy (xpath = "//button[contains(@class, 'search-btn')]")
 	protected WebElement locationBtn;
 	
 	/**
@@ -292,9 +295,13 @@ public class AplicationInstall extends PageBase{
 	public void completeInstallBenefitFilter(String name, String descr, boolean isEnabled, boolean hasCategories, boolean hasSpecial) {
 		setAppName(name);
 		setDescription(descr);
+		
 		setStatus(isEnabled);
 		
 		if(hasCategories) {
+			selectCategoryAndSubcategory();
+			WaitTool.waitForJQueryProcessing(driver, 5);
+			
 			selectFirstBenefitCategory();
 			WaitTool.waitForJQueryProcessing(driver, 5);
 			
@@ -305,6 +312,13 @@ public class AplicationInstall extends PageBase{
 		}
 		
 	}	
+	
+	/**
+	 * Seleccionar Categorias y Subcategorias 
+	 */
+	public void selectCategoryAndSubcategory() {
+		categoryAndSubcategory.click();
+	}
 	
 	/**
 	 * Seleccionar la primera categoria de Filtro Beneficios 
@@ -361,6 +375,7 @@ public class AplicationInstall extends PageBase{
 	 */
 	public void addLocation(String address) {
 		selectBenefitLocations();
+		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		locationInput.clear();
 		locationInput.sendKeys(address);
