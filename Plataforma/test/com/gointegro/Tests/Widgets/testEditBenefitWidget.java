@@ -421,7 +421,10 @@ public class testEditBenefitWidget extends AllTestsWidgets {
 		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newModule.selectDiscount();
+		newModule.selectBenefitsRadioSearch();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectFirstBenefit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		HomeWidgets home = newModule.selectFinishBtn();
@@ -479,7 +482,10 @@ public class testEditBenefitWidget extends AllTestsWidgets {
 		newModule.createTitle(title);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newModule.selectDiscount();
+		newModule.selectBenefitsRadioSearch();
+		WaitTool.waitForJQueryProcessing(driver, 5);
+		
+		newModule.selectFirstBenefit();
 		WaitTool.waitForJQueryProcessing(driver, 5);
 		
 		HomeWidgets home = newModule.selectFinishBtn();
