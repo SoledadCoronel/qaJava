@@ -491,6 +491,8 @@ public class testEditBenefitWidget extends AllTestsWidgets {
 		HomeWidgets home = newModule.selectFinishBtn();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
+		Sleeper.sleepTightInSeconds(4);
+		
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 30);
 		
@@ -512,7 +514,6 @@ public class testEditBenefitWidget extends AllTestsWidgets {
 		newModule.selectFinishBtn();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		Sleeper.sleepTightInSeconds(6);
 		assertEquals("Este campo es obligatorio.", newModule.getTitleErrorMsg());
 	}
 	
