@@ -491,8 +491,6 @@ public class testEditBenefitWidget extends AllTestsWidgets {
 		HomeWidgets home = newModule.selectFinishBtn();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		Sleeper.sleepTightInSeconds(4);
-		
 		home.selectSaveBtn();
 		WaitTool.waitForJQueryProcessing(driver, 30);
 		
