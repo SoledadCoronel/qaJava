@@ -141,6 +141,12 @@ public class NewModuleOverlay extends PageBase {
 	@FindBy(className = "checkbox-benefit")
 	WebElement discount;
 	
+	@FindBy(xpath = "//input[@value='benefits']")
+	WebElement benefitsRadioSearch;
+	
+	@FindBy(xpath = "//table[contains(@class, 'benefits-list')]/tbody/tr[1]/td/input")
+	WebElement firstBenefit;
+	
 	@FindBy(name = "txt-search")
 	WebElement searchInput;
 	
@@ -609,6 +615,20 @@ public class NewModuleOverlay extends PageBase {
 	 */
 	public void selectDiscount() {
 		discount.click();
+	}
+	
+	/**
+	 * Seleccionar la opcion Beneficios en el widget Destacado
+	 */
+	public void selectBenefitsRadioSearch() {
+		benefitsRadioSearch.click();
+	}
+	
+	/**
+	 * Seleccionar el primer beneficio en el widget Destacado
+	 */
+	public void selectFirstBenefit() {
+		firstBenefit.click();
 	}
 	
 	/**
