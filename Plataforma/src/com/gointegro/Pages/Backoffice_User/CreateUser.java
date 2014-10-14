@@ -107,7 +107,6 @@ public class CreateUser extends PageBase{
 	public CreateUser(WebDriver driver) {
 		super(driver);
 		URL = createURL;
-		System.out.println("text: " + URL);
 	}
 	
 	/**
