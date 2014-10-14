@@ -63,8 +63,9 @@ public class testNewBenefit extends AllTestsBenefits {
 	public void test_new_benefit_check_front() {
 		String redeemingName = "Celular";
 		String targetUser = "General";
+		String title = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(targetUser);
+		DetailBenefits detail = createBenefit(name, targetUser);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -99,15 +100,15 @@ public class testNewBenefit extends AllTestsBenefits {
 		assertTrue(detailBeneficio.isPaymentInList(paymentMethod));
 		assertTrue(detailBeneficio.isPaymentInList(paymentMethod2));
 		assertTrue(detailBeneficio.isRedeemingInList(redeemingName));
-		assertEquals(address, detailBeneficio.getAddress());
 	}
 	
 	
 	@Test
 	public void test_new_benefit_user_type_client() {
 		String targetUser = "Clientes";
+		String title = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(targetUser);
+		DetailBenefits detail = createBenefit(name, targetUser);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -141,8 +142,9 @@ public class testNewBenefit extends AllTestsBenefits {
 	@Test
 	public void test_new_benefit_user_type_employee() {
 		String targetUser = "Empleados";
+		String title = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(targetUser);
+		DetailBenefits detail = createBenefit(name, targetUser);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -177,8 +179,9 @@ public class testNewBenefit extends AllTestsBenefits {
 	public void test_new_benefit_restricted_platform() {
 		String platform = "GoIntegro";
 		String targetUser = "General";
+		String title = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(targetUser);
+		DetailBenefits detail = createBenefit(name, targetUser);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -218,8 +221,9 @@ public class testNewBenefit extends AllTestsBenefits {
 	public void test_new_benefit_exclusive_platform() {
 		String platform = "GoIntegro";
 		String targetUser = "General";
+		String title = DataGenerator.nombreFile();
 		
-		DetailBenefits detail = createBenefit(targetUser);
+		DetailBenefits detail = createBenefit(name, targetUser);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		NewBenefits newBenefit = detail.selectEdit();
@@ -258,7 +262,7 @@ public class testNewBenefit extends AllTestsBenefits {
 		assertEquals("1 resultados", search.getResultsFoundMsg());
 	}
 	
-	private DetailBenefits createBenefit(String targetUser) {
+	private DetailBenefits createBenefit(String title, String targetUser) {
 		loginBackoffice(driver);
 		
 		DetailCompany detailCompany = PageFactory.initElements(driver, DetailCompany.class);
@@ -278,6 +282,9 @@ public class testNewBenefit extends AllTestsBenefits {
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		newBenefit.selectRedeeming(redeeming);
+		WaitTool.waitForJQueryProcessing(driver, 10);
+		
+		newBenefit.addCategory();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
 		DetailBenefits detail = newBenefit.selectSave();

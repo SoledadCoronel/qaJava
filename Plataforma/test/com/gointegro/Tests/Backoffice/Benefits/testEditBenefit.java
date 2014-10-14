@@ -424,9 +424,6 @@ public class testEditBenefit extends AllTestsBackOfficeBenefits {
 		newBenefit.selectExclusive();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newBenefit.removeExclusive();
-		WaitTool.waitForJQueryProcessing(driver, 10);
-		
 		newBenefit.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		

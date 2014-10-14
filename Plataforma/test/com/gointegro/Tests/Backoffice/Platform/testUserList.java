@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.gointegro.Pages.Backoffice_User.CreateUser;
-import com.gointegro.Pages.Backoffice_User.UserDetail;
 import com.gointegro.Pages.Backoffice_User.UserList;
 import com.gointegro.Pages.Platform.Logout;
 import com.gointegro.Util.DataGenerator;
@@ -93,7 +92,7 @@ public class testUserList extends AllTestsBackofficePlatform {
 	}
 	
 	
-	private CreateUser createUser(String name, String surname, String document, String email) {
+	private void createUser(String name, String surname, String document, String email) {
 		String usernameId = DataGenerator.nombreFile();
 		String adminissionDate = "09/10/2010";
 		String birthdate = "04/11/1990";
@@ -114,10 +113,8 @@ public class testUserList extends AllTestsBackofficePlatform {
 		newUser.completeInformation(true, name, surname, email, adminissionDate, document, birthdate, gender, phone, cellphone, usernameId, regStatus, regDate, integrationId, role);
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		UserDetail detail = newUser.selectSave();
+		newUser.selectSave();
 		WaitTool.waitForJQueryProcessing(driver, 10);
-		
-		return detail.selectEdit();
 	}
 	@AfterMethod
 	public void tearDown() {
