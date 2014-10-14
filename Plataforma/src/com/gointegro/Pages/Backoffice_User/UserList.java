@@ -40,7 +40,7 @@ public class UserList extends PageBase{
 	 */
 	public UserList(WebDriver driver) {
 		super(driver);
-		URL = ConfigElementsBO.getUrlBackoffice() + "/platforms/" + ConfigElementsBO.getPlatformId() + "/user/list";
+		URL = ConfigElementsBO.getUrlBackoffice() + "/platform/" + ConfigElementsBO.getPlatformId() + "/user/list";
 	}
 	
 	/**

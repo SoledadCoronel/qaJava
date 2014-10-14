@@ -99,6 +99,9 @@ public class NewBenefits extends PageBase {
 	@FindBy(xpath = "//div[@id='ms-categories']/div/ul/li")
 	List<WebElement> categoryList;
 	
+	@FindBy(xpath = "//div[@id='ms-categories']/a[1]")
+	WebElement addCategory;
+	
 	@FindBy(xpath = "//div[@id='ms-redeemingMethods']/div/ul/li")
 	List<WebElement> redeemingList;
 	
@@ -503,6 +506,13 @@ public class NewBenefits extends PageBase {
 				break;
 			}
 		}
+	}
+	
+	/**
+	 * Seleccionar Agregar Categoria
+	 */
+	public void addCategory() {
+		addCategory.click();
 	}
 	
 	/**

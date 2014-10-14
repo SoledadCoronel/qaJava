@@ -97,7 +97,7 @@ public class CreateUser extends PageBase{
 	@FindBy(xpath = "//div[contains(@class, 'alert-error')]")
 	WebElement alertError;
 	
-	String createURL = ConfigElementsBO.getUrlBackoffice()+"/platforms/"+ConfigElementsBO.getPlatformId()+"/user/create"; 
+	String createURL = ConfigElementsBO.getUrlBackoffice()+"/platform/"+ConfigElementsBO.getPlatformId()+"/user/create"; 
 
 	/**
 	 * Constructor
@@ -107,6 +107,7 @@ public class CreateUser extends PageBase{
 	public CreateUser(WebDriver driver) {
 		super(driver);
 		URL = createURL;
+		System.out.println("text: " + URL);
 	}
 	
 	/**
