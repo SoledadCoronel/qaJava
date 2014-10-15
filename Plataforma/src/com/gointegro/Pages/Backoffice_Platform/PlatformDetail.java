@@ -77,7 +77,7 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='recover-password']/div[2]/span")
 	private WebElement recoverpassword;
 	
-	@FindBy(xpath = "//div[@id='content']/div[25]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[26]/div/span")
 	private WebElement registration;
 	
 	@FindBy(xpath = "//div[@id='uses-htmlSignUp']/div[2]/p")
@@ -98,10 +98,10 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='content']/div[30]/div")
 	private WebElement verification;
 	
-	@FindBy(xpath = "//div[@id='content']/div[32]/div[2]/span")
+	@FindBy(xpath = "//div[@id='content']/div[33]/div[2]/span")
 	private WebElement uniquefield;
 	
-	@FindBy(xpath = "//div[@id='content']/div[33]/div/span")
+	@FindBy(xpath = "//div[@id='content']/div[34]/div/span")
 	private WebElement showusersmail;
 	
 	@FindBy(xpath = "//div[@id='principal-logo']/div[2]/img")
@@ -113,25 +113,25 @@ public class PlatformDetail extends PageBase{
 	@FindBy(xpath = "//div[@id='banner-login']/div[2]/img")
 	private WebElement bannerlogin;
 	
-	@FindBy(xpath = "//div[@id='content']/div[37]/div[2]")
+	@FindBy(xpath = "//div[@id='content']/div[38]/div[2]")
 	private WebElement backgroundcolor;
 	
-	@FindBy(xpath = "//div[@id='content']/div[38]/div[2]")
+	@FindBy(xpath = "//div[@id='content']/div[39]/div[2]")
 	private WebElement backgroundheaderfooter;
 	
-	@FindBy(xpath = "//div[@id='content']/div[39]/div[2]")
+	@FindBy(xpath = "//div[@id='content']/div[40]/div[2]")
 	private WebElement textheaderfooter;
 	
-	@FindBy(xpath = "//div[@id='content']/div[40]/div[2]")
+	@FindBy(xpath = "//div[@id='content']/div[41]/div[2]")
 	private WebElement textbtn;
 	
-	@FindBy(xpath = "//div[@id='content']/div[41]/div[2]")
+	@FindBy(xpath = "//div[@id='content']/div[42]/div[2]")
 	private WebElement backgroundbtn;
 	
-	@FindBy(xpath = "//div[@id='content']/div[42]/div[2]")
+	@FindBy(xpath = "//div[@id='content']/div[43]/div[2]")
 	private WebElement borderheaderfooter;
 	
-	@FindBy(xpath = "//div[@id='content']/div[43]/div[2]")
+	@FindBy(xpath = "//div[@id='content']/div[44]/div[2]")
 	private WebElement coloricon;
 	
 	@FindBy (xpath = "//div[contains(@class,'signin-customisation-html-view')]/div[2]")
