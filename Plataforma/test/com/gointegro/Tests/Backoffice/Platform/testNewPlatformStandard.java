@@ -127,6 +127,7 @@ public class testNewPlatformStandard extends AllTestsBackofficePlatform {
 	@Test
 	public void test_new_platform_special_char_title() {
 		platformname = StringUtils.getCaracteresEspeciales()+DataGenerator.nombreFile();
+		String newweb = "http://"+DataGenerator.nombreFile()+ConfigElementsBO.getHostName();
 		
 		loginBackoffice(driver);
 		
@@ -135,7 +136,7 @@ public class testNewPlatformStandard extends AllTestsBackofficePlatform {
 		newplat.open();
 		WaitTool.waitForJQueryProcessing(driver, 10);
 		
-		newplat.completeBasicInformation(platformname, filesize, videosize, storage, web, industry, userRange, 
+		newplat.completeBasicInformation(platformname, filesize, videosize, storage, newweb, industry, userRange, 
 				disablestatus, googlea, uservisib, socialact, timezone, tyc, country, htmllog);
 		
 		PersonalizationConfig person = PageFactory.initElements(driver, PersonalizationConfig.class);
