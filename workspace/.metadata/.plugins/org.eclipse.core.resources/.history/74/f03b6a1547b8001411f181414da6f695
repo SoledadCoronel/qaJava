@@ -1,0 +1,46 @@
+package test;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.*;
+
+import static org.junit.Assert.*;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class testLoginOk {
+  private WebDriver driver;
+  private String baseUrl;
+  private StringBuffer verificationErrors = new StringBuffer();
+
+  @Before
+  public void setUp() throws Exception {
+    driver = new FirefoxDriver();
+    baseUrl = "https://goc.gointegro.com/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+  }
+
+  @Test
+  public void testLogin() throws Exception {
+	System.out.println("Iniciando TEST");
+    driver.get(baseUrl + "/auth/signin");
+    driver.findElement(By.id("_username")).clear();
+    driver.findElement(By.id("_username")).sendKeys("soledad.coronel@gointegro.com");
+    driver.findElement(By.id("_password")).clear();
+    driver.findElement(By.id("_password")).sendKeys("coquito25");
+    driver.findElement(By.name("_submit")).click();
+    driver.quit();
+	System.out.println("TEST OK");
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
+  }
+
+}
