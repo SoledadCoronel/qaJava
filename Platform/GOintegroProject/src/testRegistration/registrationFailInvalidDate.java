@@ -10,7 +10,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 //import org.openqa.selenium.support.ui.Select;
 
-public class registrationFailInvalidDate {
+public class RegistrationFailInvalidDate {
 	  private WebDriver driver;
 	  private String baseUrl;
 	  private StringBuffer verificationErrors = new StringBuffer();
@@ -23,9 +23,14 @@ public class registrationFailInvalidDate {
 	  }
 
 	  @Test
-	  public void testRegistracionOk() throws Exception {
+	  public void testRegFailInvalidDate() throws Exception {
 		// Iniciando el test
 	    driver.get(baseUrl + "/auth/signin");
+	    
+	    // Se setea idioma espa–ol
+	    driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+	    driver.findElement(By.linkText("Espa–ol")).click();
+	    
 	    driver.findElement(By.id("signupButton")).click();
 	    
 	    // Se ingresan los datos del usuario

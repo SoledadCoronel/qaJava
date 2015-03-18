@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class serviceAwardsOk {
+public class ServiceAwardsOk {
 	
 	  private WebDriver driver;
 	  private String baseUrl;

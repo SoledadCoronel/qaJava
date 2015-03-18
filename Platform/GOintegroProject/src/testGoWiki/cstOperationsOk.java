@@ -11,7 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class cstOperationsOk {
+public class CstOperationsOk {
 	
 	  private WebDriver driver;
 	  private String baseUrl;

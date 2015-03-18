@@ -1,12 +1,15 @@
 package testVerification;
 
 import java.util.concurrent.TimeUnit;
+
 import org.junit.*;
+
 import static org.junit.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class verificationFailAccept {
+public class VerificationFailAccept {
 
 private WebDriver driver;
 private String baseUrl;
@@ -23,13 +26,18 @@ public void setUp() throws Exception {
 // Iniciando el test
 public void testVerifFail() throws Exception {
   driver.get(baseUrl + "/auth/signin");
+  
+  // Se setea idioma espa–ol
+  driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+  driver.findElement(By.linkText("Espa–ol")).click();
+  
   driver.findElement(By.id("signupButton")).click();
   driver.findElement(By.id("_verificationValue1")).clear();
   driver.findElement(By.id("_verificationValue1")).sendKeys("26123456");
   driver.findElement(By.id("_verificationValue2")).clear();
   driver.findElement(By.id("_verificationValue2")).sendKeys("usuarioTest1@gointegro");
   driver.findElement(By.id("verificationSubmit")).click();
-  Thread.sleep(1000);
+  Thread.sleep(2000);
   // Se captura el texto
   String capturedText = new String(driver.findElement(By.cssSelector(".alert-custom.alert-error.hide.verification_error")).getText());
 

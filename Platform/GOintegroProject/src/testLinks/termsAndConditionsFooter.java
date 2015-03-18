@@ -2,13 +2,16 @@ package testLinks;
 
 //Se importan librer’as necesarias
 import java.util.concurrent.TimeUnit;
+
 import org.junit.*;
+
 import static org.junit.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 //Se declara la clase del test
-public class termsAndConditionsFooter {
+public class TermsAndConditionsFooter {
 	// Se declaran las variables
 	private WebDriver driver;
 	private String baseUrl;
@@ -26,6 +29,11 @@ public class termsAndConditionsFooter {
   public void testLinkTyC() throws Exception {
 	// Iniciando el test
     driver.get(baseUrl + "/auth/signin");
+    
+	// Se setea idioma espa–ol
+    driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+    driver.findElement(By.linkText("Espa–ol")).click();
+    
     driver.findElement(By.linkText("TŽrminos y Condiciones")).click();
     Thread.sleep(1000);
     String capturedText = new String(driver.findElement(By.xpath("//div[@id='termsAndConditionsModal']/div[2]")).getText());

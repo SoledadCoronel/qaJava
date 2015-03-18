@@ -1,12 +1,15 @@
 package testVerification;
 
 import java.util.concurrent.TimeUnit;
+
 import org.junit.*;
+
 import static org.junit.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class verificationFailClose {
+public class VerificationFailClose {
 
 private WebDriver driver;
 private String baseUrl;
@@ -23,6 +26,11 @@ public void setUp() throws Exception {
 // Iniciando el test
 public void testVerifFail() throws Exception {
   driver.get(baseUrl + "/auth/signin");
+  
+  // Se setea idioma espa–ol
+  driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+  driver.findElement(By.linkText("Espa–ol")).click();
+  
   driver.findElement(By.id("signupButton")).click();
   driver.findElement(By.id("_verificationValue1")).clear();
   driver.findElement(By.id("_verificationValue1")).sendKeys("26123456");

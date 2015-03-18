@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class helpCenterFooter {
+public class HelpCenterFooter {
 	private WebDriver driver;
 	private String baseUrl;
 	private StringBuffer verificationErrors = new StringBuffer();
@@ -27,6 +27,11 @@ public class helpCenterFooter {
   public void testLinkCentroAyuda() throws Exception {
   // Iniciando el test
   driver.get(baseUrl + "/auth/signin");
+  
+	// Se setea idioma espa–ol
+  driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+  driver.findElement(By.linkText("Espa–ol")).click();
+  
   driver.findElement(By.linkText("Centro de Ayuda")).click();
   
   String capturedText = new String(driver.findElement(By.className("app-title")).getText());

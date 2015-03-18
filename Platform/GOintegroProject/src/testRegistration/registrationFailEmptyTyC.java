@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class registrationFailEmptyTyC {
+public class RegistrationFailEmptyTyC {
 	
 	  private WebDriver driver;
 	  private String baseUrl;
@@ -26,9 +26,14 @@ public class registrationFailEmptyTyC {
 	  }
 
 	  @Test
-	  public void testRegistracionOk() throws Exception {
+	  public void testRegFailEmptyTyC() throws Exception {
 		// Iniciando el test
 	    driver.get(baseUrl + "/auth/signin");
+	    
+	    // Se setea idioma espa–ol
+	    driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+	    driver.findElement(By.linkText("Espa–ol")).click();
+	    
 	    driver.findElement(By.id("signupButton")).click();
 	    
 	    // Se ingresan los datos del usuario

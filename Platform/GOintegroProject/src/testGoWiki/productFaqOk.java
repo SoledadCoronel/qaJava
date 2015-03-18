@@ -10,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import static org.junit.Assert.fail;
 
 
-public class productFaqOk {
+public class ProductFaqOk {
 	
 	  private WebDriver driver;
 	  private String baseUrl;

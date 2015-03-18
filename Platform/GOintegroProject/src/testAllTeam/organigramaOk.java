@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class organigramaOk {
+public class OrganigramaOk {
 	
 	  private WebDriver driver;
 	  private String baseUrl;

@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class cumplea–osOk {
+public class Cumplea–osOk {
 	
 	 private WebDriver driver;
 	  private String baseUrl;

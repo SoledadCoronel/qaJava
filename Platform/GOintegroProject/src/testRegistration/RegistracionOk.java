@@ -12,11 +12,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class RegistrationFailEmptySurname {
+public class RegistracionOk {
 	
 	  private WebDriver driver;
 	  private String baseUrl;
 	  private StringBuffer verificationErrors = new StringBuffer();
+	  static int z = (int) (Math.random() * 999999999);
+	  String mail = "qa" + z + "@gointegro.com";
 
 	  @Before
 	  public void setUp() throws Exception {
@@ -26,7 +28,7 @@ public class RegistrationFailEmptySurname {
 	  }
 
 	  @Test
-	  public void testRegFailEmptySurname() throws Exception {
+	  public void testRegOk() throws Exception {
 		// Iniciando el test
 	    driver.get(baseUrl + "/auth/signin");
 	    
@@ -39,11 +41,11 @@ public class RegistrationFailEmptySurname {
 	    // Se ingresan los datos del usuario
 	    driver.findElement(By.id("name")).sendKeys("firstNameUser");
 	    driver.findElement(By.id("surname")).clear();
-	    driver.findElement(By.id("surname")).sendKeys("");
+	    driver.findElement(By.id("surname")).sendKeys("lastNameUser");
 	    driver.findElement(By.id("email")).clear();
-	    driver.findElement(By.id("email")).sendKeys("mailUser@gointegro.com");
+	    driver.findElement(By.id("email")).sendKeys(mail);
 	    driver.findElement(By.id("document")).clear();
-	    driver.findElement(By.id("document")).sendKeys("25123456");
+	    driver.findElement(By.id("document")).sendKeys("25123123");
 	    driver.findElement(By.id("password")).clear();
 	    driver.findElement(By.id("password")).sendKeys("integro1234");
 	    driver.findElement(By.id("repeatPassword")).clear();
@@ -53,21 +55,7 @@ public class RegistrationFailEmptySurname {
 	    new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
 	    driver.findElement(By.id("termsAndConditions")).click();
 	    driver.findElement(By.id("submitRegistration")).click();
-	    
-
-	    Thread.sleep(1000);
-	    String capturedText = new String(driver.findElement(By.id("surnameError")).getText());
-
-	    //Se setea el texto de validaci—n esperado
-	    String expectedText = "El apellido no puede estar vac’o.";
-	    
-	    // Se valida que el texto es el esperado
-	    if(capturedText.equals(expectedText)) {
-	    	System.out.println("registrationFailEmptySurname  [OK]");
-	    }
-	    else {
-	    	System.out.println("registrationFailEmptySurname  [FAIL]");
-	    }
+    	System.out.println("RegistracionOk  [OK]");
 	  }
 
 	  @After
@@ -78,6 +66,4 @@ public class RegistrationFailEmptySurname {
 	      fail(verificationErrorString);
 	    }
 	  }
-
-
 }

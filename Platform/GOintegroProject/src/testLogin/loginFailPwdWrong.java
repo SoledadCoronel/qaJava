@@ -2,31 +2,31 @@ package testLogin;
 
 // Se importan librer’as necesarias
 import java.util.concurrent.TimeUnit;
+
 import org.junit.*;
-import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 // Se declara la clase del test
-public class loginFailPwdWrong {
+public class LoginFailPwdWrong {
 	// Se declaran las variables
 	private WebDriver driver;
 	private String baseUrl;
-	private StringBuffer verificationErrors = new StringBuffer();
-
-  @Before
-  public void setUp() throws Exception {
-  // Se setean las variables
-  driver = new FirefoxDriver();
-  baseUrl = "https://goc.gointegro.com/";
-  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
   
   @Test
   public void testLogin() throws Exception {
+	  
+	// Se setean las variables
+	driver = new FirefoxDriver();
+	baseUrl = "http://platform.p2-test.gointegro.net/";
+	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	// Iniciando el test
 	// Se ingresan credenciales 
     driver.get(baseUrl + "/auth/signin");
+    
+    // Se setea idioma espa–ol
+    driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+    driver.findElement(By.linkText("Espa–ol")).click();
     driver.findElement(By.id("_username")).clear();
     driver.findElement(By.id("_username")).sendKeys("soledad.coronel@gointegro.com");
     driver.findElement(By.id("_password")).clear();
@@ -42,18 +42,11 @@ public class loginFailPwdWrong {
     // Se valida que el texto es el esperado
     if(capturedText.equals(expectedText)) {
     	System.out.println("loginFailPwdWrong  [OK]");
+        driver.quit();
     }
     else {
     	System.out.println("loginFailPwdWrong  [FAIL]");
+        driver.quit();
     }
   }
-  
-    @After
-    public void tearDown() throws Exception {
-      driver.quit();
-      String verificationErrorString = verificationErrors.toString();
-      if (!"".equals(verificationErrorString)) {
-        fail(verificationErrorString);
-      }
-    }
 }

@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class basicSearch {
+public class BasicSearch {
 
 	  private WebDriver driver;
 	  private String baseUrl;
@@ -19,7 +19,7 @@ public class basicSearch {
 	  @Before
 	  public void setUp() throws Exception {
 	    driver = new FirefoxDriver();
-	    baseUrl = "https://goc.gointegro.com/";
+	    baseUrl = "http://platform.p2-test.gointegro.net/";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 
