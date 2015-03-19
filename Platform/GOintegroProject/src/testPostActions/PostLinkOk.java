@@ -1,17 +1,17 @@
 package testPostActions;
 
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+public class PostLinkOk {
 
-public class PostOk {
-	
 	  public WebDriver driver;
 	  public String baseUrl;
 	  
-	  public void testPost() throws Exception {
+	  public void testPostLink() throws Exception {
 		  
 		    driver = new FirefoxDriver();
 		    baseUrl = "http://platform.p2-test.gointegro.net/";
@@ -25,23 +25,15 @@ public class PostOk {
 		    driver.findElement(By.id("_password")).clear();
 		    driver.findElement(By.id("_password")).sendKeys("coquito25");
 		    driver.findElement(By.name("_submit")).click();
-		    // Se ingresa un post
-		    driver.findElement(By.id("post-text-input")).clear();
-		    driver.findElement(By.id("post-text-input")).sendKeys("test post con mention @Soledad Coronel");
-		    driver.findElement(By.name("post-text")).click();
-		    // Se verifica presencia de link Eliminar
-		    String capturedTextLink = new String(driver.findElement(By.linkText("Eliminar")).getText());
-		    // Se setea el texto de validaci—n esperado
-		    String expectedText = "Eliminar";
-		    
-		    // Se valida que el texto es el esperado
-		    if(capturedTextLink.equals(expectedText)) {
-		    	System.out.println("postOk  [OK]");
-			    driver.quit();
-		    }
-		    else {
-		    	System.out.println("postOk  [FAIL]");
-			    driver.quit();
-		    }
+		    // Se postea un link
+		    driver.findElement(By.linkText("V’nculo")).click();
+		    driver.findElement(By.name("link")).clear();
+		    driver.findElement(By.name("link")).sendKeys("www.gointegro.com");
+		    driver.findElement(By.id("post-link-input")).clear();
+		    driver.findElement(By.id("post-link-input")).sendKeys("test post link");
+		    Thread.sleep(1000);
+		    driver.findElement(By.name("post-link")).click();
+	    	System.out.println("postLinkOk  [OK]");
+		    driver.quit();
 		  }
 }

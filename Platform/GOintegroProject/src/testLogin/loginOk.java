@@ -47,5 +47,4 @@ public class LoginOk {
 	    driver.quit();
     }
   }
-
 }
