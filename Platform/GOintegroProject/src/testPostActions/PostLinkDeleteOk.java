@@ -30,8 +30,7 @@ public class PostLinkDeleteOk {
 		    driver.findElement(By.linkText("Eliminar")).click();
 		    // Se confirma eliminaci—n
 		    driver.findElement(By.cssSelector(".btn.btn-primary.confirm-delete")).click();
-		    System.out.println("deletePostOk  [OK]");
+		    System.out.println("PostLinkDeleteOk  [OK]");
 		    driver.quit();
 		  }
-
 }
