@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
+<jmeterTestPlan version="1.2" properties="2.6" jmeter="2.11.20141024">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Regresión REWARDS" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -3356,7 +3356,15 @@
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="4. getCatalogAccount" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="include" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">country,currency-label,addresses</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">include</stringProp>
+                </elementProp>
+              </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
@@ -6042,10 +6050,11 @@
         &quot;description&quot;: &quot;POST AUTOMATICO - freeDay&quot;,&#xd;
         &quot;excludedDays&quot;: null,&#xd;
         &quot;image&quot;: &quot;http://definicion.mx/wp-content/uploads/2013/03/tiempo-libre.jpg&quot;,&#xd;
-        &quot;name&quot;: &quot;POST AUTOMATICO - freeDay&quot;,&#xd;
+        &quot;name&quot;: &quot;POST AUTOMATICO - freeDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;freeDay&quot;,&#xd;
         &quot;links&quot;: {&#xd;
-          &quot;duration&quot;:  &quot;3&quot;&#xd;
+          &quot;duration&quot;:  &quot;3&quot;,&#xd;
+		&quot;country&quot;:&quot;1&quot;&#xd;
         }&#xd;
     }&#xd;
 }</stringProp>
@@ -6143,10 +6152,11 @@
         &quot;description&quot;: &quot;POST AUTOMATICO - 1/2 freeDay&quot;,&#xd;
         &quot;excludedDays&quot;: null,&#xd;
         &quot;image&quot;: &quot;http://definicion.mx/wp-content/uploads/2013/03/tiempo-libre.jpg&quot;,&#xd;
-        &quot;name&quot;: &quot;POST AUTOMATICO - 1/2 freeDay&quot;,&#xd;
+        &quot;name&quot;: &quot;POST AUTOMATICO - 1/2 freeDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;freeDay&quot;,&#xd;
         &quot;links&quot;: {&#xd;
-          &quot;duration&quot;:  &quot;2&quot;&#xd;
+          &quot;duration&quot;:  &quot;2&quot;,&#xd;
+          &quot;country&quot;:&quot;1&quot;&#xd;
         }&#xd;
     }&#xd;
 }</stringProp>
@@ -6244,11 +6254,12 @@
         &quot;description&quot;: &quot;POST AUTOMATICO - specialDay&quot;,&#xd;
         &quot;excludedDays&quot;: null,&#xd;
         &quot;image&quot;: &quot;http://definicion.mx/wp-content/uploads/2013/03/tiempo-libre.jpg&quot;,&#xd;
-        &quot;name&quot;: &quot;POST AUTOMATICO - specialDay&quot;,&#xd;
+        &quot;name&quot;: &quot;POST AUTOMATICO - specialDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;specialDay&quot;,&#xd;
         &quot;validDate&quot;: &quot;2015-12-30&quot;,&#xd;
         &quot;links&quot;: {&#xd;
-          &quot;duration&quot;:  &quot;35&quot;&#xd;
+          &quot;duration&quot;:  &quot;35&quot;,&#xd;
+          &quot;country&quot;:&quot;1&quot;&#xd;
         }&#xd;
     }&#xd;
 }</stringProp>
@@ -6346,11 +6357,12 @@
         &quot;description&quot;: &quot;POST AUTOMATICO - 1/2 specialDay&quot;,&#xd;
         &quot;excludedDays&quot;: null,&#xd;
         &quot;image&quot;: &quot;http://definicion.mx/wp-content/uploads/2013/03/tiempo-libre.jpg&quot;,&#xd;
-        &quot;name&quot;: &quot;POST AUTOMATICO - 1/2 specialDay&quot;,&#xd;
+        &quot;name&quot;: &quot;POST AUTOMATICO - 1/2 specialDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;specialDay&quot;,&#xd;
         &quot;validDate&quot;: &quot;2015-12-30&quot;,&#xd;
         &quot;links&quot;: {&#xd;
-          &quot;duration&quot;:  &quot;34&quot;&#xd;
+          &quot;duration&quot;:  &quot;34&quot;,&#xd;
+          &quot;country&quot;:&quot;1&quot;&#xd;
         }&#xd;
     }&#xd;
 }</stringProp>
@@ -8990,6 +9002,7 @@
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1476531430">catalog-accounts</stringProp>
+                <stringProp name="0"></stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
