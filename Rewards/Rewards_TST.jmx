@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
+<jmeterTestPlan version="1.2" properties="2.6" jmeter="2.11.20141024">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Regresión REWARS - FREE TIME" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Regresión REWARDS" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
@@ -46,11 +46,11 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">platform.p2-test2.gointegro.net</stringProp>
+            <stringProp name="HTTPSampler.domain">goc.qa.gointegro.net</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
             <stringProp name="HTTPSampler.path"></stringProp>
             <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
@@ -386,7 +386,7 @@
   &quot;catalog-rewards&quot;: {&#xd;
     &quot;links&quot;: {&#xd;
       &quot;catalog&quot;: &quot;${CATALOG_ID}&quot;,&#xd;
-      &quot;reward&quot;: &quot;9&quot;&#xd;
+      &quot;reward&quot;: &quot;96&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -463,7 +463,7 @@
   &quot;catalog-rewards&quot;: {&#xd;
     &quot;links&quot;: {&#xd;
       &quot;catalog&quot;: &quot;${CATALOG_ID}&quot;,&#xd;
-      &quot;reward&quot;: &quot;10&quot;&#xd;
+      &quot;reward&quot;: &quot;118&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -540,7 +540,7 @@
   &quot;catalog-rewards&quot;: {&#xd;
     &quot;links&quot;: {&#xd;
       &quot;catalog&quot;: &quot;${CATALOG_ID}&quot;,&#xd;
-      &quot;reward&quot;: &quot;27&quot;&#xd;
+      &quot;reward&quot;: &quot;120&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -3034,11 +3034,11 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">platform.p2-test2.gointegro.net</stringProp>
+            <stringProp name="HTTPSampler.domain">goc.qa.gointegro.net</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
             <stringProp name="HTTPSampler.path"></stringProp>
             <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
@@ -3245,14 +3245,14 @@
                 </elementProp>
                 <elementProp name="client_id" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">3_5u1igcxh1vwosgkww8004g84404ccw0wkg0sgokww0844cg8g0</stringProp>
+                  <stringProp name="Argument.value">3_2g7bq9j0ccu8088sk4wokoscs40sw4c4k0ow8kc8w0oo04ogcc</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">client_id</stringProp>
                 </elementProp>
                 <elementProp name="client_secret" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">22uvx93ap98kks4cogog44wo4ogwk4swo44gcc4oogoo440g4k</stringProp>
+                  <stringProp name="Argument.value">51ti116ujqo88kg8skokscs8ggcssock4444ww8wokg0w0okwo</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">client_secret</stringProp>
@@ -3356,7 +3356,15 @@
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="4. getCatalogAccount" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="include" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">country,currency-label,addresses</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">include</stringProp>
+                </elementProp>
+              </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
@@ -3632,7 +3640,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1831114132">&quot;type&quot;:&quot;rewards&quot;</stringProp>
+                <stringProp name="-1223530342">&quot;rewards&quot;:</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -4029,7 +4037,7 @@
                   <stringProp name="Argument.value">{&#xd;
     &quot;reward-redeems&quot;: {&#xd;
         &quot;user-id&quot;: 2249409,&#xd;
-        &quot;address-id&quot;: &quot;8&quot;,&#xd;
+        &quot;address-id&quot;: &quot;1&quot;,&#xd;
         &quot;quantity&quot;: 1,&#xd;
         &quot;links&quot;: {&#xd;
           &quot;reward&quot;:  &quot;${REWARD_ID}&quot;&#xd;
@@ -4965,7 +4973,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="10. postExportJobsTransactionsOk" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="10. postExportJobsTransactionsOk" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -5335,7 +5343,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11.1. postAddressUsersFailUser" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11.1. postAddressUsersFailUser" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -5456,11 +5464,11 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">platform.p2-test2.gointegro.net</stringProp>
+            <stringProp name="HTTPSampler.domain">goc.qa.gointegro.net</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
             <stringProp name="HTTPSampler.path"></stringProp>
             <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
@@ -6042,10 +6050,11 @@
         &quot;description&quot;: &quot;POST AUTOMATICO - freeDay&quot;,&#xd;
         &quot;excludedDays&quot;: null,&#xd;
         &quot;image&quot;: &quot;http://definicion.mx/wp-content/uploads/2013/03/tiempo-libre.jpg&quot;,&#xd;
-        &quot;name&quot;: &quot;POST AUTOMATICO - freeDay&quot;,&#xd;
+        &quot;name&quot;: &quot;POST AUTOMATICO - freeDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;freeDay&quot;,&#xd;
         &quot;links&quot;: {&#xd;
-          &quot;duration&quot;:  &quot;3&quot;&#xd;
+          &quot;duration&quot;:  &quot;3&quot;,&#xd;
+		&quot;country&quot;:&quot;1&quot;&#xd;
         }&#xd;
     }&#xd;
 }</stringProp>
@@ -6130,6 +6139,69 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="10.1. getFree-DayProductView" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/backoffice/rewards/free-time/${FREEDAY_ID}/view</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="11. postMedioFreeDay" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -6143,10 +6215,11 @@
         &quot;description&quot;: &quot;POST AUTOMATICO - 1/2 freeDay&quot;,&#xd;
         &quot;excludedDays&quot;: null,&#xd;
         &quot;image&quot;: &quot;http://definicion.mx/wp-content/uploads/2013/03/tiempo-libre.jpg&quot;,&#xd;
-        &quot;name&quot;: &quot;POST AUTOMATICO - 1/2 freeDay&quot;,&#xd;
+        &quot;name&quot;: &quot;POST AUTOMATICO - 1/2 freeDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;freeDay&quot;,&#xd;
         &quot;links&quot;: {&#xd;
-          &quot;duration&quot;:  &quot;2&quot;&#xd;
+          &quot;duration&quot;:  &quot;2&quot;,&#xd;
+          &quot;country&quot;:&quot;1&quot;&#xd;
         }&#xd;
     }&#xd;
 }</stringProp>
@@ -6244,11 +6317,12 @@
         &quot;description&quot;: &quot;POST AUTOMATICO - specialDay&quot;,&#xd;
         &quot;excludedDays&quot;: null,&#xd;
         &quot;image&quot;: &quot;http://definicion.mx/wp-content/uploads/2013/03/tiempo-libre.jpg&quot;,&#xd;
-        &quot;name&quot;: &quot;POST AUTOMATICO - specialDay&quot;,&#xd;
+        &quot;name&quot;: &quot;POST AUTOMATICO - specialDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;specialDay&quot;,&#xd;
         &quot;validDate&quot;: &quot;2015-12-30&quot;,&#xd;
         &quot;links&quot;: {&#xd;
-          &quot;duration&quot;:  &quot;35&quot;&#xd;
+          &quot;duration&quot;:  &quot;35&quot;,&#xd;
+          &quot;country&quot;:&quot;1&quot;&#xd;
         }&#xd;
     }&#xd;
 }</stringProp>
@@ -6333,6 +6407,87 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="12.1. getSpecialDayProductView" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/backoffice/rewards/free-time/${SPECIALDAY_ID}/view</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="false">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">SPECIALDAY_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number"></stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="13. postMedioSpecialDay" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -6346,11 +6501,12 @@
         &quot;description&quot;: &quot;POST AUTOMATICO - 1/2 specialDay&quot;,&#xd;
         &quot;excludedDays&quot;: null,&#xd;
         &quot;image&quot;: &quot;http://definicion.mx/wp-content/uploads/2013/03/tiempo-libre.jpg&quot;,&#xd;
-        &quot;name&quot;: &quot;POST AUTOMATICO - 1/2 specialDay&quot;,&#xd;
+        &quot;name&quot;: &quot;POST AUTOMATICO - 1/2 specialDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;specialDay&quot;,&#xd;
         &quot;validDate&quot;: &quot;2015-12-30&quot;,&#xd;
         &quot;links&quot;: {&#xd;
-          &quot;duration&quot;:  &quot;34&quot;&#xd;
+          &quot;duration&quot;:  &quot;34&quot;,&#xd;
+          &quot;country&quot;:&quot;1&quot;&#xd;
         }&#xd;
     }&#xd;
 }</stringProp>
@@ -8056,78 +8212,6 @@
             </ResultCollector>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="30. getMovementsCatalogAccount" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain"></stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol"></stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/backoffice/api/v1/transaction/catalog-accounts/${CATALOG_ACCOUNT_ID2}/user/${USER_ID}/movements</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <boolProp name="HTTPSampler.monitor">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>false</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <threadCounts>true</threadCounts>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="31. postMovementCatalogAccountAcredita" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -8564,11 +8648,11 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">platform.p2-test2.gointegro.net</stringProp>
+            <stringProp name="HTTPSampler.domain">goc.qa.gointegro.net</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
             <stringProp name="HTTPSampler.path"></stringProp>
             <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
@@ -8775,14 +8859,14 @@
                 </elementProp>
                 <elementProp name="client_id" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">3_5u1igcxh1vwosgkww8004g84404ccw0wkg0sgokww0844cg8g0</stringProp>
+                  <stringProp name="Argument.value">3_2g7bq9j0ccu8088sk4wokoscs40sw4c4k0ow8kc8w0oo04ogcc</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">client_id</stringProp>
                 </elementProp>
                 <elementProp name="client_secret" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">22uvx93ap98kks4cogog44wo4ogwk4swo44gcc4oogoo440g4k</stringProp>
+                  <stringProp name="Argument.value">51ti116ujqo88kg8skokscs8ggcssock4444ww8wokg0w0okwo</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">client_secret</stringProp>
@@ -9062,6 +9146,7 @@
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1476531430">catalog-accounts</stringProp>
+                <stringProp name="0"></stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -10759,7 +10844,7 @@
             </ResultCollector>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="19. postExportJobsTransactionsOk" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="19. postExportJobsTransactionsOk" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">

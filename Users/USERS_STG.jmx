@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
+<jmeterTestPlan version="1.2" properties="2.6" jmeter="2.11.20141024">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Regresión API PLATFORM" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -35,15 +35,35 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">platform-stg.gointegro.com</stringProp>
+          <stringProp name="HTTPSampler.domain">goc.p2-stage.gointegro.com</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
         </ConfigTestElement>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables definidas por el Usuario" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="AREA" elementType="Argument">
+              <stringProp name="Argument.name">AREA</stringProp>
+              <stringProp name="Argument.value">4</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="DEPARTAMENT" elementType="Argument">
+              <stringProp name="Argument.name">DEPARTAMENT</stringProp>
+              <stringProp name="Argument.value">10</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="CHIEF" elementType="Argument">
+              <stringProp name="Argument.name">CHIEF</stringProp>
+              <stringProp name="Argument.value">114</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1. postToken" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -71,14 +91,14 @@
               </elementProp>
               <elementProp name="client_id" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">2_5iigppgi8pkwc0wo0g8gwgsk8sggs04sw04kwwc8gk8gc8cgwk</stringProp>
+                <stringProp name="Argument.value">5_40khlg3g4y80wc8ws8088wgkkg8o8w0kocww4cckkwssso4c0</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">client_id</stringProp>
               </elementProp>
               <elementProp name="client_secret" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">1hhluolw9r0kkw4kc88048ggwkko4g40sco4o00gsg8s0440wo</stringProp>
+                <stringProp name="Argument.value">14g7fserizlwockwcsokwkk4wssw4s0s88kc0kko4gg8scockw</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">client_secret</stringProp>
@@ -232,9 +252,399 @@
     &quot;email&quot;: &quot;qa.automation${__Random(1,9999999999,)}@gointegro.com&quot;,&#xd;
     &quot;document&quot;: &quot;${__Random(1,99999999,)}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;qa.automation${__Random(1,99999,)}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
+    &quot;position&quot;: &quot;Automation QA&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/rest.php/api/v2/users</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">${BEARER_ACCESS_TOKEN}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/vnd.api+json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">USER_ID</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">EMAIL</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;email&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">DOC</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;document&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">USERNAME_ID</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;username-id&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>false</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <threadCounts>true</threadCounts>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="3. postUserConTilde" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;users&quot;: {&#xd;
+    &quot;name&quot;: &quot;qa.automatión&quot;,&#xd;
+    &quot;surname&quot;: &quot;qa.aútomation&quot;,&#xd;
+    &quot;enabled&quot;: true,&#xd;
+    &quot;role&quot;: &quot;ROLE_BASIC&quot;,&#xd;
+    &quot;admission&quot;: &quot;2015-06-02&quot;,&#xd;
+    &quot;birthdate&quot;: &quot;1983-09-25&quot;,&#xd;
+    &quot;location&quot;: &quot;Alvarez Thomas 198&quot;,&#xd;
+    &quot;gender&quot;: &quot;F&quot;,&#xd;
+    &quot;phone&quot;: &quot;48442525&quot;,&#xd;
+    &quot;cellphone&quot;: &quot;15526363&quot;,&#xd;
+    &quot;email&quot;: &quot;qa.automation${__Random(1,9999999999,)}@gointegro.com&quot;,&#xd;
+    &quot;document&quot;: &quot;${__Random(1,99999999,)}&quot;,&#xd;
+    &quot;usernameId&quot;: &quot;qa.automation${__Random(1,99999,)}&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
+    &quot;position&quot;: &quot;Automation QA&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/rest.php/api/v2/users</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">${BEARER_ACCESS_TOKEN}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/vnd.api+json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">USER_ID</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">EMAIL</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;email&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">DOC</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;document&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">USERNAME_ID</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;username-id&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>false</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <threadCounts>true</threadCounts>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="3. postUserApostrofe" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;users&quot;: {&#xd;
+    &quot;name&quot;: &quot;qa.au&apos;tomation&quot;,&#xd;
+    &quot;surname&quot;: &quot;qa.automati&apos;on&quot;,&#xd;
+    &quot;enabled&quot;: true,&#xd;
+    &quot;role&quot;: &quot;ROLE_BASIC&quot;,&#xd;
+    &quot;admission&quot;: &quot;2015-06-02&quot;,&#xd;
+    &quot;birthdate&quot;: &quot;1983-09-25&quot;,&#xd;
+    &quot;location&quot;: &quot;Alvarez Thomas 198&quot;,&#xd;
+    &quot;gender&quot;: &quot;F&quot;,&#xd;
+    &quot;phone&quot;: &quot;48442525&quot;,&#xd;
+    &quot;cellphone&quot;: &quot;15526363&quot;,&#xd;
+    &quot;email&quot;: &quot;qa.automation${__Random(1,9999999999,)}@gointegro.com&quot;,&#xd;
+    &quot;document&quot;: &quot;${__Random(1,99999999,)}&quot;,&#xd;
+    &quot;usernameId&quot;: &quot;qa.automation${__Random(1,99999,)}&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
+    &quot;position&quot;: &quot;Automation QA&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/rest.php/api/v2/users</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">${BEARER_ACCESS_TOKEN}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/vnd.api+json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">USER_ID</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">EMAIL</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;email&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">DOC</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;document&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">USERNAME_ID</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;username-id&quot;:&quot;(.+?)&quot;,</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>false</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <threadCounts>true</threadCounts>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="3. postUserEnie" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;users&quot;: {&#xd;
+    &quot;name&quot;: &quot;qa.automatioñ&quot;,&#xd;
+    &quot;surname&quot;: &quot;qa.automatioñ&quot;,&#xd;
+    &quot;enabled&quot;: true,&#xd;
+    &quot;role&quot;: &quot;ROLE_BASIC&quot;,&#xd;
+    &quot;admission&quot;: &quot;2015-06-02&quot;,&#xd;
+    &quot;birthdate&quot;: &quot;1983-09-25&quot;,&#xd;
+    &quot;location&quot;: &quot;Alvarez Thomas 198&quot;,&#xd;
+    &quot;gender&quot;: &quot;F&quot;,&#xd;
+    &quot;phone&quot;: &quot;48442525&quot;,&#xd;
+    &quot;cellphone&quot;: &quot;15526363&quot;,&#xd;
+    &quot;email&quot;: &quot;qa.automation${__Random(1,9999999999,)}@gointegro.com&quot;,&#xd;
+    &quot;document&quot;: &quot;${__Random(1,99999999,)}&quot;,&#xd;
+    &quot;usernameId&quot;: &quot;qa.automation${__Random(1,99999,)}&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -362,10 +772,10 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
-    &quot;position&quot;: &quot;QA Automation&quot;&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
+    &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -475,9 +885,9 @@
     &quot;email&quot;: &quot;qa.automation${__Random(1,9999999999,)}@gointegro.com&quot;,&#xd;
     &quot;document&quot;: &quot;${__Random(1,99999999,)}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;qa.automation${__Random(1,99999,)}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
 	}  &#xd;
 }</stringProp>
@@ -579,9 +989,9 @@
     &quot;email&quot;: &quot;qa.automation${__Random(1,9999999999,)}@gointegro.com&quot;,&#xd;
     &quot;document&quot;: &quot;${__Random(1,99999999,)}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;qa.automation${__Random(1,99999,)}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
 	}  &#xd;
 }</stringProp>
@@ -683,9 +1093,9 @@
     &quot;email&quot;: &quot;qa.automation${__Random(1,9999999999,)}@gointegro.com&quot;,&#xd;
     &quot;document&quot;: &quot;${__Random(1,99999999,)}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;qa.automation${__Random(1,99999,)}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
 	}  &#xd;
 }</stringProp>
@@ -787,9 +1197,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -891,9 +1301,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -995,9 +1405,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -1099,9 +1509,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -1203,9 +1613,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -1307,9 +1717,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -1411,9 +1821,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -1515,9 +1925,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -1619,9 +2029,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -1723,9 +2133,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -1827,9 +2237,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -1931,9 +2341,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;2295257&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2035,9 +2445,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2139,9 +2549,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2243,9 +2653,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2347,9 +2757,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2451,9 +2861,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2555,9 +2965,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2659,9 +3069,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2763,9 +3173,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2867,9 +3277,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -2971,9 +3381,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -3075,9 +3485,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -3179,9 +3589,9 @@
     &quot;email&quot;: &quot;&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -3283,9 +3693,9 @@
     &quot;email&quot;: &quot;modified${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -3387,9 +3797,9 @@
     &quot;email&quot;: &quot;modified${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -3491,9 +3901,9 @@
     &quot;email&quot;: &quot;modified${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;88${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -3595,9 +4005,9 @@
     &quot;email&quot;: &quot;modified${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;88888888888888888888${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -3699,9 +4109,9 @@
     &quot;email&quot;: &quot;modified${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;88${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -3803,9 +4213,9 @@
     &quot;email&quot;: &quot;modified${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;88${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;modified${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -4060,8 +4470,8 @@
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
     &quot;area&quot;: &quot;X&quot;,&#xd;
-    &quot;department&quot;: &quot;6&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -4163,9 +4573,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
-    &quot;department&quot;: &quot;7&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -4267,9 +4677,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;6&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
     &quot;department&quot;: &quot;X&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -4371,9 +4781,9 @@
     &quot;email&quot;: &quot;${EMAIL}&quot;,&#xd;
     &quot;document&quot;: &quot;${DOC}&quot;,&#xd;
     &quot;usernameId&quot;: &quot;${USERNAME_ID}&quot;,&#xd;
-    &quot;area&quot;: &quot;7&quot;,&#xd;
-    &quot;department&quot;: &quot;9&quot;,&#xd;
-    &quot;chief&quot;: &quot;2295257&quot;,&#xd;
+    &quot;area&quot;: &quot;${AREA}&quot;,&#xd;
+    &quot;department&quot;: &quot;${DEPARTAMENT}&quot;,&#xd;
+    &quot;chief&quot;: &quot;${CHIEF}&quot;,&#xd;
     &quot;position&quot;: &quot;Automation QA&quot;&#xd;
   }&#xd;
 }</stringProp>
