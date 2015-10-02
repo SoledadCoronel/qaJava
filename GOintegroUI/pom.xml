@@ -96,6 +96,11 @@
             <version>2.47.1</version>
         </dependency>
         <!-- == End Google App Engine == -->
+        <dependency>
+        	<groupId>org.testng</groupId>
+        	<artifactId>testng</artifactId>
+        	<scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <outputDirectory>target/${project.artifactId}-${project.version}/WEB-INF/classes</outputDirectory>
@@ -141,4 +146,13 @@
             <url>http://gmultipart.googlecode.com/svn/repo/m2</url>
         </repository>
     </repositories>
+    <dependencyManagement>
+    	<dependencies>
+    		<dependency>
+    			<groupId>org.testng</groupId>
+    			<artifactId>testng</artifactId>
+    			<version>6.9.5</version>
+    		</dependency>
+    	</dependencies>
+    </dependencyManagement>
 </project>
