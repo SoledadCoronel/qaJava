@@ -30,6 +30,7 @@ public class RecoverPassword {
         // Se setea idioma español
         //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
         //driver.findElement(By.linkText("Español")).click();
+        
         driver.findElement(By.id("forgotPasswordButton")).click();
         driver.findElement(By.xpath(".//*[@id='forgotPasswordModal']/div[1]/button")).click();
         // Se captura el texto de la validación

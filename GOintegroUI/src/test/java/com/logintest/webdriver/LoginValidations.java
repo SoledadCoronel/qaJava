@@ -5,35 +5,35 @@ package com.logintest.webdriver;
  */
 
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
+import org.testng.Assert;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class LoginValidations {
 
-    // Se declaran las variables
+	 // Se declaran las variables
     private WebDriver driver;
     private String baseUrl;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    @Test
-    public void testLoginWrongPassword() throws Exception {
-
-        // Se setean las variables
+    @BeforeMethod
+	public void setUp() throws Exception {
         driver = new FirefoxDriver();
         baseUrl = "https://goc.p2-stage.gointegro.com";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        // Iniciando el test
-        // Se ingresan credenciales
+        driver.get(baseUrl);
         driver.get(baseUrl + "/auth/signin");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
 
-        // Se setea idioma espa�ol
-        //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
-        //driver.findElement(By.linkText("Español")).click();
-        Thread.sleep(1000);
+    @Test
+    public void testLoginWrongPassword() throws Exception {
+        
         driver.findElement(By.cssSelector("input[id=_username]")).clear();
         driver.findElement(By.cssSelector("input[id=_username]")).sendKeys("soledad.coronel@gointegro.com");
         driver.findElement(By.cssSelector("input[id=_password]")).clear();
@@ -55,27 +55,12 @@ public class LoginValidations {
             System.out.println("testLoginWrongPassword  [FAIL]");
         }
     }
-
-    @Test
-    public void testLoginWrongUser() throws Exception {
-
-        // Se setean las variables
-        driver = new FirefoxDriver();
-        baseUrl = "https://goc.p2-stage.gointegro.com";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        // Inicia el test
-        // Se ingresan credenciales
-        driver.get(baseUrl + "/auth/signin");
-
-        // Se setea idioma espa�ol
-        //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
-        //driver.findElement(By.linkText("Español")).click();
-        Thread.sleep(1000);
+  @Test
+    public void testInvalidUser() throws Exception {
         driver.findElement(By.cssSelector("input[id=_username]")).clear();
         driver.findElement(By.cssSelector("input[id=_username]")).sendKeys("invalid.user@gointegro.com");
         driver.findElement(By.cssSelector("input[id=_password]")).clear();
         driver.findElement(By.cssSelector("input[id=_password]")).sendKeys("integro15");
-       
         driver.findElement(By.cssSelector("a[id=_submit]")).click();
         Thread.sleep(1000);
 
@@ -92,14 +77,31 @@ public class LoginValidations {
         else {
             System.out.println("testLoginWrongUser  [FAIL]");
         }
+    
     }
-
-    @AfterMethod
+  @Test
+  public void testBlankUser() throws Exception {
+      driver.findElement(By.cssSelector("input[id=_username]")).clear();
+      driver.findElement(By.cssSelector("input[id=_password]")).clear();
+      driver.findElement(By.cssSelector("input[id=_password]")).sendKeys("integro15");
+      driver.findElement(By.cssSelector("a[id=_submit]")).click();
+  }
+  
+  @Test
+  public void testBlankPassword() throws Exception {
+      driver.findElement(By.cssSelector("input[id=_username]")).clear();
+      driver.findElement(By.cssSelector("input[id=_username]")).sendKeys("soledad.coronel@gointegro.com");
+      Thread.sleep(1000);
+      driver.findElement(By.cssSelector("input[id=_password]")).clear();
+      driver.findElement(By.cssSelector("a[id=_submit]")).click();
+      }
+  
+	@AfterMethod
 	public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
-            AssertJUnit.fail(verificationErrorString);
+            Assert.fail(verificationErrorString);
         }
     }
 }

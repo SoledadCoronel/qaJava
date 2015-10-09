@@ -12,7 +12,6 @@ import org.testng.Assert;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class LoginId {
@@ -29,14 +28,14 @@ public class LoginId {
     //	driver = new ChromeDriver();
         baseUrl ="https://gocauto2.p2-stage.gointegro.com";
         driver.get(baseUrl);
+        driver.get(baseUrl + "/auth/signin");
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
     public void testLogin() throws Exception {
-
-        driver.get(baseUrl + "/auth/signin");
-        driver.manage().window().maximize();
+        
         driver.findElement(By.cssSelector("input[id=_username]")).sendKeys("automation");
         driver.findElement(By.cssSelector("a[id=_submit]")).click();
           

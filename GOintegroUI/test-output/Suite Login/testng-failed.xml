@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite Login]" parallel="tests">
+  <parameter name="username" value="automation"/>
+  <test name="Logintest(failed)" parallel="tests">
+    <parameter name="username" value="automation"/>
+    <classes>
+      <class name="com.logintest.webdriver.LoginUserAndPassword">
+        <methods>
+          <include name="testLogin"/>
+        </methods>
+      </class> <!-- com.logintest.webdriver.LoginUserAndPassword -->
+      <class name="com.logintest.webdriver.RecoverPassword">
+        <methods>
+          <include name="testRecoverPasswordCancel"/>
+          <include name="testRecoverPasswordClose"/>
+        </methods>
+      </class> <!-- com.logintest.webdriver.RecoverPassword -->
+      <class name="com.logintest.webdriver.LoginValidations">
+        <methods>
+          <include name="testLoginWrongPassword"/>
+          <include name="testBlankUser"/>
+          <include name="testInvalidUser"/>
+          <include name="testBlankPassword"/>
+        </methods>
+      </class> <!-- com.logintest.webdriver.LoginValidations -->
+      <class name="com.logintest.webdriver.LoginEmail">
+        <methods>
+          <include name="testLogin"/>
+        </methods>
+      </class> <!-- com.logintest.webdriver.LoginEmail -->
+      <class name="com.logintest.webdriver.LoginId">
+        <methods>
+          <include name="testLogin"/>
+        </methods>
+      </class> <!-- com.logintest.webdriver.LoginId -->
+      <class name="com.logintest.webdriver.Logout">
+        <methods>
+          <include name="testLogout"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.logintest.webdriver.Logout -->
+    </classes>
+  </test> <!-- Logintest(failed) -->
+</suite> <!-- Failed suite [Suite Login] -->
