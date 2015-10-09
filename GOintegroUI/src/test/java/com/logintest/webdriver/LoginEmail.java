@@ -12,7 +12,6 @@ import org.testng.Assert;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class LoginEmail {
@@ -25,18 +24,17 @@ public class LoginEmail {
     @BeforeMethod
 	public void setUp() throws Exception {
        driver = new FirefoxDriver();
-    	//System.setProperty("webdriver.chrome.driver", "D:/home/marinatouceda/ChromeDriver");
-    	//driver = new ChromeDriver();
-        baseUrl ="https://test.p2-stage.gointegro.com";
+         baseUrl ="https://test.p2-stage.gointegro.com";
         driver.get(baseUrl);
+        driver.get(baseUrl + "/auth/signin");
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
     public void testLogin() throws Exception {
-
-        driver.get(baseUrl + "/auth/signin");
-        driver.manage().window().maximize();
+       
+        
         driver.findElement(By.cssSelector("input[id=_username]")).sendKeys("marinatouceda@gointegro.com");
         driver.findElement(By.cssSelector("input[id=_password]")).sendKeys("integro15");
         driver.findElement(By.cssSelector("a[id=_submit]")).click();

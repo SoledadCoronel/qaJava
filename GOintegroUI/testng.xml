@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="tests">
+<suite name="Suite Login" parallel="tests">
   <test name="Logintest">
+  <parameter name="username" value="automation" ></parameter>
     <classes>
-      <class name="LoginEmail"></class>
-      <class name="LoginUserAndPassword"></class>
-      <class name="LoginValidations"></class>
-      <class name="LoginId"></class>
-      <class name="Logout"></class>
-      <class name="RecoverPassword"></class>
-    </classes>
+      <class name="com.logintest.webdriver.LoginEmail"></class>
+      <class name="com.logintest.webdriver.LoginId"></class>
+      <class name="com.logintest.webdriver.LoginUserAndPassword"></class>
+      <class name="com.logintest.webdriver.LoginValidations"></class>
+       <class name="com.logintest.webdriver.Logout"></class>
+       <class name="com.logintest.webdriver.RecoverPassword"></class>
+       </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
