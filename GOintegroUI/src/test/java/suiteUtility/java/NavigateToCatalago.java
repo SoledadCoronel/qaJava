@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class GoToCatalago extends suiteUtility.java.LoginAutomation1{
+public class NavigateToCatalago extends suiteUtility.java.LoginAutomation1{
     
     
     @Before 
@@ -16,9 +16,9 @@ public class GoToCatalago extends suiteUtility.java.LoginAutomation1{
     public void goToCatalogoPage() throws Exception { 
                   
        
-    	driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+    	 driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
          
-         driver.findElement(By.cssSelector(".app-name")).click();
+         driver.findElement(By.cssSelector("ul li:nth-child(3) a .app-name")).click();
                 
          
          WebDriverWait wait = new WebDriverWait(driver, 10);

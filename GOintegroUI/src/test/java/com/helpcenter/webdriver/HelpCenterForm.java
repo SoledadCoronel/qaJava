@@ -1,4 +1,4 @@
-package HelpCenter;
+package com.helpcenter.webdriver;
 
 import java.util.concurrent.TimeUnit;
 

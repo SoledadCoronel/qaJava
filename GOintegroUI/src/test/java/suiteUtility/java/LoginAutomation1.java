@@ -21,8 +21,8 @@ public class LoginAutomation1 {
          driver.get("https://gocauto1.p2-stage.gointegro.com/auth/signin"); 
          driver.findElement(By.cssSelector("input[id=_username]")).sendKeys("automation@gointegro.com");
          driver.findElement(By.cssSelector("input[id=_password]")).sendKeys("integro15");
-         
          driver.findElement(By.cssSelector("a[id=_submit]")).click();
+         
     } 
     //@AfterSuite annotation describes this method has to run after execution of all suites
     

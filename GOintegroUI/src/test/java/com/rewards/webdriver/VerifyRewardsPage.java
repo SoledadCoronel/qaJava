@@ -1,4 +1,4 @@
-package Rewards;
+package com.rewards.webdriver;
 
 
 import org.testng.Assert;
