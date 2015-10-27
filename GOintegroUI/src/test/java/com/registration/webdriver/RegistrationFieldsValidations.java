@@ -8,10 +8,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.Assert;
+
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationFieldsValidations {
 
@@ -32,8 +35,8 @@ public class RegistrationFieldsValidations {
         driver.get(baseUrl + "/auth/signin");
 
         // Se setea idioma español
-        //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
-        //driver.findElement(By.linkText("Español")).click();
+        driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+        driver.findElement(By.linkText("Español")).click();
 
         driver.findElement(By.id("signupButton")).click();
 
@@ -43,15 +46,16 @@ public class RegistrationFieldsValidations {
         driver.findElement(By.id("surname")).sendKeys("surnameUser");
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys("mailUser@gointegro.com");
-        driver.findElement(By.id("document")).clear();
-        driver.findElement(By.id("document")).sendKeys("25123456");
+        //driver.findElement(By.id("document")).clear();
+        //driver.findElement(By.id("document")).sendKeys("25123456");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("integro1234");
         driver.findElement(By.id("repeatPassword")).clear();
         driver.findElement(By.id("repeatPassword")).sendKeys("integro1234");
-        //new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
-        //new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
-        //new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
+        new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
+        new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        driver.findElement(By.id("gender-1")).click();
         driver.findElement(By.id("termsAndConditions")).click();
         driver.findElement(By.id("cancelRegistration")).click();
 
@@ -77,8 +81,8 @@ public class RegistrationFieldsValidations {
         driver.get(baseUrl + "/auth/signin");
 
         // Se setea idioma español
-        //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
-        //driver.findElement(By.linkText("Español")).click();
+        driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+        driver.findElement(By.linkText("Español")).click();
 
         driver.findElement(By.id("signupButton")).click();
 
@@ -88,15 +92,16 @@ public class RegistrationFieldsValidations {
         driver.findElement(By.id("surname")).sendKeys("surnameUser");
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys("");
-        driver.findElement(By.id("document")).clear();
-        driver.findElement(By.id("document")).sendKeys("25123456");
+        //driver.findElement(By.id("document")).clear();
+        //driver.findElement(By.id("document")).sendKeys("25123456");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("integro1234");
         driver.findElement(By.id("repeatPassword")).clear();
         driver.findElement(By.id("repeatPassword")).sendKeys("integro1234");
-        //new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
-        //new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
-        //new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
+        new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
+        new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        driver.findElement(By.id("gender-1")).click();
         driver.findElement(By.id("termsAndConditions")).click();
         driver.findElement(By.id("submitRegistration")).click();
 
@@ -122,8 +127,8 @@ public class RegistrationFieldsValidations {
         driver.get(baseUrl + "/auth/signin");
 
         // Se setea idioma español
-        //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
-        //driver.findElement(By.linkText("Español")).click();
+        driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+        driver.findElement(By.linkText("Español")).click();
 
         driver.findElement(By.id("signupButton")).click();
 
@@ -133,15 +138,16 @@ public class RegistrationFieldsValidations {
         driver.findElement(By.id("surname")).sendKeys("surnameUser");
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys("mailUser@gointegro.com");
-        driver.findElement(By.id("document")).clear();
-        driver.findElement(By.id("document")).sendKeys("25123456");
+        //driver.findElement(By.id("document")).clear();
+        //driver.findElement(By.id("document")).sendKeys("25123456");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("integro1234");
         driver.findElement(By.id("repeatPassword")).clear();
         driver.findElement(By.id("repeatPassword")).sendKeys("integro1234");
-        //new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
-        //new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
-        //new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
+        new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
+        new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        driver.findElement(By.id("gender-1")).click();
         driver.findElement(By.id("termsAndConditions")).click();
         driver.findElement(By.id("submitRegistration")).click();
 
@@ -166,8 +172,8 @@ public class RegistrationFieldsValidations {
         driver.get(baseUrl + "/auth/signin");
 
         // Se setea idioma español
-        //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
-        //driver.findElement(By.id("signupButton")).click();
+        driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+        driver.findElement(By.id("signupButton")).click();
 
         driver.findElement(By.id("signupButton")).click();
 
@@ -177,15 +183,16 @@ public class RegistrationFieldsValidations {
         driver.findElement(By.id("surname")).sendKeys("");
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys("mailUser@gointegro.com");
-        driver.findElement(By.id("document")).clear();
-        driver.findElement(By.id("document")).sendKeys("25123456");
+        //driver.findElement(By.id("document")).clear();
+        //driver.findElement(By.id("document")).sendKeys("25123456");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("integro1234");
         driver.findElement(By.id("repeatPassword")).clear();
         driver.findElement(By.id("repeatPassword")).sendKeys("integro1234");
-        //new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
-        //new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
-        //new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
+        new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
+        new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        driver.findElement(By.id("gender-1")).click();
         driver.findElement(By.id("termsAndConditions")).click();
         driver.findElement(By.id("submitRegistration")).click();
 
@@ -211,8 +218,8 @@ public class RegistrationFieldsValidations {
         driver.get(baseUrl + "/auth/signin");
 
         // Se setea idioma español
-        //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
-        //driver.findElement(By.linkText("Español")).click();
+        driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+        driver.findElement(By.linkText("Español")).click();
 
         driver.findElement(By.id("signupButton")).click();
 
@@ -222,16 +229,17 @@ public class RegistrationFieldsValidations {
         driver.findElement(By.id("surname")).sendKeys("surnameUser");
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys("mailUser@gointegro.com");
-        driver.findElement(By.id("document")).clear();
-        driver.findElement(By.id("document")).sendKeys("25123456");
+        //driver.findElement(By.id("document")).clear();
+        //driver.findElement(By.id("document")).sendKeys("25123456");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("integro1234");
         driver.findElement(By.id("repeatPassword")).clear();
         driver.findElement(By.id("repeatPassword")).sendKeys("integro1234");
-        //new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
-        //new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
-        //new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
-        //driver.findElement(By.id("termsAndConditions")).click();
+        new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
+        new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
+        new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        driver.findElement(By.id("gender-1")).click();
+        driver.findElement(By.id("termsAndConditions")).click();
         driver.findElement(By.id("submitRegistration")).click();
 
 
@@ -256,8 +264,8 @@ public class RegistrationFieldsValidations {
         driver.get(baseUrl + "/auth/signin");
 
         // Se setea idioma español
-        //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
-        //driver.findElement(By.linkText("Español")).click();
+        driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+        driver.findElement(By.linkText("Español")).click();
 
         driver.findElement(By.id("signupButton")).click();
 
@@ -267,15 +275,16 @@ public class RegistrationFieldsValidations {
         driver.findElement(By.id("surname")).sendKeys("lastNameUser");
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys("mailUser@gointegro.com");
-        driver.findElement(By.id("document")).clear();
-        driver.findElement(By.id("document")).sendKeys("25123123");
+        //driver.findElement(By.id("document")).clear();
+        //driver.findElement(By.id("document")).sendKeys("25123123");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("integro1234");
         driver.findElement(By.id("repeatPassword")).clear();
         driver.findElement(By.id("repeatPassword")).sendKeys("integro1234");
-        //new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
-        //new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
-        //new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
+        new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
+        new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        driver.findElement(By.id("gender-1")).click();
         driver.findElement(By.id("termsAndConditions")).click();
         driver.findElement(By.id("submitRegistration")).click();
 
@@ -301,8 +310,8 @@ public class RegistrationFieldsValidations {
         driver.get(baseUrl + "/auth/signin");
 
         // Se setea idioma español
-        //driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
-        //driver.findElement(By.linkText("Español")).click();
+        driver.findElement(By.xpath("//form[@id='login-form']/div[3]/div/button")).click();
+        driver.findElement(By.linkText("Español")).click();
 
         driver.findElement(By.id("signupButton")).click();
 
@@ -312,15 +321,16 @@ public class RegistrationFieldsValidations {
         driver.findElement(By.id("surname")).sendKeys("surnameUser");
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys("mailUser@gointegro.com");
-        driver.findElement(By.id("document")).clear();
-        driver.findElement(By.id("document")).sendKeys("25123123");
+        //driver.findElement(By.id("document")).clear();
+        //driver.findElement(By.id("document")).sendKeys("25123123");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("integro1234");
         driver.findElement(By.id("repeatPassword")).clear();
         driver.findElement(By.id("repeatPassword")).sendKeys("integro123*");
-        //new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
-        //new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
-        //new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        new Select(driver.findElement(By.id("birthdate-day"))).selectByVisibleText("1");
+        new Select(driver.findElement(By.id("birthdate-month"))).selectByVisibleText("Enero");
+        new Select(driver.findElement(By.id("birthdate-year"))).selectByVisibleText("1940");
+        driver.findElement(By.id("gender-1")).click();
         driver.findElement(By.id("termsAndConditions")).click();
         driver.findElement(By.id("submitRegistration")).click();
 

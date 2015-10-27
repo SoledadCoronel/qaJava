@@ -50,7 +50,7 @@ public class Registration {
         driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys(mail);
         //driver.findElement(By.id("document")).clear();
-       // driver.findElement(By.id("document")).sendKeys("23566988");
+        //driver.findElement(By.id("document")).sendKeys("23566988");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("integro1234");
         driver.findElement(By.id("repeatPassword")).clear();
