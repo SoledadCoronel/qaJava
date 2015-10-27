@@ -3,13 +3,29 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Rewards.AddAReward">
+      <class name="com.rewards.webdriver.AddAReward">
         <methods>
           <include name="tearDown"/>
-          <include name="addAReward"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- Rewards.AddAReward -->
+      </class> <!-- com.rewards.webdriver.AddAReward -->
+      <class name="com.rewards.webdriver.VerifyAvailablePoints">
+        <methods>
+          <include name="verifypoints"/>
+        </methods>
+      </class> <!-- com.rewards.webdriver.VerifyAvailablePoints -->
+      <class name="com.rewards.webdriver.VerifyRewardsPage">
+        <methods>
+          <include name="testLinks"/>
+          <include name="openCatalog"/>
+          <include name="testAlphabeticOrder"/>
+        </methods>
+      </class> <!-- com.rewards.webdriver.VerifyRewardsPage -->
+      <class name="com.rewards.webdriver.InactiveCatalog">
+        <methods>
+          <include name="accesToAnInactiveCatalog"/>
+        </methods>
+      </class> <!-- com.rewards.webdriver.InactiveCatalog -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

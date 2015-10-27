@@ -16,7 +16,7 @@ public class VerifyRewardsPage extends suiteUtility.java.LoginAutomation1 {
  // Open Catalogo
 
     public void openCatalog (){
-   driver.findElement(By.cssSelector(".app-name")).click();
+   driver.findElement(By.cssSelector("ul li:nth-child(3) a .app-name")).click();
    
    WebDriverWait wait = new WebDriverWait(driver, 10);
    WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".alert.alert-warning .inline-block")));

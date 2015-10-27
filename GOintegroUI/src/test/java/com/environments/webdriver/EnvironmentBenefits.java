@@ -18,7 +18,7 @@ public class EnvironmentBenefits extends suiteUtility.java.NavigateToBeneficios{
     @Test
     public void testEnvironmentBenefits()  {
        
-        driver.findElement(By.cssSelector("#environments>li:nth-child(2)>a")).click();
+        driver.findElement(By.cssSelector("#environments li:nth-child(2) a[data-bindattr-975='975']")).click();
      
         String capturedText = new String(driver.findElement(By.cssSelector(".active>a")).getText());
         System.out.println(capturedText);
