@@ -17,7 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class HelpCenterFooter  {
 
 	
-	WebDriver driver =  new FirefoxDriver();
+	protected WebDriver driver =  new FirefoxDriver();
 
 	@BeforeTest
 	public void setup (){

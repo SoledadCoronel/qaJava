@@ -43,7 +43,7 @@ public class LoginValidations {
         Thread.sleep(1000);
 
         // Se captura el texto de la validación
-        String capturedText = new String(driver.findElement(By.className("error-login")).getText());
+        String capturedText = new String(driver.findElement(By.cssSelector("#error-login")).getText());
 
         // Se setea el texto de validación esperado
         String expectedText = "Usuario y/o contraseña incorrectos";
@@ -65,7 +65,7 @@ public class LoginValidations {
         Thread.sleep(1000);
 
         // Se captura el texto de la validación
-        String capturedText = new String(driver.findElement(By.className("error-login")).getText());
+        String capturedText = new String(driver.findElement(By.cssSelector("#error-login")).getText());
 
         // Se setea el texto de validaci�n esperado
         String expectedText = "Usuario y/o contraseña incorrectos";
