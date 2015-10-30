@@ -1,91 +1,40 @@
 # Git
 !.gitignore
 
-# Vim, nano, etc.
+# --- Vim, nano, PHPStorm, Netbeans, Eclipse, Sublime Text 2 ---
 *~
-
-#vim
 *.*.swp
 *.*.swo
-
-# PhpStorm
 .idea/
-
-# Eclipse
 .settings/
-
-# NetBeans
 nbproject
-
-# Sublime Text 2
 *.sublime-project
 *.sublime-workspace
+.project
+.buildpath
+.settings/.jsdtscope
+*.container
+.settings/org.eclipse.wst.jsdt.ui.superType.name
+phpcs-checkstyle.tmp
 
+
+# ---- Files ----
 # Mac Files
 .DS_Store
+*.prefs
 
-# Symfony directories
+# ---- Directories ---
+vendor/
 vendor/*
 */logs/*
 */cache/*
-web/uploads/*
-web/public/*
-web/bundles/*
 
 # Translations
 nls/
 translations/
 
 # Configuration files
-app/config/parameters.ini
-app/config/parameters.yml
 behat.yml
-
-# Bundled with Symfony 2 Standard Edition
-/web/bundles/
-/web/js/*
-/web/images/*
-/app/bootstrap.php.cache
-/app/cache/*
-/app/logs/*
-/vendor/
-/bin/
-/build/
-
-# APC
-/web/apc-*
-
-# Behat
-/web/behat/
-
-# Los symlinks creados en el deploy.
-app/cache
-app/logs
-web/uploads
-web/public/*
-
-
-
-
-# ?
-.idea/
-
-*.prefs
-
-.project
-
-.buildpath
-
-.settings/.jsdtscope
-
-*.container
-
-.settings/org.eclipse.wst.jsdt.ui.superType.name
-/web/css/
-
-phpcs-checkstyle.tmp
-
-
 
 
 # NPM
@@ -95,10 +44,6 @@ npm-debug.log
 # Bower
 src/GoIntegro/Resources/public/js/vendor
 
-# Require.js
-requirejs-config.js
-web-build
-
 # ChromeDriver
 chromedriver
 
@@ -107,3 +52,10 @@ chromedriver
 
 # Test-output de tests funcionales
 GOintegroUI/test-output
+
+target/
+.project
+test-output/
+META-INF/
+build.properties
+.classpath
