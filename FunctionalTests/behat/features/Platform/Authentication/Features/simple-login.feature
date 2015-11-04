@@ -7,10 +7,6 @@ Característica: Login Simple
   @javascript
   Escenario: Loguearme a la plataforma de email y password
     Dado me logueo con "tyrion.lannister@gointegro.com" "go1234"
-    #Dado estoy en "/auth/signin?_lang=es"
-    #Y relleno "_username" con "tyrion.lannister@gointegro.com"
-    #Y relleno "_password" con "go1234"
-    #Cuando presiono "_submit"
     Entonces debo estar en el inicio de la plataforma
 
   @javascript @mailAndPasswordPlatform

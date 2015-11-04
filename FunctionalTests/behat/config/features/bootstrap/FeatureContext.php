@@ -1013,9 +1013,13 @@ JS;
      * Funcion de login
      * @Given /^me logueo con "([^"]*)" "([^"]*)"$/
      */
-    public function meLogueoCon($user, $pass)
+    public function login($user, $pass)
     {
-        throw new PendingException();
+        //throw new PendingException('Me logueo con no está terminada');
+        $this->visit('/auth/signin?_lang=es');
+        $this->fillField('_username', 'johnconnor');
+        $this->fillField('_password', '123456');
+        $this->pressButton('_submit');
     }
 
     /**
@@ -1023,7 +1027,15 @@ JS;
      */
     public function deboEstarEnElInicioDeLaPlataforma()
     {
-        throw new PendingException();
+        $this->assertPageAddress('/');
+    }
+
+    /**
+     * @Given /^debo estar en el login de la plataforma$/
+     */
+    public function deboEstarEnElLoginDeLaPlataforma()
+    {
+        $this->assertPageAddress('/auth/signin');
     }
 
 }
