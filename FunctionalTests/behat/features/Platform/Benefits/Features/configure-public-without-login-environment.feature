@@ -15,7 +15,7 @@ Característica: Configurar un ambiente público sin login como usuario admin
     Y sigo "Nuevo Módulo"
     Y espero a que aparezca el contenido dinámico "Continuar" en ".modal-footer"
 
-  @javascript @loadBenefitsPublicPlatform
+  @javascript @loadBenefitsPublicPlatform @smoke
   Escenario: Instalar widget de beneficios en un ambiente público sin login
     Y debo ver "Estándar"
     Y debo ver "Beneficios"

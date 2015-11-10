@@ -28,6 +28,8 @@ class FeatureContext extends MinkContext
 
     /* ----- Configuraciones ----- */
 
+
+
     /**
      * @BeforeScenario
      */
@@ -39,6 +41,23 @@ class FeatureContext extends MinkContext
             return false;
         }
     }
+
+    /**
+     * Carga la información en la base de datos
+     * @BeforeScenario
+     */
+    /*public function loadData()
+    {
+        $mysqlUserName ='root';
+        $mysqlPassword ='root';
+        $mysqlHostName ='localhost';
+        $mysqlImportFilename ='db0.sql';
+
+        $command='mysql -h' .$mysqlHostName .' -u' .$mysqlUserName .' -p' .$mysqlPassword .' ' .$mysqlDatabaseName .' < ' .$mysqlImportFilename;
+        shell_exec($command);
+    }
+*/
+
 
     /**
      * @AfterScenario
@@ -1013,12 +1032,12 @@ JS;
      * Funcion de login
      * @Given /^me logueo con "([^"]*)" "([^"]*)"$/
      */
-    public function login($user, $pass)
+    public function loginWithId($user, $pass)
     {
-        //throw new PendingException('Me logueo con no está terminada');
+
         $this->visit('/auth/signin?_lang=es');
-        $this->fillField('_username', 'johnconnor');
-        $this->fillField('_password', '123456');
+        $this->fillField('_username', $user);
+        $this->fillField('_password', $pass);
         $this->pressButton('_submit');
     }
 

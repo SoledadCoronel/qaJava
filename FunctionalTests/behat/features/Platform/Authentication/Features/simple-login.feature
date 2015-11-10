@@ -1,7 +1,7 @@
 # language: es
 Característica: Casos de Logueo
 
-  @javascript
+  @javascript @smoke
   Escenario: Loguearme a la plataforma de email y password
     Dado me logueo con "tyrion.lannister@gointegro.com" "go1234"
     Entonces debo estar en el inicio de la plataforma
