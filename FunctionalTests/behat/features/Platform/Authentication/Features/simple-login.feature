@@ -3,14 +3,13 @@ Característica: Casos de Logueo
 
   @javascript @smoke
   Escenario: Loguearme a la plataforma de email y password
-    Dado me logueo con "tyrion.lannister@gointegro.com" "go1234"
+    Dado me logueo con "johnconnor" "123456"
     Entonces debo estar en el inicio de la plataforma
 
   @javascript
   Escenario: Validar que  se puede loguear con un user valid and password valid
     Dado me logueo con "johnconnor" "123456"
     Entonces debo estar en el inicio de la plataforma
-
 
   @javascript
     Escenario: Validar que no se puede loguear con un user invalid y password valida
@@ -20,7 +19,7 @@ Característica: Casos de Logueo
 
   @javascript
   Escenario: Validar que no se puede loguear con un user valid and password invalid
-    Dado me logueo con "johnconnor" "12346"
+    Dado me logueo con "johnconnor" "12346888"
     Entonces debe aparecer ".error-login"
     Y debo estar en "/auth/signin"
 
