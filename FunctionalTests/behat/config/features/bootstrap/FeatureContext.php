@@ -1,69 +1,34 @@
 <?php
 
-namespace GoIntegro\Context;
-
-use Symfony\Component\HttpKernel\KernelInterface;
-use Behat\Symfony2Extension\Context\KernelAwareInterface;
-use Behat\MinkExtension\Context\MinkContext;
-
-use Behat\Behat\Context\BehatContext,
+use Behat\Behat\Context\ClosuredContextInterface,
+    Behat\Behat\Context\TranslatedContextInterface,
+    Behat\Behat\Context\BehatContext,
     Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
-use Doctrine\Common\DataFixtures\Purger\ORMPurger;
-use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
-use Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader;
-
-use Behat\CommonContexts\DoctrineFixturesContext;
-use Behat\CommonContexts\SymfonyDoctrineContext;
-
-use Behat\Mink\Exception\ElementNotFoundException;
-
-use Symfony\Bundle\FrameworkBundle\Console\Application,
-    Symfony\Component\Console\Input\ArrayInput;
-
-use Exception;
-
+use Behat\MinkExtension\Context\MinkContext;
 /**
- * Feature context.
+ * Features context.
  */
 class FeatureContext extends MinkContext
-                  implements KernelAwareInterface
 {
-    private $kernel;
-    private $parameters;
-
-    const BEHAT_AJAX_TIMEOUT = 30000; // 30"
-
     /**
-     * Initializes context with parameters from behat.yml.
+     * Initializes context.
+     * Every scenario gets its own context object.
      *
-     * @param array $parameters
+     * @param array $parameters context parameters (set them up through behat.yml)
      */
     public function __construct(array $parameters)
     {
-        $this->parameters = $parameters;
-
-        // To use DoctrineFixturesContext in your steps
-        $this->useContext('doctrine_fixtures_context', new DoctrineFixturesContext());
+        // Initialize your context here
     }
 
-    /**
-     * Sets HttpKernel instance.
-     * This method will be automatically called by Symfony2Extension ContextInitializer.
-     *
-     * @param KernelInterface $kernel
-     */
-    public function setKernel(KernelInterface $kernel)
-    {
-        $this->kernel = $kernel;
-    }
+    const BEHAT_AJAX_TIMEOUT = 30000; // 30"
 
-    public function getKernel()
-    {
-        return $this->kernel;
-    }
+    /* ----- Configuraciones ----- */
+
+
 
     /**
      * @BeforeScenario
@@ -78,6 +43,24 @@ class FeatureContext extends MinkContext
     }
 
     /**
+     * Carga la información en la base de datos
+     * @BeforeScenario
+     */
+    public function loadData()
+    {
+        $params = array(
+            'dbUser' => 'behat',
+            'dbPass' => 'behat',
+            'scriptPath' => '../../SQLData'
+        );
+
+        // Load datafixtures
+        shell_exec("mysql --user={$params['dbUser']} --password={$params['dbPass']} --host=127.0.0.1 --port=8306 < {$params['scriptPath']}/db0.sql");
+    }
+
+
+
+    /**
      * @AfterScenario
      */
     public function refreshDriver()
@@ -85,54 +68,8 @@ class FeatureContext extends MinkContext
         $this->getSession()->getDriver()->stop();
     }
 
-    /**
-     * Ejecuta las fixtures que se pasan en $fixtures
-     * @param array $fixtures
-     */
-    protected function runDoctrineDataFixtures($fixtures) {
-        $container = $this->kernel->getContainer();
-        $loader = new ContainerAwareLoader($container);
 
-        $this->getMainContext()
-            ->getSubcontext('doctrine_fixtures_context')
-            ->loadFixtureClasses($loader, $fixtures);
-
-        $em = $container->get('doctrine.orm.entity_manager');
-        $purger = new ORMPurger();
-        $executor = new ORMExecutor($em, $purger);
-
-        if ($container->getParameter('search_engine.index_documents_testing') === TRUE) {
-            $solrService = $container->get('gointegro.solr');
-            $solrService->clearIndex();
-        }
-
-        $executor->purge();
-        $executor->execute($loader->getFixtures(), true);
-    }
-
-    /**
-     * Index existent data in SOLR
-     *
-     * @BeforeScenario @Solr
-     */
-    public function indexExistentData()
-    {
-        $container = $this->kernel->getContainer();
-        if ($container->getParameter('search_engine.index_documents_testing') === TRUE) {
-            
-            $this->runTask(array('command' => 'gointegro:search:index-existent-data'));           
-        }
-    }
-
-    /*
-     * Pasos comunes. (Esto no es un docblock.)
-     * @todo Mover a un rasgo.
-     */
-
-    public function iAmOnHomepage()
-    {
-        $this->getSession()->visit($this->locatePath('/?_lang=es'));
-    }
+    /* ----- Pasos custom ----- */
 
     /**
      * @Given /^espero (\d+)$/
@@ -159,7 +96,6 @@ class FeatureContext extends MinkContext
     {
         $this->getSession()->getDriver()->getWebDriverSession()->accept_alert();
     }
-
 
     /**
      * @Then /^debe cambiar la URL$/
@@ -257,7 +193,6 @@ class FeatureContext extends MinkContext
         }
     }
 
-
     /**
      * @Then /^debe desaparecer "([^"]*)"$/
      * @Given /^espero a que desaparezca "([^"]*)"$/
@@ -303,7 +238,6 @@ class FeatureContext extends MinkContext
             throw new Exception("No existe elemento");
         }
     }
-
 
     /**
      * @Given /^no debo ver el contenedor dinámico "([^"]*)"$/
@@ -718,7 +652,7 @@ JS;
     {
         $this->getSession()->executeScript(
             "$('#$checkbox').prop('checked', false); $('#$checkbox').change();"
-            );
+        );
     }
 
     /**
@@ -1011,14 +945,6 @@ JS;
     }
 
     /**
-     * @BeforeScenario @loadStandardUserData
-     */
-    public function loadStandardUserData()
-    {
-        $this->runDoctrineDataFixtures(['GoIntegro\DataFixtures\ORM\Standard\User\Fixture']);
-    }
-
-    /**
      *
      * @Given /^seteo el datepicker "([^"]*)" con la fecha de hoy$/
      * @param string $selector Valid jquery selector
@@ -1098,17 +1024,38 @@ JS;
 
         $this->getSession()->executeScript($script);
     }
-    
+
+
+
+    /* -------------------------------- Pasos agregados por QA TEAM --------------------------------*/
+
     /**
-     * Run a symfony2 task
-     * @param array $options
+     * Funcion de login
+     * @Given /^me logueo con "([^"]*)" "([^"]*)"$/
      */
-    protected function runTask(array $options)
+    public function loginWithId($user, $pass)
     {
-        $application = new Application($this->getKernel());
 
-        $application->setAutoExit(false);
-
-        $application->run(new ArrayInput($options));        
+        $this->visit('/auth/signin?_lang=es');
+        $this->fillField('_username', $user);
+        $this->fillField('_password', $pass);
+        $this->pressButton('_submit');
     }
+
+    /**
+     * @Given /^debo estar en el inicio de la plataforma$/
+     */
+    public function deboEstarEnElInicioDeLaPlataforma()
+    {
+        $this->assertPageAddress('/');
+    }
+
+    /**
+     * @Given /^debo estar en el login de la plataforma$/
+     */
+    public function deboEstarEnElLoginDeLaPlataforma()
+    {
+        $this->assertPageAddress('/auth/signin');
+    }
+
 }

@@ -3,6 +3,7 @@
 * FunctionalTests: Tiene los tests de behat nuevos y los importados desde plataforma y ademas los tests de Java+Selenium nuevos creados por Sole y Marina y a la vez hay tests viejos creados por otros automations 
 * IntegrationTests: Tiene todos los tests de integración (Jmeter) de Rewards, Usuarios, Beneficios y Reconocimientos
 * LegacyTests: Tiene los tests funcionales creados en su momento por Diogo que no se están usando por el momento. VER QUE HACER CON ESTOS TESTS!
+* SQLData: Contiene los dumps de bases de datos utilizados como datos base para QA
 * Selenium: Todos los selenium
 
 

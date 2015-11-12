@@ -1,16 +1,28 @@
 # language: es
-Característica: Login Simple
-  Para ingresar a la plataforma 
-  Como usuario común 
-  Necesito validar mis credenciales
+Característica: Casos de Logueo
 
-  @javascript @mailAndPasswordPlatform
+  @javascript @smoke
   Escenario: Loguearme a la plataforma de email y password
-    Dado estoy en "/auth/signin?_lang=es"
-    Y relleno "_username" con "tyrion.lannister@gointegro.com"
-    Y relleno "_password" con "go1234"
-    Cuando presiono "_submit"
-    Entonces debo estar en "/"
+    Dado me logueo con "johnconnor" "123456"
+    Entonces debo estar en el inicio de la plataforma
+
+  @javascript
+  Escenario: Validar que  se puede loguear con un user valid and password valid
+    Dado me logueo con "johnconnor" "123456"
+    Entonces debo estar en el inicio de la plataforma
+
+  @javascript
+    Escenario: Validar que no se puede loguear con un user invalid y password valida
+    Dado me logueo con "zaraza" "123456"
+    Entonces debe aparecer ".error-login"
+    Y debo estar en "/auth/signin"
+
+  @javascript
+  Escenario: Validar que no se puede loguear con un user valid and password invalid
+    Dado me logueo con "johnconnor" "12346888"
+    Entonces debe aparecer ".error-login"
+    Y debo estar en "/auth/signin"
+
 
   @javascript @mailAndPasswordPlatform
   Escenario: Loguearme con un password erroneo a la plataforma de email y password
