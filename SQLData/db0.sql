@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.46, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: 
+-- Host: 127.0.0.1    Database: 
 -- ------------------------------------------------------
 -- Server version	5.5.44-0ubuntu0.14.04.1
 
@@ -16,8 +16,50 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `gointegro_coupon`
+--
+
+/*!40000 DROP DATABASE IF EXISTS `gointegro_coupon`*/;
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `gointegro_coupon` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `gointegro_coupon`;
+
+--
+-- Table structure for table `coupon`
+--
+
+DROP TABLE IF EXISTS `coupon`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `coupon` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `beneficiary` varchar(50) NOT NULL,
+  `site` varchar(10) NOT NULL,
+  `currency` varchar(10) NOT NULL,
+  `amount` varchar(45) NOT NULL,
+  `expiration` date NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `coupon`
+--
+
+LOCK TABLES `coupon` WRITE;
+/*!40000 ALTER TABLE `coupon` DISABLE KEYS */;
+/*!40000 ALTER TABLE `coupon` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Current Database: `gointegro_platform`
 --
+
+/*!40000 DROP DATABASE IF EXISTS `gointegro_platform`*/;
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `gointegro_platform` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
@@ -479,8 +521,8 @@ CREATE TABLE `article_content` (
   KEY `IDX_FEC530A97E3C61F9` (`owner_id`),
   KEY `IDX_FEC530A912469DE2` (`category_id`),
   KEY `IDX_FEC530A91340B6AD` (`article_app_id`),
-  CONSTRAINT `FK_1317741E1340B6AD` FOREIGN KEY (`article_app_id`) REFERENCES `workspace_application` (`id`),
   CONSTRAINT `FK_1317741E12469DE2` FOREIGN KEY (`category_id`) REFERENCES `article_category` (`id`),
+  CONSTRAINT `FK_1317741E1340B6AD` FOREIGN KEY (`article_app_id`) REFERENCES `workspace_application` (`id`),
   CONSTRAINT `FK_1317741E7E3C61F9` FOREIGN KEY (`owner_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -634,7 +676,7 @@ CREATE TABLE `backoffice_user` (
 
 LOCK TABLES `backoffice_user` WRITE;
 /*!40000 ALTER TABLE `backoffice_user` DISABLE KEYS */;
-INSERT INTO `backoffice_user` VALUES (3,'apibackofficetester','plG/iyaryrGr3xWkZfkcqgR5GhOkqKtX0Gql++j1HWC6LYhNKjHa1wbKF82qSWMIPJwt9CH7tkpBkoJ1tdEe+A==','k2xuejv1ctw8o48s88so08g4488okgc'),(4,'admin','oaTOLSDexLTwfr0M2NG4mLYAeBNuxdyCUx7Zr1zefsW3i72h0B5S64BJ2K9rzunDp+Q/ydwMWyWiCnzzDm9T4A==','lbwvwcr9o9w0k8swcscgskcwoog4wss');
+INSERT INTO `backoffice_user` VALUES (3,'apibackofficetester','NzGk3rnKyF9lAg1EdooH0k4xGWf5chHCesh9Oi6hbAJi5FcTaL3RBX2BySPZ1SyQeDiGzfGjW/wZBaiaYuTbjg==','48i3kuz7gxkwks04kcg0o0k8wk4oc0g'),(4,'admin','LuDv5WXFCz4Qae11O7BzCcDnuITO44kP5DZFnpfSXiqNp95zewh5753fOLtS3XuXhPq2zBtdZay1IHz1w7ad2A==','ncyr1umlsqsgwc8kcwk8w4gskw088wc');
 /*!40000 ALTER TABLE `backoffice_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -651,8 +693,8 @@ CREATE TABLE `backoffice_user_country` (
   PRIMARY KEY (`user_id`,`country_id`),
   KEY `IDX_3C82908FA76ED395` (`user_id`),
   KEY `IDX_3C82908FF92F3E70` (`country_id`),
-  CONSTRAINT `FK_3C82908FF92F3E70` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`),
-  CONSTRAINT `FK_3C82908FA76ED395` FOREIGN KEY (`user_id`) REFERENCES `backoffice_user` (`id`)
+  CONSTRAINT `FK_3C82908FA76ED395` FOREIGN KEY (`user_id`) REFERENCES `backoffice_user` (`id`),
+  CONSTRAINT `FK_3C82908FF92F3E70` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -678,8 +720,8 @@ CREATE TABLE `backoffice_user_role` (
   PRIMARY KEY (`user_id`,`role_id`),
   KEY `IDX_4AF4B591A76ED395` (`user_id`),
   KEY `IDX_4AF4B591D60322AC` (`role_id`),
-  CONSTRAINT `FK_4AF4B591D60322AC` FOREIGN KEY (`role_id`) REFERENCES `backoffice_role` (`id`),
-  CONSTRAINT `FK_4AF4B591A76ED395` FOREIGN KEY (`user_id`) REFERENCES `backoffice_user` (`id`)
+  CONSTRAINT `FK_4AF4B591A76ED395` FOREIGN KEY (`user_id`) REFERENCES `backoffice_user` (`id`),
+  CONSTRAINT `FK_4AF4B591D60322AC` FOREIGN KEY (`role_id`) REFERENCES `backoffice_role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -832,8 +874,8 @@ CREATE TABLE `benefits_benefit_collection` (
   PRIMARY KEY (`collection_id`,`benefit_id`),
   KEY `IDX_411B04B1514956FD` (`collection_id`),
   KEY `IDX_411B04B1B517B89` (`benefit_id`),
-  CONSTRAINT `FK_411B04B1B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_411B04B1514956FD` FOREIGN KEY (`collection_id`) REFERENCES `benefits_collection` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_411B04B1514956FD` FOREIGN KEY (`collection_id`) REFERENCES `benefits_collection` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_411B04B1B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -862,9 +904,9 @@ CREATE TABLE `benefits_benefit_daily_view` (
   PRIMARY KEY (`id`),
   KEY `IDX_7ADD598B517B89` (`benefit_id`),
   KEY `IDX_7ADD598FFE6496F` (`platform_id`),
-  CONSTRAINT `FK_7ADD598FFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`),
-  CONSTRAINT `FK_7ADD598B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  CONSTRAINT `FK_7ADD598B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`),
+  CONSTRAINT `FK_7ADD598FFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -916,8 +958,8 @@ CREATE TABLE `benefits_benefit_exclusive_platform` (
   PRIMARY KEY (`benefit_id`,`platform_id`),
   KEY `IDX_3FF29D38B517B89` (`benefit_id`),
   KEY `IDX_3FF29D38FFE6496F` (`platform_id`),
-  CONSTRAINT `FK_3FF29D38FFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_3FF29D38B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_3FF29D38B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_3FF29D38FFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -971,8 +1013,8 @@ CREATE TABLE `benefits_benefit_image` (
   `benefit_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_325AE553B517B89` (`benefit_id`),
-  CONSTRAINT `FK_325AE553BF396750` FOREIGN KEY (`id`) REFERENCES `public_file` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_325AE553B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`)
+  CONSTRAINT `FK_325AE553B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`),
+  CONSTRAINT `FK_325AE553BF396750` FOREIGN KEY (`id`) REFERENCES `public_file` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1052,8 +1094,8 @@ CREATE TABLE `benefits_benefit_restricted_platform` (
   PRIMARY KEY (`benefit_id`,`platform_id`),
   KEY `IDX_5CC2E5C5B517B89` (`benefit_id`),
   KEY `IDX_5CC2E5C5FFE6496F` (`platform_id`),
-  CONSTRAINT `FK_5CC2E5C5FFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_5CC2E5C5B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_5CC2E5C5B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_5CC2E5C5FFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1106,8 +1148,8 @@ CREATE TABLE `benefits_benefit_tag` (
   PRIMARY KEY (`benefit_id`,`tag_id`),
   KEY `IDX_B58F3044B517B89` (`benefit_id`),
   KEY `IDX_B58F3044BAD26311` (`tag_id`),
-  CONSTRAINT `FK_B58F3044BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `benefits_tag` (`id`),
-  CONSTRAINT `FK_B58F3044B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`)
+  CONSTRAINT `FK_B58F3044B517B89` FOREIGN KEY (`benefit_id`) REFERENCES `benefits_benefit` (`id`),
+  CONSTRAINT `FK_B58F3044BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `benefits_tag` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1218,8 +1260,8 @@ CREATE TABLE `benefits_category_restricted_platforms` (
   PRIMARY KEY (`category_id`,`platform_id`),
   KEY `IDX_63ED9F1012469DE2` (`category_id`),
   KEY `IDX_63ED9F10FFE6496F` (`platform_id`),
-  CONSTRAINT `FK_63ED9F10FFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_63ED9F1012469DE2` FOREIGN KEY (`category_id`) REFERENCES `benefits_category` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_63ED9F1012469DE2` FOREIGN KEY (`category_id`) REFERENCES `benefits_category` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_63ED9F10FFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1245,8 +1287,8 @@ CREATE TABLE `benefits_category_tag` (
   PRIMARY KEY (`category_id`,`tag_id`),
   KEY `IDX_6706DD3C12469DE2` (`category_id`),
   KEY `IDX_6706DD3CBAD26311` (`tag_id`),
-  CONSTRAINT `FK_6706DD3CBAD26311` FOREIGN KEY (`tag_id`) REFERENCES `benefits_tag` (`id`),
-  CONSTRAINT `FK_6706DD3C12469DE2` FOREIGN KEY (`category_id`) REFERENCES `benefits_category` (`id`)
+  CONSTRAINT `FK_6706DD3C12469DE2` FOREIGN KEY (`category_id`) REFERENCES `benefits_category` (`id`),
+  CONSTRAINT `FK_6706DD3CBAD26311` FOREIGN KEY (`tag_id`) REFERENCES `benefits_tag` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1329,8 +1371,8 @@ CREATE TABLE `benefits_collection_exclusive_platform` (
   PRIMARY KEY (`collection_id`,`platform_id`),
   KEY `IDX_2C3D1DAD514956FD` (`collection_id`),
   KEY `IDX_2C3D1DADFFE6496F` (`platform_id`),
-  CONSTRAINT `FK_2C3D1DADFFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_2C3D1DAD514956FD` FOREIGN KEY (`collection_id`) REFERENCES `benefits_collection` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_2C3D1DAD514956FD` FOREIGN KEY (`collection_id`) REFERENCES `benefits_collection` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_2C3D1DADFFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1454,8 +1496,8 @@ CREATE TABLE `benefits_company_image` (
   `company_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_52EDFD0A979B1AD6` (`company_id`),
-  CONSTRAINT `FK_52EDFD0ABF396750` FOREIGN KEY (`id`) REFERENCES `public_file` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_52EDFD0A979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `benefits_company` (`id`)
+  CONSTRAINT `FK_52EDFD0A979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `benefits_company` (`id`),
+  CONSTRAINT `FK_52EDFD0ABF396750` FOREIGN KEY (`id`) REFERENCES `public_file` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1481,8 +1523,8 @@ CREATE TABLE `benefits_company_payment_method` (
   PRIMARY KEY (`payment_method_id`,`company_id`),
   KEY `IDX_8208F105AA1164F` (`payment_method_id`),
   KEY `IDX_8208F10979B1AD6` (`company_id`),
-  CONSTRAINT `FK_8208F10979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `benefits_company` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_8208F105AA1164F` FOREIGN KEY (`payment_method_id`) REFERENCES `benefits_payment_method` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_8208F105AA1164F` FOREIGN KEY (`payment_method_id`) REFERENCES `benefits_payment_method` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_8208F10979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `benefits_company` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1508,8 +1550,8 @@ CREATE TABLE `benefits_company_tag` (
   PRIMARY KEY (`company_id`,`tag_id`),
   KEY `IDX_4EC7B640979B1AD6` (`company_id`),
   KEY `IDX_4EC7B640BAD26311` (`tag_id`),
-  CONSTRAINT `FK_4EC7B640BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `benefits_tag` (`id`),
-  CONSTRAINT `FK_4EC7B640979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `benefits_company` (`id`)
+  CONSTRAINT `FK_4EC7B640979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `benefits_company` (`id`),
+  CONSTRAINT `FK_4EC7B640BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `benefits_tag` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1623,8 +1665,8 @@ CREATE TABLE `benefits_filter_application_location` (
   PRIMARY KEY (`benefits_filter_application_id`,`location_id`),
   KEY `IDX_DEC885B04113423F` (`benefits_filter_application_id`),
   KEY `IDX_DEC885B064D218E` (`location_id`),
-  CONSTRAINT `FK_DEC885B064D218E` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_DEC885B04113423F` FOREIGN KEY (`benefits_filter_application_id`) REFERENCES `workspace_application` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_DEC885B04113423F` FOREIGN KEY (`benefits_filter_application_id`) REFERENCES `workspace_application` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_DEC885B064D218E` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1846,8 +1888,8 @@ CREATE TABLE `benefits_store` (
   PRIMARY KEY (`id`),
   KEY `IDX_523ADD3E979B1AD6` (`company_id`),
   KEY `IDX_523ADD3EE7A1254A` (`contact_id`),
-  CONSTRAINT `FK_523ADD3EE7A1254A` FOREIGN KEY (`contact_id`) REFERENCES `benefits_contact` (`id`),
-  CONSTRAINT `FK_523ADD3E979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `benefits_company` (`id`)
+  CONSTRAINT `FK_523ADD3E979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `benefits_company` (`id`),
+  CONSTRAINT `FK_523ADD3EE7A1254A` FOREIGN KEY (`contact_id`) REFERENCES `benefits_contact` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1896,8 +1938,8 @@ CREATE TABLE `benefits_store_online_geographical_area` (
   PRIMARY KEY (`online_id`,`geographical_area_id`),
   KEY `IDX_6EA82A6370A5426E` (`online_id`),
   KEY `IDX_6EA82A639F16EA29` (`geographical_area_id`),
-  CONSTRAINT `FK_6EA82A639F16EA29` FOREIGN KEY (`geographical_area_id`) REFERENCES `geographical_area` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_6EA82A6370A5426E` FOREIGN KEY (`online_id`) REFERENCES `benefits_store_online` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_6EA82A6370A5426E` FOREIGN KEY (`online_id`) REFERENCES `benefits_store_online` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_6EA82A639F16EA29` FOREIGN KEY (`geographical_area_id`) REFERENCES `geographical_area` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1981,8 +2023,8 @@ CREATE TABLE `benefits_store_phone_geographical_area` (
   PRIMARY KEY (`phone_id`,`geographical_area_id`),
   KEY `IDX_5AF225F93B7323CB` (`phone_id`),
   KEY `IDX_5AF225F99F16EA29` (`geographical_area_id`),
-  CONSTRAINT `FK_5AF225F99F16EA29` FOREIGN KEY (`geographical_area_id`) REFERENCES `geographical_area` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_5AF225F93B7323CB` FOREIGN KEY (`phone_id`) REFERENCES `benefits_store_phone` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_5AF225F93B7323CB` FOREIGN KEY (`phone_id`) REFERENCES `benefits_store_phone` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_5AF225F99F16EA29` FOREIGN KEY (`geographical_area_id`) REFERENCES `geographical_area` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2177,8 +2219,8 @@ CREATE TABLE `celebration_event_birthday` (
   `category_automation_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_7EEEDB3ACF1EF888` (`category_automation_id`),
-  CONSTRAINT `FK_7EEEDB3ACF1EF888` FOREIGN KEY (`category_automation_id`) REFERENCES `celebration_category_automation` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_7EEEDB3ABF396750` FOREIGN KEY (`id`) REFERENCES `celebration_event` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_7EEEDB3ABF396750` FOREIGN KEY (`id`) REFERENCES `celebration_event` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_7EEEDB3ACF1EF888` FOREIGN KEY (`category_automation_id`) REFERENCES `celebration_category_automation` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2227,8 +2269,8 @@ CREATE TABLE `celebration_event_user` (
   PRIMARY KEY (`event_id`,`user_id`),
   KEY `IDX_8DDFDD0471F7E88B` (`event_id`),
   KEY `IDX_8DDFDD04A76ED395` (`user_id`),
-  CONSTRAINT `FK_8DDFDD04A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_8DDFDD0471F7E88B` FOREIGN KEY (`event_id`) REFERENCES `celebration_event` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_8DDFDD0471F7E88B` FOREIGN KEY (`event_id`) REFERENCES `celebration_event` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_8DDFDD04A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2478,7 +2520,7 @@ CREATE TABLE `environment` (
 
 LOCK TABLES `environment` WRITE;
 /*!40000 ALTER TABLE `environment` DISABLE KEYS */;
-INSERT INTO `environment` VALUES (15,3,'Inicio',0,'0',NULL,NULL,'inicio',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-06 10:48:02','2015-11-06 10:48:02'),(16,3,'Grilla + Muro',1,'0',NULL,NULL,'grilla-muro',1,NULL,'wallGrid',0,'publicWithLogin','2015-11-06 10:48:02','2015-11-06 10:48:02'),(17,3,'Beneficios Corporativos',2,'1',NULL,NULL,'beneficios-corporativos',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-06 10:48:02','2015-11-06 10:48:02'),(18,3,'Sin Login',3,'0',NULL,NULL,'sin-login',1,NULL,'fullGrid',0,'publicWithoutLogin','2015-11-06 10:48:02','2015-11-06 10:48:02'),(19,3,'Test environment 1',4,'0',NULL,NULL,'test-environment-1',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-06 10:48:02','2015-11-06 10:48:02'),(20,3,'Test environment 2',5,'0',NULL,NULL,'test-environment-2',1,NULL,'wallGrid',0,'publicWithLogin','2015-11-06 10:48:02','2015-11-06 10:48:02'),(21,3,'Test environment 3',6,'0',NULL,NULL,'test-environment-3',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-06 10:48:02','2015-11-06 10:48:02'),(22,3,'Test environment 4',7,'0',NULL,NULL,'test-environment-4',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-06 10:48:02','2015-11-06 10:48:02'),(23,3,'Test environment 5',8,'0',NULL,NULL,'test-environment-5',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-06 10:48:02','2015-11-06 10:48:02'),(24,3,'Test environment 6',9,'0',NULL,NULL,'test-environment-6',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-06 10:48:02','2015-11-06 10:48:02');
+INSERT INTO `environment` VALUES (15,3,'Inicio',0,'0',NULL,NULL,'inicio',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-11 12:50:17','2015-11-11 12:50:17'),(16,3,'Grilla + Muro',1,'0',NULL,NULL,'grilla-muro',1,NULL,'wallGrid',0,'publicWithLogin','2015-11-11 12:50:17','2015-11-11 12:50:17'),(17,3,'Beneficios Corporativos',2,'1',NULL,NULL,'beneficios-corporativos',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-11 12:50:17','2015-11-11 12:50:17'),(18,3,'Sin Login',3,'0',NULL,NULL,'sin-login',1,NULL,'fullGrid',0,'publicWithoutLogin','2015-11-11 12:50:17','2015-11-11 12:50:17'),(19,3,'Test environment 1',4,'0',NULL,NULL,'test-environment-1',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-11 12:50:17','2015-11-11 12:50:17'),(20,3,'Test environment 2',5,'0',NULL,NULL,'test-environment-2',1,NULL,'wallGrid',0,'publicWithLogin','2015-11-11 12:50:17','2015-11-11 12:50:17'),(21,3,'Test environment 3',6,'0',NULL,NULL,'test-environment-3',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-11 12:50:17','2015-11-11 12:50:17'),(22,3,'Test environment 4',7,'0',NULL,NULL,'test-environment-4',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-11 12:50:17','2015-11-11 12:50:17'),(23,3,'Test environment 5',8,'0',NULL,NULL,'test-environment-5',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-11 12:50:17','2015-11-11 12:50:17'),(24,3,'Test environment 6',9,'0',NULL,NULL,'test-environment-6',1,NULL,'fullGrid',0,'publicWithLogin','2015-11-11 12:50:17','2015-11-11 12:50:17');
 /*!40000 ALTER TABLE `environment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2619,7 +2661,7 @@ CREATE TABLE `file` (
 
 LOCK TABLES `file` WRITE;
 /*!40000 ALTER TABLE `file` DISABLE KEYS */;
-INSERT INTO `file` VALUES (52,10,3,'banner.jpg','image/jpeg',39,'037e30380c5138b5296963e6413902c9.jpg','image','2015-11-06 10:48:03','2015-11-06 10:48:03',NULL,NULL,NULL,NULL,NULL),(53,10,3,'darth-vader.jpg','image/jpeg',21,'82f7f815f4cf24bc2c5884ede89f1974.jpg','image','2015-11-06 10:48:03','2015-11-06 10:48:03',NULL,NULL,NULL,NULL,NULL),(54,10,3,'darth-vader.jpg','image/jpeg',21,'b398de5833aae10e3c8023a523276772.jpg','image','2015-11-06 10:48:04','2015-11-06 10:48:04',NULL,NULL,NULL,NULL,NULL),(55,10,3,'darth-vader.jpg','image/jpeg',21,'0c9f497ce95c6e896882dfe7937e077b.jpg','image','2015-11-06 10:48:04','2015-11-06 10:48:04',NULL,NULL,NULL,NULL,NULL),(56,10,3,'darth-vader.jpg','image/jpeg',21,'a971b42dd72d2caa0db6babc8223b8f4.jpg','image','2015-11-06 10:48:04','2015-11-06 10:48:04',NULL,NULL,NULL,NULL,NULL),(57,10,3,'darth-vader.jpg','image/jpeg',21,'bfa1b32241200a50034cc5037d954a08.jpg','image','2015-11-06 10:48:05','2015-11-06 10:48:05',NULL,NULL,NULL,NULL,NULL),(58,10,3,'darth-vader.jpg','image/jpeg',21,'30b656cc57728ebce3b52403f25cd1f4.jpg','image','2015-11-06 10:48:05','2015-11-06 10:48:05',NULL,NULL,NULL,NULL,NULL),(59,10,3,'darth-vader.jpg','image/jpeg',21,'1574c5e15ae2ce9f202b84136dfe9cd5.jpg','image','2015-11-06 10:48:05','2015-11-06 10:48:05',NULL,NULL,NULL,NULL,NULL),(60,10,3,'darth-vader.jpg','image/jpeg',21,'3b2d2fe0175ff04fc526a42f81fb855d.jpg','image','2015-11-06 10:48:05','2015-11-06 10:48:05',NULL,NULL,NULL,NULL,NULL),(61,10,3,'darth-vader.jpg','image/jpeg',21,'ddae5d738e0d5bb95b6eecfb32235852.jpg','image','2015-11-06 10:48:06','2015-11-06 10:48:06',NULL,NULL,NULL,NULL,NULL),(62,10,3,'darth-vader.jpg','image/jpeg',21,'46e7c631350aae036f4799f5c5e9b853.jpg','image','2015-11-06 10:48:06','2015-11-06 10:48:06',NULL,NULL,NULL,NULL,NULL),(63,10,3,'darth-vader.jpg','image/jpeg',21,'107e4db562acf695ec65f1704165d989.jpg','image','2015-11-06 10:48:06','2015-11-06 10:48:06',NULL,NULL,NULL,NULL,NULL),(64,10,3,'darth-vader.jpg','image/jpeg',21,'bfa86e5e76e70e1bb0035e977354b8c5.jpg','image','2015-11-06 10:48:06','2015-11-06 10:48:06',NULL,NULL,NULL,NULL,NULL),(65,10,3,'darth-vader.jpg','image/jpeg',21,'e607c96c62a65413d8b89a0ae5551cf8.jpg','image','2015-11-06 10:48:07','2015-11-06 10:48:07',NULL,NULL,NULL,NULL,NULL),(66,10,3,'darth-vader.jpg','image/jpeg',21,'be0650feec6e1e59bd4fe84009f78132.jpg','image','2015-11-06 10:48:07','2015-11-06 10:48:07',NULL,NULL,NULL,NULL,NULL),(67,10,3,'darth-vader.jpg','image/jpeg',21,'5336f4afcfd66a72d4342ce548a2c409.jpg','image','2015-11-06 10:48:07','2015-11-06 10:48:07',NULL,NULL,NULL,NULL,NULL),(68,10,3,'darth-vader.jpg','image/jpeg',21,'56eb57cc88a32e24b474309299297923.jpg','image','2015-11-06 10:48:08','2015-11-06 10:48:08',NULL,NULL,NULL,NULL,NULL),(69,10,3,'darth-vader.jpg','image/jpeg',21,'7626deb6af1e6c79acf38412e2717864.jpg','image','2015-11-06 10:48:08','2015-11-06 10:48:08',NULL,NULL,NULL,NULL,NULL),(70,10,3,'darth-vader.jpg','image/jpeg',21,'5c1214bb953d571fe7c10497d9430253.jpg','image','2015-11-06 10:48:08','2015-11-06 10:48:08',NULL,NULL,NULL,NULL,NULL),(71,10,3,'darth-vader.jpg','image/jpeg',21,'bc96c014ef29edcab8292baf2a212922.jpg','image','2015-11-06 10:48:08','2015-11-06 10:48:08',NULL,NULL,NULL,NULL,NULL),(72,10,3,'darth-vader.jpg','image/jpeg',21,'c3c327b33db6e1cf303900fc889a834c.jpg','image','2015-11-06 10:48:09','2015-11-06 10:48:09',NULL,NULL,NULL,NULL,NULL),(73,10,3,'darth-vader.jpg','image/jpeg',21,'a1becdafb2a5fe2457d6b65c4d700a9f.jpg','image','2015-11-06 10:48:09','2015-11-06 10:48:09',NULL,NULL,NULL,NULL,NULL),(74,10,3,'darth-vader.jpg','image/jpeg',21,'f38c1bc31f84797ea81df64f9984b1b4.jpg','image','2015-11-06 10:48:09','2015-11-06 10:48:09',NULL,NULL,NULL,NULL,NULL),(75,10,3,'darth-vader.jpg','image/jpeg',21,'34117de8e18b5a5e87d9c94eb85f45a7.jpg','image','2015-11-06 10:48:09','2015-11-06 10:48:09',NULL,NULL,NULL,NULL,NULL),(76,10,3,'darth-vader.jpg','image/jpeg',21,'699150ed207f3f19cd5a78d647e6366e.jpg','image','2015-11-06 10:48:10','2015-11-06 10:48:10',NULL,NULL,NULL,NULL,NULL),(77,10,3,'darth-vader.jpg','image/jpeg',21,'b1b35f6f54df294d4d8298a971c3aaef.jpg','image','2015-11-06 10:48:10','2015-11-06 10:48:10',NULL,NULL,NULL,NULL,NULL),(78,10,3,'luke-skywalker.jpg','image/jpeg',32,'73c4e6cbcd07edae9120b9c3169c8834.jpg','image','2015-11-06 10:48:10','2015-11-06 10:48:10',NULL,NULL,NULL,NULL,NULL),(79,10,3,'luke-skywalker.jpg','image/jpeg',32,'f6610aca4fb592dcdc8a664456de27c5.jpg','image','2015-11-06 10:48:10','2015-11-06 10:48:10',NULL,NULL,NULL,NULL,NULL),(80,10,3,'luke-skywalker.jpg','image/jpeg',32,'d45e1530bff9a7231cbd85768c8607c3.jpg','image','2015-11-06 10:48:11','2015-11-06 10:48:11',NULL,NULL,NULL,NULL,NULL),(81,10,3,'luke-skywalker.jpg','image/jpeg',32,'5fe0a191861ab6ba3c072ccaf75667e2.jpg','image','2015-11-06 10:48:11','2015-11-06 10:48:11',NULL,NULL,NULL,NULL,NULL),(82,10,3,'luke-skywalker.jpg','image/jpeg',32,'1b7cf2451d9a30d9f7abade6edc83cbf.jpg','image','2015-11-06 10:48:11','2015-11-06 10:48:11',NULL,NULL,NULL,NULL,NULL),(83,10,3,'luke-skywalker.jpg','image/jpeg',32,'a32dfa500e9c5d61b62c6a413ff783a3.jpg','image','2015-11-06 10:48:11','2015-11-06 10:48:11',NULL,NULL,NULL,NULL,NULL),(84,10,3,'luke-skywalker.jpg','image/jpeg',32,'b0a56eeed73af9c29de3326434ed187e.jpg','image','2015-11-06 10:48:12','2015-11-06 10:48:12',NULL,NULL,NULL,NULL,NULL),(85,10,3,'luke-skywalker.jpg','image/jpeg',32,'bbca5ce338ecd730a1a36584af8c3944.jpg','image','2015-11-06 10:48:12','2015-11-06 10:48:12',NULL,NULL,NULL,NULL,NULL),(86,10,3,'luke-skywalker.jpg','image/jpeg',32,'1463e80ec64bf7d7947e9542e80f1ca9.jpg','image','2015-11-06 10:48:12','2015-11-06 10:48:12',NULL,NULL,NULL,NULL,NULL),(87,10,3,'luke-skywalker.jpg','image/jpeg',32,'0bfc879b86af8745af1987d8f305d43f.jpg','image','2015-11-06 10:48:12','2015-11-06 10:48:12',NULL,NULL,NULL,NULL,NULL),(88,10,3,'luke-skywalker.jpg','image/jpeg',32,'45ffba33f6d9cab16c1514e4e2ee59b2.jpg','image','2015-11-06 10:48:13','2015-11-06 10:48:13',NULL,NULL,NULL,NULL,NULL),(89,10,3,'luke-skywalker.jpg','image/jpeg',32,'ffb866aa3102800473c4d2ee3af3728c.jpg','image','2015-11-06 10:48:13','2015-11-06 10:48:13',NULL,NULL,NULL,NULL,NULL),(90,10,3,'luke-skywalker.jpg','image/jpeg',32,'4aba531a962a09b7b46807140bb006e6.jpg','image','2015-11-06 10:48:13','2015-11-06 10:48:13',NULL,NULL,NULL,NULL,NULL),(91,10,3,'luke-skywalker.jpg','image/jpeg',32,'bedfae13a684c17b777388f0ba297dbd.jpg','image','2015-11-06 10:48:13','2015-11-06 10:48:13',NULL,NULL,NULL,NULL,NULL),(92,10,3,'luke-skywalker.jpg','image/jpeg',32,'4b7563eb4e8abf44214eaa7674fcf1db.jpg','image','2015-11-06 10:48:14','2015-11-06 10:48:14',NULL,NULL,NULL,NULL,NULL),(93,10,3,'luke-skywalker.jpg','image/jpeg',32,'d728259d0e11fb873986384ed548844a.jpg','image','2015-11-06 10:48:14','2015-11-06 10:48:14',NULL,NULL,NULL,NULL,NULL),(94,10,3,'luke-skywalker.jpg','image/jpeg',32,'9c9562763a8cd50187b0f9777c7aef1a.jpg','image','2015-11-06 10:48:14','2015-11-06 10:48:14',NULL,NULL,NULL,NULL,NULL),(95,10,3,'luke-skywalker.jpg','image/jpeg',32,'a36a397823a88c77acd1ca0a6d2b4d99.jpg','image','2015-11-06 10:48:14','2015-11-06 10:48:14',NULL,NULL,NULL,NULL,NULL),(96,10,3,'luke-skywalker.jpg','image/jpeg',32,'8a31d29a9bca86e5bf633d0563c44eb2.jpg','image','2015-11-06 10:48:14','2015-11-06 10:48:14',NULL,NULL,NULL,NULL,NULL),(97,10,3,'luke-skywalker.jpg','image/jpeg',32,'325b1be3b228ad032a82aab36c3c2ab2.jpg','image','2015-11-06 10:48:15','2015-11-06 10:48:15',NULL,NULL,NULL,NULL,NULL),(98,10,3,'luke-skywalker.jpg','image/jpeg',32,'a547ac3a62ba46ff82c21d06435b6545.jpg','image','2015-11-06 10:48:15','2015-11-06 10:48:15',NULL,NULL,NULL,NULL,NULL),(99,10,3,'luke-skywalker.jpg','image/jpeg',32,'8125dcd951c86defd73654e44b0b4f10.jpg','image','2015-11-06 10:48:15','2015-11-06 10:48:15',NULL,NULL,NULL,NULL,NULL),(100,10,3,'luke-skywalker.jpg','image/jpeg',32,'22d885d9810d168c66b9c5ae9b412e03.jpg','image','2015-11-06 10:48:15','2015-11-06 10:48:15',NULL,NULL,NULL,NULL,NULL),(101,10,3,'luke-skywalker.jpg','image/jpeg',32,'dba9b0a6a61d9855b7dc1f8ea264032c.jpg','image','2015-11-06 10:48:16','2015-11-06 10:48:16',NULL,NULL,NULL,NULL,NULL),(102,10,3,'luke-skywalker.jpg','image/jpeg',32,'efc65040dfd0f8ac18e23956df27bf58.jpg','image','2015-11-06 10:48:16','2015-11-06 10:48:16',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `file` VALUES (52,10,3,'banner.jpg','image/jpeg',39,'5ff1c932c6cca21d2aacd2b86beaa923.jpg','image','2015-11-11 12:50:18','2015-11-11 12:50:18',NULL,NULL,NULL,NULL,NULL),(53,10,3,'darth-vader.jpg','image/jpeg',21,'d32aa20e9a7ae737ae8d26b9974636b4.jpg','image','2015-11-11 12:50:18','2015-11-11 12:50:18',NULL,NULL,NULL,NULL,NULL),(54,10,3,'darth-vader.jpg','image/jpeg',21,'30f5025fb2d2d65831ae44c517506626.jpg','image','2015-11-11 12:50:19','2015-11-11 12:50:19',NULL,NULL,NULL,NULL,NULL),(55,10,3,'darth-vader.jpg','image/jpeg',21,'68b241244eeae3b3019ae8b3ef3ac966.jpg','image','2015-11-11 12:50:19','2015-11-11 12:50:19',NULL,NULL,NULL,NULL,NULL),(56,10,3,'darth-vader.jpg','image/jpeg',21,'434324a7f5f22685083f9fcc9b9b1f05.jpg','image','2015-11-11 12:50:20','2015-11-11 12:50:20',NULL,NULL,NULL,NULL,NULL),(57,10,3,'darth-vader.jpg','image/jpeg',21,'9450de403bbacc909b7b5b2a671e30b1.jpg','image','2015-11-11 12:50:20','2015-11-11 12:50:20',NULL,NULL,NULL,NULL,NULL),(58,10,3,'darth-vader.jpg','image/jpeg',21,'f504e9c6d045ec8b8e7b19081b29ba47.jpg','image','2015-11-11 12:50:21','2015-11-11 12:50:21',NULL,NULL,NULL,NULL,NULL),(59,10,3,'darth-vader.jpg','image/jpeg',21,'fd36f485cca4cbc324933656095ef73e.jpg','image','2015-11-11 12:50:21','2015-11-11 12:50:21',NULL,NULL,NULL,NULL,NULL),(60,10,3,'darth-vader.jpg','image/jpeg',21,'4b0c0bdfb0c522c81310a14ec3f7db80.jpg','image','2015-11-11 12:50:22','2015-11-11 12:50:22',NULL,NULL,NULL,NULL,NULL),(61,10,3,'darth-vader.jpg','image/jpeg',21,'3fc5b08078b7f32346b8ae3e40a4b44c.jpg','image','2015-11-11 12:50:22','2015-11-11 12:50:22',NULL,NULL,NULL,NULL,NULL),(62,10,3,'darth-vader.jpg','image/jpeg',21,'fdf52f26c36bf142ca0d044cba7fcad6.jpg','image','2015-11-11 12:50:23','2015-11-11 12:50:23',NULL,NULL,NULL,NULL,NULL),(63,10,3,'darth-vader.jpg','image/jpeg',21,'0098506938cac61a9b5908955a981349.jpg','image','2015-11-11 12:50:23','2015-11-11 12:50:23',NULL,NULL,NULL,NULL,NULL),(64,10,3,'darth-vader.jpg','image/jpeg',21,'f2617c6fa562549782d667fd4d7b092c.jpg','image','2015-11-11 12:50:24','2015-11-11 12:50:24',NULL,NULL,NULL,NULL,NULL),(65,10,3,'darth-vader.jpg','image/jpeg',21,'fdfbcdd8d07f2281fd87e0c22baad71c.jpg','image','2015-11-11 12:50:24','2015-11-11 12:50:24',NULL,NULL,NULL,NULL,NULL),(66,10,3,'darth-vader.jpg','image/jpeg',21,'02989d9976ae7241f7031aea53867061.jpg','image','2015-11-11 12:50:25','2015-11-11 12:50:25',NULL,NULL,NULL,NULL,NULL),(67,10,3,'darth-vader.jpg','image/jpeg',21,'6fb1c8273c79df5d706f017dd023408e.jpg','image','2015-11-11 12:50:25','2015-11-11 12:50:25',NULL,NULL,NULL,NULL,NULL),(68,10,3,'darth-vader.jpg','image/jpeg',21,'2ed26159743cc2b21db63bb9d1ac22f3.jpg','image','2015-11-11 12:50:26','2015-11-11 12:50:26',NULL,NULL,NULL,NULL,NULL),(69,10,3,'darth-vader.jpg','image/jpeg',21,'94e15fba121cb7fffe3ffb754dab0a99.jpg','image','2015-11-11 12:50:26','2015-11-11 12:50:26',NULL,NULL,NULL,NULL,NULL),(70,10,3,'darth-vader.jpg','image/jpeg',21,'e2a80fdf3c711ddc915170c7417ca31a.jpg','image','2015-11-11 12:50:27','2015-11-11 12:50:27',NULL,NULL,NULL,NULL,NULL),(71,10,3,'darth-vader.jpg','image/jpeg',21,'489c04e78fddb76153cfd5888c87630a.jpg','image','2015-11-11 12:50:27','2015-11-11 12:50:27',NULL,NULL,NULL,NULL,NULL),(72,10,3,'darth-vader.jpg','image/jpeg',21,'6ced78eba00f2352583c8d9125e79dcf.jpg','image','2015-11-11 12:50:28','2015-11-11 12:50:28',NULL,NULL,NULL,NULL,NULL),(73,10,3,'darth-vader.jpg','image/jpeg',21,'6b1fd40304b6dc7e223f62904f08095f.jpg','image','2015-11-11 12:50:28','2015-11-11 12:50:28',NULL,NULL,NULL,NULL,NULL),(74,10,3,'darth-vader.jpg','image/jpeg',21,'f971809c80c62bfde15017ede89e4ce5.jpg','image','2015-11-11 12:50:29','2015-11-11 12:50:29',NULL,NULL,NULL,NULL,NULL),(75,10,3,'darth-vader.jpg','image/jpeg',21,'051146635ec4b278495dab3bc33d2614.jpg','image','2015-11-11 12:50:29','2015-11-11 12:50:29',NULL,NULL,NULL,NULL,NULL),(76,10,3,'darth-vader.jpg','image/jpeg',21,'ce23f7f56f9ce87864570e11fb932b20.jpg','image','2015-11-11 12:50:30','2015-11-11 12:50:30',NULL,NULL,NULL,NULL,NULL),(77,10,3,'darth-vader.jpg','image/jpeg',21,'c9ca5c1b3144961e8eda2d94302d023a.jpg','image','2015-11-11 12:50:30','2015-11-11 12:50:30',NULL,NULL,NULL,NULL,NULL),(78,10,3,'luke-skywalker.jpg','image/jpeg',32,'0b461f060d048dc23cea0bdd29065715.jpg','image','2015-11-11 12:50:31','2015-11-11 12:50:31',NULL,NULL,NULL,NULL,NULL),(79,10,3,'luke-skywalker.jpg','image/jpeg',32,'af16140a8dc242a2d92a2262e8513b11.jpg','image','2015-11-11 12:50:31','2015-11-11 12:50:31',NULL,NULL,NULL,NULL,NULL),(80,10,3,'luke-skywalker.jpg','image/jpeg',32,'2be6b809fb561c22ca92087abbf0d772.jpg','image','2015-11-11 12:50:31','2015-11-11 12:50:31',NULL,NULL,NULL,NULL,NULL),(81,10,3,'luke-skywalker.jpg','image/jpeg',32,'93228146aae420586dc28ac724a2d76b.jpg','image','2015-11-11 12:50:32','2015-11-11 12:50:32',NULL,NULL,NULL,NULL,NULL),(82,10,3,'luke-skywalker.jpg','image/jpeg',32,'b593443003ee3462e0ff23d3c28f0ddb.jpg','image','2015-11-11 12:50:32','2015-11-11 12:50:32',NULL,NULL,NULL,NULL,NULL),(83,10,3,'luke-skywalker.jpg','image/jpeg',32,'895aa2c874b8a3b1283a8ff3060de8ae.jpg','image','2015-11-11 12:50:33','2015-11-11 12:50:33',NULL,NULL,NULL,NULL,NULL),(84,10,3,'luke-skywalker.jpg','image/jpeg',32,'91cbcfbba8ca0182afc075d8fff2bc8c.jpg','image','2015-11-11 12:50:33','2015-11-11 12:50:33',NULL,NULL,NULL,NULL,NULL),(85,10,3,'luke-skywalker.jpg','image/jpeg',32,'09548964f74aac949f722d433e70cefd.jpg','image','2015-11-11 12:50:34','2015-11-11 12:50:34',NULL,NULL,NULL,NULL,NULL),(86,10,3,'luke-skywalker.jpg','image/jpeg',32,'ebc295fa249fa1271670b4e02c44c375.jpg','image','2015-11-11 12:50:34','2015-11-11 12:50:34',NULL,NULL,NULL,NULL,NULL),(87,10,3,'luke-skywalker.jpg','image/jpeg',32,'55a091a99054310ac72d97a099576039.jpg','image','2015-11-11 12:50:34','2015-11-11 12:50:34',NULL,NULL,NULL,NULL,NULL),(88,10,3,'luke-skywalker.jpg','image/jpeg',32,'ee455a27521d86284bbff2234c0178d3.jpg','image','2015-11-11 12:50:35','2015-11-11 12:50:35',NULL,NULL,NULL,NULL,NULL),(89,10,3,'luke-skywalker.jpg','image/jpeg',32,'a50877c81440176cbe73311991473d0c.jpg','image','2015-11-11 12:50:35','2015-11-11 12:50:35',NULL,NULL,NULL,NULL,NULL),(90,10,3,'luke-skywalker.jpg','image/jpeg',32,'1c7212cef4660a71be78f693fad336ec.jpg','image','2015-11-11 12:50:36','2015-11-11 12:50:36',NULL,NULL,NULL,NULL,NULL),(91,10,3,'luke-skywalker.jpg','image/jpeg',32,'22c3450506d16fa0ea682322986ab966.jpg','image','2015-11-11 12:50:36','2015-11-11 12:50:36',NULL,NULL,NULL,NULL,NULL),(92,10,3,'luke-skywalker.jpg','image/jpeg',32,'9edb6bad4dc91a57819d9d8a5c227b47.jpg','image','2015-11-11 12:50:36','2015-11-11 12:50:36',NULL,NULL,NULL,NULL,NULL),(93,10,3,'luke-skywalker.jpg','image/jpeg',32,'0a09ab75c085e0f1dd9295b2f024bd25.jpg','image','2015-11-11 12:50:37','2015-11-11 12:50:37',NULL,NULL,NULL,NULL,NULL),(94,10,3,'luke-skywalker.jpg','image/jpeg',32,'902489fee995c489aa4869c81ee45f07.jpg','image','2015-11-11 12:50:37','2015-11-11 12:50:37',NULL,NULL,NULL,NULL,NULL),(95,10,3,'luke-skywalker.jpg','image/jpeg',32,'e558c629bdb28c61870b8f0af4758a76.jpg','image','2015-11-11 12:50:38','2015-11-11 12:50:38',NULL,NULL,NULL,NULL,NULL),(96,10,3,'luke-skywalker.jpg','image/jpeg',32,'622d52bcc6e318797f73f20d6f472161.jpg','image','2015-11-11 12:50:38','2015-11-11 12:50:38',NULL,NULL,NULL,NULL,NULL),(97,10,3,'luke-skywalker.jpg','image/jpeg',32,'1e1cf25807b2c852eadc405f34d233b4.jpg','image','2015-11-11 12:50:38','2015-11-11 12:50:38',NULL,NULL,NULL,NULL,NULL),(98,10,3,'luke-skywalker.jpg','image/jpeg',32,'61a7c9231debc7bcf7ff66023ad40a77.jpg','image','2015-11-11 12:50:39','2015-11-11 12:50:39',NULL,NULL,NULL,NULL,NULL),(99,10,3,'luke-skywalker.jpg','image/jpeg',32,'26c010a4ff92191548244e0bebe5e4fc.jpg','image','2015-11-11 12:50:39','2015-11-11 12:50:39',NULL,NULL,NULL,NULL,NULL),(100,10,3,'luke-skywalker.jpg','image/jpeg',32,'2d5e456a33a40a7aed2afe81a6c399db.jpg','image','2015-11-11 12:50:40','2015-11-11 12:50:40',NULL,NULL,NULL,NULL,NULL),(101,10,3,'luke-skywalker.jpg','image/jpeg',32,'87699ddd39f886ef536e63c9df3e572a.jpg','image','2015-11-11 12:50:40','2015-11-11 12:50:40',NULL,NULL,NULL,NULL,NULL),(102,10,3,'luke-skywalker.jpg','image/jpeg',32,'8324dbb61e3dfa88142318772064217d.jpg','image','2015-11-11 12:50:40','2015-11-11 12:50:40',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `file` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2935,8 +2977,8 @@ CREATE TABLE `invitation_requests_users` (
   PRIMARY KEY (`user_id`,`invitation_request_id`),
   KEY `IDX_5293F1DDA76ED395` (`user_id`),
   KEY `IDX_5293F1DDD84F95E8` (`invitation_request_id`),
-  CONSTRAINT `FK_5293F1DDD84F95E8` FOREIGN KEY (`invitation_request_id`) REFERENCES `invitation_request` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_5293F1DDA76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_5293F1DDA76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_5293F1DDD84F95E8` FOREIGN KEY (`invitation_request_id`) REFERENCES `invitation_request` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3169,8 +3211,8 @@ CREATE TABLE `news_content` (
   KEY `IDX_A9212C4F12469DE2` (`category_id`),
   KEY `IDX_A9212C4FF52EE259` (`news_app_id`),
   KEY `IDX_A9212C4F3DA5256D` (`image_id`),
-  CONSTRAINT `FK_A9212C4F3DA5256D` FOREIGN KEY (`image_id`) REFERENCES `file` (`id`),
   CONSTRAINT `FK_A9212C4F12469DE2` FOREIGN KEY (`category_id`) REFERENCES `news_category` (`id`),
+  CONSTRAINT `FK_A9212C4F3DA5256D` FOREIGN KEY (`image_id`) REFERENCES `file` (`id`),
   CONSTRAINT `FK_A9212C4F7E3C61F9` FOREIGN KEY (`owner_id`) REFERENCES `user` (`id`),
   CONSTRAINT `FK_A9212C4FF52EE259` FOREIGN KEY (`news_app_id`) REFERENCES `workspace_application` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -3480,7 +3522,7 @@ CREATE TABLE `platform` (
 
 LOCK TABLES `platform` WRITE;
 /*!40000 ALTER TABLE `platform` DISABLE KEYS */;
-INSERT INTO `platform` VALUES (3,21,7,'Hugo',800,204800,NULL,NULL,NULL,'http','platform.ci.gointegro.net',NULL,1,'../public/fixtures/791c368a0fa42530125b4bf6d4fb32ab.jpg','../public/fixtures/cc44ed7889dd6b8fc6d7b0fb2dc20ad1.jpg','../public/fixtures/1e0b57ed98b67f31ef59bee89851096c.jpg','Lorem ipsum...',NULL,NULL,NULL,NULL,NULL,NULL,'AAAAAA','1888C8','106A91','FFFFFF','106A91','FFFFFF',NULL,NULL,7,'document',1,400,48,14,'platform',5,1,0,NULL,NULL,'HIDDEN',0,0,0,1,1,0,0,0,0,NULL,'2015-11-06 10:47:59','2015-11-06 10:48:23',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL);
+INSERT INTO `platform` VALUES (3,21,7,'Hugo',800,204800,NULL,NULL,NULL,'http','platform.ci.gointegro.net',NULL,1,'../public/fixtures/8af4ffa8f3c7ae0ef47f9a1a8c1c990a.jpg','../public/fixtures/63b98e46d49fb121a69f6b76a40d10c3.jpg','../public/fixtures/d50e1637e2168f99e9e975bf5bd33c08.jpg','Lorem ipsum...',NULL,NULL,NULL,NULL,NULL,NULL,'AAAAAA','1888C8','106A91','FFFFFF','106A91','FFFFFF',NULL,NULL,7,'document',1,400,48,14,'platform',5,1,0,NULL,NULL,'HIDDEN',0,0,0,1,1,0,0,0,0,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:42',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `platform` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4336,8 +4378,8 @@ CREATE TABLE `subscribed_application` (
   PRIMARY KEY (`id`),
   KEY `IDX_158B7F7A3E030ACD` (`application_id`),
   KEY `IDX_158B7F7AFFE6496F` (`platform_id`),
-  CONSTRAINT `FK_158B7F7AFFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`),
-  CONSTRAINT `FK_158B7F7A3E030ACD` FOREIGN KEY (`application_id`) REFERENCES `application` (`id`)
+  CONSTRAINT `FK_158B7F7A3E030ACD` FOREIGN KEY (`application_id`) REFERENCES `application` (`id`),
+  CONSTRAINT `FK_158B7F7AFFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -4417,7 +4459,7 @@ CREATE TABLE `tournaments_configuration` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `stage_count` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4503,8 +4545,8 @@ CREATE TABLE `tournaments_match` (
   PRIMARY KEY (`id`),
   KEY `IDX_9CD484212298D193` (`stage_id`),
   KEY `IDX_9CD48421FE54D947` (`group_id`),
-  CONSTRAINT `FK_9CD48421FE54D947` FOREIGN KEY (`group_id`) REFERENCES `tournaments_group` (`id`),
-  CONSTRAINT `FK_9CD484212298D193` FOREIGN KEY (`stage_id`) REFERENCES `tournaments_stage` (`id`)
+  CONSTRAINT `FK_9CD484212298D193` FOREIGN KEY (`stage_id`) REFERENCES `tournaments_stage` (`id`),
+  CONSTRAINT `FK_9CD48421FE54D947` FOREIGN KEY (`group_id`) REFERENCES `tournaments_group` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -4536,8 +4578,8 @@ CREATE TABLE `tournaments_match_team_score` (
   UNIQUE KEY `unique_match_home` (`match_id`,`home_team`),
   KEY `IDX_FECC68E296CD8AE` (`team_id`),
   KEY `IDX_FECC68E2ABEACD6` (`match_id`),
-  CONSTRAINT `FK_FECC68E2ABEACD6` FOREIGN KEY (`match_id`) REFERENCES `tournaments_match` (`id`),
-  CONSTRAINT `FK_FECC68E296CD8AE` FOREIGN KEY (`team_id`) REFERENCES `tournaments_team` (`id`)
+  CONSTRAINT `FK_FECC68E296CD8AE` FOREIGN KEY (`team_id`) REFERENCES `tournaments_team` (`id`),
+  CONSTRAINT `FK_FECC68E2ABEACD6` FOREIGN KEY (`match_id`) REFERENCES `tournaments_match` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -4564,8 +4606,8 @@ CREATE TABLE `tournaments_platform_tournament` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_ACAB6BE233D1A3E7` (`tournament_id`),
   UNIQUE KEY `UNIQ_ACAB6BE2FCDCD0AA` (`platform_application_id`),
-  CONSTRAINT `FK_ACAB6BE2FCDCD0AA` FOREIGN KEY (`platform_application_id`) REFERENCES `tournaments_tournament` (`id`),
-  CONSTRAINT `FK_ACAB6BE233D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournaments_tournament` (`id`)
+  CONSTRAINT `FK_ACAB6BE233D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournaments_tournament` (`id`),
+  CONSTRAINT `FK_ACAB6BE2FCDCD0AA` FOREIGN KEY (`platform_application_id`) REFERENCES `tournaments_tournament` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -4652,8 +4694,8 @@ CREATE TABLE `tournaments_subscribed_application_tournament` (
   UNIQUE KEY `application_tournaments_idx` (`tournaments_subscribed_application_id`,`tournament_id`),
   KEY `IDX_FB1ACC331558A917` (`tournaments_subscribed_application_id`),
   KEY `IDX_FB1ACC3333D1A3E7` (`tournament_id`),
-  CONSTRAINT `FK_FB1ACC3333D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournaments_tournament` (`id`),
-  CONSTRAINT `FK_FB1ACC331558A917` FOREIGN KEY (`tournaments_subscribed_application_id`) REFERENCES `subscribed_application` (`id`)
+  CONSTRAINT `FK_FB1ACC331558A917` FOREIGN KEY (`tournaments_subscribed_application_id`) REFERENCES `subscribed_application` (`id`),
+  CONSTRAINT `FK_FB1ACC3333D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournaments_tournament` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -4842,9 +4884,9 @@ CREATE TABLE `tournaments_user_score_prediction` (
   KEY `IDX_D1330A42A76ED395` (`user_id`),
   KEY `IDX_D1330A422ABEACD6` (`match_id`),
   KEY `IDX_D1330A423E030ACD` (`application_id`),
-  CONSTRAINT `FK_D1330A423E030ACD` FOREIGN KEY (`application_id`) REFERENCES `workspace_application` (`id`),
   CONSTRAINT `FK_D1330A42296CD8AE` FOREIGN KEY (`team_id`) REFERENCES `tournaments_team` (`id`),
   CONSTRAINT `FK_D1330A422ABEACD6` FOREIGN KEY (`match_id`) REFERENCES `tournaments_match` (`id`),
+  CONSTRAINT `FK_D1330A423E030ACD` FOREIGN KEY (`application_id`) REFERENCES `workspace_application` (`id`),
   CONSTRAINT `FK_D1330A42A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -4875,8 +4917,8 @@ CREATE TABLE `tournaments_user_winner_prediction` (
   KEY `IDX_AC61CEB7A76ED395` (`user_id`),
   KEY `IDX_AC61CEB7296CD8AE` (`team_id`),
   KEY `IDX_AC61CEB73E030ACD` (`application_id`),
-  CONSTRAINT `FK_AC61CEB73E030ACD` FOREIGN KEY (`application_id`) REFERENCES `workspace_application` (`id`),
   CONSTRAINT `FK_AC61CEB7296CD8AE` FOREIGN KEY (`team_id`) REFERENCES `tournaments_team` (`id`),
+  CONSTRAINT `FK_AC61CEB73E030ACD` FOREIGN KEY (`application_id`) REFERENCES `workspace_application` (`id`),
   CONSTRAINT `FK_AC61CEB7A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -4943,7 +4985,7 @@ CREATE TABLE `translation` (
   CONSTRAINT `FK_B469456F9B6B5FBA` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`),
   CONSTRAINT `FK_B469456FD145533` FOREIGN KEY (`key_id`) REFERENCES `translations_key` (`id`),
   CONSTRAINT `FK_B469456FFFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5066 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4970,7 +5012,7 @@ CREATE TABLE `translations_key` (
   `bundle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `customizable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1495 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5063,7 +5105,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (10,3,'johnconnor',NULL,1,1,'osc4vuxm8pc8soow48c0kcgskg8ksc0','9FVKPhLscMd/feIu8bawpeI5KQsR3p8uK95m6ehkfBkRQICrZBEHGkFTOEKo5JdrCjgubz+pzBbC5TYGkPbLZg==',NULL,NULL,'2015-11-06 10:49:02',NULL,NULL,'99999999','John','Connor','john-connor',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:47:59','2015-11-06 10:49:02',NULL,NULL,NULL,NULL),(11,3,'johnconnor','johnconnor@gointegro.com',1,1,'33qzqy7jyjeo4wsskgc4ssc0sg4s4w4','/gm6/vAWKKvnopvNADA96OQeQ5iNt9StxA4LZusj/zwXNoAAStB437UdpckJxk2NnwTARRh1IfDg46f04cRBMA==',NULL,NULL,NULL,NULL,NULL,'9999999','John','Connor','john-connor-1',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:17','2015-11-06 10:48:17',NULL,NULL,NULL,NULL),(12,3,'john-salchichon','john-salchichon@gointegro.com',1,1,'e22i793i49w0s80wkck000wwk84owo0','KjG4CL5bANnmtr9IuJRYOxUANjHFtsx137pWJ4zpcQfgODmS6R3Nt9TrbxJz+EdaalSVzOhD8FaZ+3W34RvVBg==',NULL,NULL,NULL,NULL,NULL,'111111','John','Salchichón','john-salchichon',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:18','2015-11-06 10:48:18',NULL,NULL,NULL,NULL),(13,3,'sarahconnor','sarahconnor@gointegro.com',1,1,'8zeqlc8mquos8gwc4sos0cwwsg448sc','DZrNvbKZPIZORldrNpB5+ywkJCQCSL0OETG+k0J3l8Cj2g9PjiGBCPiIRZmqKhNeneKEWvW3NoOZ9kGpYqa+Rw==',NULL,NULL,NULL,NULL,NULL,'111112','Sarah','Connor','sarah-connor',NULL,NULL,34,15,NULL,NULL,'2015-11-06 10:48:18','2015-11-06 10:48:22',NULL,NULL,NULL,NULL),(14,3,'t800','t800@gointegro.com',1,1,'aawpx0tyraosckwwkg80o08kw0w8cwo','yhV4UVnEFadiU7arSYBI1P74TWdTFXJnimpV8nOAHiMYA/yu3yZrvBBO0dKKZpXxgUJeJf1RDtaB8H8Q86y7ig==',NULL,NULL,NULL,NULL,NULL,'111113','T','800','t-800',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:19','2015-11-06 10:48:22',NULL,NULL,NULL,NULL),(15,3,'apiadminuser','apiadminuser@gointegro.com',1,1,'3lpa77jlqns44ow08o4kgk484gokgkg','b2dCWbYx/MO+eqnerKik9yEpecVJuVnfsBGeH+sblxR9AFj2QV1BOyb857QqwWc3oWpY0haw+rVqFFENTHtVrw==',NULL,NULL,NULL,NULL,NULL,'111114','Api Admin','User','api-admin-user',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:21','2015-11-06 10:48:21',NULL,NULL,NULL,NULL),(16,3,'johnconnor','johnconnor@gointegro.com',1,1,'fziy4b6e99w8os8o8g4w0s0o4sgog8s','3kgoR9mks8U/VY6AErK9cbBwGR2Nlw39+uPa6fsRmeMLM3+HnTQtqLIxSzsi62pWw2T7FjpKdxTtf15qJl0USw==',NULL,NULL,NULL,NULL,NULL,'111115','Api Basic','User','api-basic-user',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:21','2015-11-06 10:48:21',NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES (10,3,'johnconnor',NULL,1,1,'rbwoayjm128k80sc4cokk48o0s4wcck','FHPTptqBwtSA+a6hIttCkAdJ/wOIqAuPWCqOsXNwSK09q+vejjZDcD6aR9jCs3lq5sPFEnCkojJ8CQVpZ8bLWA==',NULL,NULL,NULL,NULL,NULL,'99999999','John','Connor','john-connor',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:17',NULL,NULL,NULL,NULL),(11,3,'johnconnor','johnconnor@gointegro.com',1,1,'aozwae6tmk0s848os8ckgcgs0kocsck','UIjZxmy1ZxbRZGiKe6VHGfo5xsTOcD7eVqBRdT2E0mNvjymjxYBVNhcX8wOJ/HZj1niSvOqZhDWNPZ/b9wWX3w==',NULL,NULL,NULL,NULL,NULL,'9999999','John','Connor','john-connor-1',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:41','2015-11-11 12:50:41',NULL,NULL,NULL,NULL),(12,3,'john-salchichon','john-salchichon@gointegro.com',1,1,'eg7gmr0sqs8ccswwcg88g084cg0sgcw','6Qqd3HNQ02HCrFt0SM08fKtPqBtJfRmaO7oYQgmLFTv75wixUEUGrZk8lrB5eSV2URgKlkdjqApKaORY6Gh6og==',NULL,NULL,NULL,NULL,NULL,'111111','John','Salchichón','john-salchichon',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:41','2015-11-11 12:50:41',NULL,NULL,NULL,NULL),(13,3,'sarahconnor','sarahconnor@gointegro.com',1,1,'qq8mwe89xeok400so4g0sk4ssw84wgw','qA+SuIEHDo90vDqioo1zl9UedXKpx7187MYYHppuF4uEqnBAMqckbs8nlk7B319fjrfQoL7AJWnyGISYjudzew==',NULL,NULL,NULL,NULL,NULL,'111112','Sarah','Connor','sarah-connor',NULL,NULL,34,15,NULL,NULL,'2015-11-11 12:50:41','2015-11-11 12:50:41',NULL,NULL,NULL,NULL),(14,3,'t800','t800@gointegro.com',1,1,'1xdusdifi2m84oggoo4ocwcswwkggw8','21LzjJhMC9Pp/Jyty5tjgBxxA/a056dOdwBfJplHZ0yiTikGoaNMMd7bfYJipzaq73nhJ5Mov3U3U3JRGCzeIw==',NULL,NULL,NULL,NULL,NULL,'111113','T','800','t-800',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:41','2015-11-11 12:50:41',NULL,NULL,NULL,NULL),(15,3,'apiadminuser','apiadminuser@gointegro.com',1,1,'phw82bpygdwcs44oowk8wcc0w08wc0g','MVCmaor1JD3Pw49OWNyUN5YpY7FRXvjV7rLXxbKRgffUCVqJdTsueyyl8ZxoohNw6GlYHqrD4PMpve1rbM6QMw==',NULL,NULL,NULL,NULL,NULL,'111114','Api Admin','User','api-admin-user',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:41','2015-11-11 12:50:41',NULL,NULL,NULL,NULL),(16,3,'johnconnor','johnconnor@gointegro.com',1,1,'58un2fgrncsg8skowk8wcgk0s4og0k4','vSkl8tRHMOvA9UQaUSZHb2vNXVhqJ7irrcIqdggyhZ4if5Q0AEE14507i+Vud243+/6xsdNaOzGHtUPV+Sq/2A==',NULL,NULL,NULL,NULL,NULL,'111115','Api Basic','User','api-basic-user',NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:41','2015-11-11 12:50:41',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5174,7 +5216,7 @@ CREATE TABLE `user_profile` (
 
 LOCK TABLES `user_profile` WRITE;
 /*!40000 ALTER TABLE `user_profile` DISABLE KEYS */;
-INSERT INTO `user_profile` VALUES (8,10,'1985-02-28','M','45222218','1156423317',NULL,7,NULL,'America/Argentina/Buenos_Aires',NULL),(9,11,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(10,12,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(11,13,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(12,14,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(13,15,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(14,16,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL);
+INSERT INTO `user_profile` VALUES (8,10,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(9,11,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(10,12,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(11,13,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(12,14,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(13,15,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL),(14,16,'1985-02-28','M','45222218','1156423317',NULL,NULL,NULL,'America/Argentina/Buenos_Aires',NULL);
 /*!40000 ALTER TABLE `user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5379,8 +5421,8 @@ CREATE TABLE `widget_banner` (
   `external_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_9B124BEF3DA5256D` (`image_id`),
-  CONSTRAINT `FK_9B124BEFBF396750` FOREIGN KEY (`id`) REFERENCES `widget` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_9B124BEF3DA5256D` FOREIGN KEY (`image_id`) REFERENCES `file` (`id`)
+  CONSTRAINT `FK_9B124BEF3DA5256D` FOREIGN KEY (`image_id`) REFERENCES `file` (`id`),
+  CONSTRAINT `FK_9B124BEFBF396750` FOREIGN KEY (`id`) REFERENCES `widget` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -5735,11 +5777,11 @@ CREATE TABLE `workspace_application` (
   KEY `IDX_340D77D9514956FD` (`collection_id`),
   KEY `IDX_340D77D92E41AD61` (`catalog_account_id`),
   KEY `IDX_340D77D93EB8070A` (`program_id`),
-  CONSTRAINT `FK_340D77D93EB8070A` FOREIGN KEY (`program_id`) REFERENCES `recognitions_recognition_program` (`id`),
   CONSTRAINT `FK_340D77D92E41AD61` FOREIGN KEY (`catalog_account_id`) REFERENCES `rewards_catalog_account` (`id`),
   CONSTRAINT `FK_340D77D933D1A3E7` FOREIGN KEY (`tournament_id`) REFERENCES `tournaments_tournament` (`id`),
   CONSTRAINT `FK_340D77D93DA5256D` FOREIGN KEY (`image_id`) REFERENCES `file` (`id`),
   CONSTRAINT `FK_340D77D93E030ACD` FOREIGN KEY (`application_id`) REFERENCES `application` (`id`),
+  CONSTRAINT `FK_340D77D93EB8070A` FOREIGN KEY (`program_id`) REFERENCES `recognitions_recognition_program` (`id`),
   CONSTRAINT `FK_340D77D9514956FD` FOREIGN KEY (`collection_id`) REFERENCES `benefits_collection` (`id`),
   CONSTRAINT `FK_340D77D982D40A1F` FOREIGN KEY (`workspace_id`) REFERENCES `workspace` (`id`),
   CONSTRAINT `FK_340D77D9FFE6496F` FOREIGN KEY (`platform_id`) REFERENCES `platform` (`id`)
@@ -5752,7 +5794,7 @@ CREATE TABLE `workspace_application` (
 
 LOCK TABLES `workspace_application` WRITE;
 /*!40000 ALTER TABLE `workspace_application` DISABLE KEYS */;
-INSERT INTO `workspace_application` VALUES (19,23,9,3,'Artículos Corporativos','Descripción de Artículos Corporativos','icon-bullhorn',NULL,1,0,0,'articles',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:03','2015-11-06 10:48:03',NULL),(20,25,9,3,'Galería Corporativa','Descripción de Galería Corporativa','icon-bullhorn',NULL,1,0,0,'galleries',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:03','2015-11-06 10:48:03',NULL),(21,26,9,3,'Actividad Social Corporativa','Descripción de Actividad Social Corporativa','icon-bullhorn',NULL,1,0,0,'activityStream',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:03','2015-11-06 10:48:03',NULL),(22,27,9,3,'Celebraciones Corporativas','Descripción de Celebraciones Corporativas','icon-bullhorn',NULL,1,0,0,'celebrations','daysPast',0,0,NULL,NULL,NULL,NULL,'2015-11-06 10:48:03','2015-11-06 10:48:03',NULL),(23,24,9,3,'Noticias Corporativas','Descripción de Noticias Corporativas','icon-bullhorn',NULL,1,0,0,'news',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:03','2015-11-06 10:48:03',NULL),(24,30,9,3,'Mapa de Categorías de Beneficios Corporativos','Descripción de Mapa de Categorías de Beneficios Corporativos','icon-bullhorn',NULL,1,0,0,'benefitsCategoriesMap',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:03','2015-11-06 10:48:03',NULL),(25,30,13,3,'Mapa de Categorías de Beneficios Corporativos','Descripción de Mapa de Categorías de Beneficios Corporativos','icon-bullhorn',NULL,1,0,0,'benefitsCategoriesMap',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:03','2015-11-06 10:48:03',NULL),(26,29,9,3,'Filtro de beneficios','Descripción de Filtro de Beneficios','icon-bullhorn',NULL,1,0,0,'benefitsFilter',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-06 10:48:03','2015-11-06 10:48:03',NULL);
+INSERT INTO `workspace_application` VALUES (19,23,9,3,'Artículos Corporativos','Descripción de Artículos Corporativos','icon-bullhorn',NULL,1,0,0,'articles',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:17',NULL),(20,25,9,3,'Galería Corporativa','Descripción de Galería Corporativa','icon-bullhorn',NULL,1,0,0,'galleries',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:17',NULL),(21,26,9,3,'Actividad Social Corporativa','Descripción de Actividad Social Corporativa','icon-bullhorn',NULL,1,0,0,'activityStream',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:17',NULL),(22,27,9,3,'Celebraciones Corporativas','Descripción de Celebraciones Corporativas','icon-bullhorn',NULL,1,0,0,'celebrations','daysPast',0,0,NULL,NULL,NULL,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:17',NULL),(23,24,9,3,'Noticias Corporativas','Descripción de Noticias Corporativas','icon-bullhorn',NULL,1,0,0,'news',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:17',NULL),(24,30,9,3,'Mapa de Categorías de Beneficios Corporativos','Descripción de Mapa de Categorías de Beneficios Corporativos','icon-bullhorn',NULL,1,0,0,'benefitsCategoriesMap',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:17',NULL),(25,30,13,3,'Mapa de Categorías de Beneficios Corporativos','Descripción de Mapa de Categorías de Beneficios Corporativos','icon-bullhorn',NULL,1,0,0,'benefitsCategoriesMap',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:17',NULL),(26,29,9,3,'Filtro de beneficios','Descripción de Filtro de Beneficios','icon-bullhorn',NULL,1,0,0,'benefitsFilter',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-11-11 12:50:17','2015-11-11 12:50:17',NULL);
 /*!40000 ALTER TABLE `workspace_application` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5817,6 +5859,8 @@ UNLOCK TABLES;
 --
 -- Current Database: `gointegro_rewards`
 --
+
+/*!40000 DROP DATABASE IF EXISTS `gointegro_rewards`*/;
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `gointegro_rewards` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
@@ -5900,8 +5944,8 @@ CREATE TABLE `acl_entries` (
   KEY `IDX_46C8B806EA000B10` (`class_id`),
   KEY `IDX_46C8B8063D9AB4A6` (`object_identity_id`),
   KEY `IDX_46C8B806DF9183C9` (`security_identity_id`),
-  CONSTRAINT `FK_46C8B806DF9183C9` FOREIGN KEY (`security_identity_id`) REFERENCES `acl_security_identities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_46C8B8063D9AB4A6` FOREIGN KEY (`object_identity_id`) REFERENCES `acl_object_identities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_46C8B806DF9183C9` FOREIGN KEY (`security_identity_id`) REFERENCES `acl_security_identities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_46C8B806EA000B10` FOREIGN KEY (`class_id`) REFERENCES `acl_classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -5957,8 +6001,8 @@ CREATE TABLE `acl_object_identity_ancestors` (
   PRIMARY KEY (`object_identity_id`,`ancestor_id`),
   KEY `IDX_825DE2993D9AB4A6` (`object_identity_id`),
   KEY `IDX_825DE299C671CEA1` (`ancestor_id`),
-  CONSTRAINT `FK_825DE299C671CEA1` FOREIGN KEY (`ancestor_id`) REFERENCES `acl_object_identities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_825DE2993D9AB4A6` FOREIGN KEY (`object_identity_id`) REFERENCES `acl_object_identities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_825DE2993D9AB4A6` FOREIGN KEY (`object_identity_id`) REFERENCES `acl_object_identities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_825DE299C671CEA1` FOREIGN KEY (`ancestor_id`) REFERENCES `acl_object_identities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -6018,7 +6062,7 @@ CREATE TABLE `approval` (
 
 LOCK TABLES `approval` WRITE;
 /*!40000 ALTER TABLE `approval` DISABLE KEYS */;
-INSERT INTO `approval` VALUES (1,'pending','2015-11-04 11:50:26',NULL),(2,'pending','2015-11-04 11:50:26',NULL);
+INSERT INTO `approval` VALUES (1,'pending','2015-11-11 12:41:10',NULL),(2,'pending','2015-11-11 12:41:10',NULL);
 /*!40000 ALTER TABLE `approval` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6116,7 +6160,7 @@ CREATE TABLE `catalog_account` (
 
 LOCK TABLES `catalog_account` WRITE;
 /*!40000 ALTER TABLE `catalog_account` DISABLE KEYS */;
-INSERT INTO `catalog_account` VALUES (1,1,1,1,1,1,'GoCatalog','variable',25.00,'oneDecimal',7,639),(2,4,1,1,0,0,'GoKids','fixed',32.00,'twoDecimal',8,640),(3,3,3,0,0,1,'Premios para empleados','fixed',10.00,'tens',9,641),(4,5,1,1,0,0,'Vaciones empleados','variable',16.00,'tens',9,642),(5,7,1,1,1,1,'Días Libres para GoIntegro','variable',0.00,'natural',9,643);
+INSERT INTO `catalog_account` VALUES (1,1,1,1,1,1,'GoCatalog','variable',25.00,'oneDecimal',9,228),(2,4,1,1,0,0,'GoKids','fixed',32.00,'twoDecimal',10,229),(3,3,3,0,0,1,'Premios para empleados','fixed',10.00,'tens',11,230),(4,5,1,1,0,0,'Vaciones empleados','variable',16.00,'tens',11,231),(5,7,1,1,1,1,'Días Libres para GoIntegro','variable',0.00,'natural',11,232);
 /*!40000 ALTER TABLE `catalog_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6147,7 +6191,7 @@ CREATE TABLE `catalog_reward` (
 
 LOCK TABLES `catalog_reward` WRITE;
 /*!40000 ALTER TABLE `catalog_reward` DISABLE KEYS */;
-INSERT INTO `catalog_reward` VALUES (1,1,9,NULL),(2,3,4,NULL),(3,3,5,NULL),(4,4,7,NULL),(5,5,10,NULL),(6,5,4,NULL),(7,5,7,NULL),(8,6,10,NULL),(9,6,4,NULL),(10,6,7,NULL),(11,7,1,NULL),(12,7,2,NULL),(13,7,3,NULL);
+INSERT INTO `catalog_reward` VALUES (1,1,6,NULL),(2,3,1,NULL),(3,3,2,NULL),(4,4,4,NULL),(5,5,7,NULL),(6,5,1,NULL),(7,5,4,NULL),(8,6,7,NULL),(9,6,1,NULL),(10,6,4,NULL),(11,7,9,NULL),(12,7,10,NULL),(13,7,11,NULL);
 /*!40000 ALTER TABLE `catalog_reward` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6193,8 +6237,8 @@ CREATE TABLE `classifier_catalog_reward` (
   PRIMARY KEY (`classifier_id`,`catalogreward_id`),
   KEY `IDX_BF23DF79D5C2493D` (`classifier_id`),
   KEY `IDX_BF23DF79F87137DF` (`catalogreward_id`),
-  CONSTRAINT `FK_BF23DF79F87137DF` FOREIGN KEY (`catalogreward_id`) REFERENCES `catalog_reward` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_BF23DF79D5C2493D` FOREIGN KEY (`classifier_id`) REFERENCES `classifier` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_BF23DF79D5C2493D` FOREIGN KEY (`classifier_id`) REFERENCES `classifier` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_BF23DF79F87137DF` FOREIGN KEY (`catalogreward_id`) REFERENCES `catalog_reward` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -6245,7 +6289,7 @@ CREATE TABLE `currency_label` (
   `singularLabel` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pluralLabel` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6254,7 +6298,7 @@ CREATE TABLE `currency_label` (
 
 LOCK TABLES `currency_label` WRITE;
 /*!40000 ALTER TABLE `currency_label` DISABLE KEYS */;
-INSERT INTO `currency_label` VALUES (6,'Dólar','Dolares'),(7,'Crédito','Créditos'),(8,'Peso','Pesos'),(9,'Punto','Puntos'),(10,'Sol','Soles');
+INSERT INTO `currency_label` VALUES (8,'Dólar','Dolares'),(9,'Crédito','Créditos'),(10,'Peso','Pesos'),(11,'Punto','Puntos'),(12,'Sol','Soles');
 /*!40000 ALTER TABLE `currency_label` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6275,7 +6319,7 @@ CREATE TABLE `currency_label_translations` (
   UNIQUE KEY `lookup_unique_idx` (`locale`,`object_id`,`field`),
   KEY `IDX_DFC722B8232D562B` (`object_id`),
   CONSTRAINT `FK_DFC722B8232D562B` FOREIGN KEY (`object_id`) REFERENCES `currency_label` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6284,7 +6328,7 @@ CREATE TABLE `currency_label_translations` (
 
 LOCK TABLES `currency_label_translations` WRITE;
 /*!40000 ALTER TABLE `currency_label_translations` DISABLE KEYS */;
-INSERT INTO `currency_label_translations` VALUES (31,6,'es_ES','singularLabel','Dólar'),(32,6,'es_ES','pluralLabel','Dolares'),(33,6,'en_US','singularLabel','Dollar'),(34,6,'en_US','pluralLabel','Dollars'),(35,6,'pt_BR','singularLabel','Dólar'),(36,6,'pt_BR','pluralLabel','Dolares'),(37,7,'es_ES','singularLabel','Crédito'),(38,7,'es_ES','pluralLabel','Créditos'),(39,7,'en_US','singularLabel','Credit'),(40,7,'en_US','pluralLabel','Credits'),(41,7,'pt_BR','singularLabel','Crédito'),(42,7,'pt_BR','pluralLabel','Créditos'),(43,8,'es_ES','singularLabel','Peso'),(44,8,'es_ES','pluralLabel','Pesos'),(45,8,'en_US','singularLabel','Peso'),(46,8,'en_US','pluralLabel','Pesos'),(47,8,'pt_BR','singularLabel','Peso'),(48,8,'pt_BR','pluralLabel','Pesos'),(49,9,'es_ES','singularLabel','Punto'),(50,9,'es_ES','pluralLabel','Puntos'),(51,9,'en_US','singularLabel','Point'),(52,9,'en_US','pluralLabel','Points'),(53,9,'pt_BR','singularLabel','Ponto'),(54,9,'pt_BR','pluralLabel','Pontos'),(55,10,'es_ES','singularLabel','Sol'),(56,10,'es_ES','pluralLabel','Soles'),(57,10,'en_US','singularLabel','Sol'),(58,10,'en_US','pluralLabel','Soles'),(59,10,'pt_BR','singularLabel','Sol'),(60,10,'pt_BR','pluralLabel','Soles');
+INSERT INTO `currency_label_translations` VALUES (43,8,'es_ES','singularLabel','Dólar'),(44,8,'es_ES','pluralLabel','Dolares'),(45,8,'en_US','singularLabel','Dollar'),(46,8,'en_US','pluralLabel','Dollars'),(47,8,'pt_BR','singularLabel','Dólar'),(48,8,'pt_BR','pluralLabel','Dolares'),(49,9,'es_ES','singularLabel','Crédito'),(50,9,'es_ES','pluralLabel','Créditos'),(51,9,'en_US','singularLabel','Credit'),(52,9,'en_US','pluralLabel','Credits'),(53,9,'pt_BR','singularLabel','Crédito'),(54,9,'pt_BR','pluralLabel','Créditos'),(55,10,'es_ES','singularLabel','Peso'),(56,10,'es_ES','pluralLabel','Pesos'),(57,10,'en_US','singularLabel','Peso'),(58,10,'en_US','pluralLabel','Pesos'),(59,10,'pt_BR','singularLabel','Peso'),(60,10,'pt_BR','pluralLabel','Pesos'),(61,11,'es_ES','singularLabel','Punto'),(62,11,'es_ES','pluralLabel','Puntos'),(63,11,'en_US','singularLabel','Point'),(64,11,'en_US','pluralLabel','Points'),(65,11,'pt_BR','singularLabel','Ponto'),(66,11,'pt_BR','pluralLabel','Pontos'),(67,12,'es_ES','singularLabel','Sol'),(68,12,'es_ES','pluralLabel','Soles'),(69,12,'en_US','singularLabel','Sol'),(70,12,'en_US','pluralLabel','Soles'),(71,12,'pt_BR','singularLabel','Sol'),(72,12,'pt_BR','pluralLabel','Soles');
 /*!40000 ALTER TABLE `currency_label_translations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6311,7 +6355,7 @@ CREATE TABLE `excluded_day` (
 
 LOCK TABLES `excluded_day` WRITE;
 /*!40000 ALTER TABLE `excluded_day` DISABLE KEYS */;
-INSERT INTO `excluded_day` VALUES (1,1,'2015-01-10 00:00:00'),(2,1,'2015-01-11 00:00:00'),(3,1,'2015-01-12 00:00:00'),(4,2,'2015-01-20 00:00:00'),(5,2,'2015-01-21 00:00:00'),(6,2,'2015-01-22 00:00:00');
+INSERT INTO `excluded_day` VALUES (1,9,'2015-01-10 00:00:00'),(2,9,'2015-01-11 00:00:00'),(3,9,'2015-01-12 00:00:00'),(4,10,'2015-01-20 00:00:00'),(5,10,'2015-01-21 00:00:00'),(6,10,'2015-01-22 00:00:00');
 /*!40000 ALTER TABLE `excluded_day` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6443,7 +6487,7 @@ CREATE TABLE `migration_versions` (
 
 LOCK TABLES `migration_versions` WRITE;
 /*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
-INSERT INTO `migration_versions` VALUES ('20141203152918'),('20141205153053'),('20141209115508'),('20141215121535'),('20141222111025'),('20150109120143'),('20150113122218'),('20150115120845'),('20150119132140'),('20150120121801'),('20150122153032'),('20150123102300'),('20150127154541'),('20150130102132'),('20150130150030'),('20150130171152'),('20150202150847'),('20150202160849'),('20150203152759'),('20150206173323'),('20150210163955'),('20150210165143'),('20150212114228'),('20150212121200'),('20150213115830'),('20150213151911'),('20150219112358'),('20150223160204'),('20150223165034'),('20150225101803'),('20150226113648'),('20150302110257'),('20150302113339'),('20150310164421'),('20150325104854'),('20150331100718'),('20150406143512'),('20150407110223'),('20150409171459'),('20150415115700'),('20150415161927'),('20150415170007'),('20150420153124'),('20150421145117'),('20150423173654'),('20150424163406'),('20150427172906'),('20150430151600'),('20150511162036'),('20150522124604'),('20150601123039'),('20150603120535'),('20150708124407');
+INSERT INTO `migration_versions` VALUES ('20141203152918'),('20141205153053'),('20141209115508'),('20141215121535'),('20141222111025'),('20150109120143'),('20150113122218'),('20150115120845'),('20150119132140'),('20150120121801'),('20150122153032'),('20150123102300'),('20150127154541'),('20150130102132'),('20150130150030'),('20150130171152'),('20150202150847'),('20150202160849'),('20150203152759'),('20150206173323'),('20150210163955'),('20150210165143'),('20150212114228'),('20150212121200'),('20150213115830'),('20150213151911'),('20150219112358'),('20150223160204'),('20150223165034'),('20150225101803'),('20150226113648'),('20150302110257'),('20150302113339'),('20150310164421'),('20150325104854'),('20150331100718'),('20150406143512'),('20150407110223'),('20150409171459'),('20150415115700'),('20150415161927'),('20150415170007'),('20150420153124'),('20150421145117'),('20150423173654'),('20150424163406'),('20150427172906'),('20150430151600'),('20150511162036'),('20150522124604'),('20150601123039'),('20150603120535'),('20150708124407'),('20150928142731'),('20151026171740');
 /*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6530,7 +6574,7 @@ CREATE TABLE `oauth_client` (
 
 LOCK TABLES `oauth_client` WRITE;
 /*!40000 ALTER TABLE `oauth_client` DISABLE KEYS */;
-INSERT INTO `oauth_client` VALUES (1,'7celinonuhgcgck884gww8kc4884wc0c0k4c8w8wwc884kcw','a:0:{}','fkrog6k8zbc4s848sc44o0ww8so8og44os88gc8ww44g0k0gw','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(2,'3yn2v7ft5f8kck808sos0o48owo0sk4o044c8w0k8g08gk00o8','a:0:{}','2x5vaglr6aeck0o4oco8c88os480gk08go8kcoswkgss4ssko4','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(3,'2rtmt1piin28ccs04osw4co4gowsogc0g84k4ckg8owwog48co','a:0:{}','n2zg3onzyzkkg4g0o4cg488wccscw404wk8oss8g808swc4kw','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(4,'533akudf93oc4oc404wccg0wwso8kg40owso8c8ogskk8os88c','a:0:{}','3ty43sqd3e2okccswo8g4g488kw04oo08ogco4og8sck48448','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(5,'4thiagoie1esscckcg0o08ss0oo40swg8ss8wg0w0ok0g00s4g','a:0:{}','202eiz0binr44g844gwogg80k8c4gkscg48wgck88wsswsgk80','a:2:{i:0;s:31:\"http://www.gointegro.com/api/v1\";i:1;s:13:\"refresh_token\";}'),(6,'1b34spvy2zk0sgs8wcogkw8ccgocs4k0w0k8k4ggwssck8skc8','a:0:{}','3v3dldji7ccgwocksogwwsw0ockg40g8gwoww4owk8wg8g88k4','a:2:{i:0;s:31:\"http://www.gointegro.com/api/v1\";i:1;s:13:\"refresh_token\";}');
+INSERT INTO `oauth_client` VALUES (1,'5cyuti7hsjk0g8o0kkc8oss0cc0k8go84s0sgo0gcoo8o48ssc','a:0:{}','41t71ww38eec4okoc0kksww040ggsg0cww408gsko4k8os4s0c','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(2,'5mbcsbxxfe04cc84csckow844co4g48c84s4g8cksg80sg0swo','a:0:{}','5p6zszknh280s0s4s8wgwg8o80owk400o4g8cgok48c8c84s80','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(3,'2uy7dsiun7gg8s04kwsg0kgsgws0kkwwc4co8c404ssokk4o0g','a:0:{}','25ojay6kl7ok0c08o4wwc8g40o4c4okw04kk8c4oc4c0ggk0w4','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(4,'3hcj94n3qmuck4o00socw044kowsc04co8wgs84c84kowwwgwg','a:0:{}','1l8z8xmwkb7ooo0ksw4c4w0k80kg8wk4cswws8k4k0sc8o8oo8','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(5,'65ak5hrqep8okcsc8gkowcc8wkg8sow0gk8ggsksckooc40ggo','a:0:{}','1wqd2d3grnq8kw0kcc8csocgwgk8ck0csgww0csgscsw48cwww','a:2:{i:0;s:31:\"http://www.gointegro.com/api/v1\";i:1;s:13:\"refresh_token\";}'),(6,'3904ee9qdy0w8s0w0sgcko0c8ko484ss4so0o44wcg0w8gsg40','a:0:{}','3367hp9nc9ogg00k8wscs480k4o80ks80o0ks8c4ckswccw8oo','a:2:{i:0;s:31:\"http://www.gointegro.com/api/v1\";i:1;s:13:\"refresh_token\";}');
 /*!40000 ALTER TABLE `oauth_client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6576,8 +6620,8 @@ CREATE TABLE `product_providercategory` (
   PRIMARY KEY (`product_id`,`providercategory_id`),
   KEY `IDX_CD03EE74584665A` (`product_id`),
   KEY `IDX_CD03EE754BB2122` (`providercategory_id`),
-  CONSTRAINT `FK_CD03EE754BB2122` FOREIGN KEY (`providercategory_id`) REFERENCES `provider_category` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_CD03EE74584665A` FOREIGN KEY (`product_id`) REFERENCES `reward_product` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_CD03EE74584665A` FOREIGN KEY (`product_id`) REFERENCES `reward_product` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_CD03EE754BB2122` FOREIGN KEY (`providercategory_id`) REFERENCES `provider_category` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -6587,7 +6631,7 @@ CREATE TABLE `product_providercategory` (
 
 LOCK TABLES `product_providercategory` WRITE;
 /*!40000 ALTER TABLE `product_providercategory` DISABLE KEYS */;
-INSERT INTO `product_providercategory` VALUES (4,3),(5,3),(5,4),(6,2),(7,3),(8,1),(9,6),(9,7),(10,7),(10,8),(11,2);
+INSERT INTO `product_providercategory` VALUES (1,3),(2,3),(2,4),(3,2),(4,3),(5,1),(6,6),(6,7),(7,7),(7,8),(8,2);
 /*!40000 ALTER TABLE `product_providercategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6689,7 +6733,7 @@ CREATE TABLE `purchase_order` (
   `deliveryAddress` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `delivery_country_id` int(11) DEFAULT NULL,
   `deliveryCity` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `postCode` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `postCode` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `deliveryRegion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telephone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lastStatusProcessDate` datetime DEFAULT NULL,
@@ -6739,7 +6783,7 @@ CREATE TABLE `reward` (
 
 LOCK TABLES `reward` WRITE;
 /*!40000 ALTER TABLE `reward` DISABLE KEYS */;
-INSERT INTO `reward` VALUES (1,1,'Dia libre de Enero','Dia libre de Enero','free_time',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2015-11-04',NULL),(2,1,'Medio dia libre de Enero','Medio dia libre de Enero','free_time',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2015-11-04',NULL),(3,1,'Dia especial de Enero','Dia especial de Enero','free_time',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2015-11-04',NULL),(4,0,'Samsung Galaxy Camera','Haz fotos de calidad profesional y compártelas como en un Smartphone. Zoom 21x y pantalla HD de 4,8”.','product',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2014-12-01',NULL),(5,1,'Horno Pizzero Escorial','Como en la pizzeria, pero en casa','product',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2014-12-01',NULL),(6,0,'Samsung S4','Haz fotos de calidad profesional y compártelas como en un Smartphone. Zoom 21x y pantalla HD de 4,8”.','product',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2014-12-01',NULL),(7,1,'Aire acondicionado','Aire acondicionado, F/C 2193 frigorías. Philco','product',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2014-12-01',NULL),(8,1,'Auto de colección','Colores a elección','product',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2014-12-01',NULL),(9,0,'Bordeadora eléctrica','Petri Bordeadora Eléctrica 600 w','product',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2014-12-01',NULL),(10,1,'Carpa Dome2 Mountain Gear','Preparate para salir a disfrutar la naturaleza con la carpa Dome2 de Mountain Gear. Está realizada en poliéster, tiene piso de polietileno y viene con costuras reforzadas termo selladas. Tiene puerta doble para evitar el paso de los mosquitos y es ideal para dos personas.','product',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26','2015-02-17',NULL),(11,0,'Tablet Samsung','Tamaño de Pantalla: 8.4\'. Tipo de Pantalla: LED, Touch. Resolución Máxima: 2560 x 1600. Memoria Ram (T): 3GB','product',NULL,'2015-11-04 11:50:26','2015-11-04 11:50:26',NULL,NULL);
+INSERT INTO `reward` VALUES (1,0,'Samsung Galaxy Camera','Haz fotos de calidad profesional y compártelas como en un Smartphone. Zoom 21x y pantalla HD de 4,8”.','product',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2014-12-01',NULL),(2,1,'Horno Pizzero Escorial','Como en la pizzeria, pero en casa','product',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2014-12-01',NULL),(3,0,'Samsung S4','Haz fotos de calidad profesional y compártelas como en un Smartphone. Zoom 21x y pantalla HD de 4,8”.','product',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2014-12-01',NULL),(4,1,'Aire acondicionado','Aire acondicionado, F/C 2193 frigorías. Philco','product',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2014-12-01',NULL),(5,1,'Auto de colección','Colores a elección','product',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2014-12-01',NULL),(6,0,'Bordeadora eléctrica','Petri Bordeadora Eléctrica 600 w','product',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2014-12-01',NULL),(7,1,'Carpa Dome2 Mountain Gear','Preparate para salir a disfrutar la naturaleza con la carpa Dome2 de Mountain Gear. Está realizada en poliéster, tiene piso de polietileno y viene con costuras reforzadas termo selladas. Tiene puerta doble para evitar el paso de los mosquitos y es ideal para dos personas.','product',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2015-02-17',NULL),(8,0,'Tablet Samsung','Tamaño de Pantalla: 8.4\'. Tipo de Pantalla: LED, Touch. Resolución Máxima: 2560 x 1600. Memoria Ram (T): 3GB','product',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10',NULL,NULL),(9,1,'Dia libre de Enero','Dia libre de Enero','free_time',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2015-11-11',NULL),(10,1,'Medio dia libre de Enero','Medio dia libre de Enero','free_time',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2015-11-11',NULL),(11,1,'Dia especial de Enero','Dia especial de Enero','free_time',NULL,'2015-11-11 12:41:10','2015-11-11 12:41:10','2015-11-11',NULL);
 /*!40000 ALTER TABLE `reward` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6822,9 +6866,9 @@ CREATE TABLE `reward_free_time` (
   PRIMARY KEY (`id`),
   KEY `IDX_4D48972637B987D8` (`duration_id`),
   KEY `FK_4D489726F92F3E70` (`country_id`),
-  CONSTRAINT `FK_4D489726F92F3E70` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`),
   CONSTRAINT `FK_4D48972637B987D8` FOREIGN KEY (`duration_id`) REFERENCES `free_time_duration` (`id`),
-  CONSTRAINT `FK_4D489726BF396750` FOREIGN KEY (`id`) REFERENCES `reward` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_4D489726BF396750` FOREIGN KEY (`id`) REFERENCES `reward` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_4D489726F92F3E70` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -6834,7 +6878,7 @@ CREATE TABLE `reward_free_time` (
 
 LOCK TABLES `reward_free_time` WRITE;
 /*!40000 ALTER TABLE `reward_free_time` DISABLE KEYS */;
-INSERT INTO `reward_free_time` VALUES (1,38,'freeDay',101.00,NULL,NULL),(2,37,'freeDay',102.00,NULL,NULL),(3,70,'specialDay',103.00,'2015-01-15 00:00:00',NULL);
+INSERT INTO `reward_free_time` VALUES (9,38,'freeDay',101.00,NULL,NULL),(10,37,'freeDay',102.00,NULL,NULL),(11,70,'specialDay',103.00,'2015-01-15 00:00:00',NULL);
 /*!40000 ALTER TABLE `reward_free_time` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6871,7 +6915,7 @@ CREATE TABLE `reward_product` (
 
 LOCK TABLES `reward_product` WRITE;
 /*!40000 ALTER TABLE `reward_product` DISABLE KEYS */;
-INSERT INTO `reward_product` VALUES (4,1,8,2,1050.00,380.00,'AKSJ45646P','1234'),(5,1,8,3,50600.00,10000.00,'FGS675TY','5152'),(6,3,8,2,4050.00,150.00,'GI0001','7253'),(7,1,8,3,5000.00,1000.00,'PHS25H64X','1594'),(8,1,8,3,500.00,100.00,'AAS87H54X','0672'),(9,1,8,3,650.00,150.00,'HJGKJ75GHF','0105'),(10,2,8,4,700.00,67.00,'KERS057AA','1813749'),(11,1,8,2,6680.00,275.00,'OSJPPS00','7854386');
+INSERT INTO `reward_product` VALUES (1,1,8,2,1050.00,380.00,'AKSJ45646P','1234'),(2,1,8,3,50600.00,10000.00,'FGS675TY','5152'),(3,3,8,2,4050.00,150.00,'GI0001','7253'),(4,1,8,3,5000.00,1000.00,'PHS25H64X','1594'),(5,1,8,3,500.00,100.00,'AAS87H54X','0672'),(6,1,8,3,650.00,150.00,'HJGKJ75GHF','0105'),(7,2,8,4,700.00,67.00,'KERS057AA','1813749'),(8,1,8,2,6680.00,275.00,'OSJPPS00','7854386');
 /*!40000 ALTER TABLE `reward_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6901,7 +6945,7 @@ CREATE TABLE `reward_productlog` (
 
 LOCK TABLES `reward_productlog` WRITE;
 /*!40000 ALTER TABLE `reward_productlog` DISABLE KEYS */;
-INSERT INTO `reward_productlog` VALUES (1,5,'2015-11-04 11:50:26','2015-11-04 11:50:26','approved','admin'),(2,9,'2015-11-04 11:50:26','2015-11-04 11:50:26','costModified',NULL),(3,6,'2015-11-04 11:50:26','2015-11-04 11:50:26','deactivated','admin'),(4,9,'2015-11-04 11:50:26','2015-11-04 11:50:26','categoryAssigned','rewardUser');
+INSERT INTO `reward_productlog` VALUES (1,2,'2015-11-11 12:41:10','2015-11-11 12:41:10','approved','admin'),(2,6,'2015-11-11 12:41:10','2015-11-11 12:41:10','costModified',NULL),(3,3,'2015-11-11 12:41:10','2015-11-11 12:41:10','deactivated','admin'),(4,6,'2015-11-11 12:41:10','2015-11-11 12:41:10','categoryAssigned','rewardUser');
 /*!40000 ALTER TABLE `reward_productlog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6946,7 +6990,7 @@ CREATE TABLE `reward_redeem` (
 
 LOCK TABLES `reward_redeem` WRITE;
 /*!40000 ALTER TABLE `reward_redeem` DISABLE KEYS */;
-INSERT INTO `reward_redeem` VALUES (1,1,1,1,45646,3575,'2015-11-04 11:50:26','2015-11-04 11:50:26',2,NULL,9,NULL,NULL),(2,3,2,2,5464264,10,'2015-11-04 11:50:26','2015-11-04 11:50:26',1,NULL,4,NULL,NULL),(3,1,3,1,45646,3575,'2015-11-04 11:50:26','2015-11-04 11:50:26',2,NULL,9,NULL,NULL),(4,4,4,5,678900,760,'2015-11-04 11:50:26','2015-11-04 11:50:26',2,NULL,10,NULL,NULL),(5,4,5,7,234900,18080,'2015-11-04 11:50:26','2015-11-04 11:50:26',1,NULL,7,NULL,NULL),(6,5,NULL,11,739673,101,'2015-11-04 11:50:26','2015-11-04 11:50:26',1,1,1,'2015-11-05 00:00:00',NULL),(7,5,NULL,11,12342,101,'2015-11-04 11:50:26','2015-11-04 11:50:26',1,2,1,'2015-11-05 00:00:00',NULL);
+INSERT INTO `reward_redeem` VALUES (1,1,1,1,45646,3575,'2015-11-11 12:41:10','2015-11-11 12:41:10',2,NULL,6,NULL,NULL),(2,3,2,2,5464264,10,'2015-11-11 12:41:10','2015-11-11 12:41:10',1,NULL,1,NULL,NULL),(3,1,3,1,45646,3575,'2015-11-11 12:41:10','2015-11-11 12:41:10',2,NULL,6,NULL,NULL),(4,4,4,5,678900,760,'2015-11-11 12:41:10','2015-11-11 12:41:10',2,NULL,7,NULL,NULL),(5,4,5,7,234900,18080,'2015-11-11 12:41:10','2015-11-11 12:41:10',1,NULL,4,NULL,NULL),(6,5,NULL,11,739673,101,'2015-11-11 12:41:10','2015-11-11 12:41:10',1,1,9,'2015-11-12 00:00:00',NULL),(7,5,NULL,11,12342,101,'2015-11-11 12:41:10','2015-11-11 12:41:10',1,2,9,'2015-11-12 00:00:00',NULL);
 /*!40000 ALTER TABLE `reward_redeem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6974,7 +7018,7 @@ CREATE TABLE `reward_reward_category` (
 
 LOCK TABLES `reward_reward_category` WRITE;
 /*!40000 ALTER TABLE `reward_reward_category` DISABLE KEYS */;
-INSERT INTO `reward_reward_category` VALUES (4,1),(5,1),(7,1),(8,2),(9,3),(9,4),(10,2),(10,4);
+INSERT INTO `reward_reward_category` VALUES (1,1),(2,1),(4,1),(5,2),(6,3),(6,4),(7,2),(7,4);
 /*!40000 ALTER TABLE `reward_reward_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -7003,13 +7047,93 @@ CREATE TABLE `reward_reward_image` (
 
 LOCK TABLES `reward_reward_image` WRITE;
 /*!40000 ALTER TABLE `reward_reward_image` DISABLE KEYS */;
-INSERT INTO `reward_reward_image` VALUES (1,4,'wp-content/uploads/2012/11/Samsung-Galaxy-Camera.jpg',NULL,NULL),(2,4,'wp-content/uploads/2012/12/410450bc9a4a58a6e.jpg',NULL,NULL),(3,9,'system/images/images/000/000/106/full/UT41112_banner1.jpg?1365538828',NULL,NULL),(4,10,'is/image/FalabellaAR/1813749_1-CARPA-MOUNTAIN-GEAR?$producto308$&wid=924&hei=924&fit=fit,1',NULL,NULL),(5,10,'is/image/FalabellaAR/1813749_4-CARPA-MOUNTAIN-GEAR?$producto308$&wid=924&hei=924&fit=fit,1',NULL,NULL),(6,11,'wp-content/uploads/2012/11/Samsung-Galaxy-Camera.jpg',NULL,NULL),(7,11,'wp-content/uploads/2012/12/410450bc9a4a58a6e.jpg',NULL,NULL);
+INSERT INTO `reward_reward_image` VALUES (1,1,'wp-content/uploads/2012/11/Samsung-Galaxy-Camera.jpg',NULL,NULL),(2,1,'wp-content/uploads/2012/12/410450bc9a4a58a6e.jpg',NULL,NULL),(3,6,'system/images/images/000/000/106/full/UT41112_banner1.jpg?1365538828',NULL,NULL),(4,7,'is/image/FalabellaAR/1813749_1-CARPA-MOUNTAIN-GEAR?$producto308$&wid=924&hei=924&fit=fit,1',NULL,NULL),(5,7,'is/image/FalabellaAR/1813749_4-CARPA-MOUNTAIN-GEAR?$producto308$&wid=924&hei=924&fit=fit,1',NULL,NULL),(6,8,'wp-content/uploads/2012/11/Samsung-Galaxy-Camera.jpg',NULL,NULL),(7,8,'wp-content/uploads/2012/12/410450bc9a4a58a6e.jpg',NULL,NULL);
 /*!40000 ALTER TABLE `reward_reward_image` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `massimport`
+--
+
+/*!40000 DROP DATABASE IF EXISTS `massimport`*/;
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `massimport` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `massimport`;
+
+--
+-- Table structure for table `batch_job`
+--
+
+DROP TABLE IF EXISTS `batch_job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `batch_job` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `originalFilename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `result` tinyint(1) DEFAULT NULL,
+  `errorReport` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fileSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `operation` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `errorMessage` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `platform_id` int(11) DEFAULT NULL,
+  `catalog_account` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `batch_job`
+--
+
+LOCK TABLES `batch_job` WRITE;
+/*!40000 ALTER TABLE `batch_job` DISABLE KEYS */;
+/*!40000 ALTER TABLE `batch_job` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `export_job`
+--
+
+DROP TABLE IF EXISTS `export_job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `export_job` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `filename` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` enum('PENDING','IN_PROGRESS','DONE','ERROR') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `errorMessage` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `export_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `catalog_account` int(11) DEFAULT NULL,
+  `catalog` int(11) DEFAULT NULL,
+  `platform` int(11) DEFAULT NULL,
+  `recognition_program` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `export_job`
+--
+
+LOCK TABLES `export_job` WRITE;
+/*!40000 ALTER TABLE `export_job` DISABLE KEYS */;
+/*!40000 ALTER TABLE `export_job` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Current Database: `mysql`
 --
+
+/*!40000 DROP DATABASE IF EXISTS `mysql`*/;
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `mysql` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
@@ -7683,7 +7807,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('localhost','root','*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',''),('goplatformbase','root','*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',''),('127.0.0.1','root','*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',''),('::1','root','*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',''),('localhost','debian-sys-maint','*11CB4E05B3B045C17B777AC76B3493BF81B5452A','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',NULL);
+INSERT INTO `user` VALUES ('localhost','root','*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',''),('goplatformbase','root','*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',''),('127.0.0.1','root','*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',''),('::1','root','*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',''),('localhost','debian-sys-maint','*11CB4E05B3B045C17B777AC76B3493BF81B5452A','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',NULL),('%','behat','*EF876313A3141A38814F501FC4F681D923DA9143','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','N','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -7727,6 +7851,8 @@ CREATE TABLE IF NOT EXISTS `slow_log` (
 --
 -- Current Database: `recognitions`
 --
+
+/*!40000 DROP DATABASE IF EXISTS `recognitions`*/;
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `recognitions` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
@@ -7925,7 +8051,7 @@ CREATE TABLE `oauth_client` (
 
 LOCK TABLES `oauth_client` WRITE;
 /*!40000 ALTER TABLE `oauth_client` DISABLE KEYS */;
-INSERT INTO `oauth_client` VALUES (1,'2qi8nat28ce8o44o0kgc0s8o8088ogkwo0wg48gk4ow0kkoccw','a:0:{}','5n9297vucb8c448k4840s4ks48sckk0owcgcgsswkg0sk4g8s8','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(2,'3qp0sl2edpq88cgo4s0k80w480s884ggkokckoss44cwk40gwo','a:0:{}','2eie8nxrn17ooosgk08gg8sw48ks0k84kc8g8wgkcsscko04sg','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(3,'1jh9vwwwax0k8gk0ggg8cgwscck4cs88owg40cgkwcsocgc884','a:0:{}','32ak5chbai04s4s48wockcc8cscgkcgowoscg0ssgkc88okcwk','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(4,'2vhvb55zvwmc44cgkwcogs8w0kcwo8gs044ss480csk4oo8kog','a:0:{}','34kfi3rq3og0ssc0k0wgcg4c88408o4o4c888oswo0wwgcgwg8','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}');
+INSERT INTO `oauth_client` VALUES (1,'1g7m1oo33ww0wkkgggcc40kwgg4kkow0sgkk40kwo4c00okkso','a:0:{}','5gtym6dz0mosw4kg8csg4ooc8c4o8ss84k480kgwc04okooo8c','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(2,'30ttmoj17lmowsgsc8k8c48sk0ss84gs4cggks8k8g4ogkksgo','a:0:{}','4yd8oeddgv0g4g0s4ogg0kgkos444kscgwwc8cokkwgkws8w8g','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(3,'4hjkykoimzs4sc000kk40ok4scgo0k40gk44ss8c0c4g8okc8c','a:0:{}','yghgwhi2j2o8wwgow4c0www4sossg4o0w0cswsks0s8ok4wgc','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}'),(4,'x67jql0r6ggs8gck048w4c0owwsoo8o4wo40o0s40wkk0wc8s','a:0:{}','2ew922ehm78kg0cgogwggs8kwc00g000g84g48w84kkg88cswo','a:2:{i:0;s:18:\"client_credentials\";i:1;s:13:\"refresh_token\";}');
 /*!40000 ALTER TABLE `oauth_client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -7989,7 +8115,7 @@ CREATE TABLE `program` (
 
 LOCK TABLES `program` WRITE;
 /*!40000 ALTER TABLE `program` DISABLE KEYS */;
-INSERT INTO `program` VALUES (1,1,'Peer to peer',1,1,'','',0,'variable',2,'2015-11-04 11:51:08'),(2,1,'Service Awards',1,1,'1','2',0,'fixed',2,'2015-11-04 11:51:08'),(3,1,'Trabajo en Equipo',1,1,'','',0,'variable',2,'2015-11-04 11:51:08'),(4,1,'Programa fijo sin motivos',1,1,'1','2',0,'fixed',2,'2015-11-04 11:51:08'),(5,2,'Programa inválido',1,1,'1','2',0,'fixed',2,'2015-11-04 11:51:09');
+INSERT INTO `program` VALUES (1,1,'Peer to peer',1,1,'','',0,'variable',2,'2015-11-11 12:42:15'),(2,1,'Service Awards',1,1,'1','2',0,'fixed',2,'2015-11-11 12:42:15'),(3,1,'Trabajo en Equipo',1,1,'','',0,'variable',2,'2015-11-11 12:42:15'),(4,1,'Programa fijo sin motivos',1,1,'1','2',0,'fixed',2,'2015-11-11 12:42:15'),(5,2,'Programa inválido',1,1,'1','2',0,'fixed',2,'2015-11-11 12:42:15');
 /*!40000 ALTER TABLE `program` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -8014,8 +8140,8 @@ CREATE TABLE `reason` (
   PRIMARY KEY (`id`),
   KEY `IDX_3BB8880C3EB8070A` (`program_id`),
   KEY `IDX_3BB8880C727ACA70` (`parent_id`),
-  CONSTRAINT `FK_3BB8880C727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `reason` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_3BB8880C3EB8070A` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`)
+  CONSTRAINT `FK_3BB8880C3EB8070A` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`),
+  CONSTRAINT `FK_3BB8880C727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `reason` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -8061,13 +8187,15 @@ CREATE TABLE `recognition` (
 
 LOCK TABLES `recognition` WRITE;
 /*!40000 ALTER TABLE `recognition` DISABLE KEYS */;
-INSERT INTO `recognition` VALUES (1,NULL,'2015-11-04 11:51:09',300,'101','100','Lorem ipsum dolor sit amet 01',2,NULL),(2,NULL,'2015-11-04 11:51:09',200,'101','200','Lorem ipsum dolor sit amet 01',2,NULL),(3,NULL,'2015-11-04 11:51:09',600,'201','300','Lorem ipsum dolor sit amet 01',2,NULL);
+INSERT INTO `recognition` VALUES (1,NULL,'2015-11-11 12:42:15',300,'101','100','Lorem ipsum dolor sit amet 01',2,NULL),(2,NULL,'2015-11-11 12:42:15',200,'101','200','Lorem ipsum dolor sit amet 01',2,NULL),(3,NULL,'2015-11-11 12:42:15',600,'201','300','Lorem ipsum dolor sit amet 01',2,NULL);
 /*!40000 ALTER TABLE `recognition` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Current Database: `transactions`
 --
+
+/*!40000 DROP DATABASE IF EXISTS `transactions`*/;
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `transactions` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
@@ -8197,10 +8325,10 @@ CREATE TABLE `transfer` (
   KEY `IDX_4034A3C0174429F6` (`current_account_to_id`),
   KEY `IDX_4034A3C057CC85D2` (`movement_from_id`),
   KEY `IDX_4034A3C0CD8F9D70` (`movement_to_id`),
-  CONSTRAINT `FK_723705D1F6191741` FOREIGN KEY (`current_account_from_id`) REFERENCES `current_account` (`id`),
   CONSTRAINT `FK_723705D1174429F6` FOREIGN KEY (`current_account_to_id`) REFERENCES `current_account` (`id`),
   CONSTRAINT `FK_723705D157CC85D2` FOREIGN KEY (`movement_from_id`) REFERENCES `movement` (`id`),
-  CONSTRAINT `FK_723705D1CD8F9D70` FOREIGN KEY (`movement_to_id`) REFERENCES `movement` (`id`)
+  CONSTRAINT `FK_723705D1CD8F9D70` FOREIGN KEY (`movement_to_id`) REFERENCES `movement` (`id`),
+  CONSTRAINT `FK_723705D1F6191741` FOREIGN KEY (`current_account_from_id`) REFERENCES `current_account` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -8222,4 +8350,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-06 14:00:10
+-- Dump completed on 2015-11-11 12:51:25

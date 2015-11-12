@@ -46,17 +46,18 @@ class FeatureContext extends MinkContext
      * Carga la información en la base de datos
      * @BeforeScenario
      */
-    /*public function loadData()
+    public function loadData()
     {
-        $mysqlUserName ='root';
-        $mysqlPassword ='root';
-        $mysqlHostName ='localhost';
-        $mysqlImportFilename ='db0.sql';
+        $params = array(
+            'dbUser' => 'behat',
+            'dbPass' => 'behat',
+            'scriptPath' => '../../SQLData'
+        );
 
-        $command='mysql -h' .$mysqlHostName .' -u' .$mysqlUserName .' -p' .$mysqlPassword .' ' .$mysqlDatabaseName .' < ' .$mysqlImportFilename;
-        shell_exec($command);
+        // Load datafixtures
+        shell_exec("mysql --user={$params['dbUser']} --password={$params['dbPass']} --host=127.0.0.1 --port=8306 < {$params['scriptPath']}/db0.sql");
     }
-*/
+
 
 
     /**
