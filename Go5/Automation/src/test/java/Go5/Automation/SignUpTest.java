@@ -9,12 +9,12 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class LoginTest extends CommonFunctions{
+public class SignUpTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and load url
 	 public void setup (){
-	   openSiteLogin();
+	   openSiteSignUp();
 	 }
 	
 	 @AfterTest // call function to close browser 
@@ -25,14 +25,14 @@ public class LoginTest extends CommonFunctions{
 
 	
 	@Test
-	public void login() throws Exception { 
+	public void signup() throws Exception { 
 	
  	     
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		
-		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-		driver.findElement(By.id("signInPassword")).sendKeys("Fake1234");
-        driver.findElement(By.cssSelector(".primary")).click();
+		driver.switchTo().frame("NEED TO ADD ID TO IFRAME");
+		driver.findElement(By.id("SignupRequest_email")).clear();
+		driver.findElement(By.id("SignupRequest_email")).sendKeys("mailcorporativo@gointegro.com");
+        driver.findElement(By.id("submit_button")).click();
  
 	}
 
