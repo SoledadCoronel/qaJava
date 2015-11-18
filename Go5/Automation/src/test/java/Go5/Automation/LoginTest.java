@@ -23,13 +23,21 @@ public class LoginTest extends CommonFunctions{
 			closeBrowser();
 		}
 
-	
-	@Test
+	@Test(priority=1)
+	public void validatePage(){
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		driver.findElement(By.id("signInIdentification"));
+		driver.findElement(By.id("signInPassword"));
+		driver.findElement(By.cssSelector(".link"));
+		driver.findElement(By.cssSelector(".primary")).isEnabled();
+		
+		
+		
+	}
+	@Test(priority=2)
 	public void login() throws Exception { 
 	
- 	     
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		
+ 	  	
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 		driver.findElement(By.id("signInPassword")).sendKeys("Fake1234");
         driver.findElement(By.cssSelector(".primary")).click();
