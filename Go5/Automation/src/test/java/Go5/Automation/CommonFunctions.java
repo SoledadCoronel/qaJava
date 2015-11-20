@@ -8,11 +8,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 
+
 public class CommonFunctions {
     
 	
 	public static WebDriver driver= new FirefoxDriver();
 	Logger log = Logger.getLogger("automation");
+	
 	
     
 	 
@@ -55,11 +57,8 @@ public class CommonFunctions {
          driver.switchTo().defaultContent();
 	 }
 */	  
-	 public void selectlanguage(){
-		 openSiteSignUp();
-		
-		 
-	 }
+	 
+	 
 }
 
 

@@ -23,7 +23,7 @@ public class ForgotPassword extends CommonFunctions{
 			closeBrowser();
 		}
 
-	@Test(priority=1)
+	 @Test(priority=1)
 	public void validatePage(){
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.findElement(By.cssSelector(".link")).click();
