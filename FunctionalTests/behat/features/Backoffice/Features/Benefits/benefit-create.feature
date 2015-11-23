@@ -1,0 +1,131 @@
+#language: es
+Característica: Como usuario administrador del backoffice quiero crear un beneficio
+
+    Antecedentes:
+        Dado estoy en "/backoffice/signin"
+        Y relleno "_username" con "apibackofficetester"
+        Y relleno "_password" con "apitesterbackoffice"
+        Y presiono "_submit"
+        Y sigo "Beneficios Corporativos"
+        Y espero a que aparezca el contenido dinámico "Listado de Comercios" en ".breadcrumb"
+        Y espero a que aparezca el contenido dinámico "45 minutos" en ".backgrid-company-list"
+        Y relleno "filters[name]" con "Panamericano Bariloche"
+        Y hago click en "#name-filter-btn-submit"
+        Entonces espero a que aparezca el contenido dinámico "Panamericano Bariloche" en ".backgrid-company-list"
+        Cuando sigo "Panamericano Bariloche"
+        Y espero a que aparezca el contenedor dinámico ".company-view-container"
+        Entonces el breadcrumb debe ser "Beneficios Corporativos > Listado de Comercios > Panamericano Bariloche"
+        Y espero a que aparezca el contenido dinámico "Nuevo" en "#benefits"
+        Dado hago click y sigo "#benefits .btn-primary"
+        Y espero a que aparezca el contenedor dinámico ".benefit-form"
+
+    @javascript @loadBenefitsBenefitData @failsInCI
+    Escenario: Crear un nuevo beneficio
+        Y relleno "owner" con "Marina Sucari"
+        Y relleno "name" con "BNF > Todos los lues"
+        Y selecciono "10%" de "discount"
+        Y selecciono "General" de "targetUserType"
+
+        Y adjunto el archivo "homerosapiens.jpg" a "file-image"
+        Y espero a que aparezca el contenedor dinámico "#image-crop"
+        Y hago click en ".crop-done"
+
+        Y relleno la fecha "validFrom" con "01/12/2013"
+        Y marco "expires"
+        Y relleno la fecha "validUntil" con "01/12/2014"
+        Y hago click en "#ms-redeemingMethods .ms-selectable li:eq(1)"
+        Y hago click en "#ms-paymentMethods .ms-selectable li:eq(0)"
+        Y hago click en "#ms-paymentMethods .ms-selectable li:eq(2)"
+        Y relleno "title" con "10% de descuento en la compra de..."
+        Y lleno el WYSIWYG "description" con "En la compra de zapatillas te hacemos un 10%"
+        Y agrego tag "zapatillas" en el elemento "#tag-input"
+        Y agrego tag "deportes" en el elemento "#tag-input"
+        Y agrego tag "correr" en el elemento "#tag-input"
+        Y agrego tag "zapatillas para correr" en el elemento "#tag-input"
+        Y hago click en "#ms-categories .ms-selectable li:eq(0)"
+        Cuando presiono "Guardar"
+        Y no debo ver el contenedor dinámico ".error-icon"
+        Entonces debe aparecer el contenedor dinámico ".benefit-view-container .backoffice-header"
+
+    @javascript @loadBenefitsBenefitData
+    Escenario: Crear un nuevo beneficio sin datos oblicatorios
+        Y selecciono "General" de "targetUserType"
+        Cuando hago click en "button:contains(Guardar)"
+        Entonces debo ver "Este campo no puede estar vacío"
+        Y debo ver "Debe seleccionar una imagen"
+
+    @javascript @loadBenefitsBenefitData @failsInCI
+    Escenario: Crear un nuevo beneficio exclusivo
+        Y relleno "owner" con "Marina Sucari"
+        Y relleno "name" con "BNF > Todos los lues"
+        Y selecciono "10%" de "discount"
+        Y selecciono "General" de "targetUserType"
+        Y relleno la fecha "validFrom" con "01/12/2013"
+        Y marco "expires"
+        Y relleno la fecha "validUntil" con "01/12/2014"
+        Y hago click en "#ms-redeemingMethods .ms-selectable li:eq(1)"
+        Y hago click en "#ms-paymentMethods .ms-selectable li:eq(0)"
+        Y hago click en "#ms-paymentMethods .ms-selectable li:eq(2)"
+
+        Y adjunto el archivo "homerosapiens.jpg" a "file-image"
+        Y espero a que aparezca el contenedor dinámico "#image-crop"
+        Y hago click en ".crop-done"
+
+        Y relleno "title" con "10% de descuento en la compra de..."
+        Y lleno el WYSIWYG "description" con "En la compra de zapatillas te hacemos un 10%"
+        Y agrego tag "zapatillas" en el elemento "#tag-input"
+        Y agrego tag "deportes" en el elemento "#tag-input"
+        Y agrego tag "correr" en el elemento "#tag-input"
+        Y agrego tag "zapatillas para correr" en el elemento "#tag-input"
+        Y hago click en "#ms-categories .ms-selectable li:eq(1)"
+        Y hago click en "#exclusive"
+        Y espero a que aparezca el contenido dinámico "Plataformas exclusivas" en "#exclusiveArea"
+        Y espero a que aparezca el contenedor dinámico "#search-accounts"
+        Y relleno "exclusivePlatforms-input" con "Standard Account"
+        Y espero a que aparezca el contenido dinámico "Standard Account" en ".ui-menu-item"
+        Y hago click en ".ui-menu-item:contains(Standard Account)"
+        Y espero a que aparezca el contenido dinámico "Hugo" en ".selectable-platforms"
+        Y hago click en ".selectable-platforms li:eq(0)"
+        Cuando hago click en "button:contains(Guardar)"
+        Y no debo ver el contenedor dinámico ".error-icon"
+        Entonces debe aparecer el contenedor dinámico ".benefit-view-container .backoffice-header"
+
+    @javascript @loadBenefitsBenefitData
+    Escenario: Crear un nuevo beneficio exclusivo con errores
+        Y relleno "owner" con "Marina SucariMarina SucariMarina SucariMarina SucariMarina SucariMarina SucariMarina Sucari"
+        Y relleno "name" con "BNF > Todos los lunesBNF > Todos los lunesBNF > Todos los lunesBNF > Todos los lunesBNF > Todos los lunesBNF > Todos los lunes"
+        Y selecciono "10%" de "discount"
+        Y selecciono "General" de "targetUserType"
+        Y relleno la fecha "validFrom" con "01/12/2013"
+        Y marco "expires"
+        Y relleno la fecha "validUntil" con "01/12/2014"
+        Y hago click en "#ms-redeemingMethods .ms-selectable li:eq(1)"
+        Y hago click en "#ms-paymentMethods .ms-selectable li:eq(0)"
+        Y hago click en "#ms-paymentMethods .ms-selectable li:eq(2)"
+
+        Y adjunto el archivo "homerosapiens.jpg" a "file-image"
+        Y espero a que aparezca el contenedor dinámico "#image-crop"
+        Y hago click en ".crop-done"
+
+        Y relleno "title" con "10% de descuento en la compra de...10% de descuento en la compra de...10% de descuento en la compra de...10% de descuento en la compra de...10% de descuento en la compra de..."
+        Y lleno el WYSIWYG "description" con "En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%En la compra de zapatillas te hacemos un 10%"
+        Y agrego tag "zapatillas" en el elemento "#tag-input"
+        Y agrego tag "deportes" en el elemento "#tag-input"
+        Y agrego tag "correr" en el elemento "#tag-input"
+        Y agrego tag "zapatillas para correr" en el elemento "#tag-input"
+        Y hago click en "#ms-categories .ms-selectable li:eq(1)"
+        Y marco "exclusive"
+        Y relleno "restrictedPlatforms-input" con "Standard Account"
+        Y espero a que aparezca el contenido dinámico "Standard Account" en ".ui-menu-item"
+        Y hago click en ".ui-menu-item:contains(Standard Account)"
+        Y espero a que aparezca el contenido dinámico "Hugo" en ".selectable-platforms"
+        Y hago click en ".selectable-platforms li:eq(0)"
+        Cuando hago click en "button:contains(Guardar)"
+        Entonces debo ver "El responsable no puede superar los 80 caracteres"
+        Y debo ver "El nombre no puede superar los 80 caracteres"
+        Y debo ver "El titulo no puede superar los 80 caracteres"
+
+    @javascript @loadBenefitsBenefitData
+    Escenario: Crear un beneficio con una imagen superior al tamaño permitido
+        Y adjunto el archivo "imagen6mb.jpg" a "file-image"
+        Y espero a que aparezca el contenido dinámico "El archivo no puede superar los 5120 kb" en ".form-image"
