@@ -30,6 +30,7 @@ public class LoginTest extends CommonFunctions{
 		driver.findElement(By.id("signInPassword"));
 		driver.findElement(By.cssSelector(".link"));
 		driver.findElement(By.cssSelector(".primary")).isEnabled();
+		log.info("zaraza");
 		
 		
 		
