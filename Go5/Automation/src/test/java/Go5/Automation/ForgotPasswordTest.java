@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class LoginTest extends CommonFunctions{
+public class ForgotPasswordTest extends SignUp{
 
 
 	 @BeforeTest // call function to open the browser and load url
@@ -24,27 +24,24 @@ public class LoginTest extends CommonFunctions{
 		}
 
 	@Test(priority=1)
-	public void validatePage(){
+	
+	public void openForgotPasswordPage(){
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Validating login page");
-		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
+		log.info("Validating resending password");
+		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		driver.findElement(By.cssSelector(".link"));
+		driver.findElement(By.cssSelector(".signup .link")).click();
 		driver.findElement(By.cssSelector(".primary")).isEnabled();
-		
-		
-		
-		
+			
 	}
 	@Test(priority=2)
-	public void login() throws Exception { 
+	
+	public void insertEmailToResendPassword() throws Exception { 
 	
  	  	
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-        driver.findElement(By.cssSelector(".primary")).click();
+	   driver.findElement(By.cssSelector(".primary")).click();
  
 	}
 

@@ -17,8 +17,7 @@ public class CreatePlatformTest extends SignUp{
 	 
 	  public void openPlatform() throws Exception{
 		urlToken=this.signup();
-	// urlToken = "http://signup.qa.go5.gointegro.net/es/createPlatform/token/59nc8ko1r1oo4k0404kwgcc8ko8s4wgog4sck4kgc08owcsc84";
-	  driver.get(urlToken);
+	   driver.get(urlToken);
 	 }
 	 
 	   
@@ -36,7 +35,7 @@ public class CreatePlatformTest extends SignUp{
 			  
 	 	   
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.findElement(By.id("CreateAccount_company")).sendKeys("Automation");
+		driver.findElement(By.id("CreateAccount_company")).sendKeys("Automation2");
 		driver.findElement(By.id("CreateAccount_subdomain")).sendKeys("Site1");
 		driver.findElement(By.id("CreateAccount_qty_employees_label")).sendKeys("0-50");
 		driver.findElement(By.id("CreateAccount_name_label")).sendKeys("FakeName");

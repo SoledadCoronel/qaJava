@@ -26,7 +26,7 @@ public class CommonFunctions {
 	  	 
 	  public void openSiteLogin(){
 			 
-			 driver.get("http://gointegroautomationsite1.pla.qa.go5.gointegro.net/authentication/login");
+			 driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 			 driver.manage().window().maximize();
 		   } 
 	  
