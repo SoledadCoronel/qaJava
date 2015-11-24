@@ -41,6 +41,8 @@ public class SignUpTest extends CommonFunctions{
 	 
 	 public void validateLabelAllLanguages(){
 		
+		 org.apache.log4j.BasicConfigurator.configure();
+		 
 		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		 driver.switchTo().frame("iframe");
 		 log.info("Verifying singup page changes the language");
@@ -105,7 +107,7 @@ public class SignUpTest extends CommonFunctions{
 	@Test (priority=3)
 	public void validateCorporativeMail(){
 		// Select language
-		this.selectLanguage("Espanish");
+		this.selectLanguage("Spanish");
 		driver.findElement(By.id("SignupRequest_email")).sendKeys("zaraza@hotmail.com");
 		//Validate error spanish
 		 String SpanishText = new String( driver.findElement(By.cssSelector(".signup .errormessage")).getText());
@@ -117,22 +119,38 @@ public class SignUpTest extends CommonFunctions{
 	}
 	 
 		
-		@Test (priority=4)
+	@Test (priority=4)
+	
+	public void registerMail(){
+	driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+	driver.findElement(By.id("SignupRequest_email")).clear();
+	driver.findElement(By.id("SignupRequest_email")).sendKeys("mailcorporativo34@gointegro.com");
+	driver.findElement(By.id("SignupRequest_language_0")).click();
+	driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+	driver.findElement(By.id("submit_button")).submit();
+	String emailSent = new String(driver.findElement(By.cssSelector(".signup .message")).getText());
+	System.out.println(emailSent);
+	log.info(emailSent);
+	}
+	
+	
+	@Test (priority=5)
 		public void validatealreadyregistered() throws Exception { 
 		
 	 	     			
-			
+		    
 			driver.navigate().back();
 			driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 			driver.findElement(By.id("SignupRequest_email")).clear();
-			driver.findElement(By.id("SignupRequest_email")).sendKeys("mailcorporativo122@gointegro.com");
+			driver.findElement(By.id("SignupRequest_email")).sendKeys("mailcorporativo34@gointegro.com");
+			this.selectLanguage("Spanish");
 			driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 			String pending=new String(driver.findElement(By.cssSelector(".errormessage a ")).getText());
 	        System.out.println(pending);
-	        Assert.assertEquals(pending, "EL EMAIL QUE INGRESASTE ESTÁ PENDIENTE DE VALIDACIÓN.REENVIA EL EMAIL.");
+	        Assert.assertEquals(pending, "El email que ingresaste está pendiente de validación. Reenvia el email.");
 	 		}
        
-@Test (priority=5)
+@Test (priority=6)
         public void resendEmail(){
 	    driver.findElement(By.cssSelector(".signup .errormessage a ")).click();
 	    
