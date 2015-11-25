@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
@@ -23,24 +22,27 @@ public class SignUp extends CommonFunctions{
 			closeBrowser();
 	 }
 	 
-	 	 
-	public String signup() throws Exception { 
+	 
+	 public String signup() throws Exception { 
 	 	    
-				 
+		org.apache.log4j.BasicConfigurator.configure();	 
 		 driver.switchTo().frame("iframe");
 		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+		log.info(" Loading signup page");
 		driver.findElement(By.id("SignupRequest_email")).clear();
-		driver.findElement(By.id("SignupRequest_email")).sendKeys("marina.touceda@gointegro.com");
+		driver.findElement(By.id("SignupRequest_email")).sendKeys("simulation21@gointegro.com");
 		driver.findElement(By.id("SignupRequest_language_0")).click();
-		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
 		driver.findElement(By.id("submit_button")).submit();
+		log.info("Submit form and get token to create platform");
 		String emailSent = new String(driver.findElement(By.cssSelector(".signup .message")).getText());
-		System.out.println(emailSent);
+		log.info(emailSent);
 		// Get the token
-		String urlToken =new String(driver.findElement(By.id("create_platform_link")).getAttribute("target"));
+		String urlToken =new String(driver.findElement(By.id("create_platform_link")).getAttribute("href"));
 		log.info(urlToken);
+		driver.findElement(By.id("create_platform_link")).click();
 		return  urlToken;
-		
+		     	
 	}
 
 }

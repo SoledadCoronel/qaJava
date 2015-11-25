@@ -2,6 +2,7 @@ package Go5.Automation;
 
 
 import org.testng.annotations.Test;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -17,18 +18,20 @@ public class CreatePlatformTest extends SignUp{
 	 
 	  public void openPlatform() throws Exception{
 		urlToken=this.signup();
+		// String urlTOken = "http://signup.qa.go5.gointegro.net/es/createPlatform/token/612aaycex0cgwk00wocwckgowwss8kw8cg4ksggwwoow844c48";
 	   driver.get(urlToken);
+	   driver.manage().window().maximize();
 	 }
 	 
 	   
 	
 	 @AfterTest // call function to close browser 
 		
-/*		public void teardown(){
+		public void teardown(){
 			closeBrowser();
 		}
 
-	*/
+	
 	@Test
 	public void registration() throws Exception { 
 		
