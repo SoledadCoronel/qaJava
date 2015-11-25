@@ -4,6 +4,7 @@ package Go5.Automation;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
@@ -42,6 +43,11 @@ public class ForgotPasswordTest extends SignUp{
  	  	
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
+	   driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
+		 log.debug(SpanishText);
+		 System.out.println(SpanishText);
+		 Assert.assertEquals(SpanishText,"Revisa tu email.");
  
 	}
 

@@ -30,7 +30,7 @@ public class SignUp extends CommonFunctions{
 		 driver.switchTo().frame("iframe");
 		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 		driver.findElement(By.id("SignupRequest_email")).clear();
-		driver.findElement(By.id("SignupRequest_email")).sendKeys("mailcorporativo122@gointegro.com");
+		driver.findElement(By.id("SignupRequest_email")).sendKeys("marina.touceda@gointegro.com");
 		driver.findElement(By.id("SignupRequest_language_0")).click();
 		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 		driver.findElement(By.id("submit_button")).submit();
