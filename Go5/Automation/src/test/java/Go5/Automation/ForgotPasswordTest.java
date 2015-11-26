@@ -33,7 +33,9 @@ public class ForgotPasswordTest extends SignUp{
 		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.findElement(By.cssSelector(".signup .link")).click();
+		
 		driver.findElement(By.cssSelector(".primary")).isEnabled();
+		log.info(" Buttom to resend is enabled");
 			
 	}
 	@Test(priority=2)
@@ -43,9 +45,10 @@ public class ForgotPasswordTest extends SignUp{
  	  	
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
-	   driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+	   log.info("Insert email and press button to resend password");
+	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
-		 log.debug(SpanishText);
+		 log.info(SpanishText);
 		 System.out.println(SpanishText);
 		 Assert.assertEquals(SpanishText,"Revisa tu email.");
  

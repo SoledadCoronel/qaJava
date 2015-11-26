@@ -12,6 +12,10 @@ import org.testng.annotations.AfterTest;
 
 public class SignUpTest extends CommonFunctions{
 
+	// declare email as variable in order to be changed
+	
+	private String email = this.generateRandomEmail();
+	
 
 	 @BeforeTest // call function to open the browser and load url
 	 public void setup (){
@@ -23,7 +27,9 @@ public class SignUpTest extends CommonFunctions{
 		public void teardown(){
 			closeBrowser();
 	 }
-	 
+	
+	
+   // Function to select the 3 available languages
 	 public void selectLanguage(String language){
 		 if (language =="Spanish"){
 			 driver.findElement(By.id("SignupRequest_language_0")).click();
@@ -35,6 +41,11 @@ public class SignUpTest extends CommonFunctions{
 			 driver.findElement(By.id("SignupRequest_language_1")).click();
 			 }
  	 }
+	 
+	 private void insertEmail (String email){
+		 
+		 driver.findElement(By.id("SignupRequest_email")).sendKeys(email);
+	 }
 
 	 @Test (priority=1)
 	 // Verify that the language is being changed when you select the different languages
@@ -43,7 +54,7 @@ public class SignUpTest extends CommonFunctions{
 		
 		 org.apache.log4j.BasicConfigurator.configure();
 		 
-		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		 driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 		 driver.switchTo().frame("iframe");
 		 log.info("Verifying singup page changes the language");
 		
@@ -124,9 +135,9 @@ public class SignUpTest extends CommonFunctions{
 	public void registerMail(){
 	driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 	driver.findElement(By.id("SignupRequest_email")).clear();
-	driver.findElement(By.id("SignupRequest_email")).sendKeys("mailcorporativo34@gointegro.com");
-	driver.findElement(By.id("SignupRequest_language_0")).click();
-	driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+	this.insertEmail(email);
+	this.selectLanguage("Spanish");
+	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	driver.findElement(By.id("submit_button")).submit();
 	String emailSent = new String(driver.findElement(By.cssSelector(".signup .message")).getText());
 	System.out.println(emailSent);
@@ -142,9 +153,9 @@ public class SignUpTest extends CommonFunctions{
 			driver.navigate().back();
 			driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 			driver.findElement(By.id("SignupRequest_email")).clear();
-			driver.findElement(By.id("SignupRequest_email")).sendKeys("mailcorporativo34@gointegro.com");
+			this.insertEmail(email);
 			this.selectLanguage("Spanish");
-			driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 			String pending=new String(driver.findElement(By.cssSelector(".errormessage a ")).getText());
 	        System.out.println(pending);
 	        Assert.assertEquals(pending, "El email que ingresaste está pendiente de validación. Reenvia el email.");

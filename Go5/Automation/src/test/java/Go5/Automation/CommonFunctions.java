@@ -2,7 +2,10 @@ package Go5.Automation;
 
 
 
+import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -30,7 +33,10 @@ public class CommonFunctions {
 			 driver.manage().window().maximize();
 		   } 
 	  
-	  
+	  public void openSiteAfterCreatePlatforEspanish(){
+		   driver.get("http://signup.qa.go5.gointegro.net/es/signup");
+		   driver.manage().window().maximize();
+	  }
 	  
 	  //To Close Browser--It closes only the browser window that WebDriver is currently controlling.
 	 public void closeBrowser(){
@@ -41,7 +47,28 @@ public class CommonFunctions {
 	 public void quitBrowser(){
 		 driver.quit();
 	 }
-  	 
+  	
+	 	 	
+	 	//@Parameters({ "sUsername","sPassword" })
+	 	
+	 	public void login(String sUsername,String sPassword) throws Exception { 
+	 	
+	 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	 		driver.findElement(By.id("signInIdentification")).clear();
+	 		driver.findElement(By.id("signInIdentification")).sendKeys(sUsername);
+	 		driver.findElement(By.id("signInPassword")).clear();
+	 		driver.findElement(By.id("signInPassword")).sendKeys(sPassword);
+	 		 driver.findElement(By.cssSelector(".primary")).click();
+	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	  	}
+
+	 	public String generateRandomEmail(){
+	 	
+	 	 int rand = (int) (Math.random() * 999999999);
+	    String email = "qa" + rand + "@gointegro.com";
+	    return email;
 }
+}
+
 
 

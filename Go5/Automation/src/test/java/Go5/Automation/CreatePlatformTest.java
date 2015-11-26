@@ -17,14 +17,13 @@ public class CreatePlatformTest extends SignUp{
 	 @BeforeTest // call function to open the browser and load url
 	 
 	  public void openPlatform() throws Exception{
-		urlToken=this.signup();
-		// String urlTOken = "http://signup.qa.go5.gointegro.net/es/createPlatform/token/612aaycex0cgwk00wocwckgowwss8kw8cg4ksggwwoow844c48";
-	   driver.get(urlToken);
-	   driver.manage().window().maximize();
+		
+		 urlToken=this.signup();
+		 driver.get(urlToken);
+	    driver.manage().window().maximize();
 	 }
 	 
-	   
-	
+	   	
 	 @AfterTest // call function to close browser 
 		
 		public void teardown(){
@@ -38,7 +37,10 @@ public class CreatePlatformTest extends SignUp{
 			  
 	 	   
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.findElement(By.id("CreateAccount_company")).sendKeys("Automation2");
+		driver.switchTo().defaultContent();
+		driver.findElement(By.id("CreateAccount_company")).clear();
+		driver.findElement(By.id("CreateAccount_company")).sendKeys("Automation22");
+		driver.findElement(By.id("CreateAccount_subdomain")).clear();
 		driver.findElement(By.id("CreateAccount_subdomain")).sendKeys("Site1");
 		driver.findElement(By.id("CreateAccount_qty_employees_label")).sendKeys("0-50");
 		driver.findElement(By.id("CreateAccount_name_label")).sendKeys("FakeName");
@@ -48,7 +50,10 @@ public class CreatePlatformTest extends SignUp{
 		driver.findElement(By.id("CreateAccount_timezone_label")).sendKeys("(GMT-10:00)Hawaii");
 		driver.findElement(By.id("CreateAccount_terms_and_conditions")).click();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.findElement(By.id("submit_button")).click();
+		driver.findElement(By.id("submit_button")).submit();
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		//driver.findElement(By.id("SignupRequest_email")).sendKeys("sdsdsdsadsa");
+		
 		
 		
 		
