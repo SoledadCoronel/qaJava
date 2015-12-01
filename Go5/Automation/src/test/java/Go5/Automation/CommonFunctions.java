@@ -68,6 +68,20 @@ public class CommonFunctions {
 	    String email = "qa" + rand + "@gointegro.com";
 	    return email;
 }
+
+	 // Function to select the 3 available languages
+		 public void selectLanguage(String language){
+			 if (language =="Spanish"){
+				 driver.findElement(By.id("SignupRequest_language_0")).click();
+			 }
+			 else if (language=="English"){
+				 driver.findElement(By.id("SignupRequest_language_2")).click();			 
+			 }
+			 else if (language=="Portuguese"){
+				 driver.findElement(By.id("SignupRequest_language_1")).click();
+				 }
+	 	 }
+
 }
 
 

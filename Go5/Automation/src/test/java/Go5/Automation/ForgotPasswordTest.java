@@ -43,6 +43,7 @@ public class ForgotPasswordTest extends SignUp{
 	public void insertEmailToResendPassword() throws Exception { 
 	
  	  	
+		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
 	   log.info("Insert email and press button to resend password");

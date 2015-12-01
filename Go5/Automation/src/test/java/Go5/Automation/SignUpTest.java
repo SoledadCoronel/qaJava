@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
@@ -17,30 +19,18 @@ public class SignUpTest extends CommonFunctions{
 	private String email = this.generateRandomEmail();
 	
 
-	 @BeforeTest // call function to open the browser and load url
+	 @BeforeClass // call function to open the browser and load url
 	 public void setup (){
 	   openSiteSignUp();
 	 }
 	
-	 @AfterTest // call function to close browser 
+	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			closeBrowser();
+			quitBrowser();
 	 }
 	
-	
-   // Function to select the 3 available languages
-	 public void selectLanguage(String language){
-		 if (language =="Spanish"){
-			 driver.findElement(By.id("SignupRequest_language_0")).click();
-		 }
-		 else if (language=="English"){
-			 driver.findElement(By.id("SignupRequest_language_2")).click();			 
-		 }
-		 else if (language=="Portuguese"){
-			 driver.findElement(By.id("SignupRequest_language_1")).click();
-			 }
- 	 }
+	   
 	 
 	 private void insertEmail (String email){
 		 
@@ -94,7 +84,8 @@ public class SignUpTest extends CommonFunctions{
 	 public void verifyIncompleteMailAllLanguages(){
 		
 		 
-		 driver.findElement(By.id("SignupRequest_email")).sendKeys("mailcorporativo1113");
+		driver.findElement(By.id("SignupRequest_email")).clear();
+		driver.findElement(By.id("SignupRequest_email")).sendKeys("mailcorporativo1113");
 		 //Select Spanish language
 		 this.selectLanguage("Spanish");
 		 //Validate error 
@@ -119,10 +110,12 @@ public class SignUpTest extends CommonFunctions{
 	public void validateCorporativeMail(){
 		// Select language
 		this.selectLanguage("Spanish");
+		driver.findElement(By.id("SignupRequest_email")).clear();
 		driver.findElement(By.id("SignupRequest_email")).sendKeys("zaraza@hotmail.com");
 		//Validate error spanish
 		 String SpanishText = new String( driver.findElement(By.cssSelector(".signup .errormessage")).getText());
 		 log.debug(SpanishText);
+		 driver.findElement(By.id("SignupRequest_email")).clear();
 		 driver.findElement(By.id("SignupRequest_email")).sendKeys("chumbiba@gmail.com");
 		//Validate error spanish
 		 String SpanishText2 = new String( driver.findElement(By.cssSelector(".signup .errormessage")).getText());
