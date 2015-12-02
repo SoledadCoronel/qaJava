@@ -15,7 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class CommonFunctions {
     
 	
-	public static WebDriver driver= new FirefoxDriver();
+	final WebDriver driver= new FirefoxDriver();
 	Logger log = Logger.getLogger("automation");
 	
 	

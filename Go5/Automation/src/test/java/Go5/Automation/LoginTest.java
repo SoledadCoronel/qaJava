@@ -3,26 +3,45 @@ package Go5.Automation;
 
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class LoginTest extends CommonFunctions{
+public class LoginTest {
 
+	private WebDriver driver= new FirefoxDriver();
+	Logger log = Logger.getLogger("automation");
 
 	 @BeforeClass // call function to open the browser and load url
 	 public void setup (){
-	   openSiteLogin();
+		 driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+		 driver.manage().window().maximize();
 	 }
-	
+		public void login(String sUsername,String sPassword) throws Exception { 
+		 	
+	 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	 		driver.findElement(By.id("signInIdentification")).clear();
+	 		driver.findElement(By.id("signInIdentification")).sendKeys(sUsername);
+	 		driver.findElement(By.id("signInPassword")).clear();
+	 		driver.findElement(By.id("signInPassword")).sendKeys(sPassword);
+	 		 driver.findElement(By.cssSelector(".primary")).click();
+	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	  	}
+	 
+	 
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			closeBrowser();
+			driver.close();
 		}
 
 	@Test(priority=3)

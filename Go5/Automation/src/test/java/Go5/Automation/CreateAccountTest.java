@@ -45,7 +45,7 @@ public class CreateAccountTest extends CommonFunctions{
 		public void createAccounthoutDomainSpanish() throws Exception { 
 		
 			
-			 org.apache.log4j.BasicConfigurator.configure();
+			
 	 	  	log.info("Validate invalid email in Spanish, button remains unavailable");
 					
 			driver.findElement(By.id("SignupRequest_email")).clear();
@@ -67,7 +67,7 @@ public class CreateAccountTest extends CommonFunctions{
 		public void createAccounthWithoutDomainPortuguese() throws Exception { 
 		
 			
-			 org.apache.log4j.BasicConfigurator.configure();
+			
 	 	  	log.info("Validate incorrect email in Portuguese,button remains unavailable ");
 					
 			driver.findElement(By.id("SignupRequest_email")).clear();
@@ -88,8 +88,8 @@ public class CreateAccountTest extends CommonFunctions{
 		@Test(priority=4)
 		public void ceateAccounthWithoutDomainEnglish() throws Exception { 
 		
-			
-			 org.apache.log4j.BasicConfigurator.configure();
+			org.apache.log4j.BasicConfigurator.configure();
+			 
 	 	  	log.info("Validate incorrect email in English, button remains unavailable ");
 					
 			driver.findElement(By.id("SignupRequest_email")).clear();
@@ -99,8 +99,10 @@ public class CreateAccountTest extends CommonFunctions{
 			String englishmessage = new String (driver.findElement(By.cssSelector(".errormessage")).getText());
 			log.info(englishmessage);
 			Assert.assertEquals(englishmessage, "The entered email is invalid.");
-			String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
-			if (atrButton == "primary inactive"){
+			Boolean submitEnable= new Boolean(driver.findElement(By.id("submit_button")).isEnabled());
+			//String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
+			log.info(submitEnable);
+			if (submitEnable==true){
 				log.info("The login button is enabled");
 			}
 			else
@@ -112,7 +114,7 @@ public class CreateAccountTest extends CommonFunctions{
 		public void ceateAccounthWithoutCorporativeDomainSpanish() throws Exception { 
 		
 			
-			 org.apache.log4j.BasicConfigurator.configure();
+			 
 	 	  	log.info("Validate mail entered is not corporative, button remains unavailable,message displayed in Spanish");
 					
 			driver.findElement(By.id("SignupRequest_email")).clear();
@@ -134,7 +136,6 @@ public class CreateAccountTest extends CommonFunctions{
 		public void ceateAccounthWithoutCorporativeDomainPortuguse() throws Exception { 
 		
 			
-			 org.apache.log4j.BasicConfigurator.configure();
 	 	  	log.info("Validate mail entered is not corporative, button remains unavailable, message displayed in Portuguese ");
 					
 			driver.findElement(By.id("SignupRequest_email")).clear();
@@ -157,7 +158,7 @@ public class CreateAccountTest extends CommonFunctions{
 		public void ceateAccounthWithoutCorporativeDomainEngish() throws Exception { 
 		
 			
-			 org.apache.log4j.BasicConfigurator.configure();
+			
 	 	  	log.info("Validate mail entered is not corporative, button remains unavailable,message displayed in English ");
 					
 			driver.findElement(By.id("SignupRequest_email")).clear();

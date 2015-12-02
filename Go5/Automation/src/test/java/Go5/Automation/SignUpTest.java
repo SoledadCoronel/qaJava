@@ -4,9 +4,14 @@ package Go5.Automation;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
@@ -17,17 +22,19 @@ public class SignUpTest extends CommonFunctions{
 	// declare email as variable in order to be changed
 	
 	private String email = this.generateRandomEmail();
-	
+	//private WebDriver driver= new FirefoxDriver();
 
 	 @BeforeClass // call function to open the browser and load url
+	 
 	 public void setup (){
-	   openSiteSignUp();
+		 driver.get("http://signup.qa.go5.gointegro.net/landing");
+		 driver.manage().window().maximize();
 	 }
 	
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			quitBrowser();
+			driver.close();
 	 }
 	
 	   
@@ -54,16 +61,14 @@ public class SignUpTest extends CommonFunctions{
 		  
 		 String SpanishText = new String( driver.findElement(By.cssSelector(".signup p")).getText());
 		 log.debug(SpanishText);
-		 System.out.println(SpanishText);
-		 Assert.assertEquals(SpanishText,"Completa la siguiente información para obtener tu propia plataforma de GOintegro");
+		  Assert.assertEquals(SpanishText,"Completa la siguiente información para obtener tu propia plataforma de GOintegro");
 		 
 		 //Select Portuguese language
 		
 		 this.selectLanguage("Portuguese");		 
 		  // Get Validation 
 		 String PortugueseText = new String( driver.findElement(By.cssSelector(".signup p")).getText());
-		 System.out.println(PortugueseText);
-		 log.debug(PortugueseText);
+		  log.debug(PortugueseText);
 		 Assert.assertEquals(PortugueseText,"Preencha as seguintes informações para sua própria plataforma GOintegro");
 		 
 		 //Select English language
@@ -72,7 +77,6 @@ public class SignUpTest extends CommonFunctions{
 		 // Get validation message
 		 
 		 String EnglishText = new String( driver.findElement(By.cssSelector(".signup p")).getText());
-		 System.out.println(EnglishText);
 		 log.debug(EnglishText);
 		 Assert.assertEquals(EnglishText, "Complete the following information for your own platform GOintegro");
 	 }
@@ -91,19 +95,19 @@ public class SignUpTest extends CommonFunctions{
 		 //Validate error 
 		 String SpanishText = new String( driver.findElement(By.cssSelector(".signup .errormessage")).getText());
 		 log.debug(SpanishText);
-		 System.out.println(SpanishText);
+		 
 		 //Select Language
 		 this.selectLanguage("Portuguese");
 		 //Validate error 
 		 String PortugueseText = new String( driver.findElement(By.cssSelector(".signup .errormessage")).getText());
 		 log.debug(PortugueseText);
-		 System.out.println(PortugueseText);
+		 
 		//Select Language
 		 this.selectLanguage("English");
 		 //Validate error 
 		 String EnglishText = new String( driver.findElement(By.cssSelector(".signup .errormessage")).getText());
 		 log.debug(EnglishText);
-		 System.out.println(EnglishText);
+		 
 		 		
 	 }
 	@Test (priority=3)
@@ -133,7 +137,6 @@ public class SignUpTest extends CommonFunctions{
 	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	driver.findElement(By.id("submit_button")).submit();
 	String emailSent = new String(driver.findElement(By.cssSelector(".signup .message")).getText());
-	System.out.println(emailSent);
 	log.info(emailSent);
 	}
 	
