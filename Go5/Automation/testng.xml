@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="RegressionSuite" parallel="classes" thread-count="5">
+  <test name="Registration">
+ 
+ <parameter name ="sUsername" value="marina.touceda@gointegro.com"/>
+ <parameter name ="sPassword" value="Auto1234"/>
+  
+  	<classes>
+     <class name="Go5.Automation.SignUpTest"/>
+     <class name="Go5.Automation.LoginTest"/>
+     <class name="Go5.Automation.ForgotPasswordTest"/>
+     <class name="Go5.Automation.HomeTest"/>
+     <class name="Go5.Automation.ProfileTest"/>
+      </classes>
+    </test>       
+     
+</suite> <!-- Suite -->
