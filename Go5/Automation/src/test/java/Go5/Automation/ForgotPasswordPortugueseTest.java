@@ -8,15 +8,15 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-;
 
 
-public class ForgotPasswordTest extends SignUp{
+
+public class ForgotPasswordPortugueseTest extends SignUp{
 
 
 	 @BeforeClass // call function to open the browser and load url
 	 public void setup (){
-	   openSiteLogin();
+	   this.openSitePortuguese();;
 	 }
 	
 	 @AfterClass // call function to close browser 
@@ -30,13 +30,14 @@ public class ForgotPasswordTest extends SignUp{
 	public void openForgotPasswordPage(){
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Validating resending password");
-		
+		log.info("Validating resending password in Portuguese");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.findElement(By.cssSelector(".signup .link")).click();
+		if (driver.findElement(By.cssSelector(".primary")).isEnabled())
+		log.info(" Buttom to resend password is enabled ");
+		else
+			log.info("Buttom to resend password is disabled");
 		
-		driver.findElement(By.cssSelector(".primary")).isEnabled();
-		log.info(" Buttom to resend is enabled");
 	}		
 	
 	@Test(priority=3)
@@ -51,7 +52,7 @@ public class ForgotPasswordTest extends SignUp{
 	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
 		 log.info(SpanishText);
-		 Assert.assertEquals(SpanishText,"Revisa tu email.");
+		 Assert.assertEquals(SpanishText,"Verifique se o seu e-mail.");
  
 	}
 
@@ -63,12 +64,12 @@ public class ForgotPasswordTest extends SignUp{
 		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("banana@cachirula.zunga.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
-	   log.info("Insert invalid email and verify that a proper message is displayed");
+	   log.info("Insert invalid email and verify that a proper message is displayed in Portuguese");
 	   driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 	   String SpanishText2 = new String( driver.findElement(By.cssSelector(".signup .reject ")).getText());
 		 log.info(SpanishText2);
 		 System.out.println(SpanishText2);
-		 Assert.assertEquals(SpanishText2,"El email ingresado no se encuentra registrado. Por favor vuelve a intentarlo");
+		 Assert.assertEquals(SpanishText2,"O e-mail inserido não está registrado. Por favor tente novamente");
  
 	}
      }

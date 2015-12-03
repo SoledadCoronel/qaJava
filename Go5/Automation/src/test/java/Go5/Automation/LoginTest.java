@@ -8,12 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterTest;
+
 
 
 public class LoginTest {
@@ -99,14 +96,14 @@ public class LoginTest {
 		this.login("marina.touceda@gointegro.com"," ");
 		// Verify if the button is disabled 
 		
-		String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
-		if (atrButton == "primary inactive"){
+		Boolean goButtonEnabled = new Boolean(driver.findElement(By.cssSelector(".primary")).isEnabled());
+		if (goButtonEnabled == true){
 			log.info("The login button is enabled");
 		}
 		else
 				log.info("The login button is disbled");
-		
-		log.info("Login fails due to password in  blank");
+	
+		log.info("Login fails due to user blank");
 	}
 }
 

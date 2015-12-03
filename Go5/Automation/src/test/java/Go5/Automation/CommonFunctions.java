@@ -26,14 +26,25 @@ public class CommonFunctions {
 		 driver.get("http://signup.qa.go5.gointegro.net/landing");
 		 driver.manage().window().maximize();
 	   }
-	  	 
-	  public void openSiteLogin(){
+	  
+public void openSiteLogin(){
+		 
+		 driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+		 driver.manage().window().maximize();
+	   } 
+	
+      public void openSiteEnglish(){
+		 
+		 driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
+		 driver.manage().window().maximize();
+	   } 
+	  public void openSitePortuguese(){
 			 
-			 driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+			 driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
 			 driver.manage().window().maximize();
 		   } 
 	  
-	  public void openSiteAfterCreatePlatforEspanish(){
+	  public void openSignupForAccount(){
 		   driver.get("http://signup.qa.go5.gointegro.net/es/signup");
 		   driver.manage().window().maximize();
 	  }

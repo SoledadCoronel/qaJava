@@ -36,7 +36,8 @@ public class SignUp extends CommonFunctions{
 		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 		log.info(" Loading signup page");
 		this.insertEmail(email);
-		driver.findElement(By.id("SignupRequest_language_0")).click();
+		this.selectLanguage("Portuguese");
+		//driver.findElement(By.id("SignupRequest_language_0")).click();
 		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 		driver.findElement(By.id("submit_button")).submit();
 		log.info("Submit form and get token to create platform");

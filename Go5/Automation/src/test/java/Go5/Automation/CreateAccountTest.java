@@ -5,20 +5,21 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterTest;
+
 
 
 public class CreateAccountTest extends CommonFunctions{
 
 
-	 @BeforeTest // call function to open the browser and load url
-	 public void setup (){
-		 openSiteAfterCreatePlatforEspanish();
-	 }
+	 @BeforeClass // call function to open the browser and load url
 	
-	 @AfterTest // call function to close browser 
+	 public void setup (){
+		openSignupForAccount();
+	 }
+	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
 			closeBrowser();
@@ -33,8 +34,11 @@ public class CreateAccountTest extends CommonFunctions{
 	 	  	log.info("Try to Create Account with blank user, verify that the button to submit remains unavailable ");
 					
 			driver.findElement(By.id("SignupRequest_email")).clear();
-			String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
-			if (atrButton == "primary inactive"){
+			//Verify that the Go! Button is disabled
+			Boolean submitEnable= new Boolean(driver.findElement(By.id("submit_button")).isEnabled());
+			log.info(" The state of the Go button is :");
+			log.info(submitEnable);
+			if (submitEnable==true){
 				log.info("The login button is enabled");
 			}
 			else
@@ -55,8 +59,11 @@ public class CreateAccountTest extends CommonFunctions{
 			String spanishmessage = new String (driver.findElement(By.cssSelector(".errormessage")).getText());
 			log.info(spanishmessage);
 			Assert.assertEquals(spanishmessage,"El email ingresado es inválido.");
-			String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
-			if (atrButton == "primary inactive"){
+			//Verify that the Go! Button is disabled
+			Boolean submitEnable= new Boolean(driver.findElement(By.id("submit_button")).isEnabled());
+			log.info(" The state of the Go button is :");
+			log.info(submitEnable);
+			if (submitEnable==true){
 				log.info("The login button is enabled");
 			}
 			else
@@ -77,13 +84,17 @@ public class CreateAccountTest extends CommonFunctions{
 			String portuguesemessage = new String (driver.findElement(By.cssSelector(".errormessage")).getText());
 			log.info(portuguesemessage);
 			Assert.assertEquals(portuguesemessage,"O e-mail digitado é inválido");
-			String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
-			if (atrButton == "primary inactive"){
+			//Verify that the Go! Button is disabled
+			Boolean submitEnable= new Boolean(driver.findElement(By.id("submit_button")).isEnabled());
+			log.info(" The state of the Go button is :");
+			log.info(submitEnable);
+			if (submitEnable==true){
 				log.info("The login button is enabled");
 			}
 			else
 					log.info("The GO! button is disabled");
-			}
+		}
+		
 		
 		@Test(priority=4)
 		public void ceateAccounthWithoutDomainEnglish() throws Exception { 
@@ -99,8 +110,9 @@ public class CreateAccountTest extends CommonFunctions{
 			String englishmessage = new String (driver.findElement(By.cssSelector(".errormessage")).getText());
 			log.info(englishmessage);
 			Assert.assertEquals(englishmessage, "The entered email is invalid.");
+			//Verify that the Go! Button is disabled
 			Boolean submitEnable= new Boolean(driver.findElement(By.id("submit_button")).isEnabled());
-			//String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
+			log.info(" The state of the Go button is :");
 			log.info(submitEnable);
 			if (submitEnable==true){
 				log.info("The login button is enabled");
@@ -124,16 +136,20 @@ public class CreateAccountTest extends CommonFunctions{
 			String englishmessage = new String (driver.findElement(By.cssSelector(".errormessage")).getText());
 			log.info(englishmessage);
 			Assert.assertEquals(englishmessage,"El email ingresado no es un email corporativo.");
-			String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
-			if (atrButton == "primary inactive"){
+			//Verify that the Go! Button is disabled
+			Boolean submitEnable= new Boolean(driver.findElement(By.id("submit_button")).isEnabled());
+			log.info(" The state of the Go button is :");
+			log.info(submitEnable);
+			if (submitEnable==true){
 				log.info("The login button is enabled");
 			}
 			else
 					log.info("The GO! button is disabled");
-			}
+		}
+		
  
 		@Test(priority=6)
-		public void ceateAccounthWithoutCorporativeDomainPortuguse() throws Exception { 
+		public void ceateAccounthWithoutCorporativeDomainPortuguese() throws Exception { 
 		
 			
 	 	  	log.info("Validate mail entered is not corporative, button remains unavailable, message displayed in Portuguese ");
@@ -145,16 +161,19 @@ public class CreateAccountTest extends CommonFunctions{
 			String englishmessage = new String (driver.findElement(By.cssSelector(".errormessage")).getText());
 			log.info(englishmessage);
 			Assert.assertEquals(englishmessage,"O e-mail inserido não é um e-mail corporativo");
-			String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
-			if (atrButton == "primary inactive"){
+			//Verify that the Go! Button is disabled
+			Boolean submitEnable= new Boolean(driver.findElement(By.id("submit_button")).isEnabled());
+			log.info(" The state of the Go button is :");
+			log.info(submitEnable);
+			if (submitEnable==true){
 				log.info("The login button is enabled");
 			}
 			else
 					log.info("The GO! button is disabled");
-				}
+		}
  
 		
-		@Test(priority=5)
+		@Test(priority=7)
 		public void ceateAccounthWithoutCorporativeDomainEngish() throws Exception { 
 		
 			
@@ -168,13 +187,15 @@ public class CreateAccountTest extends CommonFunctions{
 			String englishmessage = new String (driver.findElement(By.cssSelector(".errormessage")).getText());
 			log.info(englishmessage);
 			Assert.assertEquals(englishmessage,"The email entered is not a corporate email");
-			String atrButton = new String (driver.findElement(By.cssSelector(".primary")).getCssValue(".primary"));
-			if (atrButton == "primary inactive"){
+			//Verify that the Go! Button is disabled
+			Boolean submitEnable= new Boolean(driver.findElement(By.id("submit_button")).isEnabled());
+			log.info(" The state of the Go button is :");
+			log.info(submitEnable);
+			if (submitEnable==true){
 				log.info("The login button is enabled");
 			}
 			else
 					log.info("The GO! button is disabled");
-				
 		}
  
 	}

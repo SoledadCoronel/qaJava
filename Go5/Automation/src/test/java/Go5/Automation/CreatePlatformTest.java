@@ -19,7 +19,7 @@ import org.testng.annotations.AfterTest;
 public class CreatePlatformTest extends SignUp{
 
 	private String urlToken;
-	private WebDriver driver= new FirefoxDriver();
+	//private WebDriver driver= new FirefoxDriver();
 	
 	@BeforeClass // call function to open the browser and load url
 	
@@ -47,7 +47,7 @@ public class CreatePlatformTest extends SignUp{
 		driver.findElement(By.id("CreateAccount_company")).clear();
 		driver.findElement(By.id("CreateAccount_company")).sendKeys("Automation_Company");
 		driver.findElement(By.id("CreateAccount_subdomain")).clear();
-		driver.findElement(By.id("CreateAccount_subdomain")).sendKeys("Automation1");
+		driver.findElement(By.id("CreateAccount_subdomain")).sendKeys("Automation3");
 		driver.findElement(By.id("CreateAccount_qty_employees_label")).sendKeys("0-50");
 		driver.findElement(By.id("CreateAccount_name_label")).sendKeys("FakeName");
 		driver.findElement(By.id("CreateAccount_last_name_label")).sendKeys("FakeSurname");
