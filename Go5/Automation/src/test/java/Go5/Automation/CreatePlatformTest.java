@@ -1,6 +1,7 @@
 package Go5.Automation;
 
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -34,11 +35,39 @@ public class CreatePlatformTest extends SignUp{
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			driver.close();
+			driver.quit();
 		}
 
-	
-	@Test (enabled= true)
+	/* @Test(priority=1)
+		public void validateFieldsCreatePlatform() throws Exception { 
+			
+				  
+		 	   
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			driver.findElement(By.id("CreateAccount_company")).clear();
+			driver.findElement(By.id("CreateAccount_company")).sendKeys("012345678901234567890123456789012345678901234567890123456789012345678901234567890123456");
+			String errorMessage= new String (driver.findElement(By.cssSelector(" .error-message-CreateAccount_company")).getText());
+			log.info(errorMessage);
+			Assert.assertEquals(errorMessage, "El campo no debe estar vacio y no debe exceder los 80 caracteres.");
+			driver.findElement(By.id("CreateAccount_subdomain")).clear();
+			driver.findElement(By.id("CreateAccount_subdomain")).sendKeys("??????????????????????????????????????????????????????????????????");
+			String error2= new String(driver.findElement(By.cssSelector(".error-message-CreateAccount_subdomain ")).getText());
+			log.info(error2);
+			Assert.assertEquals(error2, "El subdominio ingresado es invalido");
+			driver.findElement(By.id("CreateAccount_qty_employees_label")).sendKeys("0-50");
+			
+			driver.findElement(By.id("CreateAccount_name_label")).sendKeys("FakeName");
+			driver.findElement(By.id("CreateAccount_last_name_label")).sendKeys("FakeSurname");
+			driver.findElement(By.id("CreateAccount_password_label")).sendKeys("Fake1234");
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			driver.findElement(By.id("CreateAccount_timezone_label")).sendKeys("(GMT-10:00)Hawaii");
+			driver.findElement(By.id("CreateAccount_terms_and_conditions")).click();
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			driver.findElement(By.id("submit_button")).submit();
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	 }
+	 */
+	@Test (priority=1)
 	public void registration() throws Exception { 
 		
 			  
@@ -56,7 +85,7 @@ public class CreatePlatformTest extends SignUp{
 		driver.findElement(By.id("CreateAccount_timezone_label")).sendKeys("(GMT-10:00)Hawaii");
 		driver.findElement(By.id("CreateAccount_terms_and_conditions")).click();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.findElement(By.id("submit_button")).submit();
+		//driver.findElement(By.id("submit_button")).submit();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		//driver.findElement(By.id("SignupRequest_email")).sendKeys("sdsdsdsadsa");
 		
