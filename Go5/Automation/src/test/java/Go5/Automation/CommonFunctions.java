@@ -2,38 +2,50 @@ package Go5.Automation;
 
 
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 
 
 
 public class CommonFunctions {
     
-	
 	final WebDriver driver= new FirefoxDriver();
+	//RemoteWebDriver driver = new FirefoxDriver();
 	Logger log = Logger.getLogger("automation");
-	
-	
-    
+		
 	 
 	 public void openSiteSignUp(){
 		 
 		 driver.get("http://signup.qa.go5.gointegro.net/landing");
 		 driver.manage().window().maximize();
 	   }
-	  	 
-	  public void openSiteLogin(){
+	  
+public void openSiteLogin(){
+		 
+		 driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+		 driver.manage().window().maximize();
+	   } 
+	
+      public void openSiteEnglish(){
+		 
+		 driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
+		 driver.manage().window().maximize();
+	   } 
+	  public void openSitePortuguese(){
 			 
-			 driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+			 driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
 			 driver.manage().window().maximize();
 		   } 
 	  
-	  public void openSiteAfterCreatePlatforEspanish(){
+	  public void openSignupForAccount(){
 		   driver.get("http://signup.qa.go5.gointegro.net/es/signup");
 		   driver.manage().window().maximize();
 	  }

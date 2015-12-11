@@ -27,14 +27,14 @@ public class SignUpTest extends CommonFunctions{
 	 @BeforeClass // call function to open the browser and load url
 	 
 	 public void setup (){
-		 driver.get("http://signup.qa.go5.gointegro.net/landing");
+		this.openSiteSignUp();
 		 driver.manage().window().maximize();
 	 }
 	
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			driver.close();
+			driver.quit();
 	 }
 	
 	   
