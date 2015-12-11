@@ -26,16 +26,16 @@ public class BrowserStack extends CommonFunctions {
   
   private WebDriver driver;  
 
-
+  
   @BeforeClass
-     public void setUp(String browser, String version, String platform) throws Exception {
+  @org.testng.annotations.Parameters(value={"browser","version","platform"})
+  public void setUp(String browser, String version, String platform) throws Exception {
     DesiredCapabilities capability = new DesiredCapabilities();
     capability.setCapability("platform",platform);
     capability.setCapability("browserName", browser);
     capability.setCapability("browserVersion", version);
     capability.setCapability("project", "P1");
-    capability.setCapability("build", "2.0");
-    //capability.setCapability("device","Samsung Galaxy S5");
+    capability.setCapability("build", "1.0");
     driver = new RemoteWebDriver(
       new URL("http://marina157:MftFShNNBHfybCP6NyQL@hub.browserstack.com/wd/hub"),
       capability);

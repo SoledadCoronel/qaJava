@@ -1,6 +1,10 @@
 package Go5.Automation;
 
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -39,23 +43,7 @@ public class ForgotPasswordPortugueseTest extends SignUp{
 			log.info("Buttom to resend password is disabled");
 		
 	}		
-	
-	@Test(priority=3)
-	
-	public void insertEmailToResendPassword() throws Exception { 
-	
- 	  	
-		driver.findElement(By.id("signInIdentification")).clear();
-		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-	   driver.findElement(By.cssSelector(".primary")).click();
-	   log.info("Insert email and press button to resend password");
-	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
-		 log.info(SpanishText);
-		 Assert.assertEquals(SpanishText,"Verifique se o seu e-mail.");
- 
-	}
-
+		
 	@Test(priority=2)
 	
 	public void insertInvalidEmail() throws Exception { 
@@ -69,7 +57,28 @@ public class ForgotPasswordPortugueseTest extends SignUp{
 	   String SpanishText2 = new String( driver.findElement(By.cssSelector(".signup .reject ")).getText());
 		 log.info(SpanishText2);
 		 System.out.println(SpanishText2);
-		 Assert.assertEquals(SpanishText2,"O e-mail inserido não está registrado. Por favor tente novamente");
+		 AssertJUnit.assertEquals(SpanishText2,"O e-mail inserido não está registrado. Por favor tente novamente");
+ 
+	}
+	
+@Test(priority=3)
+	
+	public void insertEmailToResendPassword() throws Exception { 
+	
+ 	  	
+		driver.findElement(By.id("signInIdentification")).clear();
+		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
+	   driver.findElement(By.cssSelector(".primary")).click();
+	   log.info("Insert email and press button to resend password");
+	   String sentMessage = new String (driver.findElement(By.cssSelector(".loading")).getText());
+	   log.info(sentMessage);
+	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	   
+	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
+		 log.info(SpanishText);
+		 Assert.assertEquals(SpanishText,"Verifique se o seu e-mail.");
+		// String sentMessage2 = new String (driver.findElement(By.cssSelector(".overlayloading p")).getText());
+		//   log.info(sentMessage2);
  
 	}
      }
