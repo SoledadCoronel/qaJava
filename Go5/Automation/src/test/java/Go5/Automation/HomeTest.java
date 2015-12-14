@@ -43,5 +43,5 @@ public class HomeTest extends CommonFunctions{
  	  	log.info("Menu is present");
 	}
 
-	
-}
+	}
+
