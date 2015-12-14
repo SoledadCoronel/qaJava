@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ForgotPasswordPortugueseTestBS {
+public class ForgotPasswordPortuguese {
 	
 	 private WebDriver driver;
 
@@ -31,8 +31,8 @@ public class ForgotPasswordPortugueseTestBS {
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", true);
 	    driver = new RemoteWebDriver(
-	      new URL("http://marina157:MftFShNNBHfybCP6NyQL@hub.browserstack.com/wd/hub"),
-	      capability);
+	    		 new URL("http://matiaspepe1:pFkpdbo5wSzZzFmLXQhM@hub.browserstack.com/wd/hub"),
+	    	      capability);
 	  }  
 	
 	 @AfterClass // call function to close browser 
