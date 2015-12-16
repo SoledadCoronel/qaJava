@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
@@ -34,6 +33,7 @@ public class Login {
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://matiaspepe1:pFkpdbo5wSzZzFmLXQhM@hub.browserstack.com/wd/hub"),
 	    	      capability);
+	    driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 	  }  
 	
 	
@@ -59,13 +59,12 @@ public class Login {
 	 @Test(priority=1)
 		public void testLoginWithBlankUser() throws Exception { 
 		
-		    driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+		   // driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 			 org.apache.log4j.BasicConfigurator.configure();
 	 	  	log.info("Try a login with blank user ");
 			this.login1("  ","Auto1234");
 			// Verify if the button is disabled 
-			
-			driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+						
 			Boolean goButtonEnabled = new Boolean(driver.findElement(By.cssSelector(".primary")).isEnabled());
 			if (goButtonEnabled == true){
 				log.info("The login button is enabled");
@@ -81,7 +80,7 @@ public class Login {
 		
 			
 	 	  	log.info("Try a login with blank password");
-	 	  	driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+	 	//  	driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 			this.login1("marina.touceda@gointegro.com"," ");
 			// Verify if the button is disabled 
 			
@@ -101,7 +100,7 @@ public class Login {
 		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Validating login page");
-		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+		//driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -119,7 +118,7 @@ public class Login {
 	public void testProperLogin() throws Exception { 
 	
  	  	log.info("Try a login");
- 	  	driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+ 	  //	driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		this.login1("marina.touceda@gointegro.com","Auto1234");
 		log.info("Login successfull");
  

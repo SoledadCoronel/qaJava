@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class ProfileTest extends CommonFunctions{
+public class LogoutTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
@@ -25,17 +25,17 @@ public class ProfileTest extends CommonFunctions{
 			closeBrowser();
 		}
 
-	@Test(priority=1)
-	public void GoToProfile(){
+	@Test
+	public void EnterTheHomePage(){
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Login into GoIntegro and check the menu is present");
+		log.info("Verify logout from user profile is working");
 		// Go to the user menu
-				driver.findElement(By.cssSelector(".applications .users .user")).click();
-				driver.findElement(By.cssSelector(".applications .active .users .active .user")).click();
-				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		
+		driver.findElement(By.cssSelector(".applications .users .user")).click();
+		// Made logout
+		driver.findElement(By.cssSelector(".applications .active .users .active .logout")).click();
+		log.info(" Logout has been successfull");
+			
 	}
-	
-	
-}
+	}
+

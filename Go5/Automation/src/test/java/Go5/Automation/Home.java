@@ -34,6 +34,7 @@ public class Home {
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://matiaspepe1:pFkpdbo5wSzZzFmLXQhM@hub.browserstack.com/wd/hub"),
 	    	      capability);
+	    driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 	  }  
 	
 	 @AfterClass // call function to close browser 
@@ -51,6 +52,7 @@ public class Home {
 	 		driver.findElement(By.id("signInPassword")).sendKeys(sPassword);
 	 		 driver.findElement(By.cssSelector(".primary")).click();
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	         
 	  	}
 	 
 	 
@@ -59,26 +61,32 @@ public class Home {
 	 @Test(priority=1)
 	public void EnterTheHomePage() throws Exception{
 		 org.apache.log4j.BasicConfigurator.configure();
-		 driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+		 
 		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		this.login("marina.touceda@gointegro.com","Auto1234");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Login into GoIntegro and check the menu is present");
 		driver.findElement(By.cssSelector(".menu")).isDisplayed();
-		driver.findElement(By.cssSelector(".primary")).click();
+		// Go to the user menu
+		driver.findElement(By.cssSelector(".applications .users .user")).click();
+		// Made logout
+		driver.findElement(By.cssSelector(".applications .active .users .active .logout")).click();
 	}
 	
 	
 	@Test(priority=2)
 	public void validateElementsAtHomePage() throws Exception { 
 	  
-		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		this.login("marina.touceda@gointegro.com","Auto1234");
  	  	log.info("Validate elements present in the page");
  	  	driver.findElement(By.cssSelector(".menu")).isDisplayed();
  	  	log.info("Menu is present");
- 	  	driver.findElement(By.cssSelector(".primary")).click();
+ 	// Go to the user menu
+ 			driver.findElement(By.cssSelector(".applications .users .user")).click();
+ 			// Made logout
+ 			driver.findElement(By.cssSelector(".applications .active .users .active .logout")).click();
 	}
 
 	
