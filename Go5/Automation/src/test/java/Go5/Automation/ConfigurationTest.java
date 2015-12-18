@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class ProfileTest extends CommonFunctions{
+public class ConfigurationTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
@@ -26,19 +26,13 @@ public class ProfileTest extends CommonFunctions{
 		}
 
 	@Test(priority=1)
-	public void GoToProfile(){
-		 org.apache.log4j.BasicConfigurator.configure();
+	public void GoToConfiguration(){
+		 
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Ir al menu de usuario");
+		log.info("Ir a  Configuration menu");
 		
-		// Go to the user menu
-				driver.findElement(By.cssSelector(".applications .users .user")).click();
-		//Get the user name
-			String username= new String(driver.findElement(By.cssSelector(".applications .active .users .active li")).getText());
-				log.info(" El nombre del usuario es  : ");
-				log.info(username);
-		
+		// Go to the configuration
+				driver.findElement(By.cssSelector(".applications .users .configuration")).click();
 	}
-	
-	
+		
 }

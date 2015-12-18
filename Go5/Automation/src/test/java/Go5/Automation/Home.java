@@ -59,7 +59,7 @@ public class Home {
 	 
 	 
 	 @Test(priority=1)
-	public void EnterTheHomePage() throws Exception{
+	public void enterTheHomePage() throws Exception{
 		 org.apache.log4j.BasicConfigurator.configure();
 		 
 		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

@@ -27,7 +27,7 @@ public class HomeTest extends CommonFunctions{
 
 	@Test(priority=1)
 	public void EnterTheHomePage(){
-		 org.apache.log4j.BasicConfigurator.configure();
+		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Login into GoIntegro and check the menu is present");
 		driver.findElement(By.cssSelector(".menu")).isDisplayed();

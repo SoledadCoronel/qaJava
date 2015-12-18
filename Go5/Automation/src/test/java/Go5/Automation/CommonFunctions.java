@@ -17,6 +17,7 @@ public class CommonFunctions {
     
 	final WebDriver driver= new FirefoxDriver();
 	//RemoteWebDriver driver = new FirefoxDriver();
+	
 	Logger log = Logger.getLogger("automation");
 		
 	 
@@ -27,7 +28,7 @@ public class CommonFunctions {
 	   }
 	  
 public void openSiteLogin(){
-		 
+	    org.apache.log4j.BasicConfigurator.configure();
 		 driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		 driver.manage().window().maximize();
 	   } 
