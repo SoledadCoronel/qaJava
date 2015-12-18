@@ -32,7 +32,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">api.cd.gointegro.net</stringProp>
+            <stringProp name="HTTPSampler.domain">platform-ms.cd.gointegro.net</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -49,7 +49,7 @@
           <hashTree/>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Plarform" enabled="true"/>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform - AGREGAR RANDOM" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -60,8 +60,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;solego2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;solego2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -107,6 +107,33 @@
                   </elementProp>
                 </collectionProp>
               </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">PLATFORM_ID</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">NAME</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;name&quot;: &quot;(.+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">SUBDOMAIN</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;subdomain&quot;: &quot;(.+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
               <hashTree/>
               <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
                 <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -222,7 +249,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/3</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -264,13 +291,22 @@
                 <stringProp name="filename"></stringProp>
               </ResultCollector>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="1185827035">${NAME}</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
@@ -410,7 +446,7 @@
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
         &quot;name&quot;: null,&#xd;
-        &quot;subdomain&quot;: &quot;solecita2015&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -510,8 +546,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;Sole&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;solecita2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: null,&#xd;
@@ -611,8 +647,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;Sole&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;solecita2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: null,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -712,8 +748,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;Sole&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;solecita2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: null,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -813,7 +849,7 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;Sole&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;subdomain&quot;: null,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
@@ -914,12 +950,12 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;Sole&quot;,&#xd;
-        &quot;subdomain&quot;: null,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
-        &quot;language&quot;: &quot;es&quot;&#xd;
+        &quot;language&quot;: null&#xd;
       }&#xd;
     },&#xd;
     {&#xd;
@@ -1016,7 +1052,7 @@
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
         &quot;name&quot;: &quot;&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;solecita2015&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -1116,8 +1152,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;solecita2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -1217,8 +1253,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;Sole&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;solecita2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;activedd&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -1318,7 +1354,7 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;Sole&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;subdomain&quot;: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
@@ -1419,8 +1455,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;Sole&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;solecita2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -1520,8 +1556,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;Sole&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;solecita2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-49&quot;,&#xd;
@@ -1621,8 +1657,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)})}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;${SUBDOMAIN}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -1634,7 +1670,7 @@
       &quot;attributes&quot;: {&#xd;
         &quot;name&quot;: &quot;Soledad&quot;,&#xd;
         &quot;last-name&quot;: &quot;Coronel&quot;,&#xd;
-        &quot;email&quot;: &quot;soledad.coronel@sole2015.com&quot;,&#xd;
+        &quot;email&quot;: &quot;soledad.coronel@gointegro.com&quot;,&#xd;
         &quot;password&quot;: &quot;coquito25&quot;&#xd;
       }&#xd;
     }&#xd;
@@ -1660,7 +1696,7 @@
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="51508">400</stringProp>
                 </collectionProp>
@@ -1669,12 +1705,12 @@
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="334641839">The subdomain already exists</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
+                <boolProp name="Assertion.assume_success">true</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
@@ -1722,8 +1758,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -1823,8 +1859,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -1924,8 +1960,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -2025,8 +2061,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -2126,8 +2162,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -2227,8 +2263,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -2317,7 +2353,7 @@
               </ResultCollector>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform - invalidFormatEmail1" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform - invalidFormatEmail1" enabled="false">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -2328,8 +2364,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2017&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2017&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -2418,7 +2454,7 @@
               </ResultCollector>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform - invalidFormatEmail2" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform - invalidFormatEmail2" enabled="false">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -2429,8 +2465,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2018&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2018&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -2530,8 +2566,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -2631,8 +2667,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;sole2015&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;sole2015&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -2730,7 +2766,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;status&quot;: &quot;disabledd&quot;&#xd;
     }&#xd;
@@ -2746,7 +2782,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2893,7 +2929,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;name&quot;: null&#xd;
     }&#xd;
@@ -2909,7 +2945,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2979,9 +3015,9 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;name&quot;: &quot;patchPlatform&quot;&#xd;
+      &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -2995,7 +3031,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3056,7 +3092,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;language&quot;: &quot;en&quot;&#xd;
     }&#xd;
@@ -3072,7 +3108,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3133,7 +3169,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;status&quot;: &quot;pe&quot;&#xd;
     }&#xd;
@@ -3149,7 +3185,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3210,7 +3246,7 @@
               </ResultCollector>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchPlatform - exintingSubdomain" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchPlatform - subdomain" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -3219,9 +3255,9 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;subdomain&quot;: &quot;sole2015&quot;&#xd;
+      &quot;subdomain&quot;: &quot;${SUBDOMAIN}10&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -3235,7 +3271,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3252,6 +3288,15 @@
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="1811506430">&quot;id&quot;: &quot;${PLATFORM_ID}&quot;</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
               <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
@@ -3296,7 +3341,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;status&quot;: null&#xd;
     }&#xd;
@@ -3312,7 +3357,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3382,7 +3427,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;status&quot;: &quot;America/Brasil/Rio de Janeiro&quot;&#xd;
     }&#xd;
@@ -3398,7 +3443,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3468,7 +3513,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;users-range&quot;: null&#xd;
     }&#xd;
@@ -3484,7 +3529,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3554,7 +3599,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
-    &quot;id&quot;: &quot;2&quot;,&#xd;
+    &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;users-range&quot;: &quot;50-100&quot;&#xd;
     }&#xd;
@@ -3570,7 +3615,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/platforms/1</stringProp>
+              <stringProp name="HTTPSampler.path">/platforms/${PLATFORM_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
