@@ -31,17 +31,25 @@ public class HomeTest extends CommonFunctions{
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Login into GoIntegro and check the menu is present");
 		driver.findElement(By.cssSelector(".menu")).isDisplayed();
-		
+		// Go to the user menu
+		driver.findElement(By.cssSelector(".applications .users .user")).click();
+		// Made logout
+		driver.findElement(By.cssSelector(".applications .active .users .active .logout")).click();
+			
 	}
-	
-	
 	@Test(priority=2)
 	public void validateElementsAtHomePage() throws Exception { 
-	
+	  
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		this.login("marina.touceda@gointegro.com","Auto1234");
  	  	log.info("Validate elements present in the page");
  	  	driver.findElement(By.cssSelector(".menu")).isDisplayed();
  	  	log.info("Menu is present");
+ 	// Go to the user menu
+ 			driver.findElement(By.cssSelector(".applications .users .user")).click();
+ 			// Made logout
+ 			driver.findElement(By.cssSelector(".applications .active .users .active .logout")).click();
+	}
 	}
 
-	
-}

@@ -1,14 +1,11 @@
 package Go5.Automation;
 
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
-import org.testng.AssertJUnit;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -58,8 +55,7 @@ public class ForgotPasswordPortugueseTest extends SignUp{
 		 log.info(SpanishText2);
 		 System.out.println(SpanishText2);
 		 AssertJUnit.assertEquals(SpanishText2,"O e-mail inserido não está registrado. Por favor tente novamente");
- 
-	}
+ 	}
 	
 @Test(priority=3)
 	
@@ -70,16 +66,13 @@ public class ForgotPasswordPortugueseTest extends SignUp{
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
 	   log.info("Insert email and press button to resend password");
-	   String sentMessage = new String (driver.findElement(By.cssSelector(".loading")).getText());
+	   String sentMessage = new String (driver.findElement(By.cssSelector(".overlayloading p")).getText());
 	   log.info(sentMessage);
 	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	   
-	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
+	     String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
 		 log.info(SpanishText);
 		 Assert.assertEquals(SpanishText,"Verifique se o seu e-mail.");
-		// String sentMessage2 = new String (driver.findElement(By.cssSelector(".overlayloading p")).getText());
-		//   log.info(sentMessage2);
- 
-	}
+		  
+	 	}
      }
 

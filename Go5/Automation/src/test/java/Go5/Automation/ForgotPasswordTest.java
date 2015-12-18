@@ -48,6 +48,8 @@ public class ForgotPasswordTest extends SignUp{
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
 	   log.info("Insert email and press button to resend password");
+	   String sentMessage = new String (driver.findElement(By.cssSelector(".overlayloading p")).getText());
+	   log.info(sentMessage);
 	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
 		 log.info(SpanishText);
