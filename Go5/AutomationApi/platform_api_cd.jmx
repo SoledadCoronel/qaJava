@@ -120,7 +120,7 @@
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">NAME</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;name&quot;: &quot;(.+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;name&quot;: &quot;([A-Za-z0-9]+?)&quot;,</stringProp>
                 <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -129,7 +129,7 @@
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">SUBDOMAIN</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;subdomain&quot;: &quot;(.+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;subdomain&quot;: &quot;([A-Za-z0-9]+?)&quot;,</stringProp>
                 <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -179,7 +179,22 @@
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getPlatforms" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments"/>
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="page" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">3</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">page</stringProp>
+                  </elementProp>
+                  <elementProp name="size" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">50</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">size</stringProp>
+                  </elementProp>
+                </collectionProp>
               </elementProp>
               <stringProp name="HTTPSampler.domain"></stringProp>
               <stringProp name="HTTPSampler.port"></stringProp>
@@ -2414,7 +2429,7 @@
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="1688190324">must have a valid e-mail format</stringProp>
+                  <stringProp name="-197736460">The email is invalid</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">true</boolProp>
@@ -2515,7 +2530,7 @@
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="1688190324">must have a valid e-mail format</stringProp>
+                  <stringProp name="-197736460">The email is invalid</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">true</boolProp>
@@ -3246,7 +3261,7 @@
               </ResultCollector>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchPlatform - subdomain" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchPlatform - subdomain" enabled="false">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -3257,7 +3272,7 @@
     &quot;type&quot;: &quot;platforms&quot;,&#xd;
     &quot;id&quot;: &quot;${PLATFORM_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;subdomain&quot;: &quot;${SUBDOMAIN}10&quot;&#xd;
+      &quot;subdomain&quot;: &quot;${SUBDOMAIN}&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -3953,8 +3968,8 @@
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;bg-color&quot;: &quot;4078c0&quot;,&#xd;
-      &quot;text-color&quot;: &quot;f9f9f9&quot;&#xd;
+      &quot;bg-color&quot;: &quot;CC66OO&quot;,&#xd;
+      &quot;text-color&quot;: &quot;CCCCCC&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -4049,7 +4064,7 @@
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;bg-color&quot;: null,&#xd;
-      &quot;text-color&quot;: &quot;f9f9f9&quot;&#xd;
+      &quot;text-color&quot;: &quot;CCCCCC&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -4238,7 +4253,7 @@
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;bg-color&quot;: &quot;4078c0&quot;,&#xd;
+      &quot;bg-color&quot;: &quot;CC66OO&quot;,&#xd;
       &quot;text-color&quot;: null&#xd;
     }&#xd;
   }&#xd;
@@ -4334,7 +4349,7 @@
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;bg-color&quot;: &quot;&quot;,&#xd;
-      &quot;text-color&quot;: &quot;f9f9f9&quot;&#xd;
+      &quot;text-color&quot;: &quot;CCCCCC&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -4428,7 +4443,7 @@
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;bg-color&quot;: &quot;4078c0&quot;,&#xd;
+      &quot;bg-color&quot;: &quot;CC66OO&quot;,&#xd;
       &quot;text-color&quot;: &quot;&quot;&#xd;
     }&#xd;
   }&#xd;
@@ -4619,7 +4634,7 @@
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;id&quot;: &quot;${BRANDING_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;bg-color&quot;: &quot;f9f9f9&quot;&#xd;
+      &quot;bg-color&quot;: &quot;CCCCCC&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -4705,7 +4720,7 @@
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;id&quot;: &quot;${BRANDING_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;bg-color&quot;: &quot;f9f9f&quot;&#xd;
+      &quot;bg-color&quot;: &quot;CCCCC&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -4791,7 +4806,7 @@
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;id&quot;: &quot;${BRANDING_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;bg-color&quot;: &quot;f9f9fff&quot;&#xd;
+      &quot;bg-color&quot;: &quot;CCCCCCC&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -4963,7 +4978,7 @@
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;id&quot;: &quot;${BRANDING_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;text-color&quot;: &quot;4078c0&quot;&#xd;
+      &quot;text-color&quot;: &quot;CC66OO&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -5049,7 +5064,7 @@
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;id&quot;: &quot;${BRANDING_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;text-color&quot;: &quot;4078c&quot;&#xd;
+      &quot;text-color&quot;: &quot;CC66O&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -5135,7 +5150,7 @@
     &quot;type&quot;: &quot;brandings&quot;,&#xd;
     &quot;id&quot;: &quot;${BRANDING_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;text-color&quot;: &quot;4078ccc&quot;&#xd;
+      &quot;text-color&quot;: &quot;CC66OOO&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -5370,6 +5385,38 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
       </hashTree>
     </hashTree>
   </hashTree>
