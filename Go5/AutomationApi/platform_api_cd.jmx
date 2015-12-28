@@ -47,7 +47,7 @@
             <boolProp name="CookieManager.clearEachIteration">false</boolProp>
           </CookieManager>
           <hashTree/>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Plarform" enabled="false"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Plarform" enabled="true"/>
           <hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -3758,7 +3758,7 @@
                   </elementProp>
                   <elementProp name="subdomain" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">QAGO25448498</stringProp>
+                    <stringProp name="Argument.value">${SUBDOMAIN}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="Argument.name">subdomain</stringProp>
@@ -3862,7 +3862,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Branding" enabled="false"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Branding" enabled="true"/>
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
               <collectionProp name="HeaderManager.headers">
@@ -5384,7 +5384,7 @@
             <stringProp name="filename"></stringProp>
           </ResultCollector>
           <hashTree/>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Controlador Simple" enabled="true"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Controlador Simple" enabled="false"/>
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
               <collectionProp name="HeaderManager.headers">
@@ -5393,12 +5393,12 @@
                   <stringProp name="Header.value">application/vnd.api+json</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">HTTP-X-GO5-PLATFORM-ID</stringProp>
-                  <stringProp name="Header.value">171</stringProp>
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/vnd.api+json</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">HTTP-X-GO5-USER-ID</stringProp>
-                  <stringProp name="Header.value">412</stringProp>
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">${ACCESS_TOKEN}</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
