@@ -52,17 +52,17 @@ public class LoginTest {
 		driver.findElement(By.cssSelector(".link"));
 		Boolean goButtonEnabled = new Boolean(driver.findElement(By.cssSelector(".primary")).isEnabled());
 		if (goButtonEnabled == true){
-			log.info("The login button is enabled");
+			log.info("El login button esta enabled");
 		}
 		else
-				log.info("The login button is disbled");
+				log.info("El login button esta disbled");
 		
 			
 	}
 	@Test(priority=4)
 	public void testProperLogin() throws Exception { 
 	
- 	  	log.info("Try a login");
+ 	  	log.info("Probar el  login");
 		this.login("marina.touceda@gointegro.com","Auto1234");
 		log.info("Login successfull");
  
@@ -73,36 +73,36 @@ public class LoginTest {
 	
 		
 		 org.apache.log4j.BasicConfigurator.configure();
- 	  	log.info("Try a login with blank user ");
+ 	  	log.info("Probar el login con el campo user vacio ");
 		this.login("  ","Auto1234");
 		// Verify if the button is disabled 
 		
 		
 		Boolean goButtonEnabled = new Boolean(driver.findElement(By.cssSelector(".primary")).isEnabled());
 		if (goButtonEnabled == true){
-			log.info("The login button is enabled");
+			log.info("El login button esta enabled");
 		}
 		else
-				log.info("The login button is disbled");
+				log.info("El login button esta disabled");
 	
-		log.info("Login fails due to user blank");
+		log.info("El login fallo porque el campo usuario estaba en blanco");
 	}
 	
 	@Test(priority=2)
 	public void testLoginWithBlankPassword() throws Exception { 
 	
 		org.apache.log4j.BasicConfigurator.configure();
- 	  	log.info("Try a login with blank password");
+ 	  	log.info("Probar el login con  blank password");
 		this.login("marina.touceda@gointegro.com"," ");
 		// Verify if the button is disabled 
 		
 		Boolean goButtonEnabled = new Boolean(driver.findElement(By.cssSelector(".primary")).isEnabled());
 		if (goButtonEnabled == true){
-			log.info("The login button is enabled");
+			log.info("El login button esta enabled");
 		}
 		else
-				log.info("The login button is disbled");
+				log.info("El login button esta disabled");
 	
-		log.info("Login fails due to user blank");
+		log.info("El loguin fallo porque el password estaba vacio");
 	}
 }
