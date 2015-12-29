@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
+<jmeterTestPlan version="1.2" properties="2.6" jmeter="2.11.20141024">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Plan de Pruebas" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -49,7 +49,7 @@
           <hashTree/>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Plarform" enabled="true"/>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform - AGREGAR RANDOM" enabled="false">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -60,8 +60,8 @@
     {&#xd;
       &quot;type&quot;: &quot;platforms&quot;,&#xd;
       &quot;attributes&quot;: {&#xd;
-        &quot;name&quot;: &quot;multilogin2&quot;,&#xd;
-        &quot;subdomain&quot;: &quot;multilogin2&quot;,&#xd;
+        &quot;name&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
+        &quot;subdomain&quot;: &quot;QAGO${__Random(1,99999999,)}&quot;,&#xd;
         &quot;timezone&quot;: &quot;America/Argentina/Buenos_Aires&quot;,&#xd;
         &quot;status&quot;: &quot;active&quot;,&#xd;
         &quot;users-range&quot;: &quot;0-50&quot;,&#xd;
@@ -73,7 +73,7 @@
       &quot;attributes&quot;: {&#xd;
         &quot;name&quot;: &quot;Soledad&quot;,&#xd;
         &quot;last-name&quot;: &quot;Coronel&quot;,&#xd;
-        &quot;email&quot;: &quot;sinmultilogin@gointegro.com&quot;,&#xd;
+        &quot;email&quot;: &quot;soledad.coronel@gointegro.com&quot;,&#xd;
         &quot;password&quot;: &quot;coquito25&quot;&#xd;
       }&#xd;
     }&#xd;
@@ -149,6 +149,33 @@
                 <boolProp name="Assertion.assume_success">true</boolProp>
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">PLATFORM_ID</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">NAME</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;name&quot;: &quot;([A-Za-z0-9]+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">SUBDOMAIN</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;subdomain&quot;: &quot;([A-Za-z0-9]+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getPlatforms" enabled="true">
@@ -293,14 +320,14 @@
                   </elementProp>
                   <elementProp name="password" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">coquito28</stringProp>
+                    <stringProp name="Argument.value">coquito25</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="Argument.name">password</stringProp>
                   </elementProp>
                   <elementProp name="subdomain" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">empresa3</stringProp>
+                    <stringProp name="Argument.value">${SUBDOMAIN}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="Argument.name">subdomain</stringProp>
@@ -1342,7 +1369,7 @@
               <stringProp name="filename"></stringProp>
             </ResultCollector>
             <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="refreshToken" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRefreshToken" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="subdomain" elementType="HTTPArgument">
@@ -1402,11 +1429,19 @@
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="417462488">&quot;access_token&quot;:</stringProp>
                   <stringProp name="-1974810037">&quot;refresh_token&quot;:</stringProp>
-                  <stringProp name="0"></stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
               <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
@@ -1922,7 +1957,7 @@
     &quot;type&quot;: &quot;forgot-tokens&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;email&quot;: &quot;soledad.coronel@gointegro.com&quot;,&#xd;
-      &quot;subdomain&quot;: &quot;empresa3&quot;&#xd;
+      &quot;subdomain&quot;: &quot;${SUBDOMAIN}&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -1985,7 +2020,7 @@
     &quot;type&quot;: &quot;forgot-tokens&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;email&quot;: &quot;soledad@gointegro.com&quot;,&#xd;
-      &quot;subdomain&quot;: &quot;empresa3&quot;&#xd;
+      &quot;subdomain&quot;: &quot;${SUBDOMAIN}&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -2075,7 +2110,7 @@
     &quot;type&quot;: &quot;forgot-tokens&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;email&quot;: null,&#xd;
-      &quot;subdomain&quot;: &quot;empresax&quot;&#xd;
+      &quot;subdomain&quot;: &quot;${SUBDOMAIN}&quot;&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -2128,8 +2163,8 @@
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;forgot-tokens&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;email&quot;: null,&#xd;
-      &quot;subdomain&quot;: &quot;empresax&quot;&#xd;
+      &quot;email&quot;: &quot;soledad.coronel@gointegro.com&quot;,&#xd;
+      &quot;subdomain&quot;: null&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
