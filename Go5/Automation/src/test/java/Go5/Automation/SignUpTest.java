@@ -53,7 +53,7 @@ public class SignUpTest extends CommonFunctions{
 		 
 		 driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 		 driver.switchTo().frame("iframe");
-		 log.info("Verifying singup page changes the language");
+		 log.info("Verificando que la pagina de  singup cambia los lenguages");
 		
 		 //Select Spanish language
 		  this.selectLanguage("Spanish");

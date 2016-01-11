@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class ProfileTest extends CommonFunctions{
+public class LogoutTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
@@ -25,20 +25,17 @@ public class ProfileTest extends CommonFunctions{
 			closeBrowser();
 		}
 
-	@Test(priority=1)
-	public void GoToProfile(){
+	@Test
+	public void logoutFromProfile(){
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Ir al menu de usuario");
-		
+		log.info("Verify logout from user profile is working");
 		// Go to the user menu
-				driver.findElement(By.cssSelector(".applications .users .user")).click();
-		//Get the user name
-			String username= new String(driver.findElement(By.cssSelector(".applications .active .users .active li")).getText());
-				log.info(" El nombre del usuario es  : ");
-				log.info(username);
-		
+		driver.findElement(By.cssSelector(".applications .users .user")).click();
+		// Made logout
+		driver.findElement(By.cssSelector(".applications .active .users .active .logout")).click();
+		log.info(" Logout has been successfull");
+			
 	}
-	
-	
-}
+	}
+

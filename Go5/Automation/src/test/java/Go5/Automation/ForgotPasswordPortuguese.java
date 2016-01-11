@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ForgotPasswordPortugueseTestBS {
+public class ForgotPasswordPortuguese {
 	
 	 private WebDriver driver;
 
@@ -31,8 +31,9 @@ public class ForgotPasswordPortugueseTestBS {
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", true);
 	    driver = new RemoteWebDriver(
-	      new URL("http://marina157:MftFShNNBHfybCP6NyQL@hub.browserstack.com/wd/hub"),
-	      capability);
+	    		 new URL("http://matiaspepe1:pFkpdbo5wSzZzFmLXQhM@hub.browserstack.com/wd/hub"),
+	    	      capability);
+	    driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
 	  }  
 	
 	 @AfterClass // call function to close browser 
@@ -43,9 +44,9 @@ public class ForgotPasswordPortugueseTestBS {
 
 	@Test(priority=1)
 	
-	public void openForgotPasswordPage(){
+	public void openForgotPasswordPagePortuguese(){
 		 //org.apache.log4j.BasicConfigurator.configure();
-		 driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
+		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		System.out.println("Validating resending password in Portuguese");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -60,13 +61,15 @@ public class ForgotPasswordPortugueseTestBS {
 	
 	@Test(priority=3)
 	
-	public void insertEmailToResendPassword() throws Exception { 
+	public void insertEmailToResendPasswordPortuguese() throws Exception { 
 	
- 	  	
+		
 		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
 	   System.out.println("Insert email and press button to resend password");
+	   String sentMessage = new String (driver.findElement(By.cssSelector(".overlayloading p")).getText());
+	   System.out.println(sentMessage);
 	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
 	   System.out.println(SpanishText);
@@ -76,9 +79,9 @@ public class ForgotPasswordPortugueseTestBS {
 
 	@Test(priority=2)
 	
-	public void insertInvalidEmail() throws Exception { 
+	public void insertInvalidEmailPortuguese() throws Exception { 
 	
- 	  	
+		
 		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("banana@cachirula.zunga.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
