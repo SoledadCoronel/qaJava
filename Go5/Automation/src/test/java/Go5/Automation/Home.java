@@ -29,10 +29,10 @@ public class Home {
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
 	    capability.setCapability("project", "P1");
-	    capability.setCapability("build", "1.0");
+	    capability.setCapability("build", "1.1");
 	    capability.setCapability("browserstack.debug", "true");
 	    driver = new RemoteWebDriver(
-	    		 new URL("http://matiaspepe1:pFkpdbo5wSzZzFmLXQhM@hub.browserstack.com/wd/hub"),
+	    		 new URL("http://http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
 	    driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 	  }  
@@ -77,7 +77,7 @@ public class Home {
 	@Test(priority=2)
 	public void validateElementsAtHomePage() throws Exception { 
 	  
-		
+		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		this.login("marina.touceda@gointegro.com","Auto1234");
  	  	log.info("Validate elements present in the page");

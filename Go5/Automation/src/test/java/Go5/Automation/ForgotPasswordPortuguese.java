@@ -28,12 +28,12 @@ public class ForgotPasswordPortuguese {
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
 	    capability.setCapability("project", "P1");
-	    capability.setCapability("build", "1.0");
+	    capability.setCapability("build", "1.1");
 	    capability.setCapability("debug", true);
 	    driver = new RemoteWebDriver(
-	    		 new URL("http://matiaspepe1:pFkpdbo5wSzZzFmLXQhM@hub.browserstack.com/wd/hub"),
+	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
-	    driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
+	  //  driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
 	  }  
 	
 	 @AfterClass // call function to close browser 
@@ -46,10 +46,10 @@ public class ForgotPasswordPortuguese {
 	
 	public void openForgotPasswordPagePortuguese(){
 		 //org.apache.log4j.BasicConfigurator.configure();
-		
+		driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		System.out.println("Validating resending password in Portuguese");
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		driver.findElement(By.cssSelector(".signup .link")).click();
 		if (driver.findElement(By.cssSelector(".primary")).isEnabled())
 			System.out.println("Buttom to resend password is enabled");
@@ -63,7 +63,8 @@ public class ForgotPasswordPortuguese {
 	
 	public void insertEmailToResendPasswordPortuguese() throws Exception { 
 	
-		
+		driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
@@ -81,7 +82,8 @@ public class ForgotPasswordPortuguese {
 	
 	public void insertInvalidEmailPortuguese() throws Exception { 
 	
-		
+		driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("banana@cachirula.zunga.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
