@@ -32,7 +32,7 @@ public class Home {
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("browserstack.debug", "true");
 	    driver = new RemoteWebDriver(
-	    		 new URL("http://matiaspepe1:pFkpdbo5wSzZzFmLXQhM@hub.browserstack.com/wd/hub"),
+	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
 	    driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 	  }  
