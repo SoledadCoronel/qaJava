@@ -26,7 +26,7 @@ public class LogoutTest extends CommonFunctions{
 		}
 
 	@Test
-	public void EnterTheHomePage(){
+	public void logoutFromProfile(){
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Verify logout from user profile is working");

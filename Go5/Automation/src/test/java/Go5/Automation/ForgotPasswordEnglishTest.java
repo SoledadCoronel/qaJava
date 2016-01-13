@@ -27,7 +27,7 @@ public class ForgotPasswordEnglishTest extends SignUp{
 
 	@Test(priority=1)
 	
-	public void openForgotPasswordPage(){
+	public void openForgotPasswordPageEnglish(){
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Validating resending password in English");
@@ -41,7 +41,7 @@ public class ForgotPasswordEnglishTest extends SignUp{
 	
 	@Test(priority=3)
 	
-	public void insertEmailToResendPassword() throws Exception { 
+	public void insertEmailToResendPasswordEnglish() throws Exception { 
 	
  	  	
 		driver.findElement(By.id("signInIdentification")).clear();
@@ -61,7 +61,7 @@ public class ForgotPasswordEnglishTest extends SignUp{
 	
 	@Test(priority=2)
 	
-	public void insertInvalidEmail() throws Exception { 
+	public void insertInvalidEmailEnglish() throws Exception { 
 	
  	  	
 		driver.findElement(By.id("signInIdentification")).clear();

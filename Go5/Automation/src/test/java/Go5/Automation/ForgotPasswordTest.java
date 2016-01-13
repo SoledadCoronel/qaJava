@@ -30,13 +30,13 @@ public class ForgotPasswordTest extends SignUp{
 	public void openForgotPasswordPage(){
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Validating resending password");
+		log.info("Validando resending password");
 		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.findElement(By.cssSelector(".signup .link")).click();
 		
 		driver.findElement(By.cssSelector(".primary")).isEnabled();
-		log.info(" Buttom to resend is enabled");
+		log.info(" El boton de resend esta enabled");
 	}		
 	
 	@Test(priority=3)
@@ -47,7 +47,7 @@ public class ForgotPasswordTest extends SignUp{
 		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
-	   log.info("Insert email and press button to resend password");
+	   log.info("Inserte el email y reenvio");
 	   String sentMessage = new String (driver.findElement(By.cssSelector(".overlayloading p")).getText());
 	   log.info(sentMessage);
 	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -65,7 +65,7 @@ public class ForgotPasswordTest extends SignUp{
 		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("banana@cachirula.zunga.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
-	   log.info("Insert invalid email and verify that a proper message is displayed");
+	   log.info("Insertar un  invalid email y verificar que el mensaje correcto se muestre");
 	   driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 	   String SpanishText2 = new String( driver.findElement(By.cssSelector(".signup .reject ")).getText());
 		 log.info(SpanishText2);

@@ -9,12 +9,12 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class ProfileTest extends CommonFunctions{
+public class ProfilePortugueseTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
-	   openSiteLogin();
+		this.openSitePortuguese();
 	   login("marina.touceda@gointegro.com","Auto1234");
 	   
 	 }
@@ -26,18 +26,18 @@ public class ProfileTest extends CommonFunctions{
 		}
 
 	@Test(priority=1)
-	public void GoToProfile(){
+	public void GoToProfilePortuguese(){
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Ir al menu de usuario");
+		log.info("Go to the User menu and verify portuguese language");
 		
 		// Go to the user menu
 				driver.findElement(By.cssSelector(".applications .users .user")).click();
 		//Get the user name
 			String username= new String(driver.findElement(By.cssSelector(".applications .active .users .active li")).getText());
-				log.info(" El nombre del usuario es  : ");
+				log.info(" The username is : ");
 				log.info(username);
-		
+		// To add :Get the value of profile in portuguese
 	}
 	
 	
