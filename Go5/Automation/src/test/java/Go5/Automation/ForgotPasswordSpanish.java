@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ForgotPasswordPortuguese {
+public class ForgotPasswordSpanish {
 	
 	 private WebDriver driver;
 
@@ -28,8 +28,8 @@ public class ForgotPasswordPortuguese {
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
 	    capability.setCapability("project", "P1");
-	    capability.setCapability("build", "1.1");
-	    capability.setCapability("debug", true);
+	    capability.setCapability("build", "1.2");
+	    capability.setCapability("debug", false);
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -45,16 +45,16 @@ public class ForgotPasswordPortuguese {
 	@Test(priority=1)
 	
 	public void openForgotPasswordPagePortuguese(){
-		 org.apache.log4j.BasicConfigurator.configure();
-		driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
+		 
+		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		System.out.println("Validating resending password in Portuguese");
+		System.out.println("Validando reenvio de  password en Español");
 		driver.findElement(By.cssSelector(".signup .link")).click();
 		if (driver.findElement(By.cssSelector(".primary")).isEnabled())
-			System.out.println("Buttom to resend password is enabled");
+			System.out.println("El button de  resend password esta enabled");
 		
 		else
-			System.out.println("Buttom to resend password is disabled");
+			System.out.println("El button de resend password esta disabled");
 		
 	}		
 	
@@ -62,38 +62,20 @@ public class ForgotPasswordPortuguese {
 	
 	public void insertEmailToResendPasswordPortuguese() throws Exception { 
 	
-		driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
+		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.findElement(By.cssSelector(".signup .link")).click();
 		driver.findElement(By.id("signInIdentification")).clear();
+		System.out.println("Insertar el email y  presionar el  button to resend password");
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
-	   System.out.println("Insert email and press button to resend password");
-	   String sentMessage = new String (driver.findElement(By.cssSelector(".overlayloading p")).getText());
-	   System.out.println(sentMessage);
+	   //	   String sentMessage = new String (driver.findElement(By.cssSelector(".overlayloading p")).getText());
+	 //  System.out.println(sentMessage);
 	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
 	   System.out.println(SpanishText);
-		 Assert.assertEquals(SpanishText,"Verifique se o seu e-mail.");
-	}
-	}
-
-	/*@Test(priority=2)
+		 Assert.assertEquals(SpanishText,"Revisa tu email.");
+		}
 	
-	public void insertInvalidEmailPortuguese() throws Exception { 
-	
-		driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		driver.findElement(By.id("signInIdentification")).clear();
-		driver.findElement(By.id("signInIdentification")).sendKeys("banana@cachirula.zunga.com");
-	   driver.findElement(By.cssSelector(".primary")).click();
-	   System.out.println("Insert invalid email and verify that a proper message is displayed in Portuguese");
-	   driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
-	   String SpanishText2 = new String( driver.findElement(By.cssSelector(".signup .reject ")).getText());
-	   System.out.println(SpanishText2);
-		 System.out.println(SpanishText2);
-		 Assert.assertEquals(SpanishText2,"O e-mail inserido não está registrado. Por favor tente novamente");
- 
-	}
-     }*/
+     }
 

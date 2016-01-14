@@ -29,7 +29,7 @@ public class Login {
 	    capability.setCapability("browserVersion", version);
 	    capability.setCapability("project", "P1");
 	    capability.setCapability("build", "1.1");
-	    capability.setCapability("browserstack.debug", "true");
+	    capability.setCapability("debug", "true");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hubb"),
 	    	      capability);
@@ -56,7 +56,7 @@ public class Login {
 			driver.quit();
 		}
 
-	 @Test(priority=1)
+	 @Test
 		public void testLoginWithBlankUser() throws Exception { 
 		
 		   driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
@@ -75,7 +75,7 @@ public class Login {
 			log.info("Login fails due to user blank");
 		}
 		
-	 @Test(priority=2)
+	 @Test
 		public void testLoginWithBlankPassword() throws Exception { 
 		
 			
@@ -95,26 +95,8 @@ public class Login {
 		}
 	 
 	 
-	@Test(priority=3)
-	public void validatePage(){
-		
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Validating login page");
-		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
-		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		driver.findElement(By.cssSelector(".link"));
-		Boolean goButtonEnabled = new Boolean(driver.findElement(By.cssSelector(".primary")).isEnabled());
-		if (goButtonEnabled == true){
-			log.info("The login button is enabled");
-		}
-		else
-				log.info("The login button is disbled");
-		
-			
-	}
-	@Test(priority=4)
+	
+	@Test
 	public void testProperLogin() throws Exception { 
 	
  	  	log.info("Try a login");

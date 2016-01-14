@@ -34,7 +34,7 @@ public class Home {
 	    driver = new RemoteWebDriver(
 	    		new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 			capability);
-	    driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+	    
 	  }  
 	
 	 @AfterClass // call function to close browser 
@@ -68,18 +68,18 @@ public class Home {
 		log.info("Login into GoIntegro and check the menu is present");
 		driver.findElement(By.cssSelector(".menu")).isDisplayed();
 		// Go to the user menu
-		driver.findElement(By.cssSelector(".applications .users .user")).click();
+		//driver.findElement(By.cssSelector(".applications .users .user")).click();
 		// Made logout
-		driver.findElement(By.cssSelector(".applications .active .users .active .logout")).click();
+		//driver.findElement(By.cssSelector(".applications .active .users .active .logout")).click();
 	}
 	
 	
 	@Test(priority=2)
 	public void validateElementsAtHomePage() throws Exception { 
 	  
-		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+	//	driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		this.login("marina.touceda@gointegro.com","Auto1234");
+		//this.login("marina.touceda@gointegro.com","Auto1234");
  	  	log.info("Validate elements present in the page");
  	  	driver.findElement(By.cssSelector(".menu")).isDisplayed();
  	  	log.info("Menu is present");
