@@ -1,4 +1,4 @@
-package Go5.Automation;
+package go5.automation.signup;
 
 
 import java.net.URL;
@@ -21,19 +21,19 @@ public class Login {
 	Logger log = Logger.getLogger("automation");
 
 	@BeforeClass
-	  @org.testng.annotations.Parameters(value={"browser","version","platform"})
+	 @org.testng.annotations.Parameters(value={"browser","version","platform"})
 	  public void setUp(String browser, String version, String platform) throws Exception {
 	    DesiredCapabilities capability = new DesiredCapabilities();
 	    capability.setCapability("platform",platform);
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "P1");
-	    capability.setCapability("build", "1.1");
-	    capability.setCapability("debug", "true");
+	    capability.setCapability("project", "GOIntegro");
+	    capability.setCapability("build", "1.0");
+	    capability.setCapability("debug", false);
 	    driver = new RemoteWebDriver(
-	    		 new URL("http://http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hubb"),
+	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
-	   // driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+	 
 	  }  
 	
 	

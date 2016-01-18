@@ -1,5 +1,5 @@
 
-package Go5.Automation;
+package go5.automation.signup;
 
 
 import java.util.concurrent.TimeUnit;

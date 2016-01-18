@@ -1,24 +1,26 @@
-package Go5.Automation;
+package go5.automation;
 
 
 
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 
 
 
 
 public class CommonFunctions {
-    
-	final WebDriver driver= new FirefoxDriver();
-	//RemoteWebDriver driver = new FirefoxDriver();
-	
-	Logger log = Logger.getLogger("automation");
+		 
+	protected final WebDriver driver= new FirefoxDriver();
+	protected Logger log = Logger.getLogger("automation");
 		
 	 
 	 public void openSiteSignUp(){

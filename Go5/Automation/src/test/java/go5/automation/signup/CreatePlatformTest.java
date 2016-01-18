@@ -1,4 +1,4 @@
-package Go5.Automation;
+package go5.automation.signup;
 
 
 import org.testng.Assert;

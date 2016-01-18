@@ -1,5 +1,7 @@
-package Go5.Automation;
+package go5.automation.profile;
 
+
+import go5.automation.CommonFunctions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,12 +11,12 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class ProfileEnglishTest extends CommonFunctions{
+public class ProfileTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
-		this.openSitePortuguese();
+	   openSiteLogin();
 	   login("marina.touceda@gointegro.com","Auto1234");
 	   
 	 }
@@ -26,18 +28,19 @@ public class ProfileEnglishTest extends CommonFunctions{
 		}
 
 	@Test(priority=1)
-	public void goToProfileEnglish(){
-		 
+	public void GoToProfile(){
+		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Go to the User menu and verify the English language");
+		log.info("Ir al menu de usuario");
 		
 		// Go to the user menu
 				driver.findElement(By.cssSelector(".applications .users .user")).click();
 		//Get the user name
 			String username= new String(driver.findElement(By.cssSelector(".applications .active .users .active li")).getText());
-				log.info(" The username is : ");
+				log.info(" El nombre del usuario es  : ");
 				log.info(username);
-		// To add :Get the value of profile in english
+				 driver.findElement(By.cssSelector(".applications .users .subusers li:nth-child(2)")).click();	
+		         driver.findElement(By.cssSelector(".data h2")).isDisplayed();
 	}
 	
 	

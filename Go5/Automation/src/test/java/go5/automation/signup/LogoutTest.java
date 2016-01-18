@@ -1,5 +1,7 @@
-package Go5.Automation;
+package go5.automation.signup;
 
+
+import go5.automation.CommonFunctions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,7 +11,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class ConfigurationTest extends CommonFunctions{
+public class LogoutTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
@@ -25,14 +27,17 @@ public class ConfigurationTest extends CommonFunctions{
 			closeBrowser();
 		}
 
-	@Test(priority=1)
-	public void GoToConfiguration(){
-		 
+	@Test
+	public void logoutFromProfile(){
+		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Ir a  Configuration menu");
-		
-		// Go to the configuration
-				driver.findElement(By.cssSelector(".applications .users .configuration")).click();
+		log.info("Verify logout from user profile is working");
+		// Go to the user menu
+		driver.findElement(By.cssSelector(".applications .users .user")).click();
+		// Made logout
+		driver.findElement(By.cssSelector(".applications .active .users .active .logout")).click();
+		log.info(" Logout has been successfull");
+			
 	}
-		
-}
+	}
+

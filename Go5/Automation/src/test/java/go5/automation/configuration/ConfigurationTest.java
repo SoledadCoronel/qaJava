@@ -1,5 +1,7 @@
-package Go5.Automation;
+package go5.automation.configuration;
 
+
+import go5.automation.CommonFunctions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,7 +11,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class CopyOfHomeTest extends CommonFunctions{
+public class ConfigurationTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
@@ -26,23 +28,13 @@ public class CopyOfHomeTest extends CommonFunctions{
 		}
 
 	@Test(priority=1)
-	public void EnterTheHomePage(){
-		 org.apache.log4j.BasicConfigurator.configure();
+	public void GoToConfiguration(){
+		 
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Login into GoIntegro and check the menu is present");
-		driver.findElement(By.cssSelector(".menu")).isDisplayed();
-		driver.getTitle();
+		log.info("Ir a  Configuration menu");
 		
+		// Go to the configuration
+				driver.findElement(By.cssSelector(".applications .users .configuration")).click();
 	}
-	
-	
-	@Test(priority=2)
-	public void validateElementsAtHomePage() throws Exception { 
-	
- 	  	log.info("Validate elements present in the page");
- 	  	driver.findElement(By.cssSelector(".menu")).isDisplayed();
- 	  	log.info("Menu is present");
-	}
-
-	
+		
 }
