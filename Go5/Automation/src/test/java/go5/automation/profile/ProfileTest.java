@@ -36,7 +36,7 @@ public class ProfileTest extends CommonFunctions{
 		// Go to the user menu
 				driver.findElement(By.cssSelector(".applications .users .user")).click();
 		//Get the user name
-			String username= new String(driver.findElement(By.cssSelector(".applications .active .users .active li")).getText());
+			String username= new String(driver.findElement(By.cssSelector(".applications .users li")).getText());
 				log.info(" El nombre del usuario es  : ");
 				log.info(username);
 				 driver.findElement(By.cssSelector(".applications .users .subusers li:nth-child(2)")).click();	
