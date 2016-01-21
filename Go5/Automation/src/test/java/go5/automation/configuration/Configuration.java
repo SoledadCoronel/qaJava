@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -45,7 +46,7 @@ public class Configuration {
 	
 	@Test
 	
-	public void goToProfile() throws Exception { 
+	public void editCompany() throws Exception { 
 	
 		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().window().maximize();
@@ -56,26 +57,40 @@ public class Configuration {
  		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
  		 driver.findElement(By.cssSelector(".primary")).click();
          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-  // Go to the configuration
-			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
- // Go to Company Data
-					driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).click();
-					driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
-					driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("Test222222222222222");
-					
-// Select a value from the drop-down for Language
-					
-					Select selectLanguage = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(3) select"))); 
-					selectLanguage.selectByValue("pt");
-								
-//Select a value from drop-down Timezone
-					
-					Select selectTimeZone = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) select")));
-					selectTimeZone.selectByValue("America/Anchorage");
-					driver.findElement(By.cssSelector(".primary")).click();
-					driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-			}
-}
- 
+         // Go to the configuration
+ 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
 
+ 		// Go to Company Data
+ 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).click();
+ 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
+
+ //Verify that company name can not be blank
+ 		
+ 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
+ 		String companyMessage = new String(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) span")).getText());
+ 		System.out.println(companyMessage);
+ 		Assert.assertEquals(companyMessage, "Nombre no puede estar vacío");
+ 		
+ //Insert some value at company name	
+ 		
+ 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("Test3333332222222222222");
+ 		
+ // Select all values the drop-down for Language
+ 		
+ 		Select selectLanguage = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(3) select"))); 
+ 		
+ 		selectLanguage.selectByValue("pt");
+ 		selectLanguage.selectByValue("en");	
+ 		selectLanguage.selectByValue("es");
+ 		
+ //Select a value from drop-down Timezone
+ 		
+ 		Select selectTimeZone = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) select")));
+ 		selectTimeZone.selectByValue("America/Anchorage");
+ 		
+ //Save changes
+ 		
+ 		driver.findElement(By.cssSelector(".primary")).click();
+ 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+ }
+}	

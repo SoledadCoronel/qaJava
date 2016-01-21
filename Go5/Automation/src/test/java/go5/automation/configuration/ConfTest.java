@@ -53,15 +53,21 @@ public class ConfTest extends CommonFunctions{
 		
 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("Test3333332222222222222");
 		
-// Select a value from the drop-down for Language
+// Select all values the drop-down for Language
 		
 		Select selectLanguage = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(3) select"))); 
+		
+		selectLanguage.selectByValue("pt");
+		selectLanguage.selectByValue("en");	
 		selectLanguage.selectByValue("es");
-					
-		//Select a value from drop-down Timezone
+		
+//Select a value from drop-down Timezone
 		
 		Select selectTimeZone = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) select")));
 		selectTimeZone.selectByValue("America/Anchorage");
+		
+//Save changes
+		
 		driver.findElement(By.cssSelector(".primary")).click();
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 }
