@@ -72,9 +72,9 @@ public class ForgotPasswordPortuguese {
 	   String sentMessage = new String (driver.findElement(By.cssSelector(".overlayloading p")).getText());
 	   System.out.println(sentMessage);
 	   driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
-	   System.out.println(SpanishText);
-		 Assert.assertEquals(SpanishText,"Verifique se o seu e-mail.");
+	   String PortugueseText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
+	   System.out.println(PortugueseText);
+		 Assert.assertEquals(PortugueseText,"Verifique se o seu e-mail.");
 	}
 	}
 	

@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
@@ -41,23 +40,15 @@ public class ConfTest extends CommonFunctions{
 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("Test222222222222222");
 		
-		/* Select a value from the drop-down for Language
+// Select a value from the drop-down for Language
 		
-		Select select = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(3) option"))); 
-		select.deselectAll();
-		select.selectByValue("pt");
-		*/
-		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(3) option")).click();
-		
-		WebElement option=driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(3) option"));
-		option.sendKeys("pt");
-		
+		Select selectLanguage = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(3) select"))); 
+		selectLanguage.selectByValue("pt");
+					
 		//Select a value from drop-down Timezone
 		
-		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) option")).click();
-		
-		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) option")).sendKeys("America/Anchorage");
-		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		Select selectTimeZone = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) select")));
+		selectTimeZone.selectByValue("America/Anchorage");
 		driver.findElement(By.cssSelector(".primary")).click();
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 }
