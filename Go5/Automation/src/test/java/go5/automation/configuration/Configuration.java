@@ -28,7 +28,7 @@ public class Configuration {
 	    capability.setCapability("platform",platform);
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "GoIntegro");
+	    capability.setCapability("project", "Inprogress");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
 	    driver = new RemoteWebDriver(
@@ -86,7 +86,12 @@ public class Configuration {
  //Select a value from drop-down Timezone
  		
  		Select selectTimeZone = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) select")));
- 		selectTimeZone.selectByValue("America/Anchorage");
+		
+		   for(int i=1; i<20; i++){
+	           selectTimeZone.selectByIndex(i);  
+			 }
+		
+		selectTimeZone.selectByValue("America/Anchorage");
  		
  //Save changes
  		
