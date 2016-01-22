@@ -36,9 +36,13 @@ public class ConfigurationTest extends CommonFunctions{
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Ir al menu de config");
         Reporter.log(" Testeando la pagina de Configuracion");
-		// Go to the configuration
+		
+        // Go to the configuration
 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
        driver.findElement(By.cssSelector(".menu")).click();
+	
+	// Go to  Users Menu
+        driver.findElement(By.cssSelector(".usermenu")).click();
 	}
 	
 }
