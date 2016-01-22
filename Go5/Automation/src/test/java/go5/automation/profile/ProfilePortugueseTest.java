@@ -1,9 +1,13 @@
-package Go5.Automation;
+package go5.automation.profile;
 
+
+import go5.automation.CommonFunctions;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
@@ -11,7 +15,8 @@ import org.testng.annotations.AfterTest;
 
 public class ProfilePortugueseTest extends CommonFunctions{
 
-
+	protected final WebDriver driver= new FirefoxDriver();
+	
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
 		this.openSitePortuguese();

@@ -3,30 +3,26 @@
 <suite thread-count="3" name="Suite" parallel="tests">
   <test name="FirstTest">
   <parameter name="browser" value="firefox"/>
-  <parameter name="version" value="20.0"/>
-  <parameter name="platform" value="MAC"/>
+  <parameter name="version" value="42.0"/>
+  <parameter name="platform" value="WIN8"/>
     <classes>
-      
-      <class name="Go5.Automation.Login"/>
+      <class name="go5.automation.configuration.Configuration"/> 
       </classes>
   </test> <!-- Test -->
   <test name="SecondTest">
   <parameter name="browser" value="chrome"/>
-  <parameter name="version" value="26.0"/>
-  <parameter name="platform" value="WINDOWS"/>
+  <parameter name="version" value="46.0"/>
+  <parameter name="platform" value="WIN8"/>
     <classes>
-     
-      <class name="Go5.Automation.Login"/>
-      
+      <class name="go5.automation.configuration.Configuration"/>     
     </classes>
   </test> <!-- Test -->
   <test name="ThirdTest">
   <parameter name="browser" value="ie"/>
   <parameter name="version" value="10.0"/>
-  <parameter name="platform" value="WINDOWS"/>
+  <parameter name="platform" value="WIN8"/>
     <classes>
-    
-      <class name="Go5.Automation.Login"/>
-       </classes>
-    </test> <!-- Test -->   
+      <class name="go5.automation.configuration.Configuration"/>      
+           </classes>
+    </test> <!-- Test -->    
 </suite> <!-- Suite -->
