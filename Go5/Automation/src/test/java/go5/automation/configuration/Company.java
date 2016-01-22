@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 
 
-public class Configuration {
+public class Company {
 	
 	 private WebDriver driver;
 
