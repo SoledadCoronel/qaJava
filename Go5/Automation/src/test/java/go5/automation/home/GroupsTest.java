@@ -1,4 +1,4 @@
-package go5.automation.Home;
+package go5.automation.home;
 
 
 import go5.automation.CommonFunctions;
