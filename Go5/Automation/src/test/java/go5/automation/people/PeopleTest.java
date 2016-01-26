@@ -45,9 +45,14 @@ public class PeopleTest extends CommonFunctions{
         Reporter.log("Abriendo administar personas" );  
         //driver.findElement(By.cssSelector(".usermenu")).click();
         Reporter.log("Abriendo titulos");
+        
+    // Go to Titles    
+        
         driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
         log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
         Reporter.log("Abriendo personas");
+   // Go to Manage people
+        
         driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	}
