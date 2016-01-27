@@ -61,6 +61,7 @@ public class Company {
  		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
 
  		// Go to Company Data
+ 		
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).click();
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
 
