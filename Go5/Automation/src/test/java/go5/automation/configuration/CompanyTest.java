@@ -31,7 +31,7 @@ public class CompanyTest extends CommonFunctions{
 		}
 
 	@Test
-	public void editConfig(){
+	public void editCompany(){
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Ir al menu de config");

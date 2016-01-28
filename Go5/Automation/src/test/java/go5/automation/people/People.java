@@ -60,6 +60,7 @@ public class People {
          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
        
          // Go to the configuration
+         
  		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
         driver.findElement(By.cssSelector(".menu")).click();
  	

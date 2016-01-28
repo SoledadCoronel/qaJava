@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ForgotPasswordSpanish {
+public class ForgotPasswordSpanishTest {
 	
 	 private WebDriver driver;
 
