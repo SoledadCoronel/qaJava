@@ -45,33 +45,70 @@ public class CompanyDesign {
 		}
 		
 	
-	@Test
-	
-	public void gotoDesign(){
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		
-       Reporter.log(" Testeando la pagina de Diseño de  Company");
-		
-       // Go to the configuration
-       Reporter.log(driver.findElement(By.cssSelector(".applications .users .configuration")).getText());
-		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-		Reporter.log(driver.findElement(By.cssSelector(".menu")).getText());
-       driver.findElement(By.cssSelector(".menu")).click();
+	 @Test
+		public void verifyBranding(){
+			driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			
+	       Reporter.log(" Testeando la pagina de Diseño de  Company");
+			
+	       // Go to the configuration
+	       Reporter.log(driver.findElement(By.cssSelector(".applications .users .configuration")).getText());
+			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
+			Reporter.log(driver.findElement(By.cssSelector(".menu")).getText());
+	       driver.findElement(By.cssSelector(".menu")).click();
 
-		// Go to Company Design 
-       Reporter.log("Abriendo la pagina de diseño de la plataforma" );
-       Reporter.log(driver.findElement(By.cssSelector("nav .space:nth-child(2) ol li:nth-child(3)>a")).getText());
-       driver.findElement(By.cssSelector("nav .space:nth-child(2) ol li:nth-child(3)>a")).click();
-       driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-      // System.out.println((driver.findElement(By.cssSelector(".design")).getText()));
-       
-    // Go to  Users Menu
-       Reporter.log("Abriendo administar personas" );  
-       //driver.findElement(By.cssSelector(".usermenu")).click();
-       driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
-       Reporter.log(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
-       driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-       driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	}
-       
-}	
+			// Go to Company Design 
+	       Reporter.log("Abriendo la pagina de diseño de la plataforma" );
+	       // Primero hay que clickear en otro si no no anda!!Clickeo titles
+	       driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+	       
+	       Reporter.log(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
+	       // Clickeo en Disenio
+	       
+	       driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
+	       driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	     
+	       // Verify list of colors in branding
+	       
+	        Assert.assertEquals("white",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(1)")).getText()));
+	     
+	        Assert.assertEquals("lightgrey",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(2)")).getText()));
+	        
+	        Assert.assertEquals("grey",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(3)")).getText()));
+	       
+	        Assert.assertEquals("darkgrey",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(4)")).getText()));
+	      
+	        Assert.assertEquals("black",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(5)")).getText()));
+	       
+	        Assert.assertEquals("yellow",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(6)")).getText()));
+	        
+	        Assert.assertEquals("orange",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(7)")).getText()));
+	        
+	        Assert.assertEquals("red",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(8)")).getText()));
+	        
+	        Assert.assertEquals("green",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(9)")).getText()));
+	        
+	        Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).getText()));
+	    
+		 // Verify that the selected color has been changed in the header
+	        
+	        //Select black colour
+	        driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).click();
+	        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	      String colorSelected = new String (driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10) a")).getCssValue("background-color"));
+	      Reporter.log(colorSelected);
+
+	      //Save changes for colour
+	      driver.findElement(By.cssSelector(".primary")).click();
+			driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+	      
+	      
+	      String colorHeader = new String(driver.findElement(By.tagName("header")).getCssValue("background-color"));
+	      Reporter.log(colorHeader);
+	      //Compare the header color against the selected, converted to hexadecimal
+	      driver.findElement(By.cssSelector(".primary")).click();
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	  
+	     Assert.assertEquals(colorSelected, colorHeader, "El color seleccionado en branding se muestra correctamente en el header" );
+		}
+}

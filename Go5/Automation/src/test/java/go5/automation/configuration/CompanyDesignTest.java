@@ -80,12 +80,21 @@ public class CompanyDesignTest extends CommonFunctions{
         
         //Select black colour
         driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).click();
+        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
       String colorSelected = new String (driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10) a")).getCssValue("background-color"));
       Reporter.log(colorSelected);
-      String colorHeader = new String(driver.findElement(By.cssSelector(".header")).getCssValue("background-color"));
-      //Compare the header color against the selected, converted to hexadecimal
+
+      //Save changes for colour
+      driver.findElement(By.cssSelector(".primary")).click();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
       
-    //  String colorHeader = new String(driver.findElement(By.cssSelector(".header")).getCssValue("background-color"));
+      
+      String colorHeader = new String(driver.findElement(By.tagName("header")).getCssValue("background-color"));
+      Reporter.log(colorHeader);
+      //Compare the header color against the selected, converted to hexadecimal
+      driver.findElement(By.cssSelector(".primary")).click();
+	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+  
      Assert.assertEquals(colorSelected, colorHeader, "El color seleccionado en branding se muestra correctamente en el header" );
 	}
 }

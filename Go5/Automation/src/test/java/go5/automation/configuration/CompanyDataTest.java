@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 
 
-public class Company {
+public class CompanyDataTest {
 	
 	 private WebDriver driver;
 
@@ -71,10 +71,12 @@ public class Company {
  		String companyMessage = new String(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) span")).getText());
  		System.out.println(companyMessage);
  		Assert.assertEquals(companyMessage, "Nombre no puede estar vacío");
+ 	
  		
- //Insert some value at company name	
+ 
+//Insert some value at company name	
  		
- 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("Test3333332222222222222");
+ 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("TestingCompanyForm");		
  		
  // Select all values the drop-down for Language
  		
@@ -94,9 +96,28 @@ public class Company {
 		
 		selectTimeZone.selectByValue("America/Anchorage");
  		
- //Save changes
+ //Verify that the language has been changed within the page
+		
+		selectLanguage.selectByValue("en");	
+		
+		//Save changes to verify that the text are being displayed in the selected language
  		
  		driver.findElement(By.cssSelector(".primary")).click();
+ 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);		
+ 		
+ // Check text in English
+ 		String check= new String(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
+ 		Assert.assertEquals("Design", check);
+ 		
+ 		
+ 		//Save changes to come back original values when the test has finished
+ 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
+ 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("Automation1");
+ 		selectLanguage.selectByValue("es");
+ 		selectTimeZone.selectByValue("America/Argentina/Buenos_Aires");
+ 		driver.findElement(By.cssSelector(".primary")).click();
  		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+ 		
+ 		
  }
 }	
