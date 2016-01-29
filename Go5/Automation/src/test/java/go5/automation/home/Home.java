@@ -1,4 +1,4 @@
-package go5.automation.Home;
+package go5.automation.home;
 
 
 import java.net.URL;

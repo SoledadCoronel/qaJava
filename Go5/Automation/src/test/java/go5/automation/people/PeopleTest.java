@@ -1,4 +1,4 @@
-package go5.automation.configuration;
+package go5.automation.people;
 
 
 import go5.automation.CommonFunctions;
@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class ConfigurationTest extends CommonFunctions{
+public class PeopleTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
@@ -35,14 +35,26 @@ public class ConfigurationTest extends CommonFunctions{
 		 org.apache.log4j.BasicConfigurator.configure();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Ir al menu de config");
-        Reporter.log(" Testeando la pagina de Configuracion");
+        Reporter.log(" Testeando la pagina de Administrar personas");
 		
         // Go to the configuration
 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
        driver.findElement(By.cssSelector(".menu")).click();
 	
 	// Go to  Users Menu
-        driver.findElement(By.cssSelector(".usermenu")).click();
+        Reporter.log("Abriendo administar personas" );  
+        //driver.findElement(By.cssSelector(".usermenu")).click();
+        Reporter.log("Abriendo titulos");
+        
+    // Go to Titles    
+        
+        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
+        log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
+        Reporter.log("Abriendo personas");
+   // Go to Manage people
+        
+        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	}
 	
 }

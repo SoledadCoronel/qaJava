@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ForgotPasswordSpanish {
+public class ForgotPasswordSpanishTest {
 	
 	 private WebDriver driver;
 
@@ -44,7 +44,7 @@ public class ForgotPasswordSpanish {
 
 	@Test(priority=1)
 	
-	public void openForgotPasswordPagePortuguese(){
+	public void openForgotPasswordPageSpanish(){
 		 
 		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -60,7 +60,7 @@ public class ForgotPasswordSpanish {
 	
 	@Test(priority=2)
 	
-	public void insertEmailToResendPasswordPortuguese() throws Exception { 
+	public void insertEmailToResendPasswordSpanish() throws Exception { 
 	
 		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);

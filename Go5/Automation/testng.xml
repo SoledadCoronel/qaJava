@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="3" name="Suite" parallel="tests">
-  <test name="FirstTest">
+  <test name="FirefoxTests">
   <parameter name="browser" value="firefox"/>
   <parameter name="version" value="42.0"/>
   <parameter name="platform" value="WIN8"/>
+  <parameter name="url" value="http://automation1.pla.qa.go5.gointegro.net/authentication/login"/>
     <classes>
-      <class name="go5.automation.signup.ForgotPasswordSpanish"/>
-      <class name="go5.automation.signup.Login"/>
-      <class name="go5.automation.profile.Profile"/>
-      <class name="go5.automation.configuration.Configuration"/>   
+      <class name="go5.automation.configuration.CompanyDataTest"/>
+      <class name="go5.automation.configuration.CompanyDesignTest"/> 
       </classes>
   </test> <!-- Test -->
-  <test name="SecondTest">
+  <test name="ChromeTests">
   <parameter name="browser" value="chrome"/>
   <parameter name="version" value="46.0"/>
-  <parameter name="platform" value="ANY"/>
+  <parameter name="platform" value="WIN8"/>
+  <parameter name="url" value="http://automation4.pla.qa.go5.gointegro.net/authentication/login"/>
     <classes>
-      <class name="go5.automation.signup.ForgotPasswordSpanish"/>
-      <class name="go5.automation.signup.Login"/>
-      <class name="go5.automation.profile.Profile"/>
-      <class name="go5.automation.configuration.Configuration"/>  
+      <class name="go5.automation.configuration.CompanyDataTest"/>
+      <class name="go5.automation.configuration.CompanyDesignTest"/>      
     </classes>
   </test> <!-- Test -->
-  <test name="ThirdTest">
+  <test name="IETests">
   <parameter name="browser" value="ie"/>
   <parameter name="version" value="10.0"/>
   <parameter name="platform" value="WIN8"/>
+  <parameter name="url" value="http://automation5.pla.qa.go5.gointegro.net/authentication/login"/>
     <classes>
-      <class name="go5.automation.signup.ForgotPasswordSpanish"/>
-      <class name="go5.automation.signup.Login"/>
-      <class name="go5.automation.profile.Profile"/>
-      <class name="go5.automation.configuration.Configuration"/>       
-           </classes>
+      <class name="go5.automation.configuration.CompanyDataTest"/>
+      <class name="go5.automation.configuration.CompanyDesignTest"/>      
+         </classes>
     </test> <!-- Test -->    
 </suite> <!-- Suite -->
