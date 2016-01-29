@@ -44,7 +44,7 @@ public class ForgotPasswordSpanishTest {
 
 	@Test(priority=1)
 	
-	public void openForgotPasswordPagePortuguese(){
+	public void openForgotPasswordPageSpanish(){
 		 
 		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -60,7 +60,7 @@ public class ForgotPasswordSpanishTest {
 	
 	@Test(priority=2)
 	
-	public void insertEmailToResendPasswordPortuguese() throws Exception { 
+	public void insertEmailToResendPasswordSpanish() throws Exception { 
 	
 		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);

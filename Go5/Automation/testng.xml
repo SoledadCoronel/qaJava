@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="3" name="Suite" parallel="tests">
-  <test name="FirstTest">
+  <test name="FirefoxTests">
   <parameter name="browser" value="firefox"/>
   <parameter name="version" value="42.0"/>
   <parameter name="platform" value="WIN8"/>
     <classes>
       <class name="go5.automation.signup.ForgotPasswordSpanishTest"/>
-      
       <class name="go5.automation.profile.ProfileTest"/>
        
       </classes>
   </test> <!-- Test -->
-  <test name="SecondTest">
+  <test name="ChromeTests">
   <parameter name="browser" value="chrome"/>
   <parameter name="version" value="46.0"/>
   <parameter name="platform" value="ANY"/>
     <classes>
       <class name="go5.automation.signup.ForgotPasswordSpanishTest"/>
-      
-      <class name="go5.automation.profile.ProfileTest"/>
+       <class name="go5.automation.profile.ProfileTest"/>
        
     </classes>
   </test> <!-- Test -->
-     
+ <test name="IExplorerTests">
+  <parameter name="browser" value="ie"/>
+  <parameter name="version" value="10"/>
+  <parameter name="platform" value="ANY"/>
+    <classes>
+      <class name="go5.automation.signup.ForgotPasswordSpanishTest"/>
+       <class name="go5.automation.profile.ProfileTest"/>
+       </classes>
+  </test> <!-- Test -->    
 </suite> <!-- Suite -->
