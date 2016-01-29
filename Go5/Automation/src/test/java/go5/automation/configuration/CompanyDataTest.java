@@ -12,6 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.annotations.Parameters;
 
 
 
@@ -22,8 +23,8 @@ public class CompanyDataTest {
 
 	
 	 @BeforeClass
-	  @org.testng.annotations.Parameters(value={"browser","version","platform"})
-	  public void setUp(String browser, String version, String platform) throws Exception {
+	  @Parameters(value={"browser","version","platform","url"})
+	  public void setUp(String browser, String version, String platform,String url) throws Exception {
 	    DesiredCapabilities capability = new DesiredCapabilities();
 	    capability.setCapability("platform",platform);
 	    capability.setCapability("browserName", browser);
@@ -34,7 +35,9 @@ public class CompanyDataTest {
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
-	 
+	    driver.get(url);
+		 driver.manage().window().maximize();
+		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	  }  
 	
 	 @AfterClass // call function to close browser 
@@ -48,9 +51,8 @@ public class CompanyDataTest {
 	
 	public void editCompany() throws Exception { 
 	
-		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+		
 		driver.findElement(By.id("signInIdentification")).clear();
  		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
  		driver.findElement(By.id("signInPassword")).clear();

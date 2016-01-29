@@ -1,23 +1,31 @@
 package go5.automation.configuration;
 
-
 import go5.automation.CommonFunctions;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.Parameters;
+
+
 
 
 public class CompanyDesignTest extends CommonFunctions{
+	
+	 private WebDriver driver;
 
-
+	
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
 	   openSiteLogin();
@@ -30,18 +38,28 @@ public class CompanyDesignTest extends CommonFunctions{
 		public void teardown(){
 			closeBrowser();
 		}
-
-	@Test
+	
+	 @Test
 	public void verifyBranding(){
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	/*//Login
 		
-       Reporter.log(" Testeando la pagina de Diseño de  Company");
+		driver.findElement(By.id("signInIdentification")).clear();
+ 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
+ 		driver.findElement(By.id("signInPassword")).clear();
+ 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
+ 		 driver.findElement(By.cssSelector(".primary")).click();
+         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+   */
+		// Go to the configuration
+	 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
+	 		driver.findElement(By.cssSelector(".menu")).click();
+
+	 		// Go to Company Data
+	 		
+	 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).click();
+	 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
 		
-       // Go to the configuration
-       Reporter.log(driver.findElement(By.cssSelector(".applications .users .configuration")).getText());
-		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-		Reporter.log(driver.findElement(By.cssSelector(".menu")).getText());
-       driver.findElement(By.cssSelector(".menu")).click();
+      
 
 		// Go to Company Design 
        Reporter.log("Abriendo la pagina de diseño de la plataforma" );
