@@ -72,7 +72,7 @@ public class CompanyDataTest {
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
  		String companyMessage = new String(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) span")).getText());
  		System.out.println(companyMessage);
- 		Assert.assertEquals(companyMessage, "Nombre no puede estar vacío");
+ 		Assert.assertEquals(companyMessage, "El campo es requerido");
  	
  		
  

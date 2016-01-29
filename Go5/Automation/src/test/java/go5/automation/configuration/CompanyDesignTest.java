@@ -1,41 +1,65 @@
 package go5.automation.configuration;
 
 
-import go5.automation.CommonFunctions;
 
+
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterTest;
 
 
-public class CompanyDesignTest extends CommonFunctions{
+public class CompanyDesignTest {
 
 
-	 @BeforeTest // call function to open the browser and login 
-	 public void setup () throws Exception{
-	   openSiteLogin();
-	   login("marina.touceda@gointegro.com","Auto1234");
-	   
-	 }
+	 private WebDriver driver;
+
+		
+	 @BeforeClass
+	  @Parameters(value={"browser","version","platform","url"})
+	  public void setUp(String browser, String version, String platform,String url) throws Exception {
+	    DesiredCapabilities capability = new DesiredCapabilities();
+	    capability.setCapability("platform",platform);
+	    capability.setCapability("browserName", browser);
+	    capability.setCapability("browserVersion", version);
+	    capability.setCapability("project", "Inprogress");
+	    capability.setCapability("build", "1.0");
+	    capability.setCapability("debug", false);
+	    driver = new RemoteWebDriver(
+	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
+	    	      capability);
+	    driver.get(url);
+		 driver.manage().window().maximize();
+		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	  }  
 	
-	 @AfterTest // call function to close browser 
+	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			closeBrowser();
+			driver.quit();
 		}
 
 	@Test
 	public void editConfig(){
-		 org.apache.log4j.BasicConfigurator.configure();
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Ir al menu de config");
-        Reporter.log(" Testeando la pagina de Administrar personas");
+		
+	//Login	
+
+		driver.findElement(By.id("signInIdentification")).clear();
+ 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
+ 		driver.findElement(By.id("signInPassword")).clear();
+ 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
+ 		 driver.findElement(By.cssSelector(".primary")).click();
+         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		
         // Go to the configuration
 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
@@ -49,7 +73,7 @@ public class CompanyDesignTest extends CommonFunctions{
     // Go to Titles    
         
         driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
-        log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
+      
         Reporter.log("Abriendo personas");
    // Go to Manage people
         
@@ -97,8 +121,7 @@ public class CompanyDesignTest extends CommonFunctions{
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
       String colorSelected = new String (driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10) a")).getCssValue("background-color"));
       Reporter.log(colorSelected);
-      log.info(colorSelected);
-
+    
       //Save changes for colour
       driver.findElement(By.cssSelector(".primary")).click();
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
@@ -106,7 +129,7 @@ public class CompanyDesignTest extends CommonFunctions{
       
       String colorHeader = new String(driver.findElement(By.tagName("header")).getCssValue("background-color"));
       Reporter.log(colorHeader);
-      log.info(colorHeader);
+   
       //Compare the header color against the selected, converted to hexadecimal
       driver.findElement(By.cssSelector(".primary")).click();
 	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
