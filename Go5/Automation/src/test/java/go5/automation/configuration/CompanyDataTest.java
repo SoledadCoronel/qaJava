@@ -52,6 +52,7 @@ public class CompanyDataTest {
 	public void editCompany() throws Exception { 
 	
 		
+	//Login
 		
 		driver.findElement(By.id("signInIdentification")).clear();
  		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
@@ -78,6 +79,7 @@ public class CompanyDataTest {
  
 //Insert some value at company name	
  		
+ 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("TestingCompanyForm");		
  		
  // Select all values the drop-down for Language
@@ -113,7 +115,8 @@ public class CompanyDataTest {
  		
  		
  		//Save changes to come back original values when the test has finished
- 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
+ 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
+ 		//driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("Automation1");
  		selectLanguage.selectByValue("es");
  		selectTimeZone.selectByValue("America/Argentina/Buenos_Aires");

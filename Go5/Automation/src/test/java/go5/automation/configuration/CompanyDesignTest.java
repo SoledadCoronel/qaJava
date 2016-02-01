@@ -10,11 +10,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -50,18 +50,20 @@ public class CompanyDesignTest {
 		}
 
 	@Test
-	public void editConfig(){
+	public void changeDesignOfPlatform(){
 		
-	//Login	
-
-		driver.findElement(By.id("signInIdentification")).clear();
- 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
- 		driver.findElement(By.id("signInPassword")).clear();
- 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
- 		 driver.findElement(By.cssSelector(".primary")).click();
-         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		//Login
+		
+				driver.findElement(By.id("signInIdentification")).clear();
+		 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
+		 		driver.findElement(By.id("signInPassword")).clear();
+		 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
+		 		 driver.findElement(By.cssSelector(".primary")).click();
+		         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		       
 		
         // Go to the configuration
+		         
 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
        driver.findElement(By.cssSelector(".menu")).click();
 	
@@ -113,7 +115,8 @@ public class CompanyDesignTest {
         Assert.assertEquals("green",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(9)")).getText()));
         
         Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).getText()));
-    
+	
+       
 	 // Verify that the selected color has been changed in the header
         
         //Select black colour
@@ -131,9 +134,21 @@ public class CompanyDesignTest {
       Reporter.log(colorHeader);
    
       //Compare the header color against the selected, converted to hexadecimal
-      driver.findElement(By.cssSelector(".primary")).click();
-	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+      
   
      Assert.assertEquals(colorSelected, colorHeader, "El color seleccionado en branding se muestra correctamente en el header" );
+     
+    //Verify that the image selected is being displayed at the header
+     
+   
+     
+      WebElement upload= driver.findElement(By.cssSelector(".brandinterfaces"));
+      upload.sendKeys("/home/marinatouceda/Documentos/Girasol.jpg");
+
+   
+    //Save changes
+      driver.findElement(By.cssSelector(".primary")).click();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); 
+     
 	}
 }
