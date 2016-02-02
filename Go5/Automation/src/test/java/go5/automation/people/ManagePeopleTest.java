@@ -12,32 +12,36 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
 
 
-public class People {
+public class ManagePeopleTest {
 	
 	 private WebDriver driver;
 
 	
 	 @BeforeClass
-	  @org.testng.annotations.Parameters(value={"browser","version","platform"})
-	  public void setUp(String browser, String version, String platform) throws Exception {
+	  @Parameters(value={"browser","version","platform","url"})
+	  public void setUp(String browser, String version, String platform,String url) throws Exception {
 	    DesiredCapabilities capability = new DesiredCapabilities();
 	    capability.setCapability("platform",platform);
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "Inprogress");
+	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
+	    capability.setCapability("name", "Manage People");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
-	 
-	  }  
-	
+	    driver.get(url);
+		 driver.manage().window().maximize();
+		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		 
+	 }
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
@@ -47,10 +51,9 @@ public class People {
 	
 	@Test
 	
-	public void editCompany() throws Exception { 
+	public void ManagePeoplePage() throws Exception { 
 	
-		driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
-		driver.manage().window().maximize();
+		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.findElement(By.id("signInIdentification")).clear();
  		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");

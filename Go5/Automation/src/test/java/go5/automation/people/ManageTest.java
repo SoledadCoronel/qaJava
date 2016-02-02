@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class PeopleTest extends CommonFunctions{
+public class ManageTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 

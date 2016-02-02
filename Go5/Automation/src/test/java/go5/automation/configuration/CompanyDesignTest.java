@@ -34,10 +34,10 @@ public class CompanyDesignTest {
 	    capability.setCapability("platform",platform);
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "Inprogress");
+	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Remote File Upload using Selenium 2's FileDetectors");
+	    capability.setCapability("name", "Company Design");
 	    
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
@@ -56,7 +56,7 @@ public class CompanyDesignTest {
 		}
 
 	@Test
-	public void changeDesignOfPlatform(){
+	public void companyDesginPage(){
 		
 		//Login
 		
@@ -154,20 +154,17 @@ public class CompanyDesignTest {
         WebElement element = driver.findElement(By.id("logoFilePicker"));
         js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
       
-        //Agarrar el elemento para cargar el file y pasarle el path 
+      //Agarrar el elemento para cargar el file y pasarle el path 
         
-         WebElement upload= driver.findElement(By.id("logoFilePicker"));
+        WebElement upload= driver.findElement(By.id("logoFilePicker"));
+        
+        upload.sendKeys("/home/marinatouceda/Escritorio/Girasol.jpeg");
+         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+         driver.findElement(By.cssSelector(".cutpictures .primary")).click();
          
-         upload.sendKeys("/home/marinatouceda/Escritorio/Girasol.jpeg");
-         
-         driver.findElement(By.cssSelector(".jcrop-active")).click();
-          driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-          driver.findElement(By.cssSelector("cutpictures")).isDisplayed();
-          driver.findElement(By.cssSelector(".primary")).click();
-          
        
     //Save changes
-          driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS); 
+          driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); 
           driver.findElement(By.cssSelector(".primary")).click();
     	
 		

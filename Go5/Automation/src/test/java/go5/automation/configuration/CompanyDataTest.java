@@ -29,9 +29,10 @@ public class CompanyDataTest {
 	    capability.setCapability("platform",platform);
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "Inprogress");
+	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
+	    capability.setCapability("name", "Company Data");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -49,7 +50,7 @@ public class CompanyDataTest {
 	
 	@Test
 	
-	public void editCompany() throws Exception { 
+	public void companyDataPage() throws Exception { 
 	
 		
 	//Login

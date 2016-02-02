@@ -92,10 +92,8 @@ public class HomeTest extends CommonFunctions{
 		         
 		         upload.sendKeys("/home/marinatouceda/Escritorio/Girasol.jpeg");
 		          log.info(upload);
-		         driver.findElement(By.cssSelector(".jcrop-active")).click();
 		          driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-		          driver.findElement(By.cssSelector("cutpictures")).isDisplayed();
-		          driver.findElement(By.cssSelector(".primary")).click();
+		          driver.findElement(By.cssSelector(".cutpictures .primary")).click();
 		          
 		       
 		    //Save changes
