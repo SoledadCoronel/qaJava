@@ -3,14 +3,29 @@ package go5.automation.home;
 
 import go5.automation.CommonFunctions;
 
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
+
+import com.thoughtworks.selenium.webdriven.commands.KeyEvent;
+
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.io.File;
+import java.net.URISyntaxException;
+
 
 
 public class HomeTest extends CommonFunctions{
@@ -30,7 +45,8 @@ public class HomeTest extends CommonFunctions{
 		}
 
 	@Test(priority=1)
-	public void EnterTheHomePage(){
+	public void EnterTheHomePage() throws AWTException{
+		
 		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		log.info("Login into GoIntegro and check the menu is present");
@@ -60,18 +76,30 @@ public class HomeTest extends CommonFunctions{
 		     
 		        //Verify that the image selected is being displayed at the header
 		         
-		       
+		        String textbrandinterfaces= new String (driver.findElement(By.cssSelector(".brandinterfaces")).getText());
+		        log.info(textbrandinterfaces);
 		         
-		          WebElement upload= driver.findElement(By.cssSelector(".brandinterfaces"));
-		          upload.sendKeys("/home/marinatouceda/Documentos/Girasol.jpg");
-
+		        
+		     //function to make visible the button logoFilePicker, as it is set to class "off"
+		        
+		        JavascriptExecutor js = (JavascriptExecutor) driver;
+		        WebElement element = driver.findElement(By.id("logoFilePicker"));
+		        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
+		        
+		         WebElement upload= driver.findElement(By.id("logoFilePicker"));
+		         
+		         upload.sendKeys("/home/marinatouceda/Escritorio/Girasol.jpeg");
+		          log.info(upload);
+		         driver.findElement(By.cssSelector(".jcrop-active")).click();
+		          driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+		          driver.findElement(By.cssSelector("cutpictures")).isDisplayed();
+		          driver.findElement(By.cssSelector(".primary")).click();
+		          
 		       
-		        //Save changes
+		    //Save changes
 		          driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS); 
 		          driver.findElement(By.cssSelector(".primary")).click();
 		    	
-		
-	}
-	
+			}
 	}
 

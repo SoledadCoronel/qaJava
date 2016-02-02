@@ -149,6 +149,6 @@ public class CompanyDesignTest {
     //Save changes
       driver.findElement(By.cssSelector(".primary")).click();
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); 
-     
+    		
 	}
 }
