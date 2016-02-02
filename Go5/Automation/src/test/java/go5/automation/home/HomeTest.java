@@ -85,6 +85,8 @@ public class HomeTest extends CommonFunctions{
 		        JavascriptExecutor js = (JavascriptExecutor) driver;
 		        WebElement element = driver.findElement(By.id("logoFilePicker"));
 		        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
+		      
+		        //Agarrar el elemento para cargar el file y pasarle el path 
 		        
 		         WebElement upload= driver.findElement(By.id("logoFilePicker"));
 		         

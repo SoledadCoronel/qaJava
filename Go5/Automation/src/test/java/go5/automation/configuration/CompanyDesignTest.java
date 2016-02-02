@@ -7,8 +7,10 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -35,9 +37,13 @@ public class CompanyDesignTest {
 	    capability.setCapability("project", "Inprogress");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
+	    capability.setCapability("name", "Remote File Upload using Selenium 2's FileDetectors");
+	    
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
+	    
+	  ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
 	    driver.get(url);
 		 driver.manage().window().maximize();
 		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -138,17 +144,32 @@ public class CompanyDesignTest {
   
      Assert.assertEquals(colorSelected, colorHeader, "El color seleccionado en branding se muestra correctamente en el header" );
      
-    //Verify that the image selected is being displayed at the header
-     
-   
-     
-      WebElement upload= driver.findElement(By.cssSelector(".brandinterfaces"));
-      upload.sendKeys("/home/marinatouceda/Documentos/Girasol.jpg");
-
-   
-    //Save changes
-      driver.findElement(By.cssSelector(".primary")).click();
-		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); 
     		
+		  //Verify that the image selected is being displayed at the header
+                         
+       
+     //function to make visible the button logoFilePicker, as it is set to class "off"
+        
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement element = driver.findElement(By.id("logoFilePicker"));
+        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
+      
+        //Agarrar el elemento para cargar el file y pasarle el path 
+        
+         WebElement upload= driver.findElement(By.id("logoFilePicker"));
+         
+         upload.sendKeys("/home/marinatouceda/Escritorio/Girasol.jpeg");
+         
+         driver.findElement(By.cssSelector(".jcrop-active")).click();
+          driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+          driver.findElement(By.cssSelector("cutpictures")).isDisplayed();
+          driver.findElement(By.cssSelector(".primary")).click();
+          
+       
+    //Save changes
+          driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS); 
+          driver.findElement(By.cssSelector(".primary")).click();
+    	
+		
 	}
 }
