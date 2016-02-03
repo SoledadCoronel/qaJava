@@ -56,12 +56,12 @@ public class HomeTest extends CommonFunctions{
         
 				driver.findElement(By.cssSelector(".applications .users .configuration")).click();
 		       driver.findElement(By.cssSelector(".menu")).click();
-			
+			/*
 			// Go to  Users Menu
 		        Reporter.log("Abriendo administar personas" );  
 		        //driver.findElement(By.cssSelector(".usermenu")).click();
 		        Reporter.log("Abriendo titulos");
-		        
+		       */ 
 		     // Go to Company Design 
 		        Reporter.log("Abriendo la pagina de diseño de la plataforma" );
 		        // Primero hay que clickear en otro si no no anda!!Clickeo titles
@@ -73,12 +73,10 @@ public class HomeTest extends CommonFunctions{
 		        driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
 		        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		        
-		     
-		        //Verify that the image selected is being displayed at the header
-		         
-		        String textbrandinterfaces= new String (driver.findElement(By.cssSelector(".brandinterfaces")).getText());
-		        log.info(textbrandinterfaces);
-		         
+		     /*
+		       
+		      //Load a logo  
+		       		         
 		        
 		     //function to make visible the button logoFilePicker, as it is set to class "off"
 		        
@@ -91,7 +89,7 @@ public class HomeTest extends CommonFunctions{
 		         WebElement upload= driver.findElement(By.id("logoFilePicker"));
 		         
 		         upload.sendKeys("/home/marinatouceda/Escritorio/Girasol.jpeg");
-		          log.info(upload);
+		          
 		          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		          driver.findElement(By.cssSelector(".cutpictures .primary")).click();
 		          
@@ -99,7 +97,7 @@ public class HomeTest extends CommonFunctions{
 		    //Save changes
 		          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
 		          driver.findElement(By.cssSelector(".primary")).click();
-		          
+		   /*       
 		    // Vuelvo a clikear en Diseño
 		          
 		       // Primero hay que clickear en otro si no no anda!!Clickeo titles
@@ -110,14 +108,51 @@ public class HomeTest extends CommonFunctions{
 		          
 		        // Restorear la interfaz 
 			        
-			        log.info(driver.findElement(By.tagName("header")).getCssValue("brand"));
-			       log.info(driver.findElement(By.cssSelector(".restores")).getText()); 
+			      driver.findElement(By.linkText("Restablece la interfaz de usuario")).click();
+			      log.info(driver.findElement(By.cssSelector(".restores")).getText()); 
 		          driver.findElement(By.cssSelector(".restores")).click();
 		          
 		          driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS); 
 		          driver.findElement(By.cssSelector(".primary")).click();
-		          
+		    */      
 		  // Load background file
+		        
+		       
+		        //function to make visible the button loginBgFilePicker, as it is set to class "off"
+			        
+			        JavascriptExecutor js2 = (JavascriptExecutor) driver;
+			        WebElement elementbackground = driver.findElement(By.id("loginBgFilePicker"));
+			        js2.executeScript("arguments[0].setAttribute('style', 'display:block')",elementbackground);
+			      
+			        //Agarrar el elemento para cargar el file y pasarle el path 
+			          
+			        	  
+			        
+			       elementbackground.sendKeys("/home/marinatouceda/Escritorio/NanuDisney.jpeg");
+			  
+			       
+			    //Save changes on the page
+			          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
+			          driver.findElement(By.cssSelector(".primary")).click(); 
+			        
+			        
+			      //Validate that the image is displayed
+			          				       
+                     //   driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(4) .imgresponsiveheight")).click();
+			       // Go to Company Design 
+				        Reporter.log("Abriendo la pagina de diseño de la plataforma" );
+				        // Primero hay que clickear en otro si no no anda!!Clickeo titles
+				        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+				        
+				        Reporter.log(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
+				        // Clickeo en Disenio
+				        
+				        driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
+				        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			          
+			          
+			       //Restablecer interfaz   
+                        driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
 		          
 			}
 	}
