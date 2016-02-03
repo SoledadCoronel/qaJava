@@ -72,10 +72,11 @@ public class HomeTest extends CommonFunctions{
 		        
 		        driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
 		        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		        
-		     /*
+	}     
+		    @Test(priority=2)
+		    public void testLogoFile(){
 		       
-		      //Load a logo  
+		     // Load a logo  
 		       		         
 		        
 		     //function to make visible the button logoFilePicker, as it is set to class "off"
@@ -97,25 +98,13 @@ public class HomeTest extends CommonFunctions{
 		    //Save changes
 		          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
 		          driver.findElement(By.cssSelector(".primary")).click();
-		   /*       
-		    // Vuelvo a clikear en Diseño
-		          
-		       // Primero hay que clickear en otro si no no anda!!Clickeo titles
-			        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-		          
-		          driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
-			        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
-		          
-		        // Restorear la interfaz 
-			        
-			      driver.findElement(By.linkText("Restablece la interfaz de usuario")).click();
-			      log.info(driver.findElement(By.cssSelector(".restores")).getText()); 
-		          driver.findElement(By.cssSelector(".restores")).click();
-		          
-		          driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS); 
-		          driver.findElement(By.cssSelector(".primary")).click();
-		    */      
-		  // Load background file
+		    }
+		   
+		        
+		
+		       @Test (priority=3)
+		       public void testBackgroundFile() {
+		        // Load background file
 		        
 		       
 		        //function to make visible the button loginBgFilePicker, as it is set to class "off"
@@ -149,10 +138,22 @@ public class HomeTest extends CommonFunctions{
 				        
 				        driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
 				        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		       }
+		       
+			@Test(priority=4)
+			public void restoreInterface(){
+				 // Vuelvo a clikear en Diseño
+		          
+			       // Primero hay que clickear en otro si no no anda!!Clickeo titles
+				        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
 			          
-			          
+			          driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
+				        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
+			         
+			        			
 			       //Restablecer interfaz   
                         driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
+                        
 		          
 			}
 	}
