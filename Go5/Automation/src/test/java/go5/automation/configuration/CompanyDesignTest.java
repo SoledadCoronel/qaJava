@@ -3,6 +3,7 @@ package go5.automation.configuration;
 
 
 
+import java.io.File;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -34,7 +35,7 @@ public class CompanyDesignTest {
 	    capability.setCapability("platform",platform);
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "GOIntegro");
+	    capability.setCapability("project", "InProgress");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
 	    capability.setCapability("name", "Company Design");
@@ -157,8 +158,14 @@ public class CompanyDesignTest {
       //Agarrar el elemento para cargar el file y pasarle el path 
         
         WebElement upload= driver.findElement(By.id("logoFilePicker"));
+       
+        //File file = new File(getClass().getClassLoader().getResource("resources/Girasol.jpeg"));
+       // Reporter.log(getClass().getClassLoader().getResource("resources/Girasol.jpeg"));
+        //String filePath = getClass().getClassLoader().getResource("resources/Girasol.jpeg").getPath();
+        File file = new File("src/test/resources/Girasol.jpeg");
         
-        upload.sendKeys("/home/marinatouceda/Escritorio/Girasol.jpeg");
+        Reporter.log(file.getAbsolutePath());
+        upload.sendKeys(file.getAbsolutePath());
          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          driver.findElement(By.cssSelector(".cutpictures .primary")).click();
          

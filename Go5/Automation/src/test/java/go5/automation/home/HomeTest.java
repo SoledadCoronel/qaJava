@@ -92,14 +92,33 @@ public class HomeTest extends CommonFunctions{
 		         
 		         upload.sendKeys("/home/marinatouceda/Escritorio/Girasol.jpeg");
 		          log.info(upload);
-		          driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+		          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		          driver.findElement(By.cssSelector(".cutpictures .primary")).click();
 		          
 		       
 		    //Save changes
-		          driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS); 
+		          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
 		          driver.findElement(By.cssSelector(".primary")).click();
-		    	
+		          
+		    // Vuelvo a clikear en Diseño
+		          
+		       // Primero hay que clickear en otro si no no anda!!Clickeo titles
+			        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+		          
+		          driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
+			        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
+		          
+		        // Restorear la interfaz 
+			        
+			        log.info(driver.findElement(By.tagName("header")).getCssValue("brand"));
+			       log.info(driver.findElement(By.cssSelector(".restores")).getText()); 
+		          driver.findElement(By.cssSelector(".restores")).click();
+		          
+		          driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS); 
+		          driver.findElement(By.cssSelector(".primary")).click();
+		          
+		  // Load background file
+		          
 			}
 	}
 
