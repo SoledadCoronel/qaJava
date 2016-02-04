@@ -56,7 +56,7 @@ public class CompanyDesignTest {
 			driver.quit();
 		}
 
-	@Test
+	@Test(priority=1)
 	public void companyDesginPage(){
 		
 		//Login
@@ -74,21 +74,9 @@ public class CompanyDesignTest {
 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
        driver.findElement(By.cssSelector(".menu")).click();
 	
-	// Go to  Users Menu
-        Reporter.log("Abriendo administar personas" );  
-        //driver.findElement(By.cssSelector(".usermenu")).click();
-        Reporter.log("Abriendo titulos");
-        
-    // Go to Titles    
-        
-        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
-      
-        Reporter.log("Abriendo personas");
-   // Go to Manage people
-        
-        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-        
+	    
+   
+   
 
 		// Go to Company Design 
        Reporter.log("Abriendo la pagina de diseño de la plataforma" );
@@ -123,7 +111,20 @@ public class CompanyDesignTest {
         
         Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).getText()));
 	
-       
+	}
+        
+        @Test(priority=2)
+    	public void changeHeaderColor(){
+    		
+    	
+           // Clickeo en Disenio
+           
+           driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
+           driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+        
+        
+        
+        
 	 // Verify that the selected color has been changed in the header
         
         //Select black colour
@@ -144,6 +145,27 @@ public class CompanyDesignTest {
       
   
      Assert.assertEquals(colorSelected, colorHeader, "El color seleccionado en branding se muestra correctamente en el header" );
+        }
+        
+     
+     @Test(priority=3)
+ 	public void loadLogoPicture(){
+ 		
+ 		
+    
+
+ 		// Go to Company Design 
+        Reporter.log("Abriendo la pagina de diseño de la plataforma" );
+        // Primero hay que clickear en otro si no no anda!!Clickeo titles
+        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+        
+        Reporter.log(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
+        // Clickeo en Disenio
+        
+        driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
+        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+     
+     
      
     		
 		  //Verify that the image selected is being displayed at the header
