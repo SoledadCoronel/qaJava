@@ -56,9 +56,55 @@ public class CompanyDesignTest {
 			driver.quit();
 		}
 
-	@Test(priority=2)
-	public void verifyListOfColors(){
 		
+	 @Test
+		public void verifyColors(){
+			
+			
+			//Login
+			
+			driver.findElement(By.id("signInIdentification")).clear();
+	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
+	 		driver.findElement(By.id("signInPassword")).clear();
+	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
+	 		 driver.findElement(By.cssSelector(".primary")).click();
+	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	       
+	
+    // Go to the configuration
+	         
+	driver.findElement(By.cssSelector(".applications .users .configuration")).click();
+   driver.findElement(By.cssSelector(".menu")).click();
+  
+
+
+	// Go to Company Design 
+   Reporter.log("Abriendo la pagina de diseño de la plataforma" );
+   // Primero hay que clickear en otro si no no anda!!Clickeo titles
+   driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+   
+   Reporter.log(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
+  
+   // Clickeo en Disenio
+   
+   driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
+   	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			 // Vuelvo a clikear en Diseño
+	          
+		       // Primero hay que clickear en otro si no no anda!!Clickeo titles
+			        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+		          
+		          driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
+			        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
+		       
+		        			
+		       //Restablecer interfaz   
+                    driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
+                    driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+                   //Click en el popup de restorear
+                    driver.findElement(By.cssSelector(".modal .rgroupitem .primary")).click();
+                    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
+               
 	
      
        // Verify list of colors in branding
@@ -82,11 +128,9 @@ public class CompanyDesignTest {
         Assert.assertEquals("green",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(9)")).getText()));
         
         Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).getText()));
-	
-	}
-        
-        @Test(priority=3)
-    	public void changeHeaderColor(){
+	       
+       
+    	//Change header color
     		
     	
            // Clickeo en Disenio
@@ -117,11 +161,11 @@ public class CompanyDesignTest {
       
   
      Assert.assertEquals(colorSelected, colorHeader, "El color seleccionado en branding se muestra correctamente en el header" );
-        }
         
         
-        @Test(priority=4)
-    	public void changeContrastColor(){
+        
+       
+    	// Change Contrast Color(){
     		
     	
            // Clickeo en Disenio
@@ -137,150 +181,17 @@ public class CompanyDesignTest {
         //Select black colour for letters
         driver.findElement(By.cssSelector(".design fieldset:nth-child(3) .colorpicker .black")).click();
        
-      String colorSelected = new String (driver.findElement(By.cssSelector(".design fieldset:nth-child(3) .colorpicker .black a")).getCssValue("background-color"));
-      Reporter.log(colorSelected);
-    
-      //Save changes for colour
-    //  driver.findElement(By.cssSelector(".primary")).click();
-		//driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+      String colorSelected2 = new String (driver.findElement(By.cssSelector(".design fieldset:nth-child(3) .colorpicker .black a")).getCssValue("background-color"));
+      Reporter.log(colorSelected2);
+   
+     
       
-      
-      String colorHeader = new String(driver.findElement(By.cssSelector("header h1")).getCssValue("color"));
-      Reporter.log(colorHeader);
+      String colorHeader2 = new String(driver.findElement(By.cssSelector("header h1")).getCssValue("color"));
+      Reporter.log(colorHeader2);
    
       //Compare the header color against the selected, converted to hexadecimal
       
   
-     Assert.assertEquals(colorSelected, colorHeader, "El color seleccionado en branding se muestra correctamente en el header" );
+     Assert.assertEquals(colorSelected2, colorHeader2, "El color seleccionado en branding se muestra correctamente en el header" );
         }
-        
-     @Test(priority=5)
- 	public void loadLogoPicture(){
- 		
- 		
-    
-
- 		// Go to Company Design 
-        Reporter.log("Abriendo la pagina de diseño de la plataforma" );
-        // Primero hay que clickear en otro si no no anda!!Clickeo titles
-        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-        
-        Reporter.log(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
-        // Clickeo en Disenio
-        
-        driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
-        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-     
-     
-     
-    		
-		  //Verify that the image selected is being displayed at the header
-                         
-       
-     //function to make visible the button logoFilePicker, as it is set to class "off"
-        
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement element = driver.findElement(By.id("logoFilePicker"));
-        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
-      
-      //Agarrar el elemento para cargar el file y pasarle el path 
-        
-        WebElement upload= driver.findElement(By.id("logoFilePicker"));
-       
-       
-        File file = new File("src/test/resources/Girasol.jpeg");
-        
-        Reporter.log(file.getAbsolutePath());
-        upload.sendKeys(file.getAbsolutePath());
-         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-         driver.findElement(By.cssSelector(".cutpictures .primary")).click();
-        
-         
-       
-    //Save changes
-          driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); 
-          driver.findElement(By.cssSelector(".primary")).click();
-    	
-		
-	}
-
-     @Test (priority=6)
-     public void loadBackgroundPicture() {
-      // Load background file
-      
-     
-      //function to make visible the button loginBgFilePicker, as it is set to class "off"
-	        
-	        JavascriptExecutor js2 = (JavascriptExecutor) driver;
-	        WebElement elementbackground = driver.findElement(By.id("loginBgFilePicker"));
-	        js2.executeScript("arguments[0].setAttribute('style', 'display:block')",elementbackground);
-	      
-	        //Agarrar el elemento para cargar el file y pasarle el path 
-	          
-	        //Agarrar el elemento para cargar el file y pasarle el path 
-	        	        
-	       
-	        File filebackground = new File("src/test/resources/Background.jpg");
-	        
-	        Reporter.log(filebackground.getAbsolutePath());
-	        elementbackground.sendKeys(filebackground.getAbsolutePath());
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	            
-	      	       
-	    //Save changes on the page
-	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
-	          driver.findElement(By.cssSelector(".primary")).click(); 
-     }
-			@Test(priority=1)
-			public void restoreInterface(){
-				
-				
-				//Login
-				
-				driver.findElement(By.id("signInIdentification")).clear();
-		 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-		 		driver.findElement(By.id("signInPassword")).clear();
-		 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-		 		 driver.findElement(By.cssSelector(".primary")).click();
-		         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		       
-		
-        // Go to the configuration
-		         
-		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-       driver.findElement(By.cssSelector(".menu")).click();
-	
-	    
-   
-   
-
-		// Go to Company Design 
-       Reporter.log("Abriendo la pagina de diseño de la plataforma" );
-       // Primero hay que clickear en otro si no no anda!!Clickeo titles
-       driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-       
-       Reporter.log(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
-      
-       // Clickeo en Disenio
-       
-       driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
-       	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-				 // Vuelvo a clikear en Diseño
-		          
-			       // Primero hay que clickear en otro si no no anda!!Clickeo titles
-				        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-			          
-			          driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
-				        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
-			       
-			        			
-			       //Restablecer interfaz   
-                        driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
-                        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-                       //Click en el popup de restorear
-                        driver.findElement(By.cssSelector(".modal .rgroupitem .primary")).click();
-                        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
-                      
-		          
-			}
-}
+    }
