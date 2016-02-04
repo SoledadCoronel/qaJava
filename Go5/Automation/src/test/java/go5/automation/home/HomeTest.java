@@ -123,22 +123,9 @@ public class HomeTest extends CommonFunctions{
 			    //Save changes on the page
 			          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
 			          driver.findElement(By.cssSelector(".primary")).click(); 
-			        
-			        
-			      //Validate that the image is displayed
-			          				       
-                     //   driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(4) .imgresponsiveheight")).click();
-			       // Go to Company Design 
-				        Reporter.log("Abriendo la pagina de diseño de la plataforma" );
-				        // Primero hay que clickear en otro si no no anda!!Clickeo titles
-				        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-				        
-				        Reporter.log(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
-				        // Clickeo en Disenio
-				        
-				        driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
-				        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		       }
+		       
+			     
 		       
 			@Test(priority=4)
 			public void restoreInterface(){
@@ -153,7 +140,10 @@ public class HomeTest extends CommonFunctions{
 			        			
 			       //Restablecer interfaz   
                         driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
-                        
+                        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+                       //Click en el popup de restorear
+                        driver.findElement(By.cssSelector(".modal .rgroupitem .primary")).click();
+                    
 		          
 			}
 	}
