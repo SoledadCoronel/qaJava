@@ -122,10 +122,8 @@ public class CompanyDesignLogoTest {
         driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
      
-     
-     
-    		
-		  //Verify that the image selected is being displayed at the header
+          		
+		
                          
        
      //function to make visible the button logoFilePicker, as it is set to class "off"
@@ -153,7 +151,6 @@ public class CompanyDesignLogoTest {
           driver.findElement(By.cssSelector(".primary")).click();
     	
 		
-	
 
       // Load background file
       
