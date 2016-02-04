@@ -876,7 +876,7 @@
           <hashTree/>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="RolesPosts" enabled="true"/>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRole" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRole201" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -890,6 +890,7 @@
       &quot;is-admin&quot;: false,&#xd;
       &quot;is-default&quot;: true,&#xd;
       &quot;status&quot;: &quot;active&quot;&#xd;
+            &#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -913,7 +914,16 @@
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49587">201</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares " enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">ROLE_ID</stringProp>
                 <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
@@ -922,17 +932,8 @@
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
               </RegexExtractor>
               <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">NAME_ROL</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;name&quot;: &quot;(.+?)&quot;,</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">1</stringProp>
-              </RegexExtractor>
-              <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRoleOtherPlatform" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRole400IsDefault" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -942,107 +943,10 @@
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;roles&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-    &quot;name&quot;: &quot;QAROLSECONDPLATFORM${__Random(1,9999,)}&quot;,&#xd;
+    &quot;name&quot;: &quot;QAROL${__Random(1,9999,)}&quot;,&#xd;
       &quot;is-admin&quot;: false,&#xd;
-      &quot;is-default&quot;: true,&#xd;
-      &quot;status&quot;: &quot;active&quot;&#xd;
-    }&#xd;
-  }&#xd;
-}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Content-Type</stringProp>
-                    <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Accept</stringProp>
-                    <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Authorization</stringProp>
-                    <stringProp name="Header.value">${ACCESS_TOKEN2}</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ROLEOTHERPLATFORM_ID</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">1</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-              <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
-                <boolProp name="ResultCollector.error_logging">false</boolProp>
-                <objProp>
-                  <name>saveConfig</name>
-                  <value class="SampleSaveConfiguration">
-                    <time>true</time>
-                    <latency>true</latency>
-                    <timestamp>true</timestamp>
-                    <success>true</success>
-                    <label>true</label>
-                    <code>true</code>
-                    <message>true</message>
-                    <threadName>true</threadName>
-                    <dataType>true</dataType>
-                    <encoding>false</encoding>
-                    <assertions>true</assertions>
-                    <subresults>true</subresults>
-                    <responseData>false</responseData>
-                    <samplerData>false</samplerData>
-                    <xml>false</xml>
-                    <fieldNames>false</fieldNames>
-                    <responseHeaders>false</responseHeaders>
-                    <requestHeaders>false</requestHeaders>
-                    <responseDataOnError>false</responseDataOnError>
-                    <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                    <assertionsResultsToSave>0</assertionsResultsToSave>
-                    <bytes>true</bytes>
-                    <threadCounts>true</threadCounts>
-                  </value>
-                </objProp>
-                <stringProp name="filename"></stringProp>
-              </ResultCollector>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRole - DuplicateName" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;roles&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;name&quot;:&quot;${NAME_ROL}&quot;,&#xd;
-      &quot;is-admin&quot;: false,&#xd;
-      &quot;is-default&quot;: true,&#xd;
-      &quot;status&quot;: &quot;active&quot;&#xd;
+      &quot;is-default&quot;: 1111,&#xd;
+      &quot;status&quot;: &quot;active&quot;      &#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -1075,29 +979,24 @@
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="597437661">The name must be unique</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
-              </ResponseAssertion>
-              <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PostRoleRelantionship" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRole400Status" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
-    {&#xd;
-      &quot;type&quot;: &quot;access&quot;,&#xd;
-      &quot;id&quot;: &quot;1&quot;&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;roles&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+    &quot;name&quot;: &quot;QAROL${__Random(1,9999,)}&quot;,&#xd;
+      &quot;is-admin&quot;: false,&#xd;
+      &quot;is-default&quot;: true,&#xd;
+      &quot;status&quot;: false&#xd;
+      &#xd;
     }&#xd;
-  ]&#xd;
+  }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1109,7 +1008,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}/relationships/access</stringProp>
+              <stringProp name="HTTPSampler.path">/roles</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1121,15 +1020,15 @@
             <hashTree>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
+                  <stringProp name="51508">400</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
+                <boolProp name="Assertion.assume_success">true</boolProp>
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRoleForDeleteRole" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRole400IsAdmin" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -1140,9 +1039,10 @@
     &quot;type&quot;: &quot;roles&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
     &quot;name&quot;: &quot;QAROL${__Random(1,9999,)}&quot;,&#xd;
-      &quot;is-admin&quot;: false,&#xd;
+      &quot;is-admin&quot;: 1111,&#xd;
       &quot;is-default&quot;: true,&#xd;
       &quot;status&quot;: &quot;active&quot;&#xd;
+            &#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -1166,265 +1066,34 @@
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ROLE_ID_DELETE</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">1</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRole2" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;roles&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-    &quot;name&quot;: &quot;QAROL${__Random(1,9999,)}&quot;,&#xd;
-      &quot;is-admin&quot;: false,&#xd;
-      &quot;is-default&quot;: true,&#xd;
-      &quot;status&quot;: &quot;active&quot;&#xd;
-    }&#xd;
-  }&#xd;
-}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="51508">400</stringProp>
                 </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ROLE2_ID</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">1</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">NAME2_ROL</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;name&quot;: &quot;(.+?)&quot;,</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">1</stringProp>
-              </RegexExtractor>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">true</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="RolesGets" enabled="true"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="RolesPatch" enabled="true"/>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRoles " enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole400IDInteger" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value"></stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ROLEADMINSPACE_ID</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">3</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRoleRelantionshipAdminEspacios" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value"></stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLEADMINSPACE_ID}/relationships/access</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRolesPaginado" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="page[number]" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">1</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">page[number]</stringProp>
-                  </elementProp>
-                  <elementProp name="page[size]" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">2</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">page[size]</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-2067111896">&quot;total-pages&quot;: 3,</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRole - nonexistentRole" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value"></stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/0</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="1786305461">Not Found</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">true</boolProp>
-                <intProp name="Assertion.test_type">16</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="51512">404</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">true</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRole" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;roles&quot;,&#xd;
+    &quot;id&quot;: jjjjjjj,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;name&quot;: 1111111&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -1436,232 +1105,6 @@
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
               <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRoleRelantionship" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value"></stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}/relationships/access</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRolesFiltradoPorName" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="filter[name]" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">Admin</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">filter[name]</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="1347732562">&quot;name&quot;: &quot;Admin&quot;,</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRolesFiltradoPorIsAdmin---BUG" enabled="false">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="filter[is-admin]" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">true</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">filter[is-admin]</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="1202658212">  &quot;is-admin&quot;: true,</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRolesFiltradoPorStatus" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="filter[status]" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">active</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">filter[status]</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="1195404958"> &quot;status&quot;: &quot;active&quot;,</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-          </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="RolesPatch" enabled="true"/>
-          <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole - Isadmin" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;roles&quot;,&#xd;
-    &quot;id&quot;: &quot;${ROLE2_ID}&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: true&#xd;
-    }&#xd;
-  }&#xd;
-}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE2_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1680,17 +1123,8 @@
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-2069121176">The property - is-admin - is not defined and the definition does not allow</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">true</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
-              </ResponseAssertion>
-              <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole - Name" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole400Name" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -1699,9 +1133,9 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;roles&quot;,&#xd;
-    &quot;id&quot;: &quot;${ROLE2_ID}&quot;,&#xd;
+    &quot;id&quot;: &quot;${ROLE_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;name&quot;: &quot;QAROL${__Random(1,9999,)}&quot;&#xd;
+      &quot;name&quot;: 1111111&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -1715,7 +1149,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE2_ID}</stringProp>
+              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1724,8 +1158,18 @@
               <boolProp name="HTTPSampler.monitor">false</boolProp>
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             </HTTPSamplerProxy>
-            <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole - EmptyName" enabled="true">
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="51508">400</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">true</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole400NameEmpty" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -1734,7 +1178,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;roles&quot;,&#xd;
-    &quot;id&quot;: &quot;${ROLE2_ID}&quot;,&#xd;
+    &quot;id&quot;: &quot;${ROLE_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;name&quot;: &quot;&quot;&#xd;
     }&#xd;
@@ -1750,7 +1194,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE2_ID}</stringProp>
+              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1779,7 +1223,7 @@
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole - status" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole400Status" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -1788,9 +1232,9 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;roles&quot;,&#xd;
-    &quot;id&quot;: &quot;${ROLE2_ID}&quot;,&#xd;
+    &quot;id&quot;: &quot;${ROLE_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;status&quot;: &quot;disabled&quot;&#xd;
+      &quot;status&quot;: 11111&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -1804,7 +1248,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE2_ID}</stringProp>
+              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1813,8 +1257,27 @@
               <boolProp name="HTTPSampler.monitor">false</boolProp>
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             </HTTPSamplerProxy>
-            <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole - Emptystatus" enabled="true">
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="51508">400</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">true</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="377264968">Does not have a value in the enumeration Array</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">true</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole400StatusEmpty" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -1823,7 +1286,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;roles&quot;,&#xd;
-    &quot;id&quot;: &quot;${ROLE2_ID}&quot;,&#xd;
+    &quot;id&quot;: &quot;${ROLE_ID}&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
       &quot;status&quot;: &quot;&quot;&#xd;
     }&#xd;
@@ -1839,7 +1302,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE2_ID}</stringProp>
+              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1868,20 +1331,19 @@
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRole - Invalidstatus" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRoleRelantionshipId" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;roles&quot;,&#xd;
-    &quot;id&quot;: &quot;${ROLE2_ID}&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;status&quot;: &quot;disabledd&quot;&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;access&quot;,&#xd;
+      &quot;id&quot;: kkkkkkk&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1893,7 +1355,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE2_ID}</stringProp>
+              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}/relationships/access</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1909,161 +1371,6 @@
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">true</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="377264968">Does not have a value in the enumeration Array</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">true</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postAccessToPatch" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;access&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;description&quot;: &quot;description access&quot;,&#xd;
-      &quot;key&quot;: &quot;99&quot;,&#xd;
-      &quot;namespace&quot;: &quot;namespace&quot;,&#xd;
-      &quot;es&quot;: &quot;dfdfstring&quot;,&#xd;
-      &quot;en&quot;: &quot;dfdstring&quot;,&#xd;
-      &quot;br&quot;: &quot;dfdstring&quot;&#xd;
-    }&#xd;
-  }&#xd;
-}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/access/</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49587">201</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">true</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ACCESS_ID_PATCH</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">1</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRoleRelantionship" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
-    {&#xd;
-      &quot;type&quot;: &quot;access&quot;,&#xd;
-      &quot;id&quot;: &quot;${ACCESS_ID_PATCH}&quot;&#xd;
-    }&#xd;
-  ]&#xd;
-}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}/relationships/access</stringProp>
-              <stringProp name="HTTPSampler.method">PATCH</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchRoleRelantionshipRollback" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
-    {&#xd;
-      &quot;type&quot;: &quot;access&quot;,&#xd;
-      &quot;id&quot;: &quot;1&quot;&#xd;
-    }&#xd;
-  ]&#xd;
-}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}/relationships/access</stringProp>
-              <stringProp name="HTTPSampler.method">PATCH</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
@@ -2071,7 +1378,7 @@
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="RolesDelete" enabled="true"/>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postAccessToDelete" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postAccessToDelete201" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -2129,7 +1436,7 @@
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PostRoleRelantionshipToDelete" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PostRoleRelantionshipToDelete404" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -2153,7 +1460,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID_DELETE}/relationships/access</stringProp>
+              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}2/relationships/access</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2165,52 +1472,15 @@
             <hashTree>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
+                  <stringProp name="51512">404</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
+                <boolProp name="Assertion.assume_success">true</boolProp>
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getRoleRelantionshipToDelete" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value"></stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID_DELETE}/relationships/access</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="deleteRoleAccess" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="deleteRoleAccess404" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -2234,7 +1504,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID_DELETE}/relationships/access</stringProp>
+              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID}2/relationships/access</stringProp>
               <stringProp name="HTTPSampler.method">DELETE</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2279,80 +1549,6 @@
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49590">204</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="deleteRole" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value"></stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/${ROLE_ID_DELETE}</stringProp>
-              <stringProp name="HTTPSampler.method">DELETE</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49590">204</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">8</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="deleteRole - invalidRole" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value"></stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/roles/0</stringProp>
-              <stringProp name="HTTPSampler.method">DELETE</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                <collectionProp name="Asserion.test_strings">
                   <stringProp name="51512">404</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
@@ -2360,13 +1556,41 @@
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="deleteRole400" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/roless/${ROLE_ID}2s</stringProp>
+              <stringProp name="HTTPSampler.method">DELETE</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="1823119181">Role does not exist</stringProp>
+                  <stringProp name="51508">400</stringProp>
                 </collectionProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">true</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
+                <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
@@ -2405,7 +1629,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GROUPS" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GROUPS" enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
@@ -3640,7 +2864,7 @@
             </hashTree>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GROUPITEM" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GROUPITEM" enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
@@ -4515,7 +3739,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="USERS " enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="USERS " enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
@@ -7018,7 +6242,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="USERS PREFERENCES" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="USERS PREFERENCES" enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
@@ -7273,7 +6497,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="PROFILE" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="PROFILE" enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
@@ -8322,7 +7546,7 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postTier " enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postTier400Name " enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -8332,7 +7556,7 @@
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;tiers&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;name&quot;: &quot;pasante&quot;,&#xd;
+      &quot;name&quot;: 222222,&#xd;
       &quot;position&quot;: 0&#xd;
     }&#xd;
   }&#xd;
@@ -8357,35 +7581,17 @@
             <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-              <stringProp name="RegexExtractor.refname">TIER_ID</stringProp>
-              <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-              <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default"></stringProp>
-              <stringProp name="RegexExtractor.match_number">1</stringProp>
-            </RegexExtractor>
-            <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="49587">201</stringProp>
+                <stringProp name="51508">400</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="-171527323">&quot;type&quot;: &quot;tiers&quot;,</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">2</intProp>
-            </ResponseAssertion>
-            <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postTierToBeDeleted " enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postTier400NameEmpty" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -8395,8 +7601,8 @@
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;tiers&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;name&quot;: &quot;cachirulo&quot;,&#xd;
-      &quot;position&quot;: 2&#xd;
+      &quot;name&quot;: ,&#xd;
+      &quot;position&quot;: 0&#xd;
     }&#xd;
   }&#xd;
 }</stringProp>
@@ -8420,127 +7626,17 @@
             <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-              <stringProp name="RegexExtractor.refname">TIERTOBEDELETED_ID</stringProp>
-              <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-              <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default"></stringProp>
-              <stringProp name="RegexExtractor.match_number">1</stringProp>
-            </RegexExtractor>
-            <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="49587">201</stringProp>
+                <stringProp name="51508">400</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="-171527323">&quot;type&quot;: &quot;tiers&quot;,</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">2</intProp>
-            </ResponseAssertion>
-            <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getTiers" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value"></stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain"></stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol"></stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/tiers</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <boolProp name="HTTPSampler.monitor">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="-171527323">&quot;type&quot;: &quot;tiers&quot;,</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">2</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getTier" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value"></stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain"></stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol"></stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/tiers/${TIER_ID}</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <boolProp name="HTTPSampler.monitor">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="-171527323">&quot;type&quot;: &quot;tiers&quot;,</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">2</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getTier - InvalidTier" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getTier404" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -8586,85 +7682,6 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getTier - otherPlatform" enabled="false">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value"></stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain"></stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol"></stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/tiers/10</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <boolProp name="HTTPSampler.monitor">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="1786305461">Not Found</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">2</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="51512">404</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>false</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <threadCounts>true</threadCounts>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="deleteTier" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -8682,7 +7699,7 @@
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/tiers/${TIERTOBEDELETED_ID}</stringProp>
+            <stringProp name="HTTPSampler.path">/tiers/0</stringProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -8694,10 +7711,100 @@
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
+                <stringProp name="51512">404</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postTier400PositionEmpty" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;tiers&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;name&quot;: 222222,&#xd;
+      &quot;position&quot;: &#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/tiers</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="51508">400</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postTier400Position" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;tiers&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;name&quot;: 222222,&#xd;
+      &quot;position&quot;: oooooo&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/tiers</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="51508">400</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
@@ -8736,7 +7843,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="JOB-TITTLE" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="JOB-TITTLE" enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
@@ -9326,7 +8433,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ACCESS" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ACCESS" enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
@@ -9998,7 +9105,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="INVITATION" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="INVITATION" enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
@@ -10067,7 +9174,7 @@
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-1767210854">The user is already registered</stringProp>
+                  <stringProp name="633397364">Invalid user</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">true</boolProp>
@@ -11014,7 +10121,7 @@
             </hashTree>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="REGISTRATION" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="REGISTRATION" enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
@@ -11497,7 +10604,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="REGISTRATIONDOMAINS" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="REGISTRATIONDOMAINS" enabled="false"/>
         <hashTree>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
