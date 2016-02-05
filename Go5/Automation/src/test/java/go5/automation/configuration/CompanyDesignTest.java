@@ -180,6 +180,7 @@ public class CompanyDesignTest {
         
         //Select black colour for letters
         driver.findElement(By.cssSelector(".design fieldset:nth-child(3) .colorpicker .black")).click();
+        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
        
       String colorSelected2 = new String (driver.findElement(By.cssSelector(".design fieldset:nth-child(3) .colorpicker .black a")).getCssValue("background-color"));
       Reporter.log(colorSelected2);
