@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -20,7 +21,7 @@ import org.testng.annotations.Test;
 public class ForgotPasswordSpanishTest {
 	
 	 private WebDriver driver;
-
+	  
 	
 	 @BeforeClass
 	  @Parameters(value={"browser","version","platform","url"})
@@ -64,8 +65,9 @@ public class ForgotPasswordSpanishTest {
 		 Assert.assertEquals(SpanishText2,"El email ingresado no se encuentra registrado. Por favor vuelve a intentarlo");
 	
 	// Insertar un email valido y verificar texto que se envio la contraseña
-	
-				
+		 JavascriptExecutor js2 = (JavascriptExecutor) driver;
+		js2.executeScript("$(document).ajaxComplete(function( event, xhr, settings ) { $('.primary').after('<a class=\"forgot-pass-link\" href=\"/authentication/reset-password/'+$.parseJSON(xhr.responseText).data.id+'\">Forgot Link!</a>'); });");
+		
 		driver.findElement(By.id("signInIdentification")).clear();
 		Reporter.log("Insertar el email y  presionar el  button to resend password");
 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
@@ -74,7 +76,11 @@ public class ForgotPasswordSpanishTest {
 	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
 	   System.out.println(SpanishText);
 		 Assert.assertEquals(SpanishText,"Revisa tu email.");
-		}
+		 
+		 driver.findElement(By.cssSelector(".forgot-pass-link")).click();
+		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	
+	}
 	
      }
 
