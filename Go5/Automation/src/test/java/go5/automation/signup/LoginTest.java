@@ -48,33 +48,7 @@ public class LoginTest extends CommonFunctions {
 		public void teardown(){
 			driver.quit();
 		}
-
-	@Test(priority=3)
-	public void validatePage(){
-		
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Validating login page");
-		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		driver.findElement(By.cssSelector(".link"));
-		Boolean goButtonEnabled = new Boolean(driver.findElement(By.cssSelector(".primary")).isEnabled());
-		if (goButtonEnabled == true){
-			log.info("El login button esta enabled");
-		}
-		else
-				log.info("El login button esta disbled");
-		
-			
-	}
-	@Test(priority=4)
-	public void testProperLogin() throws Exception { 
 	
- 	  	log.info("Probar el  login");
-		this.login("marina.touceda@gointegro.com","Auto1234");
-		log.info("Login successfull");
- 
-	}
 	
 	@Test(priority=1)
 	public void testLoginWithBlankUser() throws Exception { 

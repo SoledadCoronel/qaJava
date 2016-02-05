@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class ManageTest extends CommonFunctions{
+public class AddUserActive extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
@@ -61,9 +61,13 @@ public class ManageTest extends CommonFunctions{
 	    
 	     
 	     
-	     //Desactivar un user
+	     //Lo creo activado
 	     
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2)")).sendKeys("Userponerrandom");
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2)")).click();
+	     
+	     //Poner el nombre
+	     
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4)")).sendKeys("ponerrandom");
 	     
 	     
 	}
