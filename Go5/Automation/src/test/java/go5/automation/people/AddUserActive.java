@@ -69,7 +69,7 @@ public class AddUserActive extends CommonFunctions{
 	     
 	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4)")).sendKeys("ponerrandom");
 	     
-	     
+	     // Para completar todos los campos : .content .showlabels .secondary
 	}
 	
 }
