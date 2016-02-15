@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class InvitationsBasic extends CommonFunctions{
+public class InvitationsAdminResend extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
@@ -76,11 +76,11 @@ public class InvitationsBasic extends CommonFunctions{
 	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5)")).sendKeys("Random Lastname"+ numero.nextDouble());
 	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6)")).sendKeys("randomemail"+numero.nextInt()+"@gointegro.com");
 	     
-	     //Seleccionar el rol
+	     //Seleccionar el rol admin
 	      
 	     Select selectRol = new Select(driver.findElement(By.cssSelector(".basicdata label:nth-child(7) select"))); 
 	 		
-	        selectRol.selectByIndex(2);
+	        selectRol.selectByIndex(1);
 	     	
 	 		
 	     // Grabar el nuevo usuario creado
@@ -112,26 +112,17 @@ public class InvitationsBasic extends CommonFunctions{
 	          log.info(rows.size());
 	          Assert.assertEquals(rows.size(),1);	         
 	         
-	       //Cancelar la invitacion
-	       
-	          log.info(" Cancelndo la invitacion...");
-	          driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(5)")).click();
-	          log.info(driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) p")).getText());
-	          driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .primary")).click();
+	          
+	       // Reenviar la invitacion
+	          
+	          //Presiono boton reenviar del primer elemento de la tabla
+	          driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(6)")).click();
+	          driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
 	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	          
-	          // Verificar que hay un elemento menos en la tabla 
 	          
-	          driver.findElement(By.cssSelector(".title menu li:nth-child(1)")).click();
-	          driver.findElement(By.cssSelector(".title menu li:nth-child(2)")).click();
-	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-   	         
-	          WebElement tableEmpty=driver.findElement(By.cssSelector(".tables tbody"));
-
-	          List<WebElement> rowsE=tableEmpty.findElements(By.tagName("tr"));
-	          log.info("Imprimiendo la cantidad de invitaciones pendientes despues de cancelar la invitacion:..");
-	          log.info(rowsE.size());
-	          Assert.assertEquals(rowsE.size(),0);	 
+	          // Verificar que el email ha sido reenviadp
+   	         	         	 
 	}
 	
 }

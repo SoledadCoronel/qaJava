@@ -13,11 +13,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -87,8 +86,11 @@ public class AddUserBasicDataAdmin {
      
          // Obtener la cantidad de usuarios antes de agregar user
          
-         List<WebElement> rowsBefore = driver.findElements(By.cssSelector(".tablefilter tr"));
-        rowsBefore.size();
+               
+         WebElement htmltable=driver.findElement(By.cssSelector(".tablefilter tbody"));
+
+         List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
+         Reporter.log("La cantidad de usuarios antes de agregar uno nuevo,en el sitio es",rows.size());
          
          
          //Add a  user    
@@ -128,7 +130,15 @@ public class AddUserBasicDataAdmin {
 	       driver.findElement(By.cssSelector(".tablefilter")).isDisplayed();
           Reporter.log(" El usuario Admin se agrego correctamente"); 
 	          
-	  
+          // Verificar la cantidad de elementos en la tabla 
+	         
+          WebElement htmltable2=driver.findElement(By.cssSelector(".tablefilter tbody"));
+
+          List<WebElement> rows2=htmltable2.findElements(By.tagName("tr"));
+          Reporter.log("La cantidad de usuarios en el sitio es",rows2.size());
+         
+          //Chequear que la cantidad de elementos en la tabla de users es +1
+          Assert.assertEquals(rows.size()+1,rows2.size());	         
 	}
 	
 }

@@ -38,34 +38,41 @@ public class AddUserBasicData extends CommonFunctions{
 		 org.apache.log4j.BasicConfigurator.configure();
 		 Random numero= new Random();
 	 	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		log.info("Ir al menu de config");
-        Reporter.log(" Testeando la pagina de Administrar personas");
 		
-        // Go to the configuration
-		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-       driver.findElement(By.cssSelector(".menu")).click();
-	
-	// Go to  Users Menu
-        Reporter.log("Abriendo administar personas" );  
-        //driver.findElement(By.cssSelector(".usermenu")).click();
-        Reporter.log("Abriendo titulos");
+	 	log.info("Ir al menu de config");
         
-    // Go to Titles    
-        
-        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
-        log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
-        Reporter.log("Abriendo personas");
-   // Go to Manage people
-        
-        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+	 	  // Go to the configuration
+	 			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
+	 	       driver.findElement(By.cssSelector(".menu")).click();
+	 		
+	 		// Go to  Users Menu
+	 	        Reporter.log("Abriendo administar personas" );  
+	 	        //driver.findElement(By.cssSelector(".usermenu")).click();
+	 	        Reporter.log("Abriendo titulos");
+	 	        
+	 	    // Go to Titles    
+	 	        
+	 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
+	 	        log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
+	 	        Reporter.log("Abriendo personas");
+	 	   // Go to Manage people
+	 	        
+	 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+	 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
      
          // Obtener la cantidad de usuarios antes de agregar user
          
-         List<WebElement> rowsBefore = driver.findElements(By.cssSelector(".tablefilter tr"));
-         log.info(rowsBefore.size());
          
+         WebElement htmltable=driver.findElement(By.cssSelector(".tablefilter tbody"));
+
+         List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
+         log.info("Cantidad de users antes de agregar otro:");
+         log.info(rows.size());
+          Reporter.log("La cantidad de usuarios antes de agregar uno nuevo,en el sitio es",rows.size());
          
+               
+                 
          //Add a  user    
 	     driver.findElement(By.cssSelector(".content .title a")).click();
 	    
@@ -89,7 +96,7 @@ public class AddUserBasicData extends CommonFunctions{
 	     	
 	 		
 	     // Grabar el nuevo usuario creado
-	        Thread.sleep(5000);
+	        Thread.sleep(2000);
 	         driver.findElement(By.cssSelector(".content .addpeople fieldset:nth-child(4) .secondary")).click();    
 	        
 	 // Verificar mensaje
@@ -103,12 +110,22 @@ public class AddUserBasicData extends CommonFunctions{
 	         log.info(driver.findElement(By.cssSelector(".tablefilter")).isDisplayed());
 	         
 	         
-	   // Verificar que el usuario figura como no registrado (TO DO)
+	   
+	         // Verificar la cantidad de elementos en la tabla 
 	         
-	        
+	          WebElement htmltable2=driver.findElement(By.cssSelector(".tablefilter tbody"));
+
+	          List<WebElement> rows2=htmltable2.findElements(By.tagName("tr"));
+	          log.info("La cantidad de usuarios en el sitio es");
+	          log.info(rows2.size());
+	         
+	         
+	          //Chequear que la cantidad de elementos en la tabla de users es +1
+	          Assert.assertEquals(rows.size()+1,rows2.size());	         
               
-	    //Verificar que la tabla sea +1     
-	         
+	   /*    
+	       // Verificar que el usuario figura como no registrado (TO DO)
+		          
 	          WebElement htmltable=driver.findElement(By.cssSelector(".tablefilter tbody"));
 
 	          List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
@@ -126,8 +143,8 @@ public class AddUserBasicData extends CommonFunctions{
 	        	  for(int cnum=0;cnum<columns.size();cnum++)
 	        		  log.info(driver.findElement(By.cssSelector(".tablefilter tbody tr:nth-child(cnum)")).getText());
 	        	  	//	  log.info(columns.get(cnum).getText());
-
 	        	  }
+	          */
 	          }         
 	}          
 	     
