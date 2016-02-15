@@ -98,15 +98,15 @@ public class AddUserBasicDataAdmin {
 	    
 	     
 	     
-	     //Lo creo activado
+	     //Lo creo desactivado
 	     
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2)")).click();
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2) input:nth-child(2)")).click();
 	     
 	     //Poner el nombre
 	     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4)")).sendKeys("Random Name" + numero.nextInt());
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5)")).sendKeys("Random Lastname"+ numero.nextDouble());
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6)")).sendKeys("randomemail"+numero.nextInt()+"@gointegro.com");
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Random Name" + numero.nextInt());
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("Random Lastname"+ numero.nextDouble());
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("randomemail"+numero.nextInt()+"@gointegro.com");
 	     
 	     //Seleccionar el rol
 	      
