@@ -89,7 +89,7 @@ public class InvitationsBasic extends CommonFunctions{
 	     	
 	 		
 	     // Grabar el nuevo usuario creado
-	        Thread.sleep(5000);
+	        Thread.sleep(3000);
 	         driver.findElement(By.cssSelector(".content .addpeople fieldset:nth-child(4) .primary")).click();    
 	        
 	 // Verificar mensaje
@@ -101,32 +101,23 @@ public class InvitationsBasic extends CommonFunctions{
 	          
 	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	         log.info(driver.findElement(By.cssSelector(".tablefilter")).isDisplayed());
-            
-	      /*   // Obtener la cantidad de usuarios despues de agregar user
+         
+	      	
+	         // Ir al tab de invitaciones pendientes
+	          
+	         driver.findElement(By.cssSelector(".title menu li:nth-child(2)")).click();
+	         log.info(driver.findElement(By.cssSelector(".tables")).isDisplayed());
 	         
-	          List<WebElement> rows = driver.findElements(By.cssSelector(".tablefilter tr"));
+	         // Verificar que hay un elemento en la tabla 
+	         
+	     
+	         
+	          WebElement htmltable=driver.findElement(By.cssSelector(".tables tbody"));
+
+	          List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
 	          log.info(rows.size());
-	          
-	          
-	       // Grab the table
-	          WebElement table = driver.findElement(By.cssSelector(".tablefilter"));
-	          // Now get all the TR elements from the table
-	          List<WebElement> allRows = table.findElements(By.tagName("tr"));
-	          log.info(" Imprimiendo tamaño de la tabla...");
-	          log.info(table.getSize());
-	          // And iterate over them, getting the cells
-	          for (WebElement row : allRows) {
-	           List<WebElement> cells = row.findElements(By.tagName("td"));
-	           for (WebElement cell : cells) {
-	           log.info(cell);
-	           }
-	          }
-	          
-	        
-	   // Assertear cantidad de usuarios
-	       	          log.info(" Cantidad de usuarios");
-	     Assert.assertEquals(rowsBefore,rows, "La cantidad de usuarios se incremento en 1");
-	     */
+	          Assert.assertEquals(1,rows.size());	         
+	         
 	}
 	
 }

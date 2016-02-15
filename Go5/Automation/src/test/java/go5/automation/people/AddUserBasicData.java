@@ -34,7 +34,7 @@ public class AddUserBasicData extends CommonFunctions{
 		}
 
 	@Test
-	public void editConfig() throws InterruptedException{
+	public void addUserBasic() throws InterruptedException{
 		 org.apache.log4j.BasicConfigurator.configure();
 		 Random numero= new Random();
 	 	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -103,35 +103,33 @@ public class AddUserBasicData extends CommonFunctions{
 	         log.info(driver.findElement(By.cssSelector(".tablefilter")).isDisplayed());
 	         
 	         
-	   // Verificar que el usuario figura como no registrado
+	   // Verificar que el usuario figura como no registrado (TO DO)
 	         
-	         
-            
-	      /*   // Obtener la cantidad de usuarios despues de agregar user
-	         
-	          List<WebElement> rows = driver.findElements(By.cssSelector(".tablefilter tr"));
-	          log.info(rows.size());
-	          
-	          
-	       // Grab the table
-	          WebElement table = driver.findElement(By.cssSelector(".tablefilter"));
-	          // Now get all the TR elements from the table
-	          List<WebElement> allRows = table.findElements(By.tagName("tr"));
-	          log.info(" Imprimiendo tamaño de la tabla...");
-	          log.info(table.getSize());
-	          // And iterate over them, getting the cells
-	          for (WebElement row : allRows) {
-	           List<WebElement> cells = row.findElements(By.tagName("td"));
-	           for (WebElement cell : cells) {
-	           log.info(cell);
-	           }
-	          }
-	          
 	        
-	   // Assertear cantidad de usuarios
-	       	          log.info(" Cantidad de usuarios");
-	     Assert.assertEquals(rowsBefore,rows, "La cantidad de usuarios se incremento en 1");
-	     */
-	}
+              
+	    //Verificar que la tabla sea +1     
+	         
+	          WebElement htmltable=driver.findElement(By.cssSelector(".tablefilter tbody"));
+
+	          List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
+	          log.info(rows.size());
+	         
+	 
+	          for(int rnum=0;rnum<rows.size();rnum++)
+
+	          {
+	        	  
+	        	  List<WebElement> columns=rows.get(rnum).findElements(By.tagName("th"));
+	        	  
+	        	  log.info(columns.size());
+	        	  //log.info("Number of columns:"+columns.size());
+	        	  for(int cnum=0;cnum<columns.size();cnum++)
+	        		  log.info(driver.findElement(By.cssSelector(".tablefilter tbody tr:nth-child(cnum)")).getText());
+	        	  	//	  log.info(columns.get(cnum).getText());
+
+	        	  }
+	          }         
+	}          
+	     
 	
-}
+	
