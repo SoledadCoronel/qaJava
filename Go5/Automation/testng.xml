@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="3" name="Suite" parallel="tests">
+<suite thread-count="2" name="Suite" parallel="tests">
   <test name="FirefoxTests">
   <parameter name="browser" value="firefox"/>
   <parameter name="version" value="42.0"/>
@@ -8,7 +8,11 @@
   <parameter name="url" value="http://automation1.pla.qa.go5.gointegro.net/authentication/login"/>
     <classes>
       <class name="go5.automation.configuration.CompanyDataTest"/>
-      <class name="go5.automation.configuration.CompanyDesignTest"/> 
+      <class name="go5.automation.people.ManagePeopleTest"/>
+       <class name="go5.automation.signup.ForgotPasswordSpanishTest"/>
+       <class name="go5.automation.configuration.CompanyDesignLogoTest"/>
+       <class name="go5.automation.configuration.CompanyDesignTest"/>
+       <class name="go5.automation.people.AddUserBasicDataAdmin"/>  
       </classes>
   </test> <!-- Test -->
   <test name="ChromeTests">
@@ -18,7 +22,11 @@
   <parameter name="url" value="http://automation4.pla.qa.go5.gointegro.net/authentication/login"/>
     <classes>
       <class name="go5.automation.configuration.CompanyDataTest"/>
-      <class name="go5.automation.configuration.CompanyDesignTest"/>      
+      <class name="go5.automation.people.ManagePeopleTest"/>
+       <class name="go5.automation.signup.ForgotPasswordSpanishTest"/>
+       <class name="go5.automation.configuration.CompanyDesignLogoTest"/>
+       <class name="go5.automation.configuration.CompanyDesignTest"/>
+       <class name="go5.automation.people.AddUserBasicDataAdmin"/>          
     </classes>
   </test> <!-- Test -->
   <test name="IETests">
@@ -28,7 +36,11 @@
   <parameter name="url" value="http://automation5.pla.qa.go5.gointegro.net/authentication/login"/>
     <classes>
       <class name="go5.automation.configuration.CompanyDataTest"/>
-      <class name="go5.automation.configuration.CompanyDesignTest"/>      
+       <class name="go5.automation.people.ManagePeopleTest"/>
+       <class name="go5.automation.signup.ForgotPasswordSpanishTest"/>
+       <class name="go5.automation.configuration.CompanyDesignLogoTest"/>
+       <class name="go5.automation.configuration.CompanyDesignTest"/>
+       <class name="go5.automation.people.AddUserBasicDataAdmin"/>        
          </classes>
     </test> <!-- Test -->    
 </suite> <!-- Suite -->

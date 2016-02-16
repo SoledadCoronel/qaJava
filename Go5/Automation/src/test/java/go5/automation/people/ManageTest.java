@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class PeopleTest extends CommonFunctions{
+public class ManageTest extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
@@ -54,7 +54,18 @@ public class PeopleTest extends CommonFunctions{
    // Go to Manage people
         
         driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+     
+         //Add a  user    
+	     driver.findElement(By.cssSelector(".content .title a")).click();
+	    
+	     
+	     
+	     //Desactivar un user
+	     
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2)")).sendKeys("Userponerrandom");
+	     
+	     
 	}
 	
 }

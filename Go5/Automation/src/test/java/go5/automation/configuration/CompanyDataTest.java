@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -29,9 +30,10 @@ public class CompanyDataTest {
 	    capability.setCapability("platform",platform);
 	    capability.setCapability("browserName", browser);
 	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "Inprogress");
+	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
+	    capability.setCapability("name", "Company Data");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -49,7 +51,7 @@ public class CompanyDataTest {
 	
 	@Test
 	
-	public void editCompany() throws Exception { 
+	public void companyDataPage() throws Exception { 
 	
 		
 	//Login
@@ -72,7 +74,7 @@ public class CompanyDataTest {
  		
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
  		String companyMessage = new String(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) span")).getText());
- 		System.out.println(companyMessage);
+ 		Reporter.log(companyMessage);
  		Assert.assertEquals(companyMessage, "El campo es requerido");
  	
  		

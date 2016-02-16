@@ -35,6 +35,11 @@ public void openSiteLogin(){
 		driver.manage().window().maximize();
 	   } 
 	
+public void openSiteMobile(){
+    org.apache.log4j.BasicConfigurator.configure();
+	 driver.get("http://mobile.uat.go5.gointegro.net/");
+	driver.manage().window().maximize();
+   } 
       public void openSiteEnglish(){
 		 
 		 driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
@@ -97,6 +102,15 @@ public void openSiteLogin(){
 				 driver.findElement(By.id("SignupRequest_language_1")).click();
 				 }
 	 	 }
+
+		 public void loginMobile(String Username,String Password) {
+
+				driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		 		driver.findElement(By.cssSelector(".signup fieldset label:nth-child(2)")).sendKeys(Username);		 		
+		 		driver.findElement(By.cssSelector(".signup fieldset label:nth-child(3)")).sendKeys(Password);
+		 		 driver.findElement(By.cssSelector(".primary")).click();
+		         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			}
 
 }
 
