@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class InvitationsBasic extends CommonFunctions{
+public class InvitationsBasicWithCancel extends CommonFunctions{
 
 
 	 @BeforeTest // call function to open the browser and login 
