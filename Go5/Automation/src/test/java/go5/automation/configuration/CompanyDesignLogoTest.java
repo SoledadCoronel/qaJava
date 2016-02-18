@@ -58,7 +58,7 @@ public class CompanyDesignLogoTest {
 
 	
 	 @Test
-		public void verifyPicturesLogoAndBrackgorund(){
+		public void verifyPicturesLogoAndBrackgorund() throws InterruptedException{
 			
 			
 			//Login
@@ -143,6 +143,7 @@ public class CompanyDesignLogoTest {
         upload.sendKeys(file.getAbsolutePath());
          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          driver.findElement(By.cssSelector(".cutpictures .primary")).click();
+         Thread.sleep(1000);
         
          
        

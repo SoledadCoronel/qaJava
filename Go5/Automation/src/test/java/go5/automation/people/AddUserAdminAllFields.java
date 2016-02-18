@@ -130,8 +130,10 @@ public class AddUserAdminAllFields extends CommonFunctions{
 	         driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(6) input")).sendKeys("Test Test");
 	         
 	         //Telefono
-	          driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(7) input")).sendKeys("11111111");
-	          driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(8) input")).sendKeys("11111111");
+	         driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(7) input")).clear();
+	           driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(7) input")).sendKeys("+541147511234");
+	          driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(8) input")).clear();
+	          driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(8) input")).sendKeys("+541147511234");
 	         //Direccion
 	          driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(9) input")).sendKeys("Alv. Thomas 198");
 	          //Fin Datos laborales
@@ -145,8 +147,10 @@ public class AddUserAdminAllFields extends CommonFunctions{
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(5) select")).sendKeys("female");
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(6) select")).sendKeys("single");
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(7) input")).sendKeys("fakeemail@gointegro.com");
-	            driver.findElement(By.cssSelector(".personaldata label:nth-child(8) input")).sendKeys("1111111111");
-	            driver.findElement(By.cssSelector(".personaldata label:nth-child(9) input")).sendKeys("111111111");
+	            driver.findElement(By.cssSelector(".personaldata label:nth-child(8) input")).clear();
+	            driver.findElement(By.cssSelector(".personaldata label:nth-child(8) input")).sendKeys("+541147511234");
+	            driver.findElement(By.cssSelector(".personaldata label:nth-child(9) input")).clear();
+	            driver.findElement(By.cssSelector(".personaldata label:nth-child(9) input")).sendKeys("+541147511234");
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(10) input")).sendKeys("Mi Casa 123");
 	            
 	            
