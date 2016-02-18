@@ -11658,12 +11658,12 @@
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;space-users&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: false&#xd;
+      &quot;is-admin&quot;: true&#xd;
     },&#xd;
     &quot;relationships&quot;: {&#xd;
       &quot;user&quot;: {&#xd;
         &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${USER_ID1}&quot;,&#xd;
+          &quot;id&quot;: &quot;${ADMINSPACEUSER_ID}&quot;,&#xd;
           &quot;type&quot;: &quot;users&quot;&#xd;
         }&#xd;
       },&#xd;
@@ -11862,7 +11862,7 @@
                 </ResponseAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postSpaceUser - Espacio privado - usuario adminSpace loguedo - BUG" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postSpaceUser - Espacio privado - usuario adminSpace loguedo" enabled="true">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                   <collectionProp name="Arguments.arguments">
@@ -11985,7 +11985,7 @@
                 </ResponseAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="deleteSpaceUsers - usuario adminSpace logueado - BUG" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="deleteSpaceUsers - usuario adminSpace logueado" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments"/>
                 </elementProp>
