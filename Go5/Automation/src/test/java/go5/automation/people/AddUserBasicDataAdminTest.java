@@ -56,7 +56,7 @@ public class AddUserBasicDataAdminTest {
 		
 
 	@Test
-	public void addUserAdmin() throws InterruptedException{
+	public void addUserBasicDataAdmin() throws InterruptedException{
 		 org.apache.log4j.BasicConfigurator.configure();
 		 Random numero= new Random();
 	 	

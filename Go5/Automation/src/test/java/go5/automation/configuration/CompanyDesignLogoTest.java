@@ -38,6 +38,7 @@ public class CompanyDesignLogoTest {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
+	    capability.setCapability("resolution", "1024x768");
 	    capability.setCapability("name", "Branding pictures");
 	    
 	    driver = new RemoteWebDriver(

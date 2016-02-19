@@ -40,7 +40,7 @@ public class AddUserBasicDataTest {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "AddUserBasic");
+	    capability.setCapability("name", "AddUserBasicDataTest");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -56,7 +56,7 @@ public class AddUserBasicDataTest {
 		}
 
 	@Test
-	public void addUserBasic() throws InterruptedException{
+	public void addUserBasicDataTest() throws InterruptedException{
 		
 		 org.apache.log4j.BasicConfigurator.configure();
 		 Random numero= new Random();
