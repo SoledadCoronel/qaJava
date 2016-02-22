@@ -120,15 +120,17 @@ public class SetUpAccount  {
 			   
 			//Ir a Contraseña
 			
-			driver.findElement(By.cssSelector(".title menu li:nth-child(2)")).click();
+		//	driver.findElement(By.cssSelector(".title menu li:nth-child(2) a ")).click();
+			driver.findElement(By.cssSelector(".title menu li:nth-child(2) a[title='Ir a Contraseña']")).click();
+			Thread.sleep(3000);
 			
-			driver.findElement(By.cssSelector(".generaldata input")).sendKeys("1234");
-			Assert.assertEquals(driver.findElement(By.cssSelector(".generaldata span")).getText(),"La contraseña es invalida.");
+			driver.findElement(By.cssSelector(".content .generaldata label:nth-child(1) input")).sendKeys("1234");
+			Assert.assertEquals(driver.findElement(By.cssSelector(".generaldata label span")).getText(),"La contraseña es invalida.");
 			
 			//Ir a Notificaciones
 			
-			driver.findElement(By.cssSelector(".title menu li:nth-child(3)")).click();
-			
+			driver.findElement(By.cssSelector(".title menu li:nth-child(3) a[title='Ir a Notificaciones']")).click();
+		
 			
 			
 	}	
