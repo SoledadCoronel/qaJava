@@ -22,7 +22,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
-public class CompanyDesignLogoTest {
+public class BrandingPicturesTest {
 
 
 	 private WebDriver driver;
@@ -37,9 +37,8 @@ public class CompanyDesignLogoTest {
 	    capability.setCapability("browserVersion", version);
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
-	    capability.setCapability("debug", false);
-	    capability.setCapability("resolution", "1024x768");
-	    capability.setCapability("name", "Branding pictures");
+	    capability.setCapability("debug", true);
+	     capability.setCapability("name", "Branding pictures");
 	    
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
@@ -59,7 +58,7 @@ public class CompanyDesignLogoTest {
 
 	
 	 @Test
-		public void verifyPicturesLogoAndBrackgorund() throws InterruptedException{
+		public void brandingPictures() throws InterruptedException{
 			
 			
 			//Login
@@ -104,6 +103,8 @@ public class CompanyDesignLogoTest {
                    //Click en el popup de restorear
                     driver.findElement(By.cssSelector(".modal .rgroupitem .primary")).click();
                     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
+                    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
+      	          driver.findElement(By.cssSelector(".primary")).click(); 
               
 	        
 		
@@ -125,7 +126,7 @@ public class CompanyDesignLogoTest {
      
           		
 		
-                         
+                        
        
      //function to make visible the button logoFilePicker, as it is set to class "off"
         
@@ -142,17 +143,19 @@ public class CompanyDesignLogoTest {
         
         Reporter.log(file.getAbsolutePath());
         upload.sendKeys(file.getAbsolutePath());
-         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-         driver.findElement(By.cssSelector(".cutpictures .primary")).click();
-         Thread.sleep(1000);
+        Thread.sleep(1000);
         
+       driver.findElement(By.cssSelector(".cutpictures .primary")).click();
+       Thread.sleep(1000);
+        //Para cancelar 
+      //   driver.findElement(By.cssSelector(".cutpictures .optional")).click();
          
        
     //Save changes
           driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); 
           driver.findElement(By.cssSelector(".primary")).click();
     	
-		
+	
 
       // Load background file
       

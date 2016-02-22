@@ -13,7 +13,9 @@
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testng.xml</suiteXmlFile>
+    <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngExplorer.xml</suiteXmlFile>
+    <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngChrome.xml</suiteXmlFile>
+    <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngFirefox.xml</suiteXmlFile>
     <skipTests>false</skipTests>
 </properties>
 
@@ -65,8 +67,10 @@
         <version>2.19.1</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testng.xml</suiteXmlFile>
-          </suiteXmlFiles>
+          <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngExplorer.xml</suiteXmlFile>
+    	<suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngChrome.xml</suiteXmlFile>
+   		 <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngFirefox.xml</suiteXmlFile>
+            </suiteXmlFiles>
         </configuration>
       </plugin>
 </plugins></build>
