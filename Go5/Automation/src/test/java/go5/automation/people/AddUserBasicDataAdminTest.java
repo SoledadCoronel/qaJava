@@ -119,11 +119,7 @@ public class AddUserBasicDataAdminTest {
 	        Thread.sleep(3000);
 	         driver.findElement(By.cssSelector(".content .addpeople fieldset:nth-child(4) .secondary")).click();    
 	        
-	 // Verificar mensaje
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	         
-	          Reporter.log(driver.findElement(By.cssSelector(".content .overlayloading .loading")).getText());
-	
+	 	
 	  // Verificar que vuelva al listado de personas  
 	          
 	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);

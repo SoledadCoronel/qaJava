@@ -146,7 +146,7 @@ public class AddUserAdminAllFields extends CommonFunctions{
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(5) select")).click();
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(5) select")).sendKeys("female");
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(6) select")).sendKeys("single");
-	            driver.findElement(By.cssSelector(".personaldata label:nth-child(7) input")).sendKeys("fakeemail@gointegro.com");
+	            driver.findElement(By.cssSelector(".personaldata label:nth-child(7) input")).sendKeys("fakee5555mail@gointegro.com");
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(8) input")).clear();
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(8) input")).sendKeys("+541147511234");
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(9) input")).clear();
