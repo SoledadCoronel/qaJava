@@ -56,7 +56,7 @@ public class ProfileTest  {
 	
 		 org.apache.log4j.BasicConfigurator.configure();
 		 
-		 Logger log = Logger.getLogger("automation");
+		
 		 Random numero= new Random();
 		
 		 //Login
