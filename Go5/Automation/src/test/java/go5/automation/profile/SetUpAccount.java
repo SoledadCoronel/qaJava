@@ -126,6 +126,7 @@ public class SetUpAccount  {
 			
 			driver.findElement(By.cssSelector(".content .generaldata label:nth-child(1) input")).sendKeys("1234");
 			Assert.assertEquals(driver.findElement(By.cssSelector(".generaldata label span")).getText(),"La contraseña es invalida.");
+			driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);  
 			
 			//Ir a Notificaciones
 			
