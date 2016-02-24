@@ -190,7 +190,7 @@ public class CompanyDesignTest {
      
       
       String colorHeader2 = new String(driver.findElement(By.cssSelector("header h1")).getCssValue("color"));
-      Reporter.log("El color que esta en eñ header es :");
+      Reporter.log("El color que esta en el header es :");
       Reporter.log(colorHeader2);
    
       //Compare the header color against the selected, converted to hexadecimal

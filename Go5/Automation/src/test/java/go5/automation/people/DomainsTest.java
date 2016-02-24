@@ -50,7 +50,7 @@ public class DomainsTest extends CommonFunctions{
 		
 
 	@Test
-	public void addUserAdmin() throws InterruptedException{
+	public void addDomains() throws InterruptedException{
 		 org.apache.log4j.BasicConfigurator.configure();
 		 Random numero= new Random();
 	 	/*
@@ -91,17 +91,32 @@ public class DomainsTest extends CommonFunctions{
 	        
 	         
 	         // Insertar un dominio invalido
-	         driver.findElement(By.cssSelector(".peopledomain input")).click();
-	         driver.findElement(By.cssSelector(".peopledomain input")).sendKeys("Dominio1");
+	       /*  driver.findElement(By.cssSelector(".peopledomain input")).click();
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(1) input")).sendKeys("Dominio1");
 	         driver.findElement(By.cssSelector(".peopledomain .link")).click();
-	         log.info( driver.findElement(By.cssSelector(".peopledomain span")).getText());
-	         driver.findElement(By.cssSelector(".peopledomain input")).clear();
-	         driver.findElement(By.cssSelector(".peopledomain input")).sendKeys("Dom");
+	         Assert.assertEquals(driver.findElement(By.cssSelector(".peopledomain div label:nth-child(1) span")).getText(), "Dominio invalido");
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(1) .delete")).click();
+	         driver.findElement(By.cssSelector(".rgroupitem .primary")).click();
+	        */
+	         
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(1) input")).sendKeys("dominio1.com");
 	         driver.findElement(By.cssSelector(".peopledomain .link")).click();
-	         log.info( driver.findElement(By.cssSelector(".peopledomain span")).getText());
-	         driver.findElement(By.cssSelector(".peopledomain input")).clear();
-	         driver.findElement(By.cssSelector(".peopledomain input")).sendKeys("Dominio1.com");
+	       //  driver.findElement(By.cssSelector(".peopledomain div label:nth-child(2) input")).clear();
+	         //driver.findElement(By.cssSelector(".peopledomain div label:nth-child(2) input")).sendKeys("Dom");
+	      //   driver.findElement(By.cssSelector(".peopledomain .link")).click();
+	     //    Assert.assertEquals(driver.findElement(By.cssSelector(".peopledomain div label:nth-child(1) span")).getText(), "Dominio invalido");
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(2) input")).clear();
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(2) input")).sendKeys("dominio2.com");
 	         driver.findElement(By.cssSelector(".peopledomain .link")).click();
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(3) input")).clear();
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(3) input")).sendKeys("dominio3.com");
+	         driver.findElement(By.cssSelector(".peopledomain .link")).click();
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(4) input")).clear();
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(4) input")).sendKeys("dominio4.com");
+	         driver.findElement(By.cssSelector(".peopledomain .link")).click();
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(5) input")).clear();
+	         driver.findElement(By.cssSelector(".peopledomain div label:nth-child(5) input")).sendKeys("dominio5.com");
+	         driver.findElement(By.id("formPrimaryButton")).click();
 	         Thread.sleep(1000);
 	         
 	         

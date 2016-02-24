@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ProfileTest  {
+public class ProfileUserBasicTest  {
 	
  private WebDriver driver;
 
