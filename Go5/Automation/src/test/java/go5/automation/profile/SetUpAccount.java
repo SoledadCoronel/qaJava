@@ -129,7 +129,7 @@ public class SetUpAccount  {
 			driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);  
 			
 			//Ir a Notificaciones
-			
+			Thread.sleep(1000);
 			driver.findElement(By.cssSelector(".title menu li:nth-child(3) a[title='Ir a Notificaciones']")).click();
 		
 			
