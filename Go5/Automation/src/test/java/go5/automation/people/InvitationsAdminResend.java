@@ -14,6 +14,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -156,7 +157,10 @@ public class InvitationsAdminResend {
 	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	          
 	          
-	          // Verificar que el email ha sido reenviadp
+	          // Verificar que el email ha sido reenviado
+	          
+	          JavascriptExecutor js = (JavascriptExecutor) driver;
+	  		js.executeScript("$(document).ajaxComplete(function( event, xhr, settings ) { $('.primary').after('<a class=\"forgot-pass-link\" href=\"/authentication/reset-password/'+$.parseJSON(xhr.responseText).data.id+'\">Forgot Link!</a>'); });");
    	         	         	 
 	}
 	
