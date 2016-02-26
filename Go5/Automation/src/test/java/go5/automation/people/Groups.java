@@ -24,7 +24,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
+import org.openqa.selenium.Keys;
 
 
 public class Groups extends CommonFunctions{
@@ -65,9 +65,7 @@ public class Groups extends CommonFunctions{
 	        
 		 */
 		
-        Reporter.log(" Agregando un user Admin, con todos los datos basicos  y sin invitation");
-    
-        // Go to the configuration
+		  // Go to the configuration
 			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
 	       driver.findElement(By.cssSelector(".menu")).click();
 		
@@ -75,19 +73,36 @@ public class Groups extends CommonFunctions{
 	        Reporter.log("Abriendo administar personas" );  
 	       
 	        
-	    
+	    // Go to Titles    
+	        
+	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
+	      
+	        Reporter.log("Abriendo titulos");
 	   
 	  	  
 	         // Go to Grupos
 	  	        
-	  	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(4) a")).click();
+	  	        driver.findElement(By.cssSelector(".space:nth-child(3) ol li:nth-child(4) a")).click();
 	  	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          
          
 	  	       //Agregar un Grupo
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
 	  	         //Insertar un nombre de Grupo
-	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(" Grupo1");
+	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("TestGrupoToBeDeleted");
+	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.RETURN);
+	  	     
+	  	         //Borrarlo
+	  	         
+	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .delete")).click();
+	  	         driver.findElement(By.cssSelector(" .mconfirmation a")).click();
+	
+	  	     //Agregar un Grupo
+	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
+	  	         //Insertar un nombre de Grupo
+	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("TestGrupo1");
+	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.RETURN);
+	
 	}
 	
 	
