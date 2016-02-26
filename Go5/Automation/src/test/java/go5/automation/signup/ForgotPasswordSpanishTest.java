@@ -88,7 +88,7 @@ public class ForgotPasswordSpanishTest {
 		 driver.findElement(By.id("passwordIdentification")).sendKeys("Auto1234");
 		 driver.findElement(By.cssSelector(".primary")).click();
 		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		 Reporter.log( driver.findElement(By.cssSelector(".signup p")).getText());
+		// Reporter.log( driver.findElement(By.cssSelector(".signup p")).getText());
 	}
 	
      }

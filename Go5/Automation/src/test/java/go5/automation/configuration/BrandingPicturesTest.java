@@ -100,8 +100,10 @@ public class BrandingPicturesTest {
 		       //Restablecer interfaz   
                     driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
                     driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-                   //Click en el popup de restorear
-                    driver.findElement(By.cssSelector(".modal .rgroupitem .primary")).click();
+                  
+                    //Click en el popup de restorear
+                    
+                    driver.findElement(By.cssSelector(".mconfirmation .primary")).click();
                     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
                     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
       	          driver.findElement(By.cssSelector(".primary")).click(); 
