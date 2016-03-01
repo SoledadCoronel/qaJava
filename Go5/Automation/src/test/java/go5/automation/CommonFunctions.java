@@ -32,7 +32,8 @@ public class CommonFunctions {
 public void openSiteLogin(){
 	    org.apache.log4j.BasicConfigurator.configure();
 		 driver.get("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
-		driver.manage().window().maximize();
+		 driver.manage().window().maximize();
+		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	   } 
 	
 public void openSiteMobile(){
