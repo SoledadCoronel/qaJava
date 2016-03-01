@@ -96,7 +96,7 @@ public class CompanyDataTest {
  		
  		Select selectTimeZone = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) select")));
 		
-		   for(int i=1; i<20; i++){
+		   for(int i=1; i<5; i++){
 	           selectTimeZone.selectByIndex(i);  
 			 }
 		
