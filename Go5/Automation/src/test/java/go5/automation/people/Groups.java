@@ -104,9 +104,11 @@ public class Groups extends CommonFunctions{
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.RETURN);
 	  	         
 	  	         //Agregar un subgrupo
-	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) ul li:nth-child(1) a")).click();
+	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree .showadd a")).click();
 	  	         Thread.sleep(1000);
-	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) label:nth-child(3) input")).sendKeys("Subgrupo1.1");
+	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem input")).sendKeys("Subgrupo1.1");
+	  	         driver.findElement(By.id("zaraza"));
+	  	         
 	
 	}
 	
