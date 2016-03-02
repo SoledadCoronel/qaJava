@@ -35,7 +35,7 @@ public class Titles {
       capability.setCapability("project", "GOIntegro");
       capability.setCapability("build", "1.0");
       capability.setCapability("debug", false);
-      capability.setCapability("name", "AddUserAdminWithAllFields");
+      capability.setCapability("name", "Titles");
       driver = new RemoteWebDriver(
            new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
               capability);
