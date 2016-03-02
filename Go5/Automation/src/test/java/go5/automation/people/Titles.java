@@ -14,6 +14,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -31,9 +32,7 @@ public class Titles extends CommonFunctions{
 
 	//private WebDriver driver;
 
-	
-
-		 @BeforeTest // call function to open the browser and login 
+		@BeforeTest // call function to open the browser and login 
 		 public void setup () throws Exception{
 		   openSiteLogin();
 		   login("marina.touceda@gointegro.com","Auto1234");
@@ -46,8 +45,6 @@ public class Titles extends CommonFunctions{
 				closeBrowser();
 			}
 
-	
-		
 
 	@Test
 	public void addUserAdmin() throws InterruptedException{
@@ -69,28 +66,81 @@ public class Titles extends CommonFunctions{
     
         // Go to the configuration
 			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-	       driver.findElement(By.cssSelector(".menu")).click();
+	        driver.findElement(By.cssSelector(".menu")).click();
 		
 		// Go to  Users Menu
 	        Reporter.log("Abriendo administar personas" );  
 	       
 	        
 	    // Go to Titles    
-	        
 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
-	      
 	        Reporter.log("Abriendo titulos");
 	   
 	  	  
-	         // Go to Title
-	  	        
-	  	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3) a")).click();
-	  	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	    // Go to Title
+	  	    driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3) a")).click();
+	  	    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          
          
-	  	       //Agregar un titulo
-	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
+	  	// Se agrega un Tier
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("QA");
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.ENTER);
+	  	    
+		// Se edita cambiandole el nombre al Tier
+ 	        driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) label:nth-child(1) .edit")).click();
+ 	        driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) label:nth-child(1) input")).clear();
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) label:nth-child(1) input")).sendKeys("QA - EDITADO");
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) label:nth-child(1) input")).sendKeys(Keys.ENTER);
+ 
+		// Se elimina un Tier sin jobtitles
+ 	        driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) label:nth-child(1) .delete")).click();
+	  	    Thread.sleep(1000);
+ 	        driver.findElement(By.cssSelector(".modal.active .mconfirmation a")).click();   
+ 	    
+ 		// Se crea nuevamente un Tier                                                                                                                                                                                                                  
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("QA");
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.ENTER);
+	  	    
+	  	// Se agrega un jobtitle al Tier   
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree.active .showadd.active .optional")).click();
+	        Thread.sleep(1000);
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("SENIOR");
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys(Keys.ENTER);
+	  	    
+	  	// Se elimina un Tier con jobtitle asociado
+ 	        driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) label:nth-child(1) .delete")).click();
+	  	    Thread.sleep(1000);
+ 	        driver.findElement(By.cssSelector(".modal.active .mconfirmation a")).click(); 
+ 	        
+ 	    // Se crea nuevamente un Tier                                                                                                                                                                                                                  
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("QA");
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.ENTER);
+ 	        
+ 		// Se agrega el jobtitle nuevamente  
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree.active .showadd.active .optional")).click();
+	        Thread.sleep(2000);
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("SENIOR");
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys(Keys.ENTER);
+	  	    
+	  	// Se edita cambiandole el nombre al jobtitle
+	  	    Thread.sleep(2000);
+	        driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) ul:nth-child(2) li:nth-child(1) .edit")).click();
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) ul:nth-child(2) li:nth-child(1) label input")).clear();
+	  	    driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) ul:nth-child(2) li:nth-child(1) label input")).sendKeys("SENIOR EDITADO");
+	        driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) ul:nth-child(2) li:nth-child(1) label input")).sendKeys(Keys.ENTER);
+	  	    
+		// Eliminar un jobtitle
+	  	    Thread.sleep(2000);
+ 	        driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree.active .delete")).click();
+ 	        driver.findElement(By.cssSelector(".modal.active .mconfirmation .primary")).click();
+ 	        
+ 		// Se elimina el Tier vacío
+ 	        driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) label:nth-child(1) .delete")).click();
+	  	    Thread.sleep(1000);
+ 	        driver.findElement(By.cssSelector(".modal.active .mconfirmation a")).click();
+ 	    
 	}
-	
-	
 }
