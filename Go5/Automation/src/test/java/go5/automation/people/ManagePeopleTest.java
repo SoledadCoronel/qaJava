@@ -74,5 +74,15 @@ public class ManagePeopleTest {
          Reporter.log(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
          driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+         
+         //Ordenar por nombre--No se puede terminar, no esta andando
+         // Agarrar primer nombre de la tabla
+          String firstname= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(2)")).getText());
+         Reporter.log(firstname);
+          //Clickear el ordenar por noombre
+         driver.findElement(By.cssSelector(".tables thead tr th:nth-child(2) a")).click();
+         //Agarrar el ultimo de la tabla
+         String lastname= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(10) td:nth-child(2)")).getText());
+         Reporter.log(lastname);
  	}
 }	
