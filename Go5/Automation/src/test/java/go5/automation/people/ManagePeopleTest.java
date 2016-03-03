@@ -84,5 +84,10 @@ public class ManagePeopleTest {
          //Agarrar el ultimo de la tabla
          String lastname= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(10) td:nth-child(2)")).getText());
          Reporter.log(lastname);
+         
+         
+         //Filtrar por User Activos
+         
+         //Recorrer la tabla users con nth:-child(1n+0)
  	}
 }	

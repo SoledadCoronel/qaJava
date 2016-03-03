@@ -110,12 +110,12 @@ public class CompanyDataTest {
  		
  		driver.findElement(By.cssSelector(".primary")).click();
  		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);		
- /*		
- // Check text in English
+ 		
+ 		// Check text in English
  		Thread.sleep(1000);
  		String check= new String(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
  		Assert.assertEquals("Design", check);
- 	*/	
+ 		
  		
  		//Save changes to come back original values when the test has finished
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
