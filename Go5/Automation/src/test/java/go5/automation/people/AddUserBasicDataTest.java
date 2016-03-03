@@ -111,9 +111,9 @@ public class AddUserBasicDataTest {
 	    
 	     
 	     
-	     //Lo creo activado
+	     //Lo creo desactivado
 	     
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2) input:nth-child(2) ")).click();
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2) input:nth-child(2)")).click();
 	     
 	     //Poner el nombre
 	     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);

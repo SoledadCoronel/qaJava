@@ -80,14 +80,14 @@ public class GroupsTest {
 	       driver.findElement(By.cssSelector(".menu")).click();
 		
 		// Go to  Users Menu
-	        Reporter.log("Abriendo administar personas" );  
+	        
 	       
 	        
 	    // Go to Titles    
 	        
 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
 	      
-	        Reporter.log("Abriendo titulos");
+	        Reporter.log("Abriendo Grupos");
 	   
 	  	  
 	         // Go to Grupos
@@ -95,7 +95,7 @@ public class GroupsTest {
 	  	        driver.findElement(By.cssSelector(".space:nth-child(3) ol li:nth-child(4) a")).click();
 	  	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          
-         
+                 Reporter.log("Agregando un grupo");
 	  	       //Agregar un Grupo
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
 	  	         //Insertar un nombre de Grupo
@@ -103,6 +103,7 @@ public class GroupsTest {
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.RETURN);
 	  	         
 	  	         //Borrar Grupo
+	  	         Reporter.log("Borrando un grupo");
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .delete")).click();
 	  	         driver.findElement(By.cssSelector(".mconfirmation a")).click();
 	  	         Thread.sleep(1000);
@@ -115,6 +116,7 @@ public class GroupsTest {
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.RETURN);
 	  	         
 	  	         //Agregar un Subgrupo
+	  	         Reporter.log("Agregando un subgrupo");
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree .showadd a")).click();
 	  	         
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("Subgrupo1");
@@ -130,7 +132,7 @@ public class GroupsTest {
 	 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
 	
 	 	    //Agarrar el primer user de la tabla y editarlo
-	 	         
+	 	          Reporter.log(" Editar un usuario y agregarle el grupo creado");
 	 	          driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td a ")).click();
 	 	          
 	 	         //Agrandar el form para agregar mas datos  
@@ -143,7 +145,8 @@ public class GroupsTest {
 	 		 	  
 	 		 	  // Grabar el  usuario editado
 	 		        Thread.sleep(1000);
-	 		         driver.findElement(By.cssSelector(".container .addpeople .primary")).click();    
+	 		         driver.findElement(By.cssSelector(".container .addpeople .primary")).click();
+	 		         Reporter.log(" Grupo agregado al usuario exitosamente");
 	 		        
 	}
 	

@@ -107,15 +107,15 @@ public class CompanyDataTest {
 		selectLanguage.selectByValue("en");	
 		
 		//Save changes to verify that the text are being displayed in the selected language
- 		
+ 		Reporter.log("Cambiando el lenguaje y verificando los idiomas de los labels");
  		driver.findElement(By.cssSelector(".primary")).click();
  		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);		
  		
  		// Check text in English
  		Thread.sleep(1000);
  		String check= new String(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
- 		Assert.assertEquals("Design", check);
- 		
+ 		Assert.assertEquals(check,"Design");
+ 		 		
  		
  		//Save changes to come back original values when the test has finished
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
