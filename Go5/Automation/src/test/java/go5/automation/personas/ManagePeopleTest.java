@@ -33,7 +33,7 @@ public class ManagePeopleTest {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Manage People");
+	    capability.setCapability("name", "Listado de Personas");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -51,7 +51,7 @@ public class ManagePeopleTest {
 	
 	@Test
 	
-	public void ManagePeoplePage() throws Exception { 
+	public void listadoPersonas() throws Exception { 
 	
 		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -92,5 +92,15 @@ public class ManagePeopleTest {
          
          // Elegir Usuarios Inactivos
          Reporter.log(" Seleccionar usuarios inactivos");
- 	}
+         
+         Select userselect= new Select(driver.findElement(By.cssSelector(".peoplemanage .actions select")));
+         
+         userselect.selectByIndex(3);
+         
+         //Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos
+         Reporter.log("Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos");
+ 	
+       //  .tables tbody tr:nth-child(n) td:nth-child(5n)
+	
+	}
 }	
