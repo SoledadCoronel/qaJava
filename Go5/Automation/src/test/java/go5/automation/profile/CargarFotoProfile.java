@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 
 
 
-public class PictureProfileTest  {
+public class CargarFotoProfile  {
 	
  private WebDriver driver;
 
@@ -39,7 +39,7 @@ public class PictureProfileTest  {
     capability.setCapability("project", "GOIntegro");
     capability.setCapability("build", "1.0");
     capability.setCapability("debug", false);
-    capability.setCapability("name", "PictureProfileTest");
+    capability.setCapability("name", "CargarFotoProfile");
     driver = new RemoteWebDriver(
     		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
     	      capability);
@@ -78,7 +78,7 @@ public class PictureProfileTest  {
 		// Go to the user menu
 			driver.findElement(By.cssSelector(".applications .users .user")).click();
 	
-			
+			 Reporter.log(" Ir a perfil y cargar una foto en el profile");
 			//Ir a ver perfil
 			driver.findElement(By.cssSelector(".applications .users .subusers li a[title='Ir a ver perfil']")).click();
 			
@@ -103,6 +103,7 @@ public class PictureProfileTest  {
 		        //Para cancelar 
 		      //   driver.findElement(By.cssSelector(".cutpictures .optional")).click();
 		         
+		       Reporter.log(" Foto cargada exitosamente");
 		   
 	
 	

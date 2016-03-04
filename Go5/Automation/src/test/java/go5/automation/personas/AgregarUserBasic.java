@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 
 
 
-public class AddUserBasicDataTest {
+public class AgregarUserBasic {
 
 
 	private WebDriver driver;
@@ -40,7 +40,7 @@ public class AddUserBasicDataTest {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "AddUserBasicDataTest");
+	    capability.setCapability("name", "Agregar User Basic");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -73,7 +73,7 @@ public class AddUserBasicDataTest {
 	        
 		 
 		
-        Reporter.log(" Agregando un user Basic, con los datos basicos y sin invitation");
+        Reporter.log(" Agregando un user Basic,en estado desactivado, con los datos basicos y sin invitation");
 		
 		       
 		
@@ -89,7 +89,7 @@ public class AddUserBasicDataTest {
 	 	        
 	 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
 	 	      
-	 	        Reporter.log("Abriendo personas");
+	 	       
 	 	   // Go to Manage people
 	 	        
 	 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
@@ -114,7 +114,7 @@ public class AddUserBasicDataTest {
 	     //Lo creo desactivado
 	     
 	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2) input:nth-child(2)")).click();
-	     
+	     Reporter.log(" Se le carga el nombre, el mail y el rol");
 	     //Poner el nombre
 	     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Random Name" + numero.nextInt());

@@ -18,7 +18,7 @@ import org.testng.annotations.Parameters;
 
 
 
-public class CompanyDataTest {
+public class DatosGenerales {
 	
 	 private WebDriver driver;
 
@@ -33,7 +33,7 @@ public class CompanyDataTest {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Company Data");
+	    capability.setCapability("name", "Datos de la Compania");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);

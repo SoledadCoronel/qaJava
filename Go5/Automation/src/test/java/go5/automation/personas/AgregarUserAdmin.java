@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
 
 
 
-public class AddUserBasicDataAdminTest {
+public class AgregarUserAdmin {
 
 	private WebDriver driver;
 
