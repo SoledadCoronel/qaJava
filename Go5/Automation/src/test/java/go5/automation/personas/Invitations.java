@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 
 
 
-public class InvitationsBasicTest {
+public class Invitations {
 
 	private WebDriver driver;
 	

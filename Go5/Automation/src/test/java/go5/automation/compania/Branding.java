@@ -22,7 +22,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
-public class CompanyDesignTest {
+public class Branding {
 
 
 	 private WebDriver driver;
@@ -108,6 +108,7 @@ public class CompanyDesignTest {
 	
      
        // Verify list of colors in branding
+                    Reporter.log(" Veirificando que esten todos los colores disponibles");
        
         Assert.assertEquals("white",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(1)")).getText()));
      
@@ -134,6 +135,7 @@ public class CompanyDesignTest {
     		
     	
            // Clickeo en Disenio
+        Reporter.log(" Cambiando el color del header");
            
            driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
            driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -143,6 +145,8 @@ public class CompanyDesignTest {
         
 	 // Verify that the selected color has been changed in the header
         
+           Reporter.log(" Verificando que el color del header se haya cambiado");
+           
         //Select black colour
         driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).click();
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -159,7 +163,7 @@ public class CompanyDesignTest {
    
       //Compare the header color against the selected, converted to hexadecimal
       
-  
+    Reporter.log("El color seleccionado en branding se muestra correctamente en el header");
      Assert.assertEquals(colorSelected, colorHeader, "El color seleccionado en branding se muestra correctamente en el header" );
         
         
@@ -167,6 +171,7 @@ public class CompanyDesignTest {
        
     	// Change Contrast Color(){
     		
+     Reporter.log(" Cambiando el color del contraste ");
     	
            // Clickeo en Disenio
            
@@ -193,6 +198,7 @@ public class CompanyDesignTest {
       Reporter.log("El color que esta en el header es :");
       Reporter.log(colorHeader2);
    
+      Reporter.log(" El caso de branding-colors finalizo correctamente");
       //Compare the header color against the selected, converted to hexadecimal
       
   
