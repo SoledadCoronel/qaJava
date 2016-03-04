@@ -1,18 +1,16 @@
-package go5.automation.people;
+package go5.automation.personas;
 
 
 
+import go5.automation.CommonFunctions;
 
-import java.net.URL;
-import java.util.List;
-import java.util.Random;
+
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -26,45 +24,32 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.Keys;
 
 
-public class GroupsTest {
+public class Groups extends CommonFunctions{
 
-	private WebDriver driver;
-
+	//private WebDriver driver;
 
 	
-	 @BeforeClass
-	  @Parameters(value={"browser","version","platform","url"})
-	  public void setUp(String browser, String version, String platform,String url) throws Exception {
-	    DesiredCapabilities capability = new DesiredCapabilities();
-	    capability.setCapability("platform",platform);
-	    capability.setCapability("browserName", browser);
-	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "GOIntegro");
-	    capability.setCapability("build", "1.0");
-	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Groups ");
-	    driver = new RemoteWebDriver(
-	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-	    	      capability);
-	    driver.get(url);
-		 driver.manage().window().maximize();
-		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	  }  
-	
-	 @AfterClass // call function to close browser 
-		
-		public void teardown(){
-			driver.quit();
-		}
 
+		 @BeforeTest // call function to open the browser and login 
+		 public void setup () throws Exception{
+		   openSiteLogin();
+		   login("marina.touceda@gointegro.com","Auto1234");
+		   
+		 }
 		
+		 @AfterTest // call function to close browser 
+			
+			public void teardown(){
+				closeBrowser();
+			}
 
 	
 		
 
 	@Test
 	public void addUserAdmin() throws InterruptedException{
-			 	
+		
+	 	/*
 		//Login
 			
 			driver.findElement(By.id("signInIdentification")).clear();
@@ -74,7 +59,8 @@ public class GroupsTest {
 	 		 driver.findElement(By.cssSelector(".primary")).click();
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	        
-				
+		 */
+		
 		  // Go to the configuration
 			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
 	       driver.findElement(By.cssSelector(".menu")).click();

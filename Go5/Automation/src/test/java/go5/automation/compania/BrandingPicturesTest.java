@@ -1,4 +1,4 @@
-package go5.automation.configuration;
+package go5.automation.compania;
 
 
 
@@ -97,7 +97,8 @@ public class BrandingPicturesTest {
 			        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
 		       
 		        			
-		       //Restablecer interfaz   
+		       //Restablecer interfaz 
+			        Reporter.log("Restableciendo interfaz de usuario");
                     driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
                     driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
                   
@@ -116,7 +117,7 @@ public class BrandingPicturesTest {
  	   
 
  		// Go to Company Design 
-        Reporter.log("Abriendo la pagina de diseño de la plataforma" );
+        Reporter.log("Cargando una foto para el logo de la empresa" );
         // Primero hay que clickear en otro si no no anda!!Clickeo titles
         driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
         
@@ -149,6 +150,7 @@ public class BrandingPicturesTest {
         
        driver.findElement(By.cssSelector(".cutpictures .primary")).click();
        Thread.sleep(1000);
+       Reporter.log("Foto cargada exitosamente");
         //Para cancelar 
       //   driver.findElement(By.cssSelector(".cutpictures .optional")).click();
          
@@ -160,7 +162,7 @@ public class BrandingPicturesTest {
 	
 
       // Load background file
-      
+        Reporter.log("Cargando foto para el backgroud de la plataforma");
      
       //function to make visible the button loginBgFilePicker, as it is set to class "off"
 	        
@@ -183,6 +185,7 @@ public class BrandingPicturesTest {
 	    //Save changes on the page
 	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
 	          driver.findElement(By.cssSelector(".primary")).click(); 
+	          Reporter.log("Foto para el backgroud cargada exitosamente");
 
 	 }
 	 

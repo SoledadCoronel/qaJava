@@ -1,4 +1,4 @@
-package go5.automation.people;
+package go5.automation.personas;
 
 
 

@@ -1,4 +1,4 @@
-package go5.automation.people;
+package go5.automation.personas;
 
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +33,7 @@ public class ManagePeopleTest {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Manage People");
+	    capability.setCapability("name", "Listado de Personas");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -51,7 +51,7 @@ public class ManagePeopleTest {
 	
 	@Test
 	
-	public void ManagePeoplePage() throws Exception { 
+	public void listadoPersonas() throws Exception { 
 	
 		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -84,5 +84,27 @@ public class ManagePeopleTest {
          //Agarrar el ultimo de la tabla
          String lastname= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(10) td:nth-child(2)")).getText());
          Reporter.log(lastname);
- 	}
+         
+         
+         //Filtrar por User Activos
+         
+         //Recorrer la tabla users con nth:-child(1n+0)
+         
+         // Elegir Usuarios Inactivos
+         Reporter.log(" Seleccionar usuarios inactivos");
+         
+         Select userselect= new Select(driver.findElement(By.cssSelector(".peoplemanage .actions select")));
+         
+         userselect.selectByIndex(3);
+         
+         //Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos
+         Reporter.log("Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos");
+ 	
+       
+         for(int i = 1;i<10;i++)
+        	 Reporter.log(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)")).getText());
+        
+                 
+	
+	}
 }	
