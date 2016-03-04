@@ -133,5 +133,14 @@ public class ListadoPersonas {
                 	Assert.assertEquals(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)")).getText(), "CHEQUEADO");
                 	 Reporter.log("Todos los usuarios de la lista se encuentran activados");
             	 
+                	 
+                Reporter.log(" Hacer una busqueda de un usuario");
+                driver.findElement(By.cssSelector(".peoplemanage .search .btnsearch")).click();
+                driver.findElement(By.cssSelector(".peoplemanage .search input")).sendKeys("Automation");
+                
+                //Chequear q se mueste en la tabla users
+                Reporter.log("El nombre del user buscado es Automation");
+                Reporter.log(" Imprimiendo el resultado del search");
+               Reporter.log(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(2)")).getText()); 
 	}
 }	
