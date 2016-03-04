@@ -100,7 +100,11 @@ public class ManagePeopleTest {
          //Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos
          Reporter.log("Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos");
  	
-       //  .tables tbody tr:nth-child(n) td:nth-child(5n)
+       
+         for(int i = 1;i<10;i++)
+        	 Reporter.log(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)")).getText());
+        
+                 
 	
 	}
 }	
