@@ -89,5 +89,8 @@ public class ManagePeopleTest {
          //Filtrar por User Activos
          
          //Recorrer la tabla users con nth:-child(1n+0)
+         
+         // Elegir Usuarios Inactivos
+         Reporter.log(" Seleccionar usuarios inactivos");
  	}
 }	
