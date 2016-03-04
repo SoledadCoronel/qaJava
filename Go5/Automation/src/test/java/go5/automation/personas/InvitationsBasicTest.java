@@ -1,7 +1,7 @@
-package go5.automation.people;
+package go5.automation.personas;
 
 
-import go5.automation.CommonFunctions;
+
 
 import java.net.URL;
 import java.util.List;
@@ -14,7 +14,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -25,11 +24,9 @@ import org.testng.annotations.Test;
 
 
 
-public class InvitationsAdminResend {
-
+public class InvitationsBasicTest {
 
 	private WebDriver driver;
-
 	
 	 @BeforeClass
 	  @Parameters(value={"browser","version","platform","url"})
@@ -41,7 +38,7 @@ public class InvitationsAdminResend {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Reenvio de Invitacion");
+	    capability.setCapability("name", "Invitations con Cancel");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -58,36 +55,29 @@ public class InvitationsAdminResend {
 
 	
 		
-		
-	        
+
 	@Test
-	public void invitattionAdminResend() throws InterruptedException{
-		 
+	public void inviteCancel() throws InterruptedException{
 		 org.apache.log4j.BasicConfigurator.configure();
 		 Random numero= new Random();
 		 Logger log = Logger.getLogger("automation");
-	 	
-		//Login
+		
+		 //Login
 			
 			driver.findElement(By.id("signInIdentification")).clear();
 	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	 		driver.findElement(By.id("signInPassword")).clear();
 	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
 	 		 driver.findElement(By.cssSelector(".primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	
-		
-	
-		log.info("Ir al menu de config");
-        Reporter.log(" Testeando la pagina de Administrar personas");
-		
+			
         // Go to the configuration
 			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
 	       driver.findElement(By.cssSelector(".menu")).click();
 		
 		// Go to  Users Menu
 	        Reporter.log("Abriendo administar personas" );  
-	       
+	        //driver.findElement(By.cssSelector(".usermenu")).click();
+	        Reporter.log("Abriendo titulos");
 	        
 	    // Go to Titles    
 	        
@@ -115,17 +105,18 @@ public class InvitationsAdminResend {
 	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("Random Lastname"+ numero.nextDouble());
 	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("randomemail"+numero.nextInt()+"@gointegro.com");
 	     
-	     //Seleccionar el rol admin
+	     //Seleccionar el rol
 	      
 	     Select selectRol = new Select(driver.findElement(By.cssSelector(".basicdata label:nth-child(7) select"))); 
 	 		
-	        selectRol.selectByIndex(1);
+	        selectRol.selectByIndex(2);
 	     	
 	 		
 	     // Grabar el nuevo usuario creado
-	        Thread.sleep(2000);
+	        Thread.sleep(3000);
 	         driver.findElement(By.cssSelector(".content .addpeople fieldset:nth-child(4) .primary")).click();    
 	        
+	
 	
 	  // Verificar que vuelva al listado de personas 
 	          
@@ -137,31 +128,36 @@ public class InvitationsAdminResend {
 	          
 	         driver.findElement(By.cssSelector(".title menu li:nth-child(2) a")).click();
 	         log.info(driver.findElement(By.cssSelector(".tables")).isDisplayed());
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	         
-	         // Verificar que hay un elemento en la tabla 
+	         // Contar los elementos en la tabla 
 	         	     	         
 	          WebElement htmltable=driver.findElement(By.cssSelector(".tables tbody"));
 
 	          List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
-	          log.info("Imprimiendo la cantidad de inivtaciones pendientes...");
+	          log.info("Imprimiendo la cantidad de inivtaciones pendientes antes de cancelar...");
 	          log.info(rows.size());
-	          Assert.assertEquals(rows.size(),1);	         
+	       //	    Assert.assertEquals(rows.size(),3);     
 	         
-	          
-	       // Reenviar la invitacion
-	          
-	          //Presiono boton reenviar del primer elemento de la tabla
-	          driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(6)")).click();
-	          driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
+	       //Cancelar la invitacion
+	       
+	          log.info(" Cancelando la invitacion...");
+	          driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(5) .link")).click();
+	          log.info(driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) p")).getText());
+	          driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .primary")).click();
 	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	          
+	          // Verificar que hay un elemento menos en la tabla 
 	          
-	          // Verificar que el email ha sido reenviado
-	          
-	          JavascriptExecutor js = (JavascriptExecutor) driver;
-	  		js.executeScript("$(document).ajaxComplete(function( event, xhr, settings ) { $('.primary').after('<a class=\"forgot-pass-link\" href=\"/authentication/reset-password/'+$.parseJSON(xhr.responseText).data.id+'\">Forgot Link!</a>'); });");
-   	         	         	 
+	          driver.findElement(By.cssSelector(".title menu li:nth-child(1) a")).click();
+	          driver.findElement(By.cssSelector(".title menu li:nth-child(2) a")).click();
+	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+   	         
+	          WebElement tableEmpty=driver.findElement(By.cssSelector(".tables tbody"));
+
+	          List<WebElement> rowsE=tableEmpty.findElements(By.tagName("tr"));
+	          log.info("Imprimiendo la cantidad de invitaciones pendientes despues de cancelar la invitacion:..");
+	          log.info(rowsE.size());
+	          Assert.assertEquals(rowsE.size(),rows.size() -1);	 
 	}
 	
 }

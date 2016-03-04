@@ -3,7 +3,7 @@
 <suite thread-count="2" name="Suite" parallel="tests">
   <test name=" Chrome Tests">
   <parameter name="browser" value="chrome"/>
-  <parameter name="version" value="46.0"/>
+  <parameter name="version" value="48.0"/>
   <parameter name="platform" value="WIN8"/>
   <parameter name="url" value="http://automation5.pla.qa.go5.gointegro.net/authentication/login"/>
     <classes>
@@ -16,8 +16,11 @@
          <class name="go5.automation.people.AddUserBasicDataTest"/>
          <class name="go5.automation.people.InvitationsBasicTest"/>
          <class name="go5.automation.people.AddUserAdminAllFieldsTest"/>
-                <class name="go5.automation.profile.ProfileTest"/>
-         <class name="go5.automation.profile.PictureProfileTest"/> 
-          </classes>
+         <class name="go5.automation.profile.SetUpAccount"/>
+         <class name="go5.automation.profile.ProfileTest"/>
+         <class name="go5.automation.profile.PictureProfileTest"/>
+          <class name="go5.automation.people.GroupsTest"/>
+          <class name="go5.automation.people.Titles"/>
+       </classes>
     </test> <!-- Test -->    
 </suite> <!-- Suite -->

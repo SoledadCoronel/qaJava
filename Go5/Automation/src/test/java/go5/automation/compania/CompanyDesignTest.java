@@ -1,4 +1,4 @@
-package go5.automation.configuration;
+package go5.automation.compania;
 
 
 
