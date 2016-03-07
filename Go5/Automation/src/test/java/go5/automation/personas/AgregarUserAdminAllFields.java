@@ -1,4 +1,4 @@
-package go5.automation.people;
+package go5.automation.personas;
 
 
 
@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
 
 
 
-public class AddUserAdminAllFieldsTest {
+public class AgregarUserAdminAllFields {
 
 	private WebDriver driver;
 	
@@ -41,7 +41,7 @@ public class AddUserAdminAllFieldsTest {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "AddUserAdminWithAllFields");
+	    capability.setCapability("name", "Agregar Admin all fields ");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -64,7 +64,7 @@ public class AddUserAdminAllFieldsTest {
 		 Random numero= new Random();
 	 	
 		//Login
-			
+			Reporter.log("Agregar un usuario del tipo admin con todos los campos");
 			driver.findElement(By.id("signInIdentification")).clear();
 	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
 	 		driver.findElement(By.id("signInPassword")).clear();
@@ -74,7 +74,7 @@ public class AddUserAdminAllFieldsTest {
 	        
 		
 		
-        Reporter.log(" Agregando un user Admin, con todos los datos basicos  y sin invitation");
+       ;
     
         // Go to the configuration
 			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
@@ -88,7 +88,7 @@ public class AddUserAdminAllFieldsTest {
 	        
 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
 	      
-	        Reporter.log("Abriendo personas");
+	      
 	   // Go to Manage people
 	        
 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
@@ -96,13 +96,14 @@ public class AddUserAdminAllFieldsTest {
 
         
          
-         //Add a  user    
+         //Add a  user   
+	         Reporter.log("Abriendo formulario de Agregar un nuevo user");
 	     driver.findElement(By.cssSelector(".content .title a")).click();
 	    
 	     
 	     
-	     //Lo creo desactivado
-	     
+	     //Lo creo activado
+	     Reporter.log("Creando user en estado activo");
 	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2) input:nth-child(1)")).click();
 	     
 	     //Poner el nombre
@@ -123,9 +124,9 @@ public class AddUserAdminAllFieldsTest {
 	        
 	        //Fill in todos los datos
 	        
-	        //Datos Laborales .content .hide .labordata
+	        //Datos Laborales 
 	        
-	        
+	         Reporter.log("Cargando Datos Laborales");
 	         driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(2) input")).sendKeys("RandomId" + numero.nextInt());
 	                       	         
 	         driver.findElement(By.cssSelector(".content .hide .labordata label:nth-child(3) input" )).sendKeys("10/10/10");
@@ -148,7 +149,7 @@ public class AddUserAdminAllFieldsTest {
 	          //Fin Datos laborales
 	          
 	          //Datos Personales
-	          
+	          Reporter.log("Cargando Datos Personales");
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(2) select")).sendKeys("RUT");
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(3) input")).sendKeys("46214482");
 	            driver.findElement(By.cssSelector(".personaldata label:nth-child(4) input")).sendKeys("11/11/11");
@@ -164,6 +165,7 @@ public class AddUserAdminAllFieldsTest {
 	            
 	            
 	            //Redes Sociales
+	            Reporter.log("Cargando y validando Redes Sociales");
 	            driver.findElement(By.cssSelector(".socialdata label:nth-child(2) input")).sendKeys("invaild data");
 	            Assert.assertEquals("El campo debe tener un formato de url valido", driver.findElement(By.cssSelector(".socialdata label:nth-child(2) span")).getText(), "Validacion del campo linkedin");
 	            driver.findElement(By.cssSelector(".socialdata label:nth-child(2) input")).clear();
@@ -181,7 +183,7 @@ public class AddUserAdminAllFieldsTest {
 	        Thread.sleep(2000);
 	         driver.findElement(By.cssSelector(".content .addpeople fieldset:nth-child(4) .secondary")).click();    
 	        
-	 
+	       
 	
 	  // Verificar que vuelva al listado de personas  
 	          

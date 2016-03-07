@@ -2,7 +2,6 @@ package go5.automation.profile;
 
 
 import java.net.URL;
-
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -12,16 +11,15 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-
 import org.testng.annotations.BeforeClass;
-
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
 
-public class SetUpAccount  {
+public class ConfigurarCuenta  {
 	
  private WebDriver driver;
 
@@ -74,19 +72,22 @@ public class SetUpAccount  {
 		// Go to the user menu
 			driver.findElement(By.cssSelector(".applications .users .user")).click();
 	
-			
+			Reporter.log(" Ir a Configurar Cuanta");
 			//Ir a configurar cuenta
 			driver.findElement(By.cssSelector(".applications .users .subusers li a[title='Ir a configurar cuenta']")).click();
 			
-			//driver.findElement(By.cssSelector(".applications .users li:nth-child(3) li:nth-child(3)")).click();
+			
 			
 			// Ir a Datos Basicos
+			
+			Reporter.log(" Clickeando en Datos Basicos");
 			
 			driver.findElement(By.cssSelector(".title menu li:nth-child(1)")).click();
 			
 			
 			//Ir a Idioma
-			 Select selectLanguage= new Select (driver.findElement(By.cssSelector(".content .generaldata label:nth-child(1) select")));
+			Reporter.log(" Chequeando idiomas"); 
+			Select selectLanguage= new Select (driver.findElement(By.cssSelector(".content .generaldata label:nth-child(1) select")));
 			
 			  selectLanguage.selectByIndex(2);
 			  driver.findElement(By.cssSelector(".primary")).click();
@@ -108,7 +109,9 @@ public class SetUpAccount  {
 			 
 			   
 			   //Ir a Time Zone
-			
+			  
+			   Reporter.log(" Chequeando los time zone");
+			   
 			   Select selectTimeZone= new Select (driver.findElement(By.cssSelector(".content .generaldata label:nth-child(2) select")));
 			   
 			    selectTimeZone.selectByIndex(9);
@@ -120,6 +123,7 @@ public class SetUpAccount  {
 			   
 			//Ir a Contraseña
 			
+				  Reporter.log(" Cliqueando Ir a Contraseña");
 		//	driver.findElement(By.cssSelector(".title menu li:nth-child(2) a ")).click();
 			driver.findElement(By.cssSelector(".title menu li:nth-child(2) a[title='Ir a Contraseña']")).click();
 			Thread.sleep(3000);

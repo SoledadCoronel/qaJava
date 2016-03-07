@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ForgotPasswordSpanishTest {
+public class ForgotPassword {
 	
 	 private WebDriver driver;
 	  
@@ -57,7 +57,7 @@ public class ForgotPasswordSpanishTest {
 		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("banana@cachirula.zunga.com");
 	   driver.findElement(By.cssSelector(".primary")).click();
-	Reporter.log("Insertar un  invalid email y verificar que el mensaje correcto se muestre");
+	Reporter.log("Insertar un   email invalido y verificar que el mensaje correcto se muestre");
 	   driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 	   String SpanishText2 = new String( driver.findElement(By.cssSelector(".signup .reject ")).getText());
 	   Reporter.log(SpanishText2);
@@ -65,7 +65,7 @@ public class ForgotPasswordSpanishTest {
 	
 	// Insertar un email valido y verificar texto que se envio la contraseña
 		
-		 
+		 Reporter.log("Insertar un email valido y verificar texto que se envio la contraseña");
 		 // Funtion to obtain link in the page
 		 
 		 JavascriptExecutor js2 = (JavascriptExecutor) driver;
@@ -79,8 +79,10 @@ public class ForgotPasswordSpanishTest {
 	   String SpanishText = new String( driver.findElement(By.cssSelector(".signup h2")).getText());
 	   Reporter.log(SpanishText);
 	   Assert.assertEquals(SpanishText,"Revisa tu email.");
+	   Reporter.log(" Token enviado exitosamente");
 		 
 		 // Ir a la pagina para recuperar la contraseña
+	   Reporter.log("Ir a la pagina para recuperar la contraseña");
 		 driver.findElement(By.cssSelector(".forgot-pass-link")).click();
 		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		 driver.findElement(By.id("passwordIdentification")).sendKeys("12345");
@@ -89,6 +91,7 @@ public class ForgotPasswordSpanishTest {
 		 driver.findElement(By.cssSelector(".primary")).click();
 		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		// Reporter.log( driver.findElement(By.cssSelector(".signup p")).getText());
+		 Reporter.log("Contraseña recuperdad exitosamente");
 	}
 	
      }

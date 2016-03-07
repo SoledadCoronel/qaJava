@@ -1,19 +1,16 @@
-package go5.automation.people;
+package go5.automation.personas;
 
 
 
 import go5.automation.CommonFunctions;
 
-import java.net.URL;
-import java.util.List;
-import java.util.Random;
+
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -51,8 +48,7 @@ public class Groups extends CommonFunctions{
 
 	@Test
 	public void addUserAdmin() throws InterruptedException{
-		 org.apache.log4j.BasicConfigurator.configure();
-		 Random numero= new Random();
+		
 	 	/*
 		//Login
 			
@@ -91,25 +87,50 @@ public class Groups extends CommonFunctions{
 	  	         //Insertar un nombre de Grupo
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("TestGrupoToBeDeleted");
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.RETURN);
-	  	     
-	  	         //Borrarlo
 	  	         
+	  	         //Borrar Grupo
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .delete")).click();
-	  	         driver.findElement(By.cssSelector(" .mconfirmation a")).click();
+	  	         driver.findElement(By.cssSelector(".mconfirmation a")).click();
+	  	         Thread.sleep(1000);
+
 	
-	  	     //Agregar un Grupo
+	  	     //Agregar Grupo
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
 	  	         //Insertar un nombre de Grupo
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("TestGrupo1");
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.RETURN);
 	  	         
-	  	         //Agregar un subgrupo
+	  	         //Agregar un Subgrupo
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree .showadd a")).click();
-	  	         Thread.sleep(1000);
-	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem input")).sendKeys("Subgrupo1.1");
-	  	         driver.findElement(By.id("zaraza"));
 	  	         
+	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("Subgrupo1");
+	  	         driver.findElement(By.cssSelector(".additem.active input")).sendKeys(Keys.RETURN);
+	  	         
+	  	         
+	  	  // Go to a user and verify that the field group is present
+	  	         //Go to Administrar
+	  	         
+	  	    // Go to Manage people
+	 	        
+	 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+	 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
 	
+	 	    //Agarrar el primer user de la tabla y editarlo
+	 	         
+	 	          driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td a ")).click();
+	 	          
+	 	         //Agrandar el form para agregar mas datos  
+	 		        
+	 		        driver.findElement(By.cssSelector(".addpeople fieldset:nth-child(2) .secondary")).click();
+	 		        
+	 		       Select selectGroups=new  Select(driver.findElement(By.cssSelector(".groupsdata select"))); 
+	 		 		
+	 		 	  selectGroups.selectByIndex(1);
+	 		 	  
+	 		 	  // Grabar el  usuario editado
+	 		        Thread.sleep(1000);
+	 		         driver.findElement(By.cssSelector(".container .addpeople .primary")).click();    
+	 		        
 	}
 	
 	

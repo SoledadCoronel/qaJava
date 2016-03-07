@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" name="Suite" parallel="tests">
+<suite thread-count="3" name="Suite" parallel="tests">
   <test name="Firefox Tests">
   <parameter name="browser" value="firefox"/>
   <parameter name="version" value="42.0"/>
   <parameter name="platform" value="WIN8"/>
   <parameter name="url" value="http://automation5.pla.qa.go5.gointegro.net/authentication/login"/>
     <classes>
-      <class name="go5.automation.configuration.CompanyDataTest"/>
-       <class name="go5.automation.people.ManagePeopleTest"/>
-       <class name="go5.automation.signup.ForgotPasswordSpanishTest"/>
-       <class name="go5.automation.configuration.BrandingPicturesTest"/>
-       <class name="go5.automation.configuration.CompanyDesignTest"/> 
-        <class name="go5.automation.people.AddUserBasicDataAdminTest"/>
-         <class name="go5.automation.people.AddUserBasicDataTest"/>
-         <class name="go5.automation.people.InvitationsBasicTest"/>
-         <class name="go5.automation.people.AddUserAdminAllFieldsTest"/>
-         <class name="go5.automation.profile.SetUpAccount"/>
-         <class name="go5.automation.profile.ProfileTest"/>
-         <class name="go5.automation.profile.PictureProfileTest"/> 
-          </classes>
-    </test> <!-- Test -->    
-</suite> <!-- Suite -->
+      <class name="go5.automation.compania.DatosGenerales"/>
+      <class name="go5.automation.compania.Branding"/>
+      <class name="go5.automation.compania.BrandingFotos"/>
+      <class name="go5.automation.personas.ListadoPersonas"/>
+      <class name="go5.automation.signup.ForgotPassword"/>
+      <class name="go5.automation.personas.AgregarUserAdmin"/>
+      <class name="go5.automation.personas.AgregarUserBasic" />
+      <class name="go5.automation.personas.Invitations" />
+      <class name="go5.automation.personas.AgregarUserAdminAllFields" />
+      <class name="go5.automation.profile.ConfigurarCuenta" />
+      <class name="go5.automation.profile.ProfileTest" />
+      <class name="go5.automation.profile.CargarFotoProfile" />
+      <class name="go5.automation.personas.GroupsTest" />
+      <class name="go5.automation.personas.Titles" />
+      </classes>
+  </test> <!-- Test -->
+  </suite> <!-- Suite -->

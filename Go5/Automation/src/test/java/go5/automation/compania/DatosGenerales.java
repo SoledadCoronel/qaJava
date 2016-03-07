@@ -1,4 +1,4 @@
-package go5.automation.configuration;
+package go5.automation.compania;
 
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +18,7 @@ import org.testng.annotations.Parameters;
 
 
 
-public class CompanyDataTest {
+public class DatosGenerales {
 	
 	 private WebDriver driver;
 
@@ -33,7 +33,7 @@ public class CompanyDataTest {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Company Data");
+	    capability.setCapability("name", "Datos de la Compania");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -71,7 +71,7 @@ public class CompanyDataTest {
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
 
  //Verify that company name can not be blank
- 		
+ 		Reporter.log("Verificar que el nombre de la compañia no pueda ser blanco");
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
  		String companyMessage = new String(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) span")).getText());
  		Reporter.log(companyMessage);
@@ -85,7 +85,7 @@ public class CompanyDataTest {
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("TestingCompanyForm");		
  		
  // Select all values the drop-down for Language
- 		
+ 		Reporter.log(" Verificar el drop-down de lenguajes");
  		Select selectLanguage = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(3) select"))); 
  		
  		selectLanguage.selectByValue("pt");
@@ -93,29 +93,17 @@ public class CompanyDataTest {
  		selectLanguage.selectByValue("es");
  		
  //Select a value from drop-down Timezone
- 		
+ 		Reporter.log(" Verificar el drop-down de timezone ");
  		Select selectTimeZone = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) select")));
 		
-		   for(int i=1; i<20; i++){
+		   for(int i=1; i<5; i++){
 	           selectTimeZone.selectByIndex(i);  
 			 }
 		
 		selectTimeZone.selectByValue("America/Anchorage");
- 		
- //Verify that the language has been changed within the page
-		
-		selectLanguage.selectByValue("en");	
-		
-		//Save changes to verify that the text are being displayed in the selected language
- 		
- 		driver.findElement(By.cssSelector(".primary")).click();
- 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);		
- 		
- // Check text in English
- 		String check= new String(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
- 		Assert.assertEquals("Design", check);
- 		
- 		
+
+ 		 		
+ 		Reporter.log(" Se setea el lenguaje en español y se le deja el nombre Automation1 a company name");
  		//Save changes to come back original values when the test has finished
  		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
  		//driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
@@ -124,6 +112,7 @@ public class CompanyDataTest {
  		selectTimeZone.selectByValue("America/Argentina/Buenos_Aires");
  		driver.findElement(By.cssSelector(".primary")).click();
  		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+ 		Reporter.log(" Caso de Datos de la Compañia finalizado");
  		
  		
  }
