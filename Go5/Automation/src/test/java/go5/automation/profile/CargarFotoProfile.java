@@ -14,6 +14,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -47,7 +49,7 @@ public class CargarFotoProfile  {
     
     driver.get(url);
 	 driver.manage().window().maximize();
-	 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
   }  
 
  @AfterClass // call function to close browser 

@@ -7,8 +7,11 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -52,7 +55,7 @@ public class ForgotPassword {
 	@Test
 	
 		public void testForgotPassword() throws Exception { 
-	
+		WebElement forgotlink = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".signup .link")));
 		driver.findElement(By.cssSelector(".signup .link")).click();
 		driver.findElement(By.id("signInIdentification")).clear();
 		driver.findElement(By.id("signInIdentification")).sendKeys("banana@cachirula.zunga.com");
