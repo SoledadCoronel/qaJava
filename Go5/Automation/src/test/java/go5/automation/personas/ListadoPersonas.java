@@ -5,9 +5,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -39,6 +42,7 @@ public class ListadoPersonas {
 	    	      capability);
 	    driver.get(url);
 		 driver.manage().window().maximize();
+		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
 		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		 
 	 }
@@ -123,8 +127,10 @@ public class ListadoPersonas {
 	
                
                Reporter.log(" Hacer una busqueda de un usuario por Apellido");
-             
+              
+              
                driver.findElement(By.cssSelector(".peoplemanage .search .btnsearch")).click();
+               driver.findElement(By.cssSelector(".peoplemanage .search input")).clear();
                driver.findElement(By.cssSelector(".peoplemanage .search input")).sendKeys("AutomationLastName");
                
                //Chequear q se mueste en la tabla users
