@@ -43,7 +43,7 @@ public class ListadoPersonas {
 	    driver.get(url);
 		 driver.manage().window().maximize();
 		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
-		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		 
 		 
 	 }
 	 @AfterClass // call function to close browser 
@@ -139,5 +139,6 @@ public class ListadoPersonas {
               Reporter.log(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(2)")).getText()); 
 	
 	
+           
 	}
 }	

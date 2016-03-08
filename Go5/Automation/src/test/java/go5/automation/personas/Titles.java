@@ -41,7 +41,8 @@ public class Titles {
               capability);
       driver.get(url);
      driver.manage().window().maximize();
-     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+     WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
+    
     }  
   
    @AfterClass // call function to close browser 
