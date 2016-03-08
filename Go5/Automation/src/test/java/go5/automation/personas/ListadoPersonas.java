@@ -75,17 +75,41 @@ public class ListadoPersonas {
          driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          
-     /*    //Ordenar por nombre--No se puede terminar, no esta andando
-         // Agarrar primer nombre de la tabla
-          String firstname= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(2)")).getText());
-         Reporter.log(firstname);
+         //Ordenar por nombre-
+         
           //Clickear el ordenar por noombre
          driver.findElement(By.cssSelector(".tables thead tr th:nth-child(2) a")).click();
+         Thread.sleep(1000);
+      // Agarrar primer nombre de la tabla
+         String firstname= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(2)")).getText());
+        Reporter.log(firstname);
          //Agarrar el ultimo de la tabla
-         String lastname= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(10) td:nth-child(2)")).getText());
-        Reporter.log(lastname);
-    */     
+         String secondname= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(2) td:nth-child(2)")).getText());
+        Reporter.log(secondname);
+              
+        if (firstname.compareTo(secondname)< 0) 
+        Reporter.log("Los usuarios estan ordenados alfabeticamente por orden ascendente");
+        else 
+        	Reporter.log("Los usuarios estan ordenados en orden alfabetico descendente" );
+        
+        //Volver a ordenar, en forma descendente
+        
+        driver.findElement(By.cssSelector(".tables thead tr th:nth-child(2) a")).click();
+        Thread.sleep(1000);
+     // Agarrar primer nombre de la tabla
+        String firstname2= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(2)")).getText());
+       Reporter.log(firstname2);
+        //Agarrar el ultimo de la tabla
+        String secondname2= new String(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(2) td:nth-child(2)")).getText());
+       Reporter.log(secondname2);
+             
+       if (firstname.compareTo(secondname)> 0) 
+       Reporter.log("Los usuarios estan ordenados alfabeticamente por orden ascendente");
+       else 
+       	Reporter.log("Los usuarios estan ordenados en orden alfabetico descendente" );
          
+    
+       
          //Filtrados
          
         

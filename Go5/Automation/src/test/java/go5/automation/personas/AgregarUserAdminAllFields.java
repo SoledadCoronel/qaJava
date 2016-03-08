@@ -181,7 +181,7 @@ public class AgregarUserAdminAllFields {
 	     
 	            // Grabar el nuevo usuario creado
 	        Thread.sleep(2000);
-	         driver.findElement(By.cssSelector(".content .addpeople fieldset:nth-child(4) .secondary")).click();    
+	         driver.findElement(By.cssSelector(".secondary")).click();    
 	        
 	       
 	
