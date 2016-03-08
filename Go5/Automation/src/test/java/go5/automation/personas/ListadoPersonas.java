@@ -134,13 +134,26 @@ public class ListadoPersonas {
                 	 Reporter.log("Todos los usuarios de la lista se encuentran activados");
             	 
                 	 
-                Reporter.log(" Hacer una busqueda de un usuario");
+                Reporter.log(" Hacer una busqueda de un usuario por Nombre");
                 driver.findElement(By.cssSelector(".peoplemanage .search .btnsearch")).click();
-                driver.findElement(By.cssSelector(".peoplemanage .search input")).sendKeys("Automation");
+                driver.findElement(By.cssSelector(".peoplemanage .search input")).sendKeys("AutomationFirstName");
                 
                 //Chequear q se mueste en la tabla users
-                Reporter.log("El nombre del user buscado es Automation");
+                Reporter.log("El nombre del user buscado es AutomationFirstName");
                 Reporter.log(" Imprimiendo el resultado del search");
                Reporter.log(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(2)")).getText()); 
+	
+               
+               Reporter.log(" Hacer una busqueda de un usuario por Apellido");
+             
+               driver.findElement(By.cssSelector(".peoplemanage .search .btnsearch")).click();
+               driver.findElement(By.cssSelector(".peoplemanage .search input")).sendKeys("AutomationLastName");
+               
+               //Chequear q se mueste en la tabla users
+               Reporter.log("El nombre del user buscado es AutomationLastName");
+               Reporter.log(" Imprimiendo el resultado del search");
+              Reporter.log(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td:nth-child(2)")).getText()); 
+	
+	
 	}
 }	
