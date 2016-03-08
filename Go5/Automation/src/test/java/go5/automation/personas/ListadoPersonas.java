@@ -108,54 +108,8 @@ public class ListadoPersonas {
        else 
        	Reporter.log("Los usuarios estan ordenados en orden alfabetico descendente" );
          
-    
-       
-         //Filtrados
-         
-        
-         // Elegir Usuarios Inactivos
-         Reporter.log(" Seleccionar usuarios inactivos");
-         
-         Select userselect= new Select(driver.findElement(By.cssSelector(".peoplemanage .actions select")));
-         
-         userselect.selectByIndex(2);
-         
-         //Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos
-         Reporter.log("Reocorrer la lista de usuarios y verificar que todos los usuarios mostrados sean los users inactivos");
- 	
-       
-         for(int i = 1;i<10;i++)
-        	Assert.assertEquals(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)")).getText(), "SIN CHEQUEAR");
-        	 Reporter.log("Todos los usuarios de la lista se encuentran desactivados");
-        
-             
-        	  // Elegir Usuarios No Registrados
-             Reporter.log(" Seleccionar usuarios no registrados");
-                                      
-             userselect.selectByIndex(3);
-             
-             //Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos
-             Reporter.log("Reocorrer la lista de usuarios y verificar que todos los usuarios mostrados sean los users que no estan registrados");
-     	
-           
-             for(int i = 1;i<10;i++)
-            	Assert.assertEquals(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(6n)")).getText(), "SIN CHEQUEAR");
-            	 Reporter.log("Todos los usuarios de la lista se encuentran en estado no registrado");
-            
-            	// Elegir Usuarios Activos
-                 Reporter.log(" Seleccionar usuarios activos");
-                 
-                
-                 
-                 userselect.selectByIndex(1);
-                 
-                 //Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos
-                 Reporter.log("Reocorrer la lista de usuarios y verificar que todos los usuarios mostrados sean los users activos");
-         	
-               
-                 for(int i = 1;i<10;i++)
-                	Assert.assertEquals(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)")).getText(), "CHEQUEADO");
-                	 Reporter.log("Todos los usuarios de la lista se encuentran activados");
+    //Hacer una busqueda
+     
             	 
                 	 
                 Reporter.log(" Hacer una busqueda de un usuario por Nombre");
