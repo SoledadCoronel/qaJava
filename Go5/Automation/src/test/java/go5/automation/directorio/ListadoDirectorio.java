@@ -1,5 +1,7 @@
 package go5.automation.directorio;
 
+import go5.automation.CommonFunctions;
+
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -14,16 +16,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
 
 
-public class ListadoDirectorio {
+public class ListadoDirectorio extends CommonFunctions{
 	
-	 private WebDriver driver;
+	/* private WebDriver driver;
 
 	
 	 @BeforeClass
@@ -51,13 +55,26 @@ public class ListadoDirectorio {
 		public void teardown(){
 			driver.quit();
 		}
+		*/
+	
+	 @BeforeTest // call function to open the browser and login 
+	 public void setup () throws Exception{
+	   openSiteLogin();
+	   login("marina.touceda@gointegro.com","Auto1234");
+	   
+	 }
+	
+	 @AfterTest // call function to close browser 
 		
+		public void teardown(){
+			closeBrowser();
+		}
 	
 	@Test
 	
 	public void listadoPersonas() throws Exception { 
 	
-		Reporter.log(" Probar Directorio");
+	/*	Reporter.log(" Probar Directorio");
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.findElement(By.id("signInIdentification")).clear();
  		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
@@ -65,7 +82,7 @@ public class ListadoDirectorio {
  		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
  		 driver.findElement(By.cssSelector(".primary")).click();
          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-       
+       */
          // Go to the menu (hamburguesita)
         
  		
