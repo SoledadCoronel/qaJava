@@ -149,7 +149,7 @@ public class Titles {
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) ul:nth-child(2) li:nth-child(1) label input")).clear();
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) ul:nth-child(2) li:nth-child(1) label input")).sendKeys("SENIOR EDITADO");
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) ul:nth-child(2) li:nth-child(1) label input")).sendKeys(Keys.ENTER);
-      */    
+    
     // Eliminar un jobtitle
          Reporter.log(" Se elimina el jobtitle");
           WebElement deleteJobtitle = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree.active .delete")));
@@ -161,7 +161,7 @@ public class Titles {
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) label:nth-child(1) .delete")).click();
           Thread.sleep(1000);
           driver.findElement(By.cssSelector(".modal.active .mconfirmation a")).click();
-      
+      */
   }
 }
 

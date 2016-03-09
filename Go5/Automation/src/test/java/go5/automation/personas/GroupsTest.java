@@ -127,7 +127,7 @@ public class GroupsTest {
 	 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
 	 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
 	
-	 	    //Agarrar el primer user de la tabla y editarlo
+	 	    //Agarrar un  user de la tabla y editarlo
 	 	          Reporter.log(" Editar un usuario y agregarle el grupo creado");
 	 	          driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td a ")).click();
 	 	          
