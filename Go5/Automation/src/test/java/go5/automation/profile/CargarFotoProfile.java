@@ -83,6 +83,9 @@ public class CargarFotoProfile  {
 			driver.findElement(By.cssSelector(".applications .users .subusers li a[title='Ir a ver perfil']")).click();
 			
 				
+			driver.findElement(By.cssSelector(".igocamera")).click();
+			driver.findElement(By.cssSelector(".active .mconfirmation")).click();
+			   
 			 JavascriptExecutor js = (JavascriptExecutor) driver;
 		        WebElement element = driver.findElement(By.id("photoFilePicker"));
 		        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
