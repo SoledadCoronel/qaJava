@@ -95,13 +95,21 @@ public class CargarTitleEnProfile  {
 		        
 		        driver.findElement(By.cssSelector(".addpeople fieldset:nth-child(2) .secondary")).click();
 		        
+		        driver.findElement(By.cssSelector(".labordata label:nth-child(5) select")).click();
 		        
-		      // Select selectTitles=new  Select(driver.findElement(By.cssSelector(".labordata label:nth-child(5) select"))); 
-		 		
-		 	  //selectTitles.selectByIndex(3);
+		        driver.findElement(By.cssSelector(".labordata label:nth-child(5) select")).click();
+		       
+		        
+		        //Reṕorta a 
+		         driver.findElement(By.cssSelector(".labordata label:nth-child(6) input")).clear();
+		         driver.findElement(By.cssSelector(".labordata label:nth-child(6) input")).sendKeys("Test Test");
+		        
+		       Select selectTitles=new  Select(driver.findElement(By.cssSelector(".labordata label:nth-child(5) select"))); 
+		 		selectTitles.selectByVisibleText("SENIOR2");
+		 	  selectTitles.selectByIndex(3);
 		 	  /// Ir a la opcion 
 		 	  
-		 	  driver.findElement(By.cssSelector(".labordata label:nth-child(5) select optgroup option:nth-child(1)")).click();
+		 	//  driver.findElement(By.cssSelector(".labordata label:nth-child(5) select optgroup option:nth-child(1)")).click();
 		 	 // css para ir al valor .labordata label:nth-child(5) select optgroup option:nth-child(2)
 		 	  // Grabar el  usuario editado
 		        Thread.sleep(1000);
