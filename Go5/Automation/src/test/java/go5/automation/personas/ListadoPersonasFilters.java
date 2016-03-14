@@ -87,7 +87,7 @@ public class ListadoPersonasFilters {
          // Elegir Usuarios Inactivos
          Reporter.log(" Seleccionar usuarios inactivos");
          
-         Select userselect= new Select(driver.findElement(By.cssSelector(".peoplemanage .actions select")));
+         Select userselect= new Select(driver.findElement(By.cssSelector(".peoplemanage select")));
          
          userselect.selectByIndex(2);
          

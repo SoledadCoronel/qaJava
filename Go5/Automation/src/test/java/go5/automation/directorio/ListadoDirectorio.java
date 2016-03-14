@@ -70,7 +70,7 @@ public class ListadoDirectorio extends CommonFunctions{
 			closeBrowser();
 		}
 	
-	@Test
+	@Test (groups={"Listado"})
 	
 	public void listadoPersonas() throws Exception { 
 	
