@@ -87,9 +87,14 @@ public class ListadoPersonasFilters {
          // Elegir Usuarios Inactivos
          Reporter.log(" Seleccionar usuarios inactivos");
          
-         Select userselect= new Select(driver.findElement(By.cssSelector(".peoplemanage select")));
+         Select userselect= new Select(driver.findElement(By.cssSelector(".peoplemanage  fieldset:nth-child(1) label:nth-child(1) select")));
          
-         userselect.selectByIndex(2);
+         userselect.deselectAll();
+        
+        
+         userselect.selectByIndex(3);
+         
+        
          
          //Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos
          Reporter.log("Reocorrer la lista de usuarios y verificar que todos los usuarios mostrados sean los users inactivos");
@@ -103,7 +108,7 @@ public class ListadoPersonasFilters {
         	  // Elegir Usuarios No Registrados
              Reporter.log(" Seleccionar usuarios no registrados");
                                       
-             userselect.selectByIndex(3);
+             userselect.selectByIndex(4);
              
              //Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos
              Reporter.log("Reocorrer la lista de usuarios y verificar que todos los usuarios mostrados sean los users que no estan registrados");
@@ -118,8 +123,9 @@ public class ListadoPersonasFilters {
                  
                 
                  
-                 userselect.selectByIndex(1);
                  
+                 userselect.deselectAll();
+                 userselect.selectByIndex(2);
                  //Reocorrer la tabla y verificar que todos los usuarios mostrados sean los users inactivos
                  Reporter.log("Reocorrer la lista de usuarios y verificar que todos los usuarios mostrados sean los users activos");
          	
