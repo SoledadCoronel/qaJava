@@ -49,17 +49,7 @@ public class Groups extends CommonFunctions{
 	@Test
 	public void addUserAdmin() throws InterruptedException{
 		
-	 	/*
-		//Login
-			
-			driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.id("signInPassword")).clear();
-	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	        
-		 */
+	 
 		
 		  // Go to the configuration
 			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
@@ -105,6 +95,16 @@ public class Groups extends CommonFunctions{
 	  	         
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("Subgrupo1");
 	  	         driver.findElement(By.cssSelector(".additem.active input")).sendKeys(Keys.RETURN);
+	  	         
+	  	     
+	  	         //Drag and Drop
+	  	        
+	  	        		 
+	  	        		 
+	  	       //  Jquerysimulate;
+	  	         
+	  	         
+	  	         
 	  	         
 	  	         
 	  	  // Go to a user and verify that the field group is present

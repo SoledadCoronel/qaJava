@@ -104,7 +104,7 @@ public class Branding {
                     driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
                     driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
                    //Click en el popup de restorear
-                    driver.findElement(By.cssSelector(".mconfirmation .primary")).click();
+                    driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
                     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
                
 	

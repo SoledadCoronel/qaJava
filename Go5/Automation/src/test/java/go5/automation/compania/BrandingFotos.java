@@ -106,10 +106,9 @@ public class BrandingFotos {
                   
                     //Click en el popup de restorear
                     
-                    driver.findElement(By.cssSelector(".mconfirmation .primary")).click();
-                    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
-                    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
-      	          driver.findElement(By.cssSelector(".primary")).click(); 
+                    driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
+                    driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); 
+                    driver.findElement(By.cssSelector(".primary")).click(); 
               
 	        
 		
@@ -150,11 +149,10 @@ public class BrandingFotos {
         upload.sendKeys(file.getAbsolutePath());
         Thread.sleep(1000);
         
-       driver.findElement(By.cssSelector(".cutpictures .primary")).click();
+       driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .primary")).click();
        Thread.sleep(2000);
        Reporter.log("Foto cargada exitosamente");
-        //Para cancelar 
-      //   driver.findElement(By.cssSelector(".cutpictures .optional")).click();
+        
          
        
     //Save changes
