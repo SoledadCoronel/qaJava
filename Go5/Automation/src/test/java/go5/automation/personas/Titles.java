@@ -57,7 +57,9 @@ public class Titles {
   public void addTitle() throws InterruptedException{
     
     //Login
-      
+	 
+	 
+	 
       driver.findElement(By.id("signInIdentification")).clear();
       driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
       driver.findElement(By.id("signInPassword")).clear();

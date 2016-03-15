@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -47,7 +49,7 @@ public class Branding {
 	  ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
 	    driver.get(url);
 		 driver.manage().window().maximize();
-		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
 	  }  
 	
 	 @AfterClass // call function to close browser 
