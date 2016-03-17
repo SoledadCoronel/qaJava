@@ -39,7 +39,7 @@ public class AgregarUserAdmin {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "AddUserBasicDataAdmin");
+	    capability.setCapability("name", "AgregarAdmin");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -99,7 +99,22 @@ public class AgregarUserAdmin {
 	     driver.findElement(By.cssSelector(".content .title a")).click();
 	    
 	     
+	     //Verificar ayuda de estado del usuario
 	     
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(1) a")).click();
+	     Reporter.log(driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) h2")).getText());
+	     //Cerrar el popup de ayuda
+	     
+	     driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .close"));
+	     
+	     //Verificar modal de Bloquear Acceso
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(3) a")).click();
+	     Reporter.log(driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) h2")).getText());
+	     
+	     //Darle ok, entendido al popup
+	       
+	     driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
+	    
 	     //Lo creo desactivado
 	     
 	     driver.findElement(By.cssSelector(".basicdata label:nth-child(2) input:nth-child(2) ")).click();
