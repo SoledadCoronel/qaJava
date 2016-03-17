@@ -4,22 +4,20 @@ package go5.automation.personas;
 
 import go5.automation.CommonFunctions;
 
-
 import java.util.concurrent.TimeUnit;
 
-
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+
 import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
+
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
+
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+
 import org.testng.annotations.Test;
 import org.openqa.selenium.Keys;
 
@@ -98,14 +96,15 @@ public class Groups extends CommonFunctions{
 	  	         
 	  	     
 	  	         //Drag and Drop
+	  	         
+	  	         
+	  	       WebElement element = driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input"));
+	  	       WebElement target = driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input"));
+
+	  	       
+	  	     new Actions(driver).dragAndDrop(element, target).perform();
 	  	        
-	  	        		 
-	  	        		 
-	  	       //  Jquerysimulate;
-	  	         
-	  	         
-	  	         
-	  	         
+	  	  	        		 
 	  	         
 	  	  // Go to a user and verify that the field group is present
 	  	         //Go to Administrar

@@ -88,6 +88,7 @@ public class CargarFotoProfile  {
 			 JavascriptExecutor js = (JavascriptExecutor) driver;
 		        WebElement element = driver.findElement(By.id("photoFilePicker"));
 		        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
+		     
 		      
 		      //Agarrar el elemento para cargar el file y pasarle el path 
 		        
@@ -100,7 +101,7 @@ public class CargarFotoProfile  {
 		        upload.sendKeys(file.getAbsolutePath());
 		        Thread.sleep(1000);
 		        
-		       driver.findElement(By.cssSelector(".cutpictures .primary")).click();
+		       driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .primary")).click();
 		       Thread.sleep(1000);
 		        //Para cancelar 
 		      //   driver.findElement(By.cssSelector(".cutpictures .optional")).click();
