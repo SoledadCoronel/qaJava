@@ -117,9 +117,9 @@ public class AgregarUserBasic {
 	     Reporter.log(" Se le carga el nombre, el mail y el rol");
 	     //Poner el nombre
 	     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Random Name" + numero.nextInt());
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("Random Lastname"+ numero.nextDouble());
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("randomemail"+numero.nextInt()+"@gointegro.com");
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Basic" + numero.nextInt());
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("User"+ numero.nextDouble());
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("basicuser"+numero.nextInt()+"@gointegro.com");
 	     
 	     //Seleccionar el rol
 	      

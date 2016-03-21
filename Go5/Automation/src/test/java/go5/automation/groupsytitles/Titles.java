@@ -1,4 +1,4 @@
-package go5.automation.personas;
+package go5.automation.groupsytitles;
 
 
 
@@ -136,7 +136,9 @@ public class Titles {
           
     // Se agrega el jobtitle nuevamente  
           Reporter.log("Se crea nuevamente un jobtitle");
+          WebElement jobtitleavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree.active .showadd.active .optional")));
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree.active .showadd.active .optional")).click();
+          
           Thread.sleep(2000);
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("SENIOR2");
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys(Keys.ENTER);

@@ -1,4 +1,4 @@
-package go5.automation.personas;
+package go5.automation.groupsytitles;
 
 
 
@@ -28,7 +28,7 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.Keys;
 
 
-public class GroupsDragAndDropTest {
+public class TitlesDragAndDropTest {
 
 	private WebDriver driver;
 
@@ -44,7 +44,7 @@ public class GroupsDragAndDropTest {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "GroupsDrangAndDrop ");
+	    capability.setCapability("name", "TitlesDragAndDrop ");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -91,17 +91,14 @@ public class GroupsDragAndDropTest {
 	   	        
 	   	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
 	   	      
-	   	        Reporter.log("Abriendo Grupos");
-	   	   
-	   	  	  
-	   	         // Go to Grupos
+	   	        Reporter.log("Abriendo titles");
+	   	    
+	   	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3) a")).click();
+	        
+	   	  	   
+	   	
+	   	     WebElement titleavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".groupsform fieldset:nth-child(2)")));
 	   	  	        
-	   	  	        driver.findElement(By.cssSelector(".space:nth-child(3) ol li:nth-child(4) a")).click();
-	   	  	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	            
-	             	 	  	     
-	   	  	        
-	   	  	         
 	   	  	      //  Drag and Drop
 	   	  	         
 	   	  	        //Cargando elementos

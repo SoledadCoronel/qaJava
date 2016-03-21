@@ -1,4 +1,4 @@
-package go5.automation.personas;
+package go5.automation.groupsytitles;
 
 
 
@@ -113,8 +113,9 @@ public class GroupsTest {
 	  	         
 	  	         //Agregar un Subgrupo
 	  	         Reporter.log("Agregando un subgrupo");
+	  	       WebElement subgroupavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree .showadd a")));
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree .showadd a")).click();
-	  	         
+	  	       WebElement inputsubgroupavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("groupsform fieldset:nth-child(2) .additem.active input")));
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("Subgrupo1");
 	  	         driver.findElement(By.cssSelector(".additem.active input")).sendKeys(Keys.RETURN);
 	  	         

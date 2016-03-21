@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 
 
 
-public class AgregarUserAdmin {
+public class AddUserAdminEspacios {
 
 	private WebDriver driver;
 
@@ -39,7 +39,7 @@ public class AgregarUserAdmin {
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
 	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "AgregarAdmin");
+	    capability.setCapability("name", "AgregarAdminEspacios");
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 	    	      capability);
@@ -73,7 +73,8 @@ public class AgregarUserAdmin {
 	        
 		 
 		
-        Reporter.log(" Agregando un user Admin, con los datos basicos y sin invitation");
+        Reporter.log(" Agregando un user Admin de Espacios, con los datos basicos y sin invitation");
+        Reporter.log(" Se agrega el user en estado desactivado");
 		
         // Go to the configuration
 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
@@ -91,31 +92,14 @@ public class AgregarUserAdmin {
                
          WebElement htmltable=driver.findElement(By.cssSelector(".tablefilter tbody"));
 
-        List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
+     List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
          Reporter.log("La cantidad de usuarios antes de agregar uno nuevo,en el sitio es",rows.size());
          
          
          //Add a  user    
 	     driver.findElement(By.cssSelector(".content .title a")).click();
 	    
-	     
-	     //Verificar ayuda de estado del usuario
-	     
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(1) a")).click();
-	     Reporter.log(driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) h2")).getText());
-	     //Cerrar el popup de ayuda
-	    
-	     Thread.sleep(1000);
-	     driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .close"));
-	     Thread.sleep(1000);
-	     
-	     //Verificar modal de Bloquear Acceso
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(3) a")).click();
-	     Reporter.log(driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) h2")).getText());
-	     
-	     //Darle ok, entendido al popup
-	       
-	     driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
+	            
 	    
 	     //Lo creo desactivado
 	     
@@ -123,15 +107,15 @@ public class AgregarUserAdmin {
 	     
 	     //Poner el nombre
 	     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Random Name" + numero.nextInt());
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("Random Lastname"+ numero.nextDouble());
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("randomemail"+numero.nextInt()+"@gointegro.com");
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Admin" + numero.nextInt());
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("Espacio"+ numero.nextDouble());
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("adminespacio"+numero.nextInt()+"@gointegro.com");
 	     
 	     //Seleccionar el rol
 	      
 	     Select selectRol = new Select(driver.findElement(By.cssSelector(".basicdata label:nth-child(7) select"))); 
 	 		
-	        selectRol.selectByIndex(1);
+	        selectRol.selectByIndex(3);
 	     	
 	 		
 	     // Grabar el nuevo usuario creado

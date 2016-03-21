@@ -98,9 +98,9 @@ public class AddUserAdminAllFields extends CommonFunctions{
 	     
 	     //Poner el nombre
 	     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Random Name" + numero.nextInt());
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("Random Lastname"+ numero.nextDouble());
-	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("randomemail"+numero.nextInt()+"@gointegro.com");
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Admin" + numero.nextInt());
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("User"+ numero.nextDouble());
+	     driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("adminuser"+numero.nextInt()+"@gointegro.com");
 	     
 	     //Seleccionar el rol
 	      
