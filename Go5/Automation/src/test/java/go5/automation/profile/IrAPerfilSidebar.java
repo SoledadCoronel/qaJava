@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ProfileTest  {
+public class IrAPerfilSidebar  {
 	
  private WebDriver driver;
 
@@ -38,7 +38,7 @@ public class ProfileTest  {
     capability.setCapability("project", "GOIntegro");
     capability.setCapability("build", "1.0");
     capability.setCapability("debug", false);
-    capability.setCapability("name", "ProfileTest");
+    capability.setCapability("name", "Editar Perfil desde el sidebar");
     driver = new RemoteWebDriver(
     		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
     	      capability);
@@ -74,11 +74,9 @@ public class ProfileTest  {
 		 
 		 
 		// Go to the user menu
-			driver.findElement(By.cssSelector(".applications .users .user")).click();
+			driver.findElement(By.cssSelector(".igouser")).click();
 	
-			 Reporter.log("Ir a Perfil");
-			//Ir a ver perfil
-			driver.findElement(By.cssSelector(".applications .users .subusers li a[title='Ir a ver perfil']")).click();
+			 Reporter.log("Ir a Perfil Desde el sidebar");
 			
 			
 			//Editar perfil

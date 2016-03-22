@@ -91,7 +91,7 @@ public class Titles {
       // Se agrega un Tier
           Reporter.log("Se agrega un tier");
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
-          driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("QA");
+          driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("QATOBEDELETED");
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.ENTER);
    /*       
     // Se edita cambiandole el nombre al Tier
@@ -117,8 +117,9 @@ public class Titles {
           
       // Se agrega un jobtitle al Tier
           Reporter.log("Se agrega un jobtitle al Tier");
-          driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree.active .showadd.active .optional")).click();
-          Thread.sleep(1000);
+          
+          driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree .showadd a")).click();
+          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("SENIOR");
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys(Keys.ENTER);
           
@@ -133,15 +134,16 @@ public class Titles {
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(1) a")).click();
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys("QANEWTIER");
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input")).sendKeys(Keys.ENTER);
+         
+         
+       // Se agrega un jobtitle al Tier
+          Reporter.log("Se agrega un jobtitle al Tier");
           
-    // Se agrega el jobtitle nuevamente  
-          Reporter.log("Se crea nuevamente un jobtitle");
-          WebElement jobtitleavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree.active .showadd.active .optional")));
-          driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree.active .showadd.active .optional")).click();
-          
-          Thread.sleep(2000);
-          driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("SENIOR2");
+          driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .subtree .showadd a")).click();
+          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+          driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("SENIOR");
           driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys(Keys.ENTER);
+    
      /*     
       // Se edita cambiandole el nombre al jobtitle
           
