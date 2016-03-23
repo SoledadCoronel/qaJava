@@ -96,7 +96,7 @@ public class TitlesDragAndDropTest {
 	        
 	   	  	   
 	   	
-	   	     WebElement titleavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".groupsform fieldset:nth-child(2)")));
+	   	//     WebElement titleavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".groupsform fieldset:nth-child(2)")));
 	   	  	        
 	   	  	      //  Drag and Drop
 	   	  	         

@@ -156,9 +156,10 @@ public class IrAPerfilSidebar  {
 	         Reporter.log("Edicion de profile fue exitoso");
 	         
 	         //Logout
+	         driver.findElement(By.cssSelector(".applications .users .user")).click();
 	         
-	     	driver.findElement(By.cssSelector("a[title='Cerrar Sesion']")).click();
-	
+	     	driver.findElement(By.cssSelector("a[title='Cierra la sesión']")).click();
+	     	  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	
 	}	
 	

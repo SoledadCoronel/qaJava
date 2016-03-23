@@ -2,20 +2,16 @@ package go5.automation.espacios;
 
 
 import java.net.URL;
-
 import java.util.concurrent.TimeUnit;
 
-
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -107,22 +103,31 @@ public class CrearEspacio  {
 	          //Seleccionar el icono
 	          Reporter.log("Seleccionar el icono del espacio");
 	           driver.findElement(By.cssSelector(".spaceformconfig label:nth-child(4) .igotrophy")).click();
-	          driver.findElement(By.cssSelector(".mconfirmation .inside .icons .igoeye")).click();
+	          driver.findElement(By.cssSelector(".igoeye")).click();
 	          driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
-	  
+	  /*
 	          //Verificar ayuda del tipo de espacio
 	          
 	           Reporter.log("Verificando modal de ayuda en Tipo de Espacio");
+	           
+	           JavascriptExecutor js = (JavascriptExecutor) driver;
+		        WebElement element = driver.findElement(By.linkText("Ayuda"));
+		        js.executeScript("arguments[0].setAttribute('style', 'display: block; text-indent: 0; position: relative;')",element);
+	           
+	           
+		        driver.findElement(By.cssSelector("a[title='Muestra la ayuda']")).click();
 	           driver.findElement(By.cssSelector(".spaceformtype .help")).click();
 	           //Cerrar el popup
 	           driver.findElement(By.cssSelector(".active .minformation .primary")).click();
-	           
+	          */ 
 	           //Seleccionar el tipo de espacio
 	           
 	           //Espacio publico
 	           Reporter.log("Seleccionando un espacio publico");
 	           driver.findElement(By.cssSelector(".spaceformtype .igounlock")).click();
 	           
+	           //Grabar el espacio nuevo
+	           driver.findElement(By.cssSelector(".spacecreate .primary")).click();	           
 	
 	}	
 	
