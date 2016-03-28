@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 
 
 
-public class CrearEspacioAdminEspacios  {
+public class CrearEspacioBasicUser  {
 	
  private WebDriver driver;
 
@@ -39,7 +39,7 @@ public class CrearEspacioAdminEspacios  {
     capability.setCapability("project", "GOIntegro");
     capability.setCapability("build", "1.0");
     capability.setCapability("debug", false);
-    capability.setCapability("name", "Crear Espacio como Admin");
+    capability.setCapability("name", "User Basic");
     driver = new RemoteWebDriver(
     		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
     	      capability);
@@ -67,7 +67,7 @@ public class CrearEspacioAdminEspacios  {
 		 //Login
 			
 			driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda+023@gointegro.com");
+	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda+022@gointegro.com");
 	 		driver.findElement(By.id("signInPassword")).clear();
 	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
 	 		 driver.findElement(By.cssSelector(".primary")).click();

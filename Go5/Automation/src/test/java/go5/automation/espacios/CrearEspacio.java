@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -105,21 +106,26 @@ public class CrearEspacio  {
 	           driver.findElement(By.cssSelector(".spaceformconfig label:nth-child(4) .igotrophy")).click();
 	          driver.findElement(By.cssSelector(".igoeye")).click();
 	          driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
-	  /*
+	  
 	          //Verificar ayuda del tipo de espacio
-	          
+	               
 	           Reporter.log("Verificando modal de ayuda en Tipo de Espacio");
 	           
-	           JavascriptExecutor js = (JavascriptExecutor) driver;
+	           JavascriptExecutor js = (JavascriptExecutor) driver;	           
 		        WebElement element = driver.findElement(By.linkText("Ayuda"));
-		        js.executeScript("arguments[0].setAttribute('style', 'display: block; text-indent: 0; position: relative;')",element);
+		        
+		        Actions action = new Actions(driver);
+		        action.moveToElement(element).click().perform();
+		        //js.executeScript("scroll(250, 0)");
+		        
+		        js.executeScript("scroll(250, 0)", "arguments[0].setAttribute('style', 'display: block; position: relative; height: 300px; width: 300px; opacity: 1; visiblity: visible')",element);
 	           
 	           
 		        driver.findElement(By.cssSelector("a[title='Muestra la ayuda']")).click();
 	           driver.findElement(By.cssSelector(".spaceformtype .help")).click();
 	           //Cerrar el popup
 	           driver.findElement(By.cssSelector(".active .minformation .primary")).click();
-	          */ 
+	           
 	           //Seleccionar el tipo de espacio
 	           
 	           //Espacio publico
