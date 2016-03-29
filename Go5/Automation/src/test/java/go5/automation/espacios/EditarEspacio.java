@@ -59,21 +59,19 @@ public class EditarEspacio  {
 	@Test
 	
 	public void crearEspacio() throws Exception { 
-	
-		
-		
-		
-		
+
 		 //Login
-			
-			driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda+023@gointegro.com");
-	 		driver.findElement(By.id("signInPassword")).clear();
-	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".primary")).click();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
+	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
+	 		 driver.findElement(By.cssSelector(".session .primary")).click();
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	        		
+		
+	
 	        
-		 Reporter.log(" Creando un espacio como user admin de espacios");
+		 Reporter.log(" Editando un espacio como user admin de espacios");
 		 
 		// Go to hamburguesita
 			driver.findElement(By.cssSelector(".menu")).click();

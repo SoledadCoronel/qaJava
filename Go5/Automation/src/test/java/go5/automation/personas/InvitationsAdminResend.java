@@ -69,13 +69,12 @@ public class InvitationsAdminResend {
 		 Random numero= new Random();
 		 Logger log = Logger.getLogger("automation");
 	 	
-		//Login
-			
-			driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.id("signInPassword")).clear();
-	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".primary")).click();
+		 //Login
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
+	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
+	 		 driver.findElement(By.cssSelector(".session .primary")).click();
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	
 		

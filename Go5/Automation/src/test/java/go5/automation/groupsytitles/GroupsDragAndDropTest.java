@@ -52,7 +52,7 @@ public class GroupsDragAndDropTest {
 	    
 	    driver.get(url);
 		 driver.manage().window().maximize();
-		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
+		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
 	  }  
 	
 	 @AfterClass // call function to close browser 
@@ -69,14 +69,13 @@ public class GroupsDragAndDropTest {
 	@Test
 	 public void dragAndDrop() throws InterruptedException, FileNotFoundException{
 			 	
-		//Login
-			
-			driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.id("signInPassword")).clear();
-	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		 //Login
+		driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
+		driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
+ 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
+		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
+ 		 driver.findElement(By.cssSelector(".session .primary")).click();
+         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	        
 				     		
 	   		  // Go to the configuration

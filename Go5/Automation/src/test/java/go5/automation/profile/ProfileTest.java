@@ -44,7 +44,7 @@ public class ProfileTest  {
     	      capability);
     driver.get(url);
 	 driver.manage().window().maximize();
-	 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
+	 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
   }  
 
  @AfterClass // call function to close browser 
@@ -63,12 +63,11 @@ public class ProfileTest  {
 		 
 		
 		 //Login
-			
-			driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.id("signInPassword")).clear();
-	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".primary")).click();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
+	 					driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
+	 		 driver.findElement(By.cssSelector(".session .primary")).click();
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	        
 		 
@@ -136,16 +135,16 @@ public class ProfileTest  {
 	            //Redes Sociales
 	            Reporter.log("Editando redes  sociables");
 	            driver.findElement(By.cssSelector(".socialdata label:nth-child(2) input")).clear();
-	            driver.findElement(By.cssSelector(".socialdata label:nth-child(2) input")).sendKeys("invaild data");
-	            Assert.assertEquals("El campo debe tener un formato de url valido", driver.findElement(By.cssSelector(".socialdata label:nth-child(2) span")).getText(), "Validacion del campo linkedin");
-	            driver.findElement(By.cssSelector(".socialdata label:nth-child(2) input")).clear();
+	          //  driver.findElement(By.cssSelector(".socialdata label:nth-child(2) input")).sendKeys("invaild data");
+	           // Assert.assertEquals("El campo debe tener un formato de url valido", driver.findElement(By.cssSelector(".socialdata label:nth-child(2) span")).getText(), "Validacion del campo linkedin");
+	         //   driver.findElement(By.cssSelector(".socialdata label:nth-child(2) input")).clear();
 	            
 	            driver.findElement(By.cssSelector(".socialdata label:nth-child(2) input")).sendKeys("http://linkedin.com/in/username");
 	           
 	            driver.findElement(By.cssSelector(".socialdata label:nth-child(3) input")).clear();
-	            driver.findElement(By.cssSelector(".socialdata label:nth-child(3) input")).sendKeys("invaild data");
-	            Assert.assertEquals("El campo debe tener un formato de url valido", driver.findElement(By.cssSelector(".socialdata label:nth-child(3) span")).getText(), "Validacion del campo twitter");
-	            driver.findElement(By.cssSelector(".socialdata label:nth-child(3) input")).clear();
+	          //  driver.findElement(By.cssSelector(".socialdata label:nth-child(3) input")).sendKeys("invaild data");
+	           // Assert.assertEquals("El campo debe tener un formato de url valido", driver.findElement(By.cssSelector(".socialdata label:nth-child(3) span")).getText(), "Validacion del campo twitter");
+	           // driver.findElement(By.cssSelector(".socialdata label:nth-child(3) input")).clear();
 	            driver.findElement(By.cssSelector(".socialdata label:nth-child(3) input")).sendKeys("http://twitter.com/username");
 	          //  driver.findElement(By.cssSelector(".socialdata label:nth-child(4) input")).clear();
 	         //   driver.findElement(By.cssSelector(".socialdata label:nth-child(4) input")).sendKeys("http://facebook.com/username"); 
@@ -160,6 +159,7 @@ public class ProfileTest  {
 	         //Logout
 	        driver.findElement(By.cssSelector(".applications .users .user")).click();
 	     	driver.findElement(By.cssSelector("a[title='Cierra la sesión']")).click();
+	     	Reporter.log("Se cerro la sesion");
 	   	  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	
 	

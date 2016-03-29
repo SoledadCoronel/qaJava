@@ -42,7 +42,7 @@ public class DatosGenerales {
 	    	      capability);
 	    driver.get(url);
 		 driver.manage().window().maximize();
-		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
+		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
 	  }  
 	
 	 @AfterClass // call function to close browser 
@@ -56,26 +56,27 @@ public class DatosGenerales {
 	
 	public void companyDataPage() throws Exception { 
 	
+	
+		 //Login
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
+	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
+	 		 driver.findElement(By.cssSelector(".session .primary")).click();
+	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	        		
 		
-	//Login
-		
-		driver.findElement(By.id("signInIdentification")).clear();
- 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
- 		driver.findElement(By.id("signInPassword")).clear();
- 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
- 		 driver.findElement(By.cssSelector(".primary")).click();
-         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          // Go to the configuration
  		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
 
  		// Go to Company Data
  		
- 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).click();
- 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
+ 		driver.findElement(By.cssSelector(".generaldata fieldset label:nth-child(1) input")).click();
+ 		driver.findElement(By.cssSelector(".generaldata fieldset label:nth-child(1) input")).clear();
 
  //Verify that company name can not be blank
  		Reporter.log("Verificar que el nombre de la compañia no pueda ser blanco");
- 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
+ 		driver.findElement(By.cssSelector("..generaldata fieldset label:nth-child(1) input")).sendKeys("    ");
  		String companyMessage = new String(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) span")).getText());
  		Reporter.log(companyMessage);
  		Assert.assertEquals(companyMessage, "El campo es requerido");
@@ -84,12 +85,12 @@ public class DatosGenerales {
  
 //Insert some value at company name	
  		
- 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
- 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("TestingCompanyForm");		
+ 		driver.findElement(By.cssSelector(".generaldata fieldset label:nth-child(1) input")).sendKeys("    ");
+ 		driver.findElement(By.cssSelector(".generaldata fieldset label:nth-child(1) input")).sendKeys("TestingCompanyForm");		
  		
  // Select all values the drop-down for Language
  		Reporter.log(" Verificar el drop-down de lenguajes");
- 		Select selectLanguage = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(3) select"))); 
+ 		Select selectLanguage = new Select(driver.findElement(By.cssSelector(".generaldata fieldset label:nth-child(3) select"))); 
  		
  		selectLanguage.selectByValue("pt");
  		selectLanguage.selectByValue("en");	
@@ -97,7 +98,7 @@ public class DatosGenerales {
  		
  //Select a value from drop-down Timezone
  		Reporter.log(" Verificar el drop-down de timezone ");
- 		Select selectTimeZone = new Select(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(4) select")));
+ 		Select selectTimeZone = new Select(driver.findElement(By.cssSelector(".generaldata fieldset label:nth-child(4) select")));
 		
 		   for(int i=1; i<5; i++){
 	           selectTimeZone.selectByIndex(i);  
@@ -108,9 +109,9 @@ public class DatosGenerales {
  		 		
  		Reporter.log(" Se setea el lenguaje en español y se le deja el nombre Automation1 a company name");
  		//Save changes to come back original values when the test has finished
- 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).clear();
+ 		driver.findElement(By.cssSelector("..generaldata fieldset label:nth-child(1) input")).clear();
  		//driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("    ");
- 		driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) input")).sendKeys("Automation1");
+ 		driver.findElement(By.cssSelector(".generaldata fieldset label:nth-child(1) input")).sendKeys("Automation1");
  		selectLanguage.selectByValue("es");
  		selectTimeZone.selectByValue("America/Argentina/Buenos_Aires");
  		driver.findElement(By.cssSelector(".primary")).click();

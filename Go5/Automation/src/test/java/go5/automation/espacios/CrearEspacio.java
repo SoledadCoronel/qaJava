@@ -45,7 +45,7 @@ public class CrearEspacio  {
     
     driver.get(url);
 	 driver.manage().window().maximize();
-	 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
+	 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
   }  
 
  @AfterClass // call function to close browser 
@@ -58,18 +58,15 @@ public class CrearEspacio  {
 	
 	public void crearEspacio() throws Exception { 
 	
-		
-		
-		
-		
+
 		 //Login
-			
-			driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.id("signInPassword")).clear();
-	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".primary")).click();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
+	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
+	 		 driver.findElement(By.cssSelector(".session .primary")).click();
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	        		
 	        
 		 Reporter.log(" Creando un espacio como user admin");
 		 
@@ -107,25 +104,26 @@ public class CrearEspacio  {
 	          driver.findElement(By.cssSelector(".igoeye")).click();
 	          driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
 	  
-	          //Verificar ayuda del tipo de espacio
+	       /*   //Verificar ayuda del tipo de espacio
 	               
 	           Reporter.log("Verificando modal de ayuda en Tipo de Espacio");
 	           
-	           JavascriptExecutor js = (JavascriptExecutor) driver;	           
+	           JavascriptExecutor js = (JavascriptExecutor) driver;         
 		        WebElement element = driver.findElement(By.linkText("Ayuda"));
+		       Thread.sleep(1000);
+		        js.executeScript("scroll(250, 0)");
 		        
-		        Actions action = new Actions(driver);
-		        action.moveToElement(element).click().perform();
-		        //js.executeScript("scroll(250, 0)");
-		        
-		        js.executeScript("scroll(250, 0)", "arguments[0].setAttribute('style', 'display: block; position: relative; height: 300px; width: 300px; opacity: 1; visiblity: visible')",element);
+		        //js.executeScript("arguments[0].setAttribute('style', 'display: block; position: relative; height: 300px; width: 300px; opacity: 1; visiblity: visible')",element);
 	           
 	           
 		        driver.findElement(By.cssSelector("a[title='Muestra la ayuda']")).click();
 	           driver.findElement(By.cssSelector(".spaceformtype .help")).click();
+	           
+	           
 	           //Cerrar el popup
 	           driver.findElement(By.cssSelector(".active .minformation .primary")).click();
 	           
+	        */   
 	           //Seleccionar el tipo de espacio
 	           
 	           //Espacio publico
