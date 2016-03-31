@@ -42,10 +42,12 @@ public class CrearEspacio extends CommonFunctions {
 		// Go to hamburguesita
 		 
 		 this.click(irAMenu);
+		 Thread.sleep(1000);
 		 
 			
 		 //Ir a espacios
 		 this.click(irASpaces);
+		 Thread.sleep(1000);
 			
 			
 		    // Ir a Crear Espacio 
