@@ -2,25 +2,13 @@ package go5.automation.directorio;
 
 import go5.automation.CommonFunctions;
 
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
+
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
+
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+
 import org.testng.annotations.Test;
 
 
@@ -33,8 +21,8 @@ public class ListadoDirectorio extends CommonFunctions{
 	 public void setup () throws Exception{
 		this.driver = new FirefoxDriver();
 		openSiteLogin();
-	   login("marina.touceda@gointegro.com","Auto1234");
-	   
+		this.login(strUsername, strPassword);
+	   	   
 	 }
 	
 	 @AfterTest // call function to close browser 
@@ -42,11 +30,7 @@ public class ListadoDirectorio extends CommonFunctions{
 		public void teardown(){
 			closeBrowser();
 		}
-	 
-		String irAPagina= new String("a[title='Ir a la página 4']");
-		String searchButton = new String(".actions .search .btnsearch");
-		String inputSearch = new String(".actions .search input");
-		String orden =new String (".tables thead tr th:nth-child(2) a");
+	 			
 		 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
 		 String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
 			

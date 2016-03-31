@@ -2,24 +2,11 @@ package go5.automation.directorio;
 
 import go5.automation.CommonFunctions;
 
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import java.util.concurrent.TimeUnit;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -27,33 +14,14 @@ import org.testng.annotations.Test;
 
 
 public class ListadoDirectorioBS extends CommonFunctions{
-	/*
-		
-	 @BeforeTest // call function to open the browser and login 
-	 public void setup () throws Exception{
-	   openSiteLogin();
-	   login("marina.touceda@gointegro.com","Auto1234");
-	   
-	 }
 	
-	 @AfterTest // call function to close browser 
-		
-		public void teardown(){
-			closeBrowser();
-		}
-	 */
-		String irAPagina= new String("a[title='Ir a la página 4']");
-		String searchButton = new String(".actions .search .btnsearch");
-		String inputSearch = new String(".actions .search input");
-		String orden =new String (".tables thead tr th:nth-child(2) a");
-		 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
-		 String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
 			
-	
 		 @BeforeClass
-		  @Parameters(value={"browser","version","platform","url"})
-		  public void setUp(String browser, String version, String platform,String url) throws Exception {
-			this.setUpBrowserStack(browser, version, platform, url);
+		  @Parameters(value={"browser","version","platform","url","build"})
+		  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+			this.setUpBrowserStack(browser, version, platform, url,build);
+			
+			
 		 }
 		   
 
@@ -71,21 +39,11 @@ public class ListadoDirectorioBS extends CommonFunctions{
 	
 	public void listadoDirectorio() throws Exception { 
 	
-		//Declaracion de selectors
-		
-	String irAPagina= new String("a[title='Ir a la página 4']");
-	String searchButton = new String(".actions .search .btnsearch");
-	String inputSearch = new String(".actions .search input");
-	String orden =new String (".tables thead tr th:nth-child(2) a");
-	 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
-	 String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
-		
-		
+			
 		// Go to the menu (hamburguesita)
-        
- 		this.click(".menu");
-      
- 	
+         this.click(irAMenu);
+ 		
+       	
  	// Go to  Directorio de personas
 	
          Reporter.log("Abriendo directorio de  personas" );  
@@ -132,6 +90,7 @@ public class ListadoDirectorioBS extends CommonFunctions{
      //Verificar Paginado
        Reporter.log("Seleccionar otra pagina del listado");
       this.click(irAPagina);
+      driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
       
        //Volver a ordenar, en forma descendente
        Reporter.log("Probando ordenamiento en otra pagina del listado");
@@ -153,7 +112,7 @@ public class ListadoDirectorioBS extends CommonFunctions{
          
     //Hacer una busqueda
      
-            	                 	 
+      			driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);                	 
                 Reporter.log(" Hacer una busqueda de un usuario por Nombre");
                 this.click(searchButton);
                 this.sendValue(inputSearch, secondname3);

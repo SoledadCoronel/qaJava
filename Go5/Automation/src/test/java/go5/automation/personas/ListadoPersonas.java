@@ -1,17 +1,10 @@
 package go5.automation.personas;
 
-import java.net.URL;
+import go5.automation.CommonFunctions;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -21,31 +14,15 @@ import org.testng.annotations.Test;
 
 
 
-public class ListadoPersonas {
-	
-	 private WebDriver driver;
-
-	
+public class ListadoPersonas extends CommonFunctions {
+			 	 
 	 @BeforeClass
-	  @Parameters(value={"browser","version","platform","url"})
-	  public void setUp(String browser, String version, String platform,String url) throws Exception {
-	    DesiredCapabilities capability = new DesiredCapabilities();
-	    capability.setCapability("platform",platform);
-	    capability.setCapability("browserName", browser);
-	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "GOIntegro");
-	    capability.setCapability("build", "1.0");
-	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Listado de Personas");
-	    driver = new RemoteWebDriver(
-	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-	    	      capability);
-	    driver.get(url);
-		 driver.manage().window().maximize();
-		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
-		 
-		 
+	  @Parameters(value={"browser","version","platform","url","build"})
+	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+		this.setUpBrowserStack(browser, version, platform, url,build);
 	 }
+	   
+
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
@@ -56,23 +33,17 @@ public class ListadoPersonas {
 	@Test
 	
 	public void listadoPersonas() throws Exception { 
-	
-		 //Login
-		driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
-		driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
- 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
-		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
- 		 driver.findElement(By.cssSelector(".session .primary")).click();
-         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-       
+			
+		       
          // Go to the configuration
          
- 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-        driver.findElement(By.cssSelector(".menu")).click();
+		this.click(strCssConfiguration);
+		this.click(irAMenu);
+        
  	
  	// Go to  Users Menu
          Reporter.log("Abriendo administar personas" );  
-         //driver.findElement(By.cssSelector(".usermenu")).click();
+      
          driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
         
          driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();

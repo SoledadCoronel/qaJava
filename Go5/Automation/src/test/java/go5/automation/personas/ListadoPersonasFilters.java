@@ -1,5 +1,7 @@
 package go5.automation.personas;
 
+import go5.automation.CommonFunctions;
+
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -21,49 +23,34 @@ import org.testng.annotations.Test;
 
 
 
-public class ListadoPersonasFilters {
+public class ListadoPersonasFilters extends CommonFunctions {
 	
-	 private WebDriver driver;
+	String irAPagina= new String("a[title='Ir a la página 4']");
+	String searchButton = new String(".actions .search .btnsearch");
+	String inputSearch = new String(".actions .search input");
+	String orden =new String (".tables thead tr th:nth-child(2) a");
+	 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
+	 String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
+		
 
-	
 	 @BeforeClass
 	  @Parameters(value={"browser","version","platform","url"})
-	  public void setUp(String browser, String version, String platform,String url) throws Exception {
-	    DesiredCapabilities capability = new DesiredCapabilities();
-	    capability.setCapability("platform",platform);
-	    capability.setCapability("browserName", browser);
-	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "GOIntegro");
-	    capability.setCapability("build", "1.0");
-	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Filtros en el listado de Personas");
-	    driver = new RemoteWebDriver(
-	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-	    	      capability);
-	    driver.get(url);
-		 driver.manage().window().maximize();
-		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
-		
-		 
+	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+		this.setUpBrowserStack(browser, version, platform, url,build);
 	 }
+	   
+
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
 			driver.quit();
 		}
-		
 	
 	@Test
 	
 	public void listadoPersonasFilters() throws Exception { 
 	
-		 //Login
-		driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
-		driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
- 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
-		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
- 		 driver.findElement(By.cssSelector(".session .primary")).click();
-         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	
        
          // Go to the configuration
          

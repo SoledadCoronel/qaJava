@@ -9,13 +9,10 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Parameters;
+
+
 
 
 
@@ -25,28 +22,45 @@ public class CommonFunctions {
 		 
 	protected WebDriver driver;
 	protected Logger log = Logger.getLogger("automation");
-		
-	 
 	
-	  public void setUpBrowserStack(String browser, String version, String platform,String url) throws Exception {
+	
+	//Declaracion de variables	
+	
+	protected String strUsername= new String("marina.touceda@gointegro.com");
+	protected String strPassword= new String("Auto1234");
+	
+	
+	//Declaracion de cssSelectors
+	
+	protected String strCssConfiguration= new String(".applications .users .configuration");
+	protected String irAMenu =new String (".menu");
+	protected String irAPagina= new String("a[title='Ir a la página 4']");
+	protected String irASpaces = new String ("a[title='Ir a listar espacios']");
+	protected String searchButton = new String(".actions .search .btnsearch");
+	protected String inputSearch = new String(".actions .search input");
+	protected String orden =new String (".tables thead tr th:nth-child(2) a");
+	protected String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
+	protected String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
+	
+	
+	
+	  public void setUpBrowserStack(String browser, String version, String platform,String url,String build) throws Exception {
 		    DesiredCapabilities capability = new DesiredCapabilities();
 		    capability.setCapability("platform",platform);
 		    capability.setCapability("browserName", browser);
 		    capability.setCapability("browserVersion", version);
 		    capability.setCapability("project", "GOIntegro");
-		    capability.setCapability("build", "1.0");
+		    capability.setCapability("build", build);
 		    capability.setCapability("debug", false);
-		    capability.setCapability("name", "Listado de Directorio");
-		    this.driver = new RemoteWebDriver(
+		     this.driver = new RemoteWebDriver(
 		    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 		    	      capability);
-
-		    
+    
 		    driver.get(url);
 			 driver.manage().window().maximize();
 			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 			 openSiteLogin();
-			   login("marina.touceda@gointegro.com","Auto1234");
+			   login(strUsername,strPassword);
 		  }  
 	
 	
