@@ -116,8 +116,8 @@ public class ListadoPersonas {
             	 
                 	 
                 Reporter.log(" Hacer una busqueda de un usuario por Nombre");
-                driver.findElement(By.cssSelector(".peoplemanage .search .btnsearch")).click();
-                driver.findElement(By.cssSelector(".peoplemanage .search input")).sendKeys("AutomationFirstName");
+                driver.findElement(By.cssSelector(".actions .search .btnsearch")).click();
+                driver.findElement(By.cssSelector(".actions .search input")).sendKeys("AutomationFirstName");
                 
                 //Chequear q se mueste en la tabla users
                 Reporter.log("El nombre del user buscado es AutomationFirstName");
@@ -128,9 +128,9 @@ public class ListadoPersonas {
                Reporter.log(" Hacer una busqueda de un usuario por Apellido");
               
               
-               driver.findElement(By.cssSelector(".peoplemanage .search .btnsearch")).click();
-               driver.findElement(By.cssSelector(".peoplemanage .search input")).clear();
-               driver.findElement(By.cssSelector(".peoplemanage .search input")).sendKeys("AutomationLastName");
+               driver.findElement(By.cssSelector(".actions .search .btnsearch")).click();
+               driver.findElement(By.cssSelector(".actions .search input")).clear();
+               driver.findElement(By.cssSelector(".actions .search input")).sendKeys("AutomationLastName");
                
                //Chequear q se mueste en la tabla users
                Reporter.log("El nombre del user buscado es AutomationLastName");

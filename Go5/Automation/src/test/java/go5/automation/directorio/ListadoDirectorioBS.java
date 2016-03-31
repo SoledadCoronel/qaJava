@@ -25,8 +25,8 @@ import org.testng.annotations.Test;
 
 
 
-public class ListadoDirectorio extends CommonFunctions{
-	
+public class ListadoDirectorioBS extends CommonFunctions{
+	/*
 		
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
@@ -40,7 +40,7 @@ public class ListadoDirectorio extends CommonFunctions{
 		public void teardown(){
 			closeBrowser();
 		}
-	 
+	 */
 		String irAPagina= new String("a[title='Ir a la página 4']");
 		String searchButton = new String(".actions .search .btnsearch");
 		String inputSearch = new String(".actions .search input");
@@ -48,7 +48,35 @@ public class ListadoDirectorio extends CommonFunctions{
 		 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
 		 String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
 			
-	 
+	
+		 @BeforeClass
+		  @Parameters(value={"browser","version","platform","url"})
+		  public void setUp(String browser, String version, String platform,String url) throws Exception {
+		    DesiredCapabilities capability = new DesiredCapabilities();
+		    capability.setCapability("platform",platform);
+		    capability.setCapability("browserName", browser);
+		    capability.setCapability("browserVersion", version);
+		    capability.setCapability("project", "GOIntegro");
+		    capability.setCapability("build", "1.0");
+		    capability.setCapability("debug", false);
+		    capability.setCapability("name", "Listado de Directorio");
+		    driver = new RemoteWebDriver(
+		    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
+		    	      capability);
+
+		    
+		    driver.get(url);
+			 driver.manage().window().maximize();
+			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			 openSiteLogin();
+			   login("marina.touceda@gointegro.com","Auto1234");
+		  }  
+
+		 @AfterClass // call function to close browser 
+			
+			public void teardown(){
+				driver.quit();
+			}
 	 
 	 public void ordenar() throws Exception{
 		 this.click(orden);

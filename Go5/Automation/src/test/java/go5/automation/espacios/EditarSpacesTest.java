@@ -1,6 +1,8 @@
 package go5.automation.espacios;
 
 
+import go5.automation.CommonFunctions;
+
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -15,67 +17,51 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
 
-public class CrearEspacio  {
-	
- private WebDriver driver;
-
+public class EditarSpacesTest extends CommonFunctions {
 	
 
- @BeforeClass
-  @Parameters(value={"browser","version","platform","url"})
-  public void setUp(String browser, String version, String platform,String url) throws Exception {
-    DesiredCapabilities capability = new DesiredCapabilities();
-    capability.setCapability("platform",platform);
-    capability.setCapability("browserName", browser);
-    capability.setCapability("browserVersion", version);
-    capability.setCapability("project", "GOIntegro");
-    capability.setCapability("build", "1.0");
-    capability.setCapability("debug", false);
-    capability.setCapability("name", "Crear Espacio como Admin");
-    driver = new RemoteWebDriver(
-    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-    	      capability);
 
-    
-    driver.get(url);
-	 driver.manage().window().maximize();
-	 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-  }  
+	
 
- @AfterClass // call function to close browser 
+
+ @BeforeTest // call function to open the browser and login 
+ public void setup () throws Exception{
+   openSiteLogin();
+   login("marina.touceda@gointegro.com","Auto1234");
+   
+ }
+
+ @AfterTest // call function to close browser 
 	
 	public void teardown(){
-		driver.quit();
+		closeBrowser();
 	}
-		
+
+
 	@Test
 	
 	public void crearEspacio() throws Exception { 
 	
-
-		 //Login
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".session .primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	        		
+       		
 	        
 		 Reporter.log(" Creando un espacio como user admin");
 		 
 		// Go to hamburguesita
 			driver.findElement(By.cssSelector(".menu")).click();
 	
+			driver.findElement(By.cssSelector(".igouser")).click();
 			
 			//Ir a espacios
 			driver.findElement(By.cssSelector("a[title='Ir a listar espacios']")).click();
+			Thread.sleep(1000);
 			Reporter.log("Abriendo espacios");
 				
 			
@@ -103,8 +89,8 @@ public class CrearEspacio  {
 	           driver.findElement(By.cssSelector(".spaceformconfig label:nth-child(4) .igotrophy")).click();
 	          driver.findElement(By.cssSelector(".igoeye")).click();
 	          driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
-	  
-	       /*   //Verificar ayuda del tipo de espacio
+	  /*
+	        //Verificar ayuda del tipo de espacio
 	               
 	           Reporter.log("Verificando modal de ayuda en Tipo de Espacio");
 	           
@@ -123,7 +109,7 @@ public class CrearEspacio  {
 	           //Cerrar el popup
 	           driver.findElement(By.cssSelector(".active .minformation .primary")).click();
 	           
-	        */   
+	          */
 	           //Seleccionar el tipo de espacio
 	           
 	           //Espacio publico
@@ -131,10 +117,7 @@ public class CrearEspacio  {
 	           driver.findElement(By.cssSelector(".spaceformtype .igounlock")).click();
 	           
 	           //Grabar el espacio nuevo
-	           driver.findElement(By.cssSelector(".spacecreate .primary")).click();
-	           
-	           Thread.sleep(1000);
-	           
+	           driver.findElement(By.cssSelector(".spacecreate .primary")).click();	           
 	
 	}	
 	

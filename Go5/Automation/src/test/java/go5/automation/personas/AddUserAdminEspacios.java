@@ -45,7 +45,7 @@ public class AddUserAdminEspacios {
 	    	      capability);
 	    driver.get(url);
 		 driver.manage().window().maximize();
-		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
+		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
 	  }  
 	
 	 @AfterClass // call function to close browser 

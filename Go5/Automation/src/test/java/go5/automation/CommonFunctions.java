@@ -9,9 +9,12 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 
@@ -19,7 +22,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class CommonFunctions {
 		 
-	protected final WebDriver driver= new FirefoxDriver();
+	protected WebDriver driver= new FirefoxDriver();
 	protected Logger log = Logger.getLogger("automation");
 		
 	 
@@ -64,12 +67,12 @@ public void openSiteMobile(){
 	  
 	  public void login(String sUsername,String sPassword) throws Exception { 
 		 	
-	 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-	 		driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys(sUsername);
-	 		driver.findElement(By.id("signInPassword")).clear();
-	 		driver.findElement(By.id("signInPassword")).sendKeys(sPassword);
-	 		 driver.findElement(By.cssSelector(".primary")).click();
+		 // WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
+		  driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
+	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
+	 		 driver.findElement(By.cssSelector(".session .primary")).click();
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	  	}
 	  
@@ -111,9 +114,29 @@ public void openSiteMobile(){
 		 		driver.findElement(By.cssSelector(".signup fieldset label:nth-child(3)")).sendKeys(Password);
 		 		 driver.findElement(By.cssSelector(".primary")).click();
 		         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-			}
+		 }
+			
+		         public void sendValue(String sSelector,String sValue) throws Exception{
+		           driver.findElement(By.cssSelector(sSelector)).sendKeys(sValue);
+		         }
+		           
+		           public void click(String sSelector) throws Exception{
+			           driver.findElement(By.cssSelector(sSelector)).click();
+		           }
+		           
+			           public void clear(String sSelector) throws Exception{
+				           driver.findElement(By.cssSelector(sSelector)).clear();
+				               
+		           }
+			           public String getText(String sSelector) throws Exception{
+				           return (driver.findElement(By.cssSelector(sSelector)).getText());
+				           
+				               
+		           }
 
 }
+
+
 
 
 

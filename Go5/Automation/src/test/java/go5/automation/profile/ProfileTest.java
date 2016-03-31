@@ -156,12 +156,12 @@ public class ProfileTest  {
 	         driver.findElement(By.cssSelector(".primary")).click();    
 	         Reporter.log("Edicion de profile fue exitoso");
 	         
-	         //Logout
+	      /*   //Logout
 	        driver.findElement(By.cssSelector(".applications .users .user")).click();
 	     	driver.findElement(By.cssSelector("a[title='Cierra la sesión']")).click();
 	     	Reporter.log("Se cerro la sesion");
 	   	  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	
+	*/
 	
 	}	
 	
