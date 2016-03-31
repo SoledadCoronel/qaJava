@@ -15,6 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Parameters;
 
 
 
@@ -22,11 +23,34 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CommonFunctions {
 		 
-	protected WebDriver driver= new FirefoxDriver();
+	protected WebDriver driver;
 	protected Logger log = Logger.getLogger("automation");
 		
 	 
-	 public void openSiteSignUp(){
+	
+	  public void setUpBrowserStack(String browser, String version, String platform,String url) throws Exception {
+		    DesiredCapabilities capability = new DesiredCapabilities();
+		    capability.setCapability("platform",platform);
+		    capability.setCapability("browserName", browser);
+		    capability.setCapability("browserVersion", version);
+		    capability.setCapability("project", "GOIntegro");
+		    capability.setCapability("build", "1.0");
+		    capability.setCapability("debug", false);
+		    capability.setCapability("name", "Listado de Directorio");
+		    this.driver = new RemoteWebDriver(
+		    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
+		    	      capability);
+
+		    
+		    driver.get(url);
+			 driver.manage().window().maximize();
+			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			 openSiteLogin();
+			   login("marina.touceda@gointegro.com","Auto1234");
+		  }  
+	
+	
+	public void openSiteSignUp(){
 		 
 		 driver.get("http://signup.qa.go5.gointegro.net/landing");
 		 driver.manage().window().maximize();

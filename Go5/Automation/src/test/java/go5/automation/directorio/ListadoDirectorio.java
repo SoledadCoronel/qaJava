@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,7 +31,8 @@ public class ListadoDirectorio extends CommonFunctions{
 		
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
-	   openSiteLogin();
+		this.driver = new FirefoxDriver();
+		openSiteLogin();
 	   login("marina.touceda@gointegro.com","Auto1234");
 	   
 	 }

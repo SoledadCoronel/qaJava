@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -52,25 +53,9 @@ public class ListadoDirectorioBS extends CommonFunctions{
 		 @BeforeClass
 		  @Parameters(value={"browser","version","platform","url"})
 		  public void setUp(String browser, String version, String platform,String url) throws Exception {
-		    DesiredCapabilities capability = new DesiredCapabilities();
-		    capability.setCapability("platform",platform);
-		    capability.setCapability("browserName", browser);
-		    capability.setCapability("browserVersion", version);
-		    capability.setCapability("project", "GOIntegro");
-		    capability.setCapability("build", "1.0");
-		    capability.setCapability("debug", false);
-		    capability.setCapability("name", "Listado de Directorio");
-		    driver = new RemoteWebDriver(
-		    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-		    	      capability);
-
-		    
-		    driver.get(url);
-			 driver.manage().window().maximize();
-			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-			 openSiteLogin();
-			   login("marina.touceda@gointegro.com","Auto1234");
-		  }  
+			this.setUpBrowserStack(browser, version, platform, url);
+		 }
+		   
 
 		 @AfterClass // call function to close browser 
 			
