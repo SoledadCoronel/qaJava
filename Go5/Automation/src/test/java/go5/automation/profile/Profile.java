@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ProfileTest  {
+public class Profile  {
 	
  private WebDriver driver;
 
@@ -38,7 +38,7 @@ public class ProfileTest  {
     capability.setCapability("project", "GOIntegro");
     capability.setCapability("build", "1.0");
     capability.setCapability("debug", false);
-    capability.setCapability("name", "ProfileTest");
+    capability.setCapability("name", "Profile");
     driver = new RemoteWebDriver(
     		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
     	      capability);

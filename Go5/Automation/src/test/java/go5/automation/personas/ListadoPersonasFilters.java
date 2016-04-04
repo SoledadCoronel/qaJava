@@ -1,6 +1,6 @@
 package go5.automation.personas;
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ListadoPersonasFilters extends CommonFunctions {
+public class ListadoPersonasFilters extends TestSuite {
 	
 	String irAPagina= new String("a[title='Ir a la página 4']");
 	String searchButton = new String(".actions .search .btnsearch");

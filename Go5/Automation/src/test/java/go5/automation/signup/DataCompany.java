@@ -1,7 +1,7 @@
 package go5.automation.signup;
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,14 +11,14 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class DataCompanyTest extends CommonFunctions{
+public class DataCompany extends TestSuite{
 
 
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
-	   openSiteLogin();
-	   login("marina.touceda@gointegro.com","Auto1234");
-	   
+	  this.openSite(urlSiteAutomation2);
+	  this.login();
+	  
 	 }
 	
 	 @AfterTest // call function to close browser 
@@ -39,7 +39,7 @@ public class DataCompanyTest extends CommonFunctions{
 	}
 		
 	
-	@Test(priority=1)
+	@Test(priority=2)
 	public void verifySubdomainCanNotBeChanged(){
 		
 		driver.findElement(By.cssSelector(".applications .users .configuration")).click();

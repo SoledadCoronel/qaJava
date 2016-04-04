@@ -1,6 +1,8 @@
 package go5.automation.profile;
 
 
+import go5.automation.TestSuite;
+
 import java.io.File;
 import java.net.URL;
 import java.util.Random;
@@ -25,57 +27,41 @@ import org.testng.annotations.Test;
 
 
 
-public class CargarFotoProfile  {
+public class CargarFotoProfile extends TestSuite {
 	
- private WebDriver driver;
-
+ 
 	
-
  @BeforeClass
-  @Parameters(value={"browser","version","platform","url"})
-  public void setUp(String browser, String version, String platform,String url) throws Exception {
-    DesiredCapabilities capability = new DesiredCapabilities();
-    capability.setCapability("platform",platform);
-    capability.setCapability("browserName", browser);
-    capability.setCapability("browserVersion", version);
-    capability.setCapability("project", "GOIntegro");
-    capability.setCapability("build", "1.0");
-    capability.setCapability("debug", false);
-    capability.setCapability("name", "CargarFotoProfile");
-    driver = new RemoteWebDriver(
-    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-    	      capability);
-    ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
-    
-    driver.get(url);
-	 driver.manage().window().maximize();
-	 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("signInIdentification")));
-  }  
+  @Parameters(value={"browser","version","platform","url","build"})
+  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+	this.setUpBrowserStack(browser, version, platform, url,build);
+	
+	
+ }
+   
 
  @AfterClass // call function to close browser 
 	
 	public void teardown(){
-		driver.quit();
+	this.quitBrowser();
 	}
 		
 	@Test
 	
 	public void setUpPictureProfile() throws Exception { 
 	
-
-		 //Login
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".session .primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	        				
-	        
+		     
 		 
 		 
 		// Go to the user menu
-			driver.findElement(By.cssSelector(".applications .users .user")).click();
+		
+		
+		this.goToMenu();
+		
+		this.goToMenuUsuario();
+		
+				
+			driver.findElement(By.cssSelector(".applications .users a[title='Usuario']")).click();
 	
 			 Reporter.log(" Ir a perfil y cargar una foto en el profile");
 			//Ir a ver perfil

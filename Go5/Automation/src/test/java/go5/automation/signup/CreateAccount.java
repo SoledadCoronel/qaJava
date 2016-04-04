@@ -1,7 +1,7 @@
 package go5.automation.signup;
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 
 
-public class CreateAccountTest extends CommonFunctions{
+public class CreateAccount extends TestSuite{
 
 
 	 @BeforeClass // call function to open the browser and load url

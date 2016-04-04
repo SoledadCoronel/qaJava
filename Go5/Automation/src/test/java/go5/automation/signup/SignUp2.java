@@ -1,7 +1,7 @@
 package go5.automation.signup;
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class SignUpTest extends CommonFunctions{
+public class SignUp2 extends TestSuite{
 
 	// declare email as variable in order to be changed
 	

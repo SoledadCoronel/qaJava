@@ -2,7 +2,7 @@ package go5.automation.groupsytitles;
 
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.Keys;
 
 
-public class Groups extends CommonFunctions{
+public class Groups extends TestSuite{
 
 	//private WebDriver driver;
 
@@ -31,7 +31,7 @@ public class Groups extends CommonFunctions{
 		 @BeforeTest // call function to open the browser and login 
 		 public void setup () throws Exception{
 		   openSiteLogin();
-		   login("marina.touceda@gointegro.com","Auto1234");
+		   login();
 		   
 		 }
 		

@@ -1,6 +1,8 @@
 package go5.automation.profile;
 
 
+import go5.automation.TestSuite;
+
 import java.net.URL;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -22,35 +24,26 @@ import org.testng.annotations.Test;
 
 
 
-public class IrAPerfilSidebar  {
+public class IrAPerfilSidebar extends TestSuite {
 	
  private WebDriver driver;
 
 	
 
+	
  @BeforeClass
-  @Parameters(value={"browser","version","platform","url"})
-  public void setUp(String browser, String version, String platform,String url) throws Exception {
-    DesiredCapabilities capability = new DesiredCapabilities();
-    capability.setCapability("platform",platform);
-    capability.setCapability("browserName", browser);
-    capability.setCapability("browserVersion", version);
-    capability.setCapability("project", "GOIntegro");
-    capability.setCapability("build", "1.0");
-    capability.setCapability("debug", false);
-    capability.setCapability("name", "Editar Perfil desde el sidebar");
-    driver = new RemoteWebDriver(
-    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-    	      capability);
-    driver.get(url);
-	 driver.manage().window().maximize();
-	 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
-  }  
+  @Parameters(value={"browser","version","platform","url","build"})
+  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+	this.setUpBrowserStack(browser, version, platform, url,build);
+	
+	
+ }
+   
 
  @AfterClass // call function to close browser 
 	
 	public void teardown(){
-		driver.quit();
+		this.quitBrowser();
 	}
 		
 	@Test
@@ -61,14 +54,9 @@ public class IrAPerfilSidebar  {
 		 
 		 Random numero= new Random();
 		
-		 //Login
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".session .primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	        		
+		
+	        //Abrir el menu
+		 this.goToMenu();
 	        
 		 
 		 
@@ -154,11 +142,7 @@ public class IrAPerfilSidebar  {
 	         driver.findElement(By.cssSelector(".primary")).click();    
 	         Reporter.log("Edicion de profile fue exitoso");
 	         
-	         //Logout
-	         driver.findElement(By.cssSelector(".applications .users .user")).click();
-	         
-	     	driver.findElement(By.cssSelector("a[title='Cierra la sesión']")).click();
-	     	  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	        
 	
 	}	
 	

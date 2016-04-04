@@ -1,6 +1,6 @@
 package go5.automation.directorio;
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 
 import java.util.concurrent.TimeUnit;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ListadoDirectorioBS extends CommonFunctions{
+public class ListadoDirectorioBS extends TestSuite{
 	
 			
 		 @BeforeClass
@@ -28,7 +28,7 @@ public class ListadoDirectorioBS extends CommonFunctions{
 		 @AfterClass // call function to close browser 
 			
 			public void teardown(){
-				driver.quit();
+			this.quitBrowser();
 			}
 	 
 	 public void ordenar() throws Exception{

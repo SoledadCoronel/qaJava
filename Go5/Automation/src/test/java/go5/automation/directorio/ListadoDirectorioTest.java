@@ -1,28 +1,25 @@
 package go5.automation.directorio;
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Reporter;
-
 import org.testng.annotations.AfterTest;
-
 import org.testng.annotations.BeforeTest;
-
 import org.testng.annotations.Test;
 
 
 
 
-public class ListadoDirectorio extends CommonFunctions{
+public class ListadoDirectorioTest extends TestSuite{
 	
 		
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
-		this.driver = new FirefoxDriver();
-		openSiteLogin();
-		this.login(strUsername, strPassword);
-	   	   
+		
+		 this.openSite(urlSiteAutomation3);
+		 this.login();
 	 }
 	
 	 @AfterTest // call function to close browser 
@@ -36,9 +33,7 @@ public class ListadoDirectorio extends CommonFunctions{
 			
 	 
 	 
-	 public void ordenar() throws Exception{
-		 this.click(orden);
-	 }
+	 
 	
 	@Test (groups={"Listado"})
 	
@@ -55,8 +50,8 @@ public class ListadoDirectorio extends CommonFunctions{
 		
 		
 		// Go to the menu (hamburguesita)
-        
- 		this.click(".menu");
+        this.clickWhenReady(By.cssSelector(irAMenu), 10);
+ 		
       
  	
  	// Go to  Directorio de personas
@@ -154,6 +149,10 @@ public class ListadoDirectorio extends CommonFunctions{
               
                //Ir al profile del user buscado
                this.click(firstRow);
+               
+               // Verificar Paginado
+               
+             //  TO DO
               
              
               

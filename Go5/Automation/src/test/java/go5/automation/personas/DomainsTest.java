@@ -2,7 +2,7 @@ package go5.automation.personas;
 
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 import java.net.URL;
 import java.util.List;
@@ -27,7 +27,7 @@ import org.testng.annotations.Test;
 
 
 
-public class DomainsTest extends CommonFunctions{
+public class DomainsTest extends TestSuite{
 
 	//private WebDriver driver;
 
@@ -36,7 +36,7 @@ public class DomainsTest extends CommonFunctions{
 		 @BeforeTest // call function to open the browser and login 
 		 public void setup () throws Exception{
 		   openSiteLogin();
-		   login("marina.touceda@gointegro.com","Auto1234");
+		   login();
 		   
 		 }
 		

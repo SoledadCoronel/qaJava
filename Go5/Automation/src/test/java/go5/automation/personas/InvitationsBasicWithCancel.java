@@ -1,7 +1,7 @@
 package go5.automation.personas;
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 import java.util.List;
 import java.util.Random;
@@ -17,13 +17,13 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class InvitationsBasicWithCancel extends CommonFunctions{
+public class InvitationsBasicWithCancel extends TestSuite{
 
 
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
 	   openSiteLogin();
-	   login("marina.touceda@gointegro.com","Auto1234");
+	   login();
 	   
 	 }
 	

@@ -1,7 +1,7 @@
 package go5.automation.espacios;
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 
 import java.util.concurrent.TimeUnit;
@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 
 
-public class CrearEspacio extends CommonFunctions {
+public class CrearEspacio extends TestSuite {
 	
 	 @BeforeClass
 	  @Parameters(value={"browser","version","platform","url","build"})
@@ -28,7 +28,7 @@ public class CrearEspacio extends CommonFunctions {
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			driver.quit();
+			this.quitBrowser();
 		}
 		
 	@Test

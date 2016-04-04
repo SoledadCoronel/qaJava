@@ -14,32 +14,31 @@ import org.testng.annotations.Test;
 
 
 
-public class ListadoPersonas extends TestSuite {
+public class ListadoPersonasMaven extends TestSuite {
 			 	 
 	 @BeforeClass
-	 @Parameters(value={"browser","version","platform","url","build"})
-	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.setUpBrowserStack(browser, version, platform, url,build);
+	  	  
+	  public void setUp() throws Exception {
+		this.openSite(urlSiteAutomation1);
+		this.login();
 	 }
 	   
 
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			this.quitBrowser();
+			driver.quit();
 		}
 		
 	
 	@Test
 	
-
 	public void listadoPersonas() throws Exception { 
 			
 		       
          // Go to the configuration
          
 		 this.goToConfiguration();
-		 //Implement expected wait
 		 this.goToMenu();
 	
         
@@ -86,8 +85,7 @@ public class ListadoPersonas extends TestSuite {
          
     //Hacer una busqueda
      
-            	 
-                	 
+                            	 
                 Reporter.log(" Hacer una busqueda de un usuario por Nombre");
                  this.search(firstname2);
 	               
@@ -108,5 +106,7 @@ public class ListadoPersonas extends TestSuite {
                Reporter.log(secondname2);
                Reporter.log(" Imprimiendo el resultado del search");
                Reporter.log(secondname2);
+            
+	           
 	}
 }	

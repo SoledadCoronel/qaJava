@@ -2,7 +2,7 @@ package go5.automation.groupsytitles;
 
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 
 import java.io.FileNotFoundException;
@@ -29,7 +29,7 @@ import org.testng.annotations.Test;
 
 
 @Test
-public class GroupsDragAndDrop extends CommonFunctions{
+public class GroupsDragAndDrop extends TestSuite{
 
 	//private WebDriver driver;
 
@@ -37,7 +37,7 @@ public class GroupsDragAndDrop extends CommonFunctions{
 		 @BeforeTest // call function to open the browser and login 
 		 public void setup () throws Exception{
 		   openSiteLogin();
-		   login("marina.touceda@gointegro.com","Auto1234");
+		   login();
 		   
 		 }
 		

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
- <suite thread-count="3" name="Suite" parallel="tests">
-  <listeners>      
+<suite thread-count="3" name="Suite" parallel="tests">
+ <listeners>      
   <listener class-name="org.uncommons.reportng.HTMLReporter"/>
        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
 </listeners>
@@ -12,6 +12,7 @@
   <parameter name="url" value="http://automation4.pla.qa.go5.gointegro.net/authentication/login"/>
   <parameter name="build" value="0.6"/>
     <classes>
-       </classes>
+   		 <class name="go5.automation.profile.ConfigurarCuenta"/>
+      </classes>
   </test> <!-- Test -->
   </suite> <!-- Suite -->

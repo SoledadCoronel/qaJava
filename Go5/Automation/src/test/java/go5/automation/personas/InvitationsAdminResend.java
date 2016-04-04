@@ -1,7 +1,7 @@
 package go5.automation.personas;
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 import java.net.URL;
 import java.util.List;
