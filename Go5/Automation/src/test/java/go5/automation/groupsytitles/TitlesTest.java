@@ -2,87 +2,56 @@ package go5.automation.groupsytitles;
 
 
 
-import java.net.URL;
+import go5.automation.TestSuite;
+
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
 
-public class Titles {
+public class TitlesTest extends TestSuite{
 
-  private WebDriver driver;
-  
-   @BeforeClass
-    @Parameters(value={"browser","version","platform","url"})
-    public void setUp(String browser, String version, String platform,String url) throws Exception {
-      DesiredCapabilities capability = new DesiredCapabilities();
-      capability.setCapability("platform",platform);
-      capability.setCapability("browserName", browser);
-      capability.setCapability("browserVersion", version);
-      capability.setCapability("project", "GOIntegro");
-      capability.setCapability("build", "1.0");
-      capability.setCapability("debug", false);
-      capability.setCapability("name", "Titles");
-      driver = new RemoteWebDriver(
-           new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-              capability);
-      driver.get(url);
-     driver.manage().window().maximize();
-	 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
-    
-    }  
-  
-   @AfterClass // call function to close browser 
-    
-    public void teardown(){
-      driver.quit();
-    }
+	@BeforeClass
+	 
+	 public void setUp() throws Exception {
+		 
+		this.openSite(urlSiteAutomation1);
+		this.login();
+		 }
+	  
 
-
+	@AfterClass // call function to close browser 
+		
+		public void teardown(){
+			this.quitBrowser();
+	}
 
   @Test
-  public void addTitle() throws InterruptedException{
+  public void addTitle() throws Exception{
     
-	  //Login
-		driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
-		driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
-		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
-		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
-		 driver.findElement(By.cssSelector(".session .primary")).click();
-       driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-          
+	       
      
     
         Reporter.log(" Agregar , editar y borrar Tiers y ");
     
         // Go to the configuration
-      driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-          driver.findElement(By.cssSelector(".menu")).click();
-    
+        this.goToConfiguration();
+        this.goToMenu();
+     
      
          
           
-      // Go to Titles    
-          driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
-          Reporter.log("Abriendo titulos");
-     
-        
-      // Go to Title
-          driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3) a")).click();
-          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+      // Go to Titles2    
+            Reporter.log("Abriendo titulos");
+            this.goToGroups();
+            this.goToTitles();
+            driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          
          
       // Se agrega un Tier

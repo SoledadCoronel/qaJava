@@ -6,68 +6,61 @@ import go5.automation.TestSuite;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
-
-import org.openqa.selenium.WebElement;
-
 import org.testng.Reporter;
-
-import org.testng.annotations.AfterTest;
-
-import org.testng.annotations.BeforeTest;
-
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.openqa.selenium.Keys;
 
 
 public class Groups extends TestSuite{
 
-	//private WebDriver driver;
-
-	
-
-		 @BeforeTest // call function to open the browser and login 
-		 public void setup () throws Exception{
-		   openSiteLogin();
-		   login();
-		   
-		 }
-		
-		 @AfterTest // call function to close browser 
+	 @BeforeClass
+	  @Parameters(value={"browser","version","platform","url","build"})
+	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+		this.setUpBrowserStack(browser, version, platform, url,build);
 			
-			public void teardown(){
-				closeBrowser();
-			}
+	 }
+	   
 
-	
+	 @AfterClass // call function to close browser 
+		
+		public void teardown(){
+		this.quitBrowser();
+		}
+
+
 		
 
 	@Test
-	public void addUserAdmin() throws InterruptedException{
+	public void addGroups() throws Exception{
 		
 	 
 		
+
 		  // Go to the configuration
-			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-	       driver.findElement(By.cssSelector(".menu")).click();
-		
+		 this.goToConfiguration();
+		 this.goToMenu();	
 		// Go to  Users Menu
 	        Reporter.log("Abriendo administar personas" );  
 	       
 	        
-	    // Go to Titles    
-	        
-	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
-	      
+	    // Go to Titles2    
+	       
 	        Reporter.log("Abriendo titulos");
-	   
+	 	     this.goToTitles();
+	      
+	      
+	      
 	  	  
 	         // Go to Grupos
-	  	        
-	  	        driver.findElement(By.cssSelector(".space:nth-child(3) ol li:nth-child(4) a")).click();
+	  	        Reporter.log("Abriendo Grupos");
+	  	        this.goToGroups();
 	  	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+       
          
          
 	  	       //Agregar un Grupo
@@ -94,15 +87,7 @@ public class Groups extends TestSuite{
 	  	         driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .additem.active input")).sendKeys("Subgrupo1");
 	  	         driver.findElement(By.cssSelector(".additem.active input")).sendKeys(Keys.RETURN);
 	  	         
-	  	     
-	  	         //Drag and Drop
-	  	         
-	  	         
-	  	       WebElement element = driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input"));
-	  	       WebElement target = driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(1) label:nth-child(2) input"));
-
-	  	       
-	  	     new Actions(driver).dragAndDrop(element, target).perform();
+	  	  	  	   
 	  	        
 	  	  	        		 
 	  	         
@@ -116,7 +101,9 @@ public class Groups extends TestSuite{
 	
 	 	    //Agarrar el primer user de la tabla y editarlo
 	 	         
-	 	          driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td a ")).click();
+	 	         this.click(firstRow);
+	 	         
+	 	     //     driver.findElement(By.cssSelector(".tables tbody tr:nth-child(1) td a ")).click();
 	 	          
 	 	         //Agrandar el form para agregar mas datos  
 	 		        

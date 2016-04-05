@@ -51,6 +51,7 @@ public class TestSuite {
 	protected String irASpaces = new String ("a[title='Ir a listar espacios']");
 	protected String irAConfigurarCuenta = new String (".applications .users menu li:last-child li:nth-child(3) a");
 	protected String irATitles = new String ("nav .space:nth-child(3) ol li:nth-child(3)");
+	protected String irAGroups = new String (".space:nth-child(3) ol li:nth-child(4) a");
 	protected String irAPersonas = new String ("nav .space:nth-child(3) ol li:nth-child(2) a");
 	protected String searchButton = new String(".actions .search .btnsearch");
 	protected String inputSearch = new String(".actions .search input");
@@ -298,6 +299,10 @@ public void openSiteMobile(){
 					
 					public void goToTitles() throws Exception{
 						this.click(irATitles);
+					}
+					
+					public void goToGroups() throws Exception{
+						this.click(irAGroups);
 					}
 					
 					public void goToPersonas() throws Exception{

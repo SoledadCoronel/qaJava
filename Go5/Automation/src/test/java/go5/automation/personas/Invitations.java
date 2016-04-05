@@ -79,7 +79,7 @@ public class Invitations {
 	        //driver.findElement(By.cssSelector(".usermenu")).click();
 	        Reporter.log("Abriendo titulos");
 	        
-	    // Go to Titles    
+	    // Go to Titles2    
 	        
 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
 	        log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());

@@ -84,7 +84,7 @@ public class AgregarUserBasic {
 	 	        Reporter.log("Abriendo administar personas" );  
 	 	       
 	 	        
-	 	    // Go to Titles    
+	 	    // Go to Titles2    
 	 	        
 	 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
 	 	      

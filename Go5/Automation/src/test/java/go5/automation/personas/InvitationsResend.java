@@ -60,7 +60,7 @@ public class InvitationsResend extends TestSuite{
 		        Reporter.log("Abriendo administar personas" );  
 		       
 		        
-		    // Go to Titles    
+		    // Go to Titles2    
 		        this.goToTitles();
 		       
 		        log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());

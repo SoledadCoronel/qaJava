@@ -27,7 +27,7 @@ import org.testng.annotations.Test;
 
 
 
-public class DomainsTest extends TestSuite{
+public class Domains extends TestSuite{
 
 	//private WebDriver driver;
 
@@ -75,7 +75,7 @@ public class DomainsTest extends TestSuite{
 	        Reporter.log("Abriendo administar personas" );  
 	       
 	        
-	    // Go to Titles    
+	    // Go to Titles2    
 	        
 	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(3)")).click();
 	      

@@ -3,23 +3,19 @@ package go5.automation.profile;
 
 import go5.automation.TestSuite;
 
-import java.net.URL;
+
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+
 import org.testng.annotations.Test;
 
 
@@ -31,6 +27,7 @@ public class ConfigurarCuentaTest extends TestSuite {
  protected String irAContrasenia = new String (".title menu li:nth-child(2) a");	
  protected String irANotificaciones = new String (".title menu li:nth-child(3) a");
  protected String inputPassword = new String (".content .generaldata label:nth-child(1) input");
+ 
  @BeforeClass
  
  public void setUp() throws Exception {
