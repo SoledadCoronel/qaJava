@@ -3,7 +3,7 @@ package go5.automation.directorio;
 import go5.automation.TestSuite;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -30,7 +30,7 @@ public class ListadoDirectorioTest extends TestSuite{
 	 			
 		 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
 		 String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
-			
+		 String irAPagina6 = new String (".paged a:nth-child(6)");	
 	 
 	 
 	 
@@ -117,8 +117,9 @@ public class ListadoDirectorioTest extends TestSuite{
       Reporter.log("Los usuarios estan ordenados alfabeticamente por orden descendente");
       else 
       	Reporter.log("Los usuarios estan ordenados en orden alfabetico ascendente" );
-        
-         
+           
+      
+      
     //Hacer una busqueda
      
             	                 	 
@@ -150,9 +151,7 @@ public class ListadoDirectorioTest extends TestSuite{
                //Ir al profile del user buscado
                this.click(firstRow);
                
-               // Verificar Paginado
-               
-             //  TO DO
+             
               
              
               

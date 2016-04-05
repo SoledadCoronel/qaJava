@@ -108,7 +108,8 @@ public class ListadoDirectorioBS extends TestSuite{
       Reporter.log("Los usuarios estan ordenados alfabeticamente por orden descendente");
       else 
       	Reporter.log("Los usuarios estan ordenados en orden alfabetico ascendente" );
-        
+    
+ 
          
     //Hacer una busqueda
      

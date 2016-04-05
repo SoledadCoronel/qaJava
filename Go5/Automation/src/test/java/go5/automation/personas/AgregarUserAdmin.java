@@ -2,20 +2,19 @@ package go5.automation.personas;
 
 
 
-import java.net.URL;
+import go5.automation.TestSuite;
+
+
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -24,34 +23,21 @@ import org.testng.annotations.Test;
 
 
 
-public class AgregarUserAdmin {
-
-	private WebDriver driver;
+public class AgregarUserAdmin extends TestSuite{
 
 	
 	 @BeforeClass
-	  @Parameters(value={"browser","version","platform","url"})
-	  public void setUp(String browser, String version, String platform,String url) throws Exception {
-	    DesiredCapabilities capability = new DesiredCapabilities();
-	    capability.setCapability("platform",platform);
-	    capability.setCapability("browserName", browser);
-	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "GOIntegro");
-	    capability.setCapability("build", "1.0");
-	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "AgregarAdmin");
-	    driver = new RemoteWebDriver(
-	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-	    	      capability);
-	    driver.get(url);
-		 driver.manage().window().maximize();
-		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
-	  }  
-	
+	  @Parameters(value={"browser","version","platform","url","build"})
+	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+		this.setUpBrowserStack(browser, version, platform, url,build);
+				
+	 }
+	   
+
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			driver.quit();
+		this.quitBrowser();
 		}
 
 	
@@ -59,17 +45,9 @@ public class AgregarUserAdmin {
 
 	@Test
 	public void addUserBasicDataAdmin() throws InterruptedException{
-		 org.apache.log4j.BasicConfigurator.configure();
+		 
 		 Random numero= new Random();
 	 	
-		 //Login
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".session .primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	        
 		 
 		
         Reporter.log(" Agregando un user Admin, con los datos basicos y sin invitation");
