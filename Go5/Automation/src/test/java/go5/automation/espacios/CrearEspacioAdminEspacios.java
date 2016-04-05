@@ -6,29 +6,34 @@ import go5.automation.TestSuite;
 
 
 
-import org.openqa.selenium.By;
 
+
+import org.openqa.selenium.By;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
 
 public class CrearEspacioAdminEspacios extends TestSuite {
+
 	
-	 @BeforeClass
-	  @Parameters(value={"browser","version","platform","url","build"})
-	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.loginAdminEspacios(browser, version, platform, url,build);
+	private String crearEspacio = new String (".title .primary");
+	
+	@BeforeClass
+	  
+	  public void setUp() throws Exception {
+		this.openSite(urlSiteAutomation2);
+		this.login();
+		
 	 }
 	   
 
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			driver.quit();
+		this.quitBrowser();
 		}
 		
 	@Test
@@ -52,7 +57,7 @@ public class CrearEspacioAdminEspacios extends TestSuite {
 			
 		    // Ir a Crear Espacio 
 		     
-		 	this.click(".title .primary");
+		 this.click(crearEspacio);
 		   		       
 		      //Cargar formulario del espacio
 		 			 

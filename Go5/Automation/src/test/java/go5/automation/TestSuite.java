@@ -31,13 +31,14 @@ public class TestSuite {
 	protected String strUsername= new String("marina.touceda@gointegro.com");
 	protected String strPassword= new String("Auto1234");
 	protected String strUsernameAdminEspacios= new String("marina.touceda+023@gointegro.com");
+	protected String strUsernameBasicUser= new String("marina.touceda+022@gointegro.com");
 	protected String strUsernameUserBasic= new String("marina.touceda+022@gointegro.com");
 	protected String urlSiteAutomation1= new String ("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 	protected String urlSiteAutomation2= new String ("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
 	protected String urlSiteAutomation3= new String ("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
 	private String email = this.generateRandomEmail();
 	private String name = this.generateName();
-	private int password = this.generatePassword();
+	
 	
 	//Declaracion de cssSelectors
 	
@@ -87,6 +88,17 @@ public class TestSuite {
 	 // throw new IllegalStateException("El login fallo");	  
 	      }
 		
+	   public void loginUserBasic() throws Exception{
+		    
+			this.clear(inputmailLogin);
+		   this.sendValue(inputmailLogin,strUsernameBasicUser);
+		   this.clear(inputPasswordLogin);
+		   this.sendValue(inputPasswordLogin,strPassword);
+		 
+		   this.clickWhenReady(By.cssSelector(goButton),10);
+		 // throw new IllegalStateException("El login fallo");	  
+		      }
+	   
 	   public void loginAdminEspacios() throws Exception{
 		    
 			this.clear(inputmailLogin);
@@ -232,9 +244,7 @@ public void openSiteMobile(){
 		    String name = "qaname" + rand ;
 		    return name;
 	}
-	 	
-	 	
-	 	
+	 		 	
 	 	public int generatePassword(){
 		 	
 		 	 int rand = (int) (Math.random() * 999999999);

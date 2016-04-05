@@ -9,19 +9,20 @@ import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
 
-public class CargarFotoProfile extends TestSuite {
+public class CargarFotoProfileTest extends TestSuite {
 	
  
 	
  @BeforeClass
-  
-  public void setUp() throws Exception {
-	this.openSite(urlSiteAutomation2);
-	this.login();
+  @Parameters(value={"browser","version","platform","url","build"})
+  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+	this.setUpBrowserStack(browser, version, platform, url,build);
+	
 	
  }
    

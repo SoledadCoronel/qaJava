@@ -2,12 +2,7 @@ package go5.automation.espacios;
 
 
 import go5.automation.TestSuite;
-
-
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -18,7 +13,10 @@ import org.testng.annotations.Test;
 
 public class CrearEspacio extends TestSuite {
 	
-	 @BeforeClass
+	
+	private String crearEspacio = new String (".title .primary");
+	 
+	@BeforeClass
 	  @Parameters(value={"browser","version","platform","url","build"})
 	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
 		this.setUpBrowserStack(browser, version, platform, url,build);
@@ -52,7 +50,7 @@ public class CrearEspacio extends TestSuite {
 			
 		    // Ir a Crear Espacio 
 		     
-		 	this.click(".title .primary");
+		 	this.click(crearEspacio);
 		   		       
 		      //Cargar formulario del espacio
 		 			 
