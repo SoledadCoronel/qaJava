@@ -81,7 +81,7 @@ public class ListadoDirectorioBS extends TestSuite{
         String secondname2= this.getText(secondRow);
        Reporter.log(secondname2);
         //Compare     
-       if (firstname.compareTo(secondname)< 0) 
+       if (firstname2.compareTo(secondname2)< 0) 
        Reporter.log("Los usuarios estan ordenados alfabeticamente por orden descendente");
        else 
        	Reporter.log("Los usuarios estan ordenados en orden alfabetico ascendente" );
@@ -104,7 +104,7 @@ public class ListadoDirectorioBS extends TestSuite{
        String secondname3= this.getText(secondRow);
       Reporter.log(secondname2);
             
-      if (firstname.compareTo(secondname)< 0) 
+      if (firstname3.compareTo(secondname3)< 0) 
       Reporter.log("Los usuarios estan ordenados alfabeticamente por orden descendente");
       else 
       	Reporter.log("Los usuarios estan ordenados en orden alfabetico ascendente" );

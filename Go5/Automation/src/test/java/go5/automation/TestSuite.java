@@ -16,10 +16,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import go5.automation.pages.LoginPage;
-
-
 public class TestSuite {
 		 
 	protected WebDriver driver;
@@ -31,7 +27,6 @@ public class TestSuite {
 	protected String strUsername= new String("marina.touceda@gointegro.com");
 	protected String strPassword= new String("Auto1234");
 	protected String strUsernameAdminEspacios= new String("marina.touceda+023@gointegro.com");
-	protected String strUsernameBasicUser= new String("marina.touceda+022@gointegro.com");
 	protected String strUsernameUserBasic= new String("marina.touceda+022@gointegro.com");
 	protected String urlSiteAutomation1= new String ("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 	protected String urlSiteAutomation2= new String ("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
@@ -60,7 +55,7 @@ public class TestSuite {
 	protected String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
 	protected String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
 	protected String crearUser= new String(".content .title a");  
-	
+	protected String irAInvitaciones= new String (".title menu li:nth-child(2) a");
 	
 		
 	
@@ -69,13 +64,7 @@ public class TestSuite {
 	// Declaracion de funciones
 	
 	
-	   public void loginGoWithPageObject() throws Exception
-       {           
-             		   
-	            LoginPage loginPage = new LoginPage();
-	            loginPage.loginObjectFactory(strUsername, strPassword);
-                }
-	     
+	       
 	   
 	   public void login() throws Exception{
 	    
@@ -88,16 +77,6 @@ public class TestSuite {
 	 // throw new IllegalStateException("El login fallo");	  
 	      }
 		
-	   public void loginUserBasic() throws Exception{
-		    
-			this.clear(inputmailLogin);
-		   this.sendValue(inputmailLogin,strUsernameBasicUser);
-		   this.clear(inputPasswordLogin);
-		   this.sendValue(inputPasswordLogin,strPassword);
-		 
-		   this.clickWhenReady(By.cssSelector(goButton),10);
-		 // throw new IllegalStateException("El login fallo");	  
-		      }
 	   
 	   public void loginAdminEspacios() throws Exception{
 		    
@@ -317,6 +296,10 @@ public void openSiteMobile(){
 					
 					public void goToPersonas() throws Exception{
 						this.click(irAPersonas);
+					}
+					
+					public void goToInvitations() throws Exception{
+						this.click(irAInvitaciones);
 					}
 					
 					public void crearUserAdmin() throws Exception{

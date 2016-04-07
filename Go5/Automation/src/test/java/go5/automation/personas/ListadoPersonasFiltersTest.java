@@ -5,20 +5,18 @@ import go5.automation.TestSuite;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.support.ui.Select;
-
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+
 import org.testng.annotations.Test;
 
 
 
 
-public class ListadoPersonasFilters extends TestSuite {
+public class ListadoPersonasFiltersTest extends TestSuite {
 	
 	String irAPagina= new String("a[title='Ir a la página 4']");
 	String searchButton = new String(".actions .search .btnsearch");
@@ -29,9 +27,10 @@ public class ListadoPersonasFilters extends TestSuite {
 		
 
 	 @BeforeClass
-	  @Parameters(value={"browser","version","platform","url"})
-	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.setUpBrowserStack(browser, version, platform, url,build);
+ 	  
+	  public void setUp() throws Exception {
+		this.openSite(urlSiteAutomation1);
+		this.login();
 	 }
 	   
 

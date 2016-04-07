@@ -3,8 +3,8 @@ package go5.automation.espacios;
 
 import go5.automation.TestSuite;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -21,7 +21,7 @@ public class UnirseAEspacioUserBasicTest extends TestSuite {
 	  
 	  public void setUp() throws Exception {
 		this.openSite(urlSiteAutomation2);
-		this.loginUserBasic();
+		//this.loginUserBasic();
 		
 	 }
 	   
@@ -63,11 +63,8 @@ public class UnirseAEspacioUserBasicTest extends TestSuite {
 		    		     Reporter.log("No esta el boton Crear Espacio");
 
 		    		}
-	           
-	
-	}	
-	
-	
-		
+	         
+		}	
+			
      }
 
