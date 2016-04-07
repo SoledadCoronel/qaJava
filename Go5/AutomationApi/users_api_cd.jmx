@@ -11875,8 +11875,10 @@
     },&#xd;
     &quot;relationships&quot;: {&#xd;
       &quot;image&quot;: {&#xd;
-        &quot;type&quot;: &quot;files&quot;,&#xd;
-        &quot;id&quot;: &quot;${PNG_ID}&quot;&#xd;
+      	&quot;data&quot;:{&#xd;
+               &quot;type&quot;:&quot;files&quot;,&#xd;
+               &quot;id&quot;:&quot;${PNG_ID}&quot;&#xd;
+                }&#xd;
       }&#xd;
     }&#xd;
   }&#xd;
@@ -11944,7 +11946,7 @@
                 </ResponseAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchProfile - usuario admin cambia imagen de otro perfil - BUG" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchProfile - usuario admin cambia imagen de otro perfil" enabled="true">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                   <collectionProp name="Arguments.arguments">
@@ -11959,8 +11961,10 @@
     },&#xd;
     &quot;relationships&quot;: {&#xd;
       &quot;image&quot;: {&#xd;
-        &quot;type&quot;: &quot;files&quot;,&#xd;
-        &quot;id&quot;: &quot;${PNG_ID}&quot;&#xd;
+      	&quot;data&quot;:{&#xd;
+               &quot;type&quot;:&quot;files&quot;,&#xd;
+               &quot;id&quot;:&quot;${PNG_ID}&quot;&#xd;
+                }&#xd;
       }&#xd;
     }&#xd;
   }&#xd;
@@ -12018,6 +12022,24 @@
                   <stringProp name="filename"></stringProp>
                 </ResultCollector>
                 <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="51511">403</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                  <boolProp name="Assertion.assume_success">true</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="1888665133">Only the owner can handle a profile image</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">true</boolProp>
+                  <intProp name="Assertion.test_type">2</intProp>
+                </ResponseAssertion>
+                <hashTree/>
               </hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchProfile - usuario basico cambia imagen de otro perfil" enabled="true">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -12034,8 +12056,10 @@
     },&#xd;
     &quot;relationships&quot;: {&#xd;
       &quot;image&quot;: {&#xd;
-        &quot;type&quot;: &quot;files&quot;,&#xd;
-        &quot;id&quot;: &quot;${PNG_ID}&quot;&#xd;
+      	&quot;data&quot;:{&#xd;
+               &quot;type&quot;:&quot;files&quot;,&#xd;
+               &quot;id&quot;:&quot;${PNG_ID}&quot;&#xd;
+                }&#xd;
       }&#xd;
     }&#xd;
   }&#xd;
