@@ -89,7 +89,7 @@ public class TestSuite {
 		   }
 	
 	   public void openSite(String site)throws Exception{
-		   this.driver = new FirefoxDriver();
+		//   this.driver = new FirefoxDriver();
 		   driver.get(site);
 		   driver.manage().window().maximize();
 		  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);

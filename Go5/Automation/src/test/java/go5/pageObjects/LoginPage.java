@@ -35,9 +35,10 @@ import org.openqa.selenium.WebDriver;
   
      //Set user name in textbox
   
-     public void setUserName(String strUserName){
+     public LoginPage setUserName(String strUserName){
       
     	driver.findElement(userName).sendKeys(strUserName);
+    	return this;
   
      }
   
@@ -93,46 +94,59 @@ import org.openqa.selenium.WebDriver;
          //Click Login button
   
          this.clickLogin();
-           
+     } 
   
-     }
-  
- 
- 
- 
- 
-/*
- 
- public static void loginAdmin(WebDriver driver){
-	    	 LoginPage.id_User(driver).clear();
- 		LoginPage.id_User(driver).sendKeys(strUsername);
- 		LoginPage.id_Password(driver).clear();
- 		LoginPage.id_Password(driver).sendKeys(strPassword);
- 		LoginPage.go_Button(driver).click();
-     }
- 
-     
-     public static void loginAdminEspacios(WebDriver driver){
-    		
-    	     LoginPage.id_User(driver).clear();
-     		LoginPage.id_User(driver).sendKeys(strUsernameAdminEspacios);
-     		LoginPage.id_Password(driver).clear();
-     		LoginPage.id_Password(driver).sendKeys(strPassword);
-     		LoginPage.go_Button(driver).click();
-         }
+         public void loginToGoAsAdmin(){
+        	  
+             //Fill user name
+        	 this.setUserName(strUsername);
+             
+      
+             //Fill password
+      
+             this.setPassword(strPassword);
+      
+             //Click Login button
+      
+             this.clickLogin();
+               
          
-     public static void loginBasic(WebDriver driver){
+     }
+  
+ 
+ 
+         public void loginToGoAsAdminEspacios(){
+       	  
+             //Fill user name
+        	 this.setUserName(strUsernameAdminEspacios);
+             
+      
+             //Fill password
+      
+             this.setPassword(strPassword);
+      
+             //Click Login button
+      
+             this.clickLogin();
+               
+         }
+ 
+         public void loginToGoAsUSerBasic(){
+          	  
+             //Fill user name
+        	 this.setUserName(strUsernameUserBasic);
+             
+      
+             //Fill password
+      
+             this.setPassword(strPassword);
+      
+             //Click Login button
+      
+             this.clickLogin();
 
-
-            	 LoginPage.id_User(driver).clear();
-         		LoginPage.id_User(driver).sendKeys(strUsernameUserBasic);
-         		LoginPage.id_Password(driver).clear();
-         		LoginPage.id_Password(driver).sendKeys(strPassword);
-         		LoginPage.go_Button(driver).click();
-             }
- */
  }
-   
+    }
 
 
 

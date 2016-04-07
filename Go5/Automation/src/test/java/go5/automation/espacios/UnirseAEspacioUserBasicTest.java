@@ -1,10 +1,13 @@
 package go5.automation.espacios;
 
 
+
+import java.util.concurrent.TimeUnit;
+
 import go5.automation.TestSuite;
+import go5.pageObjects.LoginPage;
 
-
-
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -14,17 +17,30 @@ import org.testng.annotations.Test;
 
 public class UnirseAEspacioUserBasicTest extends TestSuite {
 	
+	LoginPage login = null;
+
 	
 	private String crearEspacio = new String (".title .primary");
 	
 	@BeforeClass
 	  
 	  public void setUp() throws Exception {
-		this.openSite(urlSiteAutomation2);
-		//this.loginUserBasic();
+	
+		
+		
+        driver = new FirefoxDriver();
+        login= new LoginPage(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+ 
+        this.openSite(urlSiteAutomation1);
+       
+        Reporter.log("Abriendo la aplicacion");
+		
+		//this.openSite(urlSiteAutomation2);
+		 login.loginToGo("marina.touceda+022@gointegro.com","Auto1234");
+       // login.loginToGoAsUSerBasic();
 		
 	 }
-	   
 
 	 @AfterClass // call function to close browser 
 		
@@ -62,7 +78,8 @@ public class UnirseAEspacioUserBasicTest extends TestSuite {
 
 		    		     Reporter.log("No esta el boton Crear Espacio");
 
-		    		}
+		    		
+		    		 }
 	         
 		}	
 			

@@ -5,11 +5,14 @@ import go5.automation.TestSuite;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
@@ -22,11 +25,17 @@ public class InvitationsTest extends TestSuite{
 	String cancel= new String(".tables tr:nth-child(1) td:nth-child(5) .link");
 	String okModalCancelar = new String ("#modal-container .modal:nth-child(4) .primary");
 	 
-	
+	@BeforeClass
+	  @Parameters(value={"browser","version","platform","url","build"})
+	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+		this.setUpBrowserStack(browser, version, platform, url,build);
+		System.out.println(" Setup de BS");
+		
+	 }	
 	
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
-		
+		 System.out.println(" Setup de Invitations Test");
 		 this.openSite(urlSiteAutomation2);
 		 this.login();
 	 }
@@ -43,7 +52,7 @@ public class InvitationsTest extends TestSuite{
 	        
 	@Test
 	public void invitattionResendwithAnAdminUser() throws Exception{
-		 
+		
 			
 			
 		log.info("Ir al menu de config");
@@ -106,13 +115,13 @@ public class InvitationsTest extends TestSuite{
 	          /*JavascriptExecutor js = (JavascriptExecutor) driver;
 	  		js.executeScript("$(document).ajaxComplete(function( event, xhr, settings ) { $('.primary').after('<a class=\"forgot-pass-link\" href=\"/authentication/reset-password/'+$.parseJSON(xhr.responseText).data.id+'\">Forgot Link!</a>'); });");*/
    	         	         	 
-	  	  //Agarrar esa invitation y cancelarla
+	  	/*  //Agarrar esa invitation y cancelarla
 	  		
 	  		this.click(cancel);
 	  		Thread.sleep(1000);
 	  		this.click(okModalCancelar);
 	  		Reporter.log("La invitacion se cancelo correctamente");
-	  		
+	  		*/
 	  		
 	  		
 	
