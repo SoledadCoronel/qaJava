@@ -25,21 +25,13 @@ public class InvitationsTest extends TestSuite{
 	String cancel= new String(".tables tr:nth-child(1) td:nth-child(5) .link");
 	String okModalCancelar = new String ("#modal-container .modal:nth-child(4) .primary");
 	 
-	@BeforeClass
-	  @Parameters(value={"browser","version","platform","url","build"})
-	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.setUpBrowserStack(browser, version, platform, url,build);
-		System.out.println(" Setup de BS");
-		
-	 }	
+	
 	
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
 		 System.out.println(" Setup de Invitations Test");
-		 this.openSite(urlSiteAutomation2);
-		 this.login();
+		 this.setup();
 	 }
-	
 	 @AfterTest // call function to close browser 
 		
 		public void teardown(){

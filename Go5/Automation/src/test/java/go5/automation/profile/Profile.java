@@ -5,13 +5,10 @@ import java.net.URL;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -24,7 +21,7 @@ public class Profile  {
 	
  private WebDriver driver;
 
-	
+ protected String irACerrarSesion= new String ("a[title='Cierra la sesión");
 
  @BeforeClass
   @Parameters(value={"browser","version","platform","url"})
@@ -60,14 +57,7 @@ public class Profile  {
 		 Random numero= new Random();
 		 
 		
-		 //Login
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
-	 					driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".session .primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	        
+		
 		 
 		 
 		// Go to the user menu

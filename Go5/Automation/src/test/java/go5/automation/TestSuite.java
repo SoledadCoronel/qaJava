@@ -3,6 +3,9 @@ package go5.automation;
 
 
 
+import go5.pageObjects.LoginPage;
+import go5.pageObjects.LoginPage;
+
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -16,11 +19,15 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 public class TestSuite {
 		 
+	//Declaracion de objects
+	
 	protected WebDriver driver;
 	protected Logger log = Logger.getLogger("automation");
-		
+	LoginPage login = null;
+	
 	
 	//Declaracion de variables	
 	
@@ -63,47 +70,28 @@ public class TestSuite {
 	
 	// Declaracion de funciones
 	
-	
-	       
+	    	   
 	   
-	   public void login() throws Exception{
-	    
-		this.clear(inputmailLogin);
-	   this.sendValue(inputmailLogin,strUsername);
-	   this.clear(inputPasswordLogin);
-	   this.sendValue(inputPasswordLogin,strPassword);
-	 
-	   this.clickWhenReady(By.cssSelector(goButton),10);
-	 // throw new IllegalStateException("El login fallo");	  
-	      }
-		
-	   
-	   public void loginAdminEspacios() throws Exception{
-		    
-			this.clear(inputmailLogin);
-		   this.sendValue(inputmailLogin,strUsernameAdminEspacios);
-		   this.clear(inputPasswordLogin);
-		   this.sendValue(inputPasswordLogin,strPassword);
-		   this.clickWhenReady(By.cssSelector(goButton),10);
-		 //  throw new IllegalStateException("El loguin fallo");	   
-		   }
 	
-	   public void openSite(String site)throws Exception{
-		//   this.driver = new FirefoxDriver();
-		   driver.get(site);
-		   driver.manage().window().maximize();
-		  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		// throw new IllegalStateException("No se pudo abrir el site");	
-	   }
 	  
+	   public void setUp() throws Exception {
+					
+	        driver = new FirefoxDriver();
+	        login= new LoginPage(driver);
+	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	 
+	        this.openSite(urlSiteAutomation1);
+	       
+	        Reporter.log("Abriendo la aplicacion");
+			
+			//this.openSite(urlSiteAutomation2);
+			 login.loginToGo("marina.touceda@gointegro.com","Auto1234");
+			 Reporter.log(" Login como admin exitoso");
+			
+	   }
 	   
+	 	  
 	   
-	   /*
-	   public void  setUDriver(String driver){
-		 
-		   if (driver=="firefox")
-			this.driver = new FirefoxDriver();
-		   */
 	   public void setUpBrowserStack(String browser, String version, String platform,String url,String build) throws Exception {
 		    DesiredCapabilities capability = new DesiredCapabilities();
 		    capability.setCapability("platform",platform);
@@ -112,14 +100,15 @@ public class TestSuite {
 		    capability.setCapability("project", "GOIntegro");
 		    capability.setCapability("build", build);
 		    capability.setCapability("debug", false);
-		     this.driver = new RemoteWebDriver(
+		    driver = new RemoteWebDriver(
 		    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 		    	      capability);
     
 		    driver.get(url);
 			 driver.manage().window().maximize();
 			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-			 this.login();
+			 login= new LoginPage(driver);
+			 login.loginToGo("marina.touceda@gointegro.com","Auto1234");
 					
 		  }  
 	
@@ -139,10 +128,17 @@ public class TestSuite {
 		    driver.get(url);
 			 driver.manage().window().maximize();
 			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-			 this.loginAdminEspacios();
+			 login.loginToGo("marina.touceda+023@gointegro.com","Auto1234");
 			
 		  }  
-	public void openSiteSignUp(){
+	
+	  public void openSite(String site){
+			 
+			 driver.get(site);
+			 driver.manage().window().maximize();
+			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		   }
+	  public void openSiteSignUp(){
 		 
 		 driver.get("http://signup.qa.go5.gointegro.net/landing");
 		 driver.manage().window().maximize();
