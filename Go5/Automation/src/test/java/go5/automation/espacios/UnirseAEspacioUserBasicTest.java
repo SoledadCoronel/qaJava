@@ -15,7 +15,7 @@ public class UnirseAEspacioUserBasicTest extends EspacioUserBasicAbstractClass {
 	
 	  public void setUpUnirseAEspacio() throws Exception {
 		
-			this.setUp();
+			this.setUpMaven();
 	}
 	
 	 @AfterClass // call function to close browser 

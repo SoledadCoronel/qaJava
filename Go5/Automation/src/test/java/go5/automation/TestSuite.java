@@ -74,7 +74,7 @@ public class TestSuite {
 	   
 	
 	  
-	   public void setUp() throws Exception {
+	   public void setUpMaven() throws Exception {
 					
 	        driver = new FirefoxDriver();
 	        login= new LoginPage(driver);
@@ -91,6 +91,21 @@ public class TestSuite {
 	   }
 	   
 	 	  
+	   public void setUpMavenAdminEspacios() throws Exception {
+			
+	        driver = new FirefoxDriver();
+	        login= new LoginPage(driver);
+	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	 
+	        this.openSite(urlSiteAutomation1);
+	       
+	        Reporter.log("Abriendo la aplicacion");
+			
+			//this.openSite(urlSiteAutomation2);
+			 login.loginToGo("marina.touceda+023@gointegro.com","Auto1234");
+			 Reporter.log(" Login como admin exitoso");
+			
+	   }
 	   
 	   public void setUpBrowserStack(String browser, String version, String platform,String url,String build) throws Exception {
 		    DesiredCapabilities capability = new DesiredCapabilities();
@@ -112,7 +127,7 @@ public class TestSuite {
 					
 		  }  
 	
-	  public void loginAdminEspacios(String browser, String version, String platform,String url,String build) throws Exception {
+	  public void setUpBrowserStackAdminEspacio(String browser, String version, String platform,String url,String build) throws Exception {
 		    DesiredCapabilities capability = new DesiredCapabilities();
 		    capability.setCapability("platform",platform);
 		    capability.setCapability("browserName", browser);
