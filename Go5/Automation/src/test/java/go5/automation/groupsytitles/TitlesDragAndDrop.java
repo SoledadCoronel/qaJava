@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 
 
-public class TitlesDragAndDropTest extends TestSuite{
+public class TitlesDragAndDrop extends TestSuite{
 
 	@BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{

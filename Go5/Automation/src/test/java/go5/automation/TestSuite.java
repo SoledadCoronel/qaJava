@@ -4,8 +4,6 @@ package go5.automation;
 
 
 import go5.pageObjects.LoginPage;
-import go5.pageObjects.LoginPage;
-
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +18,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+
+
+
 public class TestSuite {
 		 
 	//Declaracion de objects
@@ -38,8 +39,8 @@ public class TestSuite {
 	protected String urlSiteAutomation1= new String ("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
 	protected String urlSiteAutomation2= new String ("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
 	protected String urlSiteAutomation3= new String ("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
-	private String email = this.generateRandomEmail();
-	private String name = this.generateName();
+	protected String email = this.generateRandomEmail();
+	protected String name = this.generateName();
 	
 	
 	//Declaracion de cssSelectors
@@ -304,10 +305,7 @@ public void openSiteMobile(){
 					public void goToGroups() throws Exception{
 						this.click(irAGroups);
 					}
-					
-					public void goToPersonas() throws Exception{
-						this.click(irAPersonas);
-					}
+										
 					
 					public void goToInvitations() throws Exception{
 						this.click(irAInvitaciones);

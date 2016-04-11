@@ -27,8 +27,7 @@ public class Domains extends TestSuite{
 
 		 @BeforeTest // call function to open the browser and login 
 		 public void setup () throws Exception{
-		   openSiteLogin();
-		   login();
+		 this.setUpMaven();
 		   
 		 }
 		

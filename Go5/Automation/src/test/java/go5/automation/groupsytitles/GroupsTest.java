@@ -19,9 +19,8 @@ public class GroupsTest extends TestSuite{
 	@BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
 		
-		 this.openSite(urlSiteAutomation3);
-		 this.login();
-	 }
+		 this.setUpMaven();
+	}
 	
 	 @AfterTest // call function to close browser 
 		

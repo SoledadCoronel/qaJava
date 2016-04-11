@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import go5.pageObjects.PersonasPage;
 
 
 
@@ -25,12 +26,11 @@ public class InvitationsTest extends TestSuite{
 	String cancel= new String(".tables tr:nth-child(1) td:nth-child(5) .link");
 	String okModalCancelar = new String ("#modal-container .modal:nth-child(4) .primary");
 	 
-	
+	PersonasPage personas = null;
 	
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
-		 System.out.println(" Setup de Invitations Test");
-		 this.setup();
+		 this.setUpMaven();
 	 }
 	 @AfterTest // call function to close browser 
 		
@@ -64,7 +64,8 @@ public class InvitationsTest extends TestSuite{
 	        log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
 	        Reporter.log("Abriendo personas");
 	   // Go to Manage people
-	         this.goToPersonas();
+	         this.click(irAPersonas);
+	       //  personas.goToPersonas();
 	     
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
     
