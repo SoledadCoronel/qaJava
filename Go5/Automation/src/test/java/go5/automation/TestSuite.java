@@ -255,12 +255,14 @@ public void openSiteMobile(){
 				 driver.findElement(By.id("SignupRequest_language_1")).click();
 				 }
 	 	 }
-/*
-		   public void irAPagina (Integer pagina) throws Exception{
-		    String css= new String ("zaraza"++ int);
-		    this.click(css);
-		   }
-			*/
+		 
+		 //String irAPagina6 = new String (".paged a:nth-child(6)");
+			   public String irAPagina (Integer pagina) {
+				   String css = ".paged a:nth-child(pagina)" ;
+				   return css;
+			   }
+			  
+     
 		         public void sendValue(String sSelector,String sValue) throws Exception{
 		           driver.findElement(By.cssSelector(sSelector)).sendKeys(sValue);
 		         }

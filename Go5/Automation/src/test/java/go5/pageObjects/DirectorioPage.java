@@ -1,5 +1,7 @@
 package go5.pageObjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
@@ -37,6 +39,7 @@ import org.testng.Reporter;
       
     	 Reporter.log("Abriendo directorio de  personas" );
     	  driver.findElement(By.cssSelector(".igouser")).click();
+    	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     	  driver.findElement(By.cssSelector(Personas)).click();
        
      }
