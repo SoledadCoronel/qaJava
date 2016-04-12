@@ -4,6 +4,7 @@ package go5.automation;
 
 
 import go5.pageObjects.LoginPage;
+
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -51,7 +52,6 @@ public class TestSuite {
 	protected String desplegaMenuUsuario = new String (".applications .users menu li:last-child .user");
 	protected String irAConfiguration= new String(".applications .users .configuration");
 	protected String irAMenu =new String (".menu");
-	protected String irAPagina= new String("a[title='Ir a la página 4']");
 	protected String irASpaces = new String ("a[title='Ir a listar espacios']");
 	protected String irAConfigurarCuenta = new String (".applications .users menu li:last-child li:nth-child(3) a");
 	protected String irATitles = new String ("nav .space:nth-child(3) ol li:nth-child(3)");
@@ -255,9 +255,12 @@ public void openSiteMobile(){
 				 driver.findElement(By.id("SignupRequest_language_1")).click();
 				 }
 	 	 }
-
-		 
-			
+/*
+		   public void irAPagina (Integer pagina) throws Exception{
+		    String css= new String ("zaraza"++ int);
+		    this.click(css);
+		   }
+			*/
 		         public void sendValue(String sSelector,String sValue) throws Exception{
 		           driver.findElement(By.cssSelector(sSelector)).sendKeys(sValue);
 		         }
@@ -289,8 +292,13 @@ public void openSiteMobile(){
 				
 					public void search(String nombreABuscar) throws Exception{
 						
+						driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+						WebElement searchavailable = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.cssSelector(searchButton)));
 						 this.click(searchButton);
-						 Thread.sleep(1000);
+						 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+						 WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
+						 
+					//	 WebElement inputsearchavailable = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.cssSelector(inputSearch)));
 			               this.clear(inputSearch);
 			               this.sendValue(inputSearch, nombreABuscar);
 					}
