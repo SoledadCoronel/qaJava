@@ -21,8 +21,7 @@ public class TitlesTest extends TestSuite{
 	 
 	 public void setUp() throws Exception {
 		 
-		this.openSite(urlSiteAutomation1);
-		this.login();
+		 this.setUpMaven();
 		 }
 	  
 

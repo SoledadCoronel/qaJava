@@ -29,8 +29,7 @@ public class ListadoPersonasFiltersTest extends TestSuite {
 	 @BeforeClass
  	  
 	  public void setUp() throws Exception {
-		this.openSite(urlSiteAutomation1);
-		this.login();
+		 this.setUpMaven();
 	 }
 	   
 

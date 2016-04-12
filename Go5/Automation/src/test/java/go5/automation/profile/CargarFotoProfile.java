@@ -20,8 +20,7 @@ public class CargarFotoProfile extends TestSuite {
  @BeforeClass
   
   public void setUp() throws Exception {
-	this.openSite(urlSiteAutomation2);
-	this.login();
+	this.setUpMaven();
 	
  }
    

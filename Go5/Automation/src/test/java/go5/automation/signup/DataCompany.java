@@ -16,9 +16,7 @@ public class DataCompany extends TestSuite{
 
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
-	  this.openSite(urlSiteAutomation2);
-	  this.login();
-	  
+	 this.setUpMaven();
 	 }
 	
 	 @AfterTest // call function to close browser 
