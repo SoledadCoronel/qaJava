@@ -8,6 +8,8 @@ import go5.automation.TestSuite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 
@@ -18,17 +20,18 @@ import org.testng.Reporter;
 
     	//Css
     	
-    	protected static String irAPersonas= new String("nav .space:nth-child(3) ol li:nth-child(2) a");
+    	protected String irAPersonas= new String(".igoadmin");
     	
-    	protected static String inputNombreUser= new String(".basicdata label:nth-child(4) input");
-    	protected static String inputLastnameUser=new String (".basicdata label:nth-child(5) input");
-    	protected static String inputemailUser =new String ("basicdata label:nth-child(6) input");
-    	protected static String tablaPersonas = new String (".tablefilter tbody");
-    	protected static String crearUser = new String (".content .title a");
-    	protected static String estadoDesactivado = new String (".basicdata label:nth-child(2) input:nth-child(2)");
-    	   	
-    	
-    	
+    	protected  String inputNombreUser= new String(".basicdata label:nth-child(4) input");
+    	protected  String inputLastnameUser=new String (".basicdata label:nth-child(5) input");
+    	protected  String inputemailUser =new String ("basicdata label:nth-child(6) input");
+    	protected  String tablaPersonas = new String (".tablefilter tbody");
+    	protected  String crearUser = new String (".content .title a");
+    	protected  String estadoDesactivado = new String (".basicdata label:nth-child(2) input:nth-child(2)");
+    	protected String  desplegarCampos = new String (".addpeople .secondary");
+    	protected String  savePerson = new String (".container .addpeople .primary");   	
+    	 protected String editfirstRow= new String (".tables tbody tr:nth-child(1) td:nth-child(7) a");
+    	 
     	  WebDriver driver;
     
      
@@ -42,7 +45,8 @@ import org.testng.Reporter;
   
     	   
     	    public void goToPersonas() throws Exception{
-				this.click(irAPersonas);
+    	    	WebElement personasavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(irAPersonas)));
+    	    	this.click(irAPersonas);
 			}
     	    
     	    
@@ -76,7 +80,18 @@ import org.testng.Reporter;
     
     	  }
     
-        public void agregarPersona() throws Exception{
+        
+    	  public void editPersona() throws Exception{
+    		  Thread.sleep(1000);
+    		 
+    	    	 this.click(editfirstRow);
+    	    	 Thread.sleep(1000);
+    	    	 this.click(desplegarCampos);
+    	    	 Thread.sleep(1000);
+    	    	 this.click(savePerson);
+    	  }
+    	  
+    	  public void agregarPersona() throws Exception{
    
             this.click(crearUser);
             setRandomUserName();

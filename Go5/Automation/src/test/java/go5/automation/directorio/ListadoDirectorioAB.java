@@ -73,7 +73,7 @@ public class ListadoDirectorioAB extends TestSuite{
        
      //Verificar Paginado
        Reporter.log("Seleccionar otra pagina del listado");
-       this.irAPagina(3);
+       this.cssgoToAPagina(3);
            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       
         

@@ -48,7 +48,9 @@ public class TitlesTest extends TestSuite{
           
       // Go to Titles2    
             Reporter.log("Abriendo titulos");
-            this.goToGroups();
+            driver.findElement(By.cssSelector(".igogroups")).click();
+	  	    //    this.goToGroups();
+	  	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
             this.goToTitles();
             driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          

@@ -54,9 +54,9 @@ public class TestSuite {
 	protected String irAMenu =new String (".menu");
 	protected String irASpaces = new String ("a[title='Ir a listar espacios']");
 	protected String irAConfigurarCuenta = new String (".applications .users menu li:last-child li:nth-child(3) a");
-	protected String irATitles = new String ("nav .space:nth-child(3) ol li:nth-child(3)");
-	protected String irAGroups = new String (".space:nth-child(3) ol li:nth-child(4) a");
-	protected String irAPersonas = new String ("nav .space:nth-child(3) ol li:nth-child(2) a");
+	 protected String irAGroups = new String (".igogroups");
+     protected String irATitles = new String (".igotitles");
+	protected String irAPersonas = new String (".igoadmin");
 	protected String searchButton = new String(".actions .search .btnsearch");
 	protected String inputSearch = new String(".actions .search input");
 	protected String orden =new String (".tables thead tr th:nth-child(2) a");
@@ -144,6 +144,7 @@ public class TestSuite {
 		    driver.get(url);
 			 driver.manage().window().maximize();
 			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			 login= new LoginPage(driver);
 			 login.loginToGo("marina.touceda+023@gointegro.com","Auto1234");
 			
 		  }  
@@ -256,12 +257,13 @@ public void openSiteMobile(){
 				 }
 	 	 }
 		 
-		 //String irAPagina6 = new String (".paged a:nth-child(6)");
-			   public String irAPagina (Integer pagina) {
+		
+			   public  String cssgoToAPagina (Integer pagina)  {
 				   String css = ".paged a:nth-child(pagina)" ;
 				   return css;
 			   }
 			  
+			  	   
      
 		         public void sendValue(String sSelector,String sValue) throws Exception{
 		           driver.findElement(By.cssSelector(sSelector)).sendKeys(sValue);
@@ -312,9 +314,7 @@ public void openSiteMobile(){
 						this.click(irATitles);
 					}
 					
-					public void goToGroups() throws Exception{
-						this.click(irAGroups);
-					}
+					
 										
 					
 					public void goToInvitations() throws Exception{

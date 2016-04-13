@@ -3,7 +3,7 @@ package go5.automation.groupsytitles;
 
 
 import go5.automation.TestSuite;
-
+import go5.pageObjects.GroupsPage;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,10 +14,13 @@ import java.util.concurrent.TimeUnit;
 
 
 
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -29,19 +32,15 @@ import org.testng.annotations.Test;
 
 public class GroupsDragAndDrop extends TestSuite{
 
-	
+	GroupsPage groups = null;
 
 	
-	@BeforeTest // call function to open the browser and login 
-	 public void setup () throws Exception{
-		
-		 this.setUpMaven();
-	 }
 	
-	 @AfterTest // call function to close browser 
+	
+	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			closeBrowser();
+			this.quitBrowser();
 		}
 
 	
@@ -49,7 +48,7 @@ public class GroupsDragAndDrop extends TestSuite{
 	 @Test
 	public void dragAndDropGroups() throws Exception{
 		
-	 
+		 groups = new GroupsPage(driver);
 		
 		  // Go to the configuration
 		 this.goToConfiguration();
@@ -68,7 +67,8 @@ public class GroupsDragAndDrop extends TestSuite{
 	  	  
 	         // Go to Grupos
 	  	        Reporter.log("Abriendo Grupos");
-	  	        this.goToGroups();
+	  	        groups.goToGroups();
+	  	     
 	  	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
          
           	 	  	     

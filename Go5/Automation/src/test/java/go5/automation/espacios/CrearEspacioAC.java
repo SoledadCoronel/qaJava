@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 
 
-public class CrearEspacioAbstractClass extends TestSuite {
+public class CrearEspacioAC extends TestSuite {
 	
 	
 	private String crearEspacio = new String (".title .primary");

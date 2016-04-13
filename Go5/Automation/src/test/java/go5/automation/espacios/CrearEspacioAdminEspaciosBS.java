@@ -6,7 +6,7 @@ import org.testng.annotations.Parameters;
 
 
 
-public class CrearEspacioAdminEspacios extends CrearEspacioAbstractClass {
+public class CrearEspacioAdminEspaciosBS extends CrearEspacioAC {
 
 	
 	

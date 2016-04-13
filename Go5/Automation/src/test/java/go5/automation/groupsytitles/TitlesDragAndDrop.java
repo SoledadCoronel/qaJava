@@ -57,7 +57,8 @@ public class TitlesDragAndDrop extends TestSuite{
 			  	  
 			         // Go to Grupos
 			  	        Reporter.log("Abriendo Grupos");
-			  	        this.goToGroups();
+			  	      driver.findElement(By.cssSelector(".igogroups")).click();
+			  	    //    this.goToGroups();
 			  	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	     
 	   	  	      //  Drag and Drop

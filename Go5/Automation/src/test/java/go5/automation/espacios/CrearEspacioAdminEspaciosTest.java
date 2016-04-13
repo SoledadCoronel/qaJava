@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 
 
 
-public class CrearEspacioAdminEspaciosTest extends CrearEspacioAbstractClass {
+public class CrearEspacioAdminEspaciosTest extends CrearEspacioAC {
 	
 		
 	 
