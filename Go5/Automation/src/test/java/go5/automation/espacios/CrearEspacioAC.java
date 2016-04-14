@@ -2,8 +2,7 @@ package go5.automation.espacios;
 
 
 import go5.automation.TestSuite;
-
-import org.openqa.selenium.By;
+import go5.pageObjects.EspacioPage;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
@@ -12,29 +11,27 @@ import org.testng.annotations.Test;
 
 public class CrearEspacioAC extends TestSuite {
 	
+
 	
-	private String crearEspacio = new String (".title .primary");
-	private String espacioPublico = new String (".spaceformtype .igounlock");
+	EspacioPage espacio=null;
 	
-	 @AfterClass // call function to close browser 
+		
+	
+	@AfterClass // call function to close browser 
 		
 		public void teardown(){
 			this.quitBrowser();
 		}
 	
-	
-	 public void elegirTipoDeEspacio () throws Exception{
-	 Reporter.log("Seleccionando un tipo de espacio:");
-	 this.click(espacioPublico);
-	 }
-	 
+			 
 	 
 	 
 	@Test
 	
 	public void crearEspacio() throws Exception { 
 	
-		    		
+		espacio= new EspacioPage(driver); 
+			
 	        
 		 Reporter.log(" Creando un espacio como user admin");
 		 
@@ -45,35 +42,37 @@ public class CrearEspacioAC extends TestSuite {
 		 
 			
 		 //Ir a espacios
-		 this.click(irASpaces);
+		 espacio.goToEspacios();
+		
 		 Thread.sleep(1000);
 			
 			
 		    // Ir a Crear Espacio 
-		     
-		 	this.click(crearEspacio);
+		 
+		 espacio.crearEspacio();
+		 
 		   		       
 		      //Cargar formulario del espacio
-		 			 
-		   	this.sendValue(".spacecreate fieldset:nth-child(1) label:nth-child(1) input","Nombre del espacio");
-		 	this.sendValue(".spacecreate fieldset:nth-child(1) label:nth-child(2) input","Descripcion del espacio");  
-	       
-	
+		     	espacio.setNameEspacio("Espacio Privado");
+		     	
+		 		espacio.setDescriptionEspacio();	 
+		 
+		 	
 	       //Configuracion del espacio
 	          
 	          //Desactivar
 	          Reporter.log("Desactivar el espacio");
-	          driver.findElement(By.cssSelector(".spaceformconfig label:nth-child(2) span")).click();
+	          espacio.activarEspacio();
+	     
 	
 	         //Actividad Social
 	          Reporter.log("Desactivar Acitividad Social");
-	          driver.findElement(By.cssSelector(".spaceformconfig label:nth-child(3) span")).click();
-	          
+	          espacio.activarSocial();
+	     
 	          //Seleccionar el icono
 	          Reporter.log("Seleccionar el icono del espacio");
-	           driver.findElement(By.cssSelector(".spaceformconfig label:nth-child(4) .igotrophy")).click();
-	          driver.findElement(By.cssSelector(".igoeye")).click();
-	          driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
+	          espacio.cambiarIcono();
+	      
 	  
 	       /*   //Verificar ayuda del tipo de espacio
 	               
@@ -99,11 +98,14 @@ public class CrearEspacioAC extends TestSuite {
 	           
 	           //Espacio publico
 	          
-	           this.elegirTipoDeEspacio();
+	          espacio.setEspacioPublico(); 
+	          espacio.setEspacioEmpresa();
+	          espacio.setEspacioPrivado();
 	           
 	           //Grabar el espacio nuevo
-	           driver.findElement(By.cssSelector(".spacecreate .primary")).click();
-	           
+	          
+	           espacio.grabarEspacio();
+	                   
 	           Thread.sleep(1000);
 	           
 	

@@ -59,14 +59,15 @@ public class TestSuite {
 	protected String irAPersonas = new String (".igoadmin");
 	protected String searchButton = new String(".actions .search .btnsearch");
 	protected String inputSearch = new String(".actions .search input");
-	protected String orden =new String (".tables thead tr th:nth-child(2) a");
+	protected String ordenNombre =new String (".tables thead tr th:nth-child(2) a");
 	protected String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
 	protected String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
 	protected String crearUser= new String(".content .title a");  
 	protected String irAInvitaciones= new String (".title menu li:nth-child(2) a");
-	
-		
-	
+	protected String ordenTitulo = new String (".tables thead tr th:nth-child(3) a");
+	protected String ordenRol = new String (".tables thead tr th:nth-child(4) a");
+	protected String ordenEstado = new String (".tables thead tr th:nth-child(5) a");	
+	protected String ordenRegistrado = new String (".tables thead tr th:nth-child(6) a");	
 	
 	
 	// Declaracion de funciones
@@ -286,8 +287,25 @@ public void openSiteMobile(){
 						this.click(irAConfiguration);
 					}
 					
-					public void ordenar() throws Exception{
-						 this.click(orden);
+					public void ordenarPorNombre() throws Exception{
+						 this.click(ordenNombre);
+					 }
+					
+					public void ordenarPorTitulo() throws Exception{
+						 this.click(ordenTitulo);
+					 }
+					
+					public void ordenarPorRol() throws Exception{
+						 this.click(ordenRol);
+					 }
+					
+					
+					public void ordenarPorRegistro() throws Exception{
+						 this.click(ordenRegistrado);
+					 }
+					
+					public void ordenarPorEstado() throws Exception{
+						 this.click(ordenEstado);
 					 }
 					public void goToMenu() throws Exception {
 							
@@ -355,6 +373,8 @@ public void openSiteMobile(){
 					         log.info(driver.findElement(By.cssSelector(".tablefilter")).isDisplayed());
 					}
 			
+
+					
 }
 
 

@@ -66,7 +66,7 @@ public class ListadoDirectorioAB extends TestSuite{
         
         //Volver a ordenar, en forma descendente
         
-       this.ordenar();
+     //  this.ordenar();
        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
          Reporter.log("Verificar que esta en orden descendiente despues de apretar ordenar en Nombre");
          directorio.verificarOrden();

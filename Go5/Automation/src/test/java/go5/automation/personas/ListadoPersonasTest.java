@@ -52,7 +52,7 @@ public class ListadoPersonasTest extends TestSuite {
          
          //Ordenar por nombre-
          
-           this.ordenar();
+        //  this.ordenar();
            Thread.sleep(1000);
       // Agarrar primer nombre de la tabla
          String firstname= new String(driver.findElement(By.cssSelector(firstRow)).getText());
@@ -68,7 +68,7 @@ public class ListadoPersonasTest extends TestSuite {
         
         //Volver a ordenar, en forma descendente
         
-        this.ordenar();
+       // this.ordenar();
         Thread.sleep(1000);
      // Agarrar primer nombre de la tabla
         String firstname2= new String(driver.findElement(By.cssSelector(firstRow)).getText());
