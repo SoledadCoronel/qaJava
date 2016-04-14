@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 
 
-public class CrearEspacioAC extends TestSuite {
+public class CrearEspacioEmpresaAC extends TestSuite {
 	
 
 	
@@ -53,7 +53,7 @@ public class CrearEspacioAC extends TestSuite {
 		 
 		   		       
 		      //Cargar formulario del espacio
-		     	espacio.setNameEspacio("Espacio Publico");
+		     	espacio.setNameEspacio("Espacio EMPRESA");
 		     	
 		 		espacio.setDescriptionEspacio();	 
 		 
@@ -98,8 +98,8 @@ public class CrearEspacioAC extends TestSuite {
 	           
 	           //Espacio publico
 	          
-	          espacio.setEspacioPublico(); 
-	       //   espacio.setEspacioEmpresa();
+	       //   espacio.setEspacioPublico(); 
+	          espacio.setEspacioEmpresa();
 	       //   espacio.setEspacioPrivado();
 	           
 	           //Grabar el espacio nuevo

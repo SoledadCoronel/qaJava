@@ -3,19 +3,24 @@ package go5.automation.espacios;
 
 import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 
-public class CrearEspacioAC extends TestSuite {
+public class CrearEspacioEmpresaTest extends TestSuite {
 	
 
 	
 	EspacioPage espacio=null;
 	
-		
+	@BeforeClass
+	   public void setup() throws Exception{
+		this.setUpMaven();
+	 }
 	
 	@AfterClass // call function to close browser 
 		
@@ -53,7 +58,7 @@ public class CrearEspacioAC extends TestSuite {
 		 
 		   		       
 		      //Cargar formulario del espacio
-		     	espacio.setNameEspacio("Espacio Publico");
+		     	espacio.setNameEspacio("Espacio EMPRESA");
 		     	
 		 		espacio.setDescriptionEspacio();	 
 		 
@@ -98,14 +103,14 @@ public class CrearEspacioAC extends TestSuite {
 	           
 	           //Espacio publico
 	          
-	          espacio.setEspacioPublico(); 
-	       //   espacio.setEspacioEmpresa();
+	       //   espacio.setEspacioPublico(); 
+	          espacio.setEspacioEmpresa();
 	       //   espacio.setEspacioPrivado();
 	           
 	           //Grabar el espacio nuevo
 	          
 	           espacio.grabarEspacio();
-	                   
+	           espacio.grabarEspacioEmpresaInactivo();        
 	           Thread.sleep(1000);
 	           
 	

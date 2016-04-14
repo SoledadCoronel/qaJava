@@ -36,6 +36,7 @@ import org.testng.Reporter;
     	protected String ordenRol = new String (".tables thead tr th:nth-child(4) a");
     	protected String ordenRegistrado = new String (".tables thead tr th:nth-child(6) a");	
     	protected String editfourthRow= new String(".tables tbody tr:nth-child(4) td:nth-child(5) a"); 
+    	protected String firstType= new String(".tables tbody tr:nth-child(1) td:nth-child(1)");
     	
     	WebDriver driver;
     
@@ -115,13 +116,39 @@ import org.testng.Reporter;
     	  driver.findElement(By.cssSelector(grabarEspacio)).click();
       }
 
+      public void grabarEspacioEmpresaInactivo(){
+    	  driver.findElement(By.cssSelector(".active .mconfirmation .optional")).click();
+      }
 	public void editarEspacio() {
 		 //Agarro el cuarto elemento de la lista y lo tomo para editarlo 
 		
 		driver.findElement(By.cssSelector(editfourthRow)).click();
-		   
-		
 	}
+	
+		public void ordenarPorTipo(){
+			driver.findElement(By.cssSelector(ordenTipo)).click();
+		}
+	
+		public void ordenarPorNombre(){
+			driver.findElement(By.cssSelector(ordenNombre)).click();
+		}
+		public void ordenarPorRol(){
+			driver.findElement(By.cssSelector(ordenRol)).click();
+		}
+		public void ordenarPorEstado(){
+			driver.findElement(By.cssSelector(ordenEstado)).click();
+		}
+    
+		public void ordenarPorRegistrado(){
+			driver.findElement(By.cssSelector(ordenRegistrado)).click();
+		}
+
+		public void verificarOrdenDefault() {
+			//Ver q el primero de la lista sea tipo empresa
+		System.out.println(driver.findElement(By.cssSelector(firstType)).getClass());
+			
+		}
     }
+    
     
 

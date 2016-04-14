@@ -55,16 +55,13 @@ public class ListasEspaciosAC extends TestSuite {
 		 Thread.sleep(1000);
 			
 			
-		    // Ir a Editar un  Espacio 
-		 
-		 espacio.editarEspacio();
-		 espacio.setNameEspacio("Espacio Editado");
-		
-		 //Activar o Desactivar el espacio
-		 
-		 espacio.activarEspacio();
-		 espacio.activarSocial();
-		 
+		    // Ordenar espacios
+		 	 		 
+		espacio.verificarOrdenDefault();
+		 espacio.ordenarPorTipo();
+		 espacio.ordenarPorNombre();
+		 espacio.ordenarPorEstado();
+		// espacio.ordenarPorRegistrado();
 		 
 		   	
 	           
