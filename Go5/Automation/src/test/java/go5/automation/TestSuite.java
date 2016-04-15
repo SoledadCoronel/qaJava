@@ -259,9 +259,15 @@ public void openSiteMobile(){
 	 	 }
 		 
 		
-			   public  String cssgoToAPagina (Integer pagina)  {
-				   String css = ".paged a:nth-child(pagina)" ;
+			   public  String cssgoToAPagina (Integer p)  {
+				   String css = ".paged a:nth-child(p)" ;
 				   return css;
+			   }
+			   
+			   
+			   public void goToPagina(Integer pagina){
+				
+				   driver.findElement(By.cssSelector(this.cssgoToAPagina(pagina))).click();
 			   }
 			  
 			  	   
