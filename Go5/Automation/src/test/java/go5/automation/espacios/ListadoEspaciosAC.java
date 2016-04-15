@@ -11,20 +11,20 @@ import org.testng.annotations.Test;
 
 
 
-public class ListasEspaciosAC extends TestSuite {
+public class ListadoEspaciosAC extends TestSuite {
 	
 	
 
 	
 	EspacioPage espacio=null;
 	
-
+/*
 	@BeforeClass // call function to open the browser and login 
 	 public void setup () throws Exception{
 		
 		 this.setUpMaven();
 	}
-	
+	*/
 	@AfterClass // call function to close browser 
 		
 		public void teardown(){
@@ -52,6 +52,8 @@ public class ListasEspaciosAC extends TestSuite {
 		 //Ir a espacios
 		 espacio.goToEspacios();
 		
+		 
+		 this.goToPagina(5);
 		 Thread.sleep(1000);
 			
 			
