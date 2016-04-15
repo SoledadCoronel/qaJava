@@ -10,11 +10,13 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -47,9 +49,9 @@ public class BrandingFotos {
 	  ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
 	    driver.get(url);
 		 driver.manage().window().maximize();
-		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	  }  
-	
+		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
+	 }
+	 
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
@@ -60,15 +62,15 @@ public class BrandingFotos {
 	 @Test
 		public void brandingPictures() throws InterruptedException{
 			
-			
-			//Login
-			
-			driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.id("signInPassword")).clear();
-	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".primary")).click();
+
+		 //Login
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
+	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
+			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
+	 		 driver.findElement(By.cssSelector(".session .primary")).click();
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	        		
 	       
 	
     // Go to the configuration
@@ -104,10 +106,9 @@ public class BrandingFotos {
                   
                     //Click en el popup de restorear
                     
-                    driver.findElement(By.cssSelector(".mconfirmation .primary")).click();
-                    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
-                    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
-      	          driver.findElement(By.cssSelector(".primary")).click(); 
+                    driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
+                    driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); 
+                    driver.findElement(By.cssSelector(".primary")).click(); 
               
 	        
 		
@@ -120,7 +121,7 @@ public class BrandingFotos {
         Reporter.log("Cargando una foto para el logo de la empresa" );
         // Primero hay que clickear en otro si no no anda!!Clickeo titles
         driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-        
+        Reporter.log("El nombre de la pagina es :");
         Reporter.log(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
         // Clickeo en Disenio
         
@@ -148,11 +149,10 @@ public class BrandingFotos {
         upload.sendKeys(file.getAbsolutePath());
         Thread.sleep(1000);
         
-       driver.findElement(By.cssSelector(".cutpictures .primary")).click();
-       Thread.sleep(1000);
+       driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .primary")).click();
+       Thread.sleep(2000);
        Reporter.log("Foto cargada exitosamente");
-        //Para cancelar 
-      //   driver.findElement(By.cssSelector(".cutpictures .optional")).click();
+        
          
        
     //Save changes
@@ -160,7 +160,7 @@ public class BrandingFotos {
           driver.findElement(By.cssSelector(".primary")).click();
     	
 	
-
+          WebElement disenioavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("loginBgFilePicker")));
       // Load background file
         Reporter.log("Cargando foto para el backgroud de la plataforma");
      

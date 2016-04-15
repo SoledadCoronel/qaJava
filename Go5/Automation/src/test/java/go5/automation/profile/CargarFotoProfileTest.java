@@ -9,18 +9,20 @@ import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
 
-public class CargarFotoProfile extends TestSuite {
+public class CargarFotoProfileTest extends TestSuite {
 	
  
 	
  @BeforeClass
-  
-  public void setUp() throws Exception {
-	this.setUpMaven();
+  @Parameters(value={"browser","version","platform","url","build"})
+  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+	this.setUpBrowserStack(browser, version, platform, url,build);
+	
 	
  }
    
@@ -53,9 +55,6 @@ public class CargarFotoProfile extends TestSuite {
 			driver.findElement(By.cssSelector(".applications .users .subusers li a[title='Ir a ver perfil']")).click();
 			
 				
-			driver.findElement(By.cssSelector(".igocamera")).click();
-			driver.findElement(By.cssSelector(".active .mconfirmation")).click();
-			   
 			 JavascriptExecutor js = (JavascriptExecutor) driver;
 		        WebElement element = driver.findElement(By.id("photoFilePicker"));
 		        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);

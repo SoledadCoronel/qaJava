@@ -3,42 +3,39 @@ package go5.automation.personas;
 
 
 import go5.automation.TestSuite;
-
+import go5.pageObjects.LoginPage;
+import go5.pageObjects.PersonasPage;
 
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.WebElement;
-
 import org.testng.Reporter;
-
-import org.testng.annotations.AfterTest;
-
-import org.testng.annotations.BeforeTest;
-
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 
-public class AddUserAdminAllFields extends TestSuite{
+public class AddUserAC extends TestSuite{
 
-	//private WebDriver driver;
-
+	// Declarion pagina de Personas
+	
+	PersonasPage personas = null;
 	
 
-		 @BeforeTest // call function to open the browser and login 
-		 public void setup () throws Exception{
+	
+	@BeforeClass
+	   public void setup() throws Exception{
 		this.setUpMaven();
+        personas= new PersonasPage(driver);
 		
-		   
-		 }
-		
-		 @AfterTest // call function to close browser 
+	 }
+	
+		 @AfterClass // call function to close browser 
 			
 			public void teardown(){
 				closeBrowser();
@@ -48,35 +45,36 @@ public class AddUserAdminAllFields extends TestSuite{
 		
 
 	@Test
-	public void addUserAdmin() throws InterruptedException{
-		 org.apache.log4j.BasicConfigurator.configure();
-		 Random numero= new Random();
-	 
-		 
-		 // Go to the configuration
-			driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-	       driver.findElement(By.cssSelector(".menu")).click();
-	       Thread.sleep(1000);
+	public void agregarPersonaPOM() throws Exception{
 		
-		      
-	    
-	   // Go to Manage people
+	 
+		log.info("Ir al menu de config");
+        Reporter.log(" Testeando la pagina de Administrar personas");
+		
+        // Go to the configuration
+        this.goToConfiguration();
+		this.goToMenu();
+	      
+		// Go to  Users Menu
+	        Reporter.log("Abriendo administar personas" );  
+	       
 	        
-	        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	     
-	         // Obtener la cantidad de usuarios antes de agregar user
-	         
-	               
-	         WebElement htmltable=driver.findElement(By.cssSelector(".tablefilter tbody"));
-
-	        List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
-	         Reporter.log("La cantidad de usuarios antes de agregar uno nuevo,en el sitio es",rows.size());
-	         
-	         
-	         //Add a  user    
-		     driver.findElement(By.cssSelector(".content .title a")).click();
-		    
+	    // Go to Titles2    
+	        this.goToTitles();
+	       
+	        log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
+	        Reporter.log("Abriendo personas");
+	   // Go to Manage people
+	   //     this.click(irAPersonas);
+	       personas.goToPersonas();
+	        System.out.println("Poniendo nombre");
+		      
+	      personas.setRandomUserName();
+	      System.out.println("Poniendo nombre");
+	      
+	      personas.setRandomLastName();
+	      System.out.println("Poniendo apellidonombre"); 
+	       		    
 		     
 		     //Verificar ayuda de estado del usuario
 		     
@@ -84,9 +82,9 @@ public class AddUserAdminAllFields extends TestSuite{
 		     Reporter.log(driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) h2")).getText());
 		     //Cerrar el popup de ayuda
 		    
-		     Thread.sleep(1000);
+		 ;
 		     driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .close"));
-		     Thread.sleep(1000);
+		     
 		     
 		     //Verificar modal de Bloquear Acceso
 		     driver.findElement(By.cssSelector(".basicdata label:nth-child(3) a")).click();
@@ -96,15 +94,7 @@ public class AddUserAdminAllFields extends TestSuite{
 		       
 		     driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
 		    
-		     //Lo creo desactivado
 		     
-		     driver.findElement(By.cssSelector(".basicdata label:nth-child(2) input:nth-child(2) ")).click();
-		     
-		     //Poner el nombre
-		     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		     driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Random Name" + numero.nextInt());
-		     driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("Random Lastname"+ numero.nextDouble());
-		     driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("randomemail"+numero.nextInt()+"@gointegro.com");
 		     
 		     //Seleccionar el rol
 		      

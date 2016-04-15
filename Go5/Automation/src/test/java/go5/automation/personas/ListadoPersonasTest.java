@@ -8,38 +8,36 @@ import org.openqa.selenium.By;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+
 import org.testng.annotations.Test;
 
 
 
 
-public class ListadoPersonas extends TestSuite {
+public class ListadoPersonasTest extends TestSuite {
 			 	 
 	 @BeforeClass
-	 @Parameters(value={"browser","version","platform","url","build"})
-	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.setUpBrowserStack(browser, version, platform, url,build);
+	  	  
+	  public void setUp() throws Exception {
+		 this.setUpMaven();
 	 }
 	   
 
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			this.quitBrowser();
+			driver.quit();
 		}
 		
 	
 	@Test
 	
-
 	public void listadoPersonas() throws Exception { 
 			
 		       
          // Go to the configuration
          
 		 this.goToConfiguration();
-		 //Implement expected wait
 		 this.goToMenu();
 	
         
@@ -54,7 +52,7 @@ public class ListadoPersonas extends TestSuite {
          
          //Ordenar por nombre-
          
-        //   this.ordenar();
+        //  this.ordenar();
            Thread.sleep(1000);
       // Agarrar primer nombre de la tabla
          String firstname= new String(driver.findElement(By.cssSelector(firstRow)).getText());
@@ -70,7 +68,7 @@ public class ListadoPersonas extends TestSuite {
         
         //Volver a ordenar, en forma descendente
         
-     //   this.ordenar();
+       // this.ordenar();
         Thread.sleep(1000);
      // Agarrar primer nombre de la tabla
         String firstname2= new String(driver.findElement(By.cssSelector(firstRow)).getText());
@@ -86,8 +84,7 @@ public class ListadoPersonas extends TestSuite {
          
     //Hacer una busqueda
      
-            	 
-                	 
+                            	 
                 Reporter.log(" Hacer una busqueda de un usuario por Nombre");
                  this.search(firstname2);
 	               
@@ -108,5 +105,7 @@ public class ListadoPersonas extends TestSuite {
                Reporter.log(secondname2);
                Reporter.log(" Imprimiendo el resultado del search");
                Reporter.log(secondname2);
+            
+	           
 	}
 }	

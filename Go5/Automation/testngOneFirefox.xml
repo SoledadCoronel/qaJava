@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="Suite" parallel="tests">
+   <test name="FirstTest">
+  <parameter name="browser" value="firefox"/>
+  <parameter name="version" value="42.0"/>
+  <parameter name="platform" value="WIN8"/>
+  <parameter name="url" value="http://automation5.pla.qa.go5.gointegro.net/authentication/login"/>
+  <parameter name="build" value="0.6"/>
+  <classes>
+        <class name="go5.automation.directorio.ListadoDirectorioBS"/>     
+      </classes>
+  </test> <!-- Test -->
+  
+  </suite> <!-- Suite -->
