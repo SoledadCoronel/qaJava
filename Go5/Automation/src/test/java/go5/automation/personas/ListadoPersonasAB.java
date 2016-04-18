@@ -4,6 +4,8 @@ import go5.automation.TestSuite;
 import go5.pageObjects.DirectorioPage;
 
 
+import go5.pageObjects.PersonasPage;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -21,7 +23,7 @@ import org.testng.annotations.Test;
 public class ListadoPersonasAB extends TestSuite {
 			 	 
 	
-	 DirectorioPage directorio = null;
+	PersonasPage personas = null;
 
 		
 	 @BeforeClass // call function to open the browser and login 
@@ -43,7 +45,7 @@ public class ListadoPersonasAB extends TestSuite {
 
 	public void listadoPersonas() throws Exception { 
 			
-		directorio = new DirectorioPage(driver);     
+		personas = new PersonasPage(driver);     
          // Go to the configuration
          
 		 this.goToConfiguration();
@@ -73,7 +75,7 @@ public class ListadoPersonasAB extends TestSuite {
           this.ordenarPorRegistro();
           driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             Reporter.log("Verificar que esta en orden descendiente despues de apretar ordenar en Nombre");
-            directorio.verificarOrden();
+         
           
         //Verificar Paginado
           Reporter.log("Seleccionar otra pagina del listado");
@@ -93,7 +95,7 @@ public class ListadoPersonasAB extends TestSuite {
                    Reporter.log("El nombre del user buscado es:Automation");
                       Thread.sleep(1000);     
                    Reporter.log(" Imprimiendo el resultado del search:");
-                  Reporter.log(directorio.getFirstName()); 
+                 ; 
    	
                   
                   Reporter.log(" Hacer una busqueda de un usuario por Apellido");
@@ -103,7 +105,7 @@ public class ListadoPersonasAB extends TestSuite {
                   Reporter.log("El nombre del user buscado es AutomationLastName");
                  
                   Reporter.log(" Imprimiendo el resultado del search");
-                  Reporter.log(directorio.getFirstName());
+                 
                  
                   //Ir al profile del user buscado
                   this.click(firstRow);

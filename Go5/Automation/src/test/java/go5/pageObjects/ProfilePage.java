@@ -2,10 +2,13 @@ package go5.pageObjects;
 
 
 
+import java.io.File;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 
 
@@ -17,6 +20,7 @@ import org.testng.Reporter;
     	
     	
 		    		protected String irAProfile = new String (".applications .users .subusers li a[title='Ir a ver perfil']");
+		    		protected String editFoto = new String(".igocamera");
 		     	 	protected String editarProfile= new String (".data h2 a");
 		    	   	protected String agrandarForm = new String (".addpeople fieldset:nth-child(2) .secondary");
 		    	   	protected String grabarUser = new String (".container .addpeople .primary");    	    	    	
@@ -144,6 +148,35 @@ import org.testng.Reporter;
         driver.findElement(By.cssSelector(facebook)).clear();
       driver.findElement(By.cssSelector(facebook)).sendKeys("http://facebook.com/username"); 
      }
+    
+    public void cargarFoto() throws InterruptedException{
+    	driver.findElement(By.cssSelector(editFoto)).click();
+    	//driver.findElement(By.cssSelector(".igocamera")).click();
+		driver.findElement(By.cssSelector(".active .mconfirmation")).click();
+		   
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+	        WebElement element = driver.findElement(By.cssSelector(editFoto));
+	        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
+	     
+	      
+	      //Agarrar el elemento para cargar el file y pasarle el path 
+	        
+	        WebElement upload= driver.findElement(By.cssSelector(editFoto));
+	       
+	       
+	        File file = new File("src/test/resources/Girasol.jpeg");
+	        
+	        Reporter.log(file.getAbsolutePath());
+	        upload.sendKeys(file.getAbsolutePath());
+	        Thread.sleep(1000);
+	        
+	       driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .primary")).click();
+	       Thread.sleep(1000);
+	       
+	         
+	       Reporter.log(" Foto cargada exitosamente");
+    }
+    
     }
     
     
