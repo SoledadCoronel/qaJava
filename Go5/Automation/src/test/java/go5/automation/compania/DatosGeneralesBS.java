@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 
-public class DatosGenerales  extends DatosGeneralesAC{
+public class DatosGeneralesBS  extends DatosGeneralesAC{
 	
 
 	

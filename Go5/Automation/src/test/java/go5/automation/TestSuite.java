@@ -67,8 +67,8 @@ public class TestSuite {
 	protected String ordenTitulo = new String (".tables thead tr th:nth-child(3) a");
 	protected String ordenRol = new String (".tables thead tr th:nth-child(4) a");
 	protected String ordenEstado = new String (".tables thead tr th:nth-child(5) a");	
-	protected String ordenRegistrado = new String (".tables thead tr th:nth-child(6) a");	
-	
+	protected String ordenRegistrado = new String (".tables thead tr th:nth-child(6) a");
+	protected String irALogout= new String (".subusers li:last-child a");
 	
 	// Declaracion de funciones
 	
@@ -105,8 +105,22 @@ public class TestSuite {
 			
 			//this.openSite(urlSiteAutomation2);
 			 login.loginToGo("marina.touceda+023@gointegro.com","Auto1234");
-			 Reporter.log(" Login como admin exitoso");
-			
+			 Reporter.log(" Login como admin de espacios exitoso");
+	   }
+			 
+			  public void setUpMavenUserBasic() throws Exception {
+					
+			        driver = new FirefoxDriver();
+			        login= new LoginPage(driver);
+			        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			 
+			        this.openSite(urlSiteAutomation1);
+			       
+			        Reporter.log("Abriendo la aplicacion");
+					
+					//this.openSite(urlSiteAutomation2);
+					 login.loginToGo("marina.touceda+022@gointegro.com","Auto1234");
+					 Reporter.log(" Login como usuerio bascio exitoso");
 	   }
 	   
 	   public void setUpBrowserStack(String browser, String version, String platform,String url,String build) throws Exception {
@@ -260,9 +274,8 @@ public void openSiteMobile(){
 		 
 		
 			   public  String cssgoToAPagina (Integer p)  {
-				   String css = ".paged a:nth-child(p)" ;
-				   System.out.print(css);
-				   Reporter.log(css);
+				   String css = ".paged a:nth-child"+"("+(p)+")";
+				 
 				   return css;
 				 
 			   }
@@ -270,10 +283,8 @@ public void openSiteMobile(){
 			   
 			   public void goToPagina(Integer pagina){
 				
-			String	 css=this.cssgoToAPagina(pagina);
-			Reporter.log(" El segundo css es:");
-			Reporter.log(css);
-				   driver.findElement(By.cssSelector(css)).click();
+			String css=this.cssgoToAPagina(pagina);
+			  driver.findElement(By.cssSelector(css)).click();
 			   }
 			  
 			  	   
@@ -344,7 +355,9 @@ public void openSiteMobile(){
 						this.click(irATitles);
 					}
 					
-					
+					public void logout() throws Exception{
+						this.click(irALogout);
+					}
 										
 					
 					public void goToInvitations() throws Exception{

@@ -53,7 +53,7 @@ public class CrearEspacioAC extends TestSuite {
 		 
 		   		       
 		      //Cargar formulario del espacio
-		     	espacio.setNameEspacio("Espacio Publico");
+		     	espacio.setNameEspacio("Publico");
 		     	
 		 		espacio.setDescriptionEspacio();	 
 		 

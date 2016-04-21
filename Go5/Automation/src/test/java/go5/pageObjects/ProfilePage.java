@@ -19,7 +19,7 @@ import org.testng.Reporter;
     	//Css
     	
     	
-		    		protected String irAProfile = new String (".applications .users .subusers li a[title='Ir a ver perfil']");
+		    		protected String irAProfile = new String (".subusers li:nth-child(2) a");
 		    		protected String editFoto = new String(".igocamera");
 		     	 	protected String editarProfile= new String (".data h2 a");
 		    	   	protected String agrandarForm = new String (".addpeople fieldset:nth-child(2) .secondary");
@@ -53,9 +53,10 @@ import org.testng.Reporter;
     	   
     	 
     	    
-      public void goToProfiles(){
+      public void goToProfile(){
     	  Reporter.log("Ir a Profile");
-       	  driver.findElement(By.cssSelector(irAProfile)).click();
+    	  driver.findElement(By.cssSelector(".subusers li:nth-child(2) a")).click();
+       	//  driver.findElement(By.cssSelector(irAProfile)).click();
     	    }
     
       

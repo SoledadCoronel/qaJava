@@ -20,11 +20,5 @@ public class UnirseAEspacioUserBasic extends EspacioUserBasicAbstractClass{
 
 	}
 	
-	 @AfterClass // call function to close browser 
-		
-		public void teardown(){
-		this.quitBrowser();
-		}
-	}	
-		
+}	
 	 

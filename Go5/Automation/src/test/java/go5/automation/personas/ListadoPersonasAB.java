@@ -25,12 +25,6 @@ public class ListadoPersonasAB extends TestSuite {
 	
 	PersonasPage personas = null;
 
-		
-	 @BeforeClass // call function to open the browser and login 
-	 public void setup () throws Exception{
-		
-		this.setUpMaven();
-	 }
 	 
 	 
 	 @AfterClass // call function to close browser 
