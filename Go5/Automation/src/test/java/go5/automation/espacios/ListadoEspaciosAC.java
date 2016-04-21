@@ -4,6 +4,7 @@ package go5.automation.espacios;
 import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
 
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -18,13 +19,13 @@ public class ListadoEspaciosAC extends TestSuite {
 	
 	EspacioPage espacio=null;
 	
-/*
+
 	@BeforeClass // call function to open the browser and login 
 	 public void setup () throws Exception{
 		
 		 this.setUpMaven();
 	}
-	*/
+
 	@AfterClass // call function to close browser 
 		
 		public void teardown(){
@@ -36,12 +37,12 @@ public class ListadoEspaciosAC extends TestSuite {
 	 
 	@Test
 	
-	public void crearEspacio() throws Exception { 
+	public void listarEspacios() throws Exception { 
 	
 		espacio= new EspacioPage(driver); 
 			
 	        
-		 Reporter.log(" Creando un espacio como user admin");
+		 Reporter.log(" Listado de espacios ");
 		 
 		// Go to hamburguesita
 		 
@@ -50,21 +51,24 @@ public class ListadoEspaciosAC extends TestSuite {
 		 
 			
 		 //Ir a espacios
+		
 		 espacio.goToEspacios();
 		
-		 
-		 this.goToPagina(5);
-		 Thread.sleep(1000);
-			
+		
+					
 			
 		    // Ordenar espacios
-		 	 		 
-		espacio.verificarOrdenDefault();
+				 
+		 espacio.verificarOrdenDefault();
 		 espacio.ordenarPorTipo();
-		 espacio.ordenarPorNombre();
 		 espacio.ordenarPorEstado();
-		// espacio.ordenarPorRegistrado();
+		 Thread.sleep(1000);
+		 espacio.ordenarPorNombreEspacio();
 		 
+		  this.goToPagina(2);
+		 Thread.sleep(1000);
+		 espacio.ordenarPorTipo();
+		 espacio.ordenarPorNombreEspacio();
 		   	
 	           
 	           

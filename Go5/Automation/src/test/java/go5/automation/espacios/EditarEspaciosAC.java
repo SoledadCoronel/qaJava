@@ -6,7 +6,6 @@ import go5.pageObjects.EspacioPage;
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
@@ -53,13 +52,13 @@ public class EditarEspaciosAC extends TestSuite {
 		    // Ir a Editar un  Espacio 
 		 
 		 espacio.editarEspacio();
-		 espacio.setNameEspacio("Espacio Editado");
+		 espacio.setNameEspacio("Editado");
 		
 		 //Activar o Desactivar el espacio
 		 
 		 espacio.activarEspacio();
 		 espacio.activarSocial();
-		 espacio.cambiarIconoPhone();
+		 espacio.cambiarIconoUmbrella();
 		 espacio.setEspacioPrivado();
 		 espacio.grabarEspacio();
 		 

@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
 
 
 
-public class Branding extends BrandingAC{
+public class BrandingBS extends BrandingAC{
 
 	
 	

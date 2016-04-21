@@ -14,11 +14,13 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import go5.pageObjects.EspacioPage;
 import go5.pageObjects.PersonasPage;
+import go5.pageObjects.SignupPage;
 
 
 
-public class InvitationsTest extends TestSuite{
+public class AltaUserAC extends TestSuite{
 
 	String resend= new String(".tables tr:nth-child(1) td:nth-child(6) .link");
 	String okModal = new String ("#modal-container .modal:nth-child(6) .primary");
@@ -28,6 +30,7 @@ public class InvitationsTest extends TestSuite{
 	String tabla= new String (".tables");
 	 
 	PersonasPage personas = null;
+	SignupPage  signup = null;
 	
 	 @BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
@@ -36,9 +39,7 @@ public class InvitationsTest extends TestSuite{
 	 @AfterTest // call function to close browser 
 		
 		public void teardown(){
-		 JavascriptExecutor js = (JavascriptExecutor) driver;
-		 js.executeScript("localStorage.clear();");
-		 closeBrowser();
+			closeBrowser();
 		}
 
 	
@@ -57,7 +58,9 @@ public class InvitationsTest extends TestSuite{
 	@Test
 	public void invitattionResendwithAnAdminUser() throws Exception{
 		
-			
+		personas = new PersonasPage(driver);
+		signup = new SignupPage(driver);
+		
 			
 		log.info("Ir al menu de config");
         Reporter.log(" Testeando la pagina de Administrar personas");
@@ -81,45 +84,25 @@ public class InvitationsTest extends TestSuite{
 	     
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
     
-	          
+	          JavascriptExecutor js = (JavascriptExecutor) driver;
+	          js.executeScript("$(document).ajaxComplete(function( event, xhr, settings ) {   if(settings.url.indexOf('http://api.qa.go5.gointegro.net/invitations') != -1 && settings.type == 'POST') { localStorage.setItem('invitationUrl', '/registration/invitation/'+$.parseJSON(xhr.responseText).data.id); } });");
  	        
-         //Add a  user  
-	     this.crearUserAdmin();
-	    	        	      	
-	        // Ir al tab de invitaciones pendientes
-	      
-	     	this.goToInvitations();
-	              
-	         log.info(driver.findElement(By.cssSelector(tabla)).isDisplayed());
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	         this.verificarTabla();
-	         
-	         
-	         JavascriptExecutor js = (JavascriptExecutor) driver;
-	          js.executeScript("$(document).ajaxComplete(function( event, xhr, settings ) {  if(settings.url.indexOf('http://api.qa.go5.gointegro.net/invitations') != -1 && settings.type == 'PATCH') { localStorage.setItem('invitationUrl', '/registration/invitation/'+$.parseJSON(xhr.responseText).data.id); } });");
-	          
-	      //  Reenviar la invitacion
-	          
-	          //Presiono boton reenviar del primer elemento de la tabla
-	       this.click(resend);
-	       driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	          this.click(okModal);
-	            driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	          Reporter.log(" La invitacion se reenvio correctamente");
-	         
-	          Thread.sleep(500);
-	          // Verificar que el email ha sido reenviado
-	            this.goToMenuUsuario();
-	         	this.logout();
-	        
+	          //Add a  user  
+			        this.crearUserAdmin();
+			        this.goToMenuUsuario();
+			       	this.logout();
+		        
 	          
 	          js.executeScript("window.location = localStorage.getItem('invitationUrl');");
 	          Thread.sleep(2000);
-   	         
-	         
-	       
+   	         	         	 
+	  
 	  		
-	  		
+	  		signup.setPassword("Auto1234");
+	  		signup.aceptarTerminosYCondiciones();
+	  		 Thread.sleep(1000);
+	  		signup.clickgoButton();
+	  		Thread.sleep(1000);
 	
 	
 	}

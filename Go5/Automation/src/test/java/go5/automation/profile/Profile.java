@@ -6,7 +6,7 @@ import go5.pageObjects.ProfilePage;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 public class Profile extends TestSuite  {
 	
- private WebDriver driver;
+
 
 ProfilePage profile = null;
 
@@ -45,7 +45,7 @@ ProfilePage profile = null;
 	
 			
 			//Ir a ver perfil
-		   profile.goToProfiles();
+		   profile.goToProfile();
 		//	driver.findElement(By.cssSelector(".applications .users .subusers li a[title='Ir a ver perfil']")).click();
 			
 			

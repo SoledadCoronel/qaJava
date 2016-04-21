@@ -53,7 +53,7 @@ public class CrearEspacioEmpresaAC extends TestSuite {
 		 
 		   		       
 		      //Cargar formulario del espacio
-		     	espacio.setNameEspacio("Espacio EMPRESA");
+		     	espacio.setNameEspacio("EMPRESA");
 		     	
 		 		espacio.setDescriptionEspacio();	 
 		 

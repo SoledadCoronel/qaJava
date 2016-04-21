@@ -12,31 +12,24 @@ import go5.pageObjects.ProfilePage;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+
 import org.testng.annotations.Test;
 
 
 
-public class IrAPerfilSidebar extends TestSuite {
+public class IrAPerfilSidebarAC extends TestSuite {
 	
- private WebDriver driver;
+
 
  ProfilePage profile =null;
 	
 
 	
- @BeforeClass
-  @Parameters(value={"browser","version","platform","url","build"})
-  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-	this.setUpBrowserStack(browser, version, platform, url,build);
-	
-	
- }
+ 
    
 
  @AfterClass // call function to close browser 

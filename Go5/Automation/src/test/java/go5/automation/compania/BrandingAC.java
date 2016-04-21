@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 
 public class BrandingAC extends TestSuite{
 
-	private WebDriver driver;
+	
 	   CompanyPage company=null;
 	
 	 
