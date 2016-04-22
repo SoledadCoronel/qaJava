@@ -9,12 +9,16 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import go5.pageObjects.EspacioPage;
+import go5.pageObjects.LoginPage;
 import go5.pageObjects.PersonasPage;
 import go5.pageObjects.SignupPage;
 
@@ -31,15 +35,22 @@ public class AltaUserAC extends TestSuite{
 	 
 	PersonasPage personas = null;
 	SignupPage  signup = null;
+	LoginPage login = null;
 	
-	 @BeforeTest // call function to open the browser and login 
+	
+	//Init variables
+	
+	
+	
+	 @BeforeClass // call function to open the browser and login 
 	 public void setup () throws Exception{
 		 this.setUpMaven();
 	 }
-	 @AfterTest // call function to close browser 
+	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
-			closeBrowser();
+		 js.executeScript("localStorage.clear();");
+		 closeBrowser();
 		}
 
 	
@@ -47,10 +58,9 @@ public class AltaUserAC extends TestSuite{
 	 // Verificar que hay un elemento en la tabla 
        
      WebElement htmltable=driver.findElement(By.cssSelector(".tables tbody"));
-
      List<WebElement> rows=htmltable.findElements(By.tagName("tr"));
-     log.info("Imprimiendo la cantidad de inivtaciones pendientes...");
-     log.info(rows.size());
+         Reporter.log("Imprimiendo la cantidad de inivtaciones pendientes...", rows.size());
+    
 	 }
 		
 		
@@ -60,10 +70,11 @@ public class AltaUserAC extends TestSuite{
 		
 		personas = new PersonasPage(driver);
 		signup = new SignupPage(driver);
+		login = new LoginPage(driver);
+		js=  (JavascriptExecutor) driver;
 		
-			
-		log.info("Ir al menu de config");
-        Reporter.log(" Testeando la pagina de Administrar personas");
+				 
+        Reporter.log(" Creando un user admin y dando de alta en go5,flujo completo");
 		
         // Go to the configuration
         this.goToConfiguration();
@@ -75,35 +86,33 @@ public class AltaUserAC extends TestSuite{
 	        
 	    // Go to Titles2    
 	        this.goToTitles();
+	      	      
 	       
-	        log.info(driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).getText());
-	        Reporter.log("Abriendo personas");
 	   // Go to Manage people
 	         this.click(irAPersonas);
-	       //  personas.goToPersonas();
-	     
+	       
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-    
-	          JavascriptExecutor js = (JavascriptExecutor) driver;
+             
 	          js.executeScript("$(document).ajaxComplete(function( event, xhr, settings ) {   if(settings.url.indexOf('http://api.qa.go5.gointegro.net/invitations') != -1 && settings.type == 'POST') { localStorage.setItem('invitationUrl', '/registration/invitation/'+$.parseJSON(xhr.responseText).data.id); } });");
  	        
 	          //Add a  user  
-			        this.crearUserAdmin();
-			        this.goToMenuUsuario();
-			       	this.logout();
-		        
-	          
+	         
+	          String emaillogin = new String (this.crearUserAdminReturningmail());
+	         	        
+	          this.goToMenuUsuario();
+			  	this.logout();
+		        	          
 	          js.executeScript("window.location = localStorage.getItem('invitationUrl');");
 	          Thread.sleep(2000);
    	         	         	 
-	  
-	  		
-	  		signup.setPassword("Auto1234");
-	  		signup.aceptarTerminosYCondiciones();
-	  		 Thread.sleep(1000);
-	  		signup.clickgoButton();
-	  		Thread.sleep(1000);
-	
+	   			  		
+	  	  	signup.registrarse();
+	  	  	login.loginToGo(emaillogin, strPassword);
+           	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+          	this.goToMenuUsuario();
+          	this.goToProfile();
+          	
+          
 	
 	}
 	
