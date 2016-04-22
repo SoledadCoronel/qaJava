@@ -1,6 +1,7 @@
 package go5.pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 
 
   
@@ -59,10 +60,25 @@ import org.openqa.selenium.WebDriver;
 	   driver.findElement(By.cssSelector(terminosYcondicioneslink)).click();
    }
      
-     public void registrarse(){
-    	
+     public void registrarse() throws InterruptedException{
+    	 
+    	 	setPassword("Auto1234");
+	  		aceptarTerminosYCondiciones();
+	  		 Thread.sleep(1000);
+	  		clickgoButton();
+	  		Thread.sleep(1000);
     	
     }
+     public String getUsername() throws InterruptedException{
+    	 Thread.sleep(2000);
+    	 Reporter.log(" Impimir el value");
+    	 Reporter.log(driver.findElement(By.cssSelector(userName)).getAttribute("value"));
+    	 Reporter.log("Imprimir el texto");
+    	 Reporter.log(driver.findElement(By.cssSelector(userName)).getText());
+    	 
+    	return( driver.findElement(By.cssSelector(userName)).getAttribute("value"));
+    	
+     }
     
     
     }
