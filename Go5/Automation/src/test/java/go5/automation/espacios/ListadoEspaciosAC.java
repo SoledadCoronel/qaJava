@@ -14,18 +14,10 @@ import org.testng.annotations.Test;
 
 public class ListadoEspaciosAC extends TestSuite {
 	
-	
-
-	
+		
 	EspacioPage espacio=null;
 	
-
-	@BeforeClass // call function to open the browser and login 
-	 public void setup () throws Exception{
-		
-		 this.setUpMaven();
-	}
-
+	
 	@AfterClass // call function to close browser 
 		
 		public void teardown(){
