@@ -36,8 +36,9 @@ public class ListadoPersonasFiltersAC extends TestSuite {
          // Go to the configuration
 		this.goToConfiguration();
 		this.goToMenu();
+		Thread.sleep(1000);
          
- 	 personas.goToPersonas();
+		personas.goToPersonas();
          
                
          //Filtrados

@@ -77,12 +77,12 @@ import org.testng.Reporter;
     	  driver.findElement(By.cssSelector(grabarUser)).click();
     	  
       }
-   public void goToProfileSideBar(){
+   public void goToProfileSideBar() throws InterruptedException{
    
  
       // Go to the user menu
    Reporter.log("Ir a Perfil Desde el sidebar");	
-   
+  Thread.sleep(1000);
    driver.findElement(By.cssSelector(".igouser")).click();
    }
    
