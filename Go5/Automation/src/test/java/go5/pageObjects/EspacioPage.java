@@ -23,6 +23,7 @@ import org.testng.Reporter;
     	private String nombreEspacio = new String (".spacecreate fieldset:nth-child(1) label:nth-child(1) input");
     	private String descripcionEspacio= new String (".spacecreate fieldset:nth-child(1) label:nth-child(2) input");
     	private String activarEspacio = new String (".spaceformconfig label:nth-child(2) span");
+    	private String activadadSocial = new String (".spaceformconfig label:nth-child(3) span");
     	private String cambiarIcono = new String (".igospaceadmin");
     	
     	//private String confirmarIcono = new String ("active .mconfirmation .primary");
@@ -94,12 +95,16 @@ import org.testng.Reporter;
     	   driver.findElement(By.cssSelector(activarEspacio)).click();
        }
    
+       public void activarActividadSocial(){
+    	   driver.findElement(By.cssSelector(activadadSocial)).click();
+       }
         
-       public void cambiarIcono(){
+       public void cambiarIcono() throws InterruptedException{
     	
     	   driver.findElement(By.cssSelector(cambiarIcono)).click();
     	
 	          driver.findElement(By.cssSelector(".igospacetool")).click();
+	          Thread.sleep(1000);
 	         driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
     	   
     	  /* 
@@ -109,10 +114,11 @@ import org.testng.Reporter;
        */
        }
        
-       public void cambiarIconoUmbrella(){
+       public void cambiarIconoUmbrella() throws InterruptedException{
 	       
     	   driver.findElement(By.cssSelector(cambiarIcono)).click();
 	          driver.findElement(By.cssSelector(".igospaceumbrella")).click();
+	          Thread.sleep(1000);
 	         driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
        }
       public void grabarEspacio(){
