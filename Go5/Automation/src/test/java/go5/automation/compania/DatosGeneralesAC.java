@@ -21,11 +21,11 @@ public class DatosGeneralesAC  extends TestSuite{
    CompanyPage company=null;
 	
 	
-	 @AfterClass // call function to close browser 
-		
-		public void teardown(){
-			driver.quit();
-		}
+   @AfterClass // call function to close browser 
+	
+	public void teardown(){
+		this.quitBrowser();
+	}
 		
 	
 	@Test

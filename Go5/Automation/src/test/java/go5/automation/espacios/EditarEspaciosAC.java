@@ -57,7 +57,6 @@ public class EditarEspaciosAC extends TestSuite {
 		 //Activar o Desactivar el espacio
 		 
 		 espacio.activarEspacio();
-		 espacio.activarSocial();
 		 espacio.cambiarIconoUmbrella();
 		 espacio.setEspacioPrivado();
 		 espacio.grabarEspacio();

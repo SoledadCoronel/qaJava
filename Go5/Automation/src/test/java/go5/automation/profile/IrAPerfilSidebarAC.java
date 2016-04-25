@@ -63,7 +63,7 @@ public class IrAPerfilSidebarAC extends TestSuite {
 				//Editar perfil
 			   
 			   profile.editarProfile();	
-				 
+				 Thread.sleep(1000);
 		
 				
 				//Insertar datos laborales

@@ -49,7 +49,7 @@ public class CrearEspacioAC extends TestSuite {
 			
 		    // Ir a Crear Espacio 
 		 
-		 espacio.crearEspacio();
+		 	espacio.crearEspacio();
 		 
 		   		       
 		      //Cargar formulario del espacio
@@ -63,11 +63,7 @@ public class CrearEspacioAC extends TestSuite {
 	          //Desactivar
 	          Reporter.log("Desactivar el espacio");
 	          espacio.activarEspacio();
-	     
 	
-	         //Actividad Social
-	          Reporter.log("Desactivar Acitividad Social");
-	          espacio.activarSocial();
 	     
 	          //Seleccionar el icono
 	          Reporter.log("Seleccionar el icono del espacio");
