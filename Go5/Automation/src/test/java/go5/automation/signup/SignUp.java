@@ -1,7 +1,7 @@
 package go5.automation.signup;
 
 
-import go5.automation.CommonFunctions;
+import go5.automation.TestSuite;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
 
-public class SignUp extends CommonFunctions{
+public class SignUp extends TestSuite{
 
 	private String email = this.generateRandomEmail();
 	

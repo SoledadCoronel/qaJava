@@ -3,17 +3,14 @@ package go5.automation.compania;
 
 
 
-import java.io.File;
-import java.net.URL;
+import go5.automation.TestSuite;
+
+
+
+
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.LocalFileDetector;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -22,53 +19,27 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
-public class Branding {
+public class Branding extends TestSuite{
 
-
-	 private WebDriver driver;
-
-		
-	 @BeforeClass
-	  @Parameters(value={"browser","version","platform","url"})
-	  public void setUp(String browser, String version, String platform,String url) throws Exception {
-	    DesiredCapabilities capability = new DesiredCapabilities();
-	    capability.setCapability("platform",platform);
-	    capability.setCapability("browserName", browser);
-	    capability.setCapability("browserVersion", version);
-	    capability.setCapability("project", "GOIntegro");
-	    capability.setCapability("build", "1.0");
-	    capability.setCapability("debug", false);
-	    capability.setCapability("name", "Company Design");
-	    
-	    driver = new RemoteWebDriver(
-	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
-	    	      capability);
-	    
-	  ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
-	    driver.get(url);
-		 driver.manage().window().maximize();
-		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	  }  
 	
+	
+	 @BeforeClass
+	  @Parameters(value={"browser","version","platform","url","build"})
+	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
+		this.setUpBrowserStack(browser, version, platform, url,build);
+	 }
+		
+	 
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
 			driver.quit();
 		}
-
-		
+	 
 	 @Test
 		public void verifyColors() throws InterruptedException{
 			
-			
-			//Login
-			
-			driver.findElement(By.id("signInIdentification")).clear();
-	 		driver.findElement(By.id("signInIdentification")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.id("signInPassword")).clear();
-	 		driver.findElement(By.id("signInPassword")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			 
 	       
 	
     // Go to the configuration
@@ -102,7 +73,7 @@ public class Branding {
                     driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
                     driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
                    //Click en el popup de restorear
-                    driver.findElement(By.cssSelector(".mconfirmation .primary")).click();
+                    driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
                     driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
                
 	

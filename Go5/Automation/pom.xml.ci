@@ -13,10 +13,10 @@
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngExplorer.xml</suiteXmlFile>
-    <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngChrome.xml</suiteXmlFile>
-    <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngFirefox.xml</suiteXmlFile>
-    <skipTests>false</skipTests>
+     <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngFirefox.xml</suiteXmlFile>
+     <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngChrome.xml</suiteXmlFile>
+     <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngExplorer.xml</suiteXmlFile>
+     <skipTests>false</skipTests>
 </properties>
 
  <dependencies>
@@ -56,7 +56,12 @@
 	<groupId>org.uncommons</groupId>
 	<artifactId>reportng</artifactId>
 	<version>1.1.4</version>
+	</dependency>
 	
+	<dependency>
+	<groupId>com.google.inject</groupId>
+	<artifactId>guice</artifactId>
+	<version>3.0</version>
 </dependency>
 	
 </dependencies>
@@ -65,12 +70,23 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.19.1</version>
-        <configuration>
-          <suiteXmlFiles>
-          <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngExplorer.xml</suiteXmlFile>
-    	<suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngChrome.xml</suiteXmlFile>
-   		 <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngFirefox.xml</suiteXmlFile>
-            </suiteXmlFiles>
+         <configuration>
+                <properties>
+                    <property>
+                        <name>usedefaultlisteners</name>
+                        <value>false</value>
+                    </property>
+                    <property>
+                        <name>listener</name>
+                        <value>org.uncommons.reportng.HTMLReporter, org.testng.reporters.XMLReporter</value>
+                    </property>
+                </properties>
+                <workingDirectory>target/</workingDirectory>
+           <suiteXmlFiles>
+     	 	   <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngFirefox.xml</suiteXmlFile>
+  		     <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngChrome.xml</suiteXmlFile>
+  		     <suiteXmlFile>/var/lib/jenkins/jobs/Functional_Integration_Tests/workspace/Go5/Automation/testngExplorer.xml</suiteXmlFile>
+  		     </suiteXmlFiles>
         </configuration>
       </plugin>
 </plugins></build>
