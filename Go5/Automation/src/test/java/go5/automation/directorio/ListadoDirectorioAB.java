@@ -103,6 +103,7 @@ public class ListadoDirectorioAB extends TestSuite{
                Reporter.log(directorio.getFirstName());
               
                //Ir al profile del user buscado
+               Thread.sleep(1000);
                this.click(firstRow);
                
             

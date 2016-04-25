@@ -12,12 +12,9 @@ import org.testng.annotations.Test;
 
 public class EditarEspaciosAC extends TestSuite {
 	
-	
-
-	
 	EspacioPage espacio=null;
+		
 	
-
 	
 	@AfterClass // call function to close browser 
 		
@@ -35,7 +32,7 @@ public class EditarEspaciosAC extends TestSuite {
 		espacio= new EspacioPage(driver); 
 			
 	        
-		 Reporter.log(" Creando un espacio como user admin");
+		 Reporter.log(" Editando un espacio como user admin");
 		 
 		// Go to hamburguesita
 		 
@@ -57,20 +54,19 @@ public class EditarEspaciosAC extends TestSuite {
 		 //Activar o Desactivar el espacio
 		 
 		 espacio.activarEspacio();
-		 espacio.cambiarIconoUmbrella();
-		 espacio.setEspacioPrivado();
+		 espacio.activarActividadSocial();
+		
+		 espacio.cambiarIcono();
+		 
+		//Si es de tipo empresa, no aparece la opcion de cambiar el tipo espacio.setEspacioPrivado();
 		 espacio.grabarEspacio();
-		 
-		 
-		 
-		   	
-	           
+	
+		           
 	           
 	       
 	
 	}	
-	
-	
+		
 		
      }
 

@@ -81,7 +81,7 @@ import org.testng.Reporter;
        	   	 }
     	  
     	    public void setEspacioPrivado () throws Exception{
-          	   	 Reporter.log("Seleccionando un tipo de espacio Publico:");
+          	   	 Reporter.log("Seleccionando un tipo de espacio Privado:");
           	   	driver.findElement(By.cssSelector(espacioPrivado)).click();
           	   	 }
   
@@ -92,15 +92,18 @@ import org.testng.Reporter;
     
       
        public void activarEspacio(){
+    	   Reporter.log("Clickear Espacio activo");
     	   driver.findElement(By.cssSelector(activarEspacio)).click();
        }
    
        public void activarActividadSocial(){
+    	   Reporter.log("Clickear Actividad Social");
     	   driver.findElement(By.cssSelector(activadadSocial)).click();
        }
         
        public void cambiarIcono() throws InterruptedException{
     	
+    	   Reporter.log("Seleccionar Icono");
     	   driver.findElement(By.cssSelector(cambiarIcono)).click();
     	
 	          driver.findElement(By.cssSelector(".igospacetool")).click();
