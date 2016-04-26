@@ -11,7 +11,7 @@ import org.testng.annotations.Parameters;
 
 
 
-public class EditarEspaciosBS extends EditarEspaciosAC {
+public class EditarEspacioBS extends EditarEspacioAC {
 	
 		
 

@@ -5,7 +5,7 @@ package go5.automation.espacios;
 import org.testng.annotations.BeforeClass;
 
 
-public class EditarEspaciosTest extends EditarEspaciosAC {
+public class EditarEspacioTest extends EditarEspacioAC {
 	
 		
 	

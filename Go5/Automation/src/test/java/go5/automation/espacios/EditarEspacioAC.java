@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 
 
-public class EditarEspaciosAC extends TestSuite {
+public class EditarEspacioAC extends TestSuite {
 	
 	EspacioPage espacio=null;
 		
@@ -56,12 +56,12 @@ public class EditarEspaciosAC extends TestSuite {
 		 espacio.activarEspacio();
 		 espacio.activarActividadSocial();
 		
-		 espacio.cambiarIconoOso();
+		// espacio.cambiarIconoOso();
 		 
 		//Si es de tipo empresa, no aparece la opcion de cambiar el tipo espacio.setEspacioPrivado();
 		 espacio.grabarEspacio();
-		 
-	
+		 Thread.sleep(1000);
+			
 		    Reporter.log("Caso de editar espacio finalizado correctamente");       
 	           
 	       
