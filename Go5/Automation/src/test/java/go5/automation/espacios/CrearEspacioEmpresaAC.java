@@ -108,7 +108,7 @@ public class CrearEspacioEmpresaAC extends TestSuite {
 	                   
 	           Thread.sleep(1000);
 	           
-	
+	           Reporter.log("Caso de crear espacio empresa finalizado correctamente");  
 	}	
 	
 	

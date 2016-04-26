@@ -115,6 +115,7 @@ import org.testng.Reporter;
     	       }
           
       public void grabarEspacio(){
+    	  Reporter.log("Grabando espacio");
     	  driver.findElement(By.cssSelector(grabarEspacio)).click();
       }
 
