@@ -67,7 +67,7 @@ public class CrearEspacioAC extends TestSuite {
 	     
 	          //Seleccionar el icono
 	          Reporter.log("Seleccionar el icono del espacio");
-	          espacio.cambiarIcono();
+	          espacio.cambiarIconoBasket();
 	      
 	  
 	       /*   //Verificar ayuda del tipo de espacio

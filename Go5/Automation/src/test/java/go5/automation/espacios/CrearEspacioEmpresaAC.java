@@ -28,12 +28,12 @@ public class CrearEspacioEmpresaAC extends TestSuite {
 	 
 	@Test
 	
-	public void crearEspacio() throws Exception { 
+	public void crearEspacioEmpresa() throws Exception { 
 	
 		espacio= new EspacioPage(driver); 
 			
 	        
-		 Reporter.log(" Creando un espacio como user admin");
+		 Reporter.log(" Creando un espacio empresa como user admin");
 		 
 		// Go to hamburguesita
 		 
@@ -68,10 +68,10 @@ public class CrearEspacioEmpresaAC extends TestSuite {
 	         //Actividad Social
 	          Reporter.log("Desactivar Acitividad Social");
 	         espacio.activarActividadSocial();
-	     
+	  
 	          //Seleccionar el icono
 	          Reporter.log("Seleccionar el icono del espacio");
-	          espacio.cambiarIcono();
+	          espacio.cambiarIconoBanana();
 	      
 	  
 	       /*   //Verificar ayuda del tipo de espacio

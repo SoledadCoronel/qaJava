@@ -56,7 +56,7 @@ public class EditarEspaciosAC extends TestSuite {
 		 espacio.activarEspacio();
 		 espacio.activarActividadSocial();
 		
-		 espacio.cambiarIcono();
+		 espacio.cambiarIconoOso();
 		 
 		//Si es de tipo empresa, no aparece la opcion de cambiar el tipo espacio.setEspacioPrivado();
 		 espacio.grabarEspacio();
