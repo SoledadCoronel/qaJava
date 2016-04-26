@@ -60,6 +60,7 @@ public class EditarEspaciosAC extends TestSuite {
 		 
 		//Si es de tipo empresa, no aparece la opcion de cambiar el tipo espacio.setEspacioPrivado();
 		 espacio.grabarEspacio();
+		 
 	
 		    Reporter.log("Caso de editar espacio finalizado correctamente");       
 	           
