@@ -103,7 +103,7 @@ public class CrearEspacioAC extends TestSuite {
 	           espacio.grabarEspacio();
 	                   
 	           Thread.sleep(1000);
-	           
+	           Reporter.log("Caso de crear espacio  finalizado correctamente");     
 	
 	}	
 	
