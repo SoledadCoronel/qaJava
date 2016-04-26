@@ -24,7 +24,10 @@ import org.testng.Reporter;
     	private String descripcionEspacio= new String (".spacecreate fieldset:nth-child(1) label:nth-child(2) input");
     	private String activarEspacio = new String (".spaceformconfig label:nth-child(2) span");
     	private String activadadSocial = new String (".spaceformconfig label:nth-child(3) span");
-    	private String cambiarIcono = new String (".igospaceadmin");
+    	private String cambiarIcono = new String (".spaceformconfig label:nth-child(4) a");
+    	private String iconoOso= new String (".igospacebear");
+    	private String iconoBasket= new String (".igospacebasket");
+    	private String iconoBanana= new String (".igospacebanana");
     	
     	//private String confirmarIcono = new String ("active .mconfirmation .primary");
     	protected String irASpaces = new String ("nav div:nth-child(4) li:nth-child(1) a");
@@ -101,29 +104,16 @@ import org.testng.Reporter;
     	   driver.findElement(By.cssSelector(activadadSocial)).click();
        }
         
-       public void cambiarIcono() throws InterruptedException{
+       public void cambiarIcono(String icono) throws InterruptedException{
     	
     	   Reporter.log("Seleccionar Icono");
     	   driver.findElement(By.cssSelector(cambiarIcono)).click();
     	
-	          driver.findElement(By.cssSelector(".igospacetool")).click();
+	          driver.findElement(By.cssSelector(icono)).click();
 	          Thread.sleep(1000);
-	         driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
-    	   
-    	  /* 
-    	   driver.findElement(By.cssSelector(cambiarIcono)).click();
-    	   driver.findElement(By.cssSelector(iconoEye)).click();
-    	   driver.findElement(By.cssSelector(confirmarIcono)).click();
-       */
-       }
-       
-       public void cambiarIconoUmbrella() throws InterruptedException{
-	       
-    	   driver.findElement(By.cssSelector(cambiarIcono)).click();
-	          driver.findElement(By.cssSelector(".igospaceumbrella")).click();
-	          Thread.sleep(1000);
-	         driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
-       }
+	          driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
+    	       }
+          
       public void grabarEspacio(){
     	  driver.findElement(By.cssSelector(grabarEspacio)).click();
       }
@@ -192,7 +182,17 @@ import org.testng.Reporter;
 	   	  return driver.findElement(By.cssSelector(secondName)).getText();
 	    }
 	       	     
-	    
+	    public void cambiarIconoBanana() throws InterruptedException{
+	    	this.cambiarIcono(iconoBanana);
+	    }
+	     
+	    public void cambiarIconoOso() throws InterruptedException{
+	    	this.cambiarIcono(iconoOso);
+	    }
+	     
+	    public void cambiarIconoBasket() throws InterruptedException{
+	    	this.cambiarIcono(iconoBasket);
+	    }
 	     public  void verificarOrden(){
 	    	 
 	    	 
