@@ -189,6 +189,7 @@ import org.testng.Reporter;
 	     
 	    public void cambiarIconoOso() throws InterruptedException{
 	    	this.cambiarIcono(iconoOso);
+	    	Thread.sleep(1000);
 	    }
 	     
 	    public void cambiarIconoBasket() throws InterruptedException{
