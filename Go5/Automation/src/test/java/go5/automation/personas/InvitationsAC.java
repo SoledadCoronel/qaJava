@@ -36,7 +36,7 @@ public class InvitationsAC extends TestSuite{
 		public void teardown(){
 		 
 		 js.executeScript("localStorage.clear();");
-		 closeBrowser();
+		this.quitBrowser();
 		}
 
 	

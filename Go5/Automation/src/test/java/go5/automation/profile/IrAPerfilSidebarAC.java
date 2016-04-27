@@ -52,12 +52,11 @@ public class IrAPerfilSidebarAC extends TestSuite {
 			 
 			// Go to the user menu
 			  this.goToMenuUsuario();
-			//	driver.findElement(By.cssSelector(".applications .users .user")).click();
 		
 				
 				//Ir a ver perfil
 			profile.goToProfileSideBar();
-			//	driver.findElement(By.cssSelector(".applications .users .subusers li a[title='Ir a ver perfil']")).click();
+			
 				
 				
 				//Editar perfil
@@ -89,12 +88,7 @@ public class IrAPerfilSidebarAC extends TestSuite {
 		         driver.findElement(By.cssSelector(".primary")).click();    
 		         Reporter.log("Edicion de profile fue exitoso");
 		         
-		      /*   //Logout
-		        driver.findElement(By.cssSelector(".applications .users .user")).click();
-		     	driver.findElement(By.cssSelector("a[title='Cierra la sesión']")).click();
-		     	Reporter.log("Se cerro la sesion");
-		   	  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		*/
+		    
 		
 	
 	}	
