@@ -6113,7 +6113,7 @@
                     </ResponseAssertion>
                     <hashTree/>
                   </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - 3000 caracteres - BUG" enabled="false">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - 3000 caracteres" enabled="true">
                     <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                       <collectionProp name="Arguments.arguments">
@@ -6199,226 +6199,11 @@
                     <hashTree/>
                     <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                       <collectionProp name="Asserion.test_strings">
-                        <stringProp name="51508">400</stringProp>
+                        <stringProp name="49587">201</stringProp>
                       </collectionProp>
                       <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                      <boolProp name="Assertion.assume_success">true</boolProp>
+                      <boolProp name="Assertion.assume_success">false</boolProp>
                       <intProp name="Assertion.test_type">8</intProp>
-                    </ResponseAssertion>
-                    <hashTree/>
-                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                      <collectionProp name="Asserion.test_strings">
-                        <stringProp name="-598325481">Content cannot exceed 3000 characters</stringProp>
-                      </collectionProp>
-                      <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                      <boolProp name="Assertion.assume_success">true</boolProp>
-                      <intProp name="Assertion.test_type">2</intProp>
-                    </ResponseAssertion>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - 2999 caracteres - BUG" enabled="false">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;posts&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;content&quot;: &quot;¿Cómo funciona?       Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The twitter Updater , Twitterrific, Twitterfox o Twitterlicious.  ¿Quienes son los fundadores de twitter?  Twitter fue fundado en marzo de 2006 por los estudiantes de la Universidad de Cornell en Nueva York, Jack Dorsey, Biz Stone, Evan Williams y Noah Glass. Los tres primeros cofundaron la compañía Obvious que luego derivaría en Twitter Inc. Actualmente el equipo de Twitter está compuesto por 18 personas. Jack Dorsey es además de cofundador el presidente de la empresa. ¿Cómo funciona?  Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The twitter Updater , Twitterrific, Twitterfox o Twitterlicious.  ¿Quienes son los fundadores de twitter?  Twitter fue fundado en marzo de 2006 por los estudiantes de la Universidad de Cornell en Nueva York, Jack Dorsey, Biz Stone, Evan Will&quot;&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;target&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;type&quot;: &quot;spaces&quot;,&#xd;
-          &quot;id&quot;: &quot;${PUBLIC_SPACE_ID}&quot;&#xd;
-        }&#xd;
-      }&#xd;
-    }&#xd;
-  }&#xd;
-}</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">/posts</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
-                      <boolProp name="ResultCollector.error_logging">false</boolProp>
-                      <objProp>
-                        <name>saveConfig</name>
-                        <value class="SampleSaveConfiguration">
-                          <time>true</time>
-                          <latency>true</latency>
-                          <timestamp>true</timestamp>
-                          <success>true</success>
-                          <label>true</label>
-                          <code>true</code>
-                          <message>true</message>
-                          <threadName>true</threadName>
-                          <dataType>true</dataType>
-                          <encoding>false</encoding>
-                          <assertions>true</assertions>
-                          <subresults>true</subresults>
-                          <responseData>false</responseData>
-                          <samplerData>false</samplerData>
-                          <xml>false</xml>
-                          <fieldNames>false</fieldNames>
-                          <responseHeaders>false</responseHeaders>
-                          <requestHeaders>false</requestHeaders>
-                          <responseDataOnError>false</responseDataOnError>
-                          <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                          <assertionsResultsToSave>0</assertionsResultsToSave>
-                          <bytes>true</bytes>
-                          <threadCounts>true</threadCounts>
-                        </value>
-                      </objProp>
-                      <stringProp name="filename"></stringProp>
-                    </ResultCollector>
-                    <hashTree/>
-                    <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                      <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                      <stringProp name="RegexExtractor.refname">POST_ID6</stringProp>
-                      <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-                      <stringProp name="RegexExtractor.template">$1$</stringProp>
-                      <stringProp name="RegexExtractor.default"></stringProp>
-                      <stringProp name="RegexExtractor.match_number">1</stringProp>
-                    </RegexExtractor>
-                    <hashTree/>
-                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                      <collectionProp name="Asserion.test_strings">
-                        <stringProp name="51508">400</stringProp>
-                      </collectionProp>
-                      <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                      <boolProp name="Assertion.assume_success">true</boolProp>
-                      <intProp name="Assertion.test_type">8</intProp>
-                    </ResponseAssertion>
-                    <hashTree/>
-                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                      <collectionProp name="Asserion.test_strings">
-                        <stringProp name="-598325481">Content cannot exceed 3000 characters</stringProp>
-                      </collectionProp>
-                      <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                      <boolProp name="Assertion.assume_success">true</boolProp>
-                      <intProp name="Assertion.test_type">2</intProp>
-                    </ResponseAssertion>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - 2998 caracteres - BUG" enabled="false">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;posts&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;content&quot;: &quot;¿Cómo funciona?       Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The twitter Updater , Twitterrific, Twitterfox o Twitterlicious.  ¿Quienes son los fundadores de twitter?  Twitter fue fundado en marzo de 2006 por los estudiantes de la Universidad de Cornell en Nueva York, Jack Dorsey, Biz Stone, Evan Williams y Noah Glass. Los tres primeros cofundaron la compañía Obvious que luego derivaría en Twitter Inc. Actualmente el equipo de Twitter está compuesto por 18 personas. Jack Dorsey es además de cofundador el presidente de la empresa. ¿Cómo funciona?  Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The twitter Updater , Twitterrific, Twitterfox o Twitterlicious.  ¿Quienes son los fundadores de twitter?  Twitter fue fundado en marzo de 2006 por los estudiantes de la Universidad de Cornell en Nueva York, Jack Dorsey, Biz Stone, Evan Wil&quot;&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;target&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;type&quot;: &quot;spaces&quot;,&#xd;
-          &quot;id&quot;: &quot;${PUBLIC_SPACE_ID}&quot;&#xd;
-        }&#xd;
-      }&#xd;
-    }&#xd;
-  }&#xd;
-}</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">/posts</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
-                      <boolProp name="ResultCollector.error_logging">false</boolProp>
-                      <objProp>
-                        <name>saveConfig</name>
-                        <value class="SampleSaveConfiguration">
-                          <time>true</time>
-                          <latency>true</latency>
-                          <timestamp>true</timestamp>
-                          <success>true</success>
-                          <label>true</label>
-                          <code>true</code>
-                          <message>true</message>
-                          <threadName>true</threadName>
-                          <dataType>true</dataType>
-                          <encoding>false</encoding>
-                          <assertions>true</assertions>
-                          <subresults>true</subresults>
-                          <responseData>false</responseData>
-                          <samplerData>false</samplerData>
-                          <xml>false</xml>
-                          <fieldNames>false</fieldNames>
-                          <responseHeaders>false</responseHeaders>
-                          <requestHeaders>false</requestHeaders>
-                          <responseDataOnError>false</responseDataOnError>
-                          <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                          <assertionsResultsToSave>0</assertionsResultsToSave>
-                          <bytes>true</bytes>
-                          <threadCounts>true</threadCounts>
-                        </value>
-                      </objProp>
-                      <stringProp name="filename"></stringProp>
-                    </ResultCollector>
-                    <hashTree/>
-                    <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                      <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                      <stringProp name="RegexExtractor.refname">POST_ID6</stringProp>
-                      <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-                      <stringProp name="RegexExtractor.template">$1$</stringProp>
-                      <stringProp name="RegexExtractor.default"></stringProp>
-                      <stringProp name="RegexExtractor.match_number">1</stringProp>
-                    </RegexExtractor>
-                    <hashTree/>
-                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                      <collectionProp name="Asserion.test_strings">
-                        <stringProp name="51508">400</stringProp>
-                      </collectionProp>
-                      <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                      <boolProp name="Assertion.assume_success">true</boolProp>
-                      <intProp name="Assertion.test_type">8</intProp>
-                    </ResponseAssertion>
-                    <hashTree/>
-                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                      <collectionProp name="Asserion.test_strings">
-                        <stringProp name="-598325481">Content cannot exceed 3000 characters</stringProp>
-                      </collectionProp>
-                      <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                      <boolProp name="Assertion.assume_success">true</boolProp>
-                      <intProp name="Assertion.test_type">2</intProp>
                     </ResponseAssertion>
                     <hashTree/>
                   </hashTree>
@@ -9366,7 +9151,7 @@
                   </ResponseAssertion>
                   <hashTree/>
                 </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment - 3000 caracteres - BUG" enabled="false">
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment - 3000 caracteres" enabled="true">
                   <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                     <collectionProp name="Arguments.arguments">
@@ -9424,108 +9209,6 @@
                       </elementProp>
                     </collectionProp>
                   </HeaderManager>
-                  <hashTree/>
-                  <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
-                    <boolProp name="ResultCollector.error_logging">false</boolProp>
-                    <objProp>
-                      <name>saveConfig</name>
-                      <value class="SampleSaveConfiguration">
-                        <time>true</time>
-                        <latency>true</latency>
-                        <timestamp>true</timestamp>
-                        <success>true</success>
-                        <label>true</label>
-                        <code>true</code>
-                        <message>true</message>
-                        <threadName>true</threadName>
-                        <dataType>true</dataType>
-                        <encoding>false</encoding>
-                        <assertions>true</assertions>
-                        <subresults>true</subresults>
-                        <responseData>false</responseData>
-                        <samplerData>false</samplerData>
-                        <xml>false</xml>
-                        <fieldNames>false</fieldNames>
-                        <responseHeaders>false</responseHeaders>
-                        <requestHeaders>false</requestHeaders>
-                        <responseDataOnError>false</responseDataOnError>
-                        <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                        <assertionsResultsToSave>0</assertionsResultsToSave>
-                        <bytes>true</bytes>
-                        <threadCounts>true</threadCounts>
-                      </value>
-                    </objProp>
-                    <stringProp name="filename"></stringProp>
-                  </ResultCollector>
-                  <hashTree/>
-                </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment - 2761 caracteres - BUG" enabled="false">
-                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                    <collectionProp name="Arguments.arguments">
-                      <elementProp name="" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;comments&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;comment&quot;: &quot;¿Cómo funciona?       Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The twitter Updater , Twitterrific, Twitterfox o Twitterlicious.  ¿Quienes son los fundadores de twitter?  Twitter fue fundado en marzo de 2006 por los estudiantes de la Universidad de Cornell en Nueva York, Jack Dorsey, Biz Stone, Evan Williams y Noah Glass. Los tres primeros cofundaron la compañía Obvious que luego derivaría en Twitter Inc. Actualmente el equipo de Twitter está compuesto por 18 personas. Jack Dorsey es además de cofundador el presidente de la empresa. ¿Cómo funciona?  Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The&quot;&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;subject&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;type&quot;: &quot;posts&quot;,&#xd;
-          &quot;id&quot;: &quot;${POST_ID}&quot;&#xd;
-        }&#xd;
-      }&#xd;
-    }&#xd;
-  }&#xd;
-}</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <stringProp name="HTTPSampler.domain"></stringProp>
-                  <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.protocol"></stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">/comments</stringProp>
-                  <stringProp name="HTTPSampler.method">POST</stringProp>
-                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
-                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                </HTTPSamplerProxy>
-                <hashTree>
-                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                    <collectionProp name="HeaderManager.headers">
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">Content-Type</stringProp>
-                        <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                      </elementProp>
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">Accept</stringProp>
-                        <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                      </elementProp>
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">Authorization</stringProp>
-                        <stringProp name="Header.value">${BASICUSER_ACCESS_TOKEN2}</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </HeaderManager>
-                  <hashTree/>
-                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
-                    <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-                    <stringProp name="RegexExtractor.template">$1$</stringProp>
-                    <stringProp name="RegexExtractor.default"></stringProp>
-                    <stringProp name="RegexExtractor.match_number">1</stringProp>
-                  </RegexExtractor>
                   <hashTree/>
                   <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
                     <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -10240,7 +9923,7 @@
                 </hashTree>
                 <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Validaciones Cantidad Caracteres" enabled="true"/>
                 <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - usuario admin responde un comment de texto" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - resply - 3000" enabled="true">
                     <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                       <collectionProp name="Arguments.arguments">
@@ -10250,7 +9933,7 @@
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;comments&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;comment&quot;: &quot;Respuesta usuario básico a un comentario&quot;&#xd;
+      &quot;comment&quot;: &quot;¿Cómo funciona?       Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The twitter Updater , Twitterrific, Twitterfox o Twitterlicious.  ¿Quienes son los fundadores de twitter?  Twitter fue fundado en marzo de 2006 por los estudiantes de la Universidad de Cornell en Nueva York, Jack Dorsey, Biz Stone, Evan Williams y Noah Glass. Los tres primeros cofundaron la compañía Obvious que luego derivaría en Twitter Inc. Actualmente el equipo de Twitter está compuesto por 18 personas. Jack Dorsey es además de cofundador el presidente de la empresa. ¿Cómo funciona?  Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The twitter Updater , Twitterrific, Twitterfox o Twitterlicious.  ¿Quienes son los fundadores de twitter?  Twitter fue fundado en marzo de 2006 por los estudiantes de la Universidad de Cornell en Nueva York, Jack Dorsey, Biz Stone, Evan Willi&quot;&#xd;
     },&#xd;
     &quot;relationships&quot;: {&#xd;
       &quot;subject&quot;: {&#xd;
@@ -10262,7 +9945,7 @@
       &quot;reply-to&quot;: {&#xd;
         &quot;data&quot;: {&#xd;
           &quot;type&quot;: &quot;comments&quot;,&#xd;
-          &quot;id&quot;: &quot;${COMMENT_ID}&quot;&#xd;
+          &quot;id&quot;: &quot;${COMMENT_ID2}&quot;&#xd;
         }&#xd;
       }    &#xd;
     }&#xd;
@@ -10288,23 +9971,6 @@
                     <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                   </HTTPSamplerProxy>
                   <hashTree>
-                    <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                      <collectionProp name="HeaderManager.headers">
-                        <elementProp name="" elementType="Header">
-                          <stringProp name="Header.name">Content-Type</stringProp>
-                          <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                        </elementProp>
-                        <elementProp name="" elementType="Header">
-                          <stringProp name="Header.name">Accept</stringProp>
-                          <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                        </elementProp>
-                        <elementProp name="" elementType="Header">
-                          <stringProp name="Header.name">Authorization</stringProp>
-                          <stringProp name="Header.value">${BASICUSER_ACCESS_TOKEN2}</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </HeaderManager>
-                    <hashTree/>
                     <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
                       <boolProp name="ResultCollector.error_logging">false</boolProp>
                       <objProp>
@@ -10347,14 +10013,105 @@
                       <intProp name="Assertion.test_type">8</intProp>
                     </ResponseAssertion>
                     <hashTree/>
-                    <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                      <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                      <stringProp name="RegexExtractor.refname">REPLY_ID</stringProp>
-                      <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-                      <stringProp name="RegexExtractor.template">$1$</stringProp>
-                      <stringProp name="RegexExtractor.default"></stringProp>
-                      <stringProp name="RegexExtractor.match_number">1</stringProp>
-                    </RegexExtractor>
+                  </hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - reply - 3001" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;comments&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;comment&quot;: &quot;¿Cómo funciona?       Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The twitter Updater , Twitterrific, Twitterfox o Twitterlicious.  ¿Quienes son los fundadores de twitter?  Twitter fue fundado en marzo de 2006 por los estudiantes de la Universidad de Cornell en Nueva York, Jack Dorsey, Biz Stone, Evan Williams y Noah Glass. Los tres primeros cofundaron la compañía Obvious que luego derivaría en Twitter Inc. Actualmente el equipo de Twitter está compuesto por 18 personas. Jack Dorsey es además de cofundador el presidente de la empresa. ¿Cómo funciona?  Los usuarios envían y reciben updates de otros usuarios a través de breves mensajes que no deben superar los 140 caracteres, vía web, teléfono móvil, mensajería instantánea o a través del correo electrónico; e incluso desde aplicaciones de terceros, como pueden ser Twitterrific, Facebook, Twitterlicious, Twinkle, y muchas otras.  En la sección de tu perfil puedes estar al día tanto de tus seguimientos (following_profile) como de tus seguidores (followers_profile). Además de buscar amigos, familiares, compañeros u otras personas de tu interés, Twitter también ofrece otras opciones, como buscar en otras redes, invitar a amigos por email o seleccionar a usuarios recomendados.  ¿Que otra aplicaciones ofrece?  Twitter ofrece diversas aplicaciones que permiten desde buscar noticias o eventos hasta encontrar trabajo, pero también existen infinidad de aplicaciones online basados en Twitter que amplían sus posibilidades y para todos los Sistemas Operativos.  Algunas de las muchas aplicaciones de Twitter son: SearchTwitter,TwitPic, Twitter Job Search o Twitmail. Otras aplicaciones conocidas basadas en Twitter son: The twitter Updater , Twitterrific, Twitterfox o Twitterlicious.  ¿Quienes son los fundadores de twitter?  Twitter fue fundado en marzo de 2006 por los estudiantes de la Universidad de Cornell en Nueva York, Jack Dorsey, Biz Stone, Evan Willia&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;subject&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;posts&quot;,&#xd;
+          &quot;id&quot;: &quot;${POST_ID}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;reply-to&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;comments&quot;,&#xd;
+          &quot;id&quot;: &quot;${COMMENT_ID2}&quot;&#xd;
+        }&#xd;
+      }    &#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/comments</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <boolProp name="HTTPSampler.monitor">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                      <boolProp name="ResultCollector.error_logging">false</boolProp>
+                      <objProp>
+                        <name>saveConfig</name>
+                        <value class="SampleSaveConfiguration">
+                          <time>true</time>
+                          <latency>true</latency>
+                          <timestamp>true</timestamp>
+                          <success>true</success>
+                          <label>true</label>
+                          <code>true</code>
+                          <message>true</message>
+                          <threadName>true</threadName>
+                          <dataType>true</dataType>
+                          <encoding>false</encoding>
+                          <assertions>true</assertions>
+                          <subresults>true</subresults>
+                          <responseData>false</responseData>
+                          <samplerData>false</samplerData>
+                          <xml>false</xml>
+                          <fieldNames>false</fieldNames>
+                          <responseHeaders>false</responseHeaders>
+                          <requestHeaders>false</requestHeaders>
+                          <responseDataOnError>false</responseDataOnError>
+                          <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                          <assertionsResultsToSave>0</assertionsResultsToSave>
+                          <bytes>true</bytes>
+                          <threadCounts>true</threadCounts>
+                        </value>
+                      </objProp>
+                      <stringProp name="filename"></stringProp>
+                    </ResultCollector>
+                    <hashTree/>
+                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                      <collectionProp name="Asserion.test_strings">
+                        <stringProp name="51508">400</stringProp>
+                      </collectionProp>
+                      <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                      <boolProp name="Assertion.assume_success">true</boolProp>
+                      <intProp name="Assertion.test_type">8</intProp>
+                    </ResponseAssertion>
+                    <hashTree/>
+                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                      <collectionProp name="Asserion.test_strings">
+                        <stringProp name="-912315779">Comment cannot exceed 3000 characters</stringProp>
+                      </collectionProp>
+                      <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                      <boolProp name="Assertion.assume_success">true</boolProp>
+                      <intProp name="Assertion.test_type">2</intProp>
+                    </ResponseAssertion>
                     <hashTree/>
                   </hashTree>
                 </hashTree>
