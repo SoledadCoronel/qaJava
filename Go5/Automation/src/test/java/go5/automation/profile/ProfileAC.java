@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 
 
-public class Profile extends TestSuite  {
+public class ProfileAC extends TestSuite  {
 	
 
 
@@ -46,7 +46,7 @@ ProfilePage profile = null;
 			
 			//Ir a ver perfil
 		   profile.goToProfile();
-		//	driver.findElement(By.cssSelector(".applications .users .subusers li a[title='Ir a ver perfil']")).click();
+		
 			
 			
 			//Editar perfil
@@ -78,12 +78,8 @@ ProfilePage profile = null;
 	         driver.findElement(By.cssSelector(".primary")).click();    
 	         Reporter.log("Edicion de profile fue exitoso");
 	         
-	      /*   //Logout
-	        driver.findElement(By.cssSelector(".applications .users .user")).click();
-	     	driver.findElement(By.cssSelector("a[title='Cierra la sesión']")).click();
-	     	Reporter.log("Se cerro la sesion");
-	   	  driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	*/
+	         	this.goToMenuUsuario();
+	         	this.logout();
 	
 	}	
 	

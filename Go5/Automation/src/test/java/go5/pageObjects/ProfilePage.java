@@ -20,7 +20,7 @@ import org.testng.Reporter;
     	
     	
 		    		protected String irAProfile = new String (".subusers li:nth-child(2) a");
-		    		protected String editFoto = new String(".igocamera");
+		    		protected String editFoto = new String("#photoFileDrop");
 		     	 	protected String editarProfile= new String (".data h2 a");
 		    	   	protected String agrandarForm = new String (".addpeople fieldset:nth-child(2) .secondary");
 		    	   	protected String grabarUser = new String (".container .addpeople .primary");    	    	    	
@@ -38,6 +38,7 @@ import org.testng.Reporter;
     	           protected String linkedin= new String (".socialdata label:nth-child(2) input");
     	           protected String twitter = new String (".socialdata label:nth-child(3) input");
     	           protected String facebook= new String (".socialdata label:nth-child(4) input");
+    	          private String linkSupervisor = new String (".data p:nth-child(5) a ");
     	
     	           WebDriver driver;
     	 Random numero= new Random();
@@ -86,6 +87,12 @@ import org.testng.Reporter;
    driver.findElement(By.cssSelector(".igouser")).click();
    }
    
+   public void goToSupervisor() {
+	   
+	   	      // Go to the user menu
+	   Reporter.log("Ir a Perfil del supervisor desde el profile del user");	
+		   driver.findElement(By.cssSelector(linkSupervisor)).click();
+	   }
    
    public void editarDatosLaborales(){
 		//Insertar datos laborales
@@ -152,10 +159,10 @@ import org.testng.Reporter;
     
     public void cargarFoto() throws InterruptedException{
     	driver.findElement(By.cssSelector(editFoto)).click();
-    	//driver.findElement(By.cssSelector(".igocamera")).click();
-		driver.findElement(By.cssSelector(".active .mconfirmation")).click();
-		   
-		 JavascriptExecutor js = (JavascriptExecutor) driver;
+    	Thread.sleep(1000);
+    	driver.findElement(By.cssSelector(".igofolder")).click();
+		
+		   		 JavascriptExecutor js = (JavascriptExecutor) driver;
 	        WebElement element = driver.findElement(By.cssSelector(editFoto));
 	        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
 	     

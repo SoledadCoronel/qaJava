@@ -9,15 +9,15 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
+
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
+
 import org.testng.annotations.Test;
 
-import go5.pageObjects.EspacioPage;
+
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.PersonasPage;
 import go5.pageObjects.SignupPage;
@@ -42,15 +42,12 @@ public class AltaUserAC extends TestSuite{
 	
 	
 	
-	 @BeforeClass // call function to open the browser and login 
-	 public void setup () throws Exception{
-		 this.setUpMaven();
-	 }
+	 
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
 		 js.executeScript("localStorage.clear();");
-		 closeBrowser();
+		this.quitBrowser();
 		}
 
 	

@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeTest;
 
 
 
-public class ProfileTest extends Profile  {
+public class ProfileTest extends ProfileAC  {
 	
 
 ProfilePage profile = null;
