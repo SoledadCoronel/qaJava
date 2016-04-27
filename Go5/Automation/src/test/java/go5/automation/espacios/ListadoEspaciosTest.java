@@ -4,14 +4,13 @@ package go5.automation.espacios;
 
 import go5.pageObjects.EspacioPage;
 
-import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
+
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 
 
-public class EditarEspaciosTest extends EditarEspaciosAC {
+
+public class ListadoEspaciosTest extends ListadoEspaciosAC {
 	
 	
 
@@ -24,5 +23,5 @@ public class EditarEspaciosTest extends EditarEspaciosAC {
 		
 		 this.setUpMaven();
 	}
-	
+
 }

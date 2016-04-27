@@ -4,6 +4,7 @@ package go5.automation.espacios;
 import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
 
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -11,14 +12,11 @@ import org.testng.annotations.Test;
 
 
 
-public class EditarEspaciosAC extends TestSuite {
+public class ListadoEspaciosAC extends TestSuite {
 	
-	
-
-	
+		
 	EspacioPage espacio=null;
 	
-
 	
 	@AfterClass // call function to close browser 
 		
@@ -31,12 +29,12 @@ public class EditarEspaciosAC extends TestSuite {
 	 
 	@Test
 	
-	public void editarEspacio() throws Exception { 
+	public void listarEspacios() throws Exception { 
 	
 		espacio= new EspacioPage(driver); 
 			
 	        
-		 Reporter.log(" Creando un espacio como user admin");
+		 Reporter.log(" Listado de espacios ");
 		 
 		// Go to hamburguesita
 		 
@@ -45,26 +43,24 @@ public class EditarEspaciosAC extends TestSuite {
 		 
 			
 		 //Ir a espacios
+		
 		 espacio.goToEspacios();
 		
-		 Thread.sleep(1000);
-			
-			
-		    // Ir a Editar un  Espacio 
-		 
-		 espacio.editarEspacio();
-		 espacio.setNameEspacio("Espacio Editado");
 		
-		 //Activar o Desactivar el espacio
+					
+			
+		    // Ordenar espacios
+				 
+		 espacio.verificarOrdenDefault();
+		 espacio.ordenarPorTipo();
+		 espacio.ordenarPorEstado();
+		 Thread.sleep(1000);
+		 espacio.ordenarPorNombreEspacio();
 		 
-		 espacio.activarEspacio();
-		 espacio.activarSocial();
-		 espacio.cambiarIconoPhone();
-		 espacio.setEspacioPrivado();
-		 espacio.grabarEspacio();
-		 
-		 
-		 
+		  this.goToPagina(2);
+		 Thread.sleep(1000);
+		 espacio.ordenarPorTipo();
+		 espacio.ordenarPorNombreEspacio();
 		   	
 	           
 	           

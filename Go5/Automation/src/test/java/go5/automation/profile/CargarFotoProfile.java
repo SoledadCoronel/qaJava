@@ -2,7 +2,10 @@ package go5.automation.profile;
 
 
 import go5.automation.TestSuite;
+import go5.pageObjects.ProfilePage;
+
 import java.io.File;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -15,7 +18,7 @@ import org.testng.annotations.Test;
 
 public class CargarFotoProfile extends TestSuite {
 	
- 
+	 ProfilePage profile =null;
 	
  @BeforeClass
   
@@ -35,7 +38,7 @@ public class CargarFotoProfile extends TestSuite {
 	
 	public void setUpPictureProfile() throws Exception { 
 	
-		     
+		 profile = new ProfilePage(driver);  
 		 
 		 
 		// Go to the user menu
@@ -46,41 +49,11 @@ public class CargarFotoProfile extends TestSuite {
 		this.goToMenuUsuario();
 		
 				
-			driver.findElement(By.cssSelector(".applications .users a[title='Usuario']")).click();
+		profile.editarProfile();
 	
-			 Reporter.log(" Ir a perfil y cargar una foto en el profile");
-			//Ir a ver perfil
-			driver.findElement(By.cssSelector(".applications .users .subusers li a[title='Ir a ver perfil']")).click();
-			
+	 profile.cargarFoto();		
 				
-			driver.findElement(By.cssSelector(".igocamera")).click();
-			driver.findElement(By.cssSelector(".active .mconfirmation")).click();
-			   
-			 JavascriptExecutor js = (JavascriptExecutor) driver;
-		        WebElement element = driver.findElement(By.id("photoFilePicker"));
-		        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
-		     
-		      
-		      //Agarrar el elemento para cargar el file y pasarle el path 
-		        
-		        WebElement upload= driver.findElement(By.id("photoFilePicker"));
-		       
-		       
-		        File file = new File("src/test/resources/Girasol.jpeg");
-		        
-		        Reporter.log(file.getAbsolutePath());
-		        upload.sendKeys(file.getAbsolutePath());
-		        Thread.sleep(1000);
-		        
-		       driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .primary")).click();
-		       Thread.sleep(1000);
-		        //Para cancelar 
-		      //   driver.findElement(By.cssSelector(".cutpictures .optional")).click();
-		         
-		       Reporter.log(" Foto cargada exitosamente");
-		   
-	
-	
+			
 	
 	}	
 	

@@ -73,7 +73,8 @@ public class ListadoDirectorioAB extends TestSuite{
        
      //Verificar Paginado
        Reporter.log("Seleccionar otra pagina del listado");
-       this.cssgoToAPagina(3);
+        this.goToPagina(8);
+        WebElement tablevailable2 = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".people")));
            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       
         
@@ -102,6 +103,7 @@ public class ListadoDirectorioAB extends TestSuite{
                Reporter.log(directorio.getFirstName());
               
                //Ir al profile del user buscado
+               Thread.sleep(1000);
                this.click(firstRow);
                
             

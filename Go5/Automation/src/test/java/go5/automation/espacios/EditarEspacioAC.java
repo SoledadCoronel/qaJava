@@ -6,24 +6,15 @@ import go5.pageObjects.EspacioPage;
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 
-public class ListasEspaciosAC extends TestSuite {
-	
-	
-
+public class EditarEspacioAC extends TestSuite {
 	
 	EspacioPage espacio=null;
-	
-
-	@BeforeClass // call function to open the browser and login 
-	 public void setup () throws Exception{
 		
-		 this.setUpMaven();
-	}
+	
 	
 	@AfterClass // call function to close browser 
 		
@@ -36,12 +27,12 @@ public class ListasEspaciosAC extends TestSuite {
 	 
 	@Test
 	
-	public void crearEspacio() throws Exception { 
+	public void editarEspacio() throws Exception { 
 	
 		espacio= new EspacioPage(driver); 
 			
 	        
-		 Reporter.log(" Creando un espacio como user admin");
+		 Reporter.log(" Editando un espacio como user admin");
 		 
 		// Go to hamburguesita
 		 
@@ -55,22 +46,28 @@ public class ListasEspaciosAC extends TestSuite {
 		 Thread.sleep(1000);
 			
 			
-		    // Ordenar espacios
-		 	 		 
-		espacio.verificarOrdenDefault();
-		 espacio.ordenarPorTipo();
-		 espacio.ordenarPorNombre();
-		 espacio.ordenarPorEstado();
-		// espacio.ordenarPorRegistrado();
+		    // Ir a Editar un  Espacio 
 		 
-		   	
-	           
+		 espacio.editarEspacio();
+		 espacio.setNameEspacio("Editado");
+		
+		 //Activar o Desactivar el espacio
+		 
+		 espacio.activarEspacio();
+		 espacio.activarActividadSocial();
+		
+		// espacio.cambiarIconoOso();
+		 
+		//Si es de tipo empresa, no aparece la opcion de cambiar el tipo espacio.setEspacioPrivado();
+		 espacio.grabarEspacio();
+		 Thread.sleep(1000);
+			
+		    Reporter.log("Caso de editar espacio finalizado correctamente");       
 	           
 	       
 	
 	}	
-	
-	
+		
 		
      }
 
