@@ -4143,7 +4143,7 @@
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postFile - .JPEG - 4.01 KB - prefix social" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postFile - .JPEG - 4.01 KB - prefix social - uso1" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -4199,6 +4199,69 @@
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">JPEG_ID</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;([A-Za-z0-9]+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postFile - .JPEG - 4.01 KB - prefix social - uso2" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;prefix&quot;: &quot;social&quot;,&#xd;
+      &quot;file&quot;: &quot;data:image/jpeg;base64,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&quot;&#xd;
+    },&#xd;
+    &quot;type&quot;: &quot;files&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/files</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49587">201</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="3268712">jpeg</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">JPEG_ID2</stringProp>
                 <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;([A-Za-z0-9]+?)&quot;,</stringProp>
                 <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
@@ -4332,7 +4395,7 @@
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postFile - GIF-  5.26 KB" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postFile - GIF-  5.26 KB - uso1" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -4379,6 +4442,69 @@
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">GIF_ID</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;([A-Za-z0-9]+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="3268712">jpeg</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postFile - GIF-  5.26 KB - uso2" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;prefix&quot;: &quot;social&quot;,&#xd;
+      &quot;file&quot;: &quot;data:image/gif;base64,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&quot;&#xd;
+    },&#xd;
+    &quot;type&quot;: &quot;files&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/files</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49587">201</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">GIF_ID2</stringProp>
                 <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;([A-Za-z0-9]+?)&quot;,</stringProp>
                 <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
@@ -5482,7 +5608,7 @@
                   <hashTree/>
                   <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                     <collectionProp name="Asserion.test_strings">
-                      <stringProp name="-1155410286">NULL value found, but a string is required</stringProp>
+                      <stringProp name="-560557505">Empty content is not allowed</stringProp>
                     </collectionProp>
                     <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                     <boolProp name="Assertion.assume_success">true</boolProp>
@@ -6570,6 +6696,101 @@
                   </ResponseAssertion>
                   <hashTree/>
                 </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - texto vacio &amp; imagen jpeg" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;posts&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;content&quot;: &quot;&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;target&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;spaces&quot;,&#xd;
+          &quot;id&quot;: &quot;${PUBLIC_SPACE_ID}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;attachments&quot;: &#xd;
+      {&#xd;
+        &quot;data&quot;: &#xd;
+        [&#xd;
+        	{&#xd;
+          &quot;type&quot;: &quot;files&quot;,&#xd;
+          &quot;id&quot;: &quot;${JPEG_ID2}&quot;&#xd;
+        	}&#xd;
+        ]&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/posts</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                    <boolProp name="ResultCollector.error_logging">false</boolProp>
+                    <objProp>
+                      <name>saveConfig</name>
+                      <value class="SampleSaveConfiguration">
+                        <time>true</time>
+                        <latency>true</latency>
+                        <timestamp>true</timestamp>
+                        <success>true</success>
+                        <label>true</label>
+                        <code>true</code>
+                        <message>true</message>
+                        <threadName>true</threadName>
+                        <dataType>true</dataType>
+                        <encoding>false</encoding>
+                        <assertions>true</assertions>
+                        <subresults>true</subresults>
+                        <responseData>false</responseData>
+                        <samplerData>false</samplerData>
+                        <xml>false</xml>
+                        <fieldNames>false</fieldNames>
+                        <responseHeaders>false</responseHeaders>
+                        <requestHeaders>false</requestHeaders>
+                        <responseDataOnError>false</responseDataOnError>
+                        <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                        <assertionsResultsToSave>0</assertionsResultsToSave>
+                        <bytes>true</bytes>
+                        <threadCounts>true</threadCounts>
+                      </value>
+                    </objProp>
+                    <stringProp name="filename"></stringProp>
+                  </ResultCollector>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="49587">201</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">8</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                </hashTree>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - texto &amp; imagen png" enabled="true">
                   <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -6907,7 +7128,7 @@
         [&#xd;
         	{&#xd;
           &quot;type&quot;: &quot;files&quot;,&#xd;
-          &quot;id&quot;: &quot;${GIF_ID}&quot;&#xd;
+          &quot;id&quot;: &quot;${GIF_ID2}&quot;&#xd;
         	}&#xd;
         ]&#xd;
       }&#xd;
@@ -7829,6 +8050,119 @@
                     </ResponseAssertion>
                     <hashTree/>
                   </hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - texto &amp; imagen jpeg ya utilizada" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;posts&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;content&quot;: &quot;Publicando texto e imagen jpeg&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;target&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;spaces&quot;,&#xd;
+          &quot;id&quot;: &quot;${PUBLIC_SPACE_ID}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;attachments&quot;: &#xd;
+      {&#xd;
+        &quot;data&quot;: &#xd;
+        [&#xd;
+        	{&#xd;
+          &quot;type&quot;: &quot;files&quot;,&#xd;
+          &quot;id&quot;: &quot;${JPEG_ID}&quot;&#xd;
+        	}&#xd;
+        ]&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/posts</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <boolProp name="HTTPSampler.monitor">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                      <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                      <stringProp name="RegexExtractor.refname">JPEG_POST_ID</stringProp>
+                      <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
+                      <stringProp name="RegexExtractor.template">$1$</stringProp>
+                      <stringProp name="RegexExtractor.default"></stringProp>
+                      <stringProp name="RegexExtractor.match_number">1</stringProp>
+                    </RegexExtractor>
+                    <hashTree/>
+                    <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                      <boolProp name="ResultCollector.error_logging">false</boolProp>
+                      <objProp>
+                        <name>saveConfig</name>
+                        <value class="SampleSaveConfiguration">
+                          <time>true</time>
+                          <latency>true</latency>
+                          <timestamp>true</timestamp>
+                          <success>true</success>
+                          <label>true</label>
+                          <code>true</code>
+                          <message>true</message>
+                          <threadName>true</threadName>
+                          <dataType>true</dataType>
+                          <encoding>false</encoding>
+                          <assertions>true</assertions>
+                          <subresults>true</subresults>
+                          <responseData>false</responseData>
+                          <samplerData>false</samplerData>
+                          <xml>false</xml>
+                          <fieldNames>false</fieldNames>
+                          <responseHeaders>false</responseHeaders>
+                          <requestHeaders>false</requestHeaders>
+                          <responseDataOnError>false</responseDataOnError>
+                          <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                          <assertionsResultsToSave>0</assertionsResultsToSave>
+                          <bytes>true</bytes>
+                          <threadCounts>true</threadCounts>
+                        </value>
+                      </objProp>
+                      <stringProp name="filename"></stringProp>
+                    </ResultCollector>
+                    <hashTree/>
+                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                      <collectionProp name="Asserion.test_strings">
+                        <stringProp name="51508">400</stringProp>
+                      </collectionProp>
+                      <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                      <boolProp name="Assertion.assume_success">true</boolProp>
+                      <intProp name="Assertion.test_type">8</intProp>
+                    </ResponseAssertion>
+                    <hashTree/>
+                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                      <collectionProp name="Asserion.test_strings">
+                        <stringProp name="-80373317">is already used</stringProp>
+                      </collectionProp>
+                      <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                      <boolProp name="Assertion.assume_success">true</boolProp>
+                      <intProp name="Assertion.test_type">2</intProp>
+                    </ResponseAssertion>
+                    <hashTree/>
+                  </hashTree>
                 </hashTree>
               </hashTree>
             </hashTree>
@@ -8079,7 +8413,7 @@
                   <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">/files/${GIF_ID}</stringProp>
+                  <stringProp name="HTTPSampler.path">/files/${GIF_ID2}</stringProp>
                   <stringProp name="HTTPSampler.method">GET</stringProp>
                   <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -20424,7 +20758,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/${PLATFORM_ID}/social/${GIF_ID}</stringProp>
+          <stringProp name="HTTPSampler.path">/${PLATFORM_ID}/social/${GIF_ID2}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -23052,7 +23386,7 @@
                 <hashTree/>
                 <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                   <collectionProp name="Asserion.test_strings">
-                    <stringProp name="-1155410286">NULL value found, but a string is required</stringProp>
+                    <stringProp name="-560557505">Empty content is not allowed</stringProp>
                   </collectionProp>
                   <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                   <boolProp name="Assertion.assume_success">true</boolProp>
@@ -29974,7 +30308,7 @@
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="* getFeed-items - por space - Includes complete" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getFeed-items - por space - Includes complete" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="filter[space]" elementType="HTTPArgument">
