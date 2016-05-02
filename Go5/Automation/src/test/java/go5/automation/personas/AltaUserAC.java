@@ -63,7 +63,7 @@ public class AltaUserAC extends TestSuite{
 		
 	        
 	@Test
-	public void invitattionResendwithAnAdminUser() throws Exception{
+	public void addUserWholeFlow() throws Exception{
 		
 		personas = new PersonasPage(driver);
 		signup = new SignupPage(driver);
