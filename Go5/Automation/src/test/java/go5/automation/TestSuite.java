@@ -6,6 +6,7 @@ package go5.automation;
 import go5.pageObjects.LoginPage;
 
 import java.net.URL;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -408,7 +409,16 @@ public void openSiteMobile(){
 					         return email;
 					}
 			
+					protected void handleMultipleWindows(String windowTitle) {
+			            Set<String> windows = driver.getWindowHandles();
 
+			            for (String window : windows) {
+			                driver.switchTo().window(window);
+			                if (driver.getTitle().contains(windowTitle)) {
+			                    return;
+			                }
+			            }
+			        }
 					
 }
 

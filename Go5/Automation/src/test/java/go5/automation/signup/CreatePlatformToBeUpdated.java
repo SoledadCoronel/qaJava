@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 
 
 
-public class CreatePlatformTest extends SignUp{
+public class CreatePlatformToBeUpdated extends SignUp{
 
 	private String urlToken;
 	//private WebDriver driver= new FirefoxDriver();

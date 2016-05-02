@@ -2,6 +2,8 @@ package go5.pageObjects;
 
 
 
+import go5.automation.TestSuite;
+
 import java.io.File;
 import java.util.Random;
 
@@ -9,37 +11,44 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.Reporter;
 
 
     
     
-    public class ProfilePage {
+    public class ProfilePage extends TestSuite{
 
     	//Css
     	
     	
-		    		protected String irAProfile = new String (".subusers li:nth-child(2) a");
-		    		protected String editFoto = new String("#photoFileDrop");
-		     	 	protected String editarProfile= new String (".data h2 a");
-		    	   	protected String agrandarForm = new String (".addpeople fieldset:nth-child(2) .secondary");
-		    	   	protected String grabarUser = new String (".container .addpeople .primary");    	    	    	
-		    	   	protected String reportaA = new String (".labordata label:nth-child(6) input");
-		    	   	protected String idEmpleado = new String (".labordata label:nth-child(2) input");
-		           	protected String fechaIngreso = new String (".labordata label:nth-child(3) input");    	
-		           	protected String tipoEmpleo = new String (".labordata label:nth-child(4) select ");    	
-		           	protected String telefonoFIjo = new String (".labordata label:nth-child(7) input");
-		           	protected String telefonoMovil= new String (".labordata label:nth-child(8) input");	
-		           	protected String numeroDocumento = new String (".personaldata label:nth-child(3) input");
-		           	protected String fechaNacimiento = new String (".personaldata label:nth-child(4) input");
-    	           protected String emailProfile = new String (".personaldata label:nth-child(7) input");
-    	           protected String direccionProfile = new String (".personaldata label:nth-child(10) input");
-    	           protected String irACerrarSesion= new String ("a[title='Cierra la sesión");
-    	           protected String linkedin= new String (".socialdata label:nth-child(2) input");
-    	           protected String twitter = new String (".socialdata label:nth-child(3) input");
-    	           protected String facebook= new String (".socialdata label:nth-child(4) input");
-    	          private String linkSupervisor = new String (".data p:nth-child(5) a ");
-    	
+		    		protected String irAProfile = ".subusers li:nth-child(2) a";
+		    		protected String editFoto = "#photoFileDrop";
+		     	 	protected String editarProfile=".data h2 a";
+		    	   	protected String agrandarForm = ".addpeople fieldset:nth-child(2) .secondary";
+		    	   	protected String grabarUser = ".container .addpeople .primary";    	    	    	
+		    	   	protected String reportaA =".labordata label:nth-child(6) input";
+		    	   	protected String idEmpleado = ".labordata label:nth-child(2) input";
+		           	protected String fechaIngreso = ".labordata label:nth-child(3) input";    	
+		           	protected String tipoEmpleo = ".labordata label:nth-child(4) select ";    	
+		           	protected String telefonoFIjo = ".labordata label:nth-child(7) input";
+		           	protected String telefonoMovil= ".labordata label:nth-child(8) input";	
+		           	protected String numeroDocumento = ".personaldata label:nth-child(3) input";
+		           	protected String fechaNacimiento =".personaldata label:nth-child(4) input";
+    	           protected String emailProfile = ".personaldata label:nth-child(7) input";
+    	           protected String direccionProfile = ".personaldata label:nth-child(10) input";
+    	           protected String linkedin= ".socialdata label:nth-child(2) input";
+    	           protected String twitter = ".socialdata label:nth-child(3) input";
+    	           protected String facebook= ".socialdata label:nth-child(4) input";
+    	          private String linkSupervisor = ".data p:nth-child(5) a ";
+    	          private String emailUser= ".data address p:first-child a";
+    	          private String miEmail= "marina.touceda@gointegro.com";
+    	          private String telefonoMovilHeader =".data address p:nth-child(2) strong";
+    	          private String telefonoFijoHeader = ".data address p:last-child strong";
+    	   //       private String twitter= new String (" a[href^="https://twitter.com/casarosada?lang=es"]")
+    	          //String = a[href^="http://twitter.com/username"]
+    	        
+    	          
     	           WebDriver driver;
     	 Random numero= new Random();
      
@@ -50,11 +59,40 @@ import org.testng.Reporter;
     	        this.driver = driver;
      }
   
-          	    
-    	   
-    	 
+         
     	    
-      public void goToProfile(){
+    	  public  String cssLink (String url)  {
+			 
+    		  String css = "a[href^="+ (url)+"]";
+			   return css
+					   ;
+    	  }
+    	  
+    	//  a[href^="http://twitter.com/username"]
+    	     	  
+    	  public void goToTwitter(){
+				
+  			String css= this.cssLink("\"http://twitter.com/username\"");
+  			  			
+  			//  driver.findElement(By.cssSelector(css)).click();
+  			  Reporter.log("Verificando link de twiter");
+  			 Reporter.log("El link cargado de facebook es :");
+  			 Reporter.log( driver.findElement(By.cssSelector(css)).getText());
+  			
+  			
+  	            
+    	  }
+    	
+    	  public void goToFacebook(){
+    		  String css =this.cssLink("\"http://facebook.com/username\"");
+    		//  driver.findElement(By.cssSelector(css)).click();
+    		  
+    		  Reporter.log("Verificando link de facebook");
+    		  Reporter.log("El link cargado de facebook es :");
+    		  Reporter.log( driver.findElement(By.cssSelector(css)).getText());
+    		  
+    	  }
+    	  public void goToProfile(){
     	  Reporter.log("Ir a Profile");
     	  driver.findElement(By.cssSelector(".subusers li:nth-child(2) a")).click();
        	//  driver.findElement(By.cssSelector(irAProfile)).click();
@@ -185,6 +223,25 @@ import org.testng.Reporter;
 	       Reporter.log(" Foto cargada exitosamente");
     }
     
+    
+    public void verifyemaildisplayedAtHeader(){
+    	
+    	Reporter.log("El email q se muestra es :");	
+  	
+    	Assert.assertEquals(miEmail, driver.findElement(By.cssSelector(emailUser)).getText());
+  	
+  	Reporter.log(miEmail);
+    }
+    
+    
+    public void verifyPhonesDisplayedAtHeader(){
+    	
+    	driver.findElement(By.cssSelector(telefonoFijoHeader)).isDisplayed();
+    	driver.findElement(By.cssSelector(telefonoMovilHeader)).isDisplayed();
+    	Reporter.log("Los telefonos fijos y moviles se muestran en los datos del profile");
+    }
+  
+  
     }
     
     

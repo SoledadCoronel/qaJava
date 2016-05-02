@@ -30,7 +30,7 @@ public void setup () throws Exception{
 		
 	@Test
 	
-	public void editProfile() throws Exception { 
+	public void verifyDataPofile() throws Exception { 
 	
 		
 		 profile = new ProfilePage(driver);
@@ -41,14 +41,22 @@ public void setup () throws Exception{
 		 
 		// Go to the user menu
 		  this.goToMenuUsuario();
-		//	driver.findElement(By.cssSelector(".applications .users .user")).click();
+		
 	
 			
 			//Ir a ver perfil
 		   profile.goToProfile();
 		   Thread.sleep(1000);
+		   
+		   profile.verifyemaildisplayedAtHeader();
+		   profile.verifyPhonesDisplayedAtHeader();
+		   Thread.sleep(1000);
+		   profile.goToTwitter();
+		   
+			 profile.goToFacebook();
 		
 			profile.goToSupervisor();
+			
 			
 			
 			

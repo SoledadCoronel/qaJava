@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
 
 
 
-public class CargarFotoProfileTest extends CargarFotoProfile {
+public class CargarFotoProfileToBeUpdated extends CargarFotoProfile {
 	
  
 	

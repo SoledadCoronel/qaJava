@@ -10,7 +10,7 @@ public class ForgotPasswordTest extends ForgotPasswordAC{
 	
 		
 	 @BeforeClass
-	  public void setupMavenTest(){
-		 this.setupMavenTest();
+	  public void setupMavenTest() throws Exception{
+		 this.setUpMaven();
 	 }
 }
