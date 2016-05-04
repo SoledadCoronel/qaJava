@@ -45,11 +45,14 @@ import org.testng.Reporter;
     	          private String miEmail= "marina.touceda@gointegro.com";
     	          private String telefonoMovilHeader =".data address p:nth-child(2) strong";
     	          private String telefonoFijoHeader = ".data address p:last-child strong";
-    	   //       private String twitter= new String (" a[href^="https://twitter.com/casarosada?lang=es"]")
-    	          //String = a[href^="http://twitter.com/username"]
-    	        
+    	          private String confirmar = ".active .primary";
+    	          private String cancelar =".active .optional";
+    	          private String inputFotoProfile ="sarasa";
+    	          private String selectPictureOrCamera=".igocamera a";
     	          
     	           WebDriver driver;
+    	           
+    	           
     	 Random numero= new Random();
      
   //Constructor
@@ -95,8 +98,7 @@ import org.testng.Reporter;
     	  public void goToProfile(){
     	  Reporter.log("Ir a Profile");
     	  driver.findElement(By.cssSelector(".subusers li:nth-child(2) a")).click();
-       	//  driver.findElement(By.cssSelector(irAProfile)).click();
-    	    }
+       	    }
     
       
       public void editarProfile(){
@@ -195,32 +197,45 @@ import org.testng.Reporter;
       driver.findElement(By.cssSelector(facebook)).sendKeys("http://facebook.com/username"); 
      }
     
-    public void cargarFoto() throws InterruptedException{
-    	driver.findElement(By.cssSelector(editFoto)).click();
-    	Thread.sleep(1000);
-    	driver.findElement(By.cssSelector(".igofolder")).click();
-		
-		   		 JavascriptExecutor js = (JavascriptExecutor) driver;
-	        WebElement element = driver.findElement(By.cssSelector(editFoto));
-	        js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
-	     
-	      
+    public void cancelarSubirFoto() throws InterruptedException{
+    	
+    	
+    	 js=  (JavascriptExecutor) driver;
+    	 driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
+    	   WebElement element = driver.findElement(By.id("sarasa"));
+		  js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
+	          
 	      //Agarrar el elemento para cargar el file y pasarle el path 
-	        
-	        WebElement upload= driver.findElement(By.cssSelector(editFoto));
 	       
+	        WebElement subirFile = driver.findElement(By.id("sarasa"));
+	               
+	        File file= new File("src/test/resources/Girasol.jpeg");
+	        subirFile.sendKeys(file.getAbsolutePath());
+	        Thread.sleep(2000);
+	        driver.findElement(By.cssSelector(confirmar)).click();
+		   
+		    Reporter.log(" El subir foto ha sido cancelado");
+    
+    }
+    	
+   
+     
+     public void cargarFoto() throws InterruptedException {
+    	
+    	 js=  (JavascriptExecutor) driver;
+    	 driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
+    	   WebElement element = driver.findElement(By.id("sarasa"));
+		  js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
+	          
+	      //Agarrar el elemento para cargar el file y pasarle el path 
 	       
-	        File file = new File("src/test/resources/Girasol.jpeg");
-	        
-	        Reporter.log(file.getAbsolutePath());
-	        upload.sendKeys(file.getAbsolutePath());
-	        Thread.sleep(1000);
-	        
-	       driver.findElement(By.cssSelector("#modal-container .modal:nth-child(4) .primary")).click();
-	       Thread.sleep(1000);
-	       
-	         
-	       Reporter.log(" Foto cargada exitosamente");
+	        WebElement subirFile = driver.findElement(By.id("sarasa"));
+	               
+	        File file= new File("src/test/resources/Girasol.jpeg");
+	        subirFile.sendKeys(file.getAbsolutePath());
+	        Thread.sleep(2000);
+	        driver.findElement(By.cssSelector(confirmar)).click();
+		    Reporter.log(" Foto cargada exitosamente");
     }
     
     

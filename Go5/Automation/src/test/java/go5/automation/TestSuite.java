@@ -16,6 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -32,8 +33,7 @@ public class TestSuite {
 	protected Logger log = Logger.getLogger("automation");
 	LoginPage login = null;
 	protected JavascriptExecutor js;
-	//public JavascriptExecutor js = (JavascriptExecutor) driver;
-	
+		
 	//Declaracion de variables	
 	
 	protected String strUsername= new String("marina.touceda@gointegro.com");
@@ -49,6 +49,7 @@ public class TestSuite {
 	
 	//Declaracion de cssSelectors
 	
+	private String home = (".home");
 	protected String inputmailLogin = new String (".session label:nth-child(2) input");
 	protected String inputPasswordLogin = new String (".session label:nth-child(3) input");
 	protected String goButton = new String (".session .primary");
@@ -141,6 +142,7 @@ public class TestSuite {
 		    driver.get(url);
 			 driver.manage().window().maximize();
 			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			 
 			 login= new LoginPage(driver);
 			 login.loginToGo("marina.touceda@gointegro.com","Auto1234");
 					
@@ -296,7 +298,7 @@ public void openSiteMobile(){
 		           driver.findElement(By.cssSelector(sSelector)).sendKeys(sValue);
 		         }
 		           
-		           public void click(String sSelector) throws Exception{
+		           public void click(String sSelector) {
 			           driver.findElement(By.cssSelector(sSelector)).click();
 		           }
 		           
@@ -344,6 +346,10 @@ public void openSiteMobile(){
 							
 						this.click(irAMenu);
 					}
+					
+					public void goToHome() throws Exception{
+						this.click(home);
+					}
 				
 					public void search(String nombreABuscar) throws Exception{
 						
@@ -352,8 +358,7 @@ public void openSiteMobile(){
 						 this.click(searchButton);
 						 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 						 WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
-						 
-					//	 WebElement inputsearchavailable = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.cssSelector(inputSearch)));
+										
 			               this.clear(inputSearch);
 			               this.sendValue(inputSearch, nombreABuscar);
 					}
@@ -362,16 +367,16 @@ public void openSiteMobile(){
 						Thread.sleep(1000);
 					}
 					
-					public void goToTitles() throws Exception{
+					public void goToTitles() {
 						this.click(irATitles);
 					}
 					
-					public void logout() throws Exception{
+					public void logout() throws Exception {
 						this.click(irALogout);
 					}
 										
 					
-					public void goToInvitations() throws Exception{
+					public void goToInvitations() {
 						this.click(irAInvitaciones);
 					}
 					

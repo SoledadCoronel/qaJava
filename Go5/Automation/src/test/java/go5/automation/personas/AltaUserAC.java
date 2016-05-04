@@ -12,12 +12,7 @@ import org.openqa.selenium.WebElement;
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-
-import org.testng.annotations.BeforeClass;
-
 import org.testng.annotations.Test;
-
-
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.PersonasPage;
 import go5.pageObjects.SignupPage;

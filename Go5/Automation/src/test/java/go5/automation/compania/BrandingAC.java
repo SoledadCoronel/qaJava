@@ -58,19 +58,10 @@ public class BrandingAC extends TestSuite{
    // Clickeo en Disenio
 		 
 		 company.irADesign();
-      	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	
-		       
-		        			
+      	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);	    			
 		      company.restablecerInterfaz();
-               
-	
-      company.verifyColors();
-       
-	       
-       
-    company.changeColorHeader();
-       
-    company.changeColorContrast();
+             company.verifyColors();       
+             company.changeColorHeader();
+             company.changeColorContrast();
 	 }
     }

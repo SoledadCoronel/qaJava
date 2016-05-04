@@ -55,7 +55,7 @@ public class CrearEspacioAC extends TestSuite {
 		      //Cargar formulario del espacio
 		     	espacio.setNameEspacio("Publico");
 		     	
-		 		espacio.setDescriptionEspacio();	 
+		 		espacio.setDescriptionEspacio("Espacio del tipo publico");	 
 		 
 		 	
 	       //Configuracion del espacio
