@@ -17,22 +17,20 @@ import org.testng.Reporter;
     	//Css
     	
     	private String crearEspacio = new String (".title .primary");
-    	private String espacioPublico = new String (".spaceformtype .igounlock");
-    	private String espacioPrivado = new String (".spaceformtype .igolock");
-    	private String espacioEmpresa = new String (".spaceformtype .igocompany");
-    	private String nombreEspacio = new String (".spacecreate fieldset:nth-child(1) label:nth-child(1) input");
-    	private String descripcionEspacio= new String (".spacecreate fieldset:nth-child(1) label:nth-child(2) input");
-    	private String activarEspacio = new String (".spaceformconfig label:nth-child(2) span");
-    	private String activadadSocial = new String (".spaceformconfig label:nth-child(3) span");
-    	private String cambiarIcono = new String (".spaceformconfig label:nth-child(4) a");
-    	private String iconoOso= new String (".igospacebear");
-    	private String iconoBasket= new String (".igospacebasket");
-    	private String iconoBanana= new String (".igospacebanana");
-    	
-    	//private String confirmarIcono = new String ("active .mconfirmation .primary");
+    	private String espacioPublico = (".igounlock");
+    	private String espacioPrivado = (".igolock");
+    	private String espacioEmpresa = (".igocompany");
+    	private String nombreEspacio =  (".spacecreate fieldset:nth-child(1) label:nth-child(1) input");
+    	private String descripcionEspacio= (".spacecreate fieldset:nth-child(1) label:nth-child(2) input");
+    	private String activarEspacio =  (".spaceformconfig label:nth-child(2) span");
+    	private String activadadSocial = (".spaceformconfig label:nth-child(3) span");
+    	private String cambiarIcono = (".spaceformconfig label:nth-child(4) a");
+    	private String iconoOso= (".igospacebear");
+    	private String iconoBasket= (".igospacebasket");
+    	private String iconoBanana=  (".igospacebanana");
+    	  	
     	protected String irASpaces = new String ("nav div:nth-child(4) li:nth-child(1) a");
-   
-    	protected String grabarEspacio= new String (".spacecreate .primary");
+       	protected String grabarEspacio= new String (".spacecreate .primary");
     	protected String ordenTipo = new String (".tables thead tr th:nth-child(1) a");
     	protected String ordenNombre = new String (".tables thead tr th:nth-child(2) a");
     	protected String ordenDescripcion = new String (".tables thead tr th:nth-child(3) a");
@@ -67,9 +65,9 @@ import org.testng.Reporter;
     	    }
     	    
     	   
-    	    public void setDescriptionEspacio(){
+    	    public void setDescriptionEspacio(String description){
     	    	
-    	    	driver.findElement(By.cssSelector(descripcionEspacio)).sendKeys("Descripcion Del Espacio");
+    	    	driver.findElement(By.cssSelector(descripcionEspacio)).sendKeys(description);
     	    }
     	    
   

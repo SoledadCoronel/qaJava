@@ -3,6 +3,8 @@ package go5.automation.compania;
 
 
 
+import go5.pageObjects.LoginPage;
+
 import java.io.File;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +18,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -24,9 +25,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
-public class BrandingFotos {
+public class BrandingFotosBS {
 
-
+	 LoginPage login =null;
 	 private WebDriver driver;
 
 		
@@ -39,7 +40,6 @@ public class BrandingFotos {
 	    capability.setCapability("browserVersion", version);
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "1.0");
-	    capability.setCapability("debug", true);
 	     capability.setCapability("name", "Branding pictures");
 	    
 	    driver = new RemoteWebDriver(
@@ -49,9 +49,10 @@ public class BrandingFotos {
 	  ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
 	    driver.get(url);
 		 driver.manage().window().maximize();
-		 WebElement loginavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".session label:nth-child(2) input")));
+		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		 login= new LoginPage(driver);
+		 login.loginToGo("marina.touceda@gointegro.com","Auto1234");
 	 }
-	 
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
@@ -63,13 +64,7 @@ public class BrandingFotos {
 		public void brandingPictures() throws InterruptedException{
 			
 
-		 //Login
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(2) input")).sendKeys("marina.touceda@gointegro.com");
-	 		driver.findElement(By.cssSelector(".session label:nth-child(3) input")).clear();
-			driver.findElement(By.cssSelector(".session label:nth-child(3) input")).sendKeys("Auto1234");
-	 		 driver.findElement(By.cssSelector(".session .primary")).click();
-	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		 
 	        		
 	       
 	

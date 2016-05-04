@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 
 
-public class CrearEspacioEmpresaAC extends TestSuite {
+public class CrearEspacioPrivadoAC extends TestSuite {
 	
 
 	
@@ -53,9 +53,9 @@ public class CrearEspacioEmpresaAC extends TestSuite {
 		 
 		   		       
 		      //Cargar formulario del espacio
-		     	espacio.setNameEspacio("EMPRESA");
+		     	espacio.setNameEspacio("PRIVADO");
 		     	
-		 		espacio.setDescriptionEspacio("Espacio del tipo empresa");	 
+		 		espacio.setDescriptionEspacio("Espacio privado");	 
 		 
 		 	
 	       //Configuracion del espacio
@@ -70,18 +70,20 @@ public class CrearEspacioEmpresaAC extends TestSuite {
 	         espacio.activarActividadSocial();
 	  
 	          //Seleccionar el icono
-	          Reporter.log("Seleccionar el icono del espacio");
-	          espacio.cambiarIconoBanana();
-	      
-	          espacio.setEspacioEmpresa();
-	      	           
+	        //  Reporter.log("Seleccionar el icono del espacio");
+	        //  espacio.cambiarIconoBanana();
+	         Thread.sleep(1000);
+	         espacio.setEspacioPrivado();
+	         Thread.sleep(1000);
+	     
+	           	           
 	           //Grabar el espacio nuevo
 	          
 	           espacio.grabarEspacio();
 	                   
 	           Thread.sleep(1000);
 	           
-	           Reporter.log("Caso de crear espacio empresa finalizado correctamente");  
+	           Reporter.log("Caso de crear espacio privado finalizado correctamente");  
 	}	
 	
 	

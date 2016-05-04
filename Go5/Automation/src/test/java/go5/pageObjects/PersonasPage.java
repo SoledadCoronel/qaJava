@@ -8,9 +8,7 @@ import go5.automation.TestSuite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.support.ui.Select;
-
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -29,7 +27,7 @@ import org.testng.Reporter;
     	protected  String inputemailUser =new String ("basicdata label:nth-child(6) input");
     	protected  String tablaPersonas = new String (".tablefilter tbody");
     	protected  String crearUser = new String (".content .title a");
-    	protected  String estadoDesactivado = new String (".basicdata label:nth-child(2) input:nth-child(2)");
+    	protected  String estadoDesactivado = (".basicdata label:nth-child(2) input:nth-child(2)");
     	protected String  desplegarCampos = new String (".addpeople .secondary");
     	protected String  savePerson = new String (".container .addpeople .primary");   	
     	 protected String editfirstRow= new String (".tables tbody tr:nth-child(1) td:nth-child(7) a");
@@ -52,11 +50,10 @@ import org.testng.Reporter;
      //Set user name in textbox
   
     	   
-    	    public void goToPersonas() throws Exception{
+    	    public void goToPersonas(){
     	    	
     	    	 driver.findElement(By.cssSelector(".igoadmin")).click();
-    	    	//WebElement personasavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(irAPersonas)));
-    	    	//this.click(irAPersonas);
+    	    	
 			}
     	    
     	    
@@ -71,8 +68,7 @@ import org.testng.Reporter;
     	    public void setRandomEmail() throws Exception{
     	       	 this.sendValue(inputemailUser, email);
     	     	    }
-    
-    	       	   
+        	       	   
     	   
     	    public void setEstadoDesactivado() throws Exception{
       	    	this.click(estadoDesactivado);
@@ -101,6 +97,18 @@ import org.testng.Reporter;
     	    	 this.click(savePerson);
     	  }
     	  
+    	  public void inactivarUsuario() throws Exception{
+    		  Reporter.log(driver.findElement(By.cssSelector(".tables tbody tr td:nth-child(7)")).getText());
+ 	         Reporter.log("clickear usuario inactivo");
+ 	         this.click(".tables tbody tr td:nth-child(7)");
+ 	         Thread.sleep(1000);
+ 	         this.click(".basicdata label:nth-child(2) input:nth-child(2)");
+ 	         Reporter.log("Grabando usuario");
+ 	         this.click(".container .addpeople .primary");
+    		 
+    		  
+    	  }
+    	  
     	  public void agregarPersona() throws Exception{
    
             this.click(crearUser);
@@ -112,8 +120,9 @@ import org.testng.Reporter;
     	  }
         
             public  void elegirUsuarios(Integer index){
-            // Elegir Usuarios Inactivos
-                      
+            // Elegir Usuarios ( Activos es 1,2 es Inactivos, y 3 es No registrados
+              
+            	
             Select userselect= new Select(driver.findElement(By.cssSelector(".filters select")));
                    
            userselect.deselectByIndex(index);
@@ -130,6 +139,30 @@ import org.testng.Reporter;
         	Assert.assertEquals(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)")).getText(), "SIN CHEQUEAR");
         	 Reporter.log("Todos los usuarios de la lista se encuentran desactivados");
      }
+     
+    public void filtrarUsuariosActivos(){
+    	 Reporter.log("Reocorrer la lista de usuarios y filtrar los users activos");
+         
+         for(int i = 1;i<10;i++)
+        	Assert.assertEquals(driver.findElement(By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)")).getText(), "CHEQUEADO");
+        	 Reporter.log("Todos los usuarios de la lista se encuentran activados");	
+    
+    }
+     
+     
+     
+     public  void selectUserActive() throws Exception{
+    	 Reporter.log("select los usuarios de activos");
+    	 this.elegirUsuarios(1);
+    	 this.verificarUsuariosActivos();
+    	  	 
+    	//editar el primero de la lista de activos que ya se que es activo para desactivar
+    	 this.click(editfirstRow);
+    	//quedarme con el nombre de ese usuario activo , buscarlo y ver que este inactivo
+    	 
+    	  }
+     
+     
     
      public void verificarUsuariosNoRegistrados(){
     	 
