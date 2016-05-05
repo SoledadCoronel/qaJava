@@ -28,6 +28,8 @@ import org.testng.Reporter;
     	protected  String tablaPersonas = new String (".tablefilter tbody");
     	protected  String crearUser = new String (".content .title a");
     	protected  String estadoDesactivado = (".basicdata label:nth-child(2) input:nth-child(2)");
+    	protected  String estadoActivado = (".basicdata label:nth-child(2) input:nth-child(1)");
+    	
     	protected String  desplegarCampos = new String (".addpeople .secondary");
     	protected String  savePerson = new String (".container .addpeople .primary");   	
     	 protected String editfirstRow= new String (".tables tbody tr:nth-child(1) td:nth-child(7) a");
@@ -36,7 +38,8 @@ import org.testng.Reporter;
     	protected	String inputSearch = new String(".actions .search input");
     	protected	String orden =new String (".tables thead tr th:nth-child(2) a");
     	protected	 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
-    	protected	 String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
+    	protected	 String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)"); 
+    	
     	 
     	  WebDriver driver;
     
@@ -70,6 +73,11 @@ import org.testng.Reporter;
     	     	    }
         	       	   
     	   
+    	   public void setEstadoActivo() throws InterruptedException{
+    		  this.click(estadoActivado);
+    		  
+    		   
+    	   }
     	    public void setEstadoDesactivado() throws Exception{
       	    	this.click(estadoDesactivado);
       	    	    }
@@ -95,6 +103,10 @@ import org.testng.Reporter;
     	    	 this.click(desplegarCampos);
     	    	 Thread.sleep(1000);
     	    	 this.click(savePerson);
+    	  }
+    	  
+    	  public void editFirstPerson(){
+    		  this.click(editfirstRow);
     	  }
     	  
     	  public void inactivarUsuario() throws Exception{

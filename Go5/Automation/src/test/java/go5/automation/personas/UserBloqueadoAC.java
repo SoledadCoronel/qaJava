@@ -22,7 +22,7 @@ import go5.pageObjects.PersonasPage;
 
 
 
-public class UserInactiveAC extends TestSuite{
+public class UserBloqueadoAC extends TestSuite{
 
 	String resend= new String(".tables tr:nth-child(1) td:nth-child(6) .link");
 	String okModal = new String ("#modal-container .modal:nth-child(6) .primary");
@@ -73,12 +73,13 @@ public class UserInactiveAC extends TestSuite{
 	         personas.goToPersonas();
 	       	WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
 			    this.sendValue(inputSearch, "Inactive");
-	               Thread.sleep(1000);
+	               Thread.sleep(2000);
 	 	       
 	         Reporter.log("clickear usuario inactivo");
 	         this.click(".tables tbody tr td:nth-child(7) a");
 	         Thread.sleep(2000);
-	         this.click(".basicdata label:nth-child(2) input:nth-child(2)");
+	         //Bloquear acceso
+	         this.click(".basicdata label:nth-child(3) input ");
 	         Reporter.log("Grabando usuario");
 	         this.click(".container .addpeople .primary");
 	      
@@ -87,7 +88,7 @@ public class UserInactiveAC extends TestSuite{
 	         Thread.sleep(3000);
    		  	 login.loginToGo("marina.touceda+058@gointegro.com", "Auto1234");
    		  	 Thread.sleep(2000);
-   		  	 String actual= (driver.findElement(By.cssSelector("p.reject")).getText());
+   		  //	 Assert.assertEquals("Email o contraseña incorrectos. Por favor, vuelve a intentarlo.",driver.findElement(By.cssSelector("p.reject")).getText());
    		  	 Reporter.log(driver.findElement(By.cssSelector("p.reject")).getText());
    		  	 
    		 		}
