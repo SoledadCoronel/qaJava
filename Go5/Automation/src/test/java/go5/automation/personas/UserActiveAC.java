@@ -3,9 +3,7 @@ package go5.automation.personas;
 
 import go5.automation.TestSuite;
 
-import java.util.concurrent.TimeUnit;
 
-import junit.framework.Assert;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -22,7 +20,7 @@ import go5.pageObjects.PersonasPage;
 
 
 
-public class UserInactiveAC extends TestSuite{
+public class UserActiveAC extends TestSuite{
 
 	String resend= new String(".tables tr:nth-child(1) td:nth-child(6) .link");
 	String okModal = new String ("#modal-container .modal:nth-child(6) .primary");
@@ -62,7 +60,7 @@ public class UserInactiveAC extends TestSuite{
 		login = new LoginPage(driver);
 	
 				 
-        Reporter.log(" Probar que un usuario inactivo no se puede loguear");
+        Reporter.log(" Activar el user User Inactive");
 		
      // Go to the configuration
         this.goToConfiguration();
@@ -76,9 +74,12 @@ public class UserInactiveAC extends TestSuite{
 	               Thread.sleep(1000);
 	 	       
 	         Reporter.log("clickear usuario inactivo");
+	      //  personas.editFirstPerson();
 	         this.click(".tables tbody tr td:nth-child(7) a");
 	         Thread.sleep(2000);
-	         this.click(".basicdata label:nth-child(2) input:nth-child(2)");
+	      //  personas.setEstadoActivo();
+	        
+	       this.click(".basicdata label:nth-child(2) input:nth-child(1)");
 	         Reporter.log("Grabando usuario");
 	         this.click(".container .addpeople .primary");
 	      
@@ -87,9 +88,7 @@ public class UserInactiveAC extends TestSuite{
 	         Thread.sleep(3000);
    		  	 login.loginToGo("marina.touceda+058@gointegro.com", "Auto1234");
    		  	 Thread.sleep(2000);
-   		  	 String actual= (driver.findElement(By.cssSelector("p.reject")).getText());
-   		  	 Reporter.log(driver.findElement(By.cssSelector("p.reject")).getText());
-   		  	 
+   		  	  this.goToHome();
    		 		}
 	
 }
