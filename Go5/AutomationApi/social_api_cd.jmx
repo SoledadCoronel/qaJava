@@ -9494,16 +9494,20 @@
     },&#xd;
     &quot;relationships&quot;: {&#xd;
       &quot;target&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;type&quot;: &quot;spaces&quot;,&#xd;
+        &quot;data&quot;: &#xd;
+        {         &#xd;
+        	&quot;type&quot;: &quot;spaces&quot;,&#xd;
           &quot;id&quot;: &quot;${PUBLIC_SPACE_ID}&quot;&#xd;
         }&#xd;
       },&#xd;
       &quot;mentions&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
+        &quot;data&quot;: &#xd;
+        [&#xd;
+        {&#xd;
           &quot;type&quot;: &quot;users&quot;,&#xd;
           &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
         }&#xd;
+       ]&#xd;
       }&#xd;
     }&#xd;
   }&#xd;
@@ -9680,7 +9684,7 @@
                   </ResponseAssertion>
                   <hashTree/>
                 </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - con mentions ToDelete" enabled="true">
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - con mentions ToDelete" enabled="false">
                   <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                     <collectionProp name="Arguments.arguments">
@@ -9773,7 +9777,7 @@
                 </hashTree>
                 <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Validaciones" enabled="true"/>
                 <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - usuario admin menciona a usuario no joineado" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - usuario admin menciona a usuario no joineado" enabled="false">
                     <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                       <collectionProp name="Arguments.arguments">
@@ -9881,7 +9885,7 @@
                     </ResultCollector>
                     <hashTree/>
                   </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - usuario admin hace mention a si mismo" enabled="true">
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - usuario admin hace mention a si mismo" enabled="false">
                     <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                     <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                       <collectionProp name="Arguments.arguments">
