@@ -23,18 +23,14 @@ import go5.pageObjects.PersonasPage;
 
 
 public class UserInactiveAC extends TestSuite{
-
-	String resend= new String(".tables tr:nth-child(1) td:nth-child(6) .link");
-	String okModal = new String ("#modal-container .modal:nth-child(6) .primary");
-	
-	String cancel= new String(".tables tr:nth-child(1) td:nth-child(5) .link");
-	String okModalCancelar = new String ("#modal-container .modal:nth-child(4) .primary");
-	String tabla= new String (".tables");
-	 
+		 
 	PersonasPage personas = null;
 	
 	LoginPage login = null;
 	
+	 private String estadoDesactivado = (".basicdata label:nth-child(2) input:nth-child(2)");
+	 private  String estadoActivado = (".basicdata label:nth-child(2) input:nth-child(1)");
+	 private String bloquearAcceso=(".basicdata label:nth-child(3) input");
 	
 	 @BeforeClass
 	  
@@ -43,42 +39,86 @@ public class UserInactiveAC extends TestSuite{
 	 }
 	
 	
-	 
+	
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
 		 this.quitBrowser();
 		}
 
-	 
+	 private void buscarAInactiveUser() throws Exception{
+		 // Go to the configuration
+	     this.goToConfiguration();
+			this.goToMenu();
+			Thread.sleep(1000);
+		       Reporter.log("Abriendo administar personas" );  
+		 	   // Go to Manage people
+		         personas.goToPersonas();
+		       	WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
+				    this.sendValue(inputSearch, "Inactive");
+		               Thread.sleep(3000);
+		 	       
+		         Reporter.log("clickear usuario inactivo");
+		      //  personas.editFirstPerson();
+		         this.click(".tables tbody tr td:nth-child(7) a");
+		         Thread.sleep(3000);
+	 }
 		
-		
-	        
+     
 	@Test
-	public void loginAsInactive() throws Exception{
+	public void activateUser() throws Exception{
 		
 		personas = new PersonasPage(driver);
 		
 		login = new LoginPage(driver);
 	
 				 
-        Reporter.log(" Probar que un usuario inactivo no se puede loguear");
+     Reporter.log(" Activar el user User Inactive y uncheck block access");
 		
-     // Go to the configuration
-        this.goToConfiguration();
-		this.goToMenu();
-		Thread.sleep(1000);
-	       Reporter.log("Abriendo administar personas" );  
-	 	   // Go to Manage people
-	         personas.goToPersonas();
-	       	WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
-			    this.sendValue(inputSearch, "Inactive");
-	               Thread.sleep(1000);
-	 	       
-	         Reporter.log("clickear usuario inactivo");
-	         this.click(".tables tbody tr td:nth-child(7) a");
+     	this.buscarAInactiveUser();
+	      //  personas.setEstadoActivo();
+	        //Activarlo
+	         this.click(estadoActivado);
+	     
+	         
+	       //Le saco el bloqueo de acceso
+	         
+	       //  this.click(bloquearAcceso);
+	       this.click(".basicdata label:nth-child(3) input ");
+	         Reporter.log("Grabando usuario");
+	         this.click(".container .addpeople .primary");
+	      
+	        this.goToMenuUsuario();
+	          this.logout();
+	         Thread.sleep(3000);
+		  	 login.loginToGo("marina.touceda+058@gointegro.com", "Auto1234");
+		  	 Thread.sleep(2000);
+		  	  this.goToHome();
+		  	 this.goToMenuUsuario();
+	          this.logout();
+		  	  
+		 		}	
+	        
+	@Test(dependsOnMethods = { "activateUser"})
+	public void blockAccessUser() throws Exception{
+		
+		personas = new PersonasPage(driver);
+		
+		login = new LoginPage(driver);
+	
+				 
+        Reporter.log(" Probar que un usuario con bloqueo de acceso no se puede loguear");
+		
+        
+	  	 login.loginToGo("marina.touceda@gointegro.com", "Auto1234");
+	  	 Thread.sleep(1000);
+     
+	  	this.buscarAInactiveUser();
+	      
+	         //Bloquear acceso
+	          //   this.click(bloquearAcceso);
+	        this.click(".basicdata label:nth-child(3) input ");
 	         Thread.sleep(2000);
-	         this.click(".basicdata label:nth-child(2) input:nth-child(2)");
 	         Reporter.log("Grabando usuario");
 	         this.click(".container .addpeople .primary");
 	      
@@ -87,8 +127,35 @@ public class UserInactiveAC extends TestSuite{
 	         Thread.sleep(3000);
    		  	 login.loginToGo("marina.touceda+058@gointegro.com", "Auto1234");
    		  	 Thread.sleep(2000);
-   		  	 String actual= (driver.findElement(By.cssSelector("p.reject")).getText());
    		  	 Reporter.log(driver.findElement(By.cssSelector("p.reject")).getText());
+   		  	 
+   		 		}
+	
+	
+	
+	@Test (dependsOnMethods = { "blockAccessUser"})
+	public void loginAsInactive() throws Exception{
+		
+		personas = new PersonasPage(driver);
+		
+		login = new LoginPage(driver);
+	
+		login.loginToGo("marina.touceda@gointegro.com", "Auto1234");		 
+        Reporter.log(" Probar que un usuario inactivo no se puede loguear");
+		
+     
+	 	       this.buscarAInactiveUser();
+	 	        this.click(estadoDesactivado);
+	      
+	         Reporter.log("Grabando usuario");
+	         this.click(".container .addpeople .primary");
+	      
+	        this.goToMenuUsuario();
+	          this.logout();
+	         Thread.sleep(3000);
+   		  	 login.loginToGo("marina.touceda+058@gointegro.com", "Auto1234");
+   		  	 Thread.sleep(2000);
+   		   	 Reporter.log(driver.findElement(By.cssSelector("p.reject")).getText());
    		  	 
    		 		}
 	
