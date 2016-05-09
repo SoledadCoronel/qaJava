@@ -32,13 +32,7 @@ public class UserInactiveAC extends TestSuite{
 	 private  String estadoActivado = (".basicdata label:nth-child(2) input:nth-child(1)");
 	 private String bloquearAcceso=(".basicdata label:nth-child(3) input");
 	
-	 @BeforeClass
-	  
-	  public void setUp() throws Exception {
-		 this.setUpMaven();
-	 }
-	
-	
+	 	
 	
 	 @AfterClass // call function to close browser 
 		
@@ -54,9 +48,11 @@ public class UserInactiveAC extends TestSuite{
 		       Reporter.log("Abriendo administar personas" );  
 		 	   // Go to Manage people
 		         personas.goToPersonas();
-		       	WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
-				    this.sendValue(inputSearch, "Inactive");
-		               Thread.sleep(3000);
+		      // 	WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
+				// this.click(inputSearch); 
+				  this.sendValue(inputSearch, "Inactive");
+				  Thread.sleep(2000);
+		         
 		 	       
 		         Reporter.log("clickear usuario inactivo");
 		      //  personas.editFirstPerson();
@@ -115,9 +111,10 @@ public class UserInactiveAC extends TestSuite{
      
 	  	this.buscarAInactiveUser();
 	      
-	         //Bloquear acceso
-	          //   this.click(bloquearAcceso);
-	        this.click(".basicdata label:nth-child(3) input ");
+	         //Bloquear acceso e Inactivar
+	            this.click(bloquearAcceso);
+	            this.click(estadoDesactivado);
+	     //   this.click(".basicdata label:nth-child(3) input ");
 	         Thread.sleep(2000);
 	         Reporter.log("Grabando usuario");
 	         this.click(".container .addpeople .primary");
@@ -130,33 +127,4 @@ public class UserInactiveAC extends TestSuite{
    		  	 Reporter.log(driver.findElement(By.cssSelector("p.reject")).getText());
    		  	 
    		 		}
-	
-	
-	
-	@Test (dependsOnMethods = { "blockAccessUser"})
-	public void loginAsInactive() throws Exception{
-		
-		personas = new PersonasPage(driver);
-		
-		login = new LoginPage(driver);
-	
-		login.loginToGo("marina.touceda@gointegro.com", "Auto1234");		 
-        Reporter.log(" Probar que un usuario inactivo no se puede loguear");
-		
-     
-	 	       this.buscarAInactiveUser();
-	 	        this.click(estadoDesactivado);
-	      
-	         Reporter.log("Grabando usuario");
-	         this.click(".container .addpeople .primary");
-	      
-	        this.goToMenuUsuario();
-	          this.logout();
-	         Thread.sleep(3000);
-   		  	 login.loginToGo("marina.touceda+058@gointegro.com", "Auto1234");
-   		  	 Thread.sleep(2000);
-   		   	 Reporter.log(driver.findElement(By.cssSelector("p.reject")).getText());
-   		  	 
-   		 		}
-	
-}
+	}
