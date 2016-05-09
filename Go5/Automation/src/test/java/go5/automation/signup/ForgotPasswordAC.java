@@ -32,7 +32,10 @@ public class ForgotPasswordAC extends TestSuite{
 			driver.quit();
 		}
 
-	@Test
+	private String inputemail= "signInIdentification";
+	private String linkForgotPassword =".signup .link";
+	 
+	 @Test
 	
 		public void testForgotPassword() throws Exception { 
 		WebElement forgotlink = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".signup .link")));
