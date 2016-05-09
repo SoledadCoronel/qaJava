@@ -16,11 +16,6 @@ public class ProfileVerifyDataAC extends TestSuite  {
 
 ProfilePage profile = null;
 
-@BeforeTest // call function to open the browser and login 
-public void setup () throws Exception{
-	 this.setUpMaven();
-}
-
 
  @AfterClass // call function to close browser 
 	
