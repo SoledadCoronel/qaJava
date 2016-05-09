@@ -40,7 +40,8 @@ import org.openqa.selenium.WebDriver;
   
      public LoginPage setUserName(String strUserName){
       
-    	driver.findElement(userName).sendKeys(strUserName);
+    	driver.findElement(userName).clear();
+    	 driver.findElement(userName).sendKeys(strUserName);
     	return this;
   
      }
@@ -51,7 +52,8 @@ import org.openqa.selenium.WebDriver;
   
      public void setPassword(String strPassword){
   
-          driver.findElement(password).sendKeys(strPassword);
+         driver.findElement(password).clear();
+    	 driver.findElement(password).sendKeys(strPassword);
   
      }
   
@@ -87,7 +89,8 @@ import org.openqa.selenium.WebDriver;
      public void loginToGo(String strUserName,String strPasword){
   
          //Fill user name
-  
+    	 
+    	
          this.setUserName(strUserName);
        
          
