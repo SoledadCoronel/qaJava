@@ -61,8 +61,8 @@ public class ListadoEspaciosAC extends TestSuite {
 		 Thread.sleep(1000);
 		 espacio.ordenarPorTipo();
 		 espacio.ordenarPorNombreEspacio();
-		   	
-	           
+		 espacio.buscarEspacio("Editado");  	
+	      Thread.sleep(5000);     
 	           
 	       
 	
