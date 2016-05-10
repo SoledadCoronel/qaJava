@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import junit.framework.Assert;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,6 +32,7 @@ public class UserInactiveAC extends TestSuite{
 	 private String estadoDesactivado = (".basicdata label:nth-child(2) input:nth-child(2)");
 	 private  String estadoActivado = (".basicdata label:nth-child(2) input:nth-child(1)");
 	 private String bloquearAcceso=(".basicdata label:nth-child(3) input");
+	 private String searchButton =".actions .search .btnsearch";
 	
 	 	
 	
@@ -49,11 +51,12 @@ public class UserInactiveAC extends TestSuite{
 		 	   // Go to Manage people
 		         personas.goToPersonas();
 		      // 	WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
-				// this.click(inputSearch); 
-				  this.sendValue(inputSearch, "Inactive");
+				  this.click(searchButton);
+		         	  this.sendValue(inputSearch, "Inactive");
+				  driver.findElement(By.cssSelector(inputSearch)).sendKeys(Keys.ENTER);
+				    this.click(searchButton);
 				  Thread.sleep(2000);
-		         
-		 	       
+		         	 	       
 		         Reporter.log("clickear usuario inactivo");
 		      //  personas.editFirstPerson();
 		         this.click(".tables tbody tr td:nth-child(7) a");
