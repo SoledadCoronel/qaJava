@@ -62,16 +62,16 @@ public class CrearEspacioEmpresaAC extends TestSuite {
 	          
 	          //Desactivar
 	          Reporter.log("Desactivar el espacio");
-	          espacio.activarEspacio();
+	       //   espacio.activarEspacio();
 	     
 	
 	         //Actividad Social
 	          Reporter.log("Desactivar Acitividad Social");
-	         espacio.activarActividadSocial();
+	       //  espacio.activarActividadSocial();
 	  
 	          //Seleccionar el icono
 	          Reporter.log("Seleccionar el icono del espacio");
-	          espacio.cambiarIconoBanana();
+	         // espacio.cambiarIconoBanana();
 	      
 	          espacio.setEspacioEmpresa();
 	      	           
