@@ -51,7 +51,8 @@ public class IrAPerfilSidebarAC extends TestSuite {
 			 
 			 
 			// Go to the user menu
-			  this.goToMenuUsuario();
+			 this.goToMenu();
+			 
 		
 				
 				//Ir a ver perfil

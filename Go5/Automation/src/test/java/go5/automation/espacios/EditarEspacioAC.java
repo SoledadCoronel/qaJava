@@ -43,7 +43,7 @@ public class EditarEspacioAC extends TestSuite {
 		 //Ir a espacios
 		 espacio.goToEspacios();
 		
-		 Thread.sleep(1000);
+		 Thread.sleep(5000);
 			
 			
 		    // Ir a Editar un  Espacio 
