@@ -5,6 +5,7 @@ package go5.pageObjects;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -44,6 +45,9 @@ import org.testng.Reporter;
     	protected String firstState = new String (".tables tbody tr:nth-child(1) td:nth-child(5) a");
     	protected  String firstName = new String (".tables tbody tr:nth-child(1) td:nth-child(2) a");
     	protected String secondName = new String(".tables tbody tr:nth-child(2) td:nth-child(2) a");
+        protected String buscarEspacio= ".actions .btnsearch";
+        protected String inputSearch =".actions .search input";
+       
     	
     	WebDriver driver;
     
@@ -202,6 +206,19 @@ import org.testng.Reporter;
 	       else 
 	       	Reporter.log("La pagina esta ordenada alfabeticamente por orden descencdente ( de la Z a la A " );
     }
+
+		public void buscarEspacio(String espacio) {
+			
+			Reporter.log("Buscar un espacio");
+			driver.findElement(By.cssSelector(buscarEspacio)).click();
+			driver.findElement(By.cssSelector(inputSearch)).sendKeys(espacio);
+			driver.findElement(By.cssSelector(inputSearch)).sendKeys(Keys.ENTER);
+			Reporter.log(" El nombre a buscar es :..");
+			Reporter.log(espacio);
+			Reporter.log("El nombre encontrado es ..");
+			Reporter.log(driver.findElement(By.cssSelector(firstSpace)).getText());
+			
+		}
     
     }
 
