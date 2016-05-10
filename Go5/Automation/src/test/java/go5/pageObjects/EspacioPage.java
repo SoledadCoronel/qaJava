@@ -77,7 +77,8 @@ import org.testng.Reporter;
     	   	 }
     	    
     	    public void setEspacioEmpresa () throws Exception{
-       	   	 Reporter.log("Seleccionando un tipo de espacio Publico:");
+       	   	 Reporter.log("Seleccionando un tipo de espacio Empresa:");
+       	   	 Thread.sleep(1000);
        	   	driver.findElement(By.cssSelector(espacioEmpresa)).click();
        	   	 }
     	  
