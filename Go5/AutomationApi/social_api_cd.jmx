@@ -144,29 +144,32 @@
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <BSFAssertion guiclass="TestBeanGUI" testclass="BSFAssertion" testname="BSF Assertion" enabled="true">
+              <BSFAssertion guiclass="TestBeanGUI" testclass="BSFAssertion" testname="BSF Assertion" enabled="false">
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
-                <stringProp name="script">if (SampleResult.isSuccessful())
+                <stringProp name="script">// Turn the JSON into an object called &apos;SearchResponse&apos;
+eval(&apos;var SearchResponse = &apos; + prev.getResponseDataAsString());
+
+if (SampleResult.isSuccessful())
 {	
 	// Turn the JSON into an object called &apos;SearchResponse&apos;
-   	eval(&apos;var SearchResponse = &apos; + prev.getResponseDataAsString());
       prev.setSuccessful(true);
-      prev.setResponseMessage(&quot;Platform created successfully&quot;);
+      prev.setResponseMessage(&quot; Platform created successfully&quot;);
 }
 else
+try
 {
-   try {
-   if (!SearchResponse.success) {
+  if (!SearchResponse.success) 
+	{
       prev.setSuccessful(false);
       prev.setResponseMessage(response.message);
-   }
-}
+	}
+} 
  catch(e) {
       prev.setSuccessful(false);
-      prev.setResponseMessage(&quot;Invalid response. Expected a valid JSON.&quot;);
+      prev.setResponseMessage(&quot; Invalid response. Expected a valid JSON.&quot;);
 		}
-}
+
 </stringProp>
                 <stringProp name="scriptLanguage">javascript</stringProp>
               </BSFAssertion>
@@ -6824,7 +6827,7 @@ else
   &quot;data&quot;: {&#xd;
     &quot;type&quot;: &quot;hyperlinks&quot;,&#xd;
     &quot;attributes&quot;: {&#xd;
-      &quot;host&quot;: &quot;http://www.clarin.com&quot;,&#xd;
+      &quot;host&quot;: &quot;http://www.clarin.com:80&quot;,&#xd;
       &quot;path&quot;: &quot;/politica/Entrepisos-paredes-dobles-metros-cuadrados_0_1566443529.html&quot;&#xd;
     }&#xd;
   }&#xd;
@@ -6905,6 +6908,100 @@ else
                   <stringProp name="276056973">&quot;type&quot;: &quot;hyperlinks&quot;,</stringProp>
                   <stringProp name="-813787261">&quot;external&quot;: true,</stringProp>
                 </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - hyperlink externo - usuario admin" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;hyperlinks&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;host&quot;: &quot;http://google.com&quot;,&#xd;
+      &quot;path&quot;: &quot;&quot;&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/hyperlinks</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">EXTERNAL_LINK_ID</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                <boolProp name="ResultCollector.error_logging">false</boolProp>
+                <objProp>
+                  <name>saveConfig</name>
+                  <value class="SampleSaveConfiguration">
+                    <time>true</time>
+                    <latency>true</latency>
+                    <timestamp>true</timestamp>
+                    <success>true</success>
+                    <label>true</label>
+                    <code>true</code>
+                    <message>true</message>
+                    <threadName>true</threadName>
+                    <dataType>true</dataType>
+                    <encoding>false</encoding>
+                    <assertions>true</assertions>
+                    <subresults>true</subresults>
+                    <responseData>false</responseData>
+                    <samplerData>false</samplerData>
+                    <xml>false</xml>
+                    <fieldNames>false</fieldNames>
+                    <responseHeaders>false</responseHeaders>
+                    <requestHeaders>false</requestHeaders>
+                    <responseDataOnError>false</responseDataOnError>
+                    <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                    <assertionsResultsToSave>0</assertionsResultsToSave>
+                    <bytes>true</bytes>
+                    <threadCounts>true</threadCounts>
+                  </value>
+                </objProp>
+                <stringProp name="filename"></stringProp>
+              </ResultCollector>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49587">201</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="false">
+                <collectionProp name="Asserion.test_strings"/>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
@@ -7768,109 +7865,6 @@ else
                   <hashTree/>
                 </hashTree>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post3 - usuario admin" enabled="true">
-                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                    <collectionProp name="Arguments.arguments">
-                      <elementProp name="" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;posts&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;content&quot;: &quot;Publicando texto3 - QAGO5&quot;&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;target&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;type&quot;: &quot;spaces&quot;,&#xd;
-          &quot;id&quot;: &quot;${PUBLIC_SPACE_ID}&quot;&#xd;
-        }&#xd;
-      }&#xd;
-    }&#xd;
-  }&#xd;
-}</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <stringProp name="HTTPSampler.domain"></stringProp>
-                  <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.protocol"></stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">/posts</stringProp>
-                  <stringProp name="HTTPSampler.method">POST</stringProp>
-                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
-                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                </HTTPSamplerProxy>
-                <hashTree>
-                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">POST_ID3</stringProp>
-                    <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
-                    <stringProp name="RegexExtractor.template">$1$</stringProp>
-                    <stringProp name="RegexExtractor.default"></stringProp>
-                    <stringProp name="RegexExtractor.match_number">1</stringProp>
-                  </RegexExtractor>
-                  <hashTree/>
-                  <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
-                    <boolProp name="ResultCollector.error_logging">false</boolProp>
-                    <objProp>
-                      <name>saveConfig</name>
-                      <value class="SampleSaveConfiguration">
-                        <time>true</time>
-                        <latency>true</latency>
-                        <timestamp>true</timestamp>
-                        <success>true</success>
-                        <label>true</label>
-                        <code>true</code>
-                        <message>true</message>
-                        <threadName>true</threadName>
-                        <dataType>true</dataType>
-                        <encoding>false</encoding>
-                        <assertions>true</assertions>
-                        <subresults>true</subresults>
-                        <responseData>false</responseData>
-                        <samplerData>false</samplerData>
-                        <xml>false</xml>
-                        <fieldNames>false</fieldNames>
-                        <responseHeaders>false</responseHeaders>
-                        <requestHeaders>false</requestHeaders>
-                        <responseDataOnError>false</responseDataOnError>
-                        <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                        <assertionsResultsToSave>0</assertionsResultsToSave>
-                        <bytes>true</bytes>
-                        <threadCounts>true</threadCounts>
-                      </value>
-                    </objProp>
-                    <stringProp name="filename"></stringProp>
-                  </ResultCollector>
-                  <hashTree/>
-                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                    <collectionProp name="Asserion.test_strings">
-                      <stringProp name="49587">201</stringProp>
-                    </collectionProp>
-                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                    <boolProp name="Assertion.assume_success">false</boolProp>
-                    <intProp name="Assertion.test_type">8</intProp>
-                  </ResponseAssertion>
-                  <hashTree/>
-                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
-                    <collectionProp name="Asserion.test_strings">
-                      <stringProp name="-649925197">&quot;content&quot;: &quot;Publicando texto3 - QAGO5&quot;,</stringProp>
-                    </collectionProp>
-                    <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                    <boolProp name="Assertion.assume_success">false</boolProp>
-                    <intProp name="Assertion.test_type">2</intProp>
-                  </ResponseAssertion>
-                  <hashTree/>
-                </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - usuario admin" enabled="true">
                   <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                     <collectionProp name="Arguments.arguments">
@@ -11116,7 +11110,7 @@ else
                   </hashTree>
                 </hashTree>
               </hashTree>
-              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MENTIONS" enabled="true"/>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MENTIONS" enabled="false"/>
               <hashTree>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - usuario admin hace mention a usuario básico" enabled="true">
                   <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -12251,7 +12245,7 @@ else
                   </ResponseAssertion>
                   <hashTree/>
                 </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment3" enabled="true">
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment2" enabled="true">
                   <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                     <collectionProp name="Arguments.arguments">
@@ -12296,6 +12290,109 @@ else
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                     <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
+                  <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                    <boolProp name="ResultCollector.error_logging">false</boolProp>
+                    <objProp>
+                      <name>saveConfig</name>
+                      <value class="SampleSaveConfiguration">
+                        <time>true</time>
+                        <latency>true</latency>
+                        <timestamp>true</timestamp>
+                        <success>true</success>
+                        <label>true</label>
+                        <code>true</code>
+                        <message>true</message>
+                        <threadName>true</threadName>
+                        <dataType>true</dataType>
+                        <encoding>false</encoding>
+                        <assertions>true</assertions>
+                        <subresults>true</subresults>
+                        <responseData>false</responseData>
+                        <samplerData>false</samplerData>
+                        <xml>false</xml>
+                        <fieldNames>false</fieldNames>
+                        <responseHeaders>false</responseHeaders>
+                        <requestHeaders>false</requestHeaders>
+                        <responseDataOnError>false</responseDataOnError>
+                        <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                        <assertionsResultsToSave>0</assertionsResultsToSave>
+                        <bytes>true</bytes>
+                        <threadCounts>true</threadCounts>
+                      </value>
+                    </objProp>
+                    <stringProp name="filename"></stringProp>
+                  </ResultCollector>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="49587">201</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">8</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="-417967796">&quot;comment&quot;: &quot;Comentario - QAGO5&quot;,</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">2</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment3" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;comments&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;comment&quot;: &quot;Comentario - QAGO5&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;subject&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;posts&quot;,&#xd;
+          &quot;id&quot;: &quot;${POST_ID}&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/comments</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID3</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -12398,7 +12495,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID4</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -12501,7 +12598,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID5</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -12604,7 +12701,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID6</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -12707,7 +12804,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID7</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -12810,7 +12907,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID8</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -12913,7 +13010,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID9</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -13016,7 +13113,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID10</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -13119,7 +13216,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID11</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -13222,7 +13319,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID12</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -13325,7 +13422,7 @@ else
                 <hashTree>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID2</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID13</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -14029,7 +14126,7 @@ else
                   <hashTree/>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">COMMENT_ID</stringProp>
+                    <stringProp name="RegexExtractor.refname">COMMENT_ID14</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -14285,6 +14382,634 @@ else
                     <stringProp name="filename"></stringProp>
                   </ResultCollector>
                   <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="49587">201</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">8</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Comentarios con metions" enabled="true"/>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment con mention" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;comments&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;comment&quot;: &quot;Comentario - QAGO5&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;subject&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;posts&quot;,&#xd;
+          &quot;id&quot;: &quot;${POST_ID}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+     &quot;mentions&quot;: {&#xd;
+       &quot;data&quot;: &#xd;
+       [&#xd;
+        {&#xd;
+          &quot;type&quot;: &quot;users&quot;,&#xd;
+          &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
+        }&#xd;
+       ]&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/comments</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                    <boolProp name="ResultCollector.error_logging">false</boolProp>
+                    <objProp>
+                      <name>saveConfig</name>
+                      <value class="SampleSaveConfiguration">
+                        <time>true</time>
+                        <latency>true</latency>
+                        <timestamp>true</timestamp>
+                        <success>true</success>
+                        <label>true</label>
+                        <code>true</code>
+                        <message>true</message>
+                        <threadName>true</threadName>
+                        <dataType>true</dataType>
+                        <encoding>false</encoding>
+                        <assertions>true</assertions>
+                        <subresults>true</subresults>
+                        <responseData>false</responseData>
+                        <samplerData>false</samplerData>
+                        <xml>false</xml>
+                        <fieldNames>false</fieldNames>
+                        <responseHeaders>false</responseHeaders>
+                        <requestHeaders>false</requestHeaders>
+                        <responseDataOnError>false</responseDataOnError>
+                        <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                        <assertionsResultsToSave>0</assertionsResultsToSave>
+                        <bytes>true</bytes>
+                        <threadCounts>true</threadCounts>
+                      </value>
+                    </objProp>
+                    <stringProp name="filename"></stringProp>
+                  </ResultCollector>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="49587">201</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">8</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="-417967796">&quot;comment&quot;: &quot;Comentario - QAGO5&quot;,</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">2</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment con multiples mention" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;comments&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;comment&quot;: &quot;Comentario - QAGO5&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;subject&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;posts&quot;,&#xd;
+          &quot;id&quot;: &quot;${POST_ID}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;mentions&quot;: {&#xd;
+        &quot;data&quot;: &#xd;
+        [&#xd;
+        {&#xd;
+          &quot;type&quot;: &quot;users&quot;,&#xd;
+          &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;type&quot;: &quot;users&quot;,&#xd;
+          &quot;id&quot;: &quot;${BASICUSER_ID3}&quot;&#xd;
+        }&#xd;
+       ]&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/comments</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                    <boolProp name="ResultCollector.error_logging">false</boolProp>
+                    <objProp>
+                      <name>saveConfig</name>
+                      <value class="SampleSaveConfiguration">
+                        <time>true</time>
+                        <latency>true</latency>
+                        <timestamp>true</timestamp>
+                        <success>true</success>
+                        <label>true</label>
+                        <code>true</code>
+                        <message>true</message>
+                        <threadName>true</threadName>
+                        <dataType>true</dataType>
+                        <encoding>false</encoding>
+                        <assertions>true</assertions>
+                        <subresults>true</subresults>
+                        <responseData>false</responseData>
+                        <samplerData>false</samplerData>
+                        <xml>false</xml>
+                        <fieldNames>false</fieldNames>
+                        <responseHeaders>false</responseHeaders>
+                        <requestHeaders>false</requestHeaders>
+                        <responseDataOnError>false</responseDataOnError>
+                        <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                        <assertionsResultsToSave>0</assertionsResultsToSave>
+                        <bytes>true</bytes>
+                        <threadCounts>true</threadCounts>
+                      </value>
+                    </objProp>
+                    <stringProp name="filename"></stringProp>
+                  </ResultCollector>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="49587">201</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">8</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="-417967796">&quot;comment&quot;: &quot;Comentario - QAGO5&quot;,</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">2</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - usuario admin multiples mentions mix user no joineado" enabled="false">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;posts&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;content&quot;: &quot;Post con varios mentions&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;target&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;spaces&quot;,&#xd;
+          &quot;id&quot;: &quot;${PUBLIC_SPACE_ID}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;mentions&quot;: {&#xd;
+        &quot;data&quot;: &#xd;
+        [&#xd;
+        {&#xd;
+          &quot;type&quot;: &quot;users&quot;,&#xd;
+          &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;type&quot;: &quot;users&quot;,&#xd;
+          &quot;id&quot;: &quot;${BASICUSER_ID}&quot;&#xd;
+        },&#xd;
+        {&#xd;
+          &quot;type&quot;: &quot;users&quot;,&#xd;
+          &quot;id&quot;: &quot;${BASICUSER_ID3}&quot;&#xd;
+        }&#xd;
+       ]&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/posts</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                    <boolProp name="ResultCollector.error_logging">false</boolProp>
+                    <objProp>
+                      <name>saveConfig</name>
+                      <value class="SampleSaveConfiguration">
+                        <time>true</time>
+                        <latency>true</latency>
+                        <timestamp>true</timestamp>
+                        <success>true</success>
+                        <label>true</label>
+                        <code>true</code>
+                        <message>true</message>
+                        <threadName>true</threadName>
+                        <dataType>true</dataType>
+                        <encoding>false</encoding>
+                        <assertions>true</assertions>
+                        <subresults>true</subresults>
+                        <responseData>false</responseData>
+                        <samplerData>false</samplerData>
+                        <xml>false</xml>
+                        <fieldNames>false</fieldNames>
+                        <responseHeaders>false</responseHeaders>
+                        <requestHeaders>false</requestHeaders>
+                        <responseDataOnError>false</responseDataOnError>
+                        <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                        <assertionsResultsToSave>0</assertionsResultsToSave>
+                        <bytes>true</bytes>
+                        <threadCounts>true</threadCounts>
+                      </value>
+                    </objProp>
+                    <stringProp name="filename"></stringProp>
+                  </ResultCollector>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="49587">201</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">8</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="-343079000">&quot;id&quot;: &quot;${BASICUSER_ID2}&quot;</stringProp>
+                      <stringProp name="-343078039">&quot;id&quot;: &quot;${BASICUSER_ID3}&quot;</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">2</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                </hashTree>
+                <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Validaciones" enabled="true"/>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment - usuario admin menciona a usuario no joineado" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;comments&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;comment&quot;: &quot;Comentario - QAGO5&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;subject&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;posts&quot;,&#xd;
+          &quot;id&quot;: &quot;${POST_ID}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;mentions&quot;: {&#xd;
+        &quot;data&quot;: &#xd;
+        [&#xd;
+        {&#xd;
+          &quot;type&quot;: &quot;users&quot;,&#xd;
+          &quot;id&quot;: &quot;${BASICUSER_ID}&quot;&#xd;
+        }&#xd;
+       ]&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/comments</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <boolProp name="HTTPSampler.monitor">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                      <boolProp name="ResultCollector.error_logging">false</boolProp>
+                      <objProp>
+                        <name>saveConfig</name>
+                        <value class="SampleSaveConfiguration">
+                          <time>true</time>
+                          <latency>true</latency>
+                          <timestamp>true</timestamp>
+                          <success>true</success>
+                          <label>true</label>
+                          <code>true</code>
+                          <message>true</message>
+                          <threadName>true</threadName>
+                          <dataType>true</dataType>
+                          <encoding>false</encoding>
+                          <assertions>true</assertions>
+                          <subresults>true</subresults>
+                          <responseData>false</responseData>
+                          <samplerData>false</samplerData>
+                          <xml>false</xml>
+                          <fieldNames>false</fieldNames>
+                          <responseHeaders>false</responseHeaders>
+                          <requestHeaders>false</requestHeaders>
+                          <responseDataOnError>false</responseDataOnError>
+                          <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                          <assertionsResultsToSave>0</assertionsResultsToSave>
+                          <bytes>true</bytes>
+                          <threadCounts>true</threadCounts>
+                        </value>
+                      </objProp>
+                      <stringProp name="filename"></stringProp>
+                    </ResultCollector>
+                    <hashTree/>
+                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                      <collectionProp name="Asserion.test_strings">
+                        <stringProp name="49587">201</stringProp>
+                      </collectionProp>
+                      <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                      <boolProp name="Assertion.assume_success">false</boolProp>
+                      <intProp name="Assertion.test_type">8</intProp>
+                    </ResponseAssertion>
+                    <hashTree/>
+                  </hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment - usuario admin menciona user de otra plataforma" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;comments&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;comment&quot;: &quot;Comentario - QAGO5&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;subject&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;posts&quot;,&#xd;
+          &quot;id&quot;: &quot;${POST_ID}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;mentions&quot;: {&#xd;
+        &quot;data&quot;: &#xd;
+        [&#xd;
+        {&#xd;
+          &quot;type&quot;: &quot;users&quot;,&#xd;
+          &quot;id&quot;: &quot;${BASICUSER_ID1_PLATFORM2}&quot;&#xd;
+        }&#xd;
+       ]&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/comments</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <boolProp name="HTTPSampler.monitor">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                      <boolProp name="ResultCollector.error_logging">false</boolProp>
+                      <objProp>
+                        <name>saveConfig</name>
+                        <value class="SampleSaveConfiguration">
+                          <time>true</time>
+                          <latency>true</latency>
+                          <timestamp>true</timestamp>
+                          <success>true</success>
+                          <label>true</label>
+                          <code>true</code>
+                          <message>true</message>
+                          <threadName>true</threadName>
+                          <dataType>true</dataType>
+                          <encoding>false</encoding>
+                          <assertions>true</assertions>
+                          <subresults>true</subresults>
+                          <responseData>false</responseData>
+                          <samplerData>false</samplerData>
+                          <xml>false</xml>
+                          <fieldNames>false</fieldNames>
+                          <responseHeaders>false</responseHeaders>
+                          <requestHeaders>false</requestHeaders>
+                          <responseDataOnError>false</responseDataOnError>
+                          <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                          <assertionsResultsToSave>0</assertionsResultsToSave>
+                          <bytes>true</bytes>
+                          <threadCounts>true</threadCounts>
+                        </value>
+                      </objProp>
+                      <stringProp name="filename"></stringProp>
+                    </ResultCollector>
+                    <hashTree/>
+                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                      <collectionProp name="Asserion.test_strings">
+                        <stringProp name="49587">201</stringProp>
+                      </collectionProp>
+                      <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                      <boolProp name="Assertion.assume_success">false</boolProp>
+                      <intProp name="Assertion.test_type">8</intProp>
+                    </ResponseAssertion>
+                    <hashTree/>
+                    <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                      <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                      <stringProp name="RegexExtractor.refname">COMMENT_MENTION</stringProp>
+                      <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
+                      <stringProp name="RegexExtractor.template">$1$</stringProp>
+                      <stringProp name="RegexExtractor.default"></stringProp>
+                      <stringProp name="RegexExtractor.match_number">1</stringProp>
+                    </RegexExtractor>
+                    <hashTree/>
+                  </hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="comment - usuario admin hace mention a si mismo" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;type&quot;: &quot;comments&quot;,&#xd;
+    &quot;attributes&quot;: {&#xd;
+      &quot;comment&quot;: &quot;Comentario - QAGO5&quot;&#xd;
+    },&#xd;
+    &quot;relationships&quot;: {&#xd;
+      &quot;subject&quot;: {&#xd;
+        &quot;data&quot;: {&#xd;
+          &quot;type&quot;: &quot;posts&quot;,&#xd;
+          &quot;id&quot;: &quot;${POST_ID}&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      &quot;mentions&quot;: {&#xd;
+        &quot;data&quot;: &#xd;
+        [&#xd;
+        {&#xd;
+          &quot;type&quot;: &quot;users&quot;,&#xd;
+          &quot;id&quot;: &quot;${USERADMIN_ID}&quot;&#xd;
+        }&#xd;
+       ]&#xd;
+      }&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/comments</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <boolProp name="HTTPSampler.monitor">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                      <boolProp name="ResultCollector.error_logging">false</boolProp>
+                      <objProp>
+                        <name>saveConfig</name>
+                        <value class="SampleSaveConfiguration">
+                          <time>true</time>
+                          <latency>true</latency>
+                          <timestamp>true</timestamp>
+                          <success>true</success>
+                          <label>true</label>
+                          <code>true</code>
+                          <message>true</message>
+                          <threadName>true</threadName>
+                          <dataType>true</dataType>
+                          <encoding>false</encoding>
+                          <assertions>true</assertions>
+                          <subresults>true</subresults>
+                          <responseData>false</responseData>
+                          <samplerData>false</samplerData>
+                          <xml>false</xml>
+                          <fieldNames>false</fieldNames>
+                          <responseHeaders>false</responseHeaders>
+                          <requestHeaders>false</requestHeaders>
+                          <responseDataOnError>false</responseDataOnError>
+                          <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                          <assertionsResultsToSave>0</assertionsResultsToSave>
+                          <bytes>true</bytes>
+                          <threadCounts>true</threadCounts>
+                        </value>
+                      </objProp>
+                      <stringProp name="filename"></stringProp>
+                    </ResultCollector>
+                    <hashTree/>
+                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                      <collectionProp name="Asserion.test_strings">
+                        <stringProp name="49587">201</stringProp>
+                      </collectionProp>
+                      <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                      <boolProp name="Assertion.assume_success">false</boolProp>
+                      <intProp name="Assertion.test_type">8</intProp>
+                    </ResponseAssertion>
+                    <hashTree/>
+                  </hashTree>
                 </hashTree>
               </hashTree>
             </hashTree>
@@ -16325,7 +17050,7 @@ else
       &quot;subject&quot;: {&#xd;
         &quot;data&quot;: {&#xd;
           &quot;type&quot;: &quot;comments&quot;,&#xd;
-          &quot;id&quot;: &quot;${COMMENT_ID}&quot;&#xd;
+          &quot;id&quot;: &quot;${COMMENT_MENTION}&quot;&#xd;
         }&#xd;
       }&#xd;
     }&#xd;
@@ -16416,7 +17141,7 @@ else
       &quot;subject&quot;: {&#xd;
         &quot;data&quot;: {&#xd;
           &quot;type&quot;: &quot;comments&quot;,&#xd;
-          &quot;id&quot;: &quot;${COMMENT_ID}&quot;&#xd;
+          &quot;id&quot;: &quot;${COMMENT_MENTION}&quot;&#xd;
         }&#xd;
       }&#xd;
     }&#xd;
@@ -16779,7 +17504,7 @@ else
       &quot;subject&quot;: {&#xd;
         &quot;data&quot;: {&#xd;
           &quot;type&quot;: &quot;comments&quot;,&#xd;
-          &quot;id&quot;: &quot;${COMMENT_ID}&quot;&#xd;
+          &quot;id&quot;: &quot;${COMMENT_MENTION}&quot;&#xd;
         }&#xd;
       }&#xd;
     }&#xd;
@@ -17546,17 +18271,10 @@ else
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="page[size]" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">10</stringProp>
+                    <stringProp name="Argument.value">5</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="Argument.name">page[size]</stringProp>
-                  </elementProp>
-                  <elementProp name="include" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">author</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">include</stringProp>
                   </elementProp>
                 </collectionProp>
               </elementProp>
@@ -17620,7 +18338,7 @@ else
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-1353972361">&quot;total-items&quot;: 15</stringProp>
+                  <stringProp name="-1353972334">&quot;total-items&quot;: 21</stringProp>
                   <stringProp name="-741674785">&quot;last-page&quot;: false</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -17701,7 +18419,87 @@ else
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-1824606638">&quot;last-page&quot;: true</stringProp>
-                  <stringProp name="-1353972361">&quot;total-items&quot;: 15</stringProp>
+                  <stringProp name="-1353972334">&quot;total-items&quot;: 21</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get - commentsPost - Todos" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/comments?filter[parent-id]=${POST_ID}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                <boolProp name="ResultCollector.error_logging">false</boolProp>
+                <objProp>
+                  <name>saveConfig</name>
+                  <value class="SampleSaveConfiguration">
+                    <time>true</time>
+                    <latency>true</latency>
+                    <timestamp>true</timestamp>
+                    <success>true</success>
+                    <label>true</label>
+                    <code>true</code>
+                    <message>true</message>
+                    <threadName>true</threadName>
+                    <dataType>true</dataType>
+                    <encoding>false</encoding>
+                    <assertions>true</assertions>
+                    <subresults>true</subresults>
+                    <responseData>false</responseData>
+                    <samplerData>false</samplerData>
+                    <xml>false</xml>
+                    <fieldNames>false</fieldNames>
+                    <responseHeaders>false</responseHeaders>
+                    <requestHeaders>false</requestHeaders>
+                    <responseDataOnError>false</responseDataOnError>
+                    <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                    <assertionsResultsToSave>0</assertionsResultsToSave>
+                    <bytes>true</bytes>
+                    <threadCounts>true</threadCounts>
+                  </value>
+                </objProp>
+                <stringProp name="filename"></stringProp>
+              </ResultCollector>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1824606638">&quot;last-page&quot;: true</stringProp>
+                  <stringProp name="-1353972334">&quot;total-items&quot;: 21</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -17779,7 +18577,7 @@ else
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-1353972361">&quot;total-items&quot;: 15</stringProp>
+                  <stringProp name="-1353972334">&quot;total-items&quot;: 21</stringProp>
                   <stringProp name="1415068806">&quot;count-likes&quot;: 2</stringProp>
                   <stringProp name="-657742318">&quot;id&quot;: &quot;${COMMENT_LIKE_ID}&quot;,</stringProp>
                 </collectionProp>
@@ -18074,7 +18872,7 @@ else
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get - comment" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get - comment con imagen" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
@@ -18085,6 +18883,69 @@ else
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
               <stringProp name="HTTPSampler.path">/comments/${COMMENT_TEXTO&amp;IMAGEN_ID}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+                <boolProp name="ResultCollector.error_logging">false</boolProp>
+                <objProp>
+                  <name>saveConfig</name>
+                  <value class="SampleSaveConfiguration">
+                    <time>true</time>
+                    <latency>true</latency>
+                    <timestamp>true</timestamp>
+                    <success>true</success>
+                    <label>true</label>
+                    <code>true</code>
+                    <message>true</message>
+                    <threadName>true</threadName>
+                    <dataType>true</dataType>
+                    <encoding>false</encoding>
+                    <assertions>true</assertions>
+                    <subresults>true</subresults>
+                    <responseData>false</responseData>
+                    <samplerData>false</samplerData>
+                    <xml>false</xml>
+                    <fieldNames>false</fieldNames>
+                    <responseHeaders>false</responseHeaders>
+                    <requestHeaders>false</requestHeaders>
+                    <responseDataOnError>false</responseDataOnError>
+                    <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                    <assertionsResultsToSave>0</assertionsResultsToSave>
+                    <bytes>true</bytes>
+                    <threadCounts>true</threadCounts>
+                  </value>
+                </objProp>
+                <stringProp name="filename"></stringProp>
+              </ResultCollector>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get - comment" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/comments/${COMMENT_MENTION}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -36330,7 +37191,7 @@ else
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/likes?filter[comment]=${COMMENT_ID}</stringProp>
+              <stringProp name="HTTPSampler.path">/likes?filter[comment]=${COMMENT_MENTION}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -36658,6 +37519,7 @@ else
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="1210361798">&quot;count-likes&quot;: &quot;2&quot;,</stringProp>
+                  <stringProp name="732516213">&quot;id&quot;: &quot;${POST_LIKE_ID}&quot;,</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -37229,7 +38091,7 @@ else
               <hashTree/>
             </hashTree>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GETs Muro de profile" enabled="true"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GETs Muro de profile" enabled="false"/>
           <hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getFeed-items - por user" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -37934,7 +38796,7 @@ else
               </hashTree>
             </hashTree>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GETs Espacio privado" enabled="true"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GETs Espacio privado" enabled="false"/>
           <hashTree>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Validaciones" enabled="true"/>
             <hashTree>
