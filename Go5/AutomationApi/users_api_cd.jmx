@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Plan de Pruebas" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -5303,6 +5303,16 @@
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="6. USERS - PLATFORM" enabled="true"/>
         <hashTree>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="jsPath" elementType="Argument">
+                <stringProp name="Argument.name">jsPath</stringProp>
+                <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)}${__BeanShell(File.separator,)}js${__BeanShell(File.separator,)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
           <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
             <collectionProp name="CookieManager.cookies"/>
             <boolProp name="CookieManager.clearEachIteration">false</boolProp>
@@ -7375,6 +7385,24 @@
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="UserGet" enabled="true"/>
           <hashTree>
+            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load utils.js" enabled="true">
+              <stringProp name="filename">${jsPath}utils.js</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script"></stringProp>
+              <stringProp name="scriptLanguage">javascript</stringProp>
+            </BSFSampler>
+            <hashTree/>
+            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load libs in context" enabled="true">
+              <stringProp name="scriptLanguage">javascript</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">//we have to retrieve the utils from vars
+var utils = props.get(&apos;utils&apos;);
+
+utils.load(&apos;jjv&apos;);
+utils.load(&apos;schemas&apos;);</stringProp>
+            </BSFSampler>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getUsers" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments">
@@ -7460,6 +7488,30 @@
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
+              <hashTree/>
+              <BSFAssertion guiclass="TestBeanGUI" testclass="BSFAssertion" testname="BSF Assertion" enabled="true">
+                <stringProp name="scriptLanguage">javascript</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">try {
+	var utils = props.get(&apos;utils&apos;);
+	utils.reload();	
+
+   	eval(&apos;var response = &apos; + prev.getResponseDataAsString());
+   
+	var errors = schemas.validate(&apos;user&apos;, response.data[0]);
+	
+   	if (errors) {
+     	prev.setSuccessful(false);
+      	prev.setResponseMessage(&quot;Invalid JSON schema: &quot;+JSON.stringify(errors));
+   	}
+   	
+} catch(e) {
+	 log.info(e.message);
+      prev.setSuccessful(false);
+      prev.setResponseMessage(&quot;Invalid response. Expected a valid JSON.&quot;);
+}</stringProp>
+              </BSFAssertion>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getUsersPaginado" enabled="false">

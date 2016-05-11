@@ -1,4 +1,48 @@
 var schemas = jjv();
+
+// Common
+schemas.addSchema('meta-pagination', 
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "description": "Meta pagination",
+    "properties": {
+        "pagination": {
+            "type": "object",
+            "properties": {
+                "total-pages": {
+                    "type": "number"
+                },
+                "total-items": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+});
+
+schemas.addSchema('top-links', 
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "description": "Top level links",
+    "properties": {
+        "first": {
+            "type": "string"
+        },
+        "last": {
+            "type": "string"
+        },
+        "prev": {
+            "type": "string"
+        },
+        "next": {
+            "type": "string"
+        }
+    }
+});
+
+// Platforms Schemas
 schemas.addSchema('platform', 
 {
     "$schema": "http://json-schema.org/schema",
@@ -20,19 +64,21 @@ schemas.addSchema('platform',
                 },
                 "language": {
                     "type": "string",
-                    "enum": ['es', 'en', 'pt']
+                    "enum": ['es', 'pt', 'en']
                 },
                 "subdomain": {
                     "type": "string"
                 },
                 "status": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": ["active", "disabled"]
                 },
                 "timezone": {
                     "type": "string"
                 },
                 "users-range": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": ["0-50", "50-100", "100-300","+300"]
                 },
                 "created-at": {
                     "type": "string"
@@ -74,3 +120,233 @@ schemas.addSchema('platform',
     },
     "required": ["type", "id"]
 });
+
+schemas.addSchema('branding',
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "description": "A Branding.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["brandings"]
+        },
+        "id": {
+            "type": "string"
+        },
+        "attributes": {
+            "type": "object",
+            "properties": {
+                "text-color": {
+                    "type": "string",
+                    "maxLength": 6
+                },
+                "bg-color": {
+                    "type": "string",
+                    "maxLength": 6
+                },
+                "created-at": {
+                    "type": "string"
+                },
+                "updated-at": {
+                    "type": "string"
+                }
+            },
+            "required": ["text-color", "bg-color", "created-at", "updated-at"]
+        },
+        "relationships": {
+            "type": "object",
+            "properties": {
+                "logo": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": ["object"],
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["files"]
+                                },
+                                "id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "login-bg": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": ["object"],
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["files"]
+                                },
+                                "id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "required": ["type", "id"]
+});
+
+schemas.addSchema('space',
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "description": "A space.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum" : ["spaces"]
+        },
+        "id": {
+            "type": "string"
+        },
+        "attributes": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "active": {
+                    "type": "boolean"
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [ "public", "private", "company" ]
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "social-enabled": {
+                    "type": "boolean"
+                },
+                "users-count": {
+                    "type": "number"
+                },
+                "groups-count": {
+                    "type": "number"
+                },
+                "admins-count": {
+                    "type": ["number"]
+                },
+                "membership-status": {
+                    "type": "string",
+                    "enum": ["admin", "member"]
+                },
+                "position": {
+                    "type": "number"
+                }
+            },
+            "required": ["name", "visibility", "description", "icon", "active", "visibility", "social-enabled", "users-count",
+                        "groups-count", "admins-count", "membership-status", "position", "created-at", "updated-at"]
+        },
+        "relationships": {
+            "type": "object",
+            "properties": {
+                "platform": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum" : ["platforms"]
+                        },
+                        "id": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        }
+    }
+});
+
+// Users schemas
+schemas.addSchema('user',
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "description": "A user.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum" : ["users"]
+        },
+        "id": {
+            "type": "string"
+        },
+        "attributes": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "last-name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "login-enabled": {
+                    "type": "boolean"
+                },
+                "registered-date": {
+                    "type": ["string"]
+                },
+                "created-at": {
+                    "type": "string"
+                },
+                "updated-at": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "last-name", "email", "status", "slug", "login-enabled", "registered-date",
+                        "created-at", "updated-at"]
+        },
+        "relationships": {
+            "type": "object",
+            "properties": {
+                "role": {
+                    "type": "object"
+                },
+                "preference": {
+                    "type": "object"
+                },
+                "profile": {
+                    "type": "object"
+                },
+                "access": {
+                    "type": "object"
+                },
+                "job-title": {
+                    "type": "object"
+                },  
+                "group-items": {
+                    "type": "object"
+                },
+                "joined-spaces": {
+                    "type": "object"
+                }                          
+            }
+        }
+    },
+    "required": ["type", "id"]
+});
+

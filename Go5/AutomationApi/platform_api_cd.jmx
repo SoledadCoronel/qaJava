@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="PLATFORM" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -2673,7 +2673,7 @@
               <stringProp name="scriptLanguage">javascript</stringProp>
             </BSFSampler>
             <hashTree/>
-            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load moment.min.js in context" enabled="true">
+            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load libs in context" enabled="true">
               <stringProp name="scriptLanguage">javascript</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
@@ -6766,6 +6766,16 @@ utils.load(&apos;schemas&apos;);</stringProp>
             <boolProp name="CookieManager.clearEachIteration">true</boolProp>
           </CookieManager>
           <hashTree/>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="jsPath" elementType="Argument">
+                <stringProp name="Argument.name">jsPath</stringProp>
+                <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)}${__BeanShell(File.separator,)}js${__BeanShell(File.separator,)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
           <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -8393,6 +8403,24 @@ utils.load(&apos;schemas&apos;);</stringProp>
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="BrandingGets" enabled="true"/>
           <hashTree>
+            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load utils.js" enabled="true">
+              <stringProp name="filename">${jsPath}utils.js</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script"></stringProp>
+              <stringProp name="scriptLanguage">javascript</stringProp>
+            </BSFSampler>
+            <hashTree/>
+            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load libs in context" enabled="true">
+              <stringProp name="scriptLanguage">javascript</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">//we have to retrieve the utils from vars
+var utils = props.get(&apos;utils&apos;);
+
+utils.load(&apos;jjv&apos;);
+utils.load(&apos;schemas&apos;);</stringProp>
+            </BSFSampler>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getBranding - byPlatform" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
@@ -8430,6 +8458,30 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
+              <hashTree/>
+              <BSFAssertion guiclass="TestBeanGUI" testclass="BSFAssertion" testname="BSF Assertion" enabled="true">
+                <stringProp name="scriptLanguage">javascript</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">try {
+	var utils = props.get(&apos;utils&apos;);
+	utils.reload();	
+
+   	eval(&apos;var response = &apos; + prev.getResponseDataAsString());
+   
+	var errors = schemas.validate(&apos;branding&apos;, response.data);
+	
+   	if (errors) {
+     	prev.setSuccessful(false);
+      	prev.setResponseMessage(&quot;Invalid JSON schema: &quot;+JSON.stringify(errors));
+   	}
+   	
+} catch(e) {
+	 log.info(e.message);
+      prev.setSuccessful(false);
+      prev.setResponseMessage(&quot;Invalid response. Expected a valid JSON.&quot;);
+}</stringProp>
+              </BSFAssertion>
               <hashTree/>
             </hashTree>
           </hashTree>
@@ -8534,6 +8586,16 @@ utils.load(&apos;schemas&apos;);</stringProp>
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SPACES" enabled="true"/>
         <hashTree>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="jsPath" elementType="Argument">
+                <stringProp name="Argument.name">jsPath</stringProp>
+                <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)}${__BeanShell(File.separator,)}js${__BeanShell(File.separator,)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
           <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -9137,6 +9199,24 @@ utils.load(&apos;schemas&apos;);</stringProp>
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GetsSpace" enabled="true"/>
           <hashTree>
+            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load utils.js" enabled="true">
+              <stringProp name="filename">${jsPath}utils.js</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script"></stringProp>
+              <stringProp name="scriptLanguage">javascript</stringProp>
+            </BSFSampler>
+            <hashTree/>
+            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load libs in context" enabled="true">
+              <stringProp name="scriptLanguage">javascript</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">//we have to retrieve the utils from vars
+var utils = props.get(&apos;utils&apos;);
+
+utils.load(&apos;jjv&apos;);
+utils.load(&apos;schemas&apos;);</stringProp>
+            </BSFSampler>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getSpaces" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -9172,6 +9252,30 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
+              <hashTree/>
+              <BSFAssertion guiclass="TestBeanGUI" testclass="BSFAssertion" testname="BSF Assertion" enabled="true">
+                <stringProp name="scriptLanguage">javascript</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">try {
+	var utils = props.get(&apos;utils&apos;);
+	utils.reload();	
+
+   	eval(&apos;var response = &apos; + prev.getResponseDataAsString());
+   
+	var errors = schemas.validate(&apos;space&apos;, response.data[0]);
+	
+   	if (errors) {
+     	prev.setSuccessful(false);
+      	prev.setResponseMessage(&quot;Invalid JSON schema: &quot;+JSON.stringify(errors));
+   	}
+   	
+} catch(e) {
+	 log.info(e.message);
+      prev.setSuccessful(false);
+      prev.setResponseMessage(&quot;Invalid response. Expected a valid JSON.&quot;);
+}</stringProp>
+              </BSFAssertion>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getPublicSpace" enabled="true">
