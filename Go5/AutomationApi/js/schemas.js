@@ -20,7 +20,7 @@ schemas.addSchema('platform',
                 },
                 "language": {
                     "type": "string",
-                    "enum": ['es', 'pt', 'en']
+                    "enum": ['es', 'en', 'pt']
                 },
                 "subdomain": {
                     "type": "string"
