@@ -2,7 +2,7 @@ var schemas = jjv();
 
 // Custom validations
 schemas.addType('date', function (v) {
-    var re = /^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/
+    var re = /^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/;
     return re.test(v);
 });
 
@@ -1239,7 +1239,7 @@ schemas.addSchema('hyperlink',
 {
   "$schema": "http://json-schema.org/schema",
   "type": "object",
-  "description": "Hyperlinks",
+  "description": "Hyperlink",
   "properties": {
     "type": {
       "type" : "string",
@@ -1293,5 +1293,118 @@ schemas.addSchema('hyperlink',
         }
       }
     }
+  }
+});
+
+schemas.addSchema('comment',
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "description": "Comment",
+  "properties": {
+    "type": {
+      "type" : "string",
+      "enum" : ["comments"]
+    },
+    "id": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "comment": {
+          "type": "string"
+        },
+        "count-likes": {
+          "type": "number"
+        },
+        "count-replies": {
+          "type": "string"
+        },
+        "created-at": {
+          "type": "date"
+        },
+        "last-activity": {
+            "type": ["date", null]
+        }
+      }
+    },
+    "relationships": {
+            "type": "object",
+            "properties": {
+                "subject": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": ["object"],
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["posts", "shares"]
+                                },
+                                "id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "mentions": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": ["users"]
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "author": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": ["object"],
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["users"]
+                                },
+                                "id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "required": ["data"]
+                },
+                "reply-to": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": ["object", null]
+                        }
+                    }
+                },
+                "featured-likes": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": ["array"]
+                        }
+                    }
+                }
+            },
+            required: ["author", "subject"]
+        }
   }
 });
