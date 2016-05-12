@@ -211,6 +211,7 @@ import org.testng.Reporter;
 			
 			Reporter.log("Buscar un espacio");
 			driver.findElement(By.cssSelector(buscarEspacio)).click();
+			driver.findElement(By.cssSelector(inputSearch)).clear();
 			driver.findElement(By.cssSelector(inputSearch)).sendKeys(espacio);
 			driver.findElement(By.cssSelector(inputSearch)).sendKeys(Keys.ENTER);
 			Reporter.log(" El nombre a buscar es :..");

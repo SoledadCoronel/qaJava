@@ -56,14 +56,14 @@ public class TestSuite {
 	protected String desplegaMenuUsuario = new String (".applications .users menu li:last-child .user");
 	protected String irAConfiguration= new String(".applications .users .configuration");
 	protected String irAMenu =new String (".menu");
-	protected String irASpaces = new String ("a[title='Ir a listar espacios']");
+
 	protected String irAConfigurarCuenta = new String (".applications .users menu li:last-child li:nth-child(3) a");
-	 protected String irAGroups = new String (".igogroups");
-     protected String irATitles = new String (".igotitles");
-	protected String irAPersonas = new String (".igoadmin");
-	protected String searchButton = new String(".actions .search .btnsearch");
-	protected String inputSearch = new String(".actions .search input");
-	protected String ordenNombre =new String (".tables thead tr th:nth-child(2) a");
+	 protected String irAGroups =".igogroups";
+     protected String irATitles = ".igotitles";
+	protected String irAPersonas = ".igoadmin";
+	protected String searchButton =".actions .search .btnsearch";
+	protected String inputSearch = ".actions .search input";
+	protected String ordenNombre =".tables thead tr th:nth-child(2) a";
 	protected String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
 	protected String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
 	protected String crearUser= new String(".content .title a");  
@@ -74,6 +74,10 @@ public class TestSuite {
 	protected String ordenRegistrado = new String (".tables thead tr th:nth-child(6) a");
 	protected String irALogout= new String (".subusers li:last-child a");
 	protected String irAProfile= new String (".subusers li:nth-child(2) a");
+	protected String irASpaces = ".wrapper .space:nth-child(4) li:first-child a";
+	
+	
+	
 	// Declaracion de funciones
 	
 	    	   
@@ -380,9 +384,14 @@ public void openSiteMobile(){
 						this.click(irAInvitaciones);
 					}
 					
-					// Devuelve el mail para despues poder loguearme
 					
+					public void goToSpaces(){
+					
+						driver.findElement(By.cssSelector(irASpaces)).click();
+					}
 					public String crearUserAdminReturningmail() throws Exception{
+						
+						// Devuelve el mail para despues poder loguearme
 						this.click(crearUser);
 						   
 						//Lo creo activado
@@ -425,6 +434,7 @@ public void openSiteMobile(){
 			            }
 			        }
 					
+
 }
 
 
