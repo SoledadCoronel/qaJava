@@ -1,6 +1,4 @@
 var schemas = jjv();
-<<<<<<< HEAD
-=======
 
 // Custom validations
 schemas.addType('date', function (v) {
@@ -61,7 +59,6 @@ schemas.addSchema('top-links',
 });
 
 // Platforms Schemas
->>>>>>> 2fe492e6958703cf82fd8918f51cc821770e0e06
 schemas.addSchema('platform', 
 {
     "$schema": "http://json-schema.org/schema",
@@ -83,33 +80,21 @@ schemas.addSchema('platform',
                 },
                 "language": {
                     "type": "string",
-<<<<<<< HEAD
-                    "enum": ['es', 'en', 'pt']
-=======
                     "enum": ['es', 'pt', 'en']
->>>>>>> 2fe492e6958703cf82fd8918f51cc821770e0e06
                 },
                 "subdomain": {
                     "type": "string"
                 },
                 "status": {
-<<<<<<< HEAD
-                    "type": "string"
-=======
                     "type": "string",
                     "enum": ["active", "disabled"]
->>>>>>> 2fe492e6958703cf82fd8918f51cc821770e0e06
                 },
                 "timezone": {
                     "type": "string"
                 },
                 "users-range": {
-<<<<<<< HEAD
-                    "type": "string"
-=======
                     "type": "string",
                     "enum": ["0-50", "50-100", "100-300","+300"]
->>>>>>> 2fe492e6958703cf82fd8918f51cc821770e0e06
                 },
                 "created-at": {
                     "type": "date"
@@ -151,8 +136,6 @@ schemas.addSchema('platform',
     },
     "required": ["type", "id"]
 });
-<<<<<<< HEAD
-=======
 
 schemas.addSchema('branding',
 {
@@ -383,9 +366,6 @@ schemas.addSchema('user',
     "required": ["type", "id"]
 });
 
-<<<<<<< HEAD
->>>>>>> 2fe492e6958703cf82fd8918f51cc821770e0e06
-=======
 schemas.addSchema('profile',
 {
     "$schema": "http://json-schema.org/schema",
@@ -999,4 +979,3 @@ schemas.addSchema('file',
   "required": ["type", "id"]
 });
 
->>>>>>> a0cde495997cd9f3a0af305ac83b6e8dcf984351
