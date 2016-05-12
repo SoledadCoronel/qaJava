@@ -12,7 +12,7 @@ schemas.addType('email', function(v) {
     if (v) {
         return re.test(v);
     }
-    
+
     return true;
 });
 
@@ -979,3 +979,319 @@ schemas.addSchema('file',
   "required": ["type", "id"]
 });
 
+// Social schemas
+
+schemas.addSchema('feed-item', 
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "description": "Feed item",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["feed-items"]    
+        },
+        "id": {
+            "type": "string"
+        },
+        "relationships": {
+            "type": "object",
+            "properties": {
+                "item": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": ["object"],
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["posts", "shares"]
+                                },
+                                "id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "required": ["data"]
+                }
+            }
+        }
+    },
+    required: ["type", "id"]
+});
+
+schemas.addSchema('post', 
+{
+    "$schema": "http://json-schema.org/schema",
+    "type": "object",
+    "description": "Post",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["posts"]
+        },
+        "id": {
+            "type": "string"
+        },
+        "attributes": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": ["string", null]
+                },
+                "length": {
+                    "type": ["number", null]
+                },
+                "count-likes": {
+                    "type": "number"
+                },
+                "count-comments": {
+                    "type": "number"
+                },
+                "created-at": {
+                    "type": "date"
+                },
+                "last-activity": {
+                    "type": ["date", null]
+                }
+
+            },
+            required: ["count-likes", "count-comments", "created-at"]
+        },
+        "relationships": {
+            "type": "object",
+            "properties": {
+                "target": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": ["object"],
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["spaces", "users"]
+                                },
+                                "id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "mentions": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": ["users"]
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "author": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": ["object"],
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": ["users"]
+                                },
+                                "id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "required": ["data"]
+                },
+                "attachments": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": ["files"]
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "image": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum" : ["files"]
+                        },
+                        "id": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "hyperlink": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum" : ["hyperlinks"]
+                        },
+                        "id": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            required: ["author"]
+        }
+    },
+    required: ["type", "id"]
+});
+
+schemas.addSchema('like',
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "description": "likes",
+  "properties": {
+    "type": {
+      "type" : "string",
+      "enum" : ["likes"]
+    },
+    "id": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "created-at": {
+            "type": "date"
+        }
+      },
+      required: ["created-at"]
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": ["object"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["posts", "shares", "comments"]
+                },
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": ["data"]
+        },
+        "author": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": ["object"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["users"]
+                },
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": ["data"]
+        }
+      }
+    }
+  },
+  required: ["type", "id"]
+});
+
+schemas.addSchema('hyperlink',
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "description": "Hyperlinks",
+  "properties": {
+    "type": {
+      "type" : "string",
+      "enum" : ["hyperlinks"]
+    },
+    "id": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "external": {
+          "type": "boolean"
+        },
+        "favicon": {
+            "type": ["string", null]
+        },
+        "created-at": {
+            "type": "date"
+        }
+      }
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": ["object", null],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["files"]
+                },
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
