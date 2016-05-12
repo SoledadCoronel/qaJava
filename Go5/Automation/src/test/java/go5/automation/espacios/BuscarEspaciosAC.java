@@ -3,18 +3,18 @@ package go5.automation.espacios;
 
 import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
-
-
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 
 
-public class ListadoEspaciosAC extends TestSuite {
+public class BuscarEspaciosAC extends TestSuite {
 	
 		
 	EspacioPage espacio=null;
+	
+	
 	
 	
 	@AfterClass // call function to close browser 
@@ -50,18 +50,13 @@ public class ListadoEspaciosAC extends TestSuite {
 			
 		    // Ordenar espacios
 				 
-		 espacio.verificarOrdenDefault();
-		 espacio.ordenarPorTipo();
-		 espacio.ordenarPorEstado();
-		 Thread.sleep(1000);
-		 espacio.ordenarPorNombreEspacio();
+		 espacio.buscarEspacio("EMPRESA");
+		 Thread.sleep(2000);
 		 
-		  this.goToPagina(2);
+		// this.goToPagina(2);
 		 Thread.sleep(1000);
-		 espacio.ordenarPorTipo();
-		 espacio.ordenarPorNombreEspacio();
-		 espacio.buscarEspacio("Editado");  	
-	      Thread.sleep(5000);     
+		  espacio.buscarEspacio("Editado");  	
+	      Thread.sleep(2000);     
 	           
 	       
 	
