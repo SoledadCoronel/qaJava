@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 
 
   
@@ -13,13 +14,18 @@ import org.openqa.selenium.WebDriver;
 
     	//Css
     	
-    	protected String textAreaPost= "TBD";
-    	protected String cameraPost=".igocamerawhite";
-    	protected String linkPost=".igolink";
+    	protected String textAreaPostcss= "fieldset textarea";
+    	protected String cameraPostcss=".igocamerawhite";
+    	protected String linkPostcss=".igolink";
+    	protected String attachPostcss=".igoattach";
+    	protected String publicarContenidoCss="fieldset .primary";
+    	protected String iconcss=".icon";
     	
     	
-    	By textPost =By.cssSelector(textAreaPost);
-    	By link =By.cssSelector(linkPost);
+    	By textPost =By.cssSelector(textAreaPostcss);
+    	By link =By.cssSelector(linkPostcss);
+    	By publicarContenido = By.cssSelector(publicarContenidoCss);
+    	By icon =By.cssSelector(iconcss);
     	
     	
     	  WebDriver driver;
@@ -31,16 +37,21 @@ import org.openqa.selenium.WebDriver;
     	        this.driver = driver;
      }
   
-     //Set user name in textbox
+     //Set a string in a posttext
   
-     public MuroSocialPage setPostTexto(String strUserName){
+     public void setPostTexto(String strTextPost){
       
-    	driver.findElement(textPost).clear();
-    	 driver.findElement(textPost).sendKeys(strUserName);
-    	return this;
-  
+    	 driver.findElement(textPost).clear();
+    	 driver.findElement(textPost).sendKeys(strTextPost);
+    	
      }
-  
+   
+     public void postear(){
+    	 
+    	 driver.findElement(publicarContenido).click();
+    	 Reporter.log("CLikeo publicar");
+    	 
+     }
       
   /*
   
