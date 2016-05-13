@@ -56,11 +56,11 @@ public class MuroSocialAC extends TestSuite {
 		espacio.clickEspacioSidebar(iconoEmpresa);
 		Thread.sleep(3000);
 		
-		muro.setPostTexto("Prueba");
+		muro.postTexto("Prueba");
 		Thread.sleep(2000);
 		muro.postear();
 		Thread.sleep(3000);
-		muro.setPostTexto("Try the second");
+		muro.postTexto("Try the second");
 		muro.postear();
 		Thread.sleep(3000);
 		

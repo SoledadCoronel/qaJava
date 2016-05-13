@@ -39,7 +39,7 @@ import org.testng.Reporter;
   
      //Set a string in a posttext
   
-     public void setPostTexto(String strTextPost){
+     public void postTexto(String strTextPost){
       
     	 driver.findElement(textPost).clear();
     	 driver.findElement(textPost).sendKeys(strTextPost);
@@ -53,105 +53,19 @@ import org.testng.Reporter;
     	 
      }
       
-  /*
-  
-     //Get the title of Login Page
-     
-     public String getLoginTitle(){
-  
-      return    driver.findElement(title).getText();
-  
-     }
-  
-     //Click on login button
-  
-     public void clickLogin(){
-  
-             driver.findElement(go).click();
-  
-     }
-       
-   
-     /**
-  
-      * This POM method will be exposed in test case to login in the application
-  
-      * @param strUserName
-  
-      * @param strPasword
-  
-      * @return
-  
-      
-  
-     public void loginToGo(String strUserName,String strPasword){
-  
-         //Fill user name
+     public void postLink (String strlink){
+    	  driver.findElement(link).click();
+    	  driver.findElement(By.cssSelector(".active input")).sendKeys(strlink);
     	 
-    	
-         this.setUserName(strUserName);
-       
-         
-         //Fill password
-  
-         this.setPassword(strPasword);
-  
-         //Click Login button
-  
-         this.clickLogin();
-     } 
-  
-         public void loginToGoAsAdmin(){
-        	  
-             //Fill user name
-       // 	 this.setUserName(strUsername);
-             
-      
-             //Fill password
-      
-             this.setPassword(strPassword);
-      
-             //Click Login button
-      
-             this.clickLogin();
-               
-         
-     }
-  
- 
- 
-         public void loginToGoAsAdminEspacios(){
-       	  
-             //Fill user name
-        	 this.setUserName(strUsernameAdminEspacios);
-             
-      
-             //Fill password
-      
-             this.setPassword(strPassword);
-      
-             //Click Login button
-      
-             this.clickLogin();
-               
-         }
- 
-         public void loginToGoAsUSerBasic(){
-          	  
-             //Fill user name
-        	 this.setUserName(strUsernameUserBasic);
-             
-      
-             //Fill password
-      
-             this.setPassword(strPassword);
-      
-             //Click Login button
-      
-             this.clickLogin();
-
- }*/
     }
-
+       
+    }
+    
+      
+  
+     
+               
+         
+    
 
 
