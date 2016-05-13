@@ -3,6 +3,7 @@ package go5.automation.social;
 
 import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
+import go5.pageObjects.MuroSocialPage;
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -13,7 +14,10 @@ import org.testng.annotations.Test;
 
 public class MuroSocialAC extends TestSuite {
 	
+	MuroSocialPage muro=null;
 	EspacioPage espacio=null;
+	
+	private String iconoEmpresa=".igospaceadmin";
 		
 	
 	@BeforeClass // call function to open the browser and login 
@@ -33,12 +37,13 @@ public class MuroSocialAC extends TestSuite {
 	 
 	@Test
 	
-	public void editarEspacio() throws Exception { 
+	public void postearTexto() throws Exception { 
 	
-		espacio= new EspacioPage(driver); 
+		muro= new MuroSocialPage(driver); 
+		espacio= new EspacioPage(driver);
 			
 	        
-		 Reporter.log(" Editando un espacio como user admin");
+		 Reporter.log(" Entrar a un espacio y postear");
 		 
 		// Go to hamburguesita
 		 
@@ -47,7 +52,16 @@ public class MuroSocialAC extends TestSuite {
 		 
 			
 		 //Ir a espacios
-		this.goToSpaces();
+		//Tengo q ir a un espacio
+		espacio.clickEspacioSidebar(iconoEmpresa);
+		Thread.sleep(3000);
+		
+		muro.setPostTexto("Prueba");
+		Thread.sleep(2000);
+		muro.postear();
+		Thread.sleep(3000);
+		muro.setPostTexto("Try the second");
+		muro.postear();
 		Thread.sleep(3000);
 		
 		

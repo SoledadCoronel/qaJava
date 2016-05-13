@@ -29,8 +29,7 @@ import org.testng.Reporter;
     	private String iconoOso= (".igospacebear");
     	private String iconoBasket= (".igospacebasket");
     	private String iconoBanana=  (".igospacebanana");
-    	  	
-    	protected String irASpaces = new String ("nav div:nth-child(4) li:nth-child(1) a");
+  
        	protected String grabarEspacio= new String (".spacecreate .primary");
     	protected String ordenTipo = new String (".tables thead tr th:nth-child(1) a");
     	protected String ordenNombre = new String (".tables thead tr th:nth-child(2) a");
@@ -47,6 +46,7 @@ import org.testng.Reporter;
     	protected String secondName = new String(".tables tbody tr:nth-child(2) td:nth-child(2) a");
         protected String buscarEspacio= ".actions .btnsearch";
         protected String inputSearch =".actions .search input";
+        protected String irASpaces = ".wrapper .space:nth-child(4) li:first-child a";
        
     	
     	WebDriver driver;
@@ -209,7 +209,7 @@ import org.testng.Reporter;
 
 		public void buscarEspacio(String espacio) {
 			
-			Reporter.log("Buscar un espacio");
+			Reporter.log("Buscar un espacio en el listado de Espacios");
 			driver.findElement(By.cssSelector(buscarEspacio)).click();
 			driver.findElement(By.cssSelector(inputSearch)).clear();
 			driver.findElement(By.cssSelector(inputSearch)).sendKeys(espacio);
@@ -220,6 +220,12 @@ import org.testng.Reporter;
 			Reporter.log(driver.findElement(By.cssSelector(firstSpace)).getText());
 			
 		}
-    
+		
+		public void clickEspacioSidebar(String iconoEspacio) {
+			
+		
+		Reporter.log("Clickear un espacio pasandole el icono");
+			driver.findElement(By.cssSelector(iconoEspacio)).click();
+			    
     }
-
+    }
