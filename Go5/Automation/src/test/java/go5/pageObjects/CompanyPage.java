@@ -106,7 +106,7 @@ Assert.assertEquals("green",(driver.findElement(By.cssSelector(".design .colorpi
 Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).getText()));
       }
     
-      public void changeColorHeader(){
+      public void changeColorHeader() throws InterruptedException{
     		//Change header color
   		
       	
@@ -125,15 +125,13 @@ Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .color
           
        //Select black colour
        driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).click();
-       driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+       driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
      String colorSelected = new String (driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10) a")).getCssValue("background-color"));
      Reporter.log(colorSelected);
    
      //Save changes for colour
      driver.findElement(By.cssSelector(".primary")).click();
-		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-     
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		Thread.sleep(4000);
      String colorHeader = new String(driver.findElement(By.tagName("header")).getCssValue("background-color"));
      Reporter.log(colorHeader);
   
@@ -145,7 +143,7 @@ Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .color
              
       }
       
-      public void changeColorContrast(){
+      public void changeColorContrast() throws InterruptedException{
     		// Change Contrast Color(){
   		
     	     Reporter.log(" Cambiando el color del contraste ");
@@ -165,21 +163,21 @@ Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .color
     	        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
     	       
     	      String colorSelected2 = new String (driver.findElement(By.cssSelector(".design fieldset:nth-child(3) .colorpicker .black a")).getCssValue("background-color"));
-    	      Reporter.log("El color seleccionado es :" );
+    	      Reporter.log("El color seleccionado para la letra es :" );
     	      Reporter.log(colorSelected2);
     	      
     	   
-    	     
-    	      
+    	     Thread.sleep(5000);
+    	      driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
     	      String colorHeader2 = new String(driver.findElement(By.cssSelector("header h1")).getCssValue("color"));
-    	      Reporter.log("El color que esta en el header es :");
+    	      Reporter.log("El color que esta en la letra en el header es :");
     	      Reporter.log(colorHeader2);
     	   
     	      Reporter.log(" El caso de branding-colors finalizo correctamente");
     	      //Compare the header color against the selected, converted to hexadecimal
     	      
     	  
-    	    // Assert.assertEquals(colorSelected2, colorHeader2, "El color seleccionado en branding se muestra correctamente en el header" );
+    	     Assert.assertEquals(colorSelected2, colorHeader2, "El color seleccionado de contraste de texto se muestra correctamente en el header" );
     	        }
       }
   
