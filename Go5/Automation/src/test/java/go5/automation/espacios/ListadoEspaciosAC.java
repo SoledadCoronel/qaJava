@@ -44,7 +44,7 @@ public class ListadoEspaciosAC extends TestSuite {
 		 //Ir a espacios
 		
 		 espacio.goToEspacios();
-		
+		Thread.sleep(3000);
 		
 					
 			
@@ -53,7 +53,7 @@ public class ListadoEspaciosAC extends TestSuite {
 		 espacio.verificarOrdenDefault();
 		 espacio.ordenarPorTipo();
 		 espacio.ordenarPorEstado();
-		 Thread.sleep(1000);
+		 Thread.sleep(2000);
 		 espacio.ordenarPorNombreEspacio();
 		 
 		  this.goToPagina(2);
@@ -61,7 +61,7 @@ public class ListadoEspaciosAC extends TestSuite {
 		 espacio.ordenarPorTipo();
 		 espacio.ordenarPorNombreEspacio();
 		 espacio.buscarEspacio("Editado");  	
-	      Thread.sleep(5000);     
+	      Thread.sleep(2000);     
 	           
 	       
 	
