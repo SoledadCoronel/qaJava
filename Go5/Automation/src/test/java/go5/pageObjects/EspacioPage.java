@@ -131,17 +131,20 @@ import org.testng.Reporter;
 		driver.findElement(By.cssSelector(editfourthRow)).click();
 	}
 	
-		public void ordenarPorTipo(){
+		public void ordenarPorTipo() throws InterruptedException{
 			driver.findElement(By.cssSelector(ordenTipo)).click();
+			Thread.sleep(2000);
 			driver.findElement(By.cssSelector(ordenTipo)).click();
+			Thread.sleep(2000);
 			Reporter.log("El primer valor del tipo de espacio es:");				
 			Reporter.log(this.getTypeFirstRow());
 						
 		}
 	
-		public void ordenarPorNombreEspacio(){
+		public void ordenarPorNombreEspacio() throws InterruptedException{
 			driver.findElement(By.cssSelector(ordenNombre)).click();
-			 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			Thread.sleep(2000);
+			
 			Reporter.log("El primer nombre de la tabla es :");				
 			Reporter.log(driver.findElement(By.cssSelector(firstName)).getText());
 			Reporter.log("El segundo nombre de la tabla es :");
@@ -150,8 +153,9 @@ import org.testng.Reporter;
 		}
 	
 		
-		public void ordenarPorEstado(){
+		public void ordenarPorEstado() throws InterruptedException{
 			driver.findElement(By.cssSelector(ordenEstado)).click();
+			Thread.sleep(2000);
 			Reporter.log("El valor del primer estado es :");
 			Reporter.log(driver.findElement(By.cssSelector(firstState)).getText());
 		}
