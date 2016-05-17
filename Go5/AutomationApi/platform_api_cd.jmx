@@ -6275,6 +6275,24 @@ utils.load(&apos;schemas&apos;);</stringProp>
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="GetsFiles" enabled="true"/>
           <hashTree>
+            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load libs in context" enabled="true">
+              <stringProp name="scriptLanguage">javascript</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">//we have to retrieve the utils from vars
+var utils = props.get(&apos;utils&apos;);
+
+utils.load(&apos;jjv&apos;);
+utils.load(&apos;schemas&apos;);</stringProp>
+            </BSFSampler>
+            <hashTree/>
+            <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load utils.js" enabled="true">
+              <stringProp name="filename">${jsPath}utils.js</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script"></stringProp>
+              <stringProp name="scriptLanguage">javascript</stringProp>
+            </BSFSampler>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getFile - Deleted" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
