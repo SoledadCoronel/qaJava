@@ -14,18 +14,21 @@ import org.testng.Reporter;
 
     	//Css
     	
-    	protected String textAreaPostcss= "fieldset textarea";
+    	protected String textAreaPostcss= ".postbox fieldset textarea";
     	protected String cameraPostcss=".igocamerawhite";
     	protected String linkPostcss=".igolink";
     	protected String attachPostcss=".igoattach";
     	protected String publicarContenidoCss="fieldset .primary";
     	protected String iconcss=".icon";
+    	protected String linkVerMascss=".posttext:nth-child(n) p:nth-child(n) .link";
+    	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
     	
     	
     	By textPost =By.cssSelector(textAreaPostcss);
     	By link =By.cssSelector(linkPostcss);
     	By publicarContenido = By.cssSelector(publicarContenidoCss);
     	By icon =By.cssSelector(iconcss);
+    	By linkVerMas=By.cssSelector(linkVerMascss);
     	
     	
     	  WebDriver driver;
@@ -46,6 +49,13 @@ import org.testng.Reporter;
     	
      }
    
+     public String returnTextoPublicado(){
+         Reporter.log("Imprimir lo que tiene el post de texto");
+    	return driver.findElement(textPost).getText();
+    	 
+    	
+     }
+     
      public void postear(){
     	 
     	 driver.findElement(publicarContenido).click();

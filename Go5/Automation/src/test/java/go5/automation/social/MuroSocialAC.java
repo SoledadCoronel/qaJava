@@ -60,9 +60,10 @@ public class MuroSocialAC extends TestSuite {
 		Thread.sleep(2000);
 		muro.postear();
 		Thread.sleep(3000);
-		muro.postTexto("Try the second");
-		muro.postear();
-		Thread.sleep(3000);
+		Reporter.log(muro.returnTextoPublicado());
+		muro.postTexto("TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw");
+		Thread.sleep(5000);
+		Reporter.log(muro.returnTextoPublicado());
 		
 		
 	           
