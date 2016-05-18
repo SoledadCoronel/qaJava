@@ -14,19 +14,32 @@ import org.testng.Reporter;
 
     	//Css
     	
+<<<<<<< HEAD
     	protected String textAreaPostcss= "fieldset textarea";
+=======
+    	protected String textAreaPostcss= ".postbox fieldset textarea";
+>>>>>>> 4df2b558a7bbb618b872e97e7578437293d6d78e
     	protected String cameraPostcss=".igocamerawhite";
     	protected String linkPostcss=".igolink";
     	protected String attachPostcss=".igoattach";
     	protected String publicarContenidoCss="fieldset .primary";
     	protected String iconcss=".icon";
+<<<<<<< HEAD
     	protected String date= ".posttex :nth-child(n) p time";
+=======
+    	protected String linkVerMascss=".posttext:nth-child(n) p:nth-child(n) .link";
+    	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
+>>>>>>> 4df2b558a7bbb618b872e97e7578437293d6d78e
     	
     	
     	By textPost =By.cssSelector(textAreaPostcss);
     	By link =By.cssSelector(linkPostcss);
     	By publicarContenido = By.cssSelector(publicarContenidoCss);
     	By icon =By.cssSelector(iconcss);
+<<<<<<< HEAD
+=======
+    	By linkVerMas=By.cssSelector(linkVerMascss);
+>>>>>>> 4df2b558a7bbb618b872e97e7578437293d6d78e
     	
     	
     	  WebDriver driver;
@@ -47,6 +60,16 @@ import org.testng.Reporter;
     	
      }
    
+<<<<<<< HEAD
+=======
+     public String returnTextoPublicado(){
+         Reporter.log("Imprimir lo que tiene el post de texto");
+    	return driver.findElement(textPost).getText();
+    	 
+    	
+     }
+     
+>>>>>>> 4df2b558a7bbb618b872e97e7578437293d6d78e
      public void postear(){
     	 
     	 driver.findElement(publicarContenido).click();
@@ -60,6 +83,7 @@ import org.testng.Reporter;
     	 
     }
        
+<<<<<<< HEAD
      
 		
      private String setcssPost(Integer p ){
@@ -80,6 +104,11 @@ import org.testng.Reporter;
 	   }
     }
     }
+=======
+    }
+    
+      
+>>>>>>> 4df2b558a7bbb618b872e97e7578437293d6d78e
   
      
                
