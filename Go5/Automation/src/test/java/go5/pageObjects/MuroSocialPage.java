@@ -20,6 +20,7 @@ import org.testng.Reporter;
     	protected String attachPostcss=".igoattach";
     	protected String publicarContenidoCss="fieldset .primary";
     	protected String iconcss=".icon";
+    	protected String date= ".posttex :nth-child(n) p time";
     	
     	
     	By textPost =By.cssSelector(textAreaPostcss);
@@ -59,9 +60,26 @@ import org.testng.Reporter;
     	 
     }
        
+     
+		
+     private String setcssPost(Integer p ){
+    	   String css = ".posttext :nth-child"+"("+(p)+")";
+  		    return css;
+     }
+     
+	   
+	   public void goToPost(Integer pagina){
+		
+	String css=this.setcssPost(pagina);
+	  driver.findElement(By.cssSelector(css)).click();
     }
-    
-      
+	   
+	   public void goThroughPosts(Integer numberPosts){
+		   for (int i = 0; i <numberPosts; i++) {
+			   this.goToPost(i);
+	   }
+    }
+    }
   
      
                
