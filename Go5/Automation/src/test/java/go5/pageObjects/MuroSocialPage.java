@@ -29,13 +29,15 @@ import org.testng.Reporter;
 
     	protected String linkVerMascss=".posttext:nth-child(n) p:nth-child(n) .link";
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
-
+        protected String textofirstPostcss= ".posttext:nth-child(3) p:nth-child(2)";
+        
     	
     	
     	By textPost =By.cssSelector(textAreaPostcss);
     	By link =By.cssSelector(linkPostcss);
     	By publicarContenido = By.cssSelector(publicarContenidoCss);
-    	By icon =By.cssSelector(iconcss);
+    	By icon =By.cssSelector(iconcss);  
+    	By textPosteado=By.cssSelector(textofirstPostcss);
 
 
     	By linkVerMas=By.cssSelector(linkVerMascss);
@@ -60,14 +62,7 @@ import org.testng.Reporter;
     	
      }
    
-
-     public String returnTextoPublicado(){
-         Reporter.log("Imprimir lo que tiene el post de texto");
-    	return driver.findElement(textPost).getText();
-    	 
-    	
-     }
-     
+    
 
      public void postear(){
     	 
@@ -82,8 +77,7 @@ import org.testng.Reporter;
     	 
     }
        
-
-     
+    
 		
      private String setcssPost(Integer p ){
     	   String css = ".posttext :nth-child"+"("+(p)+")";
@@ -96,6 +90,12 @@ import org.testng.Reporter;
 	String css=this.setcssPost(pagina);
 	  driver.findElement(By.cssSelector(css)).click();
     }
+	   
+	   
+	   public String getTextFirstPost(){
+		  return driver.findElement(textPosteado).getText();
+		   
+	   }
 	   
 	   public void goThroughPosts(Integer numberPosts){
 		   for (int i = 0; i <numberPosts; i++) {

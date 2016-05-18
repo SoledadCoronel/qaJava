@@ -3,6 +3,7 @@ package go5.automation.social;
 
 import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
+import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
 
 import org.testng.Reporter;
@@ -16,6 +17,7 @@ public class MuroSocialAC extends TestSuite {
 	
 	MuroSocialPage muro=null;
 	EspacioPage espacio=null;
+	LoginPage login =null;
 	
 	private String iconoEmpresa=".igospaceadmin";
 		
@@ -41,6 +43,7 @@ public class MuroSocialAC extends TestSuite {
 	
 		muro= new MuroSocialPage(driver); 
 		espacio= new EspacioPage(driver);
+		login =new LoginPage(driver);
 			
 	        
 		 Reporter.log(" Entrar a un espacio y postear");
@@ -56,18 +59,20 @@ public class MuroSocialAC extends TestSuite {
 		espacio.clickEspacioSidebar(iconoEmpresa);
 		Thread.sleep(3000);
 		
-		muro.postTexto("Prueba");
+		muro.postTexto("Posteo como usuario admin ");
 		Thread.sleep(2000);
 		muro.postear();
 		Thread.sleep(3000);
-
-		muro.postTexto("Try the second");
-		muro.postear();
+		//	muro.postTexto("TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw");
+		this.logout();
+		Thread.sleep(2000);
+		login.loginToGoAsUSerBasic();
 		Thread.sleep(3000);
-		Reporter.log(muro.returnTextoPublicado());
-		muro.postTexto("TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw TXbVBsVOiw ON6UvQ322k vahrFidyJP ZTpr5vbGIL fwiOQpconr BKkVvrWJ2b lEQPLO7Vtn MhJMnk0zwG qSjLwSmeCn qKGGWHROLZ wWDy1o9W9f SEiIyYU0lB lYus4U0Bkw");
-		Thread.sleep(5000);
-		Reporter.log(muro.returnTextoPublicado());
+		this.goToMenu();
+		espacio.clickEspacioSidebar(iconoEmpresa);
+		Thread.sleep(2000);
+		Reporter.log(muro.getTextFirstPost());
+	
            
 	       
 	
