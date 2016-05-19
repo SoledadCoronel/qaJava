@@ -6,23 +6,21 @@ import go5.pageObjects.EspacioPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
 
-import org.testng.Assert;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+
 import org.testng.annotations.Test;
 
 
 
-public class MuroSocialAC extends TestSuite {
+public class Post500CharsAC extends TestSuite {
 	
 	MuroSocialPage muro=null;
 	EspacioPage espacio=null;
 	LoginPage login =null;
 	
 	private String iconoEmpresa=".igospaceadmin";
-	private String iconoCallCenter=".igospacecallcenter";
-		
 	
 	
 	
@@ -32,8 +30,8 @@ public class MuroSocialAC extends TestSuite {
 			this.quitBrowser();
 		}
 	
-			 
-	 
+		 
+ 
 	 
 	@Test
 	
@@ -41,9 +39,8 @@ public class MuroSocialAC extends TestSuite {
 	
 		muro= new MuroSocialPage(driver); 
 		espacio= new EspacioPage(driver);
-		login =new LoginPage(driver);
-			
-	        
+		
+			        
 		 Reporter.log(" Entrar a un espacio y postear");
 		 
 		// Go to hamburguesita
@@ -55,25 +52,16 @@ public class MuroSocialAC extends TestSuite {
 		 //Ir a espacios
 		//Tengo q ir a un espacio
 		 espacio.clickEspacioSidebar(iconoEmpresa);
-		//espacio.clickEspacioSidebar(iconoCallCenter);
 		Thread.sleep(1000);
-		
-		muro.postTexto("Posteo como usuario admin prueba selenium ");
-		Thread.sleep(2000);
+		muro.postTexto(muro.randomString(200)+"    "+muro.randomString(100)+"        "+muro.randomString(100)+"    "+muro.randomString(200));
 		muro.postear();
-		this.goToMenuUsuario();		
-		this.logout();
 		Thread.sleep(2000);
-		login.loginToGoAsUSerBasic();
-		Thread.sleep(3000);
-		this.goToMenu();
-		Thread.sleep(1000);
-		espacio.clickEspacioSidebar(iconoEmpresa);
+		muro.verifyLinkVerMas();
 		Thread.sleep(2000);
-		Reporter.log(muro.getTextFirstPost());
-		Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
-	  
-	   
+		muro.verifyLinkVerMenos();
+		Thread.sleep(2000);
+		
+	 
 	
 	}	
 		

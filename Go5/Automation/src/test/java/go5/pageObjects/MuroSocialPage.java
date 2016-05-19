@@ -1,4 +1,5 @@
 package go5.pageObjects;
+import java.security.SecureRandom;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -27,10 +28,13 @@ import org.testng.Reporter;
 
     	protected String date= ".posttex :nth-child(n) p time";
 
-    	protected String linkVerMascss=".posttext:nth-child(n) p:nth-child(n) .link";
+    	protected String linkVerMascss=".posttext:nth-child(3) p:nth-child(2) .link";
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
         protected String textofirstPostcss= ".posttext:nth-child(3) p:nth-child(2)";
+        protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
         
+        static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+ 	   
     	
     	
     	By textPost =By.cssSelector(textAreaPostcss);
@@ -38,10 +42,10 @@ import org.testng.Reporter;
     	By publicarContenido = By.cssSelector(publicarContenidoCss);
     	By icon =By.cssSelector(iconcss);  
     	By textPosteado=By.cssSelector(textofirstPostcss);
-
-
     	By linkVerMas=By.cssSelector(linkVerMascss);
-
+        By timePost=By.cssSelector(timefirstPostcss);
+    	
+    	static SecureRandom rnd = new SecureRandom();
     	
     	
     	  WebDriver driver;
@@ -91,10 +95,21 @@ import org.testng.Reporter;
 	  driver.findElement(By.cssSelector(css)).click();
     }
 	   
+	   public void verifyLinkVerMas(){
+		   driver.findElement(linkVerMas).click();
+	   }
+	   
+	   public void verifyLinkVerMenos(){
+		   driver.findElement(linkVerMas).click();
+	   }
 	   
 	   public String getTextFirstPost(){
 		  return driver.findElement(textPosteado).getText();
 		   
+	   }
+	   
+	   public String getTimeFirstPost(){
+		   return driver.findElement(timePost).getText();
 	   }
 	   
 	   public void goThroughPosts(Integer numberPosts){
@@ -102,9 +117,16 @@ import org.testng.Reporter;
 			   this.goToPost(i);
 	   }
     }
+	 
+	  public  String randomString( int len ){
+	      StringBuilder sb = new StringBuilder( len );
+	      for( int i = 0; i < len; i++ ) 
+	         sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+	      return sb.toString();
+    
     }
 
-    
+    }
     
       
      
