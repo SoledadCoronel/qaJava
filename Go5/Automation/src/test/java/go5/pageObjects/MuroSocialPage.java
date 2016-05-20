@@ -32,6 +32,8 @@ import org.testng.Reporter;
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
         protected String textofirstPostcss= ".posttext:nth-child(3) p:nth-child(2)";
         protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
+        protected String irAMuroEnPerfilcss=".content menu li:first-child a";
+        protected String irAlPerfilPost=".posttext:nth-child(3) h2 a";
         
         static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
  	   
@@ -44,6 +46,7 @@ import org.testng.Reporter;
     	By textPosteado=By.cssSelector(textofirstPostcss);
     	By linkVerMas=By.cssSelector(linkVerMascss);
         By timePost=By.cssSelector(timefirstPostcss);
+        By irAMuroEnPerfil=By.cssSelector(irAMuroEnPerfilcss);
     	
     	static SecureRandom rnd = new SecureRandom();
     	
@@ -63,10 +66,10 @@ import org.testng.Reporter;
       
     	 driver.findElement(textPost).clear();
     	 driver.findElement(textPost).sendKeys(strTextPost);
-    	
+    	     	
      }
    
-    
+      
 
      public void postear(){
     	 
@@ -78,7 +81,8 @@ import org.testng.Reporter;
      public void postLink (String strlink){
     	  driver.findElement(link).click();
     	  driver.findElement(By.cssSelector(".active input")).sendKeys(strlink);
-    	 
+    	  driver.findElement(By.cssSelector(".active input")).sendKeys(Keys.ENTER);
+    	    	 
     }
        
     
@@ -112,6 +116,11 @@ import org.testng.Reporter;
 		   return driver.findElement(timePost).getText();
 	   }
 	   
+	   
+	   public void goToProfilePost(){
+		   driver.findElement(By.cssSelector(irAlPerfilPost)).click();
+	   }
+	   
 	   public void goThroughPosts(Integer numberPosts){
 		   for (int i = 0; i <numberPosts; i++) {
 			   this.goToPost(i);
@@ -125,8 +134,15 @@ import org.testng.Reporter;
 	      return sb.toString();
     
     }
+	  public void irAMuroEnPerfil(){
+		  driver.findElement(irAMuroEnPerfil).click();
+	  }
 
-    }
+	
+		
+	}
+
+
     
       
      

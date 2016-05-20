@@ -5,25 +5,24 @@ import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
+import go5.pageObjects.ProfilePage;
 
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 
-public class MuroSocialAC extends TestSuite {
+public class MuroSocialPerfilAC extends TestSuite {
 	
 	MuroSocialPage muro=null;
 	EspacioPage espacio=null;
 	LoginPage login =null;
+	ProfilePage profile=null;
 	
-	private String iconoEmpresa=".igospaceadmin";
-	private String iconoCallCenter=".igospacecallcenter";
-	private String link ="https://gointegrotech.atlassian.net/browse/FRONT-823";
-		
+
+	private String link ="https://goc.gointegro.com/benefits/benefit/4176";	
 	
 	
 	
@@ -42,40 +41,30 @@ public class MuroSocialAC extends TestSuite {
 	
 		muro= new MuroSocialPage(driver); 
 		espacio= new EspacioPage(driver);
-		login =new LoginPage(driver);
+		profile =new ProfilePage(driver);
 			
 	        
 		 Reporter.log(" Entrar a un espacio y postear");
 		 
-		// Go to hamburguesita
-		 
-		 this.click(irAMenu);
-		 Thread.sleep(3000);
+		
+			// Go to the user menu
+		  this.goToMenuUsuario();
+	
+			
+			//Ir a ver perfil
+		   profile.goToProfile();
 		 
 			
-		 //Ir a espacios
-		//Tengo q ir a un espacio
-		 espacio.clickEspacioSidebar(iconoEmpresa);
-		//espacio.clickEspacioSidebar(iconoCallCenter);
-		Thread.sleep(1000);
+		 //Ir al muro del perfil
 		
-		muro.postTexto("Posteo como usuario admin prueba selenium ");
+		muro.irAMuroEnPerfil();
+		muro.postTexto("Posteo en el muro del profile ");
 		muro.postLink(link);
 		Thread.sleep(3000);
 		muro.postear();
-		this.goToMenuUsuario();		
-		this.logout();
-		Thread.sleep(2000);
-		login.loginToGoAsUSerBasic();
 		Thread.sleep(3000);
-		this.goToMenu();
-		Thread.sleep(1000);
-		espacio.clickEspacioSidebar(iconoEmpresa);
-		Thread.sleep(2000);
 		Reporter.log(muro.getTextFirstPost());
 		Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
-		muro.goToProfilePost();
-		Thread.sleep(8000);
 	  
 	   
 	

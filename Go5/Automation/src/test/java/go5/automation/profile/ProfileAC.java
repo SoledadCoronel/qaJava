@@ -41,7 +41,6 @@ ProfilePage profile = null;
 		 
 		// Go to the user menu
 		  this.goToMenuUsuario();
-		//	driver.findElement(By.cssSelector(".applications .users .user")).click();
 	
 			
 			//Ir a ver perfil
