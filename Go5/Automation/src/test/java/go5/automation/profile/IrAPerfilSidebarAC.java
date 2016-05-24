@@ -67,7 +67,7 @@ public class IrAPerfilSidebarAC extends TestSuite {
 		
 				
 				//Insertar datos laborales
-			    profile.editarDatosLaborales();
+			    profile.agregarDatosLaborales();
 				
 		         //Telefono
 			    profile.agregarTelefono();

@@ -17,12 +17,15 @@ import org.testng.Reporter;
 
     	//Css
     	
-    	private String datosGenerales = new String (".igocompanydata");
-    	private String design= new String (".igodesign");
-        private String nombreCompania= new String (".generaldata fieldset label:nth-child(1) input");
-        private String selectIdioma = new String (".generaldata fieldset label:nth-child(3) select");
-        private String selectTimezone = new String (".generaldata fieldset label:nth-child(4) select");
+    	private String datosGenerales = ".igocompanydata";
+    	private String design= ".igodesign";
+        private String nombreCompania=".generaldata fieldset label:nth-child(1) input";
+        private String selectIdioma = ".generaldata fieldset label:nth-child(3) select";
+        private String selectTimezone = ".generaldata fieldset label:nth-child(4) select";
+        private String errorCompanyBlack=".generaldata fieldset label:nth-child(1) span";
     	
+        
+        By error= By.cssSelector(errorCompanyBlack);
     	WebDriver driver;
     
      
@@ -48,6 +51,15 @@ import org.testng.Reporter;
         	 driver.findElement(By.cssSelector(nombreCompania)).clear();
         	 driver.findElement(By.cssSelector(nombreCompania)).sendKeys(nombre);
          }
+         
+         public void verifyNombreCantBeBlank(){
+        	     this.setNombreCompania("                  ");	
+        	 String companyMessage = new String (driver.findElement(error).getText());
+        	 		Reporter.log(companyMessage);
+        	 	Assert.assertEquals(companyMessage, "El campo es requerido");	 
+         }
+         
+         
          public void setIdioma(){
      		
         	 // Select all values the drop-down for Language

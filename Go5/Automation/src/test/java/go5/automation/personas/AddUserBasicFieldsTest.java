@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
 
 
 
-public class AddUserAdminAllFields extends TestSuite{
+public class AddUserBasicFieldsTest extends TestSuite{
 
 	//private WebDriver driver;
 

@@ -55,7 +55,7 @@ ProfilePage profile = null;
 	
 			
 			//Insertar datos laborales
-		    profile.editarDatosLaborales();
+		    profile.agregarDatosLaborales();
 			
 	         //Telefono
 		    profile.agregarTelefono();
@@ -68,7 +68,7 @@ ProfilePage profile = null;
       
 	            
 	 		profile.agregarRedesSociales();
-	 		
+	 		Thread.sleep(3000);
 	 		profile.grabarUsuario();
 	     
 	            // Grabar el nuevo usuario creado

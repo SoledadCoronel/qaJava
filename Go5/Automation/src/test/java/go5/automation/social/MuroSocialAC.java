@@ -38,7 +38,7 @@ public class MuroSocialAC extends TestSuite {
 	 
 	@Test
 	
-	public void postearTexto() throws Exception { 
+	public void postearLikearComentar() throws Exception { 
 	
 		muro= new MuroSocialPage(driver); 
 		espacio= new EspacioPage(driver);
