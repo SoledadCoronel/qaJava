@@ -22,7 +22,7 @@ public class MuroSocialPerfilAC extends TestSuite {
 	ProfilePage profile=null;
 	
 
-	private String link ="https://goc.gointegro.com/benefits/benefit/4176";	
+	private String link ="www.lanacion.com.ar/";	
 	
 	
 	
@@ -42,6 +42,7 @@ public class MuroSocialPerfilAC extends TestSuite {
 		muro= new MuroSocialPage(driver); 
 		espacio= new EspacioPage(driver);
 		profile =new ProfilePage(driver);
+		login = new LoginPage(driver);
 			
 	        
 		 Reporter.log(" Entrar a un espacio y postear");
@@ -58,14 +59,24 @@ public class MuroSocialPerfilAC extends TestSuite {
 		 //Ir al muro del perfil
 		
 		muro.irAMuroEnPerfil();
-		muro.postTexto("Posteo en el muro del profile ");
+		muro.postTexto("Posteo en el muro del profile del user admin ");
 		muro.postLink(link);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		muro.postear();
 		Thread.sleep(3000);
+		this.goToMenuUsuario();
+		this.logout();
+		Thread.sleep(2000);
+		login.loginToGoAsUSerBasic();
+		Thread.sleep(3000);
+		this.goToMenuUsuario();
+		profile.goToProfile();
+		 //Ir al muro del perfil
+		muro.irAMuroEnPerfil();
 		Reporter.log(muro.getTextFirstPost());
 		Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
-	  
+		muro.goToProfilePost();
+		Thread.sleep(2000);
 	   
 	
 	}	

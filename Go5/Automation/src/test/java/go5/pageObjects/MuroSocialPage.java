@@ -32,8 +32,14 @@ import org.testng.Reporter;
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
         protected String textofirstPostcss= ".posttext:nth-child(3) p:nth-child(2)";
         protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
+        protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
+        protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
+        protected String commentFirstPostcss=".posttext:nth-child(3) .actions .igocomments";
+        protected String commentInputcss =".posttext:nth-child(3) fieldset textarea";
         protected String irAMuroEnPerfilcss=".content menu li:first-child a";
         protected String irAlPerfilPost=".posttext:nth-child(3) h2 a";
+        protected String irAlPerfilWindowAsidecss=".likes li:first-child a:first-child";
+      
         
         static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
  	   
@@ -47,6 +53,11 @@ import org.testng.Reporter;
     	By linkVerMas=By.cssSelector(linkVerMascss);
         By timePost=By.cssSelector(timefirstPostcss);
         By irAMuroEnPerfil=By.cssSelector(irAMuroEnPerfilcss);
+        By commentFirstPost=By.cssSelector(commentFirstPostcss);
+        By comment = By.cssSelector(commentInputcss);
+        By like = By.cssSelector(likeFirstPostcss);
+        By desplegarLikes=By.cssSelector(desplegarLikescss);
+        By irAlPerfilWindowAside=By.cssSelector(irAlPerfilWindowAsidecss);
     	
     	static SecureRandom rnd = new SecureRandom();
     	
@@ -139,10 +150,23 @@ import org.testng.Reporter;
 	  }
 
 	
-		
-	}
-
-
+	  public void comentarFIrstPost(String strCommentPost){
+		  driver.findElement(commentFirstPost).click();
+		  driver.findElement(comment).sendKeys(strCommentPost);
+		  driver.findElement(comment).sendKeys(Keys.ENTER);
+	  }
+	 public void likearFirstPost(){
+		 driver.findElement(like).click();
+	 }
+    
+     public void desplegarLikesWindowAside(){
+    	 driver.findElement(desplegarLikes).click();
+     }
+    
+     public void irAFirstProfileWindowAside(){
+    	 driver.findElement(irAlPerfilWindowAside);
+     }
+    }
     
       
      

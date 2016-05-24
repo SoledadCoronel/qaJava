@@ -63,19 +63,30 @@ public class MuroSocialAC extends TestSuite {
 		muro.postLink(link);
 		Thread.sleep(3000);
 		muro.postear();
-		this.goToMenuUsuario();		
+		Reporter.log("Like el post creado como user admin");
+		muro.likearFirstPost();
+		Thread.sleep(7000);
+		this.goToMenuUsuario();	
+		Reporter.log("Desloguearse como usuario admin");
 		this.logout();
 		Thread.sleep(2000);
+		Reporter.log("Loguearse como usuario basico");
 		login.loginToGoAsUSerBasic();
 		Thread.sleep(3000);
 		this.goToMenu();
 		Thread.sleep(1000);
 		espacio.clickEspacioSidebar(iconoEmpresa);
 		Thread.sleep(2000);
+		Reporter.log("Imprimir y assertear que el texto posteado es el deñ user admin");
 		Reporter.log(muro.getTextFirstPost());
-		Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
+		//Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
+		Reporter.log("Likear el post del user admin, como user basic");
+		muro.likearFirstPost();
+		muro.comentarFIrstPost("Comento el post del usuario admin, siendo el user basic");
+		Thread.sleep(2000);
+		Reporter.log(" Ir al profile del posteador, que es el user admin");
 		muro.goToProfilePost();
-		Thread.sleep(8000);
+		Thread.sleep(2000);
 	  
 	   
 	
