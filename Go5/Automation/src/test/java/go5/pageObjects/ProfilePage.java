@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.asserts.SoftAssert;
 
 
     
@@ -49,7 +50,7 @@ import org.testng.Reporter;
     	          private String cancelar =".active .optional";
     	          private String inputFotoProfile ="sarasa";
     	          private String selectPictureOrCamera=".igocamera a";
-    	          
+    	          SoftAssert sa= new SoftAssert();
     	           WebDriver driver;
     	           
     	           

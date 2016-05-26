@@ -5,11 +5,9 @@ import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
-
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+
 import org.testng.annotations.Test;
 
 
@@ -59,13 +57,14 @@ public class MuroSocialAC extends TestSuite {
 		//espacio.clickEspacioSidebar(iconoCallCenter);
 		Thread.sleep(1000);
 		
-		muro.postTexto("Posteo como usuario admin prueba selenium ");
+		muro.postTexto("Posteo como usuario admin para probar los likes ");
 		muro.postLink(link);
 		Thread.sleep(3000);
 		muro.postear();
+		Thread.sleep(2000);
 		Reporter.log("Like el post creado como user admin");
 		muro.likearFirstPost();
-		Thread.sleep(7000);
+		Thread.sleep(2000);
 		this.goToMenuUsuario();	
 		Reporter.log("Desloguearse como usuario admin");
 		this.logout();

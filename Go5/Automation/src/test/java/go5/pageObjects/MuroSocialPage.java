@@ -1,18 +1,26 @@
 package go5.pageObjects;
+import go5.automation.TestSuite;
+
+import java.io.File;
 import java.security.SecureRandom;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 
 
   
     
     
-    public class MuroSocialPage {
+    public class MuroSocialPage extends TestSuite{
 
+    	
+    	
+    	
     	//Css
     	
 
@@ -20,9 +28,11 @@ import org.testng.Reporter;
 
     	protected String textAreaPostcss= ".postbox fieldset textarea";
 
-    	protected String cameraPostcss=".igocamerawhite";
+    	protected String cameraOrPicturePostcss=".igocamerawhite";
+    	protected String cameracss=".igocamera";
+    	protected String subirFotocss=".igofolder";
     	protected String linkPostcss=".igolink";
-    	protected String attachPostcss=".igoattach";
+    	protected String abrirModalAdjuntarArchivocss=".igoattach";
     	protected String publicarContenidoCss="fieldset .primary";
     	protected String iconcss=".icon";
 
@@ -32,6 +42,7 @@ import org.testng.Reporter;
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
         protected String textofirstPostcss= ".posttext:nth-child(3) p:nth-child(2)";
         protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
+        protected String reponderCommentFirstPostcss=".posttext:nth-child(3) .comments .commentsform fieldset textarea";
         protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
         protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
         protected String commentFirstPostcss=".posttext:nth-child(3) .actions .igocomments";
@@ -39,6 +50,7 @@ import org.testng.Reporter;
         protected String irAMuroEnPerfilcss=".content menu li:first-child a";
         protected String irAlPerfilPost=".posttext:nth-child(3) h2 a";
         protected String irAlPerfilWindowAsidecss=".likes li:first-child a:first-child";
+        
       
         
         static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -58,10 +70,14 @@ import org.testng.Reporter;
         By like = By.cssSelector(likeFirstPostcss);
         By desplegarLikes=By.cssSelector(desplegarLikescss);
         By irAlPerfilWindowAside=By.cssSelector(irAlPerfilWindowAsidecss);
+        By selectCameraOrPicture= By.cssSelector(cameraOrPicturePostcss);
+        By subirFoto=By.cssSelector(subirFotocss);
     	
     	static SecureRandom rnd = new SecureRandom();
     	
+    	//Objects
     	
+    
     	  WebDriver driver;
     
      
@@ -166,7 +182,27 @@ import org.testng.Reporter;
      public void irAFirstProfileWindowAside(){
     	 driver.findElement(irAlPerfilWindowAside);
      }
+    
+    public void subirUnaFotoFile(){
+    	
+    	 js=  (JavascriptExecutor) driver;
+    	   	
+    	driver.findElement(selectCameraOrPicture).click();
+    	 
+    	   WebElement element = driver.findElement(subirFoto);
+		  js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
+	          
+	      //Agarrar el elemento para cargar el file y pasarle el path 
+	       
+	        WebElement subirFile = driver.findElement(subirFoto);
+	               
+	        File file= new File("src/test/resources/Girasol.jpeg");
+	        subirFile.sendKeys(file.getAbsolutePath());
+	       
+		    Reporter.log(" Foto cargada exitosamente");
     }
+    }
+    
     
       
      
