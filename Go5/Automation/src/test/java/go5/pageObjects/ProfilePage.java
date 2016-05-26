@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.asserts.SoftAssert;
 
 
     
@@ -49,7 +50,7 @@ import org.testng.Reporter;
     	          private String cancelar =".active .optional";
     	          private String inputFotoProfile ="sarasa";
     	          private String selectPictureOrCamera=".igocamera a";
-    	          
+    	          SoftAssert sa= new SoftAssert();
     	           WebDriver driver;
     	           
     	           
@@ -107,8 +108,8 @@ import org.testng.Reporter;
       }
 		
       public void agrandarForm(){
-    	  Reporter.log("Agrandar Forml");
-          	  driver.findElement(By.cssSelector(editarProfile)).click();
+    	  Reporter.log("Agrandar Form");
+          	  driver.findElement(By.cssSelector(agrandarForm)).click();
       }
 	
       
@@ -134,7 +135,7 @@ import org.testng.Reporter;
 		   driver.findElement(By.cssSelector(linkSupervisor)).click();
 	   }
    
-   public void editarDatosLaborales(){
+   public void agregarDatosLaborales(){
 		//Insertar datos laborales
 		Reporter.log("Editando datos laborales");
 		

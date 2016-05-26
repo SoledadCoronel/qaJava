@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-
   
     
     
@@ -20,25 +19,27 @@ import org.testng.Reporter;
 
     	//Css
     	
-    	protected String irAPersonas= new String(".igoadmin");
+    	protected String irAPersonas= ".igoadmin";
     	
-    	protected  String inputNombreUser= new String(".basicdata label:nth-child(4) input");
-    	protected  String inputLastnameUser=new String (".basicdata label:nth-child(5) input");
-    	protected  String inputemailUser =new String ("basicdata label:nth-child(6) input");
-    	protected  String tablaPersonas = new String (".tablefilter tbody");
-    	protected  String crearUser = new String (".content .title a");
-    	protected  String estadoDesactivado = (".basicdata label:nth-child(2) input:nth-child(2)");
-    	protected  String estadoActivado = (".basicdata label:nth-child(2) input:nth-child(1)");
+    	protected  String inputNombreUser= ".basicdata label:nth-child(4) input";
+    	protected  String inputLastnameUser=".basicdata label:nth-child(5) input";
+    	protected  String inputemailUser =".basicdata label:nth-child(6) input";
+    	protected  String tablaPersonas = ".tablefilter tbody";
+    	protected  String crearUser = ".content .title a";
+    	protected  String estadoDesactivado = ".basicdata label:nth-child(2) input:nth-child(2)";
+    	protected  String estadoActivado = ".basicdata label:nth-child(2) input:nth-child(1)";
     	
-    	protected String  desplegarCampos = new String (".addpeople .secondary");
-    	protected String  savePerson = new String (".container .addpeople .primary");   	
-    	 protected String editfirstRow= new String (".tables tbody tr:nth-child(1) td:nth-child(7) a");
-    	protected  String irAPagina= new String("a[title='Ir a la página 4']");
-    	protected	String searchButton = new String(".actions .search .btnsearch");
-    	protected	String inputSearch = new String(".actions .search input");
-    	protected	String orden =new String (".tables thead tr th:nth-child(2) a");
-    	protected	 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
-    	protected	 String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)"); 
+    	protected String  desplegarCampos = ".addpeople .secondary";
+    	protected String  savePerson = ".container .addpeople .primary";   	
+    	 protected String editfirstRow=".tables tbody tr:nth-child(1) td:nth-child(7) a";
+       	protected	String searchButton = ".actions .search .btnsearch";
+    	protected	String inputSearch =".actions .search input";
+    	protected	String orden =".tables thead tr th:nth-child(2) a";
+    	protected	 String firstRow= ".tables tbody tr:nth-child(1) td:nth-child(2)";
+    	protected	 String secondRow= ".tables tbody tr:nth-child(2) td:nth-child(2)"; 
+    	protected String groupsSelect= ".groupsdata select";
+    	protected String grabarSinEnviarInvite= ".container .addpeople .secondary";
+    	protected String selectRol=".basicdata label:nth-child(7) select";
     	
     	 
     	  WebDriver driver;
@@ -61,25 +62,28 @@ import org.testng.Reporter;
     	    
     	    
     	    public void setRandomUserName() throws Exception{
-        	  this.sendValue(inputNombreUser, name);
+        	  driver.findElement(By.cssSelector(inputNombreUser)).sendKeys(name);
+    	    	
        	    }
   
     	    public void setRandomLastName() throws Exception{
-    	       	this.sendValue(inputLastnameUser, name);
+    	    	 driver.findElement(By.cssSelector(inputLastnameUser)).sendKeys(name);
     	        }
     	    
     	    public void setRandomEmail() throws Exception{
-    	       	 this.sendValue(inputemailUser, email);
+    	    	 driver.findElement(By.cssSelector(inputemailUser)).sendKeys(email); 
+    	    	
     	     	    }
         	       	   
     	   
     	   public void setEstadoActivo() throws InterruptedException{
-    		  this.click(estadoActivado);
+    		  driver.findElement(By.cssSelector(estadoActivado)).click();
+
     		  
     		   
     	   }
     	    public void setEstadoDesactivado() throws Exception{
-      	    	this.click(estadoDesactivado);
+    	    	driver.findElement(By.cssSelector(estadoDesactivado)).click();
       	    	    }
        
     	  public void contarPersonasTabla(){
@@ -130,8 +134,32 @@ import org.testng.Reporter;
             setEstadoDesactivado();
        
     	  }
-        
-            public  void elegirUsuarios(Integer index){
+    	  
+       	  public void selectRol(){
+       		 //Seleccionar el rol admin
+		      
+			     Select selectRoldropdown = new Select(driver.findElement(By.cssSelector(selectRol))); 
+			 		
+			        selectRoldropdown.selectByIndex(1);
+       	  }
+    	  
+    	  
+            public void setGrupo() {
+                         		
+               	 // Select all values the drop-down for Language
+               	 		Reporter.log(" Tomar un grupo");
+               	 		Select selectGroup= new Select(driver.findElement(By.cssSelector(groupsSelect)));
+               	 		
+               	 		selectGroup.selectByIndex(1);
+               	 		           	 		
+            	
+		}
+
+            public void grabarUsuarioSinInvite(){
+            	driver.findElement(By.cssSelector(grabarSinEnviarInvite)).click();
+            }
+            
+			public  void elegirUsuarios(Integer index){
             // Elegir Usuarios ( Activos es 1,2 es Inactivos, y 3 es No registrados
               
             	

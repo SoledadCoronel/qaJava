@@ -223,6 +223,10 @@ public void openSiteMobile(){
 		   
 		  }
 	  
+	  public void wait(Integer milliseconds) throws InterruptedException{
+		  Thread.sleep(milliseconds);
+	  }
+	  
 	  public void clickWhenReady(By goButton2, int timeout) {
 		  
 		  WebElement element = null;
@@ -384,6 +388,8 @@ public void openSiteMobile(){
 						this.click(irAInvitaciones);
 					}
 					
+					
+				
 					
 					public void goToSpaces(){
 					

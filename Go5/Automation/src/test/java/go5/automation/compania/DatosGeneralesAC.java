@@ -2,6 +2,7 @@ package go5.automation.compania;
 
 import go5.automation.TestSuite;
 import go5.pageObjects.CompanyPage;
+import go5.pageObjects.MuroSocialPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,13 +20,8 @@ import org.testng.annotations.Test;
 
 public class DatosGeneralesAC  extends TestSuite{
 	
-	 private WebDriver driver;
-   CompanyPage company=null;
-   private String datosGenerales = new String (".igocompanydata");
-	private String design= new String (".igodesign");
-   private String nombreCompania= new String (".generaldata fieldset label:nth-child(1) input");
-   private String selectIdioma = new String (".generaldata fieldset label:nth-child(3) select");
-   private String selectTimezone = new String (".generaldata fieldset label:nth-child(4) select");
+	CompanyPage company=null;
+	
 	
    @AfterClass // call function to close browser 
 	
@@ -40,34 +36,15 @@ public class DatosGeneralesAC  extends TestSuite{
 	
 	company = new CompanyPage(driver);
 		  
+	
 		this.goToConfiguration();
-		  this.goToMenu();
-	        		
-		
-         
-
- 		// Go to Company Data
-		  
-		 // company.irADatosGenerales();
-		  Reporter.log("Abriendo la pagina de Datos de la Compania");
-     	 driver.findElement(By.cssSelector(datosGenerales)).click();
-		
- 		
- 		
-
- //Verify that company name can not be blank
- 		Reporter.log("Verificar que el nombre de la compañia no pueda ser blanco");
- 		//  company.setNombreCompania("      ");
- 	//	driver.findElement(By.cssSelector("..generaldata fieldset label:nth-child(1) input")).sendKeys("    ");
- 	//	String companyMessage = new String(driver.findElement(By.cssSelector(".companydata fieldset label:nth-child(1) span")).getText());
- 	//	Reporter.log(companyMessage);
- 	//	Assert.assertEquals(companyMessage, "El campo es requerido");
- 	//	company.setNombreCompania("Automation Site");
- 		Reporter.log("Insertando nombre de la compania");
-   	 driver.findElement(By.cssSelector(nombreCompania)).clear();
-   	 driver.findElement(By.cssSelector(nombreCompania)).sendKeys("sdsdasdsadsadsd");
- 	//		company.setIdioma();
- 		//	company.setTimezone();
+		 this.goToMenu();
+		 Thread.sleep(2000);
+		 company.irADatosGenerales();
+        company.verifyNombreCantBeBlank();
+        company.setNombreCompania("Site Automation");
+ 		company.setIdioma();
+ 		company.setTimezone();
  		
  
  		 		
