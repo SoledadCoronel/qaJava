@@ -69,7 +69,17 @@ import org.testng.Reporter;
     	this.setIngles();
     	this.clickSubmitButton();
     }
-    }
     
-
+    public String  getToken(){
+    	String urlToken =new String(driver.findElement(By.id("create_platform_link")).getAttribute("href"));
+		//driver.findElement(By.id("create_platform_link")).click();
+		return  getToken();
+    	
+    	
+		
+    }
+    public void irACreatePlatform(){
+    	driver.findElement(By.id("create_platform_link")).click();
+    }
+    }
 

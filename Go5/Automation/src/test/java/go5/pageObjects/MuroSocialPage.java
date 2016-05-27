@@ -28,7 +28,7 @@ import org.testng.Reporter;
 
     	protected String cameraOrPicturePostcss=".igocamerawhite";
     	protected String cameracss=".igocamera";
-    	protected String subirFotocss=".igofolder";
+    	protected String subirFotocss=".postbox .menuoptions label:last-child";
     	protected String linkPostcss=".igolink";
     	protected String abrirModalAdjuntarArchivocss=".igoattach";
     	protected String publicarContenidoCss="fieldset .primary";
@@ -185,7 +185,7 @@ import org.testng.Reporter;
     	
     	 js=  (JavascriptExecutor) driver;
     	   	
-    	driver.findElement(selectCameraOrPicture).click();
+    //	driver.findElement(selectCameraOrPicture).click();
     	 
     	   WebElement element = driver.findElement(subirFoto);
 		  js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);

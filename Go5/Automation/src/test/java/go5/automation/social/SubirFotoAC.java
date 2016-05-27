@@ -62,6 +62,9 @@ public class SubirFotoAC extends TestSuite {
 		 espacio.clickEspacioSidebar(iconoEmpresa);
 		Thread.sleep(1000);
 		muro.subirUnaFotoFile();
+		Thread.sleep(5000);
+		muro.postear();
+		Thread.sleep(6000);
 		}	
 		
 		
