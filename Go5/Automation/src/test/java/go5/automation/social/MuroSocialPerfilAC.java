@@ -59,7 +59,7 @@ public class MuroSocialPerfilAC extends TestSuite {
 		 //Ir al muro del perfil
 		
 		muro.irAMuroEnPerfil();
-		muro.postTexto("Posteo en el muro del profile del user admin ");
+		muro.postTexto("Posteo como user adimn en el profile de un user ");
 		muro.postLink(link);
 		Thread.sleep(2000);
 		muro.postear();
