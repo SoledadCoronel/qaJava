@@ -24,6 +24,7 @@ import org.testng.Reporter;
 
     	
 
+    	
     	protected String textAreaPostcss= ".postbox fieldset textarea";
 
     	protected String cameraOrPicturePostcss=".igocamerawhite";
@@ -48,6 +49,8 @@ import org.testng.Reporter;
         protected String irAMuroEnPerfilcss=".content menu li:first-child a";
         protected String irAlPerfilPost=".posttext:nth-child(3) h2 a";
         protected String irAlPerfilWindowAsidecss=".likes li:first-child a:first-child";
+        protected String irAActividadSocialcss=".content menu li:first-child a";
+        protected String irAMiembroscss=".content menu li:nth-child(2) a";
         
       
         
@@ -70,6 +73,8 @@ import org.testng.Reporter;
         By irAlPerfilWindowAside=By.cssSelector(irAlPerfilWindowAsidecss);
         By selectCameraOrPicture= By.cssSelector(cameraOrPicturePostcss);
         By subirFoto=By.cssSelector(subirFotocss);
+        By irAActividadSocial=By.cssSelector(irAActividadSocialcss);
+        By irAMiembros = By.cssSelector(irAMiembroscss);
     	
     	static SecureRandom rnd = new SecureRandom();
     	
@@ -88,22 +93,26 @@ import org.testng.Reporter;
      //Set a string in a posttext
   
      public void postTexto(String strTextPost){
-      
+        
+    	 Reporter.log("Ingresar un texto en el postbox");
     	 driver.findElement(textPost).clear();
     	 driver.findElement(textPost).sendKeys(strTextPost);
+    	 
     	     	
      }
    
       
 
      public void postear(){
-    	 
-    	 driver.findElement(publicarContenido).click();
+    	
     	 Reporter.log("CLikeo publicar");
+    	 driver.findElement(publicarContenido).click();
+    	
     	 
      }
       
      public void postLink (String strlink){
+    	 Reporter.log("Posteo un link");
     	  driver.findElement(link).click();
     	  driver.findElement(By.cssSelector(".active input")).sendKeys(strlink);
     	  driver.findElement(By.cssSelector(".active input")).sendKeys(Keys.ENTER);
@@ -113,6 +122,7 @@ import org.testng.Reporter;
     
 		
      private String setcssPost(Integer p ){
+    	 //Buscar un post viejo
     	   String css = ".posttext :nth-child"+"("+(p)+")";
   		    return css;
      }
@@ -125,10 +135,12 @@ import org.testng.Reporter;
     }
 	   
 	   public void verifyLinkVerMas(){
+		   Reporter.log("Verificar el link VerMas");
 		   driver.findElement(linkVerMas).click();
 	   }
 	   
 	   public void verifyLinkVerMenos(){
+		   Reporter.log("Verificar el link VerMenos");
 		   driver.findElement(linkVerMas).click();
 	   }
 	   
@@ -143,6 +155,7 @@ import org.testng.Reporter;
 	   
 	   
 	   public void goToProfilePost(){
+		   Reporter.log("Ir al perfil del posteador");
 		   driver.findElement(By.cssSelector(irAlPerfilPost)).click();
 	   }
 	   
@@ -165,15 +178,18 @@ import org.testng.Reporter;
 
 	
 	  public void comentarFIrstPost(String strCommentPost){
+		  Reporter.log("Comentar en el primer post");
 		  driver.findElement(commentFirstPost).click();
 		  driver.findElement(comment).sendKeys(strCommentPost);
 		  driver.findElement(comment).sendKeys(Keys.ENTER);
 	  }
 	 public void likearFirstPost(){
+		 Reporter.log("Likear el primer post");
 		 driver.findElement(like).click();
 	 }
     
      public void desplegarLikesWindowAside(){
+    	 Reporter.log("Deplegar el window aside de los likes");
     	 driver.findElement(desplegarLikes).click();
      }
     
@@ -181,6 +197,14 @@ import org.testng.Reporter;
     	 driver.findElement(irAlPerfilWindowAside);
      }
     
+     public void irAActividadSocial(){
+    	 Reporter.log("Clickeando Actividad Social");
+    	 driver.findElement(irAActividadSocial).click();
+     }
+     
+     public void irAMiembros(){
+    	 driver.findElement(irAMiembros).click();
+     }
     public void subirUnaFotoFile(){
     	
     	 js=  (JavascriptExecutor) driver;

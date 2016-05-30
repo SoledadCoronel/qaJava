@@ -35,7 +35,7 @@ import org.testng.Reporter;
   
      //Set user name in textbox
   
-     public  void  irADirectorio(){
+     public  void  goToDirectorio(){
       
     	 Reporter.log("Abriendo directorio de  personas" );
     	  	  
@@ -72,5 +72,10 @@ import org.testng.Reporter;
        	Reporter.log("La pagina esta ordenada alfabeticamente por orden descencdente ( de la Z a la A " );
      
     }
+     public void goToFirstProfileUserByNameLink(){
+    	 driver.findElement(By.cssSelector(firstName)).click();
+    
     }
+    }
+    
 

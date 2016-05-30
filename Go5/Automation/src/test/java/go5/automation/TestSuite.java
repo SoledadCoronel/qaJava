@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -223,10 +224,6 @@ public void openSiteMobile(){
 		   
 		  }
 	  
-	  public void wait(Integer milliseconds) throws InterruptedException{
-		  Thread.sleep(milliseconds);
-	  }
-	  
 	  public void clickWhenReady(By goButton2, int timeout) {
 		  
 		  WebElement element = null;
@@ -369,7 +366,9 @@ public void openSiteMobile(){
 										
 			               this.clear(inputSearch);
 			               this.sendValue(inputSearch, nombreABuscar);
+			         //      driver.findElement(By.cssSelector(inputSearch)).sendKeys(Keys.ENTER);
 					}
+					
 					public void goToMenuUsuario() throws Exception {
 						this.click(desplegaMenuUsuario);
 						Thread.sleep(1000);
