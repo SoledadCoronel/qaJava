@@ -54,12 +54,9 @@ public class MuroSocialAC extends TestSuite {
 		 //Ir a espacios
 		//Tengo q ir a un espacio
 		 espacio.clickEspacioSidebar(iconoEmpresa);
-		//espacio.clickEspacioSidebar(iconoCallCenter);
-		Thread.sleep(3000);
-		muro.irAMiembros();
-		Thread.sleep(3000);
-		muro.irAActividadSocial();
-		Thread.sleep(2000);
+			
+	
+		Thread.sleep(10000);
 		muro.postTexto("Posteo como usuario admin para probar los likes ");
 		muro.postLink(link);
 		Thread.sleep(3000);

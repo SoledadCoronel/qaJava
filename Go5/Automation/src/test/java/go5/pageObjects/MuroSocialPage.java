@@ -25,7 +25,7 @@ import org.testng.Reporter;
     	
 
     	
-    	protected String textAreaPostcss= ".postbox fieldset textarea";
+    	protected String textAreaPostcss= ".postbox fieldset:nth-child(1) label:nth-child(2) div"; //.at
 
     	protected String cameraOrPicturePostcss=".igocamerawhite";
     	protected String cameracss=".igocamera";
@@ -39,18 +39,19 @@ import org.testng.Reporter;
 
     	protected String linkVerMascss=".posttext:nth-child(3) p:nth-child(2) .link";
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
-        protected String textofirstPostcss= ".posttext:nth-child(3) p:nth-child(2)";
+        protected String textofirstPostcss= ".posttext:nth-child(3) div:nth-child(2) p";
         protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
         protected String reponderCommentFirstPostcss=".posttext:nth-child(3) .comments .commentsform fieldset textarea";
         protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
         protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
         protected String commentFirstPostcss=".posttext:nth-child(3) .actions .igocomments";
-        protected String commentInputcss =".posttext:nth-child(3) fieldset textarea";
+        protected String commentInputcss =".posttext:nth-child(3) .commentsitem .peoplepost p";
         protected String irAMuroEnPerfilcss=".content menu li:first-child a";
         protected String irAlPerfilPost=".posttext:nth-child(3) h2 a";
         protected String irAlPerfilWindowAsidecss=".likes li:first-child a:first-child";
         protected String irAActividadSocialcss=".content menu li:first-child a";
         protected String irAMiembroscss=".content menu li:nth-child(2) a";
+        protected String countsLikesFirstPostcss=".posttext:nth-child(3) .socials:nth-child(2) a:nth-child(2)";
         
       
         
@@ -75,6 +76,7 @@ import org.testng.Reporter;
         By subirFoto=By.cssSelector(subirFotocss);
         By irAActividadSocial=By.cssSelector(irAActividadSocialcss);
         By irAMiembros = By.cssSelector(irAMiembroscss);
+        By countLikes=By.cssSelector(countsLikesFirstPostcss);
     	
     	static SecureRandom rnd = new SecureRandom();
     	
@@ -188,6 +190,9 @@ import org.testng.Reporter;
 		 driver.findElement(like).click();
 	 }
     
+	 public String countLikesFirstPost(){
+		return driver.findElement(countLikes).getText();
+	 }
      public void desplegarLikesWindowAside(){
     	 Reporter.log("Deplegar el window aside de los likes");
     	 driver.findElement(desplegarLikes).click();
