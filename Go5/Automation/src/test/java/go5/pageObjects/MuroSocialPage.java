@@ -17,83 +17,100 @@ import org.testng.Reporter;
     
     public class MuroSocialPage extends TestSuite{
 
-    	  	
+    		
     	
     	//Css
-     //Generics	
-     //postear, comentar, responder
-     
     	
+     //Generics	
+    	protected String publicarContenidoCss="fieldset .primary";
+    	protected String iconcss=".icon";
+    	protected String date= ".posttex :nth-child(n) p time";
+    	 protected String irAActividadSocialcss=".content menu li:first-child a";
+         protected String irAMiembroscss=".content menu li:nth-child(2) a";
+    	
+     //postear, comentar, responder
+    	protected String textAreaPostcss= ".postbox fieldset:nth-child(1) label:nth-child(2) div"; //.at
+    	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
+        protected String textofirstPostcss= ".posttext:nth-child(3) div:nth-child(2) p";
+        protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
+        protected String reponderCommentFirstPostcss=".posttext:nth-child(3) .commentsitem:nth-child(3) .peoplepost p";
+        protected String commentFirstPostcss=".posttext:nth-child(3) .actions .igocomments";
+        protected String commentInputcss =".posttext:nth-child(3) .commentsitem .peoplepost p";
+        protected String showMoreCommentscss=".link showmore";
+       
+    	//Likes
+        protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
+        protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
+        protected String countsLikesFirstPostcss=".posttext:nth-child(3) .socials:nth-child(2) a:nth-child(2)";
+        protected String countsLikesCommentFirstPostcss=".posttext:nth-child(3) .commentsitem .socials a:nth-child(4)";
+        protected String countsLikesResponseCommentFirstPostcss="posttext:nth-child(3) .commentsitem:nth-child(3) .socials a:nth-child(4)";
+       
+        
     	//profiles
     	protected String irAMuroEnPerfilcss=".content menu li:first-child a";
         protected String irAlPerfilPost=".posttext:nth-child(3) h2 a";
         protected String irAlPerfilWindowAsidecss=".likes li:first-child a:first-child";
     	
-    	
-    	//attachments
-    	
-    	protected String textAreaPostcss= ".postbox fieldset:nth-child(1) label:nth-child(2) div"; //.at
+    	//links
+        protected String linkPostcss=".igolink";
+    	protected String linkVerMascss=".posttext:nth-child(3) p:nth-child(2) .link";
+        
+    	//attachments    	
     	protected String cameraOrPicturePostcss=".igocamerawhite";
-    	protected String showMoreCommentscss=".link showmore";
     	protected String cameracss=".igocamera";
     	protected String subirFotocss=".postbox .menuoptions label:last-child";
-    	protected String linkPostcss=".igolink";
     	protected String abrirModalAdjuntarArchivocss=".igoattach";
-    	protected String publicarContenidoCss="fieldset .primary";
-    	protected String iconcss=".icon";
-    	protected String date= ".posttex :nth-child(n) p time";
-    	protected String linkVerMascss=".posttext:nth-child(3) p:nth-child(2) .link";
-    	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
-        protected String textofirstPostcss= ".posttext:nth-child(3) div:nth-child(2) p";
-        protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
-        protected String reponderCommentFirstPostcss=".posttext:nth-child(3) .commentsitem:nth-child(3) .peoplepost p";
-        protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
-        protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
-        protected String commentFirstPostcss=".posttext:nth-child(3) .actions .igocomments";
-        protected String commentInputcss =".posttext:nth-child(3) .commentsitem .peoplepost p";
-        protected String responseCommentFirstPostcss="";
-        
-        protected String irAActividadSocialcss=".content menu li:first-child a";
-        protected String irAMiembroscss=".content menu li:nth-child(2) a";
-        protected String countsLikesFirstPostcss=".posttext:nth-child(3) .socials:nth-child(2) a:nth-child(2)";
-        protected String countsLikesCommentFirstPostcss=".posttext:nth-child(3) .commentsitem .socials a:nth-child(4)";
-        protected String countsLikesResponseCommentFirstPostcss="posttext:nth-child(3) .commentsitem:nth-child(3) .socials a:nth-child(4)";
-        
-      
-        
+    
+              
+        //Others
         static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
  	   
-    	
-    	
-    	By textPost =By.cssSelector(textAreaPostcss);
-    	By link =By.cssSelector(linkPostcss);
-    	By publicarContenido = By.cssSelector(publicarContenidoCss);
-    	By icon =By.cssSelector(iconcss);  
-    	By textPosteado=By.cssSelector(textofirstPostcss);
-    	By linkVerMas=By.cssSelector(linkVerMascss);
+    	//By
+        //Generics	
+        By publicarContenido = By.cssSelector(publicarContenidoCss);
+        By icon =By.cssSelector(iconcss);  
         By timePost=By.cssSelector(timefirstPostcss);
-        By irAMuroEnPerfil=By.cssSelector(irAMuroEnPerfilcss);
-        By commentFirstPost=By.cssSelector(commentFirstPostcss);
-        By comment = By.cssSelector(commentInputcss);
-        By like = By.cssSelector(likeFirstPostcss);
-        By desplegarLikes=By.cssSelector(desplegarLikescss);
-        By irAlPerfilWindowAside=By.cssSelector(irAlPerfilWindowAsidecss);
-        By selectCameraOrPicture= By.cssSelector(cameraOrPicturePostcss);
-        By subirFoto=By.cssSelector(subirFotocss);
         By irAActividadSocial=By.cssSelector(irAActividadSocialcss);
         By irAMiembros = By.cssSelector(irAMiembroscss);
-        By countLikes=By.cssSelector(countsLikesFirstPostcss);
-    	By countLikesComment= By.cssSelector(countsLikesCommentFirstPostcss);
-    	By countLikesResponseComment= By.cssSelector(countsLikesResponseCommentFirstPostcss);
+        
+      //postear, comentar, responder
+        By textPost =By.cssSelector(textAreaPostcss);
+    	By textPosteado=By.cssSelector(textofirstPostcss);
+    	 By commentFirstPost=By.cssSelector(commentFirstPostcss);
+         By comment = By.cssSelector(commentInputcss);
+         By responseCommentFirstPost=By.cssSelector(reponderCommentFirstPostcss);
+         
+    	
+    	
+    	//Likes
+         By like = By.cssSelector(likeFirstPostcss);
+         By desplegarLikes=By.cssSelector(desplegarLikescss);
+         By countLikes=By.cssSelector(countsLikesFirstPostcss);
+     	By countLikesComment= By.cssSelector(countsLikesCommentFirstPostcss);
+     	By countLikesResponseComment= By.cssSelector(countsLikesResponseCommentFirstPostcss);
+    	
+      //profiles
+    	 By irAMuroEnPerfil=By.cssSelector(irAMuroEnPerfilcss);
+    	 By irAlPerfilWindowAside=By.cssSelector(irAlPerfilWindowAsidecss);
+    	
+    	//links
+    	By link =By.cssSelector(linkPostcss);
+    	By linkVerMas=By.cssSelector(linkVerMascss);
+    	
+    	//attachments      	
+           
+        By selectCameraOrPicture= By.cssSelector(cameraOrPicturePostcss);
+        By subirFoto=By.cssSelector(subirFotocss);
+      
+        
     	static SecureRandom rnd = new SecureRandom();
     	
     	//Objects
-    	
-    
+    	    
     	  WebDriver driver;
     
-     
-  
+     //Inits
+    	  
     	    public MuroSocialPage(WebDriver driver){
     	    	 
     	        this.driver = driver;
@@ -224,7 +241,7 @@ import org.testng.Reporter;
      
    
    public void responderComment(String string) {
-		
+	   driver.findElement(responseCommentFirstPost);	
 		
 	}
 	
@@ -235,7 +252,8 @@ import org.testng.Reporter;
 		  driver.findElement(comment).sendKeys(Keys.ENTER);
 	  }
     
-	  
+	 
+	 
 	     public void postLink (String strlink){
 	    	 Reporter.log("Posteo un link");
 	    	  driver.findElement(link).click();
