@@ -56,7 +56,6 @@ public class MuroSocialAC extends TestSuite {
 		 espacio.clickEspacioSidebar(iconoEmpresa);
 			
 	
-		Thread.sleep(10000);
 		muro.postTexto("Posteo como usuario admin para probar los likes ");
 		muro.postLink(link);
 		Thread.sleep(3000);
@@ -83,7 +82,7 @@ public class MuroSocialAC extends TestSuite {
 		muro.likearFirstPost();
 		muro.comentarFIrstPost("Comento el post del usuario admin, siendo el user basic");
 		Thread.sleep(2000);
-		//muro.responderComment("Respondo el comment que hice como user basic")
+		muro.responderComment("Respondo el comment que hice como user basic");
 		Reporter.log(" Ir al profile del posteador, que es el user admin");
 		muro.goToProfilePost();
 		Thread.sleep(2000);
