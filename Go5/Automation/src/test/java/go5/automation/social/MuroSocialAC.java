@@ -5,9 +5,10 @@ import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
+
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-
 import org.testng.annotations.Test;
 
 
@@ -63,7 +64,7 @@ public class MuroSocialAC extends TestSuite {
 		muro.postear();
 		Thread.sleep(2000);
 		Reporter.log("Like el post creado como user admin");
-		muro.likearFirstPost();
+		muro.likearPost();
 		Thread.sleep(2000);
 		this.goToMenuUsuario();	
 		Reporter.log("Desloguearse como usuario admin");
@@ -80,10 +81,22 @@ public class MuroSocialAC extends TestSuite {
 		Reporter.log(muro.getTextFirstPost());
 		//Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
 		Reporter.log("Likear el post del user admin, como user basic");
-		muro.likearFirstPost();
+		muro.likearPost();
+		// Aserteo que el post tengo 2 likes, uno del user admin y otro del user basic
+		//Assert.assertEquals(muro.countLikesPost(),"2 likes");
+		Reporter.log(muro.countLikesPost());
 		muro.comentarFIrstPost("Comento el post del usuario admin, siendo el user basic");
+		muro.likearComment();
+		// Cuento los likes del comment, 1 solo
+		Reporter.log(muro.countLikesComments());
 		Thread.sleep(2000);
-		//muro.responderComment("Respondo el comment que hice como user basic")
+		// Repondo a mi comment y lo likeo
+		
+		muro.responderComment("Respondo el comment que hice como user basic");
+	    
+		muro.likearResponseComment();
+	    Reporter.log(muro.countLikesResponseComment());
+	  //  Assert.assertEquals(muro.countLikesResponseComment(),"1 likes");
 		Reporter.log(" Ir al profile del posteador, que es el user admin");
 		muro.goToProfilePost();
 		Thread.sleep(2000);
