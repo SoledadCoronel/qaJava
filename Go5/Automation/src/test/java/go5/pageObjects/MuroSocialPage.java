@@ -40,6 +40,8 @@ import org.testng.Reporter;
        
     	//Likes
         protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
+        protected String likeFirstCommentcss="posttext:nth-child(3) .commentsitem:nth-child(2) .socials .igolike";
+        protected String likeReponseCommentcss=".posttext:nth-child(3) .commentsreplay .socials .igolike ";
         protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
         protected String countsLikesFirstPostcss=".posttext:nth-child(3) .socials:nth-child(2) a:nth-child(2)";
         protected String countsLikesCommentFirstPostcss=".posttext:nth-child(3) .commentsitem .socials a:nth-child(4)";
@@ -88,8 +90,10 @@ import org.testng.Reporter;
          By countLikes=By.cssSelector(countsLikesFirstPostcss);
      	By countLikesComment= By.cssSelector(countsLikesCommentFirstPostcss);
      	By countLikesResponseComment= By.cssSelector(countsLikesResponseCommentFirstPostcss);
-    	
-      //profiles
+  //  	By likeComment=
+   // By likeResponseComment = 	
+   
+     	//profiles
     	 By irAMuroEnPerfil=By.cssSelector(irAMuroEnPerfilcss);
     	 By irAlPerfilWindowAside=By.cssSelector(irAlPerfilWindowAsidecss);
     	
@@ -182,7 +186,7 @@ import org.testng.Reporter;
    	
 	  //Likes
 	  
-	  public void likearFirstPost(){
+	  public void likearPost(){
 		 Reporter.log("Likear el primer post");
 		 driver.findElement(like).click();
 	 }
@@ -280,6 +284,16 @@ import org.testng.Reporter;
 		       
 			    Reporter.log(" Foto cargada exitosamente");
 	    }
+
+		public void likearComment() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void likearResponseComment() {
+			// TODO Auto-generated method stub
+			
+		}
     
     }
     
