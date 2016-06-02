@@ -6,6 +6,7 @@ import go5.pageObjects.EspacioPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -42,6 +43,7 @@ public class MuroSocialAC extends TestSuite {
 		muro= new MuroSocialPage(driver); 
 		espacio= new EspacioPage(driver);
 		login =new LoginPage(driver);
+		js=  (JavascriptExecutor) driver;
 			
 	        
 		 Reporter.log(" Entrar a un espacio y postear");
@@ -76,22 +78,23 @@ public class MuroSocialAC extends TestSuite {
 		Thread.sleep(1000);
 		espacio.clickEspacioSidebar(iconoEmpresa);
 		Thread.sleep(2000);
+		Reporter.log("Scrolleo");
+		js.executeScript("scroll(0, 750);");
 		Reporter.log("Imprimir y assertear que el texto posteado es el del user admin");
 		Reporter.log(muro.getTextFirstPost());
 		//Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
-		Reporter.log("Likear el post del user admin, como user basic");
-		muro.likearPost();
+		//Reporter.log("Likear el post del user admin, como user basic");
+	//	muro.likearPost();
 		// Aserteo que el post tengo 2 likes, uno del user admin y otro del user basic
 		//Assert.assertEquals(muro.countLikesPost(),"2 likes");
-		Reporter.log(muro.countLikesPost());
-		muro.comentarFIrstPost("Comento el post del usuario admin, siendo el user basic");
-		muro.likearComment();
+		//Reporter.log(muro.countLikesPost());
+	//	muro.comentarFIrstPost("Comento el post del usuario admin, siendo el user basic");
+	//	muro.likearComment();
 		// Cuento los likes del comment, 1 solo
-		Reporter.log(muro.countLikesComments());
+		//Reporter.log(muro.countLikesComments());
 		Thread.sleep(2000);
-
-		muro.responderComment("Respondo el comment que hice como user basic");
-
+	
+/*
 		// Repondo a mi comment y lo likeo
 		
 		muro.responderComment("Respondo el comment que hice como user basic");
@@ -104,7 +107,7 @@ public class MuroSocialAC extends TestSuite {
 		muro.goToProfilePost();
 		Thread.sleep(2000);
 	  
-	   
+	   */
 	
 	}	
 		
