@@ -80,7 +80,7 @@ import org.testng.asserts.SoftAssert;
   			  			
   			//  driver.findElement(By.cssSelector(css)).click();
   			  Reporter.log("Verificando link de twiter");
-  			 Reporter.log("El link cargado de facebook es :");
+  			 Reporter.log("El link cargado de twitter es :");
   			 Reporter.log( driver.findElement(By.cssSelector(css)).getText());
   			
   			

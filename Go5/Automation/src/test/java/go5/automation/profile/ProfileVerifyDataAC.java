@@ -46,7 +46,7 @@ ProfilePage profile = null;
 		   profile.verifyemaildisplayedAtHeader();
 		   profile.verifyPhonesDisplayedAtHeader();
 		   Thread.sleep(1000);
-		   profile.goToTwitter();
+		//   profile.goToTwitter();
 		   
 			 profile.goToFacebook();
 		
