@@ -82,6 +82,7 @@ public class MuroSocialAC extends TestSuite {
 		js.executeScript("scroll(0, 750);");
 		Reporter.log("Imprimir y assertear que el texto posteado es el del user admin");
 		Reporter.log(muro.getTextFirstPost());
+		/*
 		//Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
 		//Reporter.log("Likear el post del user admin, como user basic");
 	//	muro.likearPost();
@@ -94,7 +95,7 @@ public class MuroSocialAC extends TestSuite {
 		//Reporter.log(muro.countLikesComments());
 		Thread.sleep(2000);
 	
-/*
+
 		// Repondo a mi comment y lo likeo
 		
 		muro.responderComment("Respondo el comment que hice como user basic");
