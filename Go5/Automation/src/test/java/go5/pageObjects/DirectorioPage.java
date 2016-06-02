@@ -15,12 +15,12 @@ import org.testng.Reporter;
     	
     	
     	private String Personas = new String (".igousergroup");
-    	private String searchButton = new String(".actions .search .btnsearch");
+    	
     	private String firstName= new String(".tables tbody tr:nth-child(1) td:nth-child(2) a");
     	 private String lastName= new String(".tables tbody tr:nth-child(10) td:nth-child(2) a");  
     	
-    	    	
-    	By serach =By.cssSelector(searchButton);
+    		
+    	
     	
     
     	
@@ -38,8 +38,7 @@ import org.testng.Reporter;
      public  void  irADirectorio(){
       
     	 Reporter.log("Abriendo directorio de  personas" );
-    	  driver.findElement(By.cssSelector(".igouser")).click();
-    	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	  	  
     	  driver.findElement(By.cssSelector(Personas)).click();
        
      }

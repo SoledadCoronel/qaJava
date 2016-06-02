@@ -2,8 +2,8 @@ package go5.automation.espacios;
 
 
 import go5.automation.TestSuite;
-import go5.pageObjects.LoginPage;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 
@@ -12,9 +12,14 @@ import org.testng.annotations.Test;
 
 public class EspacioUserBasicAbstractClass extends TestSuite {
 	
-	LoginPage login = null;
-		
+			
 	private String crearEspacio = new String (".title .primary");
+
+	 @AfterClass // call function to close browser 
+		
+		public void teardown(){
+		this.quitBrowser();
+		}
 	
 		 
 	 @Test

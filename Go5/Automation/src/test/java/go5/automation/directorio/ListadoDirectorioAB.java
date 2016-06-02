@@ -50,7 +50,7 @@ public class ListadoDirectorioAB extends TestSuite{
 	 	 
 		// Go to the menu (hamburguesita)
 	 this.goToMenu();
-         
+       Thread.sleep(2000);  
  	
  	// Go to  Directorio de personas
         
@@ -73,7 +73,8 @@ public class ListadoDirectorioAB extends TestSuite{
        
      //Verificar Paginado
        Reporter.log("Seleccionar otra pagina del listado");
-       this.cssgoToAPagina(3);
+        this.goToPagina(8);
+        WebElement tablevailable2 = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".people")));
            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       
         
@@ -87,14 +88,14 @@ public class ListadoDirectorioAB extends TestSuite{
                                 
                 //Chequear q se muestre en la tabla users
                 Reporter.log("El nombre del user buscado es:Automation");
-                   Thread.sleep(1000);     
+                   Thread.sleep(2000);     
                 Reporter.log(" Imprimiendo el resultado del search:");
                Reporter.log(directorio.getFirstName()); 
 	
                
                Reporter.log(" Hacer una busqueda de un usuario por Apellido");
                this.search("AutomationLastName");
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                //Chequear q se mueste en la tabla users
                Reporter.log("El nombre del user buscado es AutomationLastName");
               
@@ -102,6 +103,7 @@ public class ListadoDirectorioAB extends TestSuite{
                Reporter.log(directorio.getFirstName());
               
                //Ir al profile del user buscado
+               Thread.sleep(2000);
                this.click(firstRow);
                
             

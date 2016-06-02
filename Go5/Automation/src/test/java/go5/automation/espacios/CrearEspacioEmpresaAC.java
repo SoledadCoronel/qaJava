@@ -28,12 +28,12 @@ public class CrearEspacioEmpresaAC extends TestSuite {
 	 
 	@Test
 	
-	public void crearEspacio() throws Exception { 
+	public void crearEspacioEmpresa() throws Exception { 
 	
 		espacio= new EspacioPage(driver); 
 			
 	        
-		 Reporter.log(" Creando un espacio como user admin");
+		 Reporter.log(" Creando un espacio empresa como user admin");
 		 
 		// Go to hamburguesita
 		 
@@ -53,62 +53,35 @@ public class CrearEspacioEmpresaAC extends TestSuite {
 		 
 		   		       
 		      //Cargar formulario del espacio
-		     	espacio.setNameEspacio("Espacio EMPRESA");
+		     	espacio.setNameEspacio("EMPRESA");
 		     	
-		 		espacio.setDescriptionEspacio();	 
+		 		espacio.setDescriptionEspacio("Espacio del tipo empresa");	 
 		 
 		 	
 	       //Configuracion del espacio
 	          
 	          //Desactivar
-	          Reporter.log("Desactivar el espacio");
-	          espacio.activarEspacio();
+	     //     Reporter.log("Desactivar el espacio");
+	       //   espacio.activarEspacio();
 	     
 	
 	         //Actividad Social
-	          Reporter.log("Desactivar Acitividad Social");
-	          espacio.activarSocial();
-	     
-	          //Seleccionar el icono
-	          Reporter.log("Seleccionar el icono del espacio");
-	          espacio.cambiarIcono();
-	      
+	     //     Reporter.log("Desactivar Acitividad Social");
+	       //  espacio.activarActividadSocial();
 	  
-	       /*   //Verificar ayuda del tipo de espacio
-	               
-	           Reporter.log("Verificando modal de ayuda en Tipo de Espacio");
-	           
-	           JavascriptExecutor js = (JavascriptExecutor) driver;         
-		        WebElement element = driver.findElement(By.linkText("Ayuda"));
-		       Thread.sleep(1000);
-		        js.executeScript("scroll(250, 0)");
-		        
-		        //js.executeScript("arguments[0].setAttribute('style', 'display: block; position: relative; height: 300px; width: 300px; opacity: 1; visiblity: visible')",element);
-	           
-	           
-		        driver.findElement(By.cssSelector("a[title='Muestra la ayuda']")).click();
-	           driver.findElement(By.cssSelector(".spaceformtype .help")).click();
-	           
-	           
-	           //Cerrar el popup
-	           driver.findElement(By.cssSelector(".active .minformation .primary")).click();
-	           
-	        */   
-	           //Seleccionar el tipo de espacio
-	           
-	           //Espacio publico
-	          
-	       //   espacio.setEspacioPublico(); 
+	          //Seleccionar el icono
+	       //   Reporter.log("Seleccionar el icono del espacio");
+	         // espacio.cambiarIconoBanana();
+	      
 	          espacio.setEspacioEmpresa();
-	       //   espacio.setEspacioPrivado();
-	           
+	      	           
 	           //Grabar el espacio nuevo
 	          
 	           espacio.grabarEspacio();
 	                   
 	           Thread.sleep(1000);
 	           
-	
+	           Reporter.log("Caso de crear espacio empresa finalizado correctamente");  
 	}	
 	
 	

@@ -6,14 +6,17 @@ package go5.automation;
 import go5.pageObjects.LoginPage;
 
 import java.net.URL;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -29,8 +32,8 @@ public class TestSuite {
 	protected WebDriver driver;
 	protected Logger log = Logger.getLogger("automation");
 	LoginPage login = null;
-	
-	
+	protected JavascriptExecutor js;
+		
 	//Declaracion de variables	
 	
 	protected String strUsername= new String("marina.touceda@gointegro.com");
@@ -46,20 +49,21 @@ public class TestSuite {
 	
 	//Declaracion de cssSelectors
 	
+	private String home = (".home");
 	protected String inputmailLogin = new String (".session label:nth-child(2) input");
 	protected String inputPasswordLogin = new String (".session label:nth-child(3) input");
 	protected String goButton = new String (".session .primary");
 	protected String desplegaMenuUsuario = new String (".applications .users menu li:last-child .user");
 	protected String irAConfiguration= new String(".applications .users .configuration");
 	protected String irAMenu =new String (".menu");
-	protected String irASpaces = new String ("a[title='Ir a listar espacios']");
+
 	protected String irAConfigurarCuenta = new String (".applications .users menu li:last-child li:nth-child(3) a");
-	 protected String irAGroups = new String (".igogroups");
-     protected String irATitles = new String (".igotitles");
-	protected String irAPersonas = new String (".igoadmin");
-	protected String searchButton = new String(".actions .search .btnsearch");
-	protected String inputSearch = new String(".actions .search input");
-	protected String ordenNombre =new String (".tables thead tr th:nth-child(2) a");
+	 protected String irAGroups =".igogroups";
+     protected String irATitles = ".igotitles";
+	protected String irAPersonas = ".igoadmin";
+	protected String searchButton =".actions .search .btnsearch";
+	protected String inputSearch = ".actions .search input";
+	protected String ordenNombre =".tables thead tr th:nth-child(2) a";
 	protected String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
 	protected String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
 	protected String crearUser= new String(".content .title a");  
@@ -67,7 +71,11 @@ public class TestSuite {
 	protected String ordenTitulo = new String (".tables thead tr th:nth-child(3) a");
 	protected String ordenRol = new String (".tables thead tr th:nth-child(4) a");
 	protected String ordenEstado = new String (".tables thead tr th:nth-child(5) a");	
-	protected String ordenRegistrado = new String (".tables thead tr th:nth-child(6) a");	
+	protected String ordenRegistrado = new String (".tables thead tr th:nth-child(6) a");
+	protected String irALogout= new String (".subusers li:last-child a");
+	protected String irAProfile= new String (".subusers li:nth-child(2) a");
+	protected String irASpaces = ".wrapper .space:nth-child(4) li:first-child a";
+	
 	
 	
 	// Declaracion de funciones
@@ -105,8 +113,22 @@ public class TestSuite {
 			
 			//this.openSite(urlSiteAutomation2);
 			 login.loginToGo("marina.touceda+023@gointegro.com","Auto1234");
-			 Reporter.log(" Login como admin exitoso");
-			
+			 Reporter.log(" Login como admin de espacios exitoso");
+	   }
+			 
+			  public void setUpMavenUserBasic() throws Exception {
+					
+			        driver = new FirefoxDriver();
+			        login= new LoginPage(driver);
+			        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			 
+			        this.openSite(urlSiteAutomation1);
+			       
+			        Reporter.log("Abriendo la aplicacion");
+					
+					//this.openSite(urlSiteAutomation2);
+					 login.loginToGo("marina.touceda+022@gointegro.com","Auto1234");
+					 Reporter.log(" Login como usuerio bascio exitoso");
 	   }
 	   
 	   public void setUpBrowserStack(String browser, String version, String platform,String url,String build) throws Exception {
@@ -124,6 +146,7 @@ public class TestSuite {
 		    driver.get(url);
 			 driver.manage().window().maximize();
 			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+			 
 			 login= new LoginPage(driver);
 			 login.loginToGo("marina.touceda@gointegro.com","Auto1234");
 					
@@ -200,6 +223,10 @@ public void openSiteMobile(){
 		   
 		  }
 	  
+	  public void wait(Integer milliseconds) throws InterruptedException{
+		  Thread.sleep(milliseconds);
+	  }
+	  
 	  public void clickWhenReady(By goButton2, int timeout) {
 		  
 		  WebElement element = null;
@@ -259,9 +286,18 @@ public void openSiteMobile(){
 	 	 }
 		 
 		
-			   public  String cssgoToAPagina (Integer pagina)  {
-				   String css = ".paged a:nth-child(pagina)" ;
+			   public  String cssgoToAPagina (Integer p)  {
+				   String css = ".paged a:nth-child"+"("+(p)+")";
+				 
 				   return css;
+				 
+			   }
+			   
+			   
+			   public void goToPagina(Integer pagina){
+				
+			String css=this.cssgoToAPagina(pagina);
+			  driver.findElement(By.cssSelector(css)).click();
 			   }
 			  
 			  	   
@@ -270,7 +306,7 @@ public void openSiteMobile(){
 		           driver.findElement(By.cssSelector(sSelector)).sendKeys(sValue);
 		         }
 		           
-		           public void click(String sSelector) throws Exception{
+		           public void click(String sSelector) {
 			           driver.findElement(By.cssSelector(sSelector)).click();
 		           }
 		           
@@ -278,13 +314,20 @@ public void openSiteMobile(){
 				           driver.findElement(By.cssSelector(sSelector)).clear();
 				               
 		           }
-			           public String getText(String sSelector) throws Exception{
+			           public String getText(String sSelector) {
 				           return (driver.findElement(By.cssSelector(sSelector)).getText());
 			           }   
 	
 					public void goToConfiguration() throws Exception {
 						
 						this.click(irAConfiguration);
+						Thread.sleep(1000);
+					}
+					
+					public void goToProfile() throws Exception {
+						
+						this.click(irAProfile);
+						Thread.sleep(1000);
 					}
 					
 					public void ordenarPorNombre() throws Exception{
@@ -311,6 +354,10 @@ public void openSiteMobile(){
 							
 						this.click(irAMenu);
 					}
+					
+					public void goToHome() throws Exception{
+						this.click(home);
+					}
 				
 					public void search(String nombreABuscar) throws Exception{
 						
@@ -319,27 +366,38 @@ public void openSiteMobile(){
 						 this.click(searchButton);
 						 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 						 WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
-						 
-					//	 WebElement inputsearchavailable = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.cssSelector(inputSearch)));
+										
 			               this.clear(inputSearch);
 			               this.sendValue(inputSearch, nombreABuscar);
 					}
 					public void goToMenuUsuario() throws Exception {
 						this.click(desplegaMenuUsuario);
+						Thread.sleep(1000);
 					}
 					
-					public void goToTitles() throws Exception{
+					public void goToTitles() {
 						this.click(irATitles);
 					}
 					
-					
+					public void logout() throws Exception {
+						this.click(irALogout);
+					}
 										
 					
-					public void goToInvitations() throws Exception{
+					public void goToInvitations() {
 						this.click(irAInvitaciones);
 					}
 					
-					public void crearUserAdmin() throws Exception{
+					
+				
+					
+					public void goToSpaces(){
+					
+						driver.findElement(By.cssSelector(irASpaces)).click();
+					}
+					public String crearUserAdminReturningmail() throws Exception{
+						
+						// Devuelve el mail para despues poder loguearme
 						this.click(crearUser);
 						   
 						//Lo creo activado
@@ -349,19 +407,16 @@ public void openSiteMobile(){
 					     //Poner el nombre
 					     
 				         this.sendValue(".basicdata label:nth-child(4) input", name);
-					     //driver.findElement(By.cssSelector(".basicdata label:nth-child(4) input")).sendKeys("Random Name" + numero.nextInt());
-				          this.sendValue(".basicdata label:nth-child(5) input", name);
-					  //   driver.findElement(By.cssSelector(".basicdata label:nth-child(5) input")).sendKeys("Random Lastname"+ numero.nextDouble());
-				          this.sendValue(".basicdata label:nth-child(6) input", email);
-				       //   driver.findElement(By.cssSelector(".basicdata label:nth-child(6) input")).sendKeys("randomemail"+numero.nextInt()+"@gointegro.com");
-					     
+				          
+					     this.sendValue(".basicdata label:nth-child(5) input", name);
+					      this.sendValue(".basicdata label:nth-child(6) input", email);
+				      					     
 					     //Seleccionar el rol admin
 					      
 					     Select selectRol = new Select(driver.findElement(By.cssSelector(".basicdata label:nth-child(7) select"))); 
 					 		
 					        selectRol.selectByIndex(1);
-					     	
-					 		
+					     					 		
 					     // Grabar el nuevo usuario creado
 					        Thread.sleep(2000);
 					         driver.findElement(By.cssSelector(".content .addpeople fieldset:nth-child(4) .primary")).click();    
@@ -371,10 +426,21 @@ public void openSiteMobile(){
 					          
 					          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 					         log.info(driver.findElement(By.cssSelector(".tablefilter")).isDisplayed());
+					         return email;
 					}
 			
+					protected void handleMultipleWindows(String windowTitle) {
+			            Set<String> windows = driver.getWindowHandles();
 
+			            for (String window : windows) {
+			                driver.switchTo().window(window);
+			                if (driver.getTitle().contains(windowTitle)) {
+			                    return;
+			                }
+			            }
+			        }
 					
+
 }
 
 
