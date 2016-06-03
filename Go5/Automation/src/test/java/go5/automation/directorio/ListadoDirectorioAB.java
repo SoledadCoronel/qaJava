@@ -54,7 +54,7 @@ public class ListadoDirectorioAB extends TestSuite{
  	
  	// Go to  Directorio de personas
         
- 	 directorio.irADirectorio();
+ 	 directorio.goToDirectorio();
  	 
  		
         WebElement tablevailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".people")));
