@@ -33,19 +33,21 @@ import org.testng.Reporter;
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
         protected String textofirstPostcss= ".posttext:nth-child(3) div:nth-child(2) p";
         protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
-        protected String reponderCommentFirstPostcss=".posttext:nth-child(3) .commentsitem:nth-child(3) .peoplepost p";
+        
         protected String commentFirstPostcss=".posttext:nth-child(3) .actions .igocomments";
-        protected String commentInputcss =".posttext:nth-child(3) .commentsitem .peoplepost p";
+        protected String commentInputcss =".posttext:nth-child(3) .commentsform fieldset div";
+        protected String arbirResponderCommentFirstPstscss=".posttext:nth-child(3) .commentsitem .socials a:nth-child(3) ";
+        protected String reponderCommentFirstPostcss=".posttext:nth-child(3) .commentsitem .commentsform fieldset div";
         protected String showMoreCommentscss=".link showmore";
        
     	//Likes
         protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
-        protected String likeFirstCommentcss="posttext:nth-child(3) .commentsitem:nth-child(2) .socials .igolike";
+        protected String likeFirstCommentcss=".posttext:nth-child(3) .commentsitem .igolike";
         protected String likeReponseCommentcss=".posttext:nth-child(3) .commentsreplay .socials .igolike ";
         protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
-        protected String countsLikesFirstPostcss=".posttext:nth-child(3) .socials:nth-child(2) a:nth-child(2)";
+        protected String countsLikesFirstPostcss=".posttext:nth-child(3) .socials p a";
         protected String countsLikesCommentFirstPostcss=".posttext:nth-child(3) .commentsitem .socials a:nth-child(4)";
-        protected String countsLikesResponseCommentFirstPostcss="posttext:nth-child(3) .commentsitem:nth-child(3) .socials a:nth-child(4)";
+        protected String countsLikesResponseCommentFirstPostcss=".posttext:nth-child(3) .commentsreplay .socials a:nth-child(3)";
        
         
     	//profiles
@@ -81,6 +83,7 @@ import org.testng.Reporter;
     	 By commentFirstPost=By.cssSelector(commentFirstPostcss);
          By comment = By.cssSelector(commentInputcss);
          By responseCommentFirstPost=By.cssSelector(reponderCommentFirstPostcss);
+         By abrirReponderComment=By.cssSelector(arbirResponderCommentFirstPstscss);
          
     	
     	
@@ -90,8 +93,8 @@ import org.testng.Reporter;
          By countLikes=By.cssSelector(countsLikesFirstPostcss);
      	By countLikesComment= By.cssSelector(countsLikesCommentFirstPostcss);
      	By countLikesResponseComment= By.cssSelector(countsLikesResponseCommentFirstPostcss);
-  //  	By likeComment=
-   // By likeResponseComment = 	
+    	By likeComment=By.cssSelector(likeFirstCommentcss);
+        By likeResponseComment = By.cssSelector(likeReponseCommentcss);	
    
      	//profiles
     	 By irAMuroEnPerfil=By.cssSelector(irAMuroEnPerfilcss);
@@ -190,6 +193,18 @@ import org.testng.Reporter;
 		 Reporter.log("Likear el primer post");
 		 driver.findElement(like).click();
 	 }
+	
+	  public void likearComment() {
+		    Reporter.log("Likear el comment");
+			driver.findElement(likeComment).click();
+			
+		}
+
+		public void likearResponseComment() {
+			Reporter.log("Likear el response del comment");
+			driver.findElement(likeResponseComment).click();
+			
+		}
   
 	 public String countLikesPost(){
 		return driver.findElement(countLikes).getText();
@@ -244,8 +259,12 @@ import org.testng.Reporter;
    }
      
    
-   public void responderComment(String string) {
-	   driver.findElement(responseCommentFirstPost);	
+   public void responderComment(String strResponseComment) {
+	   //Clickear Reponder
+	   Reporter.log("Clickeo en Responder del comment e ingreso un texto de respuesta");
+	   driver.findElement(abrirReponderComment).click();
+	    driver.findElement(responseCommentFirstPost).sendKeys(strResponseComment);
+	    driver.findElement(comment).sendKeys(Keys.ENTER);
 		
 	}
 	
@@ -285,15 +304,7 @@ import org.testng.Reporter;
 			    Reporter.log(" Foto cargada exitosamente");
 	    }
 
-		public void likearComment() {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void likearResponseComment() {
-			// TODO Auto-generated method stub
-			
-		}
+		
     
     }
     

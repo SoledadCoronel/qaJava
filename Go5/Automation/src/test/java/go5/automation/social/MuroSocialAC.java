@@ -82,7 +82,7 @@ public class MuroSocialAC extends TestSuite {
 		Reporter.log("Likear el post del user admin, como user basic");
 		muro.likearPost();
 		// Aserteo que el post tengo 2 likes, uno del user admin y otro del user basic
-		//Assert.assertEquals(muro.countLikesPost(),"2 likes");
+		//Assert.assertEquals(muro.countLikesPost(),"2 LIKES");
 		Reporter.log(muro.countLikesPost());
 		muro.comentarFIrstPost("Comento el post del usuario admin, siendo el user basic");
 		muro.likearComment();
@@ -90,11 +90,10 @@ public class MuroSocialAC extends TestSuite {
 		Reporter.log(muro.countLikesComments());
 		Thread.sleep(2000);
 
-		muro.responderComment("Respondo el comment que hice como user basic");
-
 		// Repondo a mi comment y lo likeo
 		
 		muro.responderComment("Respondo el comment que hice como user basic");
+		Thread.sleep(4000);
 	    
 		muro.likearResponseComment();
 	    Reporter.log(muro.countLikesResponseComment());
