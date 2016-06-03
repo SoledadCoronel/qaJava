@@ -4350,7 +4350,7 @@ try
                 </ResponseAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPublicSpace - con social inactivo" enabled="true">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPublicSpace -  inactivo" enabled="true">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                   <collectionProp name="Arguments.arguments">
@@ -6342,7 +6342,7 @@ try
           <hashTree/>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Join de usuarios a espacios" enabled="true"/>
           <hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Validations" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Validations" enabled="false"/>
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postBasicUser - como admin - no joineado" enabled="true">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -6437,26 +6437,12 @@ try
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;space-users&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: false&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;user&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;,&#xd;
-          &quot;type&quot;: &quot;users&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;space&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${PUBLIC_SPACE_ID}&quot;,&#xd;
-          &quot;type&quot;: &quot;spaces&quot;&#xd;
-        }&#xd;
-      }&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -6468,7 +6454,7 @@ try
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/space-users</stringProp>
+              <stringProp name="HTTPSampler.path">/spaces/${PUBLIC_SPACE_ID}/relationships/members</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6507,7 +6493,7 @@ try
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49587">201</stringProp>
+                  <stringProp name="49590">204</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -6522,26 +6508,12 @@ try
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;space-users&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: false&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;user&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;,&#xd;
-          &quot;type&quot;: &quot;users&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;space&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${PUBLIC_SPACE_INACTIVE}&quot;,&#xd;
-          &quot;type&quot;: &quot;spaces&quot;&#xd;
-        }&#xd;
-      }&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -6553,7 +6525,7 @@ try
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/space-users</stringProp>
+              <stringProp name="HTTPSampler.path">/spaces/${PUBLIC_SPACE_INACTIVE}/relationships/members</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6592,7 +6564,7 @@ try
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49587">201</stringProp>
+                  <stringProp name="49590">204</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -6607,26 +6579,12 @@ try
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;space-users&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: false&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;user&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;,&#xd;
-          &quot;type&quot;: &quot;users&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;space&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${PUBLIC_SPACE_INACTIVE}&quot;,&#xd;
-          &quot;type&quot;: &quot;spaces&quot;&#xd;
-        }&#xd;
-      }&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -6638,7 +6596,7 @@ try
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/space-users</stringProp>
+              <stringProp name="HTTPSampler.path">/spaces/${PUBLIC_SPACE_INACTIVE}/relationships/members</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6692,26 +6650,12 @@ try
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;space-users&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: false&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;user&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${BASICUSER_ID3}&quot;,&#xd;
-          &quot;type&quot;: &quot;users&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;space&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${PUBLIC_SPACE_ID}&quot;,&#xd;
-          &quot;type&quot;: &quot;spaces&quot;&#xd;
-        }&#xd;
-      }&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID3}&quot;&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -6723,7 +6667,7 @@ try
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/space-users</stringProp>
+              <stringProp name="HTTPSampler.path">/spaces/${PUBLIC_SPACE_ID}/relationships/members</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6762,7 +6706,7 @@ try
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49587">201</stringProp>
+                  <stringProp name="49590">204</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -6777,26 +6721,12 @@ try
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;space-users&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: false&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;user&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;,&#xd;
-          &quot;type&quot;: &quot;users&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;space&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${PRIVATE_SPACE_ID}&quot;,&#xd;
-          &quot;type&quot;: &quot;spaces&quot;&#xd;
-        }&#xd;
-      }&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -6808,7 +6738,7 @@ try
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/space-users</stringProp>
+              <stringProp name="HTTPSampler.path">/spaces/${PRIVATE_SPACE_ID}/relationships/members</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6847,7 +6777,7 @@ try
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49587">201</stringProp>
+                  <stringProp name="49590">204</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -6862,26 +6792,12 @@ try
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;space-users&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: false&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;user&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;,&#xd;
-          &quot;type&quot;: &quot;users&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;space&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${PRIVATE_SPACE_ID2}&quot;,&#xd;
-          &quot;type&quot;: &quot;spaces&quot;&#xd;
-        }&#xd;
-      }&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -6893,7 +6809,7 @@ try
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/space-users</stringProp>
+              <stringProp name="HTTPSampler.path">/spaces/${PRIVATE_SPACE_ID2}/relationships/members</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6931,7 +6847,7 @@ try
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49587">201</stringProp>
+                  <stringProp name="49590">204</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -6946,26 +6862,12 @@ try
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;space-users&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: true&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;user&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${BASICUSER_ID3}&quot;,&#xd;
-          &quot;type&quot;: &quot;users&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;space&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${PRIVATE_SPACE_ID}&quot;,&#xd;
-          &quot;type&quot;: &quot;spaces&quot;&#xd;
-        }&#xd;
-      }&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID3}&quot;&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -6977,7 +6879,7 @@ try
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/space-users</stringProp>
+              <stringProp name="HTTPSampler.path">/spaces/${PRIVATE_SPACE_ID}/relationships/admins</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7016,7 +6918,7 @@ try
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49587">201</stringProp>
+                  <stringProp name="49590">204</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -7031,26 +6933,12 @@ try
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;space-users&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: false&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;user&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${BASICUSER_ID4}&quot;,&#xd;
-          &quot;type&quot;: &quot;users&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;space&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${PRIVATE_SPACE_ID}&quot;,&#xd;
-          &quot;type&quot;: &quot;spaces&quot;&#xd;
-        }&#xd;
-      }&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID4}&quot;&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -7062,7 +6950,7 @@ try
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/space-users</stringProp>
+              <stringProp name="HTTPSampler.path">/spaces/${PRIVATE_SPACE_ID}/relationships/members</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7101,7 +6989,7 @@ try
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49587">201</stringProp>
+                  <stringProp name="49590">204</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -7116,26 +7004,12 @@ try
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;space-users&quot;,&#xd;
-    &quot;attributes&quot;: {&#xd;
-      &quot;is-admin&quot;: false&#xd;
-    },&#xd;
-    &quot;relationships&quot;: {&#xd;
-      &quot;user&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;,&#xd;
-          &quot;type&quot;: &quot;users&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;space&quot;: {&#xd;
-        &quot;data&quot;: {&#xd;
-          &quot;id&quot;: &quot;${PUBLIC_SPACE_NO_SOCIAL_ID}&quot;,&#xd;
-          &quot;type&quot;: &quot;spaces&quot;&#xd;
-        }&#xd;
-      }&#xd;
+  &quot;data&quot;: [&#xd;
+    {&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
     }&#xd;
-  }&#xd;
+  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -7147,7 +7021,7 @@ try
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/space-users</stringProp>
+              <stringProp name="HTTPSampler.path">/spaces/${PUBLIC_SPACE_NO_SOCIAL_ID}/relationships/members</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7186,7 +7060,7 @@ try
               <hashTree/>
               <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49587">201</stringProp>
+                  <stringProp name="49590">204</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
@@ -7196,6 +7070,10 @@ try
             </hashTree>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Validaciones post Joinear usuarios" enabled="true"/>
             <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
+                <stringProp name="ConstantTimer.delay">100</stringProp>
+              </ConstantTimer>
+              <hashTree/>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getBasicUser - espacio publico" enabled="true">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -7266,6 +7144,7 @@ try
                     <stringProp name="-1717562923">&quot;id&quot;: &quot;${PUBLIC_SPACE_NO_SOCIAL_ID}&quot;</stringProp>
                     <stringProp name="485865955">&quot;id&quot;: &quot;${PRIVATE_SPACE_ID}&quot;</stringProp>
                     <stringProp name="-2118093799">&quot;id&quot;: &quot;${PRIVATE_SPACE_ID2}&quot;</stringProp>
+                    <stringProp name="-470130287">&quot;id&quot;: &quot;${PUBLIC_SPACE_INACTIVE}&quot;</stringProp>
                   </collectionProp>
                   <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                   <boolProp name="Assertion.assume_success">false</boolProp>
