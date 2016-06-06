@@ -251,7 +251,7 @@ import org.testng.Reporter;
   //	 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
   	 driver.findElement(textPost).clear();
   	 driver.findElement(textPost).sendKeys(strTextPost);
-  	 	     	
+  	   	 	     	
    }
      
    public void postear(){
