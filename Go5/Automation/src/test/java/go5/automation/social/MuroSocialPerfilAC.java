@@ -42,7 +42,7 @@ public class MuroSocialPerfilAC extends TestSuite {
 	 
 	@Test
 	
-	public void postearTexto() throws Exception { 
+	public void postearTextoEnElPerfilDeUnUser() throws Exception { 
 	
 		muro= new MuroSocialPage(driver); 
 		profile =new ProfilePage(driver);

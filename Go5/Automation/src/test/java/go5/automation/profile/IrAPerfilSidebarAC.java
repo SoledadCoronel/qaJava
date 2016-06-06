@@ -79,7 +79,7 @@ public class IrAPerfilSidebarAC extends TestSuite {
 		         profile.agregarDatosPersonales(); 
 	      
 		            
-		 		profile.agregarRedesSociales();
+		 		//profile.agregarRedesSociales();
 		 		
 		 		profile.grabarUsuario();
 		     

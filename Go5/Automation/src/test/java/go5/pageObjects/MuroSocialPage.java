@@ -58,7 +58,7 @@ import org.testng.Reporter;
     	
     	//links
         protected String linkPostcss=".igolink";
-    	protected String linkVerMascss=".posttext:nth-child(3) p:nth-child(2) .link";
+    	protected String linkVerMascss=".posttext:nth-child(3) div:nth-child(2) .link";
         
     	//attachments    	
     	protected String cameraOrPicturePostcss=".igocamerawhite";
