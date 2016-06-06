@@ -16,7 +16,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 
-public class SignupPlatform extends TestSuite{
+public class SignupPlatformTest extends TestSuite{
 
 	private String email = this.generateRandomEmail();
 	SignupPlatformPage platform =null;

@@ -60,7 +60,10 @@ public class MuroSocialPerfilAC extends TestSuite {
      	//  driver.findElement(By.cssSelector(inputSearch)).sendKeys(Keys.ENTER);
      	  this.click(searchButton);
      	  Thread.sleep(2000);
-		  directorio.goToFirstProfileUserByNameLink();
+		 
+     	  // Aca falla por el search
+     	  
+     	  directorio.goToFirstProfileUserByNameLink();
 		 Thread.sleep(2000);
 		 muro.postTexto("Posteo en el profile del user basic, como user admin desde directorio");
 		 Thread.sleep(2000);

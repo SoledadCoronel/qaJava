@@ -35,7 +35,7 @@ public class MuroSocialAC extends TestSuite {
 			 
 	 
 	 
-	@Test
+	@Test(description="Creo un post con usuario admin, lo likeo.Respondo como usuario basico,likeo y respondo")
 	
 	public void postearLikearComentar() throws Exception { 
 	
@@ -59,7 +59,7 @@ public class MuroSocialAC extends TestSuite {
 	
 		muro.postTexto("Posteo como usuario admin para probar los likes ");
 		muro.postLink(link);
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 		muro.postear();
 		Thread.sleep(2000);
 		Reporter.log("Like el post creado como user admin");

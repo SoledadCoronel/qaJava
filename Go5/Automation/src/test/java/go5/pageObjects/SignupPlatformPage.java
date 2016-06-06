@@ -11,7 +11,7 @@ import org.testng.Reporter;
 
     	//Css
     	
-       protected String idCorporateEmail= "SignupRequest_email_label";
+       protected String idCorporateEmail= "SignupRequest_email";
        protected String idLenguajeEspañol="SignupRequest_language_1";
        protected String idLenguajePortuges="SignupRequest_language_2";
        protected String idLenguajeEnglish="SignupRequest_language_3";
@@ -58,9 +58,10 @@ import org.testng.Reporter;
     	    	
     }
     
-    public void createPlatformEspanish(String strEmail){
+    public void createPlatformEspanish(String strEmail) throws InterruptedException{
     	this.setCorporateEmail(strEmail);
     	this.setEspañol();
+    	Thread.sleep(3000);
     	this.clickSubmitButton();
     }
     public void createPlatformPortugues(String strEmail){

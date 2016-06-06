@@ -3,6 +3,7 @@ import go5.automation.TestSuite;
 
 import java.io.File;
 import java.security.SecureRandom;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -246,6 +247,8 @@ import org.testng.Reporter;
    public void postTexto(String strTextPost){
       
   	 Reporter.log("Ingresar un texto en el postbox");
+  	// driver.findElement(textPost).click();
+  //	 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
   	 driver.findElement(textPost).clear();
   	 driver.findElement(textPost).sendKeys(strTextPost);
   	 	     	
