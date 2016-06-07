@@ -81,15 +81,23 @@ public class MuroSocialAC extends TestSuite {
 		//Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
 		Reporter.log("Likear el post del user admin, como user basic");
 		muro.likearPost();
+		Reporter.log("Imprimo la cantidad de likes del post:");
+		Reporter.log(muro.countLikesPost());
 		// Aserteo que el post tengo 2 likes, uno del user admin y otro del user basic
 		//Assert.assertEquals(muro.countLikesPost(),"2 LIKES");
-		Reporter.log(muro.countLikesPost());
+		//Deslike el post y vuelvo a contar
+		muro.likearPost();
+		
 		muro.comentarFIrstPost("Comento el post del usuario admin, siendo el user basic");
 		muro.likearComment();
 		// Cuento los likes del comment, 1 solo
+		Reporter.log("Imprimo la cantidad de likes del comment, debe ser 1");
 		Reporter.log(muro.countLikesComments());
 		Thread.sleep(2000);
-
+		Reporter.log("Imprimo la cantidad de likes del post:");
+		Reporter.log(muro.countLikesPost());
+		
+		
 		// Repondo a mi comment y lo likeo
 		
 		muro.responderComment("Respondo el comment que hice como user basic");

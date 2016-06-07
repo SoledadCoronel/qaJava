@@ -11,6 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
@@ -224,6 +226,7 @@ import org.testng.asserts.SoftAssert;
      public void cargarFoto() throws InterruptedException {
     	
     	 js=  (JavascriptExecutor) driver;
+    	  ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
     	 driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
     	   WebElement element = driver.findElement(By.id("sarasa"));
 		  js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);

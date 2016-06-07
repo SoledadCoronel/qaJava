@@ -1,15 +1,12 @@
 package go5.automation.signup;
 
 
+import java.util.concurrent.TimeUnit;
+
 import go5.automation.TestSuite;
 import go5.pageObjects.CreatePlatformPage;
 
-import go5.pageObjects.SignupPlatformPage;
-
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
@@ -19,16 +16,14 @@ import org.testng.annotations.Test;
 public class CreatePlatformTest extends TestSuite{
 
 	private String email = this.generateRandomEmail();
-	SignupPlatformPage signup =null;
+	private String companyName= this.generateName();
+	private String subdomainName=this.generateName();		
 	CreatePlatformPage pl=null;
 	
 	 @BeforeTest // call function to open the browser and load url
-	 public void setup (){
+	 public void setup () throws Exception{
 		 	
-		 	driver = new FirefoxDriver();
-	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	         Reporter.log("Abriendo el formulario de signup de plataforma");					 
-	         openSiteSignUp();
+		 	this.setUpMavenSignup();
 	 }
 	
 	 @AfterTest // call function to close browser 
@@ -37,42 +32,34 @@ public class CreatePlatformTest extends TestSuite{
 			closeBrowser();
 	 }
 	 
-
-	 
-	 private void insertEmail (String email){
-		 
-	  driver.findElement(By.id("SignupRequest_email")).clear(); 
-	  driver.findElement(By.id("SignupRequest_email")).sendKeys(email);
- }
+ 
 	
- 	public void signup() throws Exception { 
- 		 signup = new SignupPlatformPage(driver);  
- 		 pl= new CreatePlatformPage(driver);
- 		 
-		org.apache.log4j.BasicConfigurator.configure();	 
-		 driver.switchTo().frame("iframe");
-		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
-		log.info(" Loading signup page");
-		signup.createPlatformEspanish(email);
-		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
-		log.info("Submit form and get token to create platform");
-		
-		// Get the token
-		String urlToken =new String(driver.findElement(By.id("create_platform_link")).getAttribute("href"));
-		log.info(urlToken);
-		driver.findElement(By.id("create_platform_link")).click();
-		Thread.sleep(5000);
-		     	
-	}
+ 	
  	 @Test (description=" Ingreso el mail en signup, clickeo en plataforma y me resgistro")
  
  	  	 
-  	 
-	 public void createPlatform() throws Exception{
+ 	 public void createPlatform() throws Exception { 
+ 		
+ 		 pl= new CreatePlatformPage(driver);
+ 		
+ 		 Reporter.log("Abro la pagina de Ingresar mail y elegir idioma"); 
+		signup.createPlatformEspanish(email);
+		Reporter.log("Clickeo en el link para abrir la pagina de crear plataforma");
+		// Get the token
+		String urlToken =new String(driver.findElement(By.id("create_platform_link")).getAttribute("href"));
+		Reporter.log(urlToken);
+		driver.findElement(By.id("create_platform_link")).click();
+		Thread.sleep(4000);
+		 Reporter.log( "Ingreso en la pagina del signup de platform");
+		 
+	 		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 		
-		 Reporter.log( "Ingreso en signup");
-		 //Generar un random name and subdomain
-		 pl.registrarse("gointegro", "automation7");
+		//driver.findElement(By.cssSelector(".signup fieldset:first-child label:nth-child(6) input")).clear();
+	 		Thread.sleep(3000);
+		driver.findElement(By.cssSelector(".signup fieldset:nth-child(1) label:last-child .primary")).click();
+    	 Thread.sleep(3000);
+    	
+		 pl.registrarse(companyName);
 		 
 		  
  	 }

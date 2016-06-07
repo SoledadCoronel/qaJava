@@ -4,6 +4,7 @@ package go5.automation;
 
 
 import go5.pageObjects.LoginPage;
+import go5.pageObjects.SignupPlatformPage;
 
 import java.net.URL;
 import java.util.Set;
@@ -34,6 +35,7 @@ public class TestSuite {
 	protected Logger log = Logger.getLogger("automation");
 	LoginPage login = null;
 	protected JavascriptExecutor js;
+	protected SignupPlatformPage signup =null;
 		
 	//Declaracion de variables	
 	
@@ -42,6 +44,7 @@ public class TestSuite {
 	protected String strUsernameAdminEspacios= new String("marina.touceda+023@gointegro.com");
 	protected String strUsernameUserBasic= new String("marina.touceda+022@gointegro.com");
 	protected String urlSiteAutomation1= new String ("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+	protected String urlSignup= "http://signup.qa.go5.gointegro.net/landing";
 	protected String urlSiteAutomation2= new String ("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
 	protected String urlSiteAutomation3= new String ("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
 	protected String email = this.generateRandomEmail();
@@ -102,6 +105,17 @@ public class TestSuite {
 	   }
 	   
 	 	  
+	   public void setUpMavenSignup() throws Exception {
+			
+	        driver = new FirefoxDriver();
+	        signup = new SignupPlatformPage(driver);
+	       	 
+	        this.openSite(urlSignup);
+	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	        Reporter.log("Abriendo la pagina de signup plataforma");
+			
+			 
+	   }
 	   public void setUpMavenAdminEspacios() throws Exception {
 			
 	        driver = new FirefoxDriver();

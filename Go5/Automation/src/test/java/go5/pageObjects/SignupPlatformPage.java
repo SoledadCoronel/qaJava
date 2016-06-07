@@ -1,4 +1,6 @@
 package go5.pageObjects;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
@@ -59,10 +61,14 @@ import org.testng.Reporter;
     }
     
     public void createPlatformEspanish(String strEmail) throws InterruptedException{
+    	 driver.switchTo().frame("iframe");
+ 		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+ 		
     	this.setCorporateEmail(strEmail);
     	this.setEspañol();
     	Thread.sleep(3000);
     	this.clickSubmitButton();
+    	driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
     }
     public void createPlatformPortugues(String strEmail){
     	this.setCorporateEmail(strEmail);
