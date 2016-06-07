@@ -47,7 +47,7 @@ public class SignupPlatformTest extends TestSuite{
  	public String signup() throws Exception { 
  		 platform = new SignupPlatformPage(driver);  
  		 
-		org.apache.log4j.BasicConfigurator.configure();	 
+		
 		 driver.switchTo().frame("iframe");
 		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 		log.info(" Loading signup page");

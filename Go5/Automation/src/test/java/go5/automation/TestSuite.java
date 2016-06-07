@@ -98,7 +98,7 @@ public class TestSuite {
 			//this.openSite(urlSiteAutomation2);
 			 login.loginToGo("marina.touceda@gointegro.com","Auto1234");
 			 Reporter.log(" Login como admin exitoso");
-			
+			 org.apache.log4j.BasicConfigurator.configure(); 
 	   }
 	   
 	 	  
