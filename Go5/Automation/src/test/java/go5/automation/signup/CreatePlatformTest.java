@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
@@ -46,7 +45,7 @@ public class CreatePlatformTest extends TestSuite{
 	  driver.findElement(By.id("SignupRequest_email")).sendKeys(email);
  }
 	
- 	public String signup() throws Exception { 
+ 	public void signup() throws Exception { 
  		 signup = new SignupPlatformPage(driver);  
  		 pl= new CreatePlatformPage(driver);
  		 
@@ -62,19 +61,16 @@ public class CreatePlatformTest extends TestSuite{
 		String urlToken =new String(driver.findElement(By.id("create_platform_link")).getAttribute("href"));
 		log.info(urlToken);
 		driver.findElement(By.id("create_platform_link")).click();
-		return  urlToken;
+		Thread.sleep(5000);
 		     	
 	}
  	 @Test (description=" Ingreso el mail en signup, clickeo en plataforma y me resgistro")
  
- 
-
- 	 
+ 	  	 
+  	 
 	 public void createPlatform() throws Exception{
 		
 		 Reporter.log( "Ingreso en signup");
-		 driver.findElement(By.id(this.signup())).click();
-		 Thread.sleep(5000);
 		 //Generar un random name and subdomain
 		 pl.registrarse("gointegro", "automation7");
 		 

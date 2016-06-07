@@ -12,9 +12,9 @@ import org.testng.Reporter;
     	//Css
     	
        protected String idCorporateEmail= "SignupRequest_email";
-       protected String idLenguajeEspañol="SignupRequest_language_1";
-       protected String idLenguajePortuges="SignupRequest_language_2";
-       protected String idLenguajeEnglish="SignupRequest_language_3";
+       protected String idLenguajeEspañol="SignupRequest_language_0";
+       protected String idLenguajePortuges="SignupRequest_language_1";
+       protected String idLenguajeEnglish="SignupRequest_language_2";
        protected String idSubmitButton="submit_button";
       	  	
     	  WebDriver driver;
