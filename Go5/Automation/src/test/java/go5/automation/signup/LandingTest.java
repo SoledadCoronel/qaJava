@@ -3,47 +3,63 @@ package go5.automation.signup;
 
 import go5.automation.TestSuite;
 
+import go5.pageObjects.SignupPlatformPage;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-
-import org.testng.annotations.BeforeClass;
-
+import org.testng.Reporter;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 
+public class LandingTest extends TestSuite{
 
-public class SignUp2 extends TestSuite{
-
-	// declare email as variable in order to be changed
-	
 	private String email = this.generateRandomEmail();
-	//private WebDriver driver= new FirefoxDriver();
-
-	 @BeforeClass // call function to open the browser and load url
-	 
-	 public void setup (){
-		this.openSiteSignUp();
-		 driver.manage().window().maximize();
+	SignupPlatformPage platform =null;
+	
+	 @BeforeTest // call function to open the browser and load url
+	 public void setup () throws Exception{
+		 	 this.setUpMavenSignup();
+		 	
 	 }
 	
-	 @AfterClass // call function to close browser 
+	 @AfterTest // call function to close browser 
 		
 		public void teardown(){
-			driver.quit();
+			closeBrowser();
 	 }
+	 
 	
-	   
 	 
 	 private void insertEmail (String email){
 		 
-		 driver.findElement(By.id("SignupRequest_email")).sendKeys(email);
-	 }
-
-	 @Test (priority=1)
+	  driver.findElement(By.id("SignupRequest_email")).clear(); 
+	  driver.findElement(By.id("SignupRequest_email")).sendKeys(email);
+ }
+	
+ 	public String signup() throws Exception { 
+ 		 platform = new SignupPlatformPage(driver);  
+ 		 
+		
+		 driver.switchTo().frame("iframe");
+		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+		log.info(" Loading signup page");
+		platform.createPlatformEspanish(email);
+		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+		log.info("Submit form and get token to create platform");
+		
+		// Get the token
+		String urlToken =new String(driver.findElement(By.id("create_platform_link")).getAttribute("href"));
+		log.info(urlToken);
+		driver.findElement(By.id("create_platform_link")).click();
+		return  urlToken;
+		     	
+	}
+ 	 @Test (priority=1)
 	 // Verify that the language is being changed when you select the different languages
 	 
 	 public void validateLabelAllLanguages(){
@@ -60,7 +76,7 @@ public class SignUp2 extends TestSuite{
 		  
 		 String SpanishText = new String( driver.findElement(By.cssSelector(".signup p")).getText());
 		 log.debug(SpanishText);
-		  Assert.assertEquals(SpanishText,"Completa la siguiente información para obtener tu propia plataforma de GOintegro");
+		  Assert.assertEquals(SpanishText,"Completa la siguiente información para obtener tu propia plataforma de GOintegro.");
 		 
 		 //Select Portuguese language
 		
@@ -68,7 +84,7 @@ public class SignUp2 extends TestSuite{
 		  // Get Validation 
 		 String PortugueseText = new String( driver.findElement(By.cssSelector(".signup p")).getText());
 		  log.debug(PortugueseText);
-		 Assert.assertEquals(PortugueseText,"Preencha as seguintes informações para sua própria plataforma GOintegro");
+		 Assert.assertEquals(PortugueseText,"Preencha as seguintes informações para sua própria plataforma GOintegro.");
 		 
 		 //Select English language
 		 
@@ -77,7 +93,7 @@ public class SignUp2 extends TestSuite{
 		 
 		 String EnglishText = new String( driver.findElement(By.cssSelector(".signup p")).getText());
 		 log.debug(EnglishText);
-		 Assert.assertEquals(EnglishText, "Complete the following information for your own platform GOintegro");
+		 Assert.assertEquals(EnglishText, "Complete the following information for your own platform GOintegro.");
 	 }
 	
 	
@@ -153,13 +169,11 @@ public class SignUp2 extends TestSuite{
 			driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 			String pending=new String(driver.findElement(By.cssSelector(".errormessage a ")).getText());
 	        System.out.println(pending);
-	        Assert.assertEquals(pending, "El email que ingresaste está pendiente de validación. Reenvia el email.");
+	       Reporter.log(pending);
 	 		}
        
 @Test (priority=6)
         public void resendEmail(){
 	    driver.findElement(By.cssSelector(".signup .errormessage a ")).click();
-	    
-	    
 }
 }

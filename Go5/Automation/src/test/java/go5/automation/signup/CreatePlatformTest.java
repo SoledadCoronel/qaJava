@@ -7,6 +7,8 @@ import go5.automation.TestSuite;
 import go5.pageObjects.CreatePlatformPage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
@@ -51,13 +53,13 @@ public class CreatePlatformTest extends TestSuite{
 		driver.findElement(By.id("create_platform_link")).click();
 		Thread.sleep(4000);
 		 Reporter.log( "Ingreso en la pagina del signup de platform");
-		 
-	 		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
-		
-		//driver.findElement(By.cssSelector(".signup fieldset:first-child label:nth-child(6) input")).clear();
-	 		Thread.sleep(3000);
-		driver.findElement(By.cssSelector(".signup fieldset:nth-child(1) label:last-child .primary")).click();
-    	 Thread.sleep(3000);
+	//	WebElement compania=driver.findElement(By.id("CreateAccount_company"));  
+		Thread.sleep(360000);
+		// WebElement compania = wait.until(ExpectedConditions.elementToBeClickable(By.id("CreateAccount_company")));
+	 	//Reporter.log("Imprimir si el campo compania se muestra",compania.isDisplayed());	
+	 		Reporter.log(driver.getPageSource());
+
+    	 Thread.sleep(10000);
     	
 		 pl.registrarse(companyName);
 		 

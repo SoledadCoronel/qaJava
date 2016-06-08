@@ -32,6 +32,7 @@ public class TestSuite {
 	//Declaracion de objects
 	
 	protected WebDriver driver;
+	protected WebDriverWait wait = null;
 	protected Logger log = Logger.getLogger("automation");
 	LoginPage login = null;
 	protected JavascriptExecutor js;
@@ -91,6 +92,7 @@ public class TestSuite {
 	   public void setUpMaven() throws Exception {
 					
 	        driver = new FirefoxDriver();
+	        wait = new WebDriverWait(driver, 30);
 	        login= new LoginPage(driver);
 	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	 
@@ -194,14 +196,9 @@ public class TestSuite {
 			 driver.manage().window().maximize();
 			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		   }
-	  public void openSiteSignUp(){
-		 
-		 driver.get("http://signup.qa.go5.gointegro.net/landing");
-		 driver.manage().window().maximize();
-	   }
+	 
 	
-	
-public void openSiteMobile(){
+	  public void openSiteMobile(){
    	 driver.get("http://mobile.uat.go5.gointegro.net/");
 	driver.manage().window().maximize();
    } 
@@ -210,22 +207,8 @@ public void openSiteMobile(){
 		 driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
 		 driver.manage().window().maximize();
 	   } 
-	  public void openSitePortuguese(){
-			 
-			 driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
-			 driver.manage().window().maximize();
-		   } 
 	  
-	  public void openSignupForAccount(){
-		   driver.get("http://signup.qa.go5.gointegro.net/es/signup");
-		   driver.manage().window().maximize();
-	  }
-	  
-	  public void openSiteAfterCreatePlatformSpanish() {
-		  driver.get("http://signup.qa.go5.gointegro.net/es/signup");
-		  driver.manage().window().maximize();
-		}
-	  
+	 	  
 	  public WebElement getWhenVisible(By locator, int timeout) {
 		  
 		  WebElement element = null;
