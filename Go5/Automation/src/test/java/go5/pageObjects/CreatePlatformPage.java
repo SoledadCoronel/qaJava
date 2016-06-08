@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -28,6 +29,7 @@ import org.testng.Reporter;
     	protected String idTimeZone="CreateAccount_timezone";
     	protected String idTermsAndConditions="CreateAccount_terms_and_conditions";
     	protected String idSubmitButton="submit_button";
+    	protected String urltokenVencido="http://signup.qa.go5.gointegro.net/en/createPlatform/token/3e8hap5qzxes404s0goocso08wocwk0kw4k8c4cw4sosg4c8wo";
     	
     	
       	  	
@@ -46,18 +48,14 @@ import org.testng.Reporter;
            
   
      public void setCompanyName(String strName){
-    	/*
-    	 List<WebElement> lista = driver.findElements(By.tagName("input"));
-    	 Reporter.log(strName, lista.size(), false);
-    	 lista.get(1).clear();
-    	 lista.get(1).sendKeys(strName);
-    	 */
     	 driver.findElement(By.id(idCompania)).clear();
     	 driver.findElement(By.id(idCompania)).sendKeys(strName);
          }
     
-     public void setSubdomainName(){
+     public void setSubdomainName() throws InterruptedException{
     	 driver.findElement(By.id(idSubdomain)).click();
+    	 driver.findElement(By.id(idSubdomain)).sendKeys(Keys.ENTER);
+    	 Thread.sleep(2000);
     	  }
    
    
@@ -70,7 +68,9 @@ import org.testng.Reporter;
      }
      
      public void setName( String strUserName){
-	    	   driver.findElement(By.id(idNombre)).sendKeys(strUserName);
+    	 driver.findElement(By.id(idNombre)).click();
+    	 	driver.findElement(By.id(idNombre)).sendKeys(strUserName);
+	    	   driver.findElement(By.id(idNombre)).sendKeys(Keys.ENTER);
 	       }
 
 	       public void setLastName(String strUserLastName){
@@ -101,14 +101,19 @@ import org.testng.Reporter;
  
      
      public void registrarse(String strcompanyname) throws InterruptedException{
-    	 Thread.sleep(3000);
+    	
     	 	setCompanyName(strcompanyname);
     		setSubdomainName();
-    	 	selectCantEmpleados();
+    		setName("Thiago");
+    		setLastName("My best friend");
+    	 //	selectCantEmpleados();
+    		setPassword("Auto1234");
+    		setTimeZone();
 	  		aceptarTerminosYCondiciones();
 	  		 Thread.sleep(1000);
 	  		clickSubmitButton();
-	  		Thread.sleep(1000);
+	  		Thread.sleep(3000);
+	  		
 	  		
     }
      

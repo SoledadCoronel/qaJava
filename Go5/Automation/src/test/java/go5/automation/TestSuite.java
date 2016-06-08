@@ -32,7 +32,6 @@ public class TestSuite {
 	//Declaracion de objects
 	
 	protected WebDriver driver;
-	protected WebDriverWait wait = null;
 	protected Logger log = Logger.getLogger("automation");
 	LoginPage login = null;
 	protected JavascriptExecutor js;
@@ -92,7 +91,6 @@ public class TestSuite {
 	   public void setUpMaven() throws Exception {
 					
 	        driver = new FirefoxDriver();
-	        wait = new WebDriverWait(driver, 30);
 	        login= new LoginPage(driver);
 	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	 
@@ -109,9 +107,7 @@ public class TestSuite {
 	 	  
 	   public void setUpMavenSignup() throws Exception {
 			
-	        driver = new FirefoxDriver();
-	        signup = new SignupPlatformPage(driver);
-	       	 
+	        driver = new FirefoxDriver();	          	 
 	        this.openSite(urlSignup);
 	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	        Reporter.log("Abriendo la pagina de signup plataforma");

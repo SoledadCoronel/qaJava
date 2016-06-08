@@ -3,6 +3,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Reporter;
 
 
@@ -56,20 +58,27 @@ import org.testng.Reporter;
     
     public void clickSubmitButton(){
     	Reporter.log("Presionar submit button");
-    	driver.findElement(By.id(idSubmitButton)).click();
+    	driver.findElement(By.id(idSubmitButton)).submit();
     	    	
     }
     
     public void createPlatformEspanish(String strEmail) throws InterruptedException{
-    	 driver.switchTo().frame("iframe");
+    	//Me muevo al iframe
+    	driver.switchTo().frame("iframe");
+    	 
  		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
  		
     	this.setCorporateEmail(strEmail);
     	this.setEspañol();
-    	Thread.sleep(3000);
+    	//Thread.sleep(3000);
     	this.clickSubmitButton();
     	driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+    	Reporter.log("Clickeo en el link para abrir la pagina de crear plataforma");
+		// Get the token
+		String urlToken =new String(driver.findElement(By.id("create_platform_link")).getAttribute("href"));
+		driver.get(urlToken);		   	
     }
+    
     public void createPlatformPortugues(String strEmail){
     	this.setCorporateEmail(strEmail);
     	this.setPortuges();
