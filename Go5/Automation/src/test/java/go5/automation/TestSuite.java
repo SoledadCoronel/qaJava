@@ -4,6 +4,7 @@ package go5.automation;
 
 
 import go5.pageObjects.LoginPage;
+import go5.pageObjects.SignupPlatformPage;
 
 import java.net.URL;
 import java.util.Set;
@@ -34,6 +35,7 @@ public class TestSuite {
 	protected Logger log = Logger.getLogger("automation");
 	LoginPage login = null;
 	protected JavascriptExecutor js;
+	protected SignupPlatformPage signup =null;
 		
 	//Declaracion de variables	
 	
@@ -42,6 +44,7 @@ public class TestSuite {
 	protected String strUsernameAdminEspacios= new String("marina.touceda+023@gointegro.com");
 	protected String strUsernameUserBasic= new String("marina.touceda+022@gointegro.com");
 	protected String urlSiteAutomation1= new String ("http://automation1.pla.qa.go5.gointegro.net/authentication/login");
+	protected String urlSignup= "http://signup.qa.go5.gointegro.net/landing";
 	protected String urlSiteAutomation2= new String ("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
 	protected String urlSiteAutomation3= new String ("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
 	protected String email = this.generateRandomEmail();
@@ -98,10 +101,19 @@ public class TestSuite {
 			//this.openSite(urlSiteAutomation2);
 			 login.loginToGo("marina.touceda@gointegro.com","Auto1234");
 			 Reporter.log(" Login como admin exitoso");
-			
+			 org.apache.log4j.BasicConfigurator.configure(); 
 	   }
 	   
 	 	  
+	   public void setUpMavenSignup() throws Exception {
+			
+	        driver = new FirefoxDriver();	          	 
+	        this.openSite(urlSignup);
+	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	        Reporter.log("Abriendo la pagina de signup plataforma");
+			
+			 
+	   }
 	   public void setUpMavenAdminEspacios() throws Exception {
 			
 	        driver = new FirefoxDriver();
@@ -180,14 +192,9 @@ public class TestSuite {
 			 driver.manage().window().maximize();
 			 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		   }
-	  public void openSiteSignUp(){
-		 
-		 driver.get("http://signup.qa.go5.gointegro.net/landing");
-		 driver.manage().window().maximize();
-	   }
+	 
 	
-	
-public void openSiteMobile(){
+	  public void openSiteMobile(){
    	 driver.get("http://mobile.uat.go5.gointegro.net/");
 	driver.manage().window().maximize();
    } 
@@ -196,22 +203,8 @@ public void openSiteMobile(){
 		 driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
 		 driver.manage().window().maximize();
 	   } 
-	  public void openSitePortuguese(){
-			 
-			 driver.get("http://automation4.pla.qa.go5.gointegro.net/authentication/login");
-			 driver.manage().window().maximize();
-		   } 
 	  
-	  public void openSignupForAccount(){
-		   driver.get("http://signup.qa.go5.gointegro.net/es/signup");
-		   driver.manage().window().maximize();
-	  }
-	  
-	  public void openSiteAfterCreatePlatformSpanish() {
-		  driver.get("http://signup.qa.go5.gointegro.net/es/signup");
-		  driver.manage().window().maximize();
-		}
-	  
+	 	  
 	  public WebElement getWhenVisible(By locator, int timeout) {
 		  
 		  WebElement element = null;

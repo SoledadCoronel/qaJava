@@ -46,10 +46,10 @@ ProfilePage profile = null;
 		   profile.verifyemaildisplayedAtHeader();
 		   profile.verifyPhonesDisplayedAtHeader();
 		   Thread.sleep(1000);
-		//   profile.goToTwitter();
-		   
+		   profile.goToTwitter();
+		   Thread.sleep(2000);
 			 profile.goToFacebook();
-		
+		    Thread.sleep(2000);
 			profile.goToSupervisor();
 			
 			
