@@ -6,7 +6,7 @@ package go5.automation.signup;
 import go5.automation.TestSuite;
 import go5.pageObjects.CreatePlatformPage;
 import go5.pageObjects.LoginPage;
-import go5.pageObjects.SignupPage;
+
 import go5.pageObjects.SignupPlatformPage;
 
 import org.testng.Reporter;
@@ -40,6 +40,7 @@ public class CreatePlatformSpanishAC extends TestSuite{
  		 signup = new SignupPlatformPage(driver);
  		 pl= new CreatePlatformPage(driver);
  		 login= new LoginPage(driver);
+ 		 String urlnewplatform=".pla.qa.go5.gointegro.net/authentication/login";
  		
  		 Reporter.log("Abro la pagina de Ingresar mail y elegir idioma"); 
 		signup.createPlatformEspanish(email);
@@ -48,6 +49,7 @@ public class CreatePlatformSpanishAC extends TestSuite{
 		 pl.registrarse(companyName);
 		 //Verificar que se puede loguear
 		 Thread.sleep(4000);
+		 driver.get(companyName);
 		 login.loginToGo(email, strPassword);
 		 Thread.sleep(5000);
 		 Reporter.log("El caso de creacion de plataforma termino con exito");
