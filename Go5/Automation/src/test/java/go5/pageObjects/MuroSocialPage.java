@@ -42,6 +42,7 @@ import org.testng.Reporter;
         protected String showMoreCommentscss=".link showmore";
        
     	//Likes
+    
         protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
         protected String likeFirstCommentcss=".posttext:nth-child(3) .commentsitem .igolike";
         protected String likeReponseCommentcss=".posttext:nth-child(3) .commentsreplay .socials .igolike ";

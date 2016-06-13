@@ -30,10 +30,7 @@ import org.testng.Reporter;
     	        this.driver = driver;
      }
   
-  
-    
-  
-      
+       
   
      //Set password in password textbox
   
@@ -42,6 +39,9 @@ import org.testng.Reporter;
     	 driver.findElement(By.id(idCorporateEmail)).sendKeys(strcorporateemail);
            }
   
+     public boolean isEmailInputPresent(){
+    	return driver.findElement(By.id(idCorporateEmail)).isDisplayed();
+     }
   public void setEspañol(){
 	  Reporter.log("Seleccionar lenguaje español");
 	   driver.findElement(By.id(idLenguajeEspañol)).click();
@@ -94,8 +94,7 @@ import org.testng.Reporter;
     public String  getToken(){
     	Reporter.log("Obtener el link para crear plataforma");
     	String urlToken =new String(driver.findElement(By.id("create_platform_link")).getAttribute("href"));
-		//driver.findElement(By.id("create_platform_link")).click();
-		return  getToken();
+			return  getToken();
     	
     	
 		
