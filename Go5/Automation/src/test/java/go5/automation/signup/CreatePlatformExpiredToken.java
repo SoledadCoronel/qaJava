@@ -11,6 +11,7 @@ import go5.pageObjects.SignupPlatformPage;
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
@@ -18,8 +19,11 @@ public class CreatePlatformExpiredToken extends TestSuite{
 			
 	CreatePlatformPage platform=null;
 	
-	
-	
+
+	 @BeforeTest // call function to open the browser and load url
+	 public void setup () throws Exception{
+	//Abrir la pagina con el token expirado
+	 }
 		
 	 @AfterTest // call function to close browser 
 		
