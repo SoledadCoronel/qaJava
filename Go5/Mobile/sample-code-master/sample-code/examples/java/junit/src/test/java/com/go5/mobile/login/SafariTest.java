@@ -1,4 +1,4 @@
-package com.saucelabs.appium;
+package com.go5.mobile.login;
 
 import org.junit.After;
 import org.junit.Before;

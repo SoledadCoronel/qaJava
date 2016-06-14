@@ -1,4 +1,4 @@
-package com.saucelabs.appium;
+package com.go5.mobile.login;
 
 //Appium
 import io.appium.java_client.AppiumDriver;
@@ -10,6 +10,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+
+//testng
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
 
 //Selenium
 import org.openqa.selenium.By;
@@ -35,7 +40,7 @@ import java.util.concurrent.TimeUnit;
 public class GO5LoginTest {
     private AppiumDriver<AndroidElement> driver;
 
-    @Before
+    @BeforeTest
     public void setUp() throws Exception {
         // set up appium
         //File classpathRoot = new File(System.getProperty("user.dir"));
@@ -43,13 +48,16 @@ public class GO5LoginTest {
         //File app = new File(appDir, "ContactManager.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName","Android Emulator");
+        
+        
+        
         capabilities.setCapability("platformVersion", "6.0");
         capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.9.4.apk");
         capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
 
-    @After
+    @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
     }
@@ -75,6 +83,7 @@ public class GO5LoginTest {
         List<AndroidElement> textFieldsList = driver.findElementsByTagName("INPUT");
         textFieldsList.get(0).sendKeys("marina.touceda@gointegro.com");
         textFieldsList.get(1).sendKeys("Auto1234");
+        Thread.sleep(3000);
         
         List<AndroidElement> dynamicTextFieldsList = driver.findElementsByTagName("INPUT");
         
@@ -83,6 +92,7 @@ public class GO5LoginTest {
         WebElement button = driver.findElementByTagName("BUTTON");
         button.click();
         
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(By.tagName("h1")));
 
         WebElement title = driver.findElement(By.tagName("h1"));

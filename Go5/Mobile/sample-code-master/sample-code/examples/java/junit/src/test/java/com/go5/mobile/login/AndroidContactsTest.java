@@ -1,7 +1,8 @@
-package com.saucelabs.appium;
+package com.go5.mobile.login;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,23 +14,21 @@ import java.io.File;
 import java.net.URL;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
-public class AndroidTest {
-
-    private AppiumDriver<WebElement> driver;
+public class AndroidContactsTest {
+    private AppiumDriver<AndroidElement> driver;
 
     @Before
     public void setUp() throws Exception {
+        // set up appium
         File classpathRoot = new File(System.getProperty("user.dir"));
-        File appDir = new File(classpathRoot, "../../../apps/ApiDemos/bin");
-        File app = new File(appDir, "ApiDemos-debug.apk");
+        File appDir = new File(classpathRoot, "../../../apps/ContactManager");
+        File app = new File(appDir, "ContactManager.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName","Android Emulator");
         capabilities.setCapability("platformVersion", "4.4");
         capabilities.setCapability("app", app.getAbsolutePath());
-        capabilities.setCapability("appPackage", "io.appium.android.apis");
-        capabilities.setCapability("appActivity", ".ApiDemos");
+        capabilities.setCapability("appPackage", "com.example.android.contactmanager");
+        capabilities.setCapability("appActivity", ".ContactManager");
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
 
@@ -39,15 +38,14 @@ public class AndroidTest {
     }
 
     @Test
-    public void apiDemo(){
-        WebElement el = driver.findElement(By.xpath(".//*[@text=Animation]"));
-        assertEquals("Animation", el.getText());
-        el = driver.findElementByClassName("android.widget.TextView");
-        assertEquals("API Demos", el.getText());
-        el = driver.findElement(By.xpath(".//*[@text='App']"));
+    public void addContact(){
+        WebElement el = driver.findElement(By.xpath(".//*[@text='Add Contact']"));
         el.click();
-        List<WebElement> els = driver.findElementsByClassName("android.widget.TextView");
-        assertEquals("Activity", els.get(2).getText());
+        List<AndroidElement> textFieldsList = driver.findElementsByClassName("android.widget.EditText");
+        textFieldsList.get(0).sendKeys("Some Name");
+        textFieldsList.get(2).sendKeys("Some@example.com");
+        driver.swipe(100, 500, 100, 100, 2);
+        driver.findElementByXPath(".//*[@text='Save']").click();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.saucelabs.appium;
+package com.go5.mobile.login;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSDriver;
@@ -17,10 +17,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenByAllPossible;
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenChaided;
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenSimple;
-import com.saucelabs.appium.page_object.ios.TestAppScreenSimple;
+import com.go5.appium.page_object.ios.TestAppScreenSimple;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenByAllPossible;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenChaided;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenSimple;
 
 /**
  * Please read about Page Object design pattern here:

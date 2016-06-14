@@ -1,4 +1,4 @@
-package com.saucelabs.appium;
+package com.go5.mobile.login;
 
 import static org.junit.Assert.assertEquals;
 import io.appium.java_client.AppiumDriver;

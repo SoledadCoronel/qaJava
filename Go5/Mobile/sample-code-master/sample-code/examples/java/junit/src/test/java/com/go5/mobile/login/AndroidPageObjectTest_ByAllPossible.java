@@ -1,4 +1,4 @@
-package com.saucelabs.appium;
+package com.go5.mobile.login;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -17,10 +17,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenByAllPossible;
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenChaided;
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenSimple;
-import com.saucelabs.appium.page_object.ios.TestAppScreenSimple;
+import com.go5.appium.page_object.ios.TestAppScreenSimple;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenByAllPossible;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenChaided;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenSimple;
 
 /**
  * Please read about Page Object design pattern here:
@@ -33,10 +33,10 @@ import com.saucelabs.appium.page_object.ios.TestAppScreenSimple;
  *  {@link TestAppScreenSimple}
  *
  */
-public class AndroidPageObjectTest_Chained {
+public class AndroidPageObjectTest_ByAllPossible {
 
 	private WebDriver driver;
-	private ApiDemosListViewScreenChaided apiDemosPageObject;
+	private ApiDemosListViewScreenByAllPossible apiDemosPageObject;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -48,7 +48,7 @@ public class AndroidPageObjectTest_Chained {
 	    capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
 	    driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         
-	    apiDemosPageObject = new ApiDemosListViewScreenChaided();
+	    apiDemosPageObject = new ApiDemosListViewScreenByAllPossible();
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), 
 				apiDemosPageObject);
 	}
@@ -66,32 +66,12 @@ public class AndroidPageObjectTest_Chained {
 	 */
 	
 	@Test
-	public void androidChainSearchElementsTest(){
-		Assert.assertNotEquals(0, apiDemosPageObject.chainElementViews.size());
-	}
-
-	@Test
-	public void androidChainSearchElementTest(){
-		Assert.assertNotEquals(null, apiDemosPageObject.chainElementView.getAttribute("text"));
-	}
-
-	@Test
-	public void androidOrIOSFindByElementsTest_ChainSearches(){
-		Assert.assertNotEquals(0, apiDemosPageObject.chainAndroidOrIOSUIAutomatorViews.size());
-	}
-
-	@Test
-	public void androidOrIOSFindByElementTest_ChainSearches(){
-		Assert.assertNotEquals(null, apiDemosPageObject.chainAndroidOrIOSUIAutomatorView.getAttribute("text"));
+	public void findAllElementTest(){
+		Assert.assertNotEquals(null, apiDemosPageObject.findAllElementView.getAttribute("text"));
 	}	
 	
 	@Test
-	public void isAndroidElementTest(){
-		Assert.assertNotEquals(null, apiDemosPageObject.androidElementView.getAttribute("text"));
-	}	
-	
-	@Test
-	public void areAndroidElementsTest(){
-		Assert.assertNotEquals(0, apiDemosPageObject.androidElementViews.size());
+	public void findAllElementsTest(){
+		Assert.assertNotEquals(0, apiDemosPageObject.findAllElementViews.size());
 	}	
 }

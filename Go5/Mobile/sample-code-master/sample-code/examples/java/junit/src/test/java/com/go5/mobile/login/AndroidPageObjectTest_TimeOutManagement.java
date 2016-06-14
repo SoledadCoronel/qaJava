@@ -1,11 +1,13 @@
-package com.saucelabs.appium;
+package com.go5.mobile.login;
 
-import com.saucelabs.appium.page_object.PageObjectWithCustomizedTimeOuts;
+import com.go5.moblie.page_object.android.PageObjectWithCustomizedTimeOuts;
+
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.TimeOutDuration;
 import io.appium.java_client.remote.MobileCapabilityType;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

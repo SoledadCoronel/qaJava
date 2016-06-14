@@ -1,12 +1,13 @@
-package com.saucelabs.appium;
+package com.go5.mobile.login;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -16,7 +17,7 @@ import java.net.URL;
 /**
  * Created by saikrisv on 26/04/16.
  */
-public class AndroidSlideTest {
+public class AndroidDragAndDrop {
     private AppiumDriver<WebElement> driver;
 
     @Before
@@ -39,20 +40,19 @@ public class AndroidSlideTest {
     }
 
     @Test
-    public void testSlider(){
+    public void testDragAndDrop() throws InterruptedException {
         driver.findElementByXPath(".//*[@text='Views']").click();
-        driver.scrollTo("Seek Bar").click();
-
-        WebElement slider = driver.findElementById("io.appium.android.apis:id/seek");
-        Point sliderLocation = getCenter(slider);
-        driver.swipe(sliderLocation.getX(), sliderLocation.getY(), sliderLocation.getX()-100, sliderLocation.getY(), 7000);
-
-    }
-
-    private Point getCenter(WebElement element) {
-
-        Point upperLeft = element.getLocation();
-        Dimension dimensions = element.getSize();
-        return new Point(upperLeft.getX() + dimensions.getWidth()/2, upperLeft.getY() + dimensions.getHeight()/2);
+        driver.findElementByXPath(".//*[@text='Drag and Drop']").click();
+        MobileElement calc = (MobileElement) driver.findElementById("io.appium.android.apis:id/drag_dot_1");
+        TouchAction touchAction = new TouchAction(driver);
+        touchAction.press(calc).perform();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        touchAction.moveTo(driver.findElementById("io.appium.android.apis:id/drag_dot_2")).release().perform();
+        Thread.sleep(5000);
+        Assert.assertEquals(driver.findElementById("io.appium.android.apis:id/drag_result_text").getText(),"Dropped!");
     }
 }

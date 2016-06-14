@@ -1,4 +1,4 @@
-package com.saucelabs.appium;
+package com.go5.mobile.login;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -18,7 +18,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenSimple;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenSimple;
 
 public class AndroidPageObjectTest_Simple {
 

@@ -1,4 +1,4 @@
-package com.saucelabs.appium.driver_service;
+package com.go5.mobile.driver_service;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;

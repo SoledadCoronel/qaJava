@@ -1,4 +1,4 @@
-package com.saucelabs.appium.page_object.android;
+package com.go5.moblie.page_object.android;
 
 import io.appium.java_client.android.AndroidElement;
 

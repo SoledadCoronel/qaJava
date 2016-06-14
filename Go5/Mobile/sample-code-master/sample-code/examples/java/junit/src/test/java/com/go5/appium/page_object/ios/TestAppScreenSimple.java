@@ -1,4 +1,4 @@
-package com.saucelabs.appium.page_object.ios;
+package com.go5.appium.page_object.ios;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSElement;
@@ -11,9 +11,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenByAllPossible;
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenChaided;
-import com.saucelabs.appium.page_object.android.ApiDemosListViewScreenSimple;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenByAllPossible;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenChaided;
+import com.go5.moblie.page_object.android.ApiDemosListViewScreenSimple;
 
 import io.appium.java_client.pagefactory.AndroidFindBys;
 import io.appium.java_client.pagefactory.iOSFindAll;;
