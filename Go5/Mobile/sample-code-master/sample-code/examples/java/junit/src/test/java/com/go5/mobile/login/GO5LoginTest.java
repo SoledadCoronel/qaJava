@@ -50,11 +50,14 @@ public class GO5LoginTest {
         capabilities.setCapability("deviceName","Android Emulator");
         
         
-        
+        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("fullReset", false);
         capabilities.setCapability("platformVersion", "6.0");
-        capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.9.4.apk");
+        capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.10.14.apk");
         capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
+        capabilities.setCapability("appActivity", "com.gointegro.go5mobile.MainActivity");
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        
     }
 
     @AfterTest
@@ -65,21 +68,21 @@ public class GO5LoginTest {
     @Test
     public void login() throws InterruptedException {
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+    	Thread.sleep(10000);
         Set<String> contextNames = driver.getContextHandles();
         
-        for (String contextName : contextNames) {
+     /*   for (String contextName : contextNames) {
             System.out.println(contextName);
             if (contextName.contains("WEBVIEW")){
                 driver.context(contextName);
             }
 
-        }
+        }*/
         
         WebDriverWait wait = new WebDriverWait(driver, 20);
         
-        //wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
-        Thread.sleep(10000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
+      //  Thread.sleep(10000);
         List<AndroidElement> textFieldsList = driver.findElementsByTagName("INPUT");
         textFieldsList.get(0).sendKeys("marina.touceda@gointegro.com");
         textFieldsList.get(1).sendKeys("Auto1234");
