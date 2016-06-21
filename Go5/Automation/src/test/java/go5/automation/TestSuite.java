@@ -152,8 +152,7 @@ public class TestSuite {
 		    capability.setCapability("project", "GOIntegro");
 		    capability.setCapability("build", build);
 		    capability.setCapability("debug", false);
-		    capability.setCapability("name", testName);
-		    driver = new RemoteWebDriver(
+		     driver = new RemoteWebDriver(
 		    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 		    	      capability);
     

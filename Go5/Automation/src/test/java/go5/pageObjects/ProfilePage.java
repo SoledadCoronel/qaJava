@@ -226,7 +226,7 @@ import org.testng.asserts.SoftAssert;
      public void cargarFoto() throws InterruptedException {
     	
     	 js=  (JavascriptExecutor) driver;
-    	  ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
+    	 // ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
     	 driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
     	   WebElement element = driver.findElement(By.id("sarasa"));
 		  js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
@@ -241,8 +241,7 @@ import org.testng.asserts.SoftAssert;
 	        driver.findElement(By.cssSelector(confirmar)).click();
 		    Reporter.log(" Foto cargada exitosamente");
     }
-    
-    
+       
     public void verifyemaildisplayedAtHeader(){
     	
     	Reporter.log("El email q se muestra es :");	
