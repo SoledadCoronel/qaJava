@@ -41,6 +41,15 @@ import org.testng.Reporter;
     	protected String grabarSinEnviarInvite= ".container .addpeople .secondary";
     	protected String selectRol=".basicdata label:nth-child(7) select";
     	
+    	//Modales
+    	
+    	protected String clickayudaEstadoPersona="basicdata label:nth-child(1) a";
+    	protected String modalEstadoPersona0="#modal-container .modal:nth-child(4) h2";
+    	protected String cerrarModal="#modal-container .modal:nth-child(4) .close";
+	    protected String clickmodalBloquearAcceso=".basicdata label:nth-child(3) a";
+	    protected String modalBloquearAcceso="#modal-container .modal:nth-child(6) h2";
+	    protected String okEntendidoModal="#modal-container .modal:nth-child(6) .primary";
+	    
     	 
     	  WebDriver driver;
     

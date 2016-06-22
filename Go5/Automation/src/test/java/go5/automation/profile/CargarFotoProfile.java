@@ -19,7 +19,7 @@ public class CargarFotoProfile extends TestSuite {
 	this.quitBrowser();
 	}
 		
-	@Test
+	@Test(testName="Cambiar la foto de perfil del usuario")
 	
 	public void setUpPictureProfile() throws Exception { 
 	
