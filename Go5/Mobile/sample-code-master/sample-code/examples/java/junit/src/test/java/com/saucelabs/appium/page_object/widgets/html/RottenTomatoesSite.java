@@ -10,6 +10,7 @@ import com.saucelabs.appium.page_object.widgets.html.simple.HtmlReview;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.support.FindBy;
 
+
 import static junit.framework.Assert.assertTrue;
 
 /**

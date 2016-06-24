@@ -46,13 +46,15 @@ public class GO5LoginTest {
         //File classpathRoot = new File(System.getProperty("user.dir"));
         //File appDir = new File(classpathRoot, "../../../apps/ContactManager");
         //File app = new File(appDir, "ContactManager.apk");
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName","Android Emulator");
         
-        
+    	DesiredCapabilities capabilities = new DesiredCapabilities();
+              
+        capabilities.setCapability("platformName","Android");
+        capabilities.setCapability("deviceName","Android Emulator");            
         capabilities.setCapability("noReset", true);
         capabilities.setCapability("fullReset", false);
-        capabilities.setCapability("platformVersion", "6.0");
+        capabilities.setCapability("platformVersion", "5.1.1");//  es el mobile OS version, si instalo api22 es 5.1.1
+       // The app capability is not requires if you set appPackage and appActivity
         capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.10.14.apk");
         capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
         capabilities.setCapability("appActivity", "com.gointegro.go5mobile.MainActivity");
@@ -71,13 +73,13 @@ public class GO5LoginTest {
     	Thread.sleep(10000);
         Set<String> contextNames = driver.getContextHandles();
         
-     /*   for (String contextName : contextNames) {
+       for (String contextName : contextNames) {
             System.out.println(contextName);
             if (contextName.contains("WEBVIEW")){
                 driver.context(contextName);
             }
 
-        }*/
+        }
         
         WebDriverWait wait = new WebDriverWait(driver, 20);
         

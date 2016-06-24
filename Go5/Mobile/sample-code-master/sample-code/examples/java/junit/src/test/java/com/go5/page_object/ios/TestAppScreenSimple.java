@@ -1,4 +1,4 @@
-package com.go5.appium.page_object.ios;
+package com.go5.page_object.ios;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSElement;
