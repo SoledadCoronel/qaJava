@@ -42,10 +42,7 @@ public class GO5LoginTest {
 
     @Before
     public void setUp() throws Exception {
-        // set up appium
-        //File classpathRoot = new File(System.getProperty("user.dir"));
-        //File appDir = new File(classpathRoot, "../../../apps/ContactManager");
-        //File app = new File(appDir, "ContactManager.apk");
+        
         
     	DesiredCapabilities capabilities = new DesiredCapabilities();
               
@@ -59,7 +56,16 @@ public class GO5LoginTest {
         capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
       //  capabilities.setCapability("appActivity", "com.gointegro.go5mobile.MainActivity");
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+    //Setear la aplicacion a hybrida
+    	System.out.println("Haciendo cambio de contexto");
+        Set<String> contextNames = driver.getContextHandles();
         
+       for (String contextName : contextNames) {
+            System.out.println(contextName);
+            if (contextName.contains("WEBVIEW")){
+                driver.context(contextName);
+            }
+       }
     }
 
     @After
@@ -69,20 +75,9 @@ public class GO5LoginTest {
 
     @Test
     public void login() throws InterruptedException {
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    	System.out.print("Esperando 10 segundos");
-    	//Thread.sleep(10000);
-    	System.out.println("Haciendo cambio de contexto");
-        Set<String> contextNames = driver.getContextHandles();
-        
-       for (String contextName : contextNames) {
-            System.out.println(contextName);
-            if (contextName.contains("WEBVIEW")){
-                driver.context(contextName);
-            }
-           
+               
 
-        }
+        
        Thread.sleep(10000);
       //  WebDriverWait wait = new WebDriverWait(driver, 20);
         
@@ -105,7 +100,13 @@ public class GO5LoginTest {
 
         WebElement title = driver.findElement(By.tagName("h1"));
         assertEquals("Principal", title.getText());
-        
+         // Go to menu
+        Thread.sleep(3000);
+        driver.findElementByCssSelector(".menu").click();
+         Thread.sleep(2000);
+         driver.findElementByCssSelector(".igouserwhite").click();
+         
+         
     }
 
 }

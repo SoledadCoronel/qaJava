@@ -16,15 +16,6 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public ResultPage searchFor(String keyword) {
-        waitForClickabilityOf(search_button_locator);
-        driver.findElement(search_button_locator).click();
-
-        waitForVisibilityOf(search_textbox_locator);
-        driver.findElement(search_textbox_locator).sendKeys(keyword);
-
-        return new ResultPage(driver);
-    }
 
     public void clearText(WebElement elementToBeCleared) {
         elementToBeCleared.sendKeys("x");
