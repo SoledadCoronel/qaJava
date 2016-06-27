@@ -23,8 +23,8 @@ public class MainPage {
     protected String irAProfilecss=".igouserwhite";
     
     
-    // Referencias
-  //  By user99GuruName = By.name("uid");
+    // Page Objects
+  
     By menu= By.cssSelector(".menu");
     
     @FindBy(css=".menu")

@@ -105,6 +105,9 @@ public class GO5LoginTest {
         driver.findElementByCssSelector(".menu").click();
          Thread.sleep(2000);
          driver.findElementByCssSelector(".igouserwhite").click();
+         Thread.sleep(5000);
+         driver.findElementByCssSelector(".socialcomments .type").click();
+         Thread.sleep(6000);
          
          
     }
