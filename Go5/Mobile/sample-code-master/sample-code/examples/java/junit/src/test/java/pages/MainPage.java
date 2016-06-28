@@ -9,18 +9,23 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
 import java.util.HashMap;
 
 
 public class MainPage {
 
  // Declaracion de  driver
-    protected WebDriver driver;
+    protected AndroidDriver driver;
    
 // Declaracion de css
     
     protected String menuCss= ".menu";
-    protected String irAProfilecss=".igouserwhite";
+    protected String irAProfileCss=".igouserwhite";
+    protected String logoutCss=".space:last-child li:last-child a";
     
     
     // Page Objects
@@ -37,17 +42,27 @@ public class MainPage {
    
     //constructor
     
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
+    public MainPage(AppiumDriver<AndroidElement> driver) {
+        this.driver = (AndroidDriver) driver;
     }
     
     public void goToMenu(){
-    	menuMobile.click();
+    	//menuMobile.click();
+    	driver.findElementByCssSelector(".menu").click();
     }
+    	
 
     public void goToProfile(){
-    	irAProfile.click();
+    	//irAProfile.click();
+    	driver.findElementByCssSelector(irAProfileCss).click();
     }
+    
+    public void logout () throws InterruptedException{
+    	this.goToMenu();
+    	Thread.sleep(3000);
+    	driver.findElementByCssSelector(logoutCss).click();
+    }
+    
     protected void waitForVisibilityOf(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));

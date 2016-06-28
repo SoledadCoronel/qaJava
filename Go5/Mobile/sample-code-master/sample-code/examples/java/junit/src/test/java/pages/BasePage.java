@@ -10,9 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
 
-/**
- * Created by nishant on 13/09/14.
- */
+
 public class BasePage {
 
 

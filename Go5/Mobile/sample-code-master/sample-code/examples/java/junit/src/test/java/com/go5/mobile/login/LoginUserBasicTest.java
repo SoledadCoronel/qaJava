@@ -45,7 +45,7 @@ import java.util.concurrent.TimeUnit;
 
 
 
-public class GO5LoginTest {
+public class LoginUserBasicTest {
     private AppiumDriver<AndroidElement> driver;
     
     MainPage mainpage =null;
@@ -89,37 +89,29 @@ public class GO5LoginTest {
    	 mainpage = new MainPage(driver);  
         
        Thread.sleep(10000);
-       WebDriverWait wait = new WebDriverWait(driver, 20);
+      //  WebDriverWait wait = new WebDriverWait(driver, 20);
         
-        wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
-      
+     //   wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
+      //  Thread.sleep(10000);
         List<AndroidElement> textFieldsList = driver.findElementsByTagName("INPUT");
-        textFieldsList.get(0).sendKeys("marina.touceda@gointegro.com");
+        textFieldsList.get(0).sendKeys("marina.touceda+022@gointegro.com");
         textFieldsList.get(1).sendKeys("Auto1234");
         Thread.sleep(3000);
         
         List<AndroidElement> dynamicTextFieldsList = driver.findElementsByTagName("INPUT");
         
-        dynamicTextFieldsList.get(2).sendKeys("Automation1");
+        dynamicTextFieldsList.get(2).sendKeys("Automation5");
         
         WebElement button = driver.findElementByTagName("BUTTON");
         button.click();
         
         Thread.sleep(3000);
-        wait.until(ExpectedConditions.elementToBeClickable(By.tagName("h1")));
+     //   wait.until(ExpectedConditions.elementToBeClickable(By.tagName("h1")));
 
         WebElement title = driver.findElement(By.tagName("h1"));
         assertEquals("Principal", title.getText());
-         // Go to menu
-        Thread.sleep(3000);
-        mainpage.goToMenu();
-       // driver.findElementByCssSelector(".menu").click();
-         Thread.sleep(2000);
-         mainpage.goToProfile();
-        // driver.findElementByCssSelector(".igouserwhite").click();
-         Thread.sleep(5000);
-          driver.findElementByCssSelector(".socialcomments .type").click();
-         Thread.sleep(6000);
+        mainpage.logout();
+        Thread.sleep(5000);
          
          
     }
