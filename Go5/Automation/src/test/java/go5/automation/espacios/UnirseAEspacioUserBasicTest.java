@@ -2,7 +2,6 @@ package go5.automation.espacios;
 
 
 
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 
@@ -15,14 +14,9 @@ public class UnirseAEspacioUserBasicTest extends EspacioUserBasicAbstractClass {
 	
 	  public void setUpUnirseAEspacio() throws Exception {
 		
-			this.setUpMaven();
+			this.setUpMavenUserBasic();
 	}
 	
-	 @AfterClass // call function to close browser 
-		
-		public void teardown(){
-		this.quitBrowser();
-		}
 		 
 				
      }

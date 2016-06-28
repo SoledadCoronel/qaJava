@@ -15,12 +15,12 @@ import org.testng.Reporter;
     	
     	
     	private String Personas = new String (".igousergroup");
-    	private String searchButton = new String(".actions .search .btnsearch");
+    	
     	private String firstName= new String(".tables tbody tr:nth-child(1) td:nth-child(2) a");
     	 private String lastName= new String(".tables tbody tr:nth-child(10) td:nth-child(2) a");  
     	
-    	    	
-    	By serach =By.cssSelector(searchButton);
+    		
+    	
     	
     
     	
@@ -35,11 +35,10 @@ import org.testng.Reporter;
   
      //Set user name in textbox
   
-     public  void  irADirectorio(){
+     public  void  goToDirectorio(){
       
     	 Reporter.log("Abriendo directorio de  personas" );
-    	  driver.findElement(By.cssSelector(".igouser")).click();
-    	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	  	  
     	  driver.findElement(By.cssSelector(Personas)).click();
        
      }
@@ -73,5 +72,10 @@ import org.testng.Reporter;
        	Reporter.log("La pagina esta ordenada alfabeticamente por orden descencdente ( de la Z a la A " );
      
     }
+     public void goToFirstProfileUserByNameLink(){
+    	 driver.findElement(By.cssSelector(firstName)).click();
+    
     }
+    }
+    
 

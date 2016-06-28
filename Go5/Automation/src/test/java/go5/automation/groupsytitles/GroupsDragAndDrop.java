@@ -21,8 +21,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
@@ -49,8 +47,9 @@ public class GroupsDragAndDrop extends TestSuite{
 	public void dragAndDropGroups() throws Exception{
 		
 		 groups = new GroupsPage(driver);
+		 js=  (JavascriptExecutor) driver;
 		
-		  // Go to the configuration
+		 // Go to the configuration
 		 this.goToConfiguration();
 		 this.goToMenu();	
 		// Go to  Users Menu
@@ -82,7 +81,7 @@ public class GroupsDragAndDrop extends TestSuite{
 	  	  
 	//Cargando el javascript
 	  	       
-  	     JavascriptExecutor js = (JavascriptExecutor) driver;
+  	   
 
   	    	  
   	     
