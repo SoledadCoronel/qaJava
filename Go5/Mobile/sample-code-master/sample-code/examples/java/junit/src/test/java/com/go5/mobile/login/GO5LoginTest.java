@@ -88,8 +88,7 @@ public class GO5LoginTest {
                
    	 mainpage = new MainPage(driver);  
         
-       Thread.sleep(10000);
-       WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         
         wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
       

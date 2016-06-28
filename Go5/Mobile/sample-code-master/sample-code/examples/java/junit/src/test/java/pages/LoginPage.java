@@ -1,7 +1,12 @@
 package pages;
 
+import static org.junit.Assert.assertEquals;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
     
@@ -27,7 +32,7 @@ import org.openqa.selenium.WebDriver;
     	
     	
     	 protected WebDriver driver;
-    
+    	 //WebDriverWait wait = new WebDriverWait(driver, 20);
     	
   
     	    public LoginPage(WebDriver driver){
@@ -66,11 +71,19 @@ import org.openqa.selenium.WebDriver;
   
      }
   
-     //Click on login button
+     //Click on login button and wait until enter the Home Page
   
      public void clickLogin(){
   
              driver.findElement(go).click();
+             
+             WebDriverWait wait = new WebDriverWait(driver, 20);
+             
+            
+             wait.until(ExpectedConditions.elementToBeClickable(By.tagName("h1")));
+
+             WebElement title = driver.findElement(By.tagName("h1"));
+             assertEquals("Principal", title.getText());
   
      }
        
@@ -87,11 +100,16 @@ import org.openqa.selenium.WebDriver;
   
       */
   
+    
      public void loginToGo(String strUserName,String strPasword){
   
          //Fill user name
+    	 //Wait until the page is loaded
     	 
-    	
+    	 WebDriverWait wait = new WebDriverWait(driver, 20);
+         
+         wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
+        
          this.setUserName(strUserName);
        
          
@@ -102,6 +120,7 @@ import org.openqa.selenium.WebDriver;
          //Click Login button
   
          this.clickLogin();
+         
      } 
   
          public void loginToGoAsAdmin(){
@@ -140,7 +159,11 @@ import org.openqa.selenium.WebDriver;
          }
  
          public void loginToGoAsUSerBasic(){
-          	  
+          	  // Wait until the page is loaded
+        	 
+        	 WebDriverWait wait = new WebDriverWait(driver, 20);
+             
+             wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
              //Fill user name
         	 this.setUserName(strUsernameUserBasic);
              

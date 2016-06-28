@@ -51,24 +51,26 @@ public class LoginUserBasicTest {
     LoginPage login=null;
     BasePage page=null;
 
+   
     @Before
+    
     public void setUp() throws Exception {
         
         
-    	DesiredCapabilities capabilities = new DesiredCapabilities();
+   	DesiredCapabilities capabilities = new DesiredCapabilities();
               
-      //  capabilities.setCapability("platformName","Android");
+     
         capabilities.setCapability("deviceName","Android Emulator");            
-     //   capabilities.setCapability("noReset", true);
-      //  capabilities.setCapability("fullReset", false);
+   
         capabilities.setCapability("platformVersion", "5.1.1");//  es el mobile OS version, si instalo api22 es 5.1.1
-       // The app capability is not requires if you set appPackage and appActivity
+      
        capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.11.12.apk");
         capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
-      //  capabilities.setCapability("appActivity", "com.gointegro.go5mobile.MainActivity");
+      
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-    //Setear la aplicacion a hybrida
-    	System.out.println("Haciendo cambio de contexto");
+    
+        //Setear la aplicacion a hybrid
+    	
         Set<String> contextNames = driver.getContextHandles();
         
        for (String contextName : contextNames) {
@@ -86,34 +88,18 @@ public class LoginUserBasicTest {
 
     @Test
     public void login() throws InterruptedException {
-               
+    
+    	// Init pages
+    	
    	 mainpage = new MainPage(driver); 
    	 login = new LoginPage(driver);
    	 page =new BasePage(driver);
         
-       
-       WebDriverWait wait = new WebDriverWait(driver, 20);
-        
-       wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
-      
-        /*List<AndroidElement> textFieldsList = driver.findElementsByTagName("INPUT");
-        textFieldsList.get(0).sendKeys("marina.touceda+100@gointegro.com");
-        textFieldsList.get(1).sendKeys("Auto1234");*/
-       login.loginToGoAsUSerBasic();
-        Thread.sleep(3000);
-        
-       
-        WebElement button = driver.findElementByTagName("BUTTON");
-        button.click();
-        
-        Thread.sleep(3000);
-     //   wait.until(ExpectedConditions.elementToBeClickable(By.tagName("h1")));
-
-        WebElement title = driver.findElement(By.tagName("h1"));
-        assertEquals("Principal", title.getText());
-        page.logout();
-       // mainpage.logout();
-        Thread.sleep(5000);
+   
+       // Test
+      login.loginToGoAsUSerBasic();
+      page.logout();
+      Thread.sleep(3000);
          
          
     }
