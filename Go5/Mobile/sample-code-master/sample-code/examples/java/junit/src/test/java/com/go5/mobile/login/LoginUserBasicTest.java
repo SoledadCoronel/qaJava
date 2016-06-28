@@ -7,9 +7,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
-
-
-
 //junit
 import org.junit.After;
 import org.junit.Before;
@@ -22,25 +19,27 @@ import static org.junit.Assert.assertEquals;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.DriverCommand;
-import org.openqa.selenium.remote.RemoteExecuteMethod;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 
 
+
+
+import pages.BasePage;
+import pages.LoginPage;
 import pages.MainPage;
 
 
+
+
 //Utils
-import java.io.File;
+
 import java.net.URL;
 import java.util.List;
 import java.util.Set;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
+
 
 
 
@@ -49,6 +48,8 @@ public class LoginUserBasicTest {
     private AppiumDriver<AndroidElement> driver;
     
     MainPage mainpage =null;
+    LoginPage login=null;
+    BasePage page=null;
 
     @Before
     public void setUp() throws Exception {
@@ -86,13 +87,15 @@ public class LoginUserBasicTest {
     @Test
     public void login() throws InterruptedException {
                
-   	 mainpage = new MainPage(driver);  
+   	 mainpage = new MainPage(driver); 
+   	 login = new LoginPage(driver);
+   	 page =new BasePage(driver);
         
-       Thread.sleep(10000);
-      //  WebDriverWait wait = new WebDriverWait(driver, 20);
+       
+       WebDriverWait wait = new WebDriverWait(driver, 20);
         
-     //   wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
-      //  Thread.sleep(10000);
+       wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
+      
         List<AndroidElement> textFieldsList = driver.findElementsByTagName("INPUT");
         textFieldsList.get(0).sendKeys("marina.touceda+022@gointegro.com");
         textFieldsList.get(1).sendKeys("Auto1234");
@@ -110,7 +113,8 @@ public class LoginUserBasicTest {
 
         WebElement title = driver.findElement(By.tagName("h1"));
         assertEquals("Principal", title.getText());
-        mainpage.logout();
+        page.logout();
+       // mainpage.logout();
         Thread.sleep(5000);
          
          

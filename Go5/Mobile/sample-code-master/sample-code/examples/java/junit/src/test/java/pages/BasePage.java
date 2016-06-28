@@ -16,11 +16,35 @@ public class BasePage {
 
     protected WebDriver driver;
     String app_package_name = "com.flipkart.android:id/";
-
+    
+    protected String menuCss= ".menu";
+    protected String irAProfileCss=".igouserwhite";
+    protected String logoutCss=".space:last-child li:last-child a";
+    
+    
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
 
+    public void goToMenu(){
+    	//menuMobile.click();
+    	driver.findElement(By.cssSelector(menuCss)).click();
+    //	driver.findElementByCssSelector(".menu").click();
+    }
+    	
+
+    public void goToProfile(){
+    	//irAProfile.click();
+    	driver.findElement(By.cssSelector(irAProfileCss)).click();
+    	//driver.findElementByCssSelector(irAProfileCss).click();
+    }
+    
+    public void logout () throws InterruptedException{
+    	this.goToMenu();
+    	Thread.sleep(3000);
+    	driver.findElement(By.cssSelector(logoutCss)).click();
+    	//driver.findElementByCssSelector(logoutCss).click();
+    }
     protected void waitForVisibilityOf(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
