@@ -49,6 +49,10 @@
           <hashTree/>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="PlarformPosts" enabled="true"/>
           <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
+              <stringProp name="ConstantTimer.delay">300</stringProp>
+            </ConstantTimer>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postPlatform" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -308,6 +312,10 @@
           <hashTree/>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="OAuth2Posts" enabled="true"/>
           <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
+              <stringProp name="ConstantTimer.delay">100</stringProp>
+            </ConstantTimer>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postToken" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments">
@@ -1592,6 +1600,10 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
+              <stringProp name="ConstantTimer.delay">100</stringProp>
+            </ConstantTimer>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postRole" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -1660,7 +1672,7 @@
     &quot;attributes&quot;: {&#xd;
       &quot;name&quot;: &quot;Fakename&quot;,&#xd;
       &quot;last-name&quot;: &quot;FakeLastname&quot;,&#xd;
-      &quot;email&quot;: &quot;QAMAIL${__Random(1,9999,)}@gointegro.com&quot;,&#xd;
+      &quot;email&quot;: &quot;QAMAIL${__Random(1,9999999,)}@gointegro.com&quot;,&#xd;
       &quot;status&quot;: &quot;active&quot;,&#xd;
       &quot;login-enabled&quot;: true&#xd;
     },&#xd;
@@ -1777,7 +1789,7 @@
     &quot;attributes&quot;: {&#xd;
       &quot;name&quot;: &quot;Fakename&quot;,&#xd;
       &quot;last-name&quot;: &quot;FakeLastname&quot;,&#xd;
-      &quot;email&quot;: &quot;QAMAIL${__Random(1,9999,)}@gointegro.com&quot;,&#xd;
+      &quot;email&quot;: &quot;QAMAIL${__Random(1,9999999,)}@gointegro.com&quot;,&#xd;
       &quot;status&quot;: &quot;active&quot;,&#xd;
       &quot;login-enabled&quot;: true&#xd;
     },&#xd;
@@ -2303,6 +2315,10 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
+              <stringProp name="ConstantTimer.delay">100</stringProp>
+            </ConstantTimer>
             <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postToken - usuario inactivo" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -2837,6 +2853,10 @@
             <hashTree/>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="MultiloginGets" enabled="true"/>
             <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getMultiLogin - no multilogin" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments"/>
@@ -2968,6 +2988,57 @@
                 </ResponseAssertion>
                 <hashTree/>
               </hashTree>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Multilogin - token inválido" enabled="true"/>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getMultiLogin - token inválido" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments"/>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/multi-login/soledad.coronel@gointegro.com</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="TestPlan.comments">Get de usuario con multilogin</stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/vnd.api+json</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">application/vnd.api+json</stringProp>
+                      </elementProp>
+                      <elementProp name="" elementType="Header">
+                        <stringProp name="Header.name">Authorization</stringProp>
+                        <stringProp name="Header.value">${ACCESS_TOKEN_REFRESH}1</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="51509">401</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                    <boolProp name="Assertion.assume_success">true</boolProp>
+                    <intProp name="Assertion.test_type">8</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
             </hashTree>
             <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
               <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -3021,6 +3092,10 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
+            <hashTree/>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
+              <stringProp name="ConstantTimer.delay">100</stringProp>
+            </ConstantTimer>
             <hashTree/>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ForgotPasswordPosts" enabled="true"/>
             <hashTree>
