@@ -1,15 +1,9 @@
 package pages;
-import io.appium.java_client.android.AndroidDriver;
-
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-  
     
     
     public class LoginPage {
@@ -18,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
     	
     	public static String strUsername= new String("marina.touceda@gointegro.com");
     	protected static String strUsernameAdminEspacios= new String("marina.touceda+023@gointegro.com");
-    	protected static String strUsernameUserBasic= new String("marina.touceda+022@gointegro.com");
+    	protected static String strUsernameUserBasic= new String("marina.touceda+100@gointegro.com");
      	public static String strPassword= new String("Auto1234");
     	protected static String inputmailLogin = ".signup fieldset label:nth-child(2) input";
     	protected static String inputPasswordLogin = ".signup fieldset label:nth-child(3) input";
@@ -27,17 +21,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
     	
     	By userName =By.cssSelector(inputmailLogin);
     	By password =By.cssSelector(inputPasswordLogin);
+    	By userBasic = By.cssSelector(strUsernameUserBasic);
     	By go=By.cssSelector(goButton);
     	By title = By.cssSelector(".session legend");
     	
     	
-    	 protected AndroidDriver driver;
+    	 protected WebDriver driver;
     
-     
+    	
   
     	    public LoginPage(WebDriver driver){
     	    	 
-    	        this.driver = (AndroidDriver) driver;
+    	        this.driver =  driver;
      }
   
      //Set user name in textbox

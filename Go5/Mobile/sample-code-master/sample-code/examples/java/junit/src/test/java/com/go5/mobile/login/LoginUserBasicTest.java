@@ -96,15 +96,13 @@ public class LoginUserBasicTest {
         
        wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
       
-        List<AndroidElement> textFieldsList = driver.findElementsByTagName("INPUT");
-        textFieldsList.get(0).sendKeys("marina.touceda+022@gointegro.com");
-        textFieldsList.get(1).sendKeys("Auto1234");
+        /*List<AndroidElement> textFieldsList = driver.findElementsByTagName("INPUT");
+        textFieldsList.get(0).sendKeys("marina.touceda+100@gointegro.com");
+        textFieldsList.get(1).sendKeys("Auto1234");*/
+       login.loginToGoAsUSerBasic();
         Thread.sleep(3000);
         
-        List<AndroidElement> dynamicTextFieldsList = driver.findElementsByTagName("INPUT");
-        
-        dynamicTextFieldsList.get(2).sendKeys("Automation5");
-        
+       
         WebElement button = driver.findElementByTagName("BUTTON");
         button.click();
         
