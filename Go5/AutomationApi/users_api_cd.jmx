@@ -11959,6 +11959,15 @@
                   <stringProp name="TestPlan.comments">No mandar el atributo password, para q despues ande el token</stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">USER_ID_NAMEANALISTA</stringProp>
+                    <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
                   <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                     <collectionProp name="Asserion.test_strings">
                       <stringProp name="49587">201</stringProp>
@@ -12058,6 +12067,15 @@
                   <stringProp name="TestPlan.comments">No mandar el atributo password, para q despues ande el token</stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
+                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                    <stringProp name="RegexExtractor.refname">USER_ID_LASTNAMEANALISTA</stringProp>
+                    <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
+                    <stringProp name="RegexExtractor.template">$1$</stringProp>
+                    <stringProp name="RegexExtractor.default"></stringProp>
+                    <stringProp name="RegexExtractor.match_number">1</stringProp>
+                  </RegexExtractor>
+                  <hashTree/>
                   <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                     <collectionProp name="Asserion.test_strings">
                       <stringProp name="49587">201</stringProp>
@@ -12437,6 +12455,8 @@
                   <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                     <collectionProp name="Asserion.test_strings">
                       <stringProp name="-597865857">&quot;total-items&quot;: 2</stringProp>
+                      <stringProp name="826529628">${USER_ID_NAMEANALISTA}</stringProp>
+                      <stringProp name="-416785402">${USER_ID_LASTNAMEANALISTA}</stringProp>
                     </collectionProp>
                     <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                     <boolProp name="Assertion.assume_success">false</boolProp>
@@ -12444,7 +12464,7 @@
                   </ResponseAssertion>
                   <hashTree/>
                 </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="7. getUserFiltradoPorQ - primeras 2 letras BUG" enabled="false">
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="7. getUserFiltradoPorQ - primeras 2 letras" enabled="true">
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                     <collectionProp name="Arguments.arguments">
                       <elementProp name="filter[q]" elementType="HTTPArgument">
@@ -12483,7 +12503,9 @@
                   <hashTree/>
                   <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                     <collectionProp name="Asserion.test_strings">
-                      <stringProp name="-597865856">&quot;total-items&quot;: 3</stringProp>
+                      <stringProp name="-597865857">&quot;total-items&quot;: 2</stringProp>
+                      <stringProp name="826529628">${USER_ID_NAMEANALISTA}</stringProp>
+                      <stringProp name="-416785402">${USER_ID_LASTNAMEANALISTA}</stringProp>
                     </collectionProp>
                     <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                     <boolProp name="Assertion.assume_success">false</boolProp>
@@ -12491,7 +12513,7 @@
                   </ResponseAssertion>
                   <hashTree/>
                 </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="7. getUserFiltradoPorQ - Primera letra BUG" enabled="false">
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="7. getUserFiltradoPorQ - Primera letra" enabled="true">
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                     <collectionProp name="Arguments.arguments">
                       <elementProp name="filter[q]" elementType="HTTPArgument">
@@ -12530,11 +12552,62 @@
                   <hashTree/>
                   <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                     <collectionProp name="Asserion.test_strings">
-                      <stringProp name="-597865856">&quot;total-items&quot;: 3</stringProp>
+                      <stringProp name="-597865857">&quot;total-items&quot;: 2</stringProp>
+                      <stringProp name="826529628">${USER_ID_NAMEANALISTA}</stringProp>
+                      <stringProp name="-416785402">${USER_ID_LASTNAMEANALISTA}</stringProp>
                     </collectionProp>
                     <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                     <boolProp name="Assertion.assume_success">false</boolProp>
                     <intProp name="Assertion.test_type">2</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="7. getUserFiltradoPorQ - primeras 3 letra" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="filter[q]" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">Ana</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">filter[q]</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/users</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="-597865857">&quot;total-items&quot;: 2</stringProp>
+                      <stringProp name="826529628">${USER_ID_NAMEANALISTA}</stringProp>
+                      <stringProp name="-416785402">${USER_ID_LASTNAMEANALISTA}</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">2</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="49586">200</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">8</intProp>
                   </ResponseAssertion>
                   <hashTree/>
                 </hashTree>
