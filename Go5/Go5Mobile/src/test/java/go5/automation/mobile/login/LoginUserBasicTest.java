@@ -1,50 +1,23 @@
-package com.go5.mobile.login;
-
-//Appium
-
-
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+package go5.automation.mobile.login;
 
 
 //junit
+import go5.automation.mobile.pages.BasePage;
+import go5.automation.mobile.pages.LoginPage;
+import go5.automation.mobile.pages.MainPage;
+import go5.automation.resources.AndroidSetup;
+
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
-
-
-//Selenium
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-
-
-
-
-
-
-import pages.BasePage;
-import pages.LoginPage;
-import pages.MainPage;
+//Pages
 
 
 
 
 //Utils
-
-import scenarios.AndroidSetup;
-
-import java.net.URL;
-import java.util.List;
-import java.util.Set;
-
 
 
 

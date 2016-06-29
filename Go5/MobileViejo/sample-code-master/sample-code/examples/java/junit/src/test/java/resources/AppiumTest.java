@@ -1,4 +1,4 @@
-package scenarios;
+package resources;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

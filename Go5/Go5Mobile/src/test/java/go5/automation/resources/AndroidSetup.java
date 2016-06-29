@@ -1,14 +1,10 @@
-package scenarios;
+package go5.automation.resources;
 
 
 
-import io.appium.java_client.AppiumDriver;
+
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
@@ -20,9 +16,7 @@ public class AndroidSetup {
 	
 	
 	// Driver
-	
-//	protected AndroidDriver<WebElement> driver;
-	// AppiumDriver<AndroidElement> driver;
+
 	 @SuppressWarnings("rawtypes")
 	protected AndroidDriver driver;
     
