@@ -36,7 +36,7 @@ public class BasePage {
     public void goToProfile(){
     	//irAProfile.click();
     	driver.findElement(By.cssSelector(irAProfileCss)).click();
-    	//driver.findElementByCssSelector(irAProfileCss).click();
+    	
     }
     
     public void logout () throws InterruptedException{

@@ -42,8 +42,8 @@ public class MainPage {
    
     //constructor
     
-    public MainPage(AppiumDriver<AndroidElement> driver) {
-        this.driver = (AndroidDriver) driver;
+    public MainPage(WebDriver driver2) {
+        this.driver = (AndroidDriver) driver2;
     }
     
     public void goToMenu(){

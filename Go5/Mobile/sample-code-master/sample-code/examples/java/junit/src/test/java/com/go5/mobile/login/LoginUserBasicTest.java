@@ -7,6 +7,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
+
 //junit
 import org.junit.After;
 import org.junit.Before;
@@ -15,12 +16,14 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 
+
 //Selenium
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 
 
@@ -36,6 +39,8 @@ import pages.MainPage;
 
 //Utils
 
+import scenarios.AndroidSetup;
+
 import java.net.URL;
 import java.util.List;
 import java.util.Set;
@@ -44,8 +49,8 @@ import java.util.Set;
 
 
 
-public class LoginUserBasicTest {
-    private AppiumDriver<AndroidElement> driver;
+public class LoginUserBasicTest  extends AndroidSetup{
+  //  private AppiumDriver<AndroidElement> driver;
     
     MainPage mainpage =null;
     LoginPage login=null;
@@ -56,7 +61,8 @@ public class LoginUserBasicTest {
     
     public void setUp() throws Exception {
         
-        
+        this.prepareAndroidForAppium();
+    /*   
    	DesiredCapabilities capabilities = new DesiredCapabilities();
               
      
@@ -78,7 +84,7 @@ public class LoginUserBasicTest {
             if (contextName.contains("WEBVIEW")){
                 driver.context(contextName);
             }
-       }
+       }*/
     }
 
     @After

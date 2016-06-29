@@ -22,8 +22,7 @@ import static org.junit.Assert.assertEquals;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.DriverCommand;
-import org.openqa.selenium.remote.RemoteExecuteMethod;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -34,19 +33,18 @@ import pages.MainPage;
 
 
 //Utils
-import java.io.File;
+
 import java.net.URL;
 import java.util.List;
 import java.util.Set;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
+
 
 
 
 
 public class GO5LoginTest {
-    private AppiumDriver<AndroidElement> driver;
+   
+	private AppiumDriver<AndroidElement> driver;
     
     MainPage mainpage =null;
 
