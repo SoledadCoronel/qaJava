@@ -1,4 +1,4 @@
-package go5.automation.resources;
+package go5.automation.driver;
 
 import go5.automation.mobile.pages.LandingPage;
 import go5.automation.mobile.pages.LoginPageExample;
@@ -7,7 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class AppiumTest extends AndroidSetup {
+public class AppiumExample extends AndroidSetup {
 
     @BeforeClass
     public void setUp() throws Exception {

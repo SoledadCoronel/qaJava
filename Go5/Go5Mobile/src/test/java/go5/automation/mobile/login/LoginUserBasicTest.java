@@ -2,11 +2,10 @@ package go5.automation.mobile.login;
 
 
 //junit
+import go5.automation.driver.AndroidSetup;
 import go5.automation.mobile.pages.BasePage;
 import go5.automation.mobile.pages.LoginPage;
 import go5.automation.mobile.pages.MainPage;
-import go5.automation.resources.AndroidSetup;
-
 
 import org.junit.After;
 import org.junit.Before;
