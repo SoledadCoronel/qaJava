@@ -60,9 +60,14 @@ public class EditUserProfileTest  extends AndroidSetup{
      page.goToProfile();
      Thread.sleep(2000);
      profile.editarProfile();
-     profile.agregarDatosLaborales();
-    // profile.agregarDatosPersonales();
+      profile.agregarDatosLaborales();
+     Thread.sleep(3000);
+  
+    profile.agregarDatosPersonales();
+    Thread.sleep(3000);
+   // driver.hideKeyboard();
      profile.agregarRedesSociales();
+     driver.hideKeyboard();
      Thread.sleep(3000);
      profile.grabarUsuario();
     

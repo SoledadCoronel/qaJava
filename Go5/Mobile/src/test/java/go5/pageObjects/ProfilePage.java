@@ -187,12 +187,12 @@ import org.testng.asserts.SoftAssert;
    
 			public void agregarDatosPersonales(){
     	//Datos Personales
-         
+			
          Reporter.log("Editando datos personales");
            driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(2) select")).sendKeys("RUT");
            driver.findElement(By.cssSelector(numeroDocumento)).clear();
            driver.findElement(By.cssSelector(numeroDocumento)).sendKeys("asasddsdsadsads");
-           driver.findElement(By.cssSelector(fechaNacimiento)).sendKeys("11/11/11");
+        //   driver.findElement(By.cssSelector(fechaNacimiento)).sendKeys("11/11/11");
          //  driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(5) select")).click();
         //   driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(5) select")).sendKeys("female");
         //   driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(6) select")).sendKeys("single");
