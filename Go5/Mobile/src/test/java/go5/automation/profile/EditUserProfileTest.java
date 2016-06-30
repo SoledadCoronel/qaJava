@@ -1,9 +1,10 @@
-package go5.automation.login;
+package go5.automation.profile;
 
 
 
 //driver
 import go5.automation.driver.AndroidSetup;
+
 
 //junit
 import org.junit.After;
@@ -11,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 //Pages
+
 
 import go5.pageObjects.*;
 
@@ -20,13 +22,12 @@ import go5.pageObjects.*;
 
 
 
-public class LoginUserBasicTest  extends AndroidSetup{
+public class EditUserProfileTest  extends AndroidSetup{
   //  private AppiumDriver<AndroidElement> driver;
     
-    
+    ProfilePage profile =null;
     LoginPage login=null;
     BasePage page=null;
-    
 
    
     @Before
@@ -43,22 +44,29 @@ public class LoginUserBasicTest  extends AndroidSetup{
     }
 
     @Test
-    public void login() throws InterruptedException {
+    public void editProfileUser() throws InterruptedException {
     
     	// Init pages
     	
-   	
+   	 profile = new ProfilePage(driver); 
    	 login = new LoginPage(driver);
    	 page =new BasePage(driver);
-   	
-      
+       
    
        // Test
-   	 
-      login.loginToGoAsUSerBasic();
-       page.logout();
-      Thread.sleep(3000);
-         
+     login.loginToGoAsUSerBasic();
+     page.goToMenu();
+     Thread.sleep(2000);
+     page.goToProfile();
+     Thread.sleep(2000);
+     profile.editarProfile();
+     profile.agregarDatosLaborales();
+    // profile.agregarDatosPersonales();
+     profile.agregarRedesSociales();
+     Thread.sleep(3000);
+     profile.grabarUsuario();
+    
+     
          
     }
 

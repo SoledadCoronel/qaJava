@@ -92,7 +92,7 @@ import org.testng.Assert;
              wait.until(ExpectedConditions.elementToBeClickable(By.tagName("h1")));
 
              WebElement title = driver.findElement(By.tagName("h1"));
-             assertEquals("Principal", title.getText());
+             assertEquals("Actividad social", title.getText());
   
      }
        

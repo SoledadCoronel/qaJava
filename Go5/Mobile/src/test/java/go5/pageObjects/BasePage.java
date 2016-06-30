@@ -13,36 +13,61 @@ import java.util.HashMap;
 
 public class BasePage {
 
-
+  // Driver
     protected WebDriver driver;
    
+    
+    //Declaracion de css
     protected String menuCss= ".menu";
     protected String irAProfileCss=".igouserwhite";
     protected String logoutCss=".space:last-child li:last-child a";
     
+  
+    //Navegabilidad
+    
+    protected String goBackCss="header .back";
+    
+   // Bys
+    By menu =By.cssSelector(menuCss);
+    By irAProfile= By.cssSelector(irAProfileCss);
+    By logout=By.cssSelector(logoutCss);
+    By goBack=By.cssSelector(goBackCss);
+    
+    
+    // Constructor
     
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
 
+    
+    //Functions
+    
+    
     public void goToMenu(){
-    	//menuMobile.click();
-    	driver.findElement(By.cssSelector(menuCss)).click();
-    //	driver.findElementByCssSelector(".menu").click();
+    	driver.findElement(menu).click();
+    //	driver.findElement(By.cssSelector(menuCss)).click();
+    
     }
     	
 
     public void goToProfile(){
-    	//irAProfile.click();
+    
     	driver.findElement(By.cssSelector(irAProfileCss)).click();
     	
     }
+    
+    public void goBack() throws InterruptedException{
+    	driver.findElement(goBack).click();
+    	Thread.sleep(3000);
+    }
+    
     
     public void logout () throws InterruptedException{
     	this.goToMenu();
     	Thread.sleep(3000);
     	driver.findElement(By.cssSelector(logoutCss)).click();
-    	//driver.findElementByCssSelector(logoutCss).click();
+    
     }
     protected void waitForVisibilityOf(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, 30);

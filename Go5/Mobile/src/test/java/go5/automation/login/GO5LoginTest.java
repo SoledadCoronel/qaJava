@@ -120,7 +120,7 @@ public class GO5LoginTest {
          mainpage.goToProfile();
         // driver.findElementByCssSelector(".igouserwhite").click();
          Thread.sleep(5000);
-          driver.findElementByCssSelector(".socialcomments .type").click();
+          driver.findElementByCssSelector(".header .edit").click();
          Thread.sleep(6000);
          
          

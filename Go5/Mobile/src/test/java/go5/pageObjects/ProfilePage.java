@@ -11,8 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.LocalFileDetector;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
@@ -20,40 +20,59 @@ import org.testng.asserts.SoftAssert;
 
     
     
-    public class ProfilePage extends TestSuite{
+    public class ProfilePage {
 
     	//Css
+    	//  Generales
+    	protected String editFoto = "#photoFileDrop";
+ 	 	protected String editarProfile="header .edit";
+	   	protected String agrandarForm = ".addpeople fieldset:nth-child(2) .secondary";
+	   	protected String grabarUser = ".saveform .primary";    	    	
     	
+    	// Datos laborales
     	
-		    		protected String irAProfile = ".subusers li:nth-child(2) a";
-		    		protected String editFoto = "#photoFileDrop";
-		     	 	protected String editarProfile=".data h2 a";
-		    	   	protected String agrandarForm = ".addpeople fieldset:nth-child(2) .secondary";
-		    	   	protected String grabarUser = ".container .addpeople .primary";    	    	    	
-		    	   	protected String reportaA =".labordata label:nth-child(6) input";
-		    	   	protected String idEmpleado = ".labordata label:nth-child(2) input";
-		           	protected String fechaIngreso = ".labordata label:nth-child(3) input";    	
-		           	protected String tipoEmpleo = ".labordata label:nth-child(4) select ";    	
-		           	protected String telefonoFIjo = ".labordata label:nth-child(7) input";
-		           	protected String telefonoMovil= ".labordata label:nth-child(8) input";	
-		           	protected String numeroDocumento = ".personaldata label:nth-child(3) input";
-		           	protected String fechaNacimiento =".personaldata label:nth-child(4) input";
-    	           protected String emailProfile = ".personaldata label:nth-child(7) input";
-    	           protected String direccionProfile = ".personaldata label:nth-child(10) input";
-    	           protected String linkedin= ".socialdata label:nth-child(2) input";
-    	           protected String twitter = ".socialdata label:nth-child(3) input";
-    	           protected String facebook= ".socialdata label:nth-child(4) input";
-    	          private String linkSupervisor = ".data p:nth-child(5) a ";
-    	          private String emailUser= ".data address p:first-child a";
+     
+	   	protected String idEmpleado = ".editpeople fieldset:nth-child(1) label:nth-child(2) input";
+       	protected String fechaIngreso = ".editpeople fieldset:nth-child(1) label:nth-child(3) input";    	
+       	protected String tipoEmpleo = ".editpeople fieldset:nth-child(1) label:nth-child(4) select";
+       	protected String reportaA =".editpeople fieldset:nth-child(1) label:nth-child(6) input";
+       	protected String telefonoFIjo = ".editpeople fieldset:nth-child(1) label:nth-child(7) input";
+       	protected String telefonoMovil= ".editpeople fieldset:nth-child(1) label:nth-child(8) input";
+       	protected String direccion=".editpeople fieldset:nth-child(1) label:nth-child(9) input";
+        protected  String linkSupervisor = ".data p:nth-child(5) a ";
+    	
+		    	
+		    //Datos Personales 		    	
+		protected String tipoDocumento=".editpeople fieldset:nth-child(2) label:nth-child(2) select";    	  
+       	protected String numeroDocumento = ".editpeople fieldset:nth-child(2) label:nth-child(3) input";
+       	protected String fechaNacimiento =".editpeople fieldset:nth-child(2) label:nth-child(4) input";
+       	protected String emailProfile = ".editpeople fieldset:nth-child(2) label:nth-child(7) input";
+       	protected String direccionProfile = ".editpeople fieldset:nth-child(2) label:nth-child(10) input";
+       
+       //Datos Redes Sociales
+       protected String linkedin= ".editpeople fieldset:nth-child(3) label:nth-child(2) input";
+       protected String twitter = ".editpeople fieldset:nth-child(3) label:nth-child(3) input";
+       protected String facebook= ".editpeople fieldset:nth-child(3) label:nth-child(4) input";
+      
+    	// Picture Profile
+       
+       
+       protected String cambiarFoto=".data:first-child";
+       protected String tomarFoto="";
+       protected String tomarArchivo="";
+       protected String CancelarSubirFoto="";
+   
+       //Datos Generales 
+       
+    	          private String emailUser= ".igomailtwo";
     	          private String miEmail= "marina.touceda@gointegro.com";
     	          private String telefonoMovilHeader =".data address p:nth-child(2) strong";
     	          private String telefonoFijoHeader = ".data address p:last-child strong";
-    	          private String confirmar = ".active .primary";
-    	          private String cancelar =".active .optional";
-    	          private String inputFotoProfile ="sarasa";
-    	          private String selectPictureOrCamera=".igocamera a";
+    	         
     	          SoftAssert sa= new SoftAssert();
-    	           WebDriver driver;
+    	        
+    //Driver	          
+            WebDriver driver;
     	           
     	           
     	 Random numero= new Random();
@@ -98,15 +117,18 @@ import org.testng.asserts.SoftAssert;
     		  Reporter.log( driver.findElement(By.cssSelector(css)).getText());
     		  
     	  }
-    	  public void goToProfile(){
-    	  Reporter.log("Ir a Profile");
-    	  driver.findElement(By.cssSelector(".subusers li:nth-child(2) a")).click();
-       	    }
+    	
     
+      public void pressCambiarFoto(){
+    	  
+      }
       
-      public void editarProfile(){
+    	  public void editarProfile(){
     	  Reporter.log("Editar perfil");
           	  driver.findElement(By.cssSelector(editarProfile)).click();
+          	  WebDriverWait wait = new WebDriverWait(driver, 20);
+             
+             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(idEmpleado)));
       }
 		
       public void agrandarForm(){
@@ -157,7 +179,7 @@ import org.testng.asserts.SoftAssert;
 				driver.findElement(By.cssSelector(telefonoFIjo)).clear();
 				driver.findElement(By.cssSelector(telefonoFIjo)).sendKeys("+541147511234");
 	    
-	          // driver.findElement(By.cssSelector(".labordata label:nth-child(7) input")).sendKeys("+541147511234");
+	          // driver.findElement(By.cssSelector("editpeople fieldset:nth-child(1) label:nth-child(7) input")).sendKeys("+541147511234");
 	          driver.findElement(By.cssSelector(telefonoMovil)).clear();
 	          driver.findElement(By.cssSelector(telefonoMovil)).sendKeys("+541147511234");
 			}
@@ -167,19 +189,19 @@ import org.testng.asserts.SoftAssert;
     	//Datos Personales
          
          Reporter.log("Editando datos personales");
-           driver.findElement(By.cssSelector(".personaldata label:nth-child(2) select")).sendKeys("RUT");
+           driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(2) select")).sendKeys("RUT");
            driver.findElement(By.cssSelector(numeroDocumento)).clear();
            driver.findElement(By.cssSelector(numeroDocumento)).sendKeys("asasddsdsadsads");
            driver.findElement(By.cssSelector(fechaNacimiento)).sendKeys("11/11/11");
-           driver.findElement(By.cssSelector(".personaldata label:nth-child(5) select")).click();
-           driver.findElement(By.cssSelector(".personaldata label:nth-child(5) select")).sendKeys("female");
-           driver.findElement(By.cssSelector(".personaldata label:nth-child(6) select")).sendKeys("single");
-           driver.findElement(By.cssSelector(".personaldata label:nth-child(7) input")).clear();
+         //  driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(5) select")).click();
+        //   driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(5) select")).sendKeys("female");
+        //   driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(6) select")).sendKeys("single");
+      //     driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(7) input")).clear();
            driver.findElement(By.cssSelector(emailProfile)).sendKeys("fakee5555mail@gointegro.com");
-       //    driver.findElement(By.cssSelector(".personaldata label:nth-child(8) input")).clear();
-          // driver.findElement(By.cssSelector(".personaldata label:nth-child(8) input")).sendKeys("+541147511234");
-         //  driver.findElement(By.cssSelector(".personaldata label:nth-child(9) input")).clear();
-         //  driver.findElement(By.cssSelector(".personaldata label:nth-child(9) input")).sendKeys("+541147511234");
+       //    driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(8) input")).clear();
+          // driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(8) input")).sendKeys("+541147511234");
+         //  driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(9) input")).clear();
+         //  driver.findElement(By.cssSelector(".editpeople fieldset:nth-child(2) label:nth-child(9) input")).sendKeys("+541147511234");
            driver.findElement(By.cssSelector(direccionProfile)).clear();
            driver.findElement(By.cssSelector(direccionProfile)).sendKeys("Mi Casa 123");
            
@@ -200,48 +222,7 @@ import org.testng.asserts.SoftAssert;
       driver.findElement(By.cssSelector(facebook)).sendKeys("http://facebook.com/username"); 
      }
     
-    public void cancelarSubirFoto() throws InterruptedException{
-    	
-    	
-    	 js=  (JavascriptExecutor) driver;
-    	 driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
-    	   WebElement element = driver.findElement(By.id("sarasa"));
-		  js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
-	          
-	      //Agarrar el elemento para cargar el file y pasarle el path 
-	       
-	        WebElement subirFile = driver.findElement(By.id("sarasa"));
-	               
-	        File file= new File("src/test/resources/Girasol.jpeg");
-	        subirFile.sendKeys(file.getAbsolutePath());
-	        Thread.sleep(2000);
-	        driver.findElement(By.cssSelector(confirmar)).click();
-		   
-		    Reporter.log(" El subir foto ha sido cancelado");
-    
-    }
-    	
-   
-     
-     public void cargarFoto() throws InterruptedException {
-    	
-    	 js=  (JavascriptExecutor) driver;
-    	 // ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
-    	 driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
-    	   WebElement element = driver.findElement(By.id("sarasa"));
-		  js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
-	          
-	      //Agarrar el elemento para cargar el file y pasarle el path 
-	       
-	        WebElement subirFile = driver.findElement(By.id("sarasa"));
-	               
-	        File file= new File("src/test/resources/Girasol.jpeg");
-	        subirFile.sendKeys(file.getAbsolutePath());
-	        Thread.sleep(2000);
-	        driver.findElement(By.cssSelector(confirmar)).click();
-		    Reporter.log(" Foto cargada exitosamente");
-    }
-       
+  
     public void verifyemaildisplayedAtHeader(){
     	
     	Reporter.log("El email q se muestra es :");	
