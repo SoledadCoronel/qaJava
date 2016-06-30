@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 
     
@@ -23,16 +24,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
     	protected static String inputPasswordLogin = ".signup fieldset label:nth-child(3) input";
     	protected String inputSubdominio=".signup fieldset label:nth-child(4) input";
     	protected static String goButton = new String (".signup .primary");
+    	protected String forgotPasswordLinkCss= ".signup fieldset label:nth-child(5) .link ";
+    	protected String inputmailForgotPasswordCss=".signup fieldset label:nth-child(3) input";
+    	protected String enviarForgotPasswordCss=".signup fieldset label:nth-child(4) .primary";
+    	protected String emailNotRegisteredCss= ".signup fieldset:first-child .reject";
     	
     	By userName =By.cssSelector(inputmailLogin);
     	By password =By.cssSelector(inputPasswordLogin);
     	By userBasic = By.cssSelector(strUsernameUserBasic);
     	By go=By.cssSelector(goButton);
     	By title = By.cssSelector(".session legend");
+    	By forgotPasswordLink= By.cssSelector(forgotPasswordLinkCss);
+    	By inputmailForgotPassword=By.cssSelector(inputmailForgotPasswordCss);
+    	By enviarForgotPassword= By.cssSelector(enviarForgotPasswordCss);
+    	By emailNotRegistered=By.cssSelector(emailNotRegisteredCss);
     	
     	
     	 protected WebDriver driver;
-    	 //WebDriverWait wait = new WebDriverWait(driver, 20);
+    //	WebDriverWait wait = new WebDriverWait(driver, 20);
     	
   
     	    public LoginPage(WebDriver driver){
@@ -176,8 +185,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
       
              this.clickLogin();
 
- }
-    }
+         }
+        public void goToForgotPassword(){
+        	driver.findElement(forgotPasswordLink).click();
+        	WebDriverWait wait = new WebDriverWait(driver, 20);
+            
+             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(inputmailForgotPasswordCss)));
+        }
+        
+        public void pressSendForgotPassword(){
+        	driver.findElement(enviarForgotPassword).click();
+        }
+        public void insertEmailForgotPassword(String stremail){
+        	driver.findElement(inputmailForgotPassword).clear();
+        	driver.findElement(inputmailForgotPassword).sendKeys(stremail);
+        }
+    
+        public void validateErrorEmail(){
+        	Assert.assertEquals(driver.findElement(emailNotRegistered).getText(),"El email ingresado no se encuentra registrado. Por favor vuelve a intentarlo");
+        }
+         }
 
 
 

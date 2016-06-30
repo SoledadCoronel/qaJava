@@ -30,7 +30,7 @@ public class AndroidSetup {
           
           capabilities.setCapability("deviceName","Android Emulator");            
           capabilities.setCapability("platformVersion", "5.1.1");//  es el mobile OS version, si instalo api22 es 5.1.1
-          capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.11.12.apk");
+          capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.11.26.apk");
           capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
          
          driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
