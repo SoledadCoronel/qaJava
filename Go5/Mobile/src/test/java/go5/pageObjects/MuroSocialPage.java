@@ -1,15 +1,15 @@
 package go5.pageObjects;
-import go5.automation.TestSuite;
 
-import java.io.File;
+
+
 import java.security.SecureRandom;
-import java.util.concurrent.TimeUnit;
+
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
@@ -41,14 +41,14 @@ import org.testng.Reporter;
         protected String commentFirstPostcss=".posttext:nth-child(2) .actions .igocomments";
         protected String sendCommentcss=".btnsend";
         protected String commentInputcss =".commentsform fieldset div";
-        protected String arbirResponderCommentFirstPstscss=".posttext:nth-child(3) .commentsitem .socials a:nth-child(3) ";
-        protected String reponderCommentFirstPostcss=".posttext:nth-child(3) .commentsitem .commentsform fieldset div";
+        protected String arbirResponderCommentFirstPstscss=".comments .socials button:nth-child(3)";
+        protected String reponderCommentFirstPostInputcss=".commentsform fieldset div";
         protected String showMoreCommentscss=".link showmore";
        
     	//Likes
     
         protected String likeFirstPostcss=".posttext:nth-child(2) .actions .igolikewhite";
-        protected String likeFirstCommentcss=".posttext:nth-child(3) .commentsitem .igolike";
+        protected String likeFirstCommentcss=".comments .socials button:nth-child(2)";
         protected String likeReponseCommentcss=".posttext:nth-child(3) .commentsreplay .socials .igolike ";
         protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
         protected String countsLikesFirstPostcss=".posttext:nth-child(3) .socials p a";
@@ -90,7 +90,7 @@ import org.testng.Reporter;
     	 By commentFirstPost=By.cssSelector(commentFirstPostcss);
     	 By sendComment=By.cssSelector(sendCommentcss);
          By comment = By.cssSelector(commentInputcss);
-         By responseCommentFirstPost=By.cssSelector(reponderCommentFirstPostcss);
+         By responseCommentFirstPost=By.cssSelector(reponderCommentFirstPostInputcss);
          By abrirReponderComment=By.cssSelector(arbirResponderCommentFirstPstscss);
          
     	
@@ -276,7 +276,7 @@ import org.testng.Reporter;
 	   Reporter.log("Clickeo en Responder del comment e ingreso un texto de respuesta");
 	   driver.findElement(abrirReponderComment).click();
 	    driver.findElement(responseCommentFirstPost).sendKeys(strResponseComment);
-	    driver.findElement(comment).sendKeys(Keys.ENTER);
+	    driver.findElement(sendComment).click();
 		
 	}
 	

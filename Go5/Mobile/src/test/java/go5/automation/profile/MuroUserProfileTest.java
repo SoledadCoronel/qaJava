@@ -76,7 +76,12 @@ public class MuroUserProfileTest  extends AndroidSetup{
      muro.likearPost();
      Thread.sleep(3000);
      muro.comentarFIrstPost(" Comento el post con el mismo user");
+      Thread.sleep(3000);
+      muro.likearComment();
+     muro.responderComment(" Respondo al comment del post");
      Thread.sleep(3000);
+     muro.likearResponseComment();
+     Thread.sleep(5000);
      
     
      
