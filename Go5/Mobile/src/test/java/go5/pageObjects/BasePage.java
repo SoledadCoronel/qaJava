@@ -19,6 +19,7 @@ public class BasePage {
     
     //Declaracion de css
     protected String menuCss= ".menu";
+    protected String goToDirectorioCss=".igousergroupwhite";
     protected String irAProfileCss=".igouserwhite";
     protected String logoutCss=".space:last-child li:last-child a";
     
@@ -29,6 +30,7 @@ public class BasePage {
     
    // Bys
     By menu =By.cssSelector(menuCss);
+    By goToDirectorio=By.cssSelector(goToDirectorioCss);
     By irAProfile= By.cssSelector(irAProfileCss);
     By logout=By.cssSelector(logoutCss);
     By goBack=By.cssSelector(goBackCss);
@@ -46,11 +48,17 @@ public class BasePage {
     
     public void goToMenu(){
     	driver.findElement(menu).click();
-    //	driver.findElement(By.cssSelector(menuCss)).click();
+    
     
     }
     	
-
+    public void goToDirectorio(){
+    	driver.findElement(goToDirectorio).click();
+    //	 WebDriverWait wait = new WebDriverWait(driver, 20);
+         
+      //   wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".content")));
+    }
+   
     public void goToProfile(){
     
     	driver.findElement(By.cssSelector(irAProfileCss)).click();
