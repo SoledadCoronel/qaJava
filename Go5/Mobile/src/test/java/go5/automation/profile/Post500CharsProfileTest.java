@@ -1,4 +1,4 @@
-package go5.automation.directorio;
+package go5.automation.profile;
 
 
 
@@ -24,10 +24,10 @@ import go5.pageObjects.*;
 
 
 
-public class SearchUserTest  extends AndroidSetup{
+public class Post500CharsProfileTest  extends AndroidSetup{
   
     
-    DirectorioPage directorio =null;
+    ProfilePage profile =null;
     LoginPage login=null;
     BasePage page=null;
     MuroSocialPage muro=null;
@@ -47,11 +47,11 @@ public class SearchUserTest  extends AndroidSetup{
     }
 
     @Test
-    public void searchForUser() throws InterruptedException {
+    public void postUserProfile() throws InterruptedException {
     
     	// Init pages
     	
-   	 directorio = new DirectorioPage(driver); 
+   	 profile = new ProfilePage(driver); 
    	 login = new LoginPage(driver);
    	 page =new BasePage(driver);
    	 muro = new MuroSocialPage(driver);
@@ -61,16 +61,23 @@ public class SearchUserTest  extends AndroidSetup{
      login.loginToGoAsUSerBasic();
      page.goToMenu();
      Thread.sleep(2000);
-     page.goToDirectorio();
+     page.goToProfile();
+     Thread.sleep(5000);
+     profile.goToMuroProfile();
+     Thread.sleep(5000);
+     muro.goToCreatePost();
+     Thread.sleep(5000);
+     muro.postTexto(muro.randomString(200)+"    "+muro.randomString(100)+"        "+muro.randomString(100)+"    "+muro.randomString(200));
+     Thread.sleep(8000);
+     muro.postear();
+     Thread.sleep(3000);
+     muro.likearPost();
+     Thread.sleep(3000);
+     muro.comentarFIrstPost(" Comento el post con el mismo user");
+      Thread.sleep(3000);
+      muro.likearComment();
       Thread.sleep(5000);
-      directorio.search("User Mobile");   
-     Thread.sleep(5000);
-     directorio.goToFirstProfileUser();
-     Thread.sleep(5000);
-    
-     
-   
-         
+          
     }
 
 }

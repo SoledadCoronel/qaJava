@@ -21,7 +21,7 @@ public class Post500CharsAC extends TestSuite {
 	MuroSocialPage muro=null;
 	EspacioPage espacio=null;
 	LoginPage login =null;
-	//js javascriptExecutor =null;
+	
 	
 	private String iconoEmpresa=".igospaceadmin";
 	
