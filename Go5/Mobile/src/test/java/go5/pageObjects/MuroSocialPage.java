@@ -294,8 +294,8 @@ import org.testng.Reporter;
 	     public void postLink (String strlink){
 	    	 Reporter.log("Posteo un link");
 	    	  driver.findElement(link).click();
-	    	  driver.findElement(By.cssSelector(".active input")).sendKeys(strlink);
-	    	  driver.findElement(By.cssSelector(".active input")).sendKeys(Keys.ENTER);
+	    	  driver.findElement(By.cssSelector(".url input")).sendKeys(strlink);
+	    	  driver.findElement(By.cssSelector(".url input")).sendKeys(Keys.ENTER);
 	    	    	 
 	    }
     }
