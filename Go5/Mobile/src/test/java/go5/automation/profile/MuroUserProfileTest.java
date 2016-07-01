@@ -6,12 +6,14 @@ package go5.automation.profile;
 import go5.automation.driver.AndroidSetup;
 
 
+
 //junit
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 //Pages
+
 
 
 import go5.pageObjects.*;
@@ -22,12 +24,13 @@ import go5.pageObjects.*;
 
 
 
-public class EditUserProfileTest  extends AndroidSetup{
+public class MuroUserProfileTest  extends AndroidSetup{
   
     
     ProfilePage profile =null;
     LoginPage login=null;
     BasePage page=null;
+    MuroSocialPage muro=null;
 
    
     @Before
@@ -44,13 +47,14 @@ public class EditUserProfileTest  extends AndroidSetup{
     }
 
     @Test
-    public void editProfileUser() throws InterruptedException {
+    public void postUserProfile() throws InterruptedException {
     
     	// Init pages
     	
    	 profile = new ProfilePage(driver); 
    	 login = new LoginPage(driver);
    	 page =new BasePage(driver);
+   	 muro = new MuroSocialPage(driver);
        
    
        // Test
@@ -58,16 +62,22 @@ public class EditUserProfileTest  extends AndroidSetup{
      page.goToMenu();
      Thread.sleep(2000);
      page.goToProfile();
-     Thread.sleep(2000);
-     profile.editarProfile();
-      profile.agregarDatosLaborales();
+     Thread.sleep(5000);
+   
+  
+     profile.goToMuroProfile();
+     Thread.sleep(5000);
+     muro.goToCreatePost();
+     Thread.sleep(5000);
+     muro.postTexto("Test post en muro social profile mobile");
+      Thread.sleep(5000);
+     muro.postear();
      Thread.sleep(3000);
-      profile.agregarDatosPersonales();
-      Thread.sleep(3000);
-     profile.agregarRedesSociales();
-     driver.hideKeyboard();
+     muro.likearPost();
      Thread.sleep(3000);
-     profile.grabarUsuario();
+     muro.comentarFIrstPost(" Comento el post con el mismo user");
+     Thread.sleep(3000);
+     
     
      
          

@@ -2,15 +2,12 @@ package go5.pageObjects;
 
 
 
-import go5.automation.TestSuite;
-
-import java.io.File;
 import java.util.Random;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -24,7 +21,7 @@ import org.testng.asserts.SoftAssert;
 
     	//Css
     	//  Generales
-    	protected String editFoto = "#photoFileDrop";
+    	protected String irAMuroSocial = ".title menu li:nth-child(2) button";
  	 	protected String editarProfile="header .edit";
 	   	protected String agrandarForm = ".addpeople fieldset:nth-child(2) .secondary";
 	   	protected String grabarUser = ".saveform .primary";    	    	
@@ -122,6 +119,11 @@ import org.testng.asserts.SoftAssert;
       public void pressCambiarFoto(){
     	  
       }
+      
+      public void goToMuroProfile(){
+    	  driver.findElement(By.cssSelector(irAMuroSocial)).click();
+      }
+      
       
     	  public void editarProfile(){
     	  Reporter.log("Editar perfil");

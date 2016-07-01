@@ -10,19 +10,22 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 
   
     
     
-    public class MuroSocialPage extends TestSuite{
+    public class MuroSocialPage {
 
     		
     	
     	//Css
     	
      //Generics	
+    	protected String irAPublicarCss=".socialcomments .type";
     	protected String publicarContenidoCss="fieldset .primary";
     	protected String iconcss=".icon";
     	protected String date= ".posttex :nth-child(n) p time";
@@ -32,18 +35,19 @@ import org.testng.Reporter;
      //postear, comentar, responder
     	protected String textAreaPostcss= ".postbox fieldset:nth-child(1) label:nth-child(2) div"; //.at
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
-        protected String textofirstPostcss= ".posttext:nth-child(3) div:nth-child(2) p";
+        protected String textofirstPostcss= ".posttext:nth-child(2) .peoplepost p";
         protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
         
-        protected String commentFirstPostcss=".posttext:nth-child(3) .actions .igocomments";
-        protected String commentInputcss =".posttext:nth-child(3) .commentsform fieldset div";
+        protected String commentFirstPostcss=".posttext:nth-child(2) .actions .igocomments";
+        protected String sendCommentcss=".btnsend";
+        protected String commentInputcss =".commentsform fieldset div";
         protected String arbirResponderCommentFirstPstscss=".posttext:nth-child(3) .commentsitem .socials a:nth-child(3) ";
         protected String reponderCommentFirstPostcss=".posttext:nth-child(3) .commentsitem .commentsform fieldset div";
         protected String showMoreCommentscss=".link showmore";
        
     	//Likes
     
-        protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
+        protected String likeFirstPostcss=".posttext:nth-child(2) .actions .igolikewhite";
         protected String likeFirstCommentcss=".posttext:nth-child(3) .commentsitem .igolike";
         protected String likeReponseCommentcss=".posttext:nth-child(3) .commentsreplay .socials .igolike ";
         protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
@@ -73,6 +77,7 @@ import org.testng.Reporter;
  	   
     	//By
         //Generics	
+        By irApublicar=By.cssSelector(irAPublicarCss);
         By publicarContenido = By.cssSelector(publicarContenidoCss);
         By icon =By.cssSelector(iconcss);  
         By timePost=By.cssSelector(timefirstPostcss);
@@ -83,6 +88,7 @@ import org.testng.Reporter;
         By textPost =By.cssSelector(textAreaPostcss);
     	By textPosteado=By.cssSelector(textofirstPostcss);
     	 By commentFirstPost=By.cssSelector(commentFirstPostcss);
+    	 By sendComment=By.cssSelector(sendCommentcss);
          By comment = By.cssSelector(commentInputcss);
          By responseCommentFirstPost=By.cssSelector(reponderCommentFirstPostcss);
          By abrirReponderComment=By.cssSelector(arbirResponderCommentFirstPstscss);
@@ -127,7 +133,9 @@ import org.testng.Reporter;
   
     //Generics    
        
-    
+    public void goToCreatePost(){
+    	driver.findElement(irApublicar).click();
+    }
 		
      private String setcssPost(Integer p ){
     	 //Buscar un post viejo
@@ -275,8 +283,10 @@ import org.testng.Reporter;
 	  public void comentarFIrstPost(String strCommentPost){
 		  Reporter.log("Comentar en el primer post");
 		  driver.findElement(commentFirstPost).click();
+		  WebDriverWait wait = new WebDriverWait(driver, 20);
+           wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(commentInputcss)));
 		  driver.findElement(comment).sendKeys(strCommentPost);
-		  driver.findElement(comment).sendKeys(Keys.ENTER);
+		 driver.findElement(sendComment).click();
 	  }
     
 	 
@@ -288,29 +298,9 @@ import org.testng.Reporter;
 	    	  driver.findElement(By.cssSelector(".active input")).sendKeys(Keys.ENTER);
 	    	    	 
 	    }
-       
-	     public void postFile(){
-	     	
-	    	 js=  (JavascriptExecutor) driver;
-	    	   	
-	    //	driver.findElement(selectCameraOrPicture).click();
-	    	 
-	    	   WebElement element = driver.findElement(subirFoto);
-			  js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
-		          
-		      //Agarrar el elemento para cargar el file y pasarle el path 
-		       
-		        WebElement subirFile = driver.findElement(subirFoto);
-		               
-		        File file= new File("src/test/resources/Girasol.jpeg");
-		        subirFile.sendKeys(file.getAbsolutePath());
-		       
-			    Reporter.log(" Foto cargada exitosamente");
-	    }
-
-		
-    
     }
+       	
+        
     
     
       

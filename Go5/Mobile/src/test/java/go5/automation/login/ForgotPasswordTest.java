@@ -38,7 +38,7 @@ public class ForgotPasswordTest  extends AndroidSetup{
     public void tearDown() throws Exception {
         driver.quit();
     }
-/*
+
     @Test
     public void forgotPasswordWrongEmail() throws InterruptedException {
     
@@ -55,7 +55,7 @@ public class ForgotPasswordTest  extends AndroidSetup{
    	 login.pressSendForgotPassword();
        Thread.sleep(13000);
     }     
-       */
+      
        @Test
        public void forgotPasswordWrongFormat() throws InterruptedException {
        
