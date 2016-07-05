@@ -2,18 +2,18 @@ package go5.pageObjects;
 
 
 
+import java.io.File;
 import java.security.SecureRandom;
 
-
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
-
+import io.appium.java_client.pagefactory.AndroidFindAll;
 
   
     
@@ -32,7 +32,7 @@ import org.testng.Reporter;
     	 protected String irAActividadSocialcss=".content menu li:first-child a";
          protected String irAMiembroscss=".content menu li:nth-child(2) a";
     	
-     //postear, comentar, responder
+     //postear, comentar, responder, eliminar
     	protected String textAreaPostcss= ".postbox fieldset:nth-child(1) label:nth-child(2) div"; //.at
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
         protected String textofirstPostcss= ".posttext:nth-child(2) .peoplepost p";
@@ -44,6 +44,7 @@ import org.testng.Reporter;
         protected String arbirResponderCommentFirstPstscss=".comments .socials button:nth-child(3)";
         protected String reponderCommentFirstPostInputcss=".commentsform fieldset div";
         protected String showMoreCommentscss=".link showmore";
+        protected String selecteliminarPostcss=".posttext:nth-child(2) .btnoptions";
        
     	//Likes
     
@@ -66,14 +67,15 @@ import org.testng.Reporter;
     	protected String linkVerMascss=".posttext:nth-child(3) div:nth-child(2) .link";
         
     	//attachments    	
-    	protected String cameraOrPicturePostcss=".igocamerawhite";
-    	protected String cameracss=".igocamera";
-    	protected String subirFotocss=".postbox .menuoptions label:last-child";
-    	protected String abrirModalAdjuntarArchivocss=".igoattach";
+    	protected String loadPicturePostcss=".igopicturewhite";
+    	protected String cameracss=".igocamerawhite";
+    	protected String subirFotocss=".post .primary";
+    	
     
               
         //Others
         static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        protected JavascriptExecutor js;
  	   
     	//By
         //Generics	
@@ -84,7 +86,7 @@ import org.testng.Reporter;
         By irAActividadSocial=By.cssSelector(irAActividadSocialcss);
         By irAMiembros = By.cssSelector(irAMiembroscss);
         
-      //postear, comentar, responder
+      //postear, comentar, responder,eliminar
         By textPost =By.cssSelector(textAreaPostcss);
     	By textPosteado=By.cssSelector(textofirstPostcss);
     	 By commentFirstPost=By.cssSelector(commentFirstPostcss);
@@ -92,6 +94,7 @@ import org.testng.Reporter;
          By comment = By.cssSelector(commentInputcss);
          By responseCommentFirstPost=By.cssSelector(reponderCommentFirstPostInputcss);
          By abrirReponderComment=By.cssSelector(arbirResponderCommentFirstPstscss);
+         By selectEliminarPost=By.cssSelector(selecteliminarPostcss);
          
     	
     	
@@ -114,8 +117,8 @@ import org.testng.Reporter;
     	
     	//attachments      	
            
-        By selectCameraOrPicture= By.cssSelector(cameraOrPicturePostcss);
-        By subirFoto=By.cssSelector(subirFotocss);
+        By loadFile= By.cssSelector(loadPicturePostcss);
+        By loadPicture=By.cssSelector(subirFotocss);
       
         
     	static SecureRandom rnd = new SecureRandom();
@@ -130,7 +133,7 @@ import org.testng.Reporter;
     	    	 
     	        this.driver = driver;
      }
-  
+   PageFactory.
     //Generics    
        
     public void goToCreatePost(){
@@ -298,7 +301,27 @@ import org.testng.Reporter;
 	    	  driver.findElement(By.cssSelector(".url input")).sendKeys(Keys.ENTER);
 	    	    	 
 	    }
+	     public void postFile () throws InterruptedException{
+	    	 Reporter.log("Posteo una imagen subida como un file");
+	    	 
+	    	  	 js=  (JavascriptExecutor) driver;
+	        
+	    	  	 	driver.findElement(loadFile).click();
+	    	  	 WebElement fileInput = driver.findElement(By.cssSelector(".imgpost img"));
+	    	  		fileInput.sendKeys("C://home/marinatouceda/Imágenes/Sunflower.jpeg");
+	        	 		 // js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);	    	      
+	    	        Thread.sleep(6000);	    	      
+	    		    Reporter.log(" Foto cargada exitosamente");
+	        	    	 
+	    
     }
+
+		public void eliminarPost() {
+		driver.findElement(selectEliminarPost).click();
+		
+			
+		}
+    }  
        	
         
     

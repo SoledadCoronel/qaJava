@@ -3,7 +3,13 @@ package go5.automation.profile;
 
 
 //driver
+import io.appium.java_client.android.AndroidElement;
+
+import java.util.List;
+
 import go5.automation.driver.AndroidSetup;
+
+
 
 
 
@@ -15,6 +21,9 @@ import org.junit.Test;
 //Pages
 
 
+
+
+import org.openqa.selenium.WebElement;
 
 import go5.pageObjects.*;
 
@@ -55,9 +64,8 @@ public class MuroUserProfileTest  extends AndroidSetup{
    	 login = new LoginPage(driver);
    	 page =new BasePage(driver);
    	 muro = new MuroSocialPage(driver);
-       
-   
-       // Test
+        
+          // Test
      login.loginToGoAsUSerBasic();
      page.goToMenu();
      Thread.sleep(2000);
@@ -69,23 +77,34 @@ public class MuroUserProfileTest  extends AndroidSetup{
      Thread.sleep(5000);
      muro.goToCreatePost();
      Thread.sleep(5000);
-     muro.postTexto("Test post en muro social profile mobile");
+     muro.postTexto("Post a ser borrado");
       Thread.sleep(5000);
      muro.postear();
      Thread.sleep(3000);
-     muro.likearPost();
+  /*   muro.likearPost();
      Thread.sleep(3000);
      muro.comentarFIrstPost(" Comento el post con el mismo user");
       Thread.sleep(3000);
       muro.likearComment();
-      Thread.sleep(5000);
-   /*  muro.responderComment(" Respondo al comment del post");
-     Thread.sleep(3000);
-     muro.likearResponseComment();
-     Thread.sleep(5000);
-     
-    */
-     
+      Thread.sleep(5000);*/
+      //muro.eliminarPost();
+     driver.findElementByCssSelector(".posttext:nth-child(2) .btnoptions").click();
+     	Thread.sleep(2000);
+       driver.context("NATIVE_APP");
+       System.out.println(driver.getContext());
+     //Clickear options del post
+     //  driver.findElementByCssSelector(".posttext:nth-child(2) .btnoptions").click();
+       Thread.sleep(5000);
+       List<WebElement> lista = driver.findElementsByAndroidUIAutomator("new UiSelector().clickable(true)");
+       System.out.println(lista.get(0).getText());
+       lista.get(0).click();
+       Thread.sleep(3000);
+       List<WebElement> lista2 = driver.findElementsByAndroidUIAutomator("new UiSelector().clickable(true)");
+       System.out.println(lista.get(0).getText());
+       
+       lista2.get(1).click();
+      
+       Thread.sleep(5000);
          
     }
 

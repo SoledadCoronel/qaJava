@@ -30,14 +30,13 @@ public class AndroidSetup {
           
           capabilities.setCapability("deviceName","Android Emulator");            
           capabilities.setCapability("platformVersion", "5.1.1");//  es el mobile OS version, si instalo api22 es 5.1.1
-          capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.11.34.apk");
+          capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.11.37.apk");
           capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
          
          driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
       
           //Set to  hybrid
-          
-      	
+           	
           Set<String> contextNames = driver.getContextHandles();
           
          for (String contextName : contextNames) {
@@ -45,5 +44,17 @@ public class AndroidSetup {
               if (contextName.contains("WEBVIEW")){
                   driver.context(contextName);             }
          }
-}
+	}
+	 public void changeToNative(String strtype){
+	
+		   	
+         Set<String> contextNames = driver.getContextHandles();
+         
+        for (String contextName : contextNames) {
+             System.out.println(contextName);
+             if (contextName.contains(strtype)){
+                 driver.context(contextName);             }
+        }
+		 
+	}
 }
