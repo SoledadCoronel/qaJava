@@ -72,7 +72,6 @@ public class MuroUserProfileTest  extends AndroidSetup{
      page.goToProfile();
      Thread.sleep(5000);
    
-  
      profile.goToMuroProfile();
      Thread.sleep(5000);
      muro.goToCreatePost();
@@ -100,11 +99,9 @@ public class MuroUserProfileTest  extends AndroidSetup{
        lista.get(0).click();
        Thread.sleep(3000);
        List<WebElement> lista2 = driver.findElementsByAndroidUIAutomator("new UiSelector().clickable(true)");
-       System.out.println(lista.get(0).getText());
-       
-       lista2.get(1).click();
-      
-       Thread.sleep(5000);
+       System.out.println(lista.get(1).getText());
+        lista2.get(1).click();
+         Thread.sleep(5000);
          
     }
 
