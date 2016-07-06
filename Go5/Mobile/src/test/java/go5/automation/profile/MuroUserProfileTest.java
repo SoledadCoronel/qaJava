@@ -86,8 +86,8 @@ public class MuroUserProfileTest  extends AndroidSetup{
       Thread.sleep(3000);
       muro.likearComment();
       Thread.sleep(5000);*/
-      //muro.eliminarPost();
-     driver.findElementByCssSelector(".posttext:nth-child(2) .btnoptions").click();
+     muro.eliminarPost();
+    // driver.findElementByCssSelector(".posttext:nth-child(2) .btnoptions").click();
      	Thread.sleep(2000);
        driver.context("NATIVE_APP");
        System.out.println(driver.getContext());

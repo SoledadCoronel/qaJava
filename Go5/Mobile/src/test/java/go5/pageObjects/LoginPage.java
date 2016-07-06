@@ -25,9 +25,15 @@ import org.testng.Assert;
     	protected String inputSubdominio=".signup fieldset label:nth-child(4) input";
     	protected static String goButton = new String (".signup .primary");
     	protected String forgotPasswordLinkCss= ".signup fieldset label:nth-child(5) .link ";
-    	protected String inputmailForgotPasswordCss=".signup fieldset label:nth-child(3) input";
-    	protected String enviarForgotPasswordCss=".signup fieldset label:nth-child(4) .primary";
-    	protected String emailNotRegisteredCss= ".signup fieldset:first-child .reject";
+    	protected String inputmailForgotPasswordCss=".signup fieldset label input";
+    	protected String inputSubdomainForgotPasswordCss=".signup fieldset label:nth-child(2) input";
+    	protected String enviarForgotPasswordCss=".primary";
+    	protected String emailNotRegisteredCss= ".signup fieldset .reject";
+    	protected String emailFormatcss=".signup fieldset .reject strong";
+    	protected String logocss="fieldset legend";
+    	
+    	
+    	
     	
     	By userName =By.cssSelector(inputmailLogin);
     	By password =By.cssSelector(inputPasswordLogin);
@@ -36,8 +42,11 @@ import org.testng.Assert;
     	By title = By.cssSelector(".session legend");
     	By forgotPasswordLink= By.cssSelector(forgotPasswordLinkCss);
     	By inputmailForgotPassword=By.cssSelector(inputmailForgotPasswordCss);
+    	By inputSubdomainForgotPassword=By.cssSelector(inputSubdomainForgotPasswordCss);
     	By enviarForgotPassword= By.cssSelector(enviarForgotPasswordCss);
     	By emailNotRegistered=By.cssSelector(emailNotRegisteredCss);
+    	By emailFormat=By.cssSelector(emailFormatcss);
+    	By logo=By.cssSelector(logocss);
     	
     	
     	 protected WebDriver driver;
@@ -204,7 +213,21 @@ import org.testng.Assert;
         public void validateErrorEmail(){
         	Assert.assertEquals(driver.findElement(emailNotRegistered).getText(),"El email ingresado no se encuentra registrado. Por favor vuelve a intentarlo");
         }
-         }
+        
+        public void validateFormatEmail(){
+        	System.out.println(driver.findElement(emailFormat).getText());
+        }
+
+		public void insertSubdomainForgotPassword(String strdomain) {
+		 driver.findElement(inputSubdomainForgotPassword).sendKeys(strdomain);
+			
+		}
+		
+        public void clickearLogo(){
+        	driver.findElement(logo).click();
+        }
+    
+    }
 
 
 

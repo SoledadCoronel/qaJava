@@ -57,19 +57,7 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
      login.loginToGoAsUSerBasic();
      page.goToMenu();
      Thread.sleep(2000);
-     page.goToProfile();
-     Thread.sleep(2000);
-     profile.editarProfile();
-      profile.agregarDatosLaborales();
-     Thread.sleep(3000);
-      profile.agregarDatosPersonales();
-      Thread.sleep(3000);
-     profile.agregarRedesSociales();
-     driver.hideKeyboard();
-     Thread.sleep(3000);
-     profile.grabarUsuario();
-    
-     
+     page.goToConfigurarCuenta();
          
     }
 

@@ -133,7 +133,7 @@ import io.appium.java_client.pagefactory.AndroidFindAll;
     	    	 
     	        this.driver = driver;
      }
-   PageFactory.
+   
     //Generics    
        
     public void goToCreatePost(){
@@ -312,7 +312,8 @@ import io.appium.java_client.pagefactory.AndroidFindAll;
 	        	 		 // js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);	    	      
 	    	        Thread.sleep(6000);	    	      
 	    		    Reporter.log(" Foto cargada exitosamente");
-	        	    	 
+	    		    // html para hacer visible 
+	   /* 		    <figure class="imgpost"><button title="Cancela la captura de la foto" class="close">Cerrar</button><img width="768" height="434" title="NOMBRE DE LA IMAGEN" class="imgresponsive" alt="Descripción significativa de la imagen, en caso contrario dejar vacío" src="images/jpg/picture768x434.jpg"></figure> */ 	 
 	    
     }
 
