@@ -144,7 +144,7 @@ public class TestSuite {
 					 Reporter.log(" Login como usuerio bascio exitoso");
 	   }
 	   
-	   public void setUpBrowserStack(String browser, String version, String platform,String url,String build) throws Exception {
+	   public void setUpBrowserStack(String browser, String version, String platform,String url,String build,String testName) throws Exception {
 		    DesiredCapabilities capability = new DesiredCapabilities();
 		    capability.setCapability("platform",platform);
 		    capability.setCapability("browserName", browser);
@@ -152,7 +152,7 @@ public class TestSuite {
 		    capability.setCapability("project", "GOIntegro");
 		    capability.setCapability("build", build);
 		    capability.setCapability("debug", false);
-		    driver = new RemoteWebDriver(
+		     driver = new RemoteWebDriver(
 		    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
 		    	      capability);
     

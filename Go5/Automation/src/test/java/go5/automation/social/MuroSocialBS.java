@@ -12,7 +12,7 @@ public class MuroSocialBS extends MuroSocialAC {
 	@BeforeClass
 	  @Parameters(value={"browser","version","platform","url","build"})
 	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.setUpBrowserStack(browser, version, platform, url,build);
+		this.setUpBrowserStack(browser, version, platform, url,build,"Test de Muro Social");
 	
 }
 

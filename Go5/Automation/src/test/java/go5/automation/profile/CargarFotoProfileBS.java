@@ -16,7 +16,7 @@ public class CargarFotoProfileBS extends CargarFotoProfile {
 	 @BeforeClass
 	  @Parameters(value={"browser","version","platform","url","build"})
 	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.setUpBrowserStack(browser, version, platform, url,build);
+		this.setUpBrowserStack(browser, version, platform, url,build,"Test de cargar foto profile");
 		((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
 	
  }
