@@ -3,7 +3,10 @@ package go5.automation.profile;
 
 
 //driver
+import io.appium.java_client.TouchAction;
 import go5.automation.driver.AndroidSetup;
+
+
 
 
 //junit
@@ -13,6 +16,9 @@ import org.junit.Test;
 
 //Pages
 
+
+
+import org.openqa.selenium.WebElement;
 
 import go5.pageObjects.*;
 
@@ -25,7 +31,7 @@ import go5.pageObjects.*;
 public class ConfigurarCuentaTest  extends AndroidSetup{
   
     
-    ProfilePage profile =null;
+    
     LoginPage login=null;
     BasePage page=null;
 
@@ -48,7 +54,7 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
     
     	// Init pages
     	
-   	 profile = new ProfilePage(driver); 
+   
    	 login = new LoginPage(driver);
    	 page =new BasePage(driver);
        
@@ -57,7 +63,14 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
      login.loginToGoAsUSerBasic();
      page.goToMenu();
      Thread.sleep(2000);
-     page.goToConfigurarCuenta();
+    page.goToConfigurarCuenta();
+    /* 
+    TouchAction action = new TouchAction(driver);
+    WebElement element = driver.findElementByCssSelector("space:last-child li:nth-child(2) a");
+   // action.press(element);
+    action.moveTo(25, 50);
+   */
+    Thread.sleep(4000);
          
     }
 
