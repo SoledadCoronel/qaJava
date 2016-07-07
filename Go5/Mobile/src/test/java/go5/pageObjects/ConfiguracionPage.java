@@ -19,7 +19,7 @@ import org.testng.Reporter;
     	
     	private String datosBasicoscss = ".basicata";
     	
-        
+        private String setPasswordcss=".igopasswordwhite";
         private String selectIdiomacss = ".basicdata fieldset label:nth-child(1) select";
         private String selectTimezonecss = ".basicdata fieldset label:nth-child(2) select";
        
@@ -27,6 +27,7 @@ import org.testng.Reporter;
         //References
         By selectIdioma=By.cssSelector(selectIdiomacss);
         By selectTimeZone=By.cssSelector(selectTimezonecss);
+        By setPassword = By.cssSelector(setPasswordcss);
        
         protected WebDriver driver;
     
@@ -63,8 +64,12 @@ import org.testng.Reporter;
 
          }
     	  
-          
-        
+          public void goTosetPassword(){
+        	  driver.findElement(setPassword).click();
+          }
+        public void setPassword(){
+        	
+        }
     
       }
   
