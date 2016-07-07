@@ -31,7 +31,7 @@ import go5.pageObjects.*;
 public class ConfigurarCuentaTest  extends AndroidSetup{
   
     
-    
+    ConfiguracionPage config=null;
     LoginPage login=null;
     BasePage page=null;
 
@@ -57,6 +57,7 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
    
    	 login = new LoginPage(driver);
    	 page =new BasePage(driver);
+   	 config= new ConfiguracionPage(driver);
        
    
        // Test
@@ -64,6 +65,11 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
      page.goToMenu();
      Thread.sleep(2000);
     page.goToConfigurarCuenta();
+    config.setIdioma();
+    config.setTimezone();
+    config.goTosetPassword();
+    config.setPassword("Auto1234");
+    
     /* 
     TouchAction action = new TouchAction(driver);
     WebElement element = driver.findElementByCssSelector("space:last-child li:nth-child(2) a");
