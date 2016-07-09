@@ -23,6 +23,7 @@ import org.testng.Reporter;
         private String selectIdiomacss = ".basicdata fieldset label:nth-child(1) select";
         private String selectTimezonecss = ".basicdata fieldset label:nth-child(2) select";
         private String inputPasswordcss=".basicdata fieldset label:nth-child(2) input";
+        private String guardarCambioscss=".primary";
        
     	
         //References
@@ -30,6 +31,7 @@ import org.testng.Reporter;
         By selectTimeZone=By.cssSelector(selectTimezonecss);
         By setPassword = By.cssSelector(setPasswordcss);
         By inputPassword=By.cssSelector(inputPasswordcss);
+        By gurardarCambios= By.cssSelector(guardarCambioscss);
        
         protected WebDriver driver;
     
@@ -73,7 +75,10 @@ import org.testng.Reporter;
         	driver.findElement(inputPassword).sendKeys(strPassword);
         }
     
-      }
+     public void guardarCambios(){
+    	 driver.findElement(gurardarCambios).click();
+     }
+    }
   
     
     

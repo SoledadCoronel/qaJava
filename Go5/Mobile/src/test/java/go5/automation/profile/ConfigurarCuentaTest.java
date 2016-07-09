@@ -66,9 +66,11 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
      Thread.sleep(2000);
     page.goToConfigurarCuenta();
     config.setIdioma();
+    config.guardarCambios();
     config.setTimezone();
     config.goTosetPassword();
     config.setPassword("Auto1234");
+    config.guardarCambios();
     
     /* 
     TouchAction action = new TouchAction(driver);
