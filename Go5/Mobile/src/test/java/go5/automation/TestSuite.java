@@ -4,7 +4,7 @@ package go5.automation;
 
 
 import go5.pageObjects.LoginPage;
-import go5.pageObjects.SignupPlatformPage;
+
 
 import java.net.URL;
 import java.util.Set;
@@ -35,7 +35,7 @@ public class TestSuite {
 	
 	LoginPage login = null;
 	protected JavascriptExecutor js;
-	protected SignupPlatformPage signup =null;
+	
 		
 	//Declaracion de variables	
 	
