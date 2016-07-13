@@ -100,6 +100,7 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+   //test
     public void scrollPageUp() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         HashMap<String, Double> swipeObject = new HashMap<String, Double>();

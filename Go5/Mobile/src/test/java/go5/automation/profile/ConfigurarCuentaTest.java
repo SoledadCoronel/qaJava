@@ -74,6 +74,7 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
     Thread.sleep(2000);
     config.guardarCambios();
     
+    
     /* 
     TouchAction action = new TouchAction(driver);
     WebElement element = driver.findElementByCssSelector("space:last-child li:nth-child(2) a");
