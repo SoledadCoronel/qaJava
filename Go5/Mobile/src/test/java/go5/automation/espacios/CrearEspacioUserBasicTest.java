@@ -3,9 +3,7 @@ package go5.automation.espacios;
 
 
 //driver
-import io.appium.java_client.android.AndroidElement;
 
-import java.util.List;
 
 import go5.automation.driver.AndroidSetup;
 
@@ -22,21 +20,15 @@ import org.junit.Test;
 //Pages
 
 
-
-import org.openqa.selenium.WebElement;
-import org.testng.Reporter;
-
-import go5.pageObjects.*;
-
-
+import go5.pageObjects.LoginPage;
+import go5.pageObjects.BasePage;
+import go5.pageObjects.EspacioPage;
 
 
 
 public class CrearEspacioUserBasicTest  extends AndroidSetup{
  
-     private String wrongEmail= "cualquiera@gointegro.com";
-     private String numericEmail= "11212232";
-     private String validEmail="marina.touceda@gointegro.com";
+    
      LoginPage login=null;
      BasePage base=null;
      EspacioPage space=null;

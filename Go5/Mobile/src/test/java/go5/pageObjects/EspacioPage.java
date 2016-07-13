@@ -2,7 +2,6 @@ package go5.pageObjects;
 
 
 
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -17,7 +16,7 @@ import org.testng.Reporter;
 
     	//Css
     	
-    	private String crearEspacio = ".plus";
+    	private String crearEspacio = "#sidebar  div:nth-child(3) .plus";
     	private String espacioPublico = (".igounlock");
     	private String espacioPrivado = (".igolock");
     	private String espacioEmpresa = (".igocompany");
@@ -46,7 +45,7 @@ import org.testng.Reporter;
     	protected String secondName = new String(".tables tbody tr:nth-child(2) td:nth-child(2) a");
         protected String buscarEspacio= ".actions .btnsearch";
         protected String inputSearch =".actions .search input";
-        protected String irASpaces = ".plus";
+        protected String irASpaces = "#sidebar  div:nth-child(3) a";
        
     	
     	WebDriver driver;

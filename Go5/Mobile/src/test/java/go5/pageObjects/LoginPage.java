@@ -37,6 +37,7 @@ import org.testng.Assert;
     	
     	By userName =By.cssSelector(inputmailLogin);
     	By password =By.cssSelector(inputPasswordLogin);
+    	By inputSubdomain=By.cssSelector(inputSubdominio);
     	By userBasic = By.cssSelector(strUsernameUserBasic);
     	By go=By.cssSelector(goButton);
     	By title = By.cssSelector(".session legend");
@@ -169,6 +170,9 @@ import org.testng.Assert;
              //Fill password
       
              this.setPassword(strPassword);
+             
+             //Fill in Domain
+            
       
              //Click Login button
       
@@ -179,9 +183,8 @@ import org.testng.Assert;
          public void loginToGoAsUSerBasic(){
           	  // Wait until the page is loaded
         	 
-        	 WebDriverWait wait = new WebDriverWait(driver, 20);
-             
-             wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
+        	
+
              //Fill user name
         	 this.setUserName(strUsernameUserBasic);
              
@@ -195,6 +198,11 @@ import org.testng.Assert;
              this.clickLogin();
 
          }
+         
+         public void insertSubdomainLogin(String strdomain) {
+    		 driver.findElement(inputSubdomain).sendKeys(strdomain);
+    			
+    		}
         public void goToForgotPassword(){
         	driver.findElement(forgotPasswordLink).click();
         	WebDriverWait wait = new WebDriverWait(driver, 20);
