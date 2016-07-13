@@ -17,7 +17,7 @@ import org.testng.Reporter;
 
     	//Css
     	
-    	private String crearEspacio = new String (".title .primary");
+    	private String crearEspacio = ".plus";
     	private String espacioPublico = (".igounlock");
     	private String espacioPrivado = (".igolock");
     	private String espacioEmpresa = (".igocompany");
@@ -46,7 +46,7 @@ import org.testng.Reporter;
     	protected String secondName = new String(".tables tbody tr:nth-child(2) td:nth-child(2) a");
         protected String buscarEspacio= ".actions .btnsearch";
         protected String inputSearch =".actions .search input";
-        protected String irASpaces = ".wrapper .space:nth-child(4) li:first-child a";
+        protected String irASpaces = ".plus";
        
     	
     	WebDriver driver;
