@@ -23,6 +23,7 @@ public class BasePage {
     protected String irAProfileCss=".igouserwhite";
     protected String logoutCss=".space:last-child li:last-child a";
     protected String goToConfigurarCuentacss=".space:last-child li:nth-child(2) a";
+    protected String verMasCss=".space:nth-child(3) li:last-child a ";
     
   
     //Navegabilidad
@@ -36,6 +37,7 @@ public class BasePage {
     By logout=By.cssSelector(logoutCss);
     By goBack=By.cssSelector(goBackCss);
     By goToConfigurarCuenta=By.cssSelector(goToConfigurarCuentacss);
+    By goToVerMas=By.cssSelector(verMasCss);
     
     
     // Constructor
@@ -75,6 +77,13 @@ public class BasePage {
     public void goToConfigurarCuenta(){
     	driver.findElement(goToConfigurarCuenta).click();
     }
+    
+    public void goToVerMas(){
+    driver.findElement(goToVerMas).click();
+    WebDriverWait wait = new WebDriverWait(driver, 20);
+    wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".igorecomendationwhite")));
+    }
+    
     
     public void logout () throws InterruptedException{
     	this.goToMenu();
