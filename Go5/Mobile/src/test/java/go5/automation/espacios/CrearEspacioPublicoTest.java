@@ -67,7 +67,7 @@ public class CrearEspacioPublicoTest  extends AndroidSetup{
     	   login = new LoginPage(driver);
     	   base = new BasePage(driver);
     	   space= new EspacioPage(driver);
-    	
+    	  String strIcono=".igospacebanana";
     	 //Test  
     	/*   WebDriverWait wait = new WebDriverWait(driver, 20);
            
@@ -98,6 +98,7 @@ public class CrearEspacioPublicoTest  extends AndroidSetup{
     	   Thread.sleep(4000);
            space.setNameEspacio("Mobile");
            space.setDescriptionEspacio("Espacio mobile");
+           space.cambiarIcono(strIcono);
            driver.hideKeyboard();
            Thread.sleep(3000);
            space.grabarEspacio();

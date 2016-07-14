@@ -161,8 +161,9 @@ import org.testng.Assert;
   
  
  
-         public void loginToGoAsAdminEspacios(){
+         public void loginToGoAsAdminEspacios(String strsubdomain) throws InterruptedException{
        	  
+        	 
              //Fill user name
         	 this.setUserName(strUsernameAdminEspacios);
              
@@ -172,7 +173,9 @@ import org.testng.Assert;
              this.setPassword(strPassword);
              
              //Fill in Domain
+            Thread.sleep(3000);
             
+            this.insertSubdomainLogin(strsubdomain);
       
              //Click Login button
       

@@ -24,12 +24,12 @@ import org.testng.Reporter;
     	private String descripcionEspacio= (".spacecreate fieldset:nth-child(1) label:nth-child(2) input");
     	private String activarEspacio =  (".spaceformconfig label:nth-child(2) span");
     	private String activadadSocial = (".spaceformconfig label:nth-child(3) span");
-    	private String cambiarIcono = (".spaceformconfig label:nth-child(4) a");
+    	private String cambiarIcono = ".spacecreate .igospaceadmin";
     	private String iconoOso= (".igospacebear");
     	private String iconoBasket= (".igospacebasket");
     	private String iconoBanana=  (".igospacebanana");
   
-       	protected String grabarEspacio= new String (".spacecreate .primary");
+       	protected String grabarEspacio= new String (".saveform .primary");
     	protected String ordenTipo = new String (".tables thead tr th:nth-child(1) a");
     	protected String ordenNombre = new String (".tables thead tr th:nth-child(2) a");
     	protected String ordenDescripcion = new String (".tables thead tr th:nth-child(3) a");
