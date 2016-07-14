@@ -69,7 +69,7 @@ public class CrearEspacioPublicoTest  extends AndroidSetup{
     	   space= new EspacioPage(driver);
     	
     	 //Test  
-    	   WebDriverWait wait = new WebDriverWait(driver, 20);
+    	/*   WebDriverWait wait = new WebDriverWait(driver, 20);
            
            wait.until(ExpectedConditions.elementToBeClickable(By.tagName("BUTTON")));
          
@@ -90,15 +90,18 @@ public class CrearEspacioPublicoTest  extends AndroidSetup{
 
            WebElement title = driver.findElement(By.tagName("h1"));
            assertEquals("Actividad social", title.getText());
-    	//   login.loginToGoAsAdminEspacios();
+    	   */
+    	   login.loginToGoAsAdminEspacios("Automation4");
     	  base.goToMenu();
     	  Thread.sleep(3000);
     	   space.crearEspacio();
     	   Thread.sleep(4000);
            space.setNameEspacio("Mobile");
            space.setDescriptionEspacio("Espacio mobile");
+           driver.hideKeyboard();
+           Thread.sleep(3000);
            space.grabarEspacio();
-           space.goToEspacios();
+        
        }
 }
     	 
