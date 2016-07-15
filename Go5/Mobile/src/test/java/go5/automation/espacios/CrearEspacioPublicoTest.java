@@ -67,24 +67,37 @@ public class CrearEspacioPublicoTest  extends AndroidSetup{
     	   login = new LoginPage(driver);
     	   page = new BasePage(driver);
     	   space= new EspacioPage(driver);
+    	 //Parameters
+    	   
+    	   
     	  String strIcono=".icons .igospacebanana";
+    	  String site ="Automation4";
+    	  String nameSpace="Mobile";
     
-    	   login.loginToGoAsAdminEspacios("Automation4");
+    	   login.loginToGoAsAdminEspacios(site);
     	   page.goToMenu();
     	  Thread.sleep(3000);
-    	   space.crearEspacio();
-    	   Thread.sleep(4000);
-           space.setNameEspacio("Mobile");
+    	  space.crearEspacio();
+    	    Thread.sleep(4000);
+           space.setNameEspacio(nameSpace);
            space.setDescriptionEspacio("Espacio mobile");
-           
-           space.cambiarIcono(strIcono);
+            space.cambiarIcono(strIcono);
            Thread.sleep(3000);
            space.grabarEspacio();
-           Thread.sleep(2000);
-           page.goToMenu();
-           page.goToVerMas();
            Thread.sleep(3000);
-           space.buscarEspacio("Mobile");
+           //Me deslogue del user admin de espacios q creo el espacio
+                      page.logout();
+                      
+            //Me logueo con otro user y pruebo unirme al espacio          
+          login.loginToGoAsAdmin(site);
+          page.goToMenu();
+          Thread.sleep(3000);
+          page.goToVerMas();
+          space.buscarEspacio(nameSpace);
+          space.unirmeAEspacio();
+          Thread.sleep(3000);
+         
+           
            
           
         

@@ -47,6 +47,10 @@ import org.testng.Reporter;
        
         protected String inputSearch =".search input";
         protected String irASpaces = "#sidebar  div:nth-child(3) a";
+        
+        //Unirse a espacio
+        
+        protected String unirmePrimerEspacio=".spaces li:first-child button";
        
     	
     	WebDriver driver;
@@ -234,4 +238,9 @@ import org.testng.Reporter;
 			driver.findElement(By.cssSelector(iconoEspacio)).click();
 			    
     }
+
+		public void unirmeAEspacio() {
+		   driver.findElement(By.cssSelector(unirmePrimerEspacio)).click();
+			
+		}
     }
