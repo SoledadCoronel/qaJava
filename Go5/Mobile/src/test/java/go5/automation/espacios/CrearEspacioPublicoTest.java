@@ -87,7 +87,8 @@ public class CrearEspacioPublicoTest  extends AndroidSetup{
            Thread.sleep(3000);
            //Me deslogue del user admin de espacios q creo el espacio
                       page.logout();
-                      
+                      Thread.sleep(5000);
+              System.out.println(" Me deslogueo de la aplicacion");       
             //Me logueo con otro user y pruebo unirme al espacio          
           login.loginToGoAsAdmin(site);
           page.goToMenu();
