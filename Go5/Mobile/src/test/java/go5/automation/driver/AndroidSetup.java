@@ -18,10 +18,10 @@ public class AndroidSetup {
 	
 	// Driver
 
-	 @SuppressWarnings("rawtypes")
-	protected AndroidDriver driver;
+	 
+	protected AndroidDriver<WebElement> driver;
     
-	@SuppressWarnings("unchecked")
+	
 	public void prepareAndroidForAppium() throws MalformedURLException {
     	
 			
@@ -30,11 +30,12 @@ public class AndroidSetup {
           
           capabilities.setCapability("deviceName","Android Emulator");            
           capabilities.setCapability("platformVersion", "5.1.1");//  es el mobile OS version, si instalo api22 es 5.1.1
-          capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.12.12.apk");
+          capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.12.15.apk");
           capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
          
-         driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-      
+        driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+         
+        
           //Set to  hybrid
        // driver.context("WEBVIEW");
            	

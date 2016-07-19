@@ -26,7 +26,7 @@ import go5.pageObjects.EspacioPage;
 
 
 
-public class CrearEspacioUserBasicTest  extends AndroidSetup{
+public class NoCrearEspacioUserBasicTest  extends AndroidSetup{
  
     
      LoginPage login=null;

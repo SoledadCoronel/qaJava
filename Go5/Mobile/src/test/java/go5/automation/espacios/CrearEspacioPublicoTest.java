@@ -81,14 +81,15 @@ public class CrearEspacioPublicoTest  extends AndroidSetup{
     	    Thread.sleep(4000);
            space.setNameEspacio(nameSpace);
            space.setDescriptionEspacio("Espacio mobile");
+        
             space.cambiarIcono(strIcono);
            Thread.sleep(3000);
            space.grabarEspacio();
            Thread.sleep(3000);
            //Me deslogue del user admin de espacios q creo el espacio
-                      page.logout();
-                      Thread.sleep(5000);
-              System.out.println(" Me deslogueo de la aplicacion");       
+             page.logout();
+             Thread.sleep(5000);
+            System.out.println(" Me deslogueo de la aplicacion");       
             //Me logueo con otro user y pruebo unirme al espacio          
           login.loginToGoAsAdmin(site);
           page.goToMenu();
@@ -98,7 +99,7 @@ public class CrearEspacioPublicoTest  extends AndroidSetup{
           space.unirmeAEspacio();
           Thread.sleep(3000);
          
-           
+           // key code 
            
           
         

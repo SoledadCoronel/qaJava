@@ -51,7 +51,7 @@ public class ForgotPasswordTest  extends AndroidSetup{
         driver.quit();
     }
 
-   /* @Test
+   @Test
     public void forgotPasswordFormatmail() throws InterruptedException {
          
 
@@ -84,7 +84,7 @@ public class ForgotPasswordTest  extends AndroidSetup{
           Thread.sleep(3000);
          
     }
-*/
+
        @Test
        public void forgotPassword() throws InterruptedException{
     	   login = new LoginPage(driver);
@@ -94,10 +94,11 @@ public class ForgotPasswordTest  extends AndroidSetup{
     	  // driver.hideKeyboard();
     	   login.clickearLogo();
     	   Thread.sleep(5000);
-    	   List<AndroidElement> dynamicTextFieldsList = driver.findElementsByTagName("INPUT");
+    	   List<WebElement> lista = driver.findElementsByTagName("INPUT");
+    	   
+    	   lista.get(1).sendKeys("Automation1");
           
-           dynamicTextFieldsList.get(1).sendKeys("Automation1");
-           
+                   
            WebElement button = driver.findElementByTagName("BUTTON");
            button.click();
            Thread.sleep(5000);
