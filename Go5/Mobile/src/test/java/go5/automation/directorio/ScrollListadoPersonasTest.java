@@ -70,7 +70,8 @@ public class ScrollListadoPersonasTest  extends AndroidSetup{
    	 Integer endY=(int) 0.50;
    	 Integer duration =(int) 3.0;
    	 
-     // java
+     /*
+   	 // java
  
    	 JavascriptExecutor js = (JavascriptExecutor) driver;
   
@@ -82,7 +83,7 @@ public class ScrollListadoPersonasTest  extends AndroidSetup{
      swipeObject.put("endX", 0.01);
      swipeObject.put("endY", 0.50);
      swipeObject.put("duration", 3.0);
-     
+     */
  
      // Test
      login.loginToGoAsUSerBasic();
@@ -90,11 +91,14 @@ public class ScrollListadoPersonasTest  extends AndroidSetup{
      Thread.sleep(2000);
      page.goToDirectorio();
      Thread.sleep(3000);
-       page.swipeLeftToRight();  
+     driver.context("NATIVE_APP");
+     Thread.sleep(8000);
+      driver.swipe(767, 629, 767, 5, 5);    
     // driver.swipe(startX, startY, endX, endY, duration);
-     js.executeScript("mobile: swipe", swipeObject);
+   //  js.executeScript("mobile: swipe", swipeObject);
      Thread.sleep(3000);
-  
+     driver.swipe(startX, startY, endX, endY, duration);
+     Thread.sleep(3000);
     }   
      
 }
