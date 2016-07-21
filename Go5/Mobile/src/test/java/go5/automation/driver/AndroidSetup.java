@@ -10,6 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import java.util.Set;
 
 
@@ -23,17 +24,15 @@ public class AndroidSetup {
     
 	
 	public void prepareAndroidForAppium() throws MalformedURLException {
-    	
-			
-		 
+		
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-          
-          capabilities.setCapability("deviceName","Android Emulator");            
-          capabilities.setCapability("platformVersion", "5.1.1");//  es el mobile OS version, si instalo api22 es 5.1.1
-          capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.12.15.apk");
-          capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
-         
-        driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        
+        capabilities.setCapability("deviceName","Android Emulator");            
+        capabilities.setCapability("platformVersion", "5.1.1");//  es el mobile OS version, si instalo api22 es 5.1.1
+        capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.12.15.apk");
+        capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
+       
+      driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
          
         
           //Set to  hybrid

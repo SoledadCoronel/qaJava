@@ -222,12 +222,18 @@ public class TestSuite {
 		  WebElement element = null;
 		   
 		  WebDriverWait wait = new WebDriverWait(driver, timeout);
+		  
+		  element= wait.until(ExpectedConditions.elementToBeClickable(goButton2));
 		   
-		  element = wait.until(ExpectedConditions.elementToBeClickable(goButton2));
+		 // element = wait.until(ExpectedConditions.elementToBeClickable(goButton2));
 		   
 		  element.click();
 		   
-		   }
+	  
+	//  WebDriverWait wait = new WebDriverWait(driver, 10);
+	//  WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("someid")));
+	  
+	  }
 	  
 	  
 	  //To Close Browser--It closes only the browser window that WebDriver is currently controlling.
