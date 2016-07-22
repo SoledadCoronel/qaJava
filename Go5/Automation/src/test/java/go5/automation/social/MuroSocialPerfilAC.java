@@ -6,7 +6,7 @@ import go5.pageObjects.DirectorioPage;
 import go5.pageObjects.EspacioPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
-import go5.pageObjects.PersonasPage;
+import go5.pageObjects.AdministrarPersonasPage;
 import go5.pageObjects.ProfilePage;
 
 import org.openqa.selenium.By;

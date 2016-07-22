@@ -15,11 +15,11 @@ import org.testng.Reporter;
   
     
     
-    public class PersonasPage extends TestSuite {
+    public class AdministrarPersonasPage extends TestSuite {
 
     	//Css
     	
-    	protected String irAPersonas= ".igoadmin";
+    	protected String goToPersonas= ".";
     	
     	protected  String inputNombreUser= ".basicdata label:nth-child(4) input";
     	protected  String inputLastnameUser=".basicdata label:nth-child(5) input";
@@ -55,7 +55,7 @@ import org.testng.Reporter;
     
      
   
-    	    public PersonasPage(WebDriver driver){
+    	    public AdministrarPersonasPage(WebDriver driver){
     	    	 
     	        this.driver = driver;
      }

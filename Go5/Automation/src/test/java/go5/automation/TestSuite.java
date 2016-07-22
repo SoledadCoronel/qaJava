@@ -13,12 +13,12 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.LocalFileDetector;
+
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -51,22 +51,19 @@ public class TestSuite {
 	protected String name = this.generateName();
 	
 	
-	//Declaracion de cssSelectors
+	//Css
 	
-	private String home = (".home");
-	protected String inputmailLogin = new String (".session label:nth-child(2) input");
-	protected String inputPasswordLogin = new String (".session label:nth-child(3) input");
-	protected String goButton = new String (".session .primary");
-	protected String desplegaMenuUsuario = new String (".applications .users menu li:last-child .user");
+	private String home = ".home";
+	protected String irAMenu =".menu";
+	protected String desplegaMenuUsuario =".applications .users menu li:last-child .user";
 	protected String irAConfiguration= new String(".applications .users .configuration");
-	protected String irAMenu =new String (".menu");
+	
 
-	protected String irAConfigurarCuenta = new String (".applications .users menu li:last-child li:nth-child(3) a");
+	protected String irAConfigurarCuenta = ".applications .users menu li:last-child li:nth-child(3) a";
 	 protected String irAGroups =".igogroups";
      protected String irATitles = ".igotitles";
-	protected String irAPersonas = ".igoadmin";
-	protected String searchButton =".actions .search .btnsearch";
-	protected String inputSearch = ".actions .search input";
+	protected String searchButton =".search";
+	protected String inputSearch = ".search input";
 	protected String ordenNombre =".tables thead tr th:nth-child(2) a";
 	protected String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
 	protected String secondRow= new String(".tables tbody tr:nth-child(2) td:nth-child(2)");  
@@ -76,11 +73,15 @@ public class TestSuite {
 	protected String ordenRol = new String (".tables thead tr th:nth-child(4) a");
 	protected String ordenEstado = new String (".tables thead tr th:nth-child(5) a");	
 	protected String ordenRegistrado = new String (".tables thead tr th:nth-child(6) a");
-	protected String irALogout= new String (".subusers li:last-child a");
-	protected String irAProfile= new String (".subusers li:nth-child(2) a");
-	protected String irASpaces = ".wrapper .space:nth-child(4) li:first-child a";
+	protected String goToLogoutCss= ".users li:last-child a";
+	protected String goToProfileCss= ".users .igouserwhite";
 	
 	
+	
+	// By
+	
+	By goToLogout=By.cssSelector(goToLogoutCss);
+	By goToProfile=By.cssSelector(goToProfileCss);
 	
 	// Declaracion de funciones
 	
@@ -322,8 +323,7 @@ public class TestSuite {
 					
 					public void goToProfile() throws Exception {
 						
-						this.click(irAProfile);
-						Thread.sleep(1000);
+						this.clickWhenReady(goToProfile, 10);
 					}
 					
 					public void ordenarPorNombre() throws Exception{
@@ -357,7 +357,7 @@ public class TestSuite {
 				
 					public void search(String nombreABuscar) throws Exception{
 						
-						driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+						
 						WebElement searchavailable = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.cssSelector(searchButton)));
 						 this.click(searchButton);
 						 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -378,7 +378,7 @@ public class TestSuite {
 					}
 					
 					public void logout() throws Exception {
-						this.click(irALogout);
+						this.clickWhenReady(goToLogout, 10);
 					}
 										
 					
@@ -387,12 +387,8 @@ public class TestSuite {
 					}
 					
 					
+					
 				
-					
-					public void goToSpaces(){
-					
-						driver.findElement(By.cssSelector(irASpaces)).click();
-					}
 					public String crearUserAdminReturningmail() throws Exception{
 						
 						// Devuelve el mail para despues poder loguearme

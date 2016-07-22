@@ -8,6 +8,9 @@ import go5.automation.TestSuite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -18,7 +21,8 @@ import org.testng.Reporter;
 
     	
     	 //Go To Spaces
-        protected String irASpaces = ".wrapper .space:nth-child(4) li:first-child a";
+        protected String goToEspaciosCss = ".igospaces a";
+        protected String goToRecomendadosCss=".title menu li:first-child a";
     	
         //Css Define Space
     	
@@ -69,7 +73,8 @@ import org.testng.Reporter;
         
        
       // By 
-        
+        By goToEspacios=By.cssSelector(goToEspaciosCss);
+        By goToRecomendados= By.cssSelector(goToRecomendadosCss);
         By crearEspacio=By.cssSelector(crearEspacioCss);
         By nombreDeEspacio=By.cssSelector(nombreEspacioCss);
         By descripcionEspacio=By.cssSelector(descripcionEspacioCss);
@@ -107,6 +112,15 @@ import org.testng.Reporter;
     	        this.driver = driver;
      }
   
+    	  public void goToEspacios(){
+    		  driver.findElement(goToEspacios).click();
+    		  //Wait until recomendados appear
+    		   WebDriverWait wait = new WebDriverWait(driver, 10);
+    		  WebElement element = wait.until(ExpectedConditions.elementToBeClickable(goToRecomendados));
+    		  
+    	  }
+    	  
+    	    
          public void crearEspacio(){
         	 driver.findElement(crearEspacio).click();
         	
@@ -140,11 +154,7 @@ import org.testng.Reporter;
           	   	driver.findElement(espacioPrivado).click();
           	   	 }
   
-    	    
-      public void goToEspacios(){
-    	  driver.findElement(By.cssSelector(irASpaces)).click();
-    	    }
-    
+    	       
       
        public void activarEspacio(){
     	   Reporter.log("Clickear Espacio activo");

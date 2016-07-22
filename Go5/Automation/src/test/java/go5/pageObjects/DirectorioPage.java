@@ -1,9 +1,11 @@
 package go5.pageObjects;
 
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 
@@ -14,15 +16,19 @@ import org.testng.Reporter;
     	//Css
     	
     	
-    	private String Personas = new String (".igousergroup");
+    	private String goToPersonasCss =".space .igouserwhite";
+    	
+    	private String listaPersonasCss=".peoplelist";
     	
     	private String firstName= new String(".tables tbody tr:nth-child(1) td:nth-child(2) a");
     	 private String lastName= new String(".tables tbody tr:nth-child(10) td:nth-child(2) a");  
     	
     		
-    	
-    	
-    
+    //By
+    	  By goToPersonas=By.cssSelector(goToPersonasCss);
+    	  By listaPersonas=By.cssSelector(listaPersonasCss);
+  
+    	  //Driver
     	
     	  WebDriver driver;
     
@@ -39,7 +45,8 @@ import org.testng.Reporter;
       
     	 Reporter.log("Abriendo directorio de  personas" );
     	  	  
-    	  driver.findElement(By.cssSelector(Personas)).click();
+    	 driver.findElement(goToPersonas).click();
+       WebElement tablevailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(listaPersonas));
        
      }
   
