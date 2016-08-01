@@ -41,7 +41,7 @@ public void withoutConfigOption() throws Exception {
 	    // Verificar que no esta el boton de Configuracion
 	 
 	     try{
-	    	  this.click(irAConfiguration);
+	    	  this.click(goToConfiguration);
 	
 	     }    
 	    		 catch (Exception e) {

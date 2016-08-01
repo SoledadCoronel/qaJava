@@ -54,9 +54,9 @@ public class TestSuite {
 	//Css
 	
 	private String home = ".home";
-	protected String irAMenu =".menu";
+	protected String goToMenu =".menu";
 	protected String desplegaMenuUsuario =".applications .users menu li:last-child .user";
-	protected String irAConfiguration= new String(".applications .users .configuration");
+	protected String goToConfiguration= ".igoconfigurationwhite";
 	
 
 	protected String irAConfigurarCuenta = ".applications .users menu li:last-child li:nth-child(3) a";
@@ -102,7 +102,7 @@ public class TestSuite {
 			//this.openSite(urlSiteAutomation2);
 			 login.loginToGo("marina.touceda@gointegro.com","Auto1234");
 			 Reporter.log(" Login como admin exitoso");
-			 org.apache.log4j.BasicConfigurator.configure(); 
+			// org.apache.log4j.BasicConfigurator.configure(); 
 	   }
 	   
 	 	  
@@ -224,9 +224,9 @@ public class TestSuite {
 		   
 		  WebDriverWait wait = new WebDriverWait(driver, timeout);
 		  
-		  element= wait.until(ExpectedConditions.elementToBeClickable(goButton2));
+		//  element= wait.until(ExpectedConditions.elementToBeClickable(goButton2));
 		   
-		 // element = wait.until(ExpectedConditions.elementToBeClickable(goButton2));
+		 element = wait.until(ExpectedConditions.elementToBeClickable(goButton2));
 		   
 		  element.click();
 		   
@@ -317,8 +317,8 @@ public class TestSuite {
 	
 					public void goToConfiguration() throws Exception {
 						
-						this.click(irAConfiguration);
-						Thread.sleep(1000);
+						this.click(goToConfiguration);
+						
 					}
 					
 					public void goToProfile() throws Exception {
@@ -348,7 +348,7 @@ public class TestSuite {
 					 }
 					public void goToMenu() throws Exception {
 							
-						this.click(irAMenu);
+						this.click(goToMenu);
 					}
 					
 					public void goToHome() throws Exception{

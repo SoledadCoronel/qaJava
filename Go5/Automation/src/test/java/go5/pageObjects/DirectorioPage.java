@@ -18,7 +18,7 @@ import org.testng.Reporter;
     	
     	private String goToPersonasCss =".space .igouserwhite";
     	
-    	private String listaPersonasCss=".peoplelist";
+    	private String listaPersonasCss=".tables";
     	
     	private String firstName= new String(".tables tbody tr:nth-child(1) td:nth-child(2) a");
     	 private String lastName= new String(".tables tbody tr:nth-child(10) td:nth-child(2) a");  

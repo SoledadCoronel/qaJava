@@ -36,9 +36,8 @@ public class CrearEspacioAC extends TestSuite {
 		 Reporter.log(" Creando un espacio como user admin");
 		 
 		// Go to hamburguesita
-		 
-		 this.click(irAMenu);
-		 Thread.sleep(1000);
+		
+		 this.goToMenu();
 		 
 			
 		 //Ir a espacios

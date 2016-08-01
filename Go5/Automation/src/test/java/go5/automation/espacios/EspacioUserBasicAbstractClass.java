@@ -36,8 +36,8 @@ public class EspacioUserBasicAbstractClass extends TestSuite {
 		 
 		// Go to hamburguesita
 		 
-		 this.click(irAMenu);
-		 Thread.sleep(1000);
+		 this.goToMenu();
+			Thread.sleep(1000);
 		 
 		
 		 

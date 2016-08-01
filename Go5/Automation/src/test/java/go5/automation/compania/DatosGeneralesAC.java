@@ -40,7 +40,7 @@ public class DatosGeneralesAC  extends TestSuite{
 		this.goToConfiguration();
 		 this.goToMenu();
 		 Thread.sleep(2000);
-		 company.irADatosGenerales();
+		 company.goToDatosGenerales();
         company.verifyNombreCantBeBlank();
         company.setNombreCompania("Site Automation");
  		company.setIdioma();

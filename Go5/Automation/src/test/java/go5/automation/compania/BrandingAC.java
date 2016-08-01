@@ -55,11 +55,12 @@ public class BrandingAC extends TestSuite{
 		 company.irADesign();
       	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);	    			
 		      company.restablecerInterfaz();
+		      Thread.sleep(4000);
              company.verifyColors();
              Thread.sleep(4000);
-             company.changeColorHeader();
+            company.changeColorHeader();
              Thread.sleep(4000);
-             company.changeColorContrast();
+            company.changeColorContrast();
              Thread.sleep(4000);
 	 }
     }

@@ -26,9 +26,9 @@ import org.testng.Reporter;
     	
         //Css Define Space
     	
-    	private String crearEspacioCss = ".last .primary";
+    	private String crearEspacioCss = ".igospaces a";
     	private String nombreEspacioCss =".first label:nth-child(1) input";
-    	private String descripcionEspacioCss=".first label:nth-child(2) textarea";
+    	private String descripcionEspacioCss=".first label:nth-child(2) input";
     	
     	//Space type
     	private String espacioPublicoCss = ".type label:nth-child(3) input";
@@ -52,20 +52,21 @@ import org.testng.Reporter;
        	protected String grabarEspacioEmpresaInactivoCss=".active .mconfirmation .optional";
     	
        	//Order
-       	protected String ordenTipo = new String (".tables thead tr th:nth-child(1) a");
+       
     	protected String ordenNombre = new String (".tables thead tr th:nth-child(2) a");
     	protected String ordenDescripcion = new String (".tables thead tr th:nth-child(3) a");
     	protected String ordenMiembros = new String (".tables thead tr th:nth-child(4) a");
-    	protected String ordenEstado = new String (".tables thead tr th:nth-child(5) a");
-    	protected String ordenTitulo = new String (".tables thead tr th:nth-child(3) a");
+    	
+    	
+    	protected String ordenTitulo = ".igocaretdown";
     	
        //   	
     	protected String editfourthRow= new String(".tables tbody tr:nth-child(4) td:nth-child(5) a"); 
-    	protected String firstType= new String(".tables tbody tr:nth-child(1) td:nth-child(1)");
-    	protected String firstSpace = new String (".tables tbody tr:nth-child(1) td:nth-child(2) a");
-    	protected String firstState = new String (".tables tbody tr:nth-child(1) td:nth-child(5) a");
-    	protected  String firstName = new String (".tables tbody tr:nth-child(1) td:nth-child(2) a");
-    	protected String secondName = new String(".tables tbody tr:nth-child(2) td:nth-child(2) a");
+    	protected String firstType= ".tables  tr:nth-child(1) td:nth-child(3)";
+    	protected String firstSpace = ".tables tbody tr:nth-child(1) td:nth-child(2) a";
+    	protected String firstState = ".tables tbody tr:nth-child(1) td:nth-child(5) a";
+    	protected  String firstName = ".tables tbody tr:nth-child(1) td:nth-child(2) a";
+    	protected String secondName = ".tables tbody tr:nth-child(2) td:nth-child(2) a";
         
     	//Search Spaces
     	protected String buscarEspacio= ".actions .btnsearch";
@@ -191,14 +192,7 @@ import org.testng.Reporter;
 		driver.findElement(By.cssSelector(editfourthRow)).click();
 	}
 	
-		public void ordenarPorTipo() throws InterruptedException{
-			driver.findElement(By.cssSelector(ordenTipo)).click();
-		driver.findElement(By.cssSelector(ordenTipo)).click();
-			Reporter.log("El primer valor del tipo de espacio es:");				
-			Reporter.log(this.getTypeFirstRow());
-						
-		}
-	
+			
 		public void ordenarPorNombreEspacio() throws InterruptedException{
 			driver.findElement(By.cssSelector(ordenNombre)).click();
 			
