@@ -89,6 +89,7 @@ public class MuroUserProfileTest  extends AndroidSetup{
      muro.eliminarPost();
     // driver.findElementByCssSelector(".posttext:nth-child(2) .btnoptions").click();
      	Thread.sleep(2000);
+     	//Me suicheo a nativa para los modals de eliminar post
        driver.context("NATIVE_APP");
        System.out.println(driver.getContext());
      //Clickear options del post

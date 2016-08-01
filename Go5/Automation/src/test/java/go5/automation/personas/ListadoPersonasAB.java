@@ -4,7 +4,7 @@ import go5.automation.TestSuite;
 import go5.pageObjects.DirectorioPage;
 
 
-import go5.pageObjects.PersonasPage;
+import go5.pageObjects.AdministrarPersonasPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 public class ListadoPersonasAB extends TestSuite {
 			 	 
 	
-	PersonasPage personas = null;
+	AdministrarPersonasPage personas = null;
 
 	 
 	 
@@ -39,7 +39,7 @@ public class ListadoPersonasAB extends TestSuite {
 
 	public void listadoPersonas() throws Exception { 
 			
-		personas = new PersonasPage(driver);     
+		personas = new AdministrarPersonasPage(driver);     
          // Go to the configuration
          
 		 this.goToConfiguration();
@@ -51,7 +51,7 @@ public class ListadoPersonasAB extends TestSuite {
  	// Go to  Users Menu
          Reporter.log("Abriendo administar personas" );  
          this.click(irAGroups);
-         this.click(irAPersonas);
+       //  this.click(irAPersonas);
          Thread.sleep(1000);
          
          WebElement tablevailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".tables")));

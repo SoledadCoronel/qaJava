@@ -53,8 +53,8 @@ public class SubirFotoAC extends TestSuite {
 		 
 		// Go to hamburguesita
 		 
-		 this.click(irAMenu);
-		 Thread.sleep(3000);
+		 this.goToMenu();
+			Thread.sleep(1000);
 		 
 			
 		 //Ir a espacios

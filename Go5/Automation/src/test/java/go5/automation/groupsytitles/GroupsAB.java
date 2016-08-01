@@ -63,8 +63,7 @@ public class GroupsAB extends TestSuite{
    	    	 	groups.addASubgroup("Probando subgrupo");
    	    	 	
    	    	 	
-   	    	 this.click(irAPersonas);
-   	    	 Thread.sleep(1000);
+   	    	
    	    	 this.click(editfirstRow);
 	    	 Thread.sleep(1000);
 	    	 this.click(desplegarCampos);

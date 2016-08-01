@@ -2,33 +2,75 @@ package go5.pageObjects;
 
 
 
+import go5.automation.TestSuite;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
 
     
     
-    public class CompanyPage {
+    public class CompanyPage extends TestSuite{
 
     	//Css
     	
+    	private String headerCss="header h1";
     	private String datosGenerales = ".igocompanydata";
     	private String design= ".igodesign";
+    	private String colorPlataformaBlanco=".white";
+    	private String colorPlataformaRojo=".red";
+    	
+    	private String goToRestablecerInterfazCss=".restores";
+    	private String confirmarInterfazCss=".modal:nth-child(6) .primary";
+    	private String cancelarInterfazCss=".modal:nth-child(6) .optional";
         private String nombreCompania=".generaldata fieldset label:nth-child(1) input";
         private String selectIdioma = ".generaldata fieldset label:nth-child(3) select";
         private String selectTimezone = ".generaldata fieldset label:nth-child(4) select";
         private String errorCompanyBlack=".generaldata fieldset label:nth-child(1) span";
+        private String guardarCambiosCss=".design fieldset:nth-child(5) .primary";
+        
+        
+        //Colors
+        
+        private String colorNegroContrasteCss=".design fieldset:nth-child(3) .colorpicker .black";
+        private String getColorNegroCss=".design fieldset:nth-child(3) .colorpicker .black a";
+        private String colorBlancoContrasteCss="";
+        private String colorCelesteCss=".skyblue";
+        private String nombreColorCelesteCss=".skyblue a";
     	
         
+        
+        
+        //References
+        By header = By.cssSelector(headerCss);
         By error= By.cssSelector(errorCompanyBlack);
+    	
+    	By goToRestablecerInterfaz=By.cssSelector(goToRestablecerInterfazCss);
+    	By okRestablecerInterfaz=By.cssSelector(confirmarInterfazCss);
+    	By guardarCambios=By.cssSelector(guardarCambiosCss);
+    	By cancelaRestablecerInterfaz=By.cssSelector(cancelarInterfazCss);
+    	
+    	
+   
+    	//Colours
+    	
+    	By colorNegroContraste=By.cssSelector(colorNegroContrasteCss);
+    	By getColorNegro=By.cssSelector(getColorNegroCss);
+    	By celeste= By.cssSelector(colorCelesteCss);
+    	By nombreCeleste=By.cssSelector(colorCelesteCss);
+    	
+    	
+    	//Driver
+    	
     	WebDriver driver;
-    
-     
+    	
   //Constructor
     	    
     	  public CompanyPage(WebDriver driver){
@@ -36,7 +78,7 @@ import org.testng.Reporter;
     	        this.driver = driver;
      }
   
-         public void irADatosGenerales(){
+         public void goToDatosGenerales(){
         	 Reporter.log("Abriendo la pagina de Datos de la Compania");
         	 driver.findElement(By.cssSelector(datosGenerales)).click();
          }
@@ -84,20 +126,31 @@ import org.testng.Reporter;
 
          }
     	  
-         public void restablecerInterfaz(){
+         public void restablecerInterfaz() throws InterruptedException{
+        	
         	 //Restablecer interfaz   
-             driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
-             driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+        	
+       	 driver.findElement(goToRestablecerInterfaz).click(); 
+       	 System.out.println("Clickeo en restablecer Interfaz");
+       	 WebDriverWait wait = new WebDriverWait(driver, 15);
+       	 wait.until(ExpectedConditions.elementToBeClickable(okRestablecerInterfaz));
+       //	 wait.until(ExpectedConditions.elementToBeClickable(okRestablecerInterfaz));
+       	 System.out.println("Wait until confirmar es clickeable");
+       	Thread.sleep(3000);
             //Click en el popup de restorear
-             driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
-             driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
+         driver.findElement(okRestablecerInterfaz).click();
+         wait.until(ExpectedConditions.elementToBeClickable(guardarCambios));
+           Thread.sleep(4000);
+             
          }
    
       public void verifyColors(){
     	// Verify list of colors in branding
           Reporter.log(" Veirificando que esten todos los colores disponibles");
 
-Assert.assertEquals("white",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(1)")).getText()));
+Assert.assertEquals("white",(driver.findElement(By.cssSelector(colorPlataformaBlanco)).getText()));
+
+Assert.assertEquals("red",(driver.findElement(By.cssSelector(colorPlataformaRojo)).getText()));
 
 Assert.assertEquals("lightgrey",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(2)")).getText()));
 
@@ -111,39 +164,35 @@ Assert.assertEquals("yellow",(driver.findElement(By.cssSelector(".design .colorp
 
 Assert.assertEquals("orange",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(7)")).getText()));
 
-Assert.assertEquals("red",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(8)")).getText()));
+
 
 Assert.assertEquals("green",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(9)")).getText()));
 
 Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).getText()));
       }
     
+     
+      
+      
       public void changeColorHeader() throws InterruptedException{
     		//Change header color
   		
       	
           // Clickeo en Disenio
        Reporter.log(" Cambiando el color del header");
-          
-          driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
-          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-       
-       
-       
+         
+         
        
 	 // Verify that the selected color has been changed in the header
        
           Reporter.log(" Verificando que el color del header se haya cambiado");
           
-       //Select black colour
-       driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10)")).click();
-       driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-     String colorSelected = new String (driver.findElement(By.cssSelector(".design .colorpicker li:nth-child(10) a")).getCssValue("background-color"));
+       //Select skyblue colour
+          driver.findElement(celeste).click();
+       
+     String colorSelected =driver.findElement(nombreCeleste).getCssValue("background-color");
      Reporter.log(colorSelected);
-   
-     //Save changes for colour
-     driver.findElement(By.cssSelector(".primary")).click();
-		Thread.sleep(4000);
+      
      String colorHeader = new String(driver.findElement(By.tagName("header")).getCssValue("background-color"));
      Reporter.log(colorHeader);
   
@@ -155,42 +204,32 @@ Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .color
              
       }
       
+     
+      
+      
       public void changeColorContrast() throws InterruptedException{
     		// Change Contrast Color(){
   		
     	     Reporter.log(" Cambiando el color del contraste ");
-    	    	
-    	           // Clickeo en Disenio
-    	           
-    	           driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
-    	           driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-    	        
-    	        
-    	        
+    	      	       	        
     	        
     		 // Verify that the selected color has been changed in the header
     	        
-    	        //Select black colour for letters
-    	        driver.findElement(By.cssSelector(".design fieldset:nth-child(3) .colorpicker .black")).click();
-    	        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-    	       
-    	      String colorSelected2 = new String (driver.findElement(By.cssSelector(".design fieldset:nth-child(3) .colorpicker .black a")).getCssValue("background-color"));
+    	        //Select black color for letters
+    	      driver.findElement(colorNegroContraste).click();
+    	      String colorSelectedIs=driver.findElement(getColorNegro).getCssValue("backgorund-color");
     	      Reporter.log("El color seleccionado para la letra es :" );
-    	      Reporter.log(colorSelected2);
-    	      
-    	   
-    	     Thread.sleep(5000);
-    	      driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-    	      String colorHeader2 = new String(driver.findElement(By.cssSelector("header h1")).getCssValue("color"));
+    	      Reporter.log(colorSelectedIs);    	       
+    	      Thread.sleep(3000);
+    	      String colorHeaderIs = driver.findElement(header).getCssValue("color");
     	      Reporter.log("El color que esta en la letra en el header es :");
-    	      Reporter.log(colorHeader2);
-    	   
-    	      Reporter.log(" El caso de branding-colors finalizo correctamente");
+    	      Reporter.log(colorHeaderIs);
+    	       	     
     	      //Compare the header color against the selected, converted to hexadecimal
-    	      
-    	  
-    	     Assert.assertEquals(colorSelected2, colorHeader2, "El color seleccionado de contraste de texto se muestra correctamente en el header" );
-    	        }
+    	        	  
+    	     Assert.assertEquals(colorSelectedIs, colorHeaderIs, "El color seleccionado de contraste de texto se muestra correctamente en el header" );
+    	     Reporter.log(" El caso de branding-colors finalizo correctamente");       
+      }
       }
   
     

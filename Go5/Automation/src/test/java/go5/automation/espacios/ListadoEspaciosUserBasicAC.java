@@ -6,16 +6,23 @@ import go5.pageObjects.EspacioPage;
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 
-public class ListadoEspaciosAC extends TestSuite {
+public class ListadoEspaciosUserBasicAC extends TestSuite {
 	
 		
 	EspacioPage espacio=null;
 	
-	
+	@BeforeClass // call function to open the browser and login 
+	 public void setup () throws Exception{
+		
+		 this.setUpMavenUserBasic();
+	}
+
+
 	@AfterClass // call function to close browser 
 		
 		public void teardown(){
@@ -38,21 +45,17 @@ public class ListadoEspaciosAC extends TestSuite {
 		 
 		 this.goToMenu();
 			Thread.sleep(1000);
-		 
 			
 		 //Ir a espacios
 		
 		 espacio.goToEspacios();
 		
-		
-					
+						
 			
 		    // Ordenar espacios
 				 
 		 espacio.verificarOrdenDefault();
 		
-		 espacio.ordenarPorEstado();
-		 Thread.sleep(2000);
 		 espacio.ordenarPorNombreEspacio();
 		 
 		  this.goToPagina(2);
