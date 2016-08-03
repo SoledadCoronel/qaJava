@@ -60,6 +60,7 @@ public class TestSuite {
 	
 
 	protected String irAConfigurarCuenta = ".applications .users menu li:last-child li:nth-child(3) a";
+	
 	 protected String irAGroups =".igogroups";
      protected String irATitles = ".igotitles";
 	protected String searchButton =".search";
@@ -284,7 +285,7 @@ public class TestSuite {
 		 
 		
 			   public  String cssgoToAPagina (Integer p)  {
-				   String css = ".paged a:nth-child"+"("+(p)+")";
+				   String css = ".pagination a:nth-child"+"("+(p)+")";
 				 
 				   return css;
 				 
@@ -389,39 +390,6 @@ public class TestSuite {
 					
 					
 				
-					public String crearUserAdminReturningmail() throws Exception{
-						
-						// Devuelve el mail para despues poder loguearme
-						this.click(crearUser);
-						   
-						//Lo creo activado
-					      Thread.sleep(1000);
-					     driver.findElement(By.cssSelector(".basicdata label:nth-child(2)")).click();
-					     
-					     //Poner el nombre
-					     
-				         this.sendValue(".basicdata label:nth-child(4) input", name);
-				          
-					     this.sendValue(".basicdata label:nth-child(5) input", name);
-					      this.sendValue(".basicdata label:nth-child(6) input", email);
-				      					     
-					     //Seleccionar el rol admin
-					      
-					     Select selectRol = new Select(driver.findElement(By.cssSelector(".basicdata label:nth-child(7) select"))); 
-					 		
-					        selectRol.selectByIndex(1);
-					     					 		
-					     // Grabar el nuevo usuario creado
-					        Thread.sleep(2000);
-					         driver.findElement(By.cssSelector(".content .addpeople fieldset:nth-child(4) .primary")).click();    
-					        
-					
-					  // Verificar que vuelva al listado de personas 
-					          
-					          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-					         log.info(driver.findElement(By.cssSelector(".tablefilter")).isDisplayed());
-					         return email;
-					}
 			
 					protected void handleMultipleWindows(String windowTitle) {
 			            Set<String> windows = driver.getWindowHandles();
