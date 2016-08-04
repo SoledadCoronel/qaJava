@@ -14,6 +14,7 @@ import org.testng.Reporter;
     	//Css
     	
     	private String goToConfigurationCss=".igoconfigurationwhite";
+    	private String goToHomeCss=".igohome";
     	private String goToMenuCss=".menu";
     	private String ayudaLinkCss="igohelpwhite";
     	private String goToDatosGeneraleCss="igocompanydata";
@@ -23,17 +24,30 @@ import org.testng.Reporter;
     	private String goToGruposCss="igogroups";
     	private String personasTableCss=".tables";
     	private String userMenuCss=".usermenu";
-    
+    	private String goTomiPerfilCss="igowithoutimage";
+    	private String goToDirectorioCss ="igouserwhite";
+    	private String goToActividadSocialCss="igosocialswhite";
+    	private String goToEspaciosCss=".noicon";
+    	private String misEspaciosCss= "igopasswordwhite";
+    	
+      //References
+    	
     	By goToConfiguration=By.cssSelector(goToConfigurationCss);
+    	By goToHome=By.cssSelector(goToHomeCss);
     	By goToMenu=By.cssSelector(goToMenuCss);
     	By goToDatosGenerales=By.cssSelector(goToDatosGeneraleCss);
     	By goToDisenio= By.cssSelector(goToDisenioCss);
     	By goToAdministrarPersonas =By.cssSelector(goToAdministrarPersonasCss);
     	By goToTitulos =By.cssSelector(goToTitulosCss);
     	By goToGrupos=By.cssSelector(goToGruposCss);
+    	By goTomiPerfil=By.cssSelector(goTomiPerfilCss);
+    	By goToDirectorio=By.cssSelector(goToDirectorioCss);
+    	By goToAvtividadSocial=By.cssSelector(goToActividadSocialCss);
     	By personasTable=By.cssSelector(personasTableCss);
     	By ayudaLink=By.cssSelector(ayudaLinkCss);
     	By userMenu=By.cssSelector(userMenuCss);
+    	By goToEspacios=By.cssSelector(goToEspaciosCss);
+    	By misEspacios=By.cssSelector(misEspaciosCss);
     	
     	
     	
@@ -48,7 +62,7 @@ import org.testng.Reporter;
   
     public void goToConfiguration(){
     	driver.findElement(goToConfiguration).click();
-    	WebElement sidebar = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(userMenu));
+    //	WebElement sidebar = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
     }
     	    
     	public void goToMenu(){
@@ -88,7 +102,18 @@ import org.testng.Reporter;
     	driver.findElement(ayudaLink).click();
     }
     
+    public void goToHome(){
+   	 Reporter.log("Abriendo el home" );  
+   	driver.findElement(goToHome
+   			).click();
+   }
+	    
+    public  void goToEspacios(){
+    	Reporter.log("Abriendo espacios" );  
+    	driver.findElement(goToEspacios).click();
+    	WebElement insertPassword = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(misEspacios));
+    
     }
 
-
+    }
 
