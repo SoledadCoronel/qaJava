@@ -17,6 +17,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import go5.pageObjects.HomePage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.AdministrarPersonasPage;
 
@@ -26,7 +27,7 @@ import go5.pageObjects.AdministrarPersonasPage;
 public class UserInactiveAC extends TestSuite{
 		 
 	AdministrarPersonasPage personas = null;
-	
+	HomePage home=null;
 	LoginPage login = null;
 	
 	 private String estadoDesactivado = (".basicdata label:nth-child(2) input:nth-child(2)");
@@ -49,7 +50,7 @@ public class UserInactiveAC extends TestSuite{
 			Thread.sleep(1000);
 		       Reporter.log("Abriendo administar personas" );  
 		 	   // Go to Manage people
-		         personas.goToPersonas();
+		        home.goToAdministrar();
 		      // 	WebElement someElement = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputSearch)));
 				  this.click(searchButton);
 		         	  this.sendValue(inputSearch, "Inactive");

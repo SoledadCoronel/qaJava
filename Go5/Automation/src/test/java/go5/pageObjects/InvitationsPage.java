@@ -8,11 +8,13 @@ import go5.automation.TestSuite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-public class AgregarUsuarioPage extends TestSuite {
+public class InvitationsPage extends TestSuite {
 
 	// Css
 
@@ -30,10 +32,9 @@ public class AgregarUsuarioPage extends TestSuite {
 	protected String agregarPersonaSinInvitacionCss = ".optional";
 
 	
-	
+	protected String personasCss=".tables";
 	protected String groupsSelect = ".groupsdata select";
-	protected String grabarSinEnviarInvite = ".optional";
-
+	
 	// Modales
 
 	protected String clickayudaEstadoPersona = "basicdata label:nth-child(1) a";
@@ -56,13 +57,14 @@ public class AgregarUsuarioPage extends TestSuite {
 	 By desplegarCampos=By.cssSelector(desplegarCamposCss);
 	 By agregarSinInvite=By.cssSelector(agregarPersonaSinInvitacionCss);
 	 By agregarConInvite=By.cssSelector(agregarPersonaYEnviarInvitacionCss);
+	 By personas = By.cssSelector(personasCss);
 	 
 	
 	
 	//Driver
 	WebDriver driver;
 
-	public AgregarUsuarioPage(WebDriver driver) {
+	public InvitationsPage(WebDriver driver) {
 
 		this.driver = driver;
 	}
@@ -107,7 +109,7 @@ public class AgregarUsuarioPage extends TestSuite {
 
 	}
 
-	public void selectRol() {
+	public void selectRolAdmin() {
 		// Seleccionar el rol admin
 
 		Select selectRoldropdown = new Select(driver.findElement(selectRol));
@@ -127,81 +129,40 @@ public class AgregarUsuarioPage extends TestSuite {
 	}
 
 	public void grabarUsuarioSinInvite() {
-		driver.findElement(By.cssSelector(grabarSinEnviarInvite)).click();
+	driver.findElement(agregarSinInvite).click();
 	}
-
-	public void elegirUsuarios(Integer index) {
-		// Elegir Usuarios ( Activos es 1,2 es Inactivos, y 3 es No registrados
-
-		Select userselect = new Select(driver.findElement(By
-				.cssSelector(".filters select")));
-
-		userselect.deselectByIndex(index);
-		userselect.selectByIndex(index);
-	}
-
-	public void verificarUsuariosInactivos() {
-		// Reocorrer la tabla y verificar que todos los usuarios mostrados sean
-		// los users inactivos
-		Reporter.log("Reocorrer la lista de usuarios y verificar que todos los usuarios mostrados sean los users inactivos");
-
-		for (int i = 1; i < 10; i++)
-			Assert.assertEquals(
-					driver.findElement(
-							By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)"))
-							.getText(), "SIN CHEQUEAR");
-		Reporter.log("Todos los usuarios de la lista se encuentran desactivados");
-	}
-
-	public void filtrarUsuariosActivos() {
-		Reporter.log("Reocorrer la lista de usuarios y filtrar los users activos");
-
-		for (int i = 1; i < 10; i++)
-			Assert.assertEquals(
-					driver.findElement(
-							By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)"))
-							.getText(), "CHEQUEADO");
-		Reporter.log("Todos los usuarios de la lista se encuentran activados");
-
-	}
+ 
+	
+	public void grabarUsuarioConInvite(){
+		driver.findElement(agregarConInvite).click();
+		WebElement personasTable=(new WebDriverWait(driver,10)).until(ExpectedConditions.presenceOfElementLocated(personas));
+		}
 
 	
 
-	public String crearUserAdminReturningmail() throws Exception {
+	public String agregarAdminConInvite() throws Exception {
 
 		// Devuelve el mail para despues poder loguearme
-		//this.click(crearUser);
+		
+		 
 
 		// Lo creo activado
-		Thread.sleep(1000);
-		driver.findElement(By.cssSelector(".basicdata label:nth-child(2)"))
-				.click();
+		   driver.findElement(activo).click();
 
 		// Poner el nombre
-
-		this.sendValue(".basicdata label:nth-child(4) input", name);
-
-		this.sendValue(".basicdata label:nth-child(5) input", name);
-		this.sendValue(".basicdata label:nth-child(6) input", email);
+           this.setRandomUserName();
+           this.setRandomLastName();
+           this.setRandomEmail();
 
 		// Seleccionar el rol admin
 
-		Select selectRol = new Select(driver.findElement(By
-				.cssSelector(".basicdata label:nth-child(7) select")));
-
-		selectRol.selectByIndex(1);
+	      this.selectRolAdmin();
 
 		// Grabar el nuevo usuario creado
-		Thread.sleep(2000);
-		driver.findElement(
-				By.cssSelector(".content .addpeople fieldset:nth-child(4) .primary"))
-				.click();
+		
+		  this.grabarUsuarioConInvite();
 
-		// Verificar que vuelva al listado de personas
-
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		log.info(driver.findElement(By.cssSelector(".tablefilter"))
-				.isDisplayed());
+		
 		return email;
 	}
 

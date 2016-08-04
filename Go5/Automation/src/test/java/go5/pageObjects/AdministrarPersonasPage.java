@@ -2,7 +2,6 @@ package go5.pageObjects;
 
 import java.util.List;
 
-
 import go5.automation.TestSuite;
 
 import org.openqa.selenium.By;
@@ -19,7 +18,10 @@ public class AdministrarPersonasPage extends TestSuite {
 	// Css
 
 	protected String agregarUsuarioCss = ".data .primary";
-
+	protected String invitacionesPendientesCss=".title menu li:nth-child(2) a";
+	protected String listaInvitacionesCss=".tables";
+	protected String dominiosCss=".title menu li:nth-child(3) a";
+	protected String listaDominiosCss=".peopledomain";
 	protected String tablaPersonasCss = ".open article .peoplemanage";
 	protected String selectUserCss = ".filters select";
 	protected String editPersonCss = " tbody tr:nth-child(n) td:nth-child(7) a";
@@ -32,12 +34,19 @@ public class AdministrarPersonasPage extends TestSuite {
 
 	private String linkHelpCss = "igohelpwhite";
 	private String formEditPersonCss = ".igogroups";
-
+	protected String inputNombreUserCss = ".primarydata label:nth-child(2) input";
+	
+	//Driver
+	
 	WebDriver driver;
 
 	// By
 
 	By agregarUsuario = By.cssSelector(agregarUsuarioCss);
+	By invitaciones=By.cssSelector(invitacionesPendientesCss);
+	By listaInvitaciones= By.cssSelector(listaInvitacionesCss);
+	By listaDominios=By.cssSelector(listaDominiosCss);
+	By dominios=By.cssSelector(dominiosCss);
 	By tablaPersonas = By.cssSelector(tablaPersonasCss);
 	By selectUsers = By.cssSelector(selectUserCss);
 	By editPerson = By.cssSelector(editPersonCss);
@@ -49,6 +58,7 @@ public class AdministrarPersonasPage extends TestSuite {
 	By formEditPerson = By.cssSelector(formEditPersonCss);
 	By searchButton = By.cssSelector(searchButtonCss);
 	By searchInput = By.cssSelector(searchInputCss);
+	By inputName=By.cssSelector(inputNombreUserCss);
 
 	
 	//Methods
@@ -61,9 +71,21 @@ public class AdministrarPersonasPage extends TestSuite {
 
 	
 	
-	public void agregarPersona(){
+	public void goToagregarPersona(){
 		driver.findElement(agregarUsuario).click();
+		WebElement formuPerson = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputName));
 	}
+	
+	public void goToInvitacionesPendientes(){
+		driver.findElement(invitaciones).click();
+		WebElement inviteList = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(listaInvitaciones));
+	}
+	
+	public void goToDominios(){
+		driver.findElement(dominios).click();
+		WebElement domains = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(listaDominios));
+	}
+	
 	
 	public void contarPersonasTabla() {
 		// Hay que modificarla....
@@ -84,9 +106,7 @@ public class AdministrarPersonasPage extends TestSuite {
 
 	public void editFirstPersonFromList() {
 		driver.findElement(editFirstPerson).click();
-		WebElement formuPerson = (new WebDriverWait(driver, 10))
-				.until(ExpectedConditions
-						.presenceOfElementLocated(formEditPerson));
+		WebElement formuPerson = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(formEditPerson));
 	}
 
 	public void elegirUsuarios(Integer index) throws InterruptedException {
