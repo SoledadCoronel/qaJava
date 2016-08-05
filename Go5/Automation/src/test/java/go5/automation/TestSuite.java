@@ -49,7 +49,7 @@ public class TestSuite {
 
 	private String home = ".home";
 	protected String goToMenu = ".menu";
-	protected String desplegaMenuUsuario = ".applications .users menu li:last-child .user";
+	
 	protected String goToConfiguration = ".igoconfigurationwhite";
 
 	protected String irAConfigurarCuenta = ".applications .users menu li:last-child li:nth-child(3) a";
@@ -352,11 +352,6 @@ public class TestSuite {
 		this.clear(inputSearch);
 		this.sendValue(inputSearch, nombreABuscar);
 		// driver.findElement(By.cssSelector(inputSearch)).sendKeys(Keys.ENTER);
-	}
-
-	public void goToMenuUsuario() throws Exception {
-		this.click(desplegaMenuUsuario);
-		Thread.sleep(1000);
 	}
 
 	public void goToTitles() {

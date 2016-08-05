@@ -19,6 +19,7 @@ public class AdministrarPersonasPage extends TestSuite {
 
 	protected String agregarUsuarioCss = ".data .primary";
 	protected String invitacionesPendientesCss=".title menu li:nth-child(2) a";
+	protected String listadoPersonasCss=".title menu li:nth-child(2) a";
 	protected String listaInvitacionesCss=".tables";
 	protected String dominiosCss=".title menu li:nth-child(3) a";
 	protected String listaDominiosCss=".peopledomain";
@@ -43,6 +44,7 @@ public class AdministrarPersonasPage extends TestSuite {
 	// By
 
 	By agregarUsuario = By.cssSelector(agregarUsuarioCss);
+	By listado= By.cssSelector(listadoPersonasCss);
 	By invitaciones=By.cssSelector(invitacionesPendientesCss);
 	By listaInvitaciones= By.cssSelector(listaInvitacionesCss);
 	By listaDominios=By.cssSelector(listaDominiosCss);
@@ -78,7 +80,7 @@ public class AdministrarPersonasPage extends TestSuite {
 	
 	public void goToInvitacionesPendientes(){
 		driver.findElement(invitaciones).click();
-		WebElement inviteList = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(listaInvitaciones));
+	//	WebElement inviteList = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(listaInvitaciones));
 	}
 	
 	public void goToDominios(){

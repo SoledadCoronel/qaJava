@@ -29,7 +29,9 @@ import org.testng.Reporter;
     	private String goToActividadSocialCss="igosocialswhite";
     	private String goToEspaciosCss=".noicon";
     	private String misEspaciosCss= "igopasswordwhite";
-    	
+    	private String goToUserMenuCss=".users li:last-child a";
+    	private String goToLogoutCss=".users li:last-child a";		
+    	private  String inputmailLogin = ".session label:nth-child(3) input";
       //References
     	
     	By goToConfiguration=By.cssSelector(goToConfigurationCss);
@@ -48,6 +50,9 @@ import org.testng.Reporter;
     	By userMenu=By.cssSelector(userMenuCss);
     	By goToEspacios=By.cssSelector(goToEspaciosCss);
     	By misEspacios=By.cssSelector(misEspaciosCss);
+    	By goToUserMenu= By.cssSelector(goToUserMenuCss);
+    	By goToLogout=By.cssSelector(goToLogoutCss);
+    	By inputLogin= By.cssSelector(inputmailLogin);
     	
     	
     	
@@ -70,6 +75,10 @@ import org.testng.Reporter;
     		driver.findElement(goToMenu).click();
     	}
     	    
+    	public void goToUserMenu(){
+    		driver.findElement(goToUserMenu).click();
+    	}
+    	
    public  void goToAdministrar(){
 	   Reporter.log("Abriendo administar personas" );  
 	   driver.findElement(goToAdministrarPersonas).click();
@@ -114,6 +123,10 @@ import org.testng.Reporter;
     	WebElement insertPassword = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(misEspacios));
     
     }
-
+    public void goToLogout(){
+    	goToUserMenu();
+    	driver.findElement(goToLogout).click();
+    	WebElement insertPassword = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputLogin));
+    }
     }
 

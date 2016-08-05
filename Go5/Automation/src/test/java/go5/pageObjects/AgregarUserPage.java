@@ -135,7 +135,7 @@ public class AgregarUserPage extends TestSuite {
 	
 	public void grabarUsuarioConInvite(){
 		driver.findElement(agregarConInvite).click();
-		WebElement personasTable=(new WebDriverWait(driver,10)).until(ExpectedConditions.presenceOfElementLocated(personas));
+	//	WebElement personasTable=(new WebDriverWait(driver,10)).until(ExpectedConditions.presenceOfElementLocated(personas));
 		}
 
 	
@@ -160,32 +160,11 @@ public class AgregarUserPage extends TestSuite {
 
 		// Grabar el nuevo usuario creado
 		
+	      Thread.sleep(3000);
 		  this.grabarUsuarioConInvite();
 
 		
 		return email;
 	}
 
-	public void verificarUsuariosNoRegistrados() {
-
-		Reporter.log("Reocorrer la lista de usuarios y verificar que todos los usuarios mostrados sean los users que no estan registrados");
-
-		for (int i = 1; i < 10; i++)
-			Assert.assertEquals(
-					driver.findElement(
-							By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(6n)"))
-							.getText(), "SIN CHEQUEAR");
-		Reporter.log("Todos los usuarios de la lista se encuentran en estado no registrado");
 	}
-
-	public void verificarUsuariosActivos() {
-		Reporter.log("Reocorrer la lista de usuarios y verificar que todos los usuarios mostrados sean los users activos");
-
-		for (int i = 1; i < 10; i++)
-			Assert.assertEquals(
-					driver.findElement(
-							By.cssSelector(".tables tbody tr:nth-child(n) td:nth-child(5n)"))
-							.getText(), "CHEQUEADO");
-		Reporter.log("Todos los usuarios de la lista se encuentran activados");
-	}
-}
