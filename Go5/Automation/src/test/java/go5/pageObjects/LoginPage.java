@@ -17,8 +17,8 @@ import org.openqa.selenium.WebDriver;
     	protected static String strUsernameAdminEspacios= new String("marina.touceda+023@gointegro.com");
     	protected static String strUsernameUserBasic= new String("marina.touceda+022@gointegro.com");
      	public static String strPassword= new String("Auto1234");
-    	protected static String inputmailLogin = new String (".session label:nth-child(2) input");
-    	protected static String inputPasswordLogin = new String (".session label:nth-child(3) input");
+    	protected static String inputmailLogin = new String (".session label:nth-child(3) input");
+    	protected static String inputPasswordLogin = new String (".session label:nth-child(4) input");
     	protected static String goButton = new String (".session .primary");
     	
     	By userName =By.cssSelector(inputmailLogin);

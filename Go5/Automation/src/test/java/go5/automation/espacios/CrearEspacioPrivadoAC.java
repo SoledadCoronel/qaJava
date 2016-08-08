@@ -37,14 +37,7 @@ public class CrearEspacioPrivadoAC extends TestSuite {
 		 
 		// Go to hamburguesita
 		 
-		 this.click(irAMenu);
-		 Thread.sleep(1000);
-		 
-			
-		 //Ir a espacios
-		 espacio.goToEspacios();
-		
-		 Thread.sleep(1000);
+		this.goToMenu();
 			
 			
 		    // Ir a Crear Espacio 

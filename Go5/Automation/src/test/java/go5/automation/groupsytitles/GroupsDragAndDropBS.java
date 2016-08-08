@@ -18,7 +18,7 @@ public class GroupsDragAndDropBS extends GroupsDragAndDrop {
 	@BeforeClass
 	  @Parameters(value={"browser","version","platform","url","build"})
 	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.setUpBrowserStack(browser, version, platform, url,build);
+		this.setUpBrowserStack(browser, version, platform, url,build,"Test de Drag and Drop Grupos");
 		((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
 		
 				

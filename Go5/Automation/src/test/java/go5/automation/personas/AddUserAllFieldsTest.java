@@ -3,7 +3,7 @@ package go5.automation.personas;
 
 
 import go5.automation.TestSuite;
-import go5.pageObjects.PersonasPage;
+import go5.pageObjects.AdministrarPersonasPage;
 import go5.pageObjects.ProfilePage;
 
 import java.util.Random;
@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 
 public class AddUserAllFieldsTest extends TestSuite{
 
-	PersonasPage personas=null;
+	AdministrarPersonasPage personas=null;
     ProfilePage profile =null;
 	
 
@@ -43,7 +43,7 @@ public class AddUserAllFieldsTest extends TestSuite{
 		 org.apache.log4j.BasicConfigurator.configure();
 		
 		 Random numero= new Random();
-	     personas= new PersonasPage(driver);
+	     personas= new AdministrarPersonasPage(driver);
 	     profile = new ProfilePage(driver);
 	     js=  (JavascriptExecutor) driver;
 		 

@@ -73,7 +73,7 @@ public class InvitationsAC extends TestSuite{
 	        this.goToTitles();
 	              
 	   // Go to Manage people
-	         this.click(irAPersonas);
+	      //   this.click(irAPersonas);
 	          driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
              
  	        

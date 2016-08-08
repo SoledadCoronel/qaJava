@@ -37,8 +37,7 @@ public class BuscarEspaciosAC extends TestSuite {
 		 
 		// Go to hamburguesita
 		 
-		 this.click(irAMenu);
-		 Thread.sleep(1000);
+		this.goToMenu();
 		 
 			
 		 //Ir a espacios

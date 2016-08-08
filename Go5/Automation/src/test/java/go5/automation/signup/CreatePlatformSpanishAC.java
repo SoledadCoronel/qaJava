@@ -33,7 +33,7 @@ public class CreatePlatformSpanishAC extends TestSuite{
  
 	
  	
- 	 @Test (description=" Ingreso el mail en signup, clickeo en plataforma y me resgistro")
+ 	 @Test (description=" Ingreso el mail en signup, clickeo en plataforma y me registro")
  
  	  	 
  	 public void createPlatform() throws Exception { 

@@ -1,7 +1,7 @@
 package go5.automation.personas;
 
 import go5.automation.TestSuite;
-import go5.pageObjects.PersonasPage;
+import go5.pageObjects.AdministrarPersonasPage;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 public class ListadoPersonasFiltersAC extends TestSuite {
 	
 	
-	PersonasPage personas=null;
+	AdministrarPersonasPage personas=null;
 	   
 
 	 @AfterClass // call function to close browser 
@@ -25,7 +25,7 @@ public class ListadoPersonasFiltersAC extends TestSuite {
 	
 	public void listadoPersonasFilters() throws Exception { 
 	
-	 personas= new PersonasPage(driver);
+	 personas= new AdministrarPersonasPage(driver);
        
          // Go to the configuration
 		this.goToConfiguration();

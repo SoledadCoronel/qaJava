@@ -18,14 +18,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import go5.pageObjects.LoginPage;
-import go5.pageObjects.PersonasPage;
+import go5.pageObjects.AdministrarPersonasPage;
 
 
 
 
 public class UserInactiveAC extends TestSuite{
 		 
-	PersonasPage personas = null;
+	AdministrarPersonasPage personas = null;
 	
 	LoginPage login = null;
 	
@@ -67,7 +67,7 @@ public class UserInactiveAC extends TestSuite{
 	@Test
 	public void activateUser() throws Exception{
 		
-		personas = new PersonasPage(driver);
+		personas = new AdministrarPersonasPage(driver);
 		
 		login = new LoginPage(driver);
 	
@@ -101,7 +101,7 @@ public class UserInactiveAC extends TestSuite{
 	@Test(dependsOnMethods = { "activateUser"})
 	public void blockAccessUser() throws Exception{
 		
-		personas = new PersonasPage(driver);
+		personas = new AdministrarPersonasPage(driver);
 		
 		login = new LoginPage(driver);
 	

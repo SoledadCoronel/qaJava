@@ -14,7 +14,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import go5.pageObjects.LoginPage;
-import go5.pageObjects.PersonasPage;
+import go5.pageObjects.AdministrarPersonasPage;
 import go5.pageObjects.SignupPage;
 
 
@@ -28,7 +28,7 @@ public class AltaUserAC extends TestSuite{
 	String okModalCancelar = new String ("#modal-container .modal:nth-child(4) .primary");
 	String tabla= new String (".tables");
 	 
-	PersonasPage personas = null;
+	AdministrarPersonasPage personas = null;
 	SignupPage  signup = null;
 	LoginPage login = null;
 	
@@ -60,7 +60,7 @@ public class AltaUserAC extends TestSuite{
 	@Test
 	public void addUserWholeFlow() throws Exception{
 		
-		personas = new PersonasPage(driver);
+		personas = new AdministrarPersonasPage(driver);
 		signup = new SignupPage(driver);
 		login = new LoginPage(driver);
 		js=  (JavascriptExecutor) driver;
@@ -81,7 +81,7 @@ public class AltaUserAC extends TestSuite{
 	      	      
 	       
 	   // Go to Manage people
-	         this.click(irAPersonas);
+	 //        this.click(irAPersonas);
 	       
 	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
              

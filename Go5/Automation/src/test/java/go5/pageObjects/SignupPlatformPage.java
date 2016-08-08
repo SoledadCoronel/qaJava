@@ -65,7 +65,7 @@ import org.testng.Reporter;
     public void createPlatformEspanish(String strEmail) throws InterruptedException{
     	//Me muevo al iframe
     	driver.switchTo().frame("iframe");
-    	 
+    	 Thread.sleep(30000);
  		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
  		
     	this.setCorporateEmail(strEmail);
