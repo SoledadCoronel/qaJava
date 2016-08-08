@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 
 
 
-public class InvitationsSendTest extends InvitationsAC{
+public class InvitationsSendTest extends InvitationsSendAC{
 
 		
 	 @BeforeClass // call function to open the browser and login 

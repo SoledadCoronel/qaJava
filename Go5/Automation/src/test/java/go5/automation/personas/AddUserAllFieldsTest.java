@@ -4,6 +4,7 @@ package go5.automation.personas;
 
 import go5.automation.TestSuite;
 import go5.pageObjects.AdministrarPersonasPage;
+import go5.pageObjects.HomePage;
 import go5.pageObjects.ProfilePage;
 
 import java.util.Random;
@@ -20,7 +21,7 @@ public class AddUserAllFieldsTest extends TestSuite{
 
 	AdministrarPersonasPage personas=null;
     ProfilePage profile =null;
-	
+	HomePage home=null;
 
 		 @BeforeTest // call function to open the browser and login 
 		 public void setup () throws Exception{
@@ -45,6 +46,7 @@ public class AddUserAllFieldsTest extends TestSuite{
 		 Random numero= new Random();
 	     personas= new AdministrarPersonasPage(driver);
 	     profile = new ProfilePage(driver);
+	     home= new HomePage(driver);
 	     js=  (JavascriptExecutor) driver;
 		 
 		 // Go to the configuration
@@ -52,10 +54,9 @@ public class AddUserAllFieldsTest extends TestSuite{
 		   this.goToMenu();
 	       Thread.sleep(1000);
 		   // Go to Manage people
+	        home.goToAdministrar();
 	        
-	        personas.goToPersonas();
-	         Thread.sleep(2000);
-	     	  this.click(crearUser);
+	        this.click(crearUser);
 	         Thread.sleep(3000);
 	         personas.setEstadoDesactivado();
 		        

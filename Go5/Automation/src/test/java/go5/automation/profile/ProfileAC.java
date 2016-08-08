@@ -2,15 +2,12 @@ package go5.automation.profile;
 
 
 import go5.automation.TestSuite;
+import go5.pageObjects.HomePage;
 import go5.pageObjects.ProfilePage;
 
-
 import org.openqa.selenium.By;
-
-
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
-
 import org.testng.annotations.Test;
 
 
@@ -20,6 +17,7 @@ public class ProfileAC extends TestSuite  {
 
 
 ProfilePage profile = null;
+HomePage home=null;
 
 
  @AfterClass // call function to close browser 
@@ -34,14 +32,13 @@ ProfilePage profile = null;
 	
 		
 		 profile = new ProfilePage(driver);
-		 
+		 home = new HomePage(driver);
 		
 		
 		 
 		 
 		// Go to the user menu
-		  this.goToMenuUsuario();
-	
+		 home.goToUserMenu();
 			
 			//Ir a ver perfil
 		   profile.goToProfile();

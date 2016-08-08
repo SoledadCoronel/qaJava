@@ -29,7 +29,7 @@ import org.testng.Reporter;
     	private String goToActividadSocialCss="igosocialswhite";
     	private String goToEspaciosCss=".noicon";
     	private String misEspaciosCss= "igopasswordwhite";
-    	private String goToUserMenuCss=".users li:last-child a";
+    	private String goToUserMenuCss=".header .last a";
     	private String goToLogoutCss=".users li:last-child a";		
     	private  String inputmailLogin = ".session label:nth-child(3) input";
       //References
@@ -123,8 +123,9 @@ import org.testng.Reporter;
     	WebElement insertPassword = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(misEspacios));
     
     }
-    public void goToLogout(){
+    public void goToLogout() throws InterruptedException{
     	goToUserMenu();
+    	Thread.sleep(4000);
     	driver.findElement(goToLogout).click();
     	WebElement insertPassword = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputLogin));
     }

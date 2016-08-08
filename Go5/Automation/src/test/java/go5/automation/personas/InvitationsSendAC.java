@@ -19,7 +19,7 @@ import go5.pageObjects.InvitationsPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.SignupPage;
 
-public class InvitationsAC extends TestSuite {
+public class InvitationsSendAC extends TestSuite {
 
 	String tabla = new String(".tables");
 	protected String strPassword = new String("Auto1234");
@@ -93,7 +93,10 @@ public class InvitationsAC extends TestSuite {
 		
 	// Desloguearse del usuario admin
 		
+		home.goToLogout();
 
+		
+		/// Open window with the new token
 		js.executeScript("window.location = localStorage.getItem('invitationUrl');");
 		Thread.sleep(2000);
 
