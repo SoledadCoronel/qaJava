@@ -9,8 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.LocalFileDetector;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -21,101 +19,129 @@ public class ProfilePage extends TestSuite {
 
 	// Css
 
-	
-	//Profile
-	
+	// Profile
+
 	protected String irAProfile = ".subusers li:nth-child(2) a";
-	
-	//Edit Profile
-	
-	protected String editProfileCss=".data:first-child";
-	protected String grabarUser = ".container .addpeople .primary";
+	protected String goToProfileSidebar =".igowithoutimage";
+	private String datosPerfilCss=".data";
+	private String linkSupervisor = ".data p:nth-child(5) a ";
+
+	// Edit Profile
+
+	protected String editProfileCss = ".data:first-child a";
+	protected String grabarUser = ".last .primary";
 	protected String editFoto = "#photoFileDrop";
 
-	//Datos Laborales
-	
-	
-	protected String idEmpleadoCss = ".labordata label:nth-child(2) input";
-	protected String fechaIngresoCss = ".labordata label:nth-child(3) input";
-	protected String tipoEmpleoCss = ".labordata label:nth-child(4) select";
-	protected String tituloCss=".labordata label:nth-child(5) select";
-	protected String abrirReportaACss=".labordata label:nth-child(6) ";
-	protected String listaReportaACss=".list li:nth-child(n)";
-	protected String telFijoLaboralCss=".labordata label:nth-child(7) input";
-	protected String telMovilLaboralCss=".labordata label:nth-child(8) input";
-	protected String direccionProfileCss = ".labordata label:nth-child(9) input";
-
-	//Grupos
-	
-	protected String gruposCss=".  ";
-	
-	
-	// Datos Personales
-	
-	
-	protected String DocumentoCss = ".dataprofile:nth-child(3) p:nth-child(2)";
-	protected String generoCss=".dataprofile:nth-child(3) p:nth-child(3)";
-	protected String fechaNacimientoCss = ".dataprofile:nth-child(3) p:nth-child(4)";
-	protected String estadoCivilCss=".dataprofile:nth-child(3) p:nth-child(5)";
-	protected String mailPersonalCss=".dataprofile:nth-child(3) p:nth-child(6)";
-	
-	
-	
-	protected String reportaA = ".labordata label:nth-child(6) input";
-
-	protected String telefonoFIjo = ".labordata label:nth-child(7) input";
-	protected String telefonoMovil = ".labordata label:nth-child(8) input";
-	
-	
-	protected String emailProfile = ".personaldata label:nth-child(7) input";
-
-	protected String linkedin = ".socialdata label:nth-child(2) input";
-	protected String twitter = ".socialdata label:nth-child(3) input";
-	protected String facebook = ".socialdata label:nth-child(4) input";
-	private String linkSupervisor = ".data p:nth-child(5) a ";
-	private String emailUser = ".data address p:first-child a";
-	private String miEmail = "marina.touceda@gointegro.com";
-	private String telefonoMovilHeader = ".data address p:nth-child(2) strong";
-	private String telefonoFijoHeader = ".data address p:last-child strong";
 	private String confirmar = ".active .primary";
 	private String cancelar = ".active .optional";
 	private String inputFotoProfile = "sarasa";
 	private String selectPictureOrCamera = ".igocamera a";
-	SoftAssert sa = new SoftAssert();
-	WebDriver driver;
 
-	Random numero = new Random();
+	// Datos Laborales
+
+	protected String idEmpleadoCss = ".labordata label:nth-child(2) input";
+	protected String fechaIngresoCss = ".labordata label:nth-child(3) input";
+	protected String tipoEmpleoCss = ".labordata label:nth-child(4) select";
+	protected String tituloCss = ".labordata label:nth-child(5) select";
+	protected String abrirReportaACss = ".labordata label:nth-child(6) ";
+	protected String listaReportaACss = ".list li:nth-child(n)";
+	protected String telFijoLaboralCss = ".labordata label:nth-child(7) input";
+	protected String telMovilLaboralCss = ".labordata label:nth-child(8) input";
+	protected String direccionLaboralCss = ".labordata label:nth-child(9) input";
+
+	// Grupos
+
+	protected String gruposCss = ".  ";
+
+	// Datos Personales
+
+	protected String tipoDocumentoCss= ".personaldata label:nth-child(2) select"; 
+	protected String documentoCss = ".personaldata label:nth-child(3) input";
+	protected String fechaNacimientoCss = ".personaldata label:nth-child(4) input";
+	protected String generoCss = ".personaldata label:nth-child(5) select";
+	protected String estadoCivilCss = ".personaldata label:nth-child(6) select";
+	protected String mailPersonalCss = ".personaldata label:nth-child(7) input";
+	protected String telefonoFIjoCss = ".personaldata label:nth-child(8) input";
+	protected String telefonoMovilCss = ".personaldata label:nth-child(9) input";
+	protected String direccionPersonalCss=".personaldata label:nth-child(10) input";
+	
+	
+	
+
+	//Redes Sociales
+
+	protected String linkedinCss = ".socialdata label:nth-child(2) input";
+	protected String twitterCss = ".socialdata label:nth-child(3) input";
+	protected String facebookCss = ".socialdata label:nth-child(4) input";
+	
+	
+	
+	//Variables
+	
+	private String emailUser = ".data address p:first-child a";
+	private String miEmail = "marina.touceda@gointegro.com";
+	private String telefonoMovilHeader = ".data address p:nth-child(2) strong";
+	private String telefonoFijoHeader = ".data address p:last-child strong";
+	
+	SoftAssert sa = new SoftAssert();
+	
+	
+	
+	
 
 	// References
 
 	By goToMiPerfil = By.cssSelector(irAProfile);
-	
-	//Edit Profile
-	
-	By editProfile= By.cssSelector(editProfileCss);
-	
-	//Datos Laborales
+	By goToMiPerfilSidebar =By.cssSelector(goToProfileSidebar);
+	By datosProfile=By.cssSelector(datosPerfilCss);
+
+	// Edit Profile
+
+	By editProfile = By.cssSelector(editProfileCss);
+
+	// Datos Laborales
 	By idEmpleado = By.cssSelector(idEmpleadoCss);
 	By fechaIngreso = By.cssSelector(fechaIngresoCss);
 	By tipoEmpleo = By.cssSelector(tipoEmpleoCss);
-	By titulo= By.cssSelector(tituloCss);
-	By direccion= By.cssSelector(direccionProfileCss);
+	By titulo = By.cssSelector(tituloCss);
+	By direccion = By.cssSelector(direccionLaboralCss);
+	By abrirReportaA = By.cssSelector(abrirReportaACss);
+	By listaReportaA = By.cssSelector(listaReportaACss);
+	By telFijoLaboral = By.cssSelector(telFijoLaboralCss);
+	By telMovilLaboral = By.cssSelector(telMovilLaboralCss);
 	
-	protected String abrirReportaA=".labordata label:nth-child(6) ";
-	protected String listaReportaA=".list li:nth-child(n)";
-	protected String telFijoLaboral=".labordata label:nth-child(7) input";
-	protected String telMovilLaboral=".labordata label:nth-child(8) input";
-	protected String direccionProfileCss
 	
-	//Datos Personales
 	
-	By documento=By.cssSelector(DocumentoCss);
-	By genero=By.cssSelector(generoCss);
+	// Datos Personales
+    By tipoDocumento=By.cssSelector(tipoDocumentoCss);
+	By documento = By.cssSelector(documentoCss);
+	By genero = By.cssSelector(generoCss);
 	By fechaNacimiento = By.cssSelector(fechaNacimientoCss);
-	By estadoCivil=By.cssSelector(estadoCivilCss);
-	By mailPersonal= By.cssSelector(mailPersonalCss);
-	
+	By estadoCivil = By.cssSelector(estadoCivilCss);
+	By mailPersonal = By.cssSelector(mailPersonalCss);	
+	By telefonoFijo = By.cssSelector(telefonoFIjoCss);
+	By telefonoMovil = By.cssSelector(telefonoMovilCss);
+	By direccionPersonal=By.cssSelector(direccionPersonalCss);
 
+	
+	//Redes Sociales
+	
+	By linkedin= By.cssSelector(linkedinCss);
+	By facebook= By.cssSelector(facebookCss);
+	By twitter = By.cssSelector(twitterCss);
+	
+	
+	//Driver
+	
+	WebDriver driver;
+
+	
+	//Function Random
+	
+	Random numero = new Random();
+	
+	
+	
 	// Constructor
 
 	public ProfilePage(WebDriver driver) {
@@ -155,19 +181,25 @@ public class ProfilePage extends TestSuite {
 	public void goToProfile() {
 		Reporter.log("Ir a Profile");
 		driver.findElement(goToMiPerfil).click();
-		WebElement insertPassword = (new WebDriverWait(driver, 10))
-				.until(ExpectedConditions.presenceOfElementLocated(idEmpleado));
+		WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(datosProfile));
 	}
 
+	public void goToProfileSideBar() throws InterruptedException {
+
+		// Go to the user menu
+		Reporter.log("Ir a Perfil Desde el sidebar");
+		driver.findElement(goToMiPerfilSidebar).click();
+		WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(datosProfile));
+	}
+	
+	
 	public void editarProfile() {
 		Reporter.log("Editar perfil");
-		driver.findElement(By.cssSelector(editarProfile)).click();
+		driver.findElement(editProfile).click();
+		WebElement editForm = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(idEmpleado));
 	}
 
-	public void agrandarForm() {
-		Reporter.log("Agrandar Form");
-		driver.findElement(By.cssSelector(agrandarForm)).click();
-	}
+	
 
 	public void grabarUsuario() {
 		Reporter.log("Grabando el profile");
@@ -175,13 +207,8 @@ public class ProfilePage extends TestSuite {
 
 	}
 
-	public void goToProfileSideBar() throws InterruptedException {
-
-		// Go to the user menu
-		Reporter.log("Ir a Perfil Desde el sidebar");
-		Thread.sleep(1000);
-		driver.findElement(By.cssSelector(".igouser")).click();
-	}
+	
+	
 
 	public void goToSupervisor() {
 
@@ -194,63 +221,45 @@ public class ProfilePage extends TestSuite {
 		// Insertar datos laborales
 		Reporter.log("Editando datos laborales");
 
-		driver.findElement(By.cssSelector(idEmpleado)).clear();
-		driver.findElement(By.cssSelector(idEmpleado)).sendKeys(
+		driver.findElement(idEmpleado).clear();
+		driver.findElement(idEmpleado).sendKeys(
 				"RandomId" + numero.nextInt());
 
-		driver.findElement(By.cssSelector(fechaIngreso)).sendKeys("10/10/10");
-		driver.findElement(By.cssSelector(tipoEmpleo)).click();
-		driver.findElement(By.cssSelector(tipoEmpleo)).sendKeys("part-time");
+		driver.findElement(fechaIngreso).sendKeys("10/10/10");
+		driver.findElement(tipoEmpleo).click();
+		driver.findElement(tipoEmpleo).sendKeys("part-time");
 
 	}
 
-	public void agregarTelefono() {
+	public void agregarTelefonos() throws InterruptedException {
 
 		// Telefono
 		Reporter.log("Editando telefono");
-		driver.findElement(By.cssSelector(telefonoFIjo)).clear();
-		driver.findElement(By.cssSelector(telefonoFIjo)).sendKeys(
-				"+541147511234");
-
-		// driver.findElement(By.cssSelector(".labordata label:nth-child(7) input")).sendKeys("+541147511234");
-		driver.findElement(By.cssSelector(telefonoMovil)).clear();
-		driver.findElement(By.cssSelector(telefonoMovil)).sendKeys(
-				"+541147511234");
+		driver.findElement(telefonoFijo).clear();
+		driver.findElement(telefonoFijo).sendKeys("1147511234");	
+		Thread.sleep(7000);
+		driver.findElement(telefonoMovil).clear();
+		driver.findElement(telefonoMovil).sendKeys("1147511234");
 	}
 
 	public void agregarDatosPersonales() {
 		// Datos Personales
 
 		Reporter.log("Editando datos personales");
-		driver.findElement(
-				By.cssSelector(".personaldata label:nth-child(2) select"))
-				.sendKeys("RUT");
-		driver.findElement(By.cssSelector(numeroDocumento)).clear();
-		driver.findElement(By.cssSelector(numeroDocumento)).sendKeys(
-				"asasddsdsadsads");
-		driver.findElement(By.cssSelector(fechaNacimiento))
-				.sendKeys("11/11/11");
-		driver.findElement(
-				By.cssSelector(".personaldata label:nth-child(5) select"))
-				.click();
-		driver.findElement(
-				By.cssSelector(".personaldata label:nth-child(5) select"))
-				.sendKeys("female");
-		driver.findElement(
-				By.cssSelector(".personaldata label:nth-child(6) select"))
-				.sendKeys("single");
-		driver.findElement(
-				By.cssSelector(".personaldata label:nth-child(7) input"))
-				.clear();
-		driver.findElement(By.cssSelector(emailProfile)).sendKeys(
-				"fakee5555mail@gointegro.com");
-		// driver.findElement(By.cssSelector(".personaldata label:nth-child(8) input")).clear();
-		// driver.findElement(By.cssSelector(".personaldata label:nth-child(8) input")).sendKeys("+541147511234");
-		// driver.findElement(By.cssSelector(".personaldata label:nth-child(9) input")).clear();
-		// driver.findElement(By.cssSelector(".personaldata label:nth-child(9) input")).sendKeys("+541147511234");
-		driver.findElement(By.cssSelector(direccionProfile)).clear();
-		driver.findElement(By.cssSelector(direccionProfile)).sendKeys(
-				"Mi Casa 123");
+		driver.findElement(tipoDocumento).sendKeys("RUT");		
+		driver.findElement(documento).clear();
+		driver.findElement(documento).sendKeys("11111111111");
+		driver.findElement(fechaNacimiento).sendKeys("11/11/11");
+		driver.findElement(genero).sendKeys("female");
+		driver.findElement(estadoCivil).sendKeys("single");
+		driver.findElement(mailPersonal).clear();
+		driver.findElement(mailPersonal).sendKeys("fakee5555mail@gointegro.com");
+		driver.findElement(telefonoFijo).clear();
+		driver.findElement(telefonoFijo).sendKeys("1147511234");
+		driver.findElement(telefonoMovil).clear();
+		driver.findElement(telefonoMovil).sendKeys("1147511234");
+		driver.findElement(direccionPersonal).clear();
+		driver.findElement(direccionPersonal).sendKeys("Mi Casa 123");
 
 	}
 
@@ -258,17 +267,14 @@ public class ProfilePage extends TestSuite {
 
 		Reporter.log("Editando redes  sociables");
 
-		driver.findElement(By.cssSelector(linkedin)).clear();
-		driver.findElement(By.cssSelector(linkedin)).sendKeys(
-				"http://linkedin.com/in/username");
+		driver.findElement(linkedin).clear();
+		driver.findElement(linkedin).sendKeys("http://linkedin.com/in/username");
 
-		driver.findElement(By.cssSelector(twitter)).clear();
-		driver.findElement(By.cssSelector(twitter)).sendKeys(
-				"http://twitter.com/username");
+		driver.findElement(twitter).clear();
+		driver.findElement(twitter).sendKeys("http://twitter.com/username");
 
-		driver.findElement(By.cssSelector(facebook)).clear();
-		driver.findElement(By.cssSelector(facebook)).sendKeys(
-				"http://facebook.com/username");
+		driver.findElement(facebook).clear();
+		driver.findElement(facebook).sendKeys("http://facebook.com/username");
 	}
 
 	public void cancelarSubirFoto() throws InterruptedException {

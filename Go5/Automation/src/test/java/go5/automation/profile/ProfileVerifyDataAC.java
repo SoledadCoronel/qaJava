@@ -35,12 +35,12 @@ ProfilePage profile = null;
 		 
 		 
 		// Go to the user menu
-		  this.goToMenuUsuario();
+		
 		
 	
 			
 			//Ir a ver perfil
-		   profile.goToProfile();
+		  profile.goToProfileSideBar();
 		   Thread.sleep(1000);
 		   
 		   profile.verifyemaildisplayedAtHeader();

@@ -49,9 +49,6 @@ public class Post500CharsAC extends TestSuite {
 		 
 		// Go to hamburguesita
 		 
-		 this.goToMenu();
-			Thread.sleep(1000);
-		 
 			
 		 //Ir a espacios
 		//Tengo q ir a un espacio

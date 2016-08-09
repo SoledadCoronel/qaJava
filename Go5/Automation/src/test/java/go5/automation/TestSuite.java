@@ -47,15 +47,8 @@ public class TestSuite {
 
 	// Css
 
-	private String home = ".home";
-	protected String goToMenu = ".menu";
 	
-	protected String goToConfiguration = ".igoconfigurationwhite";
-
-	protected String irAConfigurarCuenta = ".applications .users menu li:last-child li:nth-child(3) a";
-
-	protected String irAGroups = ".igogroups";
-	protected String irATitles = ".igotitles";
+		
 	protected String searchButton = ".search";
 	protected String inputSearch = ".search input";
 	protected String firstRow = ".tables tbody tr:nth-child(1) td:nth-child(2)";
@@ -65,13 +58,13 @@ public class TestSuite {
 	protected String ordenRol = ".tables thead tr th:nth-child(4) a";
 	protected String ordenEstado = ".tables thead tr th:nth-child(5) a";
 	protected String ordenRegistrado = ".tables thead tr th:nth-child(6) a";
-	protected String goToLogoutCss = ".users li:last-child a";
-	protected String goToProfileCss = ".users .igouserwhite";
+	
+	
 
 	// By
 
-	By goToLogout = By.cssSelector(goToLogoutCss);
-	By goToProfile = By.cssSelector(goToProfileCss);
+	
+	
 
 	// Declaracion de funciones
 
@@ -302,17 +295,8 @@ public class TestSuite {
 		return (driver.findElement(By.cssSelector(sSelector)).getText());
 	}
 
-	public void goToConfiguration() throws Exception {
-
-		this.click(goToConfiguration);
-
-	}
-
-	public void goToProfile() throws Exception {
-
-		this.clickWhenReady(goToProfile, 10);
-	}
-
+	
+	
 	public void ordenarPorTitulo() throws Exception {
 		this.click(ordenTitulo);
 	}
@@ -329,14 +313,7 @@ public class TestSuite {
 		this.click(ordenEstado);
 	}
 
-	public void goToMenu() throws Exception {
-
-		this.click(goToMenu);
-	}
-
-	public void goToHome() throws Exception {
-		this.click(home);
-	}
+	
 
 	public void search(String nombreABuscar) throws Exception {
 
@@ -354,18 +331,7 @@ public class TestSuite {
 		// driver.findElement(By.cssSelector(inputSearch)).sendKeys(Keys.ENTER);
 	}
 
-	public void goToTitles() {
-		this.click(irATitles);
-	}
-
-	public void logout() throws Exception {
-		this.clickWhenReady(goToLogout, 10);
-	}
-
-	public void goToInvitations() {
-		this.click(irAInvitaciones);
-	}
-
+	
 	protected void handleMultipleWindows(String windowTitle) {
 		Set<String> windows = driver.getWindowHandles();
 
