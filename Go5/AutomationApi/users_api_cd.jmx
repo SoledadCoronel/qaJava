@@ -12402,7 +12402,7 @@
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
-                    <stringProp name="RegexExtractor.match_number">3</stringProp>
+                    <stringProp name="RegexExtractor.match_number">5</stringProp>
                   </RegexExtractor>
                   <hashTree/>
                   <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
@@ -20507,6 +20507,10 @@
                 </ResponseAssertion>
                 <hashTree/>
               </hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
+                <stringProp name="ConstantTimer.delay">500</stringProp>
+              </ConstantTimer>
+              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patchProfile - se le pone supervisor a usuario analista" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
