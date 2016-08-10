@@ -1,13 +1,13 @@
 package go5.automation.profile;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.HomePage;
 import go5.pageObjects.ProfilePage;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class CargarFotoProfile extends TestSuite {
+public class CargarFotoProfile extends SetUp {
 
 	ProfilePage profile = null;
 	HomePage home = null;

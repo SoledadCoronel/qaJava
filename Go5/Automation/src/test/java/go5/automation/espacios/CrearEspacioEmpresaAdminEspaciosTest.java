@@ -1,6 +1,6 @@
 package go5.automation.espacios;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
 
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class CrearEspacioEmpresaAdminEspaciosTest extends TestSuite {
+public class CrearEspacioEmpresaAdminEspaciosTest extends SetUp {
 
 	EspacioPage espacio = null;
 

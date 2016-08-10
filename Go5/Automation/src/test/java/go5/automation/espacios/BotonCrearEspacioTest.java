@@ -1,16 +1,19 @@
 package go5.automation.espacios;
 
-import go5.automation.TestSuite;
+
+import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 
 
 
-public class BotonCrearEspacioTest extends TestSuite {
+public class BotonCrearEspacioTest extends SetUp {
 	
 			
 	
@@ -19,6 +22,13 @@ public class BotonCrearEspacioTest extends TestSuite {
 	
 	EspacioPage espacio=null; 
 	
+	@BeforeClass // call function to open the browser and login 
+	 public void setup () throws Exception{
+		
+		 this.setUpMaven();
+	}
+	
+		
 	@AfterClass // call function to close browser 
 		
 		public void teardown(){

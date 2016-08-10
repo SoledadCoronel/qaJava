@@ -10,19 +10,16 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
-public class TestSuite {
+public class SetUp {
 
 	// Declaracion de objects
 
@@ -48,7 +45,7 @@ public class TestSuite {
 	// Css
 
 	
-		
+	protected static String inputmailLoginCss = ".session label:nth-child(3) input";	
 	protected String searchButton = ".search";
 	protected String inputSearch = ".search input";
 	protected String firstRow = ".tables tbody tr:nth-child(1) td:nth-child(2)";
@@ -63,7 +60,7 @@ public class TestSuite {
 
 	// By
 
-	
+	By inputMailLogin= By.cssSelector(inputmailLoginCss);
 	
 
 	// Declaracion de funciones
@@ -72,13 +69,12 @@ public class TestSuite {
 
 		driver = new FirefoxDriver();
 		login = new LoginPage(driver);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		this.openSite(urlSiteAutomation1);
 
 		Reporter.log("Abriendo la aplicacion");
-
-		// this.openSite(urlSiteAutomation2);
+	
+//		WebElement loginPage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputMailLogin));
 		login.loginToGo("marina.touceda@gointegro.com", "Auto1234");
 		Reporter.log(" Login como admin exitoso");
 		// org.apache.log4j.BasicConfigurator.configure();
@@ -165,7 +161,7 @@ public class TestSuite {
 
 		driver.get(url);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement loginPage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputMailLogin));
 		login = new LoginPage(driver);
 		login.loginToGo("marina.touceda+023@gointegro.com", "Auto1234");
 
@@ -175,17 +171,10 @@ public class TestSuite {
 
 		driver.get(site);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	}
+		}
 
 	public void openSiteMobile() {
 		driver.get("http://mobile.uat.go5.gointegro.net/");
-		driver.manage().window().maximize();
-	}
-
-	public void openSiteLogin() {
-
-		driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
 		driver.manage().window().maximize();
 	}
 

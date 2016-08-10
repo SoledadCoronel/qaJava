@@ -2,7 +2,7 @@ package go5.automation.personas;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.AdministrarPersonasPage;
 import go5.pageObjects.HomePage;
 import go5.pageObjects.ProfilePage;
@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 
 
-public class AddUserAllFieldsTest extends TestSuite{
+public class AddUserAllFieldsTest extends SetUp{
 
 	AdministrarPersonasPage personas=null;
     ProfilePage profile =null;
@@ -40,7 +40,7 @@ public class AddUserAllFieldsTest extends TestSuite{
 		
 
 	@Test
-	public void addUserAdmin() throws Exception{
+	public void addUseAllFields() throws Exception{
 		 org.apache.log4j.BasicConfigurator.configure();
 		
 		 Random numero= new Random();

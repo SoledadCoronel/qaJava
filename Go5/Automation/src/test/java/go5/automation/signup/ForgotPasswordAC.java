@@ -1,7 +1,7 @@
 package go5.automation.signup;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.ForgotPasswordPage;
 
 import java.util.concurrent.TimeUnit;
@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ForgotPasswordAC extends TestSuite{
+public class ForgotPasswordAC extends SetUp{
 	
 		  
 	

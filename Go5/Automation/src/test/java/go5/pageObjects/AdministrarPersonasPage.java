@@ -2,7 +2,7 @@ package go5.pageObjects;
 
 import java.util.List;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-public class AdministrarPersonasPage extends TestSuite {
+public class AdministrarPersonasPage extends SetUp {
 
 	// Css
 

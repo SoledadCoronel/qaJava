@@ -1,6 +1,6 @@
 package go5.automation.social;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.HomePage;
 import go5.pageObjects.DirectorioPage;
 import go5.pageObjects.LoginPage;
@@ -17,7 +17,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class MuroSocialPerfilAC extends TestSuite {
+public class MuroSocialPerfilAC extends SetUp {
 
 	MuroSocialPage muro = null;
 	LoginPage login = null;

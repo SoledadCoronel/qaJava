@@ -1,7 +1,7 @@
 package go5.automation.espacios;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 
 
-public class CrearEspacioPrivadoAC extends TestSuite {
+public class CrearEspacioPrivadoAC extends SetUp {
 	
 
 	

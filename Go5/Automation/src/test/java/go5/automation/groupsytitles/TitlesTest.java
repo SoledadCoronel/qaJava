@@ -2,7 +2,7 @@ package go5.automation.groupsytitles;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 
 
-public class TitlesTest extends TestSuite{
+public class TitlesTest extends SetUp{
 
 	@BeforeClass
 	 

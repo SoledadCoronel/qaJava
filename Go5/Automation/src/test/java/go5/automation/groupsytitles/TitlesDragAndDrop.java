@@ -2,7 +2,7 @@ package go5.automation.groupsytitles;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 
 
-public class TitlesDragAndDrop extends TestSuite{
+public class TitlesDragAndDrop extends SetUp{
 
 	@BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{

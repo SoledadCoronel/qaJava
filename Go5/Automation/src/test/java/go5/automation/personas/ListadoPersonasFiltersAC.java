@@ -1,6 +1,6 @@
 package go5.automation.personas;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.AdministrarPersonasPage;
 import go5.pageObjects.HomePage;
 
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ListadoPersonasFiltersAC extends TestSuite {
+public class ListadoPersonasFiltersAC extends SetUp {
 	
 	
 	AdministrarPersonasPage personas=null;

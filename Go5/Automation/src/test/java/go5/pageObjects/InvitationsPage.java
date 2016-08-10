@@ -1,13 +1,13 @@
 package go5.pageObjects;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 
-public class InvitationsPage extends TestSuite {
+public class InvitationsPage extends SetUp {
 
 	// Css
 

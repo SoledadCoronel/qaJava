@@ -1,7 +1,7 @@
 package go5.automation.signup;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import go5.pageObjects.SignupPlatformPage;
 
@@ -16,7 +16,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 
-public class LandingTest extends TestSuite{
+public class LandingTest extends SetUp{
 
 	private String email = this.generateRandomEmail();
 	SignupPlatformPage platform =null;

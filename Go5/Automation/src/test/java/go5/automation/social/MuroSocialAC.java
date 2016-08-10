@@ -1,7 +1,7 @@
 package go5.automation.social;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
 import go5.pageObjects.HomePage;
 import go5.pageObjects.LoginPage;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 
 
-public class MuroSocialAC extends TestSuite {
+public class MuroSocialAC extends SetUp {
 	
 	MuroSocialPage muro=null;
 	EspacioPage espacio=null;

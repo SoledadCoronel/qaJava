@@ -3,7 +3,7 @@ package go5.pageObjects;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -17,7 +17,7 @@ import org.testng.Reporter;
 
     
     
-    public class EspacioPage extends TestSuite{
+    public class EspacioPage extends SetUp{
 
     	
     	 //Go To Spaces

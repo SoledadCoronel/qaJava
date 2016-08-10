@@ -3,7 +3,7 @@ package go5.pageObjects;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-public class AgregarUserPage extends TestSuite {
+public class AgregarUserPage extends SetUp {
 
 	// Css
 
@@ -33,7 +33,7 @@ public class AgregarUserPage extends TestSuite {
 
 	
 	protected String personasCss=".tables";
-	protected String groupsSelect = ".groupsdata select";
+	protected String groupsSelectCss = ".groupsdata select";
 	
 	// Modales
 
@@ -58,6 +58,7 @@ public class AgregarUserPage extends TestSuite {
 	 By agregarSinInvite=By.cssSelector(agregarPersonaSinInvitacionCss);
 	 By agregarConInvite=By.cssSelector(agregarPersonaYEnviarInvitacionCss);
 	 By personas = By.cssSelector(personasCss);
+	 By groupsSelect=By.cssSelector(groupsSelectCss);
 	 
 	
 	
@@ -116,14 +117,29 @@ public class AgregarUserPage extends TestSuite {
 
 		selectRoldropdown.selectByIndex(1);
 	}
+	
+	public void selectRolBasic() {
+		// Seleccionar el rol basic
+
+		Select selectRoldropdown = new Select(driver.findElement(selectRol));
+
+		selectRoldropdown.selectByIndex(2);
+	}
+	
+	public void selectRolAdminEspacios() {
+		// Seleccionar el rol basic
+
+		Select selectRoldropdown = new Select(driver.findElement(selectRol));
+
+		selectRoldropdown.selectByIndex(3);
+	}
+	
 
 	public void setGrupo() {
 
 		// Select all values the drop-down for Language
 		Reporter.log(" Tomar un grupo");
-		Select selectGroup = new Select(driver.findElement(By
-				.cssSelector(groupsSelect)));
-
+		Select selectGroup = new Select(driver.findElement(groupsSelect));
 		selectGroup.selectByIndex(1);
 
 	}
@@ -167,4 +183,54 @@ public class AgregarUserPage extends TestSuite {
 		return email;
 	}
 
+	public String agregarBasicConInvite() throws Exception {
+
+		// Devuelve el mail para despues poder loguearme
+		
+		 
+
+		// Lo creo activado
+		   driver.findElement(activo).click();
+
+		// Poner el nombre
+           this.setRandomUserName();
+           this.setRandomLastName();
+           this.setRandomEmail();
+
+		// Seleccionar el rol basci
+           this.selectRolBasic();
+	      
+		// Grabar el nuevo usuario creado
+		
+	      Thread.sleep(3000);
+		  this.grabarUsuarioConInvite();
+
+		
+		return email;
 	}
+	
+	public String agregarAdminEspacios() throws Exception  {
+
+		// Devuelve el mail para despues poder loguearme
+		
+		 
+
+		// Lo creo activado
+		   driver.findElement(activo).click();
+
+			// Poner el nombre
+           this.setRandomUserName();
+           this.setRandomLastName();
+           this.setRandomEmail();
+
+		// Seleccionar el rol basci
+           this.selectRolAdminEspacios();
+	      
+		// Grabar el nuevo usuario creado
+		
+	      Thread.sleep(3000);
+		  this.grabarUsuarioConInvite();
+
+		return email;
+	}
+}

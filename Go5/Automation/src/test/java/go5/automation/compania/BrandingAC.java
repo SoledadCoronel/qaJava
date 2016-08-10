@@ -1,13 +1,13 @@
 package go5.automation.compania;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.CompanyPage;
 import go5.pageObjects.HomePage;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class BrandingAC extends TestSuite {
+public class BrandingAC extends SetUp {
 
 	CompanyPage company= null;
 	HomePage home = null;
@@ -26,6 +26,7 @@ public class BrandingAC extends TestSuite {
 		company = new CompanyPage(driver);
 
 		// Ir a Imageb
+		home.goToConfiguration();
 		home.goDisenio();
 		company.restablecerInterfaz();
 		Thread.sleep(4000);

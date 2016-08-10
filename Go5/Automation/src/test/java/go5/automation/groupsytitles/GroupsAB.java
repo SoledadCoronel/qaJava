@@ -2,7 +2,7 @@ package go5.automation.groupsytitles;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.GroupsPage;
 
 import org.openqa.selenium.By;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 
 
-public class GroupsAB extends TestSuite{
+public class GroupsAB extends SetUp{
 
 	GroupsPage groups = null;
 	

@@ -1,13 +1,13 @@
 package go5.automation.espacios;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class EditarEspacioAC extends TestSuite {
+public class EditarEspacioAC extends SetUp {
 
 	EspacioPage espacio = null;
 

@@ -1,6 +1,6 @@
 package go5.automation.compania;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.CompanyPage;
 import go5.pageObjects.HomePage;
 import go5.pageObjects.MuroSocialPage;
@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
 
 
 
-public class DatosGeneralesAC  extends TestSuite{
+public class DatosGeneralesAC  extends SetUp{
 	
 	CompanyPage company=null;
 	HomePage home =null;

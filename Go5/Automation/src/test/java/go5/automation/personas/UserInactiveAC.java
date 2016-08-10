@@ -1,6 +1,6 @@
 package go5.automation.personas;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +20,7 @@ import go5.pageObjects.HomePage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.AdministrarPersonasPage;
 
-public class UserInactiveAC extends TestSuite {
+public class UserInactiveAC extends SetUp {
 
 	AdministrarPersonasPage personas = null;
 	HomePage home = null;

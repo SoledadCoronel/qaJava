@@ -3,7 +3,7 @@ package go5.automation.signup;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.CreatePlatformPage;
 import go5.pageObjects.LoginPage;
 
@@ -14,7 +14,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 
-public class CreatePlatformSpanishAC extends TestSuite{
+public class CreatePlatformSpanishAC extends SetUp{
 
 	private String email = this.generateRandomEmail();
 	private String companyName= this.generateName();

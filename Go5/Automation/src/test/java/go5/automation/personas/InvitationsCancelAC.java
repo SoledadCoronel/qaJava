@@ -1,6 +1,6 @@
 package go5.automation.personas;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +21,7 @@ import go5.pageObjects.InvitationsPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.SignupPage;
 
-public class InvitationsCancelAC extends TestSuite {
+public class InvitationsCancelAC extends SetUp {
 
 	String tabla = new String(".tables");
 	protected String strPassword = new String("Auto1234");

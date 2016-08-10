@@ -1,6 +1,6 @@
 package go5.pageObjects;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import java.io.File;
 import java.util.Random;
@@ -15,7 +15,7 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
-public class ProfilePage extends TestSuite {
+public class ProfilePage extends SetUp {
 
 	// Css
 

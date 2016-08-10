@@ -2,7 +2,7 @@ package go5.pageObjects;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +17,7 @@ import org.testng.Reporter;
 
     
     
-    public class CompanyPage extends TestSuite{
+    public class CompanyPage extends SetUp{
 
     	//Css
     	
@@ -192,7 +192,7 @@ Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .color
        
      String colorSelected =driver.findElement(nombreCeleste).getCssValue("background-color");
      Reporter.log(colorSelected);
-      
+      Thread.sleep(3000);
      String colorHeader = new String(driver.findElement(By.tagName("header")).getCssValue("background-color"));
      Reporter.log(colorHeader);
   
@@ -200,12 +200,11 @@ Assert.assertEquals("skyblue",(driver.findElement(By.cssSelector(".design .color
      
    Reporter.log("El color seleccionado en branding se muestra correctamente en el header");
     Assert.assertEquals(colorSelected, colorHeader, "El color seleccionado en branding se muestra correctamente en el header" );
-       
-             
+      
+            
       }
       
-     
-      
+         
       
       public void changeColorContrast() throws InterruptedException{
     		// Change Contrast Color(){

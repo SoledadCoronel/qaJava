@@ -2,7 +2,7 @@ package go5.automation.profile;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.HomePage;
 
 import org.testng.Reporter;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 
 
-public class BotonConfigurarTest extends TestSuite{
+public class BotonConfigurarTest extends SetUp{
 	
 	
 	HomePage home=null;

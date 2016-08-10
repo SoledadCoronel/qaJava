@@ -1,6 +1,6 @@
 package go5.automation.groupsytitles;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.GroupsPage;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class GroupsDragAndDrop extends TestSuite {
+public class GroupsDragAndDrop extends SetUp {
 
 	GroupsPage groups = null;
 
