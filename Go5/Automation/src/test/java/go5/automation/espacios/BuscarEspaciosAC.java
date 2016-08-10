@@ -35,11 +35,7 @@ public class BuscarEspaciosAC extends TestSuite {
 	        
 		 Reporter.log(" Listado de espacios ");
 		 
-		// Go to hamburguesita
-		 
-		this.goToMenu();
-		 
-			
+				
 		 //Ir a espacios
 		
 		 espacio.goToEspacios();

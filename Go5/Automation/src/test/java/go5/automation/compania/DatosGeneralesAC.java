@@ -2,6 +2,7 @@ package go5.automation.compania;
 
 import go5.automation.TestSuite;
 import go5.pageObjects.CompanyPage;
+import go5.pageObjects.HomePage;
 import go5.pageObjects.MuroSocialPage;
 
 import java.util.concurrent.TimeUnit;
@@ -21,6 +22,7 @@ import org.testng.annotations.Test;
 public class DatosGeneralesAC  extends TestSuite{
 	
 	CompanyPage company=null;
+	HomePage home =null;
 	
 	
    @AfterClass // call function to close browser 
@@ -35,12 +37,11 @@ public class DatosGeneralesAC  extends TestSuite{
 	public void companyDataPage() throws Exception { 
 	
 	company = new CompanyPage(driver);
+	home = new HomePage(driver);
 		  
-	
-		this.goToConfiguration();
-		 this.goToMenu();
-		 Thread.sleep(2000);
-		 company.goToDatosGenerales();
+		home.goToConfiguration();
+		home.goToMenu();		
+		company.goToDatosGenerales();
         company.verifyNombreCantBeBlank();
         company.setNombreCompania("Site Automation");
  		company.setIdioma();

@@ -76,7 +76,7 @@ import org.testng.Reporter;
       // By 
         By goToEspacios=By.cssSelector(goToEspaciosCss);
         By goToRecomendados= By.cssSelector(goToRecomendadosCss);
-        By crearEspacio=By.cssSelector(crearEspacioCss);
+        protected By crearEspacio=By.cssSelector(crearEspacioCss);
         By nombreDeEspacio=By.cssSelector(nombreEspacioCss);
         By descripcionEspacio=By.cssSelector(descripcionEspacioCss);
         
@@ -103,7 +103,7 @@ import org.testng.Reporter;
     	
     	//Driver
     	
-    	WebDriver driver;
+    	protected WebDriver driver;
     
      
   //Constructor
@@ -122,7 +122,7 @@ import org.testng.Reporter;
     	  }
     	  
     	    
-         public void crearEspacio(){
+         public void goToCrearEspacio(){
         	 driver.findElement(crearEspacio).click();
         	
          }

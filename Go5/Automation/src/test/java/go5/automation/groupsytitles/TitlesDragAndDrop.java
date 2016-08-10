@@ -39,20 +39,18 @@ public class TitlesDragAndDrop extends TestSuite{
 	 public void dragAndDrop() throws Exception{
 		
 		
-				     		
-		// Go to the configuration
-				 this.goToConfiguration();
-				 this.goToMenu();	
-				// Go to  Users Menu
+			     		
+		
 			        Reporter.log("Abriendo administar personas" );  
 			       
 			        
 			    // Go to Titles2    
 			       
 			        Reporter.log("Abriendo titulos");
-			 	     this.goToTitles();
-			      
-			      
+			 	   
+			     // Go to Titles2    
+		            Reporter.log("Abriendo titulos");
+		            driver.findElement(By.cssSelector(".igotitleswhite")).click();
 			      
 			  	  
 			         // Go to Grupos

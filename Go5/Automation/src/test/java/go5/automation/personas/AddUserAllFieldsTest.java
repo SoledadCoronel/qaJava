@@ -49,15 +49,12 @@ public class AddUserAllFieldsTest extends TestSuite{
 	     home= new HomePage(driver);
 	     js=  (JavascriptExecutor) driver;
 		 
-		 // Go to the configuration
-		   this.goToConfiguration();
-		   this.goToMenu();
-	       Thread.sleep(1000);
+		 
 		   // Go to Manage people
 	        home.goToAdministrar();
-	        
-	        this.click(crearUser);
-	         Thread.sleep(3000);
+	        personas.goToagregarPersona();
+	        /*
+	      
 	         personas.setEstadoDesactivado();
 		        
 	        personas.setRandomUserName();
@@ -77,7 +74,7 @@ public class AddUserAllFieldsTest extends TestSuite{
 	         log.info("Grabando el usuario");
 	           personas.grabarUsuarioSinInvite();
 	        
-		    	        
+		    	 */       
 		   
 		    
 		    

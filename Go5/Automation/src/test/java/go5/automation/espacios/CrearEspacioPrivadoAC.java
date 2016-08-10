@@ -35,14 +35,11 @@ public class CrearEspacioPrivadoAC extends TestSuite {
 	        
 		 Reporter.log(" Creando un espacio empresa como user admin");
 		 
-		// Go to hamburguesita
-		 
-		this.goToMenu();
-			
+				
 			
 		    // Ir a Crear Espacio 
 		 
-		 espacio.crearEspacio();
+		 espacio.goToCrearEspacio();
 		 
 		   		       
 		      //Cargar formulario del espacio

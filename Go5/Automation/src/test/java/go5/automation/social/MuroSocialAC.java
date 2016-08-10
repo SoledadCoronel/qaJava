@@ -3,10 +3,10 @@ package go5.automation.social;
 
 import go5.automation.TestSuite;
 import go5.pageObjects.EspacioPage;
+import go5.pageObjects.HomePage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
 
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
@@ -18,6 +18,7 @@ public class MuroSocialAC extends TestSuite {
 	MuroSocialPage muro=null;
 	EspacioPage espacio=null;
 	LoginPage login =null;
+	HomePage home=null;
 	
 	private String iconoEmpresa=".igospaceadmin";
 	private String iconoCallCenter=".igospacecallcenter";
@@ -42,16 +43,12 @@ public class MuroSocialAC extends TestSuite {
 		muro= new MuroSocialPage(driver); 
 		espacio= new EspacioPage(driver);
 		login =new LoginPage(driver);
+		home = new HomePage(driver);
 			
 	        
 		 Reporter.log(" Entrar a un espacio y postear");
 		 
-		// Go to hamburguesita
-		 
-		 this.goToMenu();
-			Thread.sleep(1000);
-		 
-			
+						
 		 //Ir a espacios
 		//Tengo q ir a un espacio
 		 espacio.clickEspacioSidebar(iconoEmpresa);
@@ -65,15 +62,10 @@ public class MuroSocialAC extends TestSuite {
 		Reporter.log("Like el post creado como user admin");
 		muro.likearPost();
 		Thread.sleep(2000);
-		this.goToMenuUsuario();	
-		Reporter.log("Desloguearse como usuario admin");
-		this.logout();
+		home.goToLogout();
 		Thread.sleep(2000);
 		Reporter.log("Loguearse como usuario basico");
 		login.loginToGoAsUSerBasic();
-		Thread.sleep(3000);
-		this.goToMenu();
-		Thread.sleep(1000);
 		espacio.clickEspacioSidebar(iconoEmpresa);
 		Thread.sleep(2000);
 		Reporter.log("Imprimir y assertear que el texto posteado es el del user admin");

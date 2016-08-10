@@ -47,11 +47,7 @@ public class ListadoDirectorioAB extends TestSuite{
 		
 	 directorio = new DirectorioPage(driver);
     
-	 	 
-		// Go to the menu (hamburguesita)
-	 	this.goToMenu();
-       Thread.sleep(2000);  
- 	
+	 	 	
  	// Go to  Directorio de personas
         
        directorio.goToDirectorio();

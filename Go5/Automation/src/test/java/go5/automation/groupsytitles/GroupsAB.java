@@ -45,13 +45,6 @@ public class GroupsAB extends TestSuite{
 		groups = new GroupsPage(driver);
 		
 		
-
-		  // Go to the configuration
-		 this.goToConfiguration();
-		 this.goToMenu();	
-		
-		 //groups.goToGroups();
-
     	 Reporter.log("Abriendo pagina de grupos" );
     	  		this.click(irATitles);
     	
