@@ -53,10 +53,10 @@ public class Post500CharsAC extends SetUp {
 		 //Ir a espacios
 		//Tengo q ir a un espacio
 		 espacio.clickEspacioSidebar(iconoEmpresa);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		muro.postTexto(muro.randomString(200)+"    "+muro.randomString(100)+"        "+muro.randomString(100)+"    "+muro.randomString(200));
+		Thread.sleep(5000);
 		muro.postear();
-		Reporter.log(driver.findElement(By.cssSelector(".postbox fieldset:nth-child(1) label:nth-child(2) div")).getText());
 		Thread.sleep(2000);
 		//Scrollear la pagina
 		Reporter.log("Scrolleo");
