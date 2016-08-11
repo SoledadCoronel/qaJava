@@ -39,29 +39,6 @@ public class AgregarEspacioPage extends SetUp {
 	protected String grabarEspacioCss = ".spacecreate .primary";
 	protected String grabarEspacioEmpresaInactivoCss = ".active .mconfirmation .optional";
 
-	// Order
-
-	protected String ordenNombre = new String(
-			".tables thead tr th:nth-child(2) a");
-	protected String ordenDescripcion = new String(
-			".tables thead tr th:nth-child(3) a");
-	protected String ordenMiembros = new String(
-			".tables thead tr th:nth-child(4) a");
-
-	protected String ordenTitulo = ".igocaretdown";
-
-	//
-	protected String editfourthRow = new String(
-			".tables tbody tr:nth-child(4) td:nth-child(5) a");
-	protected String firstType = ".tables  tr:nth-child(1) td:nth-child(3)";
-	protected String firstSpace = ".tables tbody tr:nth-child(1) td:nth-child(2) a";
-	protected String firstState = ".tables tbody tr:nth-child(1) td:nth-child(5) a";
-	protected String firstName = ".tables tbody tr:nth-child(1) td:nth-child(2) a";
-	protected String secondName = ".tables tbody tr:nth-child(2) td:nth-child(2) a";
-
-	// Search Spaces
-	protected String buscarEspacio = ".actions .btnsearch";
-	protected String inputSearch = ".actions .search input";
 
 	// References
 
@@ -162,7 +139,7 @@ public class AgregarEspacioPage extends SetUp {
 	public void editarEspacio() {
 		// Agarro el cuarto elemento de la lista y lo tomo para editarlo
 
-		driver.findElement(By.cssSelector(editfourthRow)).click();
+	//	driver.findElement(By.cssSelector(editfourthRow)).click();
 	}
 
 	public void cambiarIconoOso() throws InterruptedException {

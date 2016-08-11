@@ -2,7 +2,9 @@ package go5.automation.espacios;
 
 
 import go5.automation.SetUp;
+import go5.pageObjects.AgregarEspacioPage;
 import go5.pageObjects.EspacioPage;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
@@ -13,7 +15,7 @@ public class CrearEspacioPrivadoAC extends SetUp {
 	
 
 	
-	EspacioPage espacio=null;
+	AgregarEspacioPage addespacio=null;
 	
 		
 	
@@ -30,7 +32,7 @@ public class CrearEspacioPrivadoAC extends SetUp {
 	
 	public void crearEspacioEmpresa() throws Exception { 
 	
-		espacio= new EspacioPage(driver); 
+		addespacio= new AgregarEspacioPage(driver); 
 			
 	        
 		 Reporter.log(" Creando un espacio empresa como user admin");
@@ -39,37 +41,37 @@ public class CrearEspacioPrivadoAC extends SetUp {
 			
 		    // Ir a Crear Espacio 
 		 
-		 espacio.goToCrearEspacio();
+		addespacio.goToCrearEspacio();
 		 
 		   		       
 		      //Cargar formulario del espacio
-		     	espacio.setNameEspacio("PRIVADO");
+		     	addespacio.setNameEspacio("PRIVADO");
 		     	
-		 		espacio.setDescriptionEspacio("Espacio privado");	 
+		 		addespacio.setDescriptionEspacio("Espacio privado");	 
 		 
 		 	
 	       //Configuracion del espacio
 	          
 	          //Desactivar
 	          Reporter.log("Desactivar el espacio");
-	          espacio.activarEspacio();
+	         addespacio.activarEspacio();
 	     
 	
 	         //Actividad Social
 	          Reporter.log("Desactivar Acitividad Social");
-	         espacio.activarActividadSocial();
+	         addespacio.activarActividadSocial();
 	  
 	          //Seleccionar el icono
 	        //  Reporter.log("Seleccionar el icono del espacio");
 	        //  espacio.cambiarIconoBanana();
 	         Thread.sleep(1000);
-	         espacio.setEspacioPrivado();
+	         addespacio.setEspacioPrivado();
 	         Thread.sleep(1000);
 	     
 	           	           
 	           //Grabar el espacio nuevo
 	          
-	           espacio.grabarEspacio();
+	           addespacio.grabarEspacio();
 	                   
 	           Thread.sleep(1000);
 	           
