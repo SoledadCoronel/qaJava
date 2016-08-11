@@ -1,7 +1,7 @@
 package go5.automation.espacios;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 
 
-public class CrearEspacioPrivadoAC extends TestSuite {
+public class CrearEspacioPrivadoAC extends SetUp {
 	
 
 	
@@ -35,21 +35,11 @@ public class CrearEspacioPrivadoAC extends TestSuite {
 	        
 		 Reporter.log(" Creando un espacio empresa como user admin");
 		 
-		// Go to hamburguesita
-		 
-		 this.click(irAMenu);
-		 Thread.sleep(1000);
-		 
-			
-		 //Ir a espacios
-		 espacio.goToEspacios();
-		
-		 Thread.sleep(1000);
-			
+				
 			
 		    // Ir a Crear Espacio 
 		 
-		 espacio.crearEspacio();
+		 espacio.goToCrearEspacio();
 		 
 		   		       
 		      //Cargar formulario del espacio

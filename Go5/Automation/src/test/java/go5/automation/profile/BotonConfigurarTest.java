@@ -2,7 +2,9 @@ package go5.automation.profile;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
+import go5.pageObjects.HomePage;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -11,8 +13,10 @@ import org.testng.annotations.Test;
 
 
 
-public class UserBasicBotonConfigurarTest extends TestSuite{
+public class BotonConfigurarTest extends SetUp{
 	
+	
+	HomePage home=null;
 		
 	@BeforeClass
 	
@@ -33,7 +37,7 @@ public class UserBasicBotonConfigurarTest extends TestSuite{
 
 public void withoutConfigOption() throws Exception { 
 
-	    		
+	 home = new HomePage(driver); 		
         
 	 Reporter.log("Loguearse  como user basic a un  y verificar que no este el boton de Configuracion");
  
@@ -41,7 +45,7 @@ public void withoutConfigOption() throws Exception {
 	    // Verificar que no esta el boton de Configuracion
 	 
 	     try{
-	    	  this.click(irAConfiguration);
+	    	 home.goToConfiguration();
 	
 	     }    
 	    		 catch (Exception e) {

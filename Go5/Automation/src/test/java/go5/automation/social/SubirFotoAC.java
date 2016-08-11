@@ -1,7 +1,7 @@
 package go5.automation.social;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 
 
-public class SubirFotoAC extends TestSuite {
+public class SubirFotoAC extends SetUp {
 	
 	MuroSocialPage muro=null;
 	EspacioPage espacio=null;
@@ -51,11 +51,7 @@ public class SubirFotoAC extends TestSuite {
 		
 		 Reporter.log(" Entrar a un espacio y postear");
 		 
-		// Go to hamburguesita
-		 
-		 this.click(irAMenu);
-		 Thread.sleep(3000);
-		 
+			 
 			
 		 //Ir a espacios
 		//Tengo q ir a un espacio

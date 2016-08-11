@@ -2,7 +2,7 @@ package go5.automation.directorio;
 
 import java.util.concurrent.TimeUnit;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,7 +17,7 @@ import go5.pageObjects.DirectorioPage;
 
 
 
-public class ListadoDirectorioAB extends TestSuite{
+public class ListadoDirectorioAB extends SetUp{
 	
 	// Css 
 	 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
@@ -47,17 +47,12 @@ public class ListadoDirectorioAB extends TestSuite{
 		
 	 directorio = new DirectorioPage(driver);
     
-	 	 
-		// Go to the menu (hamburguesita)
-	 this.goToMenu();
-       Thread.sleep(2000);  
- 	
+	 	 	
  	// Go to  Directorio de personas
         
- 	 directorio.goToDirectorio();
+       directorio.goToDirectorio();
  	 
- 		
-        WebElement tablevailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".people")));
+ 	    
          
       // Ver si esta ordenado por default cuando carga la pagina
          Reporter.log("Ver si esta ordenado por default cuando carga la pagina");
@@ -66,17 +61,11 @@ public class ListadoDirectorioAB extends TestSuite{
         
         //Volver a ordenar, en forma descendente
         
-     //  this.ordenar();
-       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+  
          Reporter.log("Verificar que esta en orden descendiente despues de apretar ordenar en Nombre");
          directorio.verificarOrden();
        
-     //Verificar Paginado
-       Reporter.log("Seleccionar otra pagina del listado");
-        this.goToPagina(8);
-        WebElement tablevailable2 = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".people")));
-           driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-      
+         
         
       
     //Hacer una busqueda

@@ -91,7 +91,7 @@ public class MuroTest  extends AndroidSetup{
 	
 		Thread.sleep(2000);
 		Reporter.log("Loguearse como usuario basico");
-		login.loginToGoAsAdminEspacios();
+		login.loginToGoAsAdminEspacios("Automation5");
 		Thread.sleep(3000);
 		page.goToMenu();
 		Thread.sleep(1000);

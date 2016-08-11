@@ -50,7 +50,7 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
     }
 
     @Test
-    public void editProfileUser() throws InterruptedException {
+    public void configCuentaUser() throws InterruptedException {
     
     	// Init pages
     	
@@ -62,6 +62,7 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
    
        // Test
      login.loginToGoAsUSerBasic();
+     Thread.sleep(5000);
      page.goToMenu();
      Thread.sleep(2000);
     page.goToConfigurarCuenta();
@@ -70,6 +71,7 @@ public class ConfigurarCuentaTest  extends AndroidSetup{
     config.setTimezone();
     config.goTosetPassword();
     config.setPassword("Auto1234");
+    Thread.sleep(4000);
     config.guardarCambios();
     
     

@@ -1,7 +1,7 @@
 package go5.automation.espacios;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 
 
-public class BuscarEspaciosAC extends TestSuite {
+public class BuscarEspaciosAC extends SetUp {
 	
 		
 	EspacioPage espacio=null;
@@ -35,12 +35,7 @@ public class BuscarEspaciosAC extends TestSuite {
 	        
 		 Reporter.log(" Listado de espacios ");
 		 
-		// Go to hamburguesita
-		 
-		 this.click(irAMenu);
-		 Thread.sleep(1000);
-		 
-			
+				
 		 //Ir a espacios
 		
 		 espacio.goToEspacios();

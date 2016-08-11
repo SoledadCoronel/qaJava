@@ -1,7 +1,9 @@
 package go5.automation.personas;
 
-import go5.automation.TestSuite;
-import go5.pageObjects.PersonasPage;
+import go5.automation.SetUp;
+import go5.pageObjects.AdministrarPersonasPage;
+import go5.pageObjects.HomePage;
+
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
@@ -9,12 +11,17 @@ import org.testng.annotations.Test;
 
 
 
-public class ListadoPersonasFiltersAC extends TestSuite {
+public class ListadoPersonasFiltersAC extends SetUp {
 	
 	
-	PersonasPage personas=null;
-	   
+	AdministrarPersonasPage personas=null;
+	HomePage home=null;   
 
+	private Integer allUsers=0;
+	private Integer activos=1;
+	private Integer inactivos=2;
+	private Integer noRegistrados =3;
+	
 	 @AfterClass // call function to close browser 
 		
 		public void teardown(){
@@ -25,47 +32,39 @@ public class ListadoPersonasFiltersAC extends TestSuite {
 	
 	public void listadoPersonasFilters() throws Exception { 
 	
-	 personas= new PersonasPage(driver);
-       
+	 personas= new AdministrarPersonasPage(driver);
+     home = new HomePage(driver);
+     
+     
          // Go to the configuration
-		this.goToConfiguration();
-		this.goToMenu();
-		Thread.sleep(1000);
-         
-		personas.goToPersonas();
-		Thread.sleep(1000);
-               
+	     home.goToConfiguration();
+	     home.goToAdministrar();
+     
          //Filtrados
          
- 	 //Elegir los inactivos
-		
-		Reporter.log(" Seleccionar usuarios inactivos");
-         personas.elegirUsuarios(2);
-         Thread.sleep(3000);
- 	       personas.verificarUsuariosInactivos();
-                 
-        	  // Elegir Usuarios No Registrados
-             Reporter.log(" Seleccionar usuarios no registrados");
-             personas.elegirUsuarios(3);
-           Thread.sleep(3000);
+	     //Elegir los inactivos
+		 Thread.sleep(5000);
+	     Reporter.log(" Seleccionar usuarios inactivos");
+	     personas.elegirUsuarios(inactivos);
+	      personas.verificarUsuariosInactivos();
+         Thread.sleep(3000);  
+        
+         // Elegir Usuarios No Registrados
+           Reporter.log(" Seleccionar usuarios no registrados");
+           personas.elegirUsuarios(noRegistrados);
             personas.verificarUsuariosNoRegistrados();
-                       
-            	// Elegir Usuarios Activos
-                 Reporter.log(" Seleccionar usuarios activos");
-                    personas.elegirUsuarios(1);
-                       Thread.sleep(3000);
-                  personas.verificarUsuariosActivos();
-                  
+            Thread.sleep(3000);          
+         
+            // Elegir Usuarios Activos
+             Reporter.log(" Seleccionar usuarios activos");
+             personas.elegirUsuarios(activos);
+             Thread.sleep(3000);
+             personas.verificarUsuariosActivos();
+             
                   this.goToPagina(4);
                
-               // Elegir Usuarios Activos
+               // Elegir todos los usuarios
                   Reporter.log(" Seleccionar usuarios activos");
-                     personas.elegirUsuarios(1);
-                        Thread.sleep(3000);
-                   personas.verificarUsuariosActivos();
-                  
-           	 
-              
-	
-	}
+                    personas.elegirUsuarios(allUsers);
+  	}
 }	

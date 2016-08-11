@@ -2,7 +2,6 @@ package go5.pageObjects;
 
 
 
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -17,7 +16,7 @@ import org.testng.Reporter;
 
     	//Css
     	
-    	private String crearEspacio = new String (".title .primary");
+    	private String crearEspacio = "#sidebar  div:nth-child(3) .plus";
     	private String espacioPublico = (".igounlock");
     	private String espacioPrivado = (".igolock");
     	private String espacioEmpresa = (".igocompany");
@@ -25,13 +24,14 @@ import org.testng.Reporter;
     	private String descripcionEspacio= (".spacecreate fieldset:nth-child(1) label:nth-child(2) input");
     	private String activarEspacio =  (".spaceformconfig label:nth-child(2) span");
     	private String activadadSocial = (".spaceformconfig label:nth-child(3) span");
-    	private String cambiarIcono = (".spaceformconfig label:nth-child(4) a");
+    	private String cambiarIcono = ".spacecreate .igospaceadmin";
+    	private String guardarIcono= ".active .primary";
     	private String iconoOso= (".igospacebear");
     	private String iconoBasket= (".igospacebasket");
-    	private String iconoBanana=  (".igospacebanana");
-  
-       	protected String grabarEspacio= new String (".spacecreate .primary");
-    	protected String ordenTipo = new String (".tables thead tr th:nth-child(1) a");
+    	private String iconoBanana=  (".igospacebanana");  
+       	protected String grabarEspacio= ".saveform .primary";
+    
+       	protected String ordenTipo = new String (".tables thead tr th:nth-child(1) a");
     	protected String ordenNombre = new String (".tables thead tr th:nth-child(2) a");
     	protected String ordenDescripcion = new String (".tables thead tr th:nth-child(3) a");
     	protected String ordenMiembros = new String (".tables thead tr th:nth-child(4) a");
@@ -40,13 +40,17 @@ import org.testng.Reporter;
     	
     	protected String editfourthRow= new String(".tables tbody tr:nth-child(4) td:nth-child(5) a"); 
     	protected String firstType= new String(".tables tbody tr:nth-child(1) td:nth-child(1)");
-    	protected String firstSpace = new String (".tables tbody tr:nth-child(1) td:nth-child(2) a");
-    	protected String firstState = new String (".tables tbody tr:nth-child(1) td:nth-child(5) a");
-    	protected  String firstName = new String (".tables tbody tr:nth-child(1) td:nth-child(2) a");
-    	protected String secondName = new String(".tables tbody tr:nth-child(2) td:nth-child(2) a");
-        protected String buscarEspacio= ".actions .btnsearch";
-        protected String inputSearch =".actions .search input";
-        protected String irASpaces = ".wrapper .space:nth-child(4) li:first-child a";
+    	protected String firstSpace = ".spaces li:nth-child(1) a";
+    	protected String firstState = ".spaces li:nth-child(2) a";
+    	protected  String firstName = ".spaces li:nth-child(1) span";
+    	protected String secondName = ".spaces li:nth-child(2) span";
+       
+        protected String inputSearch =".search input";
+        protected String irASpaces = "#sidebar  div:nth-child(3) a";
+        
+        //Unirse a espacio
+        
+        protected String unirmePrimerEspacio=".spaces li:first-child button";
        
     	
     	WebDriver driver;
@@ -107,15 +111,16 @@ import org.testng.Reporter;
     	   driver.findElement(By.cssSelector(activadadSocial)).click();
        }
         
-       public void cambiarIcono(String icono) throws InterruptedException{
+       public void cambiarIcono(String stricono) throws InterruptedException{
     	
     	   Reporter.log("Seleccionar Icono");
     	   driver.findElement(By.cssSelector(cambiarIcono)).click();
-    	
-	          driver.findElement(By.cssSelector(icono)).click();
-	          Thread.sleep(1000);
-	          driver.findElement(By.cssSelector(".active .mconfirmation .primary")).click();
-    	       }
+    	   Thread.sleep(2000);
+	          driver.findElement(By.cssSelector(stricono)).click();
+	          Thread.sleep(2000);
+	          driver.findElement(By.cssSelector(guardarIcono)).click();
+	        
+	  	       }
           
       public void grabarEspacio(){
     	  Reporter.log("Grabando espacio");
@@ -214,14 +219,15 @@ import org.testng.Reporter;
 		public void buscarEspacio(String espacio) {
 			
 			Reporter.log("Buscar un espacio en el listado de Espacios");
-			driver.findElement(By.cssSelector(buscarEspacio)).click();
+			
 			driver.findElement(By.cssSelector(inputSearch)).clear();
 			driver.findElement(By.cssSelector(inputSearch)).sendKeys(espacio);
 			driver.findElement(By.cssSelector(inputSearch)).sendKeys(Keys.ENTER);
 			Reporter.log(" El nombre a buscar es :..");
 			Reporter.log(espacio);
 			Reporter.log("El nombre encontrado es ..");
-			Reporter.log(driver.findElement(By.cssSelector(firstSpace)).getText());
+			System.out.println(driver.findElement(By.cssSelector(firstName)).getText());
+			Reporter.log(driver.findElement(By.cssSelector(firstName)).getText());
 			
 		}
 		
@@ -232,4 +238,9 @@ import org.testng.Reporter;
 			driver.findElement(By.cssSelector(iconoEspacio)).click();
 			    
     }
+
+		public void unirmeAEspacio() {
+		   driver.findElement(By.cssSelector(unirmePrimerEspacio)).click();
+			
+		}
     }

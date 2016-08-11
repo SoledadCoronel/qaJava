@@ -2,7 +2,7 @@ package go5.automation.groupsytitles;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 
 
-public class TitlesTest extends TestSuite{
+public class TitlesTest extends SetUp{
 
 	@BeforeClass
 	 
@@ -39,21 +39,13 @@ public class TitlesTest extends TestSuite{
     
         Reporter.log(" Agregar , editar y borrar Tiers y ");
     
-        // Go to the configuration
-        this.goToConfiguration();
-        this.goToMenu();
-     
-     
+            
          
           
       // Go to Titles2    
             Reporter.log("Abriendo titulos");
-            driver.findElement(By.cssSelector(".igogroups")).click();
-	  	    //    this.goToGroups();
-	  	         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-            this.goToTitles();
-            driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-         
+            driver.findElement(By.cssSelector(".igotitleswhite")).click();
+	  	   
          
       // Se agrega un Tier
           Reporter.log("Se agrega un tier");

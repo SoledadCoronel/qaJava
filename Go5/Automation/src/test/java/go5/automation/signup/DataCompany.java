@@ -1,7 +1,7 @@
 package go5.automation.signup;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 
 
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
 
 
-public class DataCompany extends TestSuite{
+public class DataCompany extends SetUp{
 
 
 	 @BeforeTest // call function to open the browser and login 

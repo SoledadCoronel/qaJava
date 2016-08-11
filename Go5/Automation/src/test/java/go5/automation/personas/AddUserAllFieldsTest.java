@@ -2,8 +2,9 @@ package go5.automation.personas;
 
 
 
-import go5.automation.TestSuite;
-import go5.pageObjects.PersonasPage;
+import go5.automation.SetUp;
+import go5.pageObjects.AdministrarPersonasPage;
+import go5.pageObjects.HomePage;
 import go5.pageObjects.ProfilePage;
 
 import java.util.Random;
@@ -16,11 +17,11 @@ import org.testng.annotations.Test;
 
 
 
-public class AddUserAllFieldsTest extends TestSuite{
+public class AddUserAllFieldsTest extends SetUp{
 
-	PersonasPage personas=null;
+	AdministrarPersonasPage personas=null;
     ProfilePage profile =null;
-	
+	HomePage home=null;
 
 		 @BeforeTest // call function to open the browser and login 
 		 public void setup () throws Exception{
@@ -39,24 +40,21 @@ public class AddUserAllFieldsTest extends TestSuite{
 		
 
 	@Test
-	public void addUserAdmin() throws Exception{
+	public void addUseAllFields() throws Exception{
 		 org.apache.log4j.BasicConfigurator.configure();
 		
 		 Random numero= new Random();
-	     personas= new PersonasPage(driver);
+	     personas= new AdministrarPersonasPage(driver);
 	     profile = new ProfilePage(driver);
+	     home= new HomePage(driver);
 	     js=  (JavascriptExecutor) driver;
 		 
-		 // Go to the configuration
-		   this.goToConfiguration();
-		   this.goToMenu();
-	       Thread.sleep(1000);
+		 
 		   // Go to Manage people
-	        
-	        personas.goToPersonas();
-	         Thread.sleep(2000);
-	     	  this.click(crearUser);
-	         Thread.sleep(3000);
+	        home.goToAdministrar();
+	        personas.goToagregarPersona();
+	        /*
+	      
 	         personas.setEstadoDesactivado();
 		        
 	        personas.setRandomUserName();
@@ -76,7 +74,7 @@ public class AddUserAllFieldsTest extends TestSuite{
 	         log.info("Grabando el usuario");
 	           personas.grabarUsuarioSinInvite();
 	        
-		    	        
+		    	 */       
 		   
 		    
 		    

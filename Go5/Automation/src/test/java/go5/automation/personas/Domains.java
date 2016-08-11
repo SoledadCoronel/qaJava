@@ -2,7 +2,7 @@ package go5.automation.personas;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
 
 
 
-public class Domains extends TestSuite{
+public class Domains extends SetUp{
 
 	//private WebDriver driver;
 
