@@ -51,7 +51,7 @@ public class InvitationsCancelAC extends SetUp {
 	}
 
 	@Test
-	public void invitattionResendwithAnAdminUser() throws Exception {
+	public void invitattionCancelWithAnAdminUser() throws Exception {
 
 	     int countinvites=0;
 	     int countinvitesaftercancel;

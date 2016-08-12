@@ -21,7 +21,9 @@ public class ProfilePage extends SetUp {
 
 	// Profile
 
-	protected String irAProfile = ".subusers li:nth-child(2) a";
+	protected String irAProfile = ".last .igouserwhite";
+	private String goToAcercaCss=".igotitleswhite";
+	private String goToSocialCss=".igosocialswhite";
 	protected String goToProfileSidebar =".igowithoutimage";
 	private String datosPerfilCss=".data";
 	private String linkSupervisor = ".data p:nth-child(5) a ";
@@ -74,7 +76,9 @@ public class ProfilePage extends SetUp {
 	protected String twitterCss = ".socialdata label:nth-child(3) input";
 	protected String facebookCss = ".socialdata label:nth-child(4) input";
 	
+	//Social
 	
+	protected String textAreaPostcss= ".postbox fieldset:nth-child(1) label:nth-child(4) div";
 	
 	//Variables
 	
@@ -92,6 +96,7 @@ public class ProfilePage extends SetUp {
 	// References
 
 	By goToMiPerfil = By.cssSelector(irAProfile);
+	By goToSocial= By.cssSelector(goToSocialCss);
 	By goToMiPerfilSidebar =By.cssSelector(goToProfileSidebar);
 	By datosProfile=By.cssSelector(datosPerfilCss);
 
@@ -130,6 +135,10 @@ public class ProfilePage extends SetUp {
 	By facebook= By.cssSelector(facebookCss);
 	By twitter = By.cssSelector(twitterCss);
 	
+	
+	//Social
+	
+	By textAreaPost= By.cssSelector(textAreaPostcss);
 	
 	//Driver
 	
@@ -333,6 +342,11 @@ public class ProfilePage extends SetUp {
 		driver.findElement(By.cssSelector(telefonoFijoHeader)).isDisplayed();
 		driver.findElement(By.cssSelector(telefonoMovilHeader)).isDisplayed();
 		Reporter.log("Los telefonos fijos y moviles se muestran en los datos del profile");
+	}
+
+	public void goToSocial() {
+		  driver.findElement(goToSocial).click();
+		  WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(textAreaPost));
 	}
 
 }

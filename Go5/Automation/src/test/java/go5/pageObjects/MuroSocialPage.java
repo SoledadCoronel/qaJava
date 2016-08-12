@@ -251,6 +251,7 @@ import org.testng.Reporter;
       
   	 Reporter.log("Ingresar un texto en el postbox");
   	 driver.findElement(textPost).clear();
+  	 driver.findElement(textPost).click();
   	 driver.findElement(textPost).sendKeys(strTextPost);
   	   	 	     	
    }

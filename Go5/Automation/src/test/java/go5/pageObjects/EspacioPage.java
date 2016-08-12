@@ -133,6 +133,7 @@ public class EspacioPage extends SetUp {
 
 		Reporter.log("Clickear un espacio pasandole el icono");
 		driver.findElement(By.cssSelector(iconoEspacio)).click();
+		
 
 	}
 }

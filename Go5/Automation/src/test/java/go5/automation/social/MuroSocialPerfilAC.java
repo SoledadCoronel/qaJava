@@ -22,8 +22,8 @@ public class MuroSocialPerfilAC extends SetUp {
 	MuroSocialPage muro = null;
 	LoginPage login = null;
 	DirectorioPage directorio = null;
-	ProfilePage profile=null;
-	HomePage home=null;
+	ProfilePage profile = null;
+	HomePage home = null;
 
 	@AfterClass
 	// call function to close browser
@@ -42,31 +42,31 @@ public class MuroSocialPerfilAC extends SetUp {
 
 		Reporter.log(" Ir  a buscar en directorio el user basic y postearle en su profile");
 		directorio.goToDirectorio();
-		//WebElement tablevailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".people")));
+		// WebElement tablevailable = (new WebDriverWait(driver,
+		// 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".people")));
 		this.click(searchButton);
 		this.sendValue(inputSearch, "User Basic");
-		
+
 		this.click(searchButton);
 		Thread.sleep(2000);
 
 		// Aca falla por el search
 
 		directorio.goToFirstProfileUserByNameLink();
+		profile.goToSocial();
 		Thread.sleep(2000);
 		muro.postTexto("Posteo en el profile del user basic, como user admin desde directorio");
 		Thread.sleep(2000);
 		muro.postear();
 		// Me deslogueo como user admin
-
-		
-		Thread.sleep(2000);
+		home.goToLogout();
+		Thread.sleep(4000);
 		// Me logueo como user basic para fijarme si el post se publico en mi
 		// profile
 		login.loginToGoAsUSerBasic();
 		home.goToUserMenu();
-		profile.goToProfile();
-		// Ir al muro del perfil
-		muro.irAMuroEnPerfil();
+	     profile.goToProfile();
+		profile.goToSocial();
 		Reporter.log(muro.getTextFirstPost());
 		// Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
 		muro.goToProfilePost();

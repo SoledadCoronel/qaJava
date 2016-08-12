@@ -4,10 +4,11 @@ package go5.automation.groupsytitles;
 
 import go5.automation.SetUp;
 import go5.pageObjects.GroupsPage;
+import go5.pageObjects.HomePage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Reporter;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
@@ -16,9 +17,7 @@ import org.testng.annotations.Test;
 public class GroupsAB extends SetUp{
 
 	GroupsPage groups = null;
-	
-	protected String irAGroups = new String (".space:nth-child(3) ol li:nth-child(4) a");
-	 protected String irATitles = new String ("nav .space:nth-child(3) ol li:nth-child(3)");
+	HomePage home=null;
 	 protected String addSubgroup = new String (".subtree .active a");
      protected String inputNameSubgroup= new String (".additem.active input");
      protected String editfirstRow= new String (".tables tbody tr:nth-child(1) td:nth-child(7) a");
@@ -43,13 +42,14 @@ public class GroupsAB extends SetUp{
 	public void addGroups() throws Exception{
 		
 		groups = new GroupsPage(driver);
+		home = new HomePage(driver);
 		
-		
-    	 Reporter.log("Abriendo pagina de grupos" );
-    	  		this.click(irATitles);
+    	  	  // Ir a Config
+		     home.goToConfiguration();
+		     Thread.sleep(3000);
     	
-   	    	 
-   	    	 	groups.goToGroups();
+   	    	    home.goToGrupos();
+   	    	    Thread.sleep(3000);
    	    	 	groups.addAGroups("Primer Grupo");
    	    	 	groups.deleteGroup();
    	    	 	groups.addAGroups("Segundo Grupo");

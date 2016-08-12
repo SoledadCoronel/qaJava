@@ -3,6 +3,7 @@ package go5.automation.groupsytitles;
 
 
 import go5.automation.SetUp;
+import go5.pageObjects.HomePage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,8 @@ import org.testng.annotations.Test;
 
 public class TitlesTest extends SetUp{
 
+	HomePage home=null;
+	
 	@BeforeClass
 	 
 	 public void setUp() throws Exception {
@@ -34,7 +37,13 @@ public class TitlesTest extends SetUp{
   @Test
   public void addTitle() throws Exception{
     
-	       
+	  home = new HomePage(driver);
+		
+  	  // Ir a Config
+     home.goToConfiguration();
+     Thread.sleep(3000);
+
+   	    home.goToTitulos();
      
     
         Reporter.log(" Agregar , editar y borrar Tiers y ");
