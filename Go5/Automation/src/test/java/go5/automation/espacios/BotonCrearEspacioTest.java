@@ -23,8 +23,8 @@ public class BotonCrearEspacioTest extends SetUp {
 	
 	@BeforeClass // call function to open the browser and login 
 	 public void setup () throws Exception{
-		
-		 this.setUpMaven();
+		 this.setUpMavenUserBasic();
+		 
 	}
 	
 		

@@ -23,12 +23,10 @@ public class CrearEspacioAC extends SetUp {
 
 		Reporter.log(" Creando un espacio como user admin");
 
-		
-
 		// Ir a Crear Espacio
-      
-		 addespacio.goToCrearEspacio();
-	
+
+		addespacio.goToCrearEspacio();
+
 		// Cargar formulario del espacio
 		addespacio.setNameEspacio("Publico");
 

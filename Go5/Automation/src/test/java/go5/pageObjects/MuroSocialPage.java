@@ -250,8 +250,6 @@ import org.testng.Reporter;
    public void postTexto(String strTextPost){
       
   	 Reporter.log("Ingresar un texto en el postbox");
-  	// driver.findElement(textPost).click();
-  //	 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS); 
   	 driver.findElement(textPost).clear();
   	 driver.findElement(textPost).sendKeys(strTextPost);
   	   	 	     	

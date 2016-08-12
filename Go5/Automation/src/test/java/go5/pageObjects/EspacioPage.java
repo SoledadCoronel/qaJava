@@ -14,9 +14,8 @@ import org.testng.Reporter;
 public class EspacioPage extends SetUp {
 
 	// Go To Spaces
-	protected String goToEspaciosCss = ".igospaces a";
-	private String listarSpacesCss = ".space li:last-child a"
-			;// to find it with jquery on chrome use $('.space li:last-child a')
+	
+	private String goToEspaciosCss = "article .space:last-child li:last-child a";// to find it with jquery on chrome use $('.space li:last-child a')
 	protected String goToRecomendadosCss = ".title menu li:first-child a";
 
 	// Order

@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class EditarEspacioAC extends SetUp {
 
 	EspacioPage espacio = null;
-	AgregarEspacioPage addspace= null;
+	AgregarEspacioPage addspace = null;
 
 	@AfterClass
 	// call function to close browser
@@ -28,6 +28,7 @@ public class EditarEspacioAC extends SetUp {
 		Reporter.log(" Editando un espacio como user admin");
 
 		// Ir a espacios
+		Thread.sleep(5000);
 		espacio.goToEspacios();
 
 		Thread.sleep(5000);
