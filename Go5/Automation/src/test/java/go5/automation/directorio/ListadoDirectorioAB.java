@@ -2,7 +2,7 @@ package go5.automation.directorio;
 
 import java.util.concurrent.TimeUnit;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,7 +17,7 @@ import go5.pageObjects.DirectorioPage;
 
 
 
-public class ListadoDirectorioAB extends TestSuite{
+public class ListadoDirectorioAB extends SetUp{
 	
 	// Css 
 	 String firstRow= new String(".tables tbody tr:nth-child(1) td:nth-child(2)");
@@ -47,11 +47,7 @@ public class ListadoDirectorioAB extends TestSuite{
 		
 	 directorio = new DirectorioPage(driver);
     
-	 	 
-		// Go to the menu (hamburguesita)
-	 	this.goToMenu();
-       Thread.sleep(2000);  
- 	
+	 	 	
  	// Go to  Directorio de personas
         
        directorio.goToDirectorio();

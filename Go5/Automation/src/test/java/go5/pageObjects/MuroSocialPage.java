@@ -1,5 +1,5 @@
 package go5.pageObjects;
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import java.io.File;
 import java.security.SecureRandom;
@@ -16,7 +16,7 @@ import org.testng.Reporter;
   
     
     
-    public class MuroSocialPage extends TestSuite{
+    public class MuroSocialPage extends SetUp{
 
     		
     	
@@ -30,7 +30,8 @@ import org.testng.Reporter;
          protected String irAMiembroscss=".content menu li:nth-child(2) a";
     	
      //postear, comentar, responder
-    	protected String textAreaPostcss= ".postbox fieldset:nth-child(1) label:nth-child(2) div"; //.at
+         protected String goToEscribaAquiCss=".postbox fieldset:nth-child(1) label:nth-child(4) div";
+    	protected String textAreaPostcss= ".postbox fieldset:nth-child(1) label:nth-child(4) div"; //.at
     	protected String textAreaPostViejo=".posttext:nth-child(n) fieldset textarea";
         protected String textofirstPostcss= ".posttext:nth-child(3) div:nth-child(2) p";
         protected String timefirstPostcss=".posttext:nth-child(3) .socials p time";
@@ -80,6 +81,7 @@ import org.testng.Reporter;
         By irAMiembros = By.cssSelector(irAMiembroscss);
         
       //postear, comentar, responder
+        By goToEscribaAqui=By.cssSelector(goToEscribaAquiCss);
         By textPost =By.cssSelector(textAreaPostcss);
     	By textPosteado=By.cssSelector(textofirstPostcss);
     	 By commentFirstPost=By.cssSelector(commentFirstPostcss);

@@ -3,7 +3,7 @@ package go5.pageObjects;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -17,7 +17,7 @@ import org.testng.Reporter;
 
     
     
-    public class EspacioPage extends TestSuite{
+    public class EspacioPage extends SetUp{
 
     	
     	 //Go To Spaces
@@ -76,7 +76,7 @@ import org.testng.Reporter;
       // By 
         By goToEspacios=By.cssSelector(goToEspaciosCss);
         By goToRecomendados= By.cssSelector(goToRecomendadosCss);
-        By crearEspacio=By.cssSelector(crearEspacioCss);
+        protected By crearEspacio=By.cssSelector(crearEspacioCss);
         By nombreDeEspacio=By.cssSelector(nombreEspacioCss);
         By descripcionEspacio=By.cssSelector(descripcionEspacioCss);
         
@@ -103,7 +103,7 @@ import org.testng.Reporter;
     	
     	//Driver
     	
-    	WebDriver driver;
+    	protected WebDriver driver;
     
      
   //Constructor
@@ -122,7 +122,7 @@ import org.testng.Reporter;
     	  }
     	  
     	    
-         public void crearEspacio(){
+         public void goToCrearEspacio(){
         	 driver.findElement(crearEspacio).click();
         	
          }

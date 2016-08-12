@@ -1,7 +1,7 @@
 package go5.automation.profile;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.ProfilePage;
 
 import org.testng.annotations.AfterClass;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 
 
-public class ProfileVerifyDataAC extends TestSuite  {
+public class ProfileVerifyDataAC extends SetUp  {
 	
 
 
@@ -35,12 +35,12 @@ ProfilePage profile = null;
 		 
 		 
 		// Go to the user menu
-		  this.goToMenuUsuario();
+		
 		
 	
 			
 			//Ir a ver perfil
-		   profile.goToProfile();
+		  profile.goToProfileSideBar();
 		   Thread.sleep(1000);
 		   
 		   profile.verifyemaildisplayedAtHeader();

@@ -1,7 +1,7 @@
 package go5.automation.social;
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
@@ -16,7 +16,7 @@ import org.openqa.selenium.interactions.Actions;
 
 
 
-public class Post500CharsAC extends TestSuite {
+public class Post500CharsAC extends SetUp {
 	
 	MuroSocialPage muro=null;
 	EspacioPage espacio=null;
@@ -49,17 +49,14 @@ public class Post500CharsAC extends TestSuite {
 		 
 		// Go to hamburguesita
 		 
-		 this.goToMenu();
-			Thread.sleep(1000);
-		 
 			
 		 //Ir a espacios
 		//Tengo q ir a un espacio
 		 espacio.clickEspacioSidebar(iconoEmpresa);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		muro.postTexto(muro.randomString(200)+"    "+muro.randomString(100)+"        "+muro.randomString(100)+"    "+muro.randomString(200));
+		Thread.sleep(5000);
 		muro.postear();
-		Reporter.log(driver.findElement(By.cssSelector(".postbox fieldset:nth-child(1) label:nth-child(2) div")).getText());
 		Thread.sleep(2000);
 		//Scrollear la pagina
 		Reporter.log("Scrolleo");

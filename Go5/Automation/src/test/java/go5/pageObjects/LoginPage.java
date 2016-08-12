@@ -1,8 +1,7 @@
 package go5.pageObjects;
-import java.util.concurrent.TimeUnit;
+
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 
@@ -67,8 +66,8 @@ import org.openqa.selenium.WebDriver;
   
      //Click on login button
   
-     public void clickLogin(){
-  
+     public void clickLogin() throws InterruptedException{
+    	 	Thread.sleep(2000);
              driver.findElement(go).click();
   
      }
@@ -83,10 +82,11 @@ import org.openqa.selenium.WebDriver;
       * @param strPasword
   
       * @return
+     * @throws InterruptedException 
   
       */
   
-     public void loginToGo(String strUserName,String strPasword){
+     public void loginToGo(String strUserName,String strPasword) throws InterruptedException{
   
          //Fill user name
     	 
@@ -99,11 +99,13 @@ import org.openqa.selenium.WebDriver;
          this.setPassword(strPasword);
   
          //Click Login button
+      //   driver.findElement(password).sendKeys(Keys.ENTER);
+          
   
          this.clickLogin();
      } 
   
-         public void loginToGoAsAdmin(){
+         public void loginToGoAsAdmin() throws InterruptedException{
         	  
              //Fill user name
         	 this.setUserName(strUsername);
@@ -122,7 +124,7 @@ import org.openqa.selenium.WebDriver;
   
  
  
-         public void loginToGoAsAdminEspacios(){
+         public void loginToGoAsAdminEspacios() throws InterruptedException{
        	  
              //Fill user name
         	 this.setUserName(strUsernameAdminEspacios);
@@ -138,7 +140,7 @@ import org.openqa.selenium.WebDriver;
                
          }
  
-         public void loginToGoAsUSerBasic(){
+         public void loginToGoAsUSerBasic() throws InterruptedException{
           	  
              //Fill user name
         	 this.setUserName(strUsernameUserBasic);
