@@ -26,7 +26,7 @@ public class ProfilePage extends SetUp {
 	private String goToSocialCss=".igosocialswhite";
 	protected String goToProfileSidebar =".igowithoutimage";
 	private String datosPerfilCss=".data";
-	private String linkSupervisor = ".data p:nth-child(5) a ";
+	private String linkSupervisor = "small a ";
 
 	// Edit Profile
 
@@ -82,10 +82,10 @@ public class ProfilePage extends SetUp {
 	
 	//Variables
 	
-	private String emailUser = ".data address p:first-child a";
+	private String emailUser = "address a:first-child";
 	private String miEmail = "marina.touceda@gointegro.com";
-	private String telefonoMovilHeader = ".data address p:nth-child(2) strong";
-	private String telefonoFijoHeader = ".data address p:last-child strong";
+	private String telefonoMovilHeader = "address a:nth-child(3)";
+	private String telefonoFijoHeader = "address a:nth-child(4)";
 	
 	SoftAssert sa = new SoftAssert();
 	
