@@ -3,6 +3,7 @@ package go5.automation.compania;
 
 
 
+import go5.pageObjects.HomePage;
 import go5.pageObjects.LoginPage;
 
 import java.io.File;
@@ -28,6 +29,7 @@ import org.testng.annotations.Test;
 public class BrandingFotosBS {
 
 	 LoginPage login =null;
+	 HomePage home=null;
 	 private WebDriver driver;
 
 		
@@ -73,34 +75,14 @@ public class BrandingFotosBS {
 
 	// Go to Company Design 
    Reporter.log("Abriendo la pagina de diseño de la plataforma" );
-   // Primero hay que clickear en otro si no no anda!!Clickeo titles
-   driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
+   home.goDisenio();
    
-   Reporter.log(driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).getText());
-  
-   // Clickeo en Disenio
-   
-   driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
-   	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-			 // Vuelvo a clikear en Diseño
+
 	          
-		       // Primero hay que clickear en otro si no no anda!!Clickeo titles
-			        driver.findElement(By.cssSelector("nav .space:nth-child(3) ol li:nth-child(2) a")).click();
 		          
-		          driver.findElement(By.cssSelector(".space:nth-child(2) li:nth-child(3) a")).click();
-			        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);     
-		       
 		        			
 		       //Restablecer interfaz 
-			        Reporter.log("Restableciendo interfaz de usuario");
-                    driver.findElement(By.cssSelector("div .container .design fieldset:nth-child(5) a")).click();
-                    driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-                  
-                    //Click en el popup de restorear
-                    
-                    driver.findElement(By.cssSelector("#modal-container .modal:nth-child(6) .primary")).click();
-                    driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS); 
-                    driver.findElement(By.cssSelector(".primary")).click(); 
+			     
               
 	        
 		

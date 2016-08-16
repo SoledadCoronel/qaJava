@@ -7,7 +7,7 @@ import go5.pageObjects.HomePage;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class BrandingAC extends SetUp {
+public class BrandingColorsAC extends SetUp {
 
 	CompanyPage company= null;
 	HomePage home = null;
