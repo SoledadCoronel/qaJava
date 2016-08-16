@@ -262,10 +262,6 @@ schemas.addSchema('space',
                 "admins-count": {
                     "type": ["number"]
                 },
-                "membership-status": {
-                    "type": "string",
-                    "enum": ["admin", "member"]
-                },
                 "position": {
                     "type": "number"
                 }
