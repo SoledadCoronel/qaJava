@@ -2,8 +2,7 @@ package go5.automation.espacios;
 
 
 import go5.automation.SetUp;
-import go5.pageObjects.EspacioPage;
-
+import go5.pageObjects.AgregarEspacioPage;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,7 +19,7 @@ public class BotonCrearEspacioTest extends SetUp {
 
 
 	
-	EspacioPage espacio=null; 
+	AgregarEspacioPage espacio=null; 
 	
 	@BeforeClass // call function to open the browser and login 
 	 public void setup () throws Exception{
@@ -40,7 +39,7 @@ public class BotonCrearEspacioTest extends SetUp {
 	
 	public void userBasicdoesnthaveCrearEspacioButton() throws Exception { 
 	
-		 espacio= new EspacioPage(driver); 
+		 espacio= new AgregarEspacioPage(driver); 
     		
 	        
 		 Reporter.log(" Unirse como user basic a un espacio y verificar que no este el boton de Crear Espacio");
