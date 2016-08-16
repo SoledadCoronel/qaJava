@@ -66,12 +66,9 @@ public class BrandingFotosBS {
 
 		 
 	        		
-	       
+	     
 	
-    // Go to the configuration
-	         
-	driver.findElement(By.cssSelector(".applications .users .configuration")).click();
-   driver.findElement(By.cssSelector(".menu")).click();
+  
     
 
 	// Go to Company Design 

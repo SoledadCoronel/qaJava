@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="3" name="Suite" parallel="tests">
-  <listeners>      
-  <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
-</listeners>
-    <test name="Chrome Tests">
-  <parameter name="browser" value="chrome"/>
-  <parameter name="version" value="48.0"/>
-  <parameter name="platform" value="WIN8"/>
-  <parameter name="url" value="http://automation1.pla.qa.go5.gointegro.net/authentication/login"/>
-  <parameter name="build" value="11.0"/>
-    <classes>
-       <class name="go5.automation.directorio.ListadoDirectorioBS"/>
-         <class name="go5.automation.personas.InvitationsSentBS"/>
-        <class name="go5.automation.espacios.EditarEspacioBS"/>
-        <class name="go5.automation.groupsytitles.GroupsDragAndDropBS"/>
-         <class name="go5.automation.profile.ProfileVerifyDataBS"/>
-         <class name="go5.automation.espacios.CrearEspacioAdminEspaciosBS"/>
-           <class name="go5.automation.social.Post500CharsBS"/>
-            </classes>
-  </test> <!-- Test -->
-  </suite> <!-- Suite -->
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Chrome Tests">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="48.0" />
+		<parameter name="platform" value="WIN8" />
+		<parameter name="url"
+			value="http://automation1.pla.qa.go5.gointegro.net/authentication/login" />
+		<parameter name="build" value="11.0" />
+		<classes>
+			<class name="go5.automation.compania.DatosGeneralesBS" />
+			<class name="go5.automation.directorio.ListadoDirectorioBS" />
+			<class name="go5.automation.personas.InvitationsCancelBS" />
+			<class name="go5.automation.groupsytitles.GroupsDragAndDropBS" />
+			<class name="go5.automation.profile.ProfileVerifyDataBS" />
+			<class name="go5.automation.profile.IrAlPerfilSidebarBS" />
+			<class name="go5.automation.social.MuroSocialPerfilBS" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
