@@ -17,7 +17,7 @@ import org.testng.Reporter;
     	private String goToHomeCss=".igohome";
     	private String goToMenuCss=".menu";
     	private String ayudaLinkCss="igohelpwhite";
-    	private String goToDatosGeneraleCss="igocompanydata";
+    	private String goToDatosGeneraleCss=".igocompanydata";
     	private String goToDisenioCss=".igodesign";
     	private String goToAdministrarPersonasCss=".igoadminwhite";
     	private String goToTitulosCss=".igotitleswhite";
@@ -63,7 +63,7 @@ import org.testng.Reporter;
   
     public void goToConfiguration(){
     	driver.findElement(goToConfiguration).click();
-    //	WebElement sidebar = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
+    	WebElement sidebar = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
     }
     	    
     	public void goToMenu(){

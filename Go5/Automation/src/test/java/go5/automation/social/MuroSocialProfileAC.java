@@ -17,7 +17,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class MuroSocialPerfilAC extends SetUp {
+public class MuroSocialProfileAC extends SetUp {
 
 	MuroSocialPage muro = null;
 	LoginPage login = null;

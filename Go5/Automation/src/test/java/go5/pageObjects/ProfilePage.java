@@ -22,10 +22,10 @@ public class ProfilePage extends SetUp {
 	// Profile
 
 	protected String irAProfile = ".last .igouserwhite";
-	private String goToAcercaCss=".igotitleswhite";
-	private String goToSocialCss=".igosocialswhite";
-	protected String goToProfileSidebar =".igowithoutimage";
-	private String datosPerfilCss=".data";
+	private String goToAcercaCss = ".igotitleswhite";
+	private String goToSocialCss = ".igosocialswhite";
+	protected String goToProfileSidebar = ".igowithoutimage";
+	private String datosPerfilCss = ".data";
 	private String linkSupervisor = "small a ";
 
 	// Edit Profile
@@ -37,7 +37,7 @@ public class ProfilePage extends SetUp {
 	private String confirmar = ".active .primary";
 	private String cancelar = ".active .optional";
 	private String inputFotoProfile = "sarasa";
-	private String selectPictureOrCamera = ".igocamera a";
+	private String selectPictureOrCamera = "#photoFileDrop";
 
 	// Datos Laborales
 
@@ -57,7 +57,7 @@ public class ProfilePage extends SetUp {
 
 	// Datos Personales
 
-	protected String tipoDocumentoCss= ".personaldata label:nth-child(2) select"; 
+	protected String tipoDocumentoCss = ".personaldata label:nth-child(2) select";
 	protected String documentoCss = ".personaldata label:nth-child(3) input";
 	protected String fechaNacimientoCss = ".personaldata label:nth-child(4) input";
 	protected String generoCss = ".personaldata label:nth-child(5) select";
@@ -65,40 +65,33 @@ public class ProfilePage extends SetUp {
 	protected String mailPersonalCss = ".personaldata label:nth-child(7) input";
 	protected String telefonoFIjoCss = ".personaldata label:nth-child(8) input";
 	protected String telefonoMovilCss = ".personaldata label:nth-child(9) input";
-	protected String direccionPersonalCss=".personaldata label:nth-child(10) input";
-	
-	
-	
+	protected String direccionPersonalCss = ".personaldata label:nth-child(10) input";
 
-	//Redes Sociales
+	// Redes Sociales
 
 	protected String linkedinCss = ".socialdata label:nth-child(2) input";
 	protected String twitterCss = ".socialdata label:nth-child(3) input";
 	protected String facebookCss = ".socialdata label:nth-child(4) input";
-	
-	//Social
-	
-	protected String textAreaPostcss= ".postbox fieldset:nth-child(1) label:nth-child(4) div";
-	
-	//Variables
-	
+
+	// Social
+
+	protected String textAreaPostcss = ".postbox fieldset:nth-child(1) label:nth-child(4) div";
+
+	// Variables
+
 	private String emailUser = "address a:first-child";
 	private String miEmail = "marina.touceda@gointegro.com";
 	private String telefonoMovilHeader = "address a:nth-child(3)";
 	private String telefonoFijoHeader = "address a:nth-child(4)";
-	
+
 	SoftAssert sa = new SoftAssert();
-	
-	
-	
-	
 
 	// References
 
 	By goToMiPerfil = By.cssSelector(irAProfile);
-	By goToSocial= By.cssSelector(goToSocialCss);
-	By goToMiPerfilSidebar =By.cssSelector(goToProfileSidebar);
-	By datosProfile=By.cssSelector(datosPerfilCss);
+	By goToSocial = By.cssSelector(goToSocialCss);
+	By goToMiPerfilSidebar = By.cssSelector(goToProfileSidebar);
+	By datosProfile = By.cssSelector(datosPerfilCss);
 
 	// Edit Profile
 
@@ -114,43 +107,36 @@ public class ProfilePage extends SetUp {
 	By listaReportaA = By.cssSelector(listaReportaACss);
 	By telFijoLaboral = By.cssSelector(telFijoLaboralCss);
 	By telMovilLaboral = By.cssSelector(telMovilLaboralCss);
-	
-	
-	
+
 	// Datos Personales
-    By tipoDocumento=By.cssSelector(tipoDocumentoCss);
+	By tipoDocumento = By.cssSelector(tipoDocumentoCss);
 	By documento = By.cssSelector(documentoCss);
 	By genero = By.cssSelector(generoCss);
 	By fechaNacimiento = By.cssSelector(fechaNacimientoCss);
 	By estadoCivil = By.cssSelector(estadoCivilCss);
-	By mailPersonal = By.cssSelector(mailPersonalCss);	
+	By mailPersonal = By.cssSelector(mailPersonalCss);
 	By telefonoFijo = By.cssSelector(telefonoFIjoCss);
 	By telefonoMovil = By.cssSelector(telefonoMovilCss);
-	By direccionPersonal=By.cssSelector(direccionPersonalCss);
+	By direccionPersonal = By.cssSelector(direccionPersonalCss);
 
-	
-	//Redes Sociales
-	
-	By linkedin= By.cssSelector(linkedinCss);
-	By facebook= By.cssSelector(facebookCss);
+	// Redes Sociales
+
+	By linkedin = By.cssSelector(linkedinCss);
+	By facebook = By.cssSelector(facebookCss);
 	By twitter = By.cssSelector(twitterCss);
-	
-	
-	//Social
-	
-	By textAreaPost= By.cssSelector(textAreaPostcss);
-	
-	//Driver
-	
+
+	// Social
+
+	By textAreaPost = By.cssSelector(textAreaPostcss);
+
+	// Driver
+
 	WebDriver driver;
 
-	
-	//Function Random
-	
+	// Function Random
+
 	Random numero = new Random();
-	
-	
-	
+
 	// Constructor
 
 	public ProfilePage(WebDriver driver) {
@@ -190,7 +176,9 @@ public class ProfilePage extends SetUp {
 	public void goToProfile() {
 		Reporter.log("Ir a Profile");
 		driver.findElement(goToMiPerfil).click();
-		WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(datosProfile));
+		WebElement profilePage = (new WebDriverWait(driver, 10))
+				.until(ExpectedConditions
+						.presenceOfElementLocated(datosProfile));
 	}
 
 	public void goToProfileSideBar() throws InterruptedException {
@@ -198,26 +186,23 @@ public class ProfilePage extends SetUp {
 		// Go to the user menu
 		Reporter.log("Ir a Perfil Desde el sidebar");
 		driver.findElement(goToMiPerfilSidebar).click();
-		WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(datosProfile));
+		WebElement profilePage = (new WebDriverWait(driver, 10))
+				.until(ExpectedConditions
+						.presenceOfElementLocated(datosProfile));
 	}
-	
-	
+
 	public void editarProfile() {
 		Reporter.log("Editar perfil");
 		driver.findElement(editProfile).click();
-		WebElement editForm = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(idEmpleado));
+		WebElement editForm = (new WebDriverWait(driver, 10))
+				.until(ExpectedConditions.presenceOfElementLocated(idEmpleado));
 	}
-
-	
 
 	public void grabarUsuario() {
 		Reporter.log("Grabando el profile");
 		driver.findElement(By.cssSelector(grabarUser)).click();
 
 	}
-
-	
-	
 
 	public void goToSupervisor() {
 
@@ -231,8 +216,7 @@ public class ProfilePage extends SetUp {
 		Reporter.log("Editando datos laborales");
 
 		driver.findElement(idEmpleado).clear();
-		driver.findElement(idEmpleado).sendKeys(
-				"RandomId" + numero.nextInt());
+		driver.findElement(idEmpleado).sendKeys("RandomId" + numero.nextInt());
 
 		driver.findElement(fechaIngreso).sendKeys("10/10/10");
 		driver.findElement(tipoEmpleo).click();
@@ -245,7 +229,7 @@ public class ProfilePage extends SetUp {
 		// Telefono
 		Reporter.log("Editando telefono");
 		driver.findElement(telefonoFijo).clear();
-		driver.findElement(telefonoFijo).sendKeys("1147511234");	
+		driver.findElement(telefonoFijo).sendKeys("1147511234");
 		Thread.sleep(7000);
 		driver.findElement(telefonoMovil).clear();
 		driver.findElement(telefonoMovil).sendKeys("1147511234");
@@ -255,14 +239,15 @@ public class ProfilePage extends SetUp {
 		// Datos Personales
 
 		Reporter.log("Editando datos personales");
-		driver.findElement(tipoDocumento).sendKeys("RUT");		
+		driver.findElement(tipoDocumento).sendKeys("RUT");
 		driver.findElement(documento).clear();
 		driver.findElement(documento).sendKeys("11111111111");
 		driver.findElement(fechaNacimiento).sendKeys("11/11/11");
 		driver.findElement(genero).sendKeys("female");
 		driver.findElement(estadoCivil).sendKeys("single");
 		driver.findElement(mailPersonal).clear();
-		driver.findElement(mailPersonal).sendKeys("fakee5555mail@gointegro.com");
+		driver.findElement(mailPersonal)
+				.sendKeys("fakee5555mail@gointegro.com");
 		driver.findElement(telefonoFijo).clear();
 		driver.findElement(telefonoFijo).sendKeys("1147511234");
 		driver.findElement(telefonoMovil).clear();
@@ -277,7 +262,8 @@ public class ProfilePage extends SetUp {
 		Reporter.log("Editando redes  sociables");
 
 		driver.findElement(linkedin).clear();
-		driver.findElement(linkedin).sendKeys("http://linkedin.com/in/username");
+		driver.findElement(linkedin)
+				.sendKeys("http://linkedin.com/in/username");
 
 		driver.findElement(twitter).clear();
 		driver.findElement(twitter).sendKeys("http://twitter.com/username");
@@ -302,9 +288,7 @@ public class ProfilePage extends SetUp {
 		subirFile.sendKeys(file.getAbsolutePath());
 		Thread.sleep(2000);
 		driver.findElement(By.cssSelector(confirmar)).click();
-
 		Reporter.log(" El subir foto ha sido cancelado");
-
 	}
 
 	public void cargarFoto() throws InterruptedException {
@@ -345,8 +329,10 @@ public class ProfilePage extends SetUp {
 	}
 
 	public void goToSocial() {
-		  driver.findElement(goToSocial).click();
-		  WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(textAreaPost));
+		driver.findElement(goToSocial).click();
+		WebElement profilePage = (new WebDriverWait(driver, 10))
+				.until(ExpectedConditions
+						.presenceOfElementLocated(textAreaPost));
 	}
 
 }

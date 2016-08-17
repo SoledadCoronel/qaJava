@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 
 
 
-public class BrandingTest extends BrandingColorsAC{
+public class BrandingColorsTest extends BrandingColorsAC{
 
 	
 	@BeforeClass // call function to open the browser and login 

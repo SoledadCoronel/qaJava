@@ -26,12 +26,14 @@ public class CargarFotoProfile extends SetUp {
 
 		// Go to the user menu
 
-		//home.goToUserMenu();
-		//profile.goToProfile();
-		profile.goToProfileSideBar();
+		home.goToUserMenu();
+		profile.goToProfile();
+		profile.editarProfile();
+		profile.cargarFoto();
 		profile.cancelarSubirFoto();
 		Thread.sleep(2000);
 		profile.cargarFoto();
+		Thread.sleep(4000);
 	}
 
 }

@@ -9,7 +9,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class IrAPerfilSidebarAC extends SetUp {
+public class IrAProfileSidebarAC extends SetUp {
 
 	ProfilePage profile = null;
 	HomePage home = null;
@@ -25,8 +25,6 @@ public class IrAPerfilSidebarAC extends SetUp {
 
 		profile = new ProfilePage(driver);
 		home = new HomePage(driver);
-
-		
 
 		// Ir a ver perfil
 		profile.goToProfileSideBar();
@@ -50,10 +48,7 @@ public class IrAPerfilSidebarAC extends SetUp {
 
 		profile.grabarUsuario();
 
-		// Grabar el nuevo usuario creado
-		Reporter.log("Grabando perfil editado");
-		Thread.sleep(2000);
-		driver.findElement(By.cssSelector(".primary")).click();
+		
 		Reporter.log("Edicion de profile fue exitoso");
 
 	}

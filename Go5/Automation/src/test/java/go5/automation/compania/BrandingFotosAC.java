@@ -8,7 +8,7 @@ import go5.pageObjects.HomePage;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class BrandingColorsAC extends SetUp {
+public class BrandingFotosAC extends SetUp {
 
 	BrandingPage branding= null;
 	HomePage home = null;
@@ -28,9 +28,7 @@ public class BrandingColorsAC extends SetUp {
 
 		// Ir a Imageb
 		home.goToConfiguration();
-		Thread.sleep(3000);
 		home.goDisenio();
-		Thread.sleep(5000);
 		branding.restablecerInterfaz();
 		Thread.sleep(2000);
 		branding.changeColorPlatform();

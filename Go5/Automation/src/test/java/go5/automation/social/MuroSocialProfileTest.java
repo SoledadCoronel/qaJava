@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 
 
 
-public class MuroSocialPerfilTest extends MuroSocialPerfilAC {
+public class MuroSocialProfileTest extends MuroSocialProfileAC {
 	
 	
 		

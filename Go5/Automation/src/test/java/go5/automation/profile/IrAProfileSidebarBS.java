@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
 
 
 
-public class IrAPerfilSidebarBS extends IrAPerfilSidebarAC {
+public class IrAProfileSidebarBS extends IrAProfileSidebarAC {
 	
 
 

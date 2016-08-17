@@ -2,18 +2,18 @@ package go5.pageObjects;
 
 import go5.automation.SetUp;
 
-import java.io.File;
-import java.util.Random;
+
+
+
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.asserts.SoftAssert;
+
 
 public class ConfigurarCuentaPage extends SetUp {
 
@@ -29,6 +29,8 @@ public class ConfigurarCuentaPage extends SetUp {
 	private String cambiarPasswordCss=".basicdata label:nth-child(3) input";
 	private String confirmarPasswordCss=".basicdata label:nth-child(4) input";
 	private String gurdarCss=".basicdata .primary";
+	private String strMyProfile= "My Profile";
+	private String myProfileCss=".igowithoutimage";
 	
 		
 	//Variables
@@ -46,6 +48,7 @@ public class ConfigurarCuentaPage extends SetUp {
 	By cambiarPassword=By.cssSelector(cambiarPasswordCss);
 	By confirmarPassword= By.cssSelector(confirmarPasswordCss);
 	By guardar=By.cssSelector(gurdarCss);
+	By myProfile = By.cssSelector(myProfileCss);
 
 	
 	
@@ -78,9 +81,35 @@ public class ConfigurarCuentaPage extends SetUp {
 		driver.findElement(goToPassword).click();
 		WebElement passwordPage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(cambiarPassword));
 	}
-	
-	
 
+	public void goToIrAGeneral()  {
+
+		// Go to the user menu
+		Reporter.log("Ir al tab contraseña de configurar cuenta en profile");
+		driver.findElement(goToIrAGeneral).click();
+		WebElement passwordPage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(selectIdioma));
+	}
+	
+	public void changeLanguageToEnglish(){
+		Reporter.log("Cambiar el lenguaje del usuario");
+		driver.findElement(selectIdioma).sendKeys("en");
+		
+	}
+	
+	public void verifyLanguageChanged(){
+		Reporter.log("Verificar que se cambie de idioma");
+	//	Assert.assertEquals(strMyProfile, driver.findElement(myProfile).getText());
+		}
+	public void changeLanguageToSpanish(){
+		Reporter.log("Cambiar el lenguaje del usuario");
+		driver.findElement(selectIdioma).sendKeys("es");
+		
+	}
+	public void changeLanguageToPortuguese(){
+		Reporter.log("Cambiar el lenguaje del usuario");
+		driver.findElement(selectIdioma).sendKeys("pt");
+		
+	}
 	public void guardar () throws InterruptedException {
 		Reporter.log("Grabando... ");
 		driver.findElement(guardar).click();
