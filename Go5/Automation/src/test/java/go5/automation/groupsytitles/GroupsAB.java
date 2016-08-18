@@ -18,12 +18,7 @@ public class GroupsAB extends SetUp{
 
 	GroupsPage groups = null;
 	HomePage home=null;
-	 protected String addSubgroup = new String (".subtree .active a");
-     protected String inputNameSubgroup= new String (".additem.active input");
-     protected String editfirstRow= new String (".tables tbody tr:nth-child(1) td:nth-child(7) a");
-     protected String  desplegarCampos = new String (".addpeople .secondary");
-     protected String  savePerson = new String (".container .addpeople .primary");
-     protected String groupEnProfile = new String (".groupsdata select");
+	
    	
 	 
 	
@@ -56,7 +51,7 @@ public class GroupsAB extends SetUp{
    	    	 	groups.addASubgroup("Probando subgrupo");
    	    	 	
    	    	 	
-   	    	
+   	    	/*
    	    	 this.click(editfirstRow);
 	    	 Thread.sleep(1000);
 	    	 this.click(desplegarCampos);
@@ -66,7 +61,7 @@ public class GroupsAB extends SetUp{
 		 	  selectGroups.selectByIndex(1);
 	    	 this.click(savePerson);
    	    	
-   	    	  
+   	    	  */
    	    			 	  
 		 	 
    	     

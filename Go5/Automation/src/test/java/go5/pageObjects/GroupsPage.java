@@ -1,100 +1,80 @@
 package go5.pageObjects;
-
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
+public class GroupsPage {
 
-    
-    
-    public class GroupsPage {
+	// Css
 
-    	//Css
-    	
-    	 private String addGroup= new String(".groupsform fieldset:nth-child(1) label:nth-child(1) a");
-    	
-	     private String inputNameGroup= new String (".groupsform fieldset:nth-child(1) label:nth-child(2) input"); 
-	     private String  deleteGroup = new String (".groupsform fieldset:nth-child(2) .delete");
-	     private String confirm = new String (".mconfirmation a");    
-	     protected String irAGroups = new String (".igogroups");
-	     protected String irATitles = new String (".igotitles");
-	     protected String addSubgroup = new String (".subtree .active a");
-	     protected String inputNameSubgroup= new String (".additem.active input");
-	     protected String groupEnProfile = new String (".groupsdata select");
-	          	
-    	  WebDriver driver;
-    
-     
-  //Constructor
-    	    public GroupsPage(WebDriver driver){
-    	    	 
-    	        this.driver = driver;
-     }
-  
-     //Set user name in textbox
-  
-     public  void  goToGroups(){
-      
-    	 Reporter.log("Abriendo pagina de grupos" );
-    	    	          
-    	    	 WebElement groupsavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(irAGroups)));
-				driver.findElement(By.cssSelector(irAGroups)).click();
-			}
-       
+	// Group
+	private String addGroupCss = ".groupsform fieldset:nth-child(1) label:nth-child(1) a";
+	private String inputNameGroupCss = ".groupsform fieldset:nth-child(1) label:nth-child(2) input";
+	private String deleteGroupCss = ".groupsform fieldset:nth-child(2) .delete";
+	private String confirmCss = ".mconfirmation a";
+	// Subgroup
+	protected String addSubgroupCss = ".subtree .active a";
+	protected String inputNameSubgroupCss = ".additem.active input";
+	protected String editfirstRowCss = ".tables tbody tr:nth-child(1) td:nth-child(7) a";
+	protected String desplegarCamposCss = ".addpeople .secondary";
+	protected String savePersonCss = ".container .addpeople .primary";
+	
+	// References
 
-     public  void  addAGroups(String nameGroup){
-      
-    	 Reporter.log("Agregando un grupo" );
-    	 WebElement addgroupsavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(addGroup)));
- 	       //Agregar un Grupo
-     driver.findElement(By.cssSelector(addGroup)).click();   
-    
-     //Insertar un nombre de Grupo
-    
-     
-        driver.findElement(By.cssSelector(inputNameGroup)).sendKeys(nameGroup);
-        driver.findElement(By.cssSelector(inputNameGroup)).sendKeys(Keys.RETURN);
-       
-    	 
-			}
-    
-     public void deleteGroup(){
-   //Borrar Grupo
-    	   driver.findElement(By.cssSelector(deleteGroup)).click();
-       //driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .delete")).click();
-    	   driver.findElement(By.cssSelector(confirm)).click();
-      // driver.findElement(By.cssSelector(".mconfirmation a")).click();
-    	   driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-     }
-   
-    
-     public void addASubgroup(String name) throws InterruptedException{
-    	  //Agregar un Subgrupo
-    	    	     	 driver.findElement(By.cssSelector(addSubgroup)).click();
-    	    	     	
-   	 WebElement addgroupsavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputNameSubgroup)));
-	    driver.findElement(By.cssSelector(inputNameSubgroup)).sendKeys(name);
-    	driver.findElement(By.cssSelector(inputNameSubgroup)).sendKeys(Keys.RETURN);
-    	Thread.sleep(1000);
-    
-     }
-    
-     public void selectGroup(){
-    		
-    		Select selectGroups=new  Select(driver.findElement(By.cssSelector(groupEnProfile))); 
-	 		
-		 	  selectGroups.selectByIndex(1);
-    	}
-   
-     }
-    
-      
-     
+	By addGroup = By.cssSelector(addGroupCss);
+	By inputNameGroup = By.cssSelector(inputNameGroupCss);
+	By deleteGroup = By.cssSelector(deleteGroupCss);
+	By confirm = By.cssSelector(confirmCss);
+	By addSubgroup = By.cssSelector(addSubgroupCss);
+	By inputNameSubgroup = By.cssSelector(inputNameGroupCss);
+	By editfirstRow =By.cssSelector(editfirstRowCss);
+	By desplegarCampos = By.cssSelector(desplegarCamposCss);
+	By savePerson = By.cssSelector(savePersonCss);
 
+	// Driver
+
+	WebDriver driver;
+
+	// Constructor
+	public GroupsPage(WebDriver driver) {
+
+		this.driver = driver;
+	}
+
+	
+	public void addAGroups(String nameGroup) {
+
+		Reporter.log("Agregando un grupo");
+		WebElement addgroup = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(addGroup));
+		// Agregar un Grupo
+		driver.findElement(addGroup).click();
+
+		// Insertar un nombre de Grupo
+
+		driver.findElement(inputNameGroup).sendKeys(nameGroup);
+		driver.findElement(inputNameGroup).sendKeys(Keys.RETURN);
+
+	}
+
+	public void deleteGroup() {
+		// Borrar Grupo
+		driver.findElement(deleteGroup).click();
+		driver.findElement(confirm).click();	
+	}
+
+	public void addASubgroup(String name) throws InterruptedException {
+		// Agregar un Subgrupo
+		driver.findElement(addSubgroup).click();
+		WebElement addgroup = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputNameSubgroup));		
+		driver.findElement(inputNameSubgroup).sendKeys(name);
+		driver.findElement(inputNameSubgroup).sendKeys(Keys.RETURN);
+		Thread.sleep(1000);
+
+	}
+	
+		
+	}
