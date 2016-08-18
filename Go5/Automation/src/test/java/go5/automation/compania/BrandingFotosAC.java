@@ -31,6 +31,7 @@ public class BrandingFotosAC extends SetUp {
 		Thread.sleep(2000);
 		branding.loadBackgroundPicture();
 		Thread.sleep(2000);
+		branding.restablecerInterfaz();
 		
 	}
 }

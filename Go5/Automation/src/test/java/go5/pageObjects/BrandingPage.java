@@ -2,6 +2,7 @@ package go5.pageObjects;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -129,7 +130,7 @@ public class BrandingPage  {
 		driver.findElement(guardarCambios).click();
 	}
 
-	public void loadLogoPicture() {
+	public void loadLogoPicture() throws InterruptedException {
 		// function to make visible the button logoFilePicker, as it is set to
 		// class "off"
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -140,12 +141,13 @@ public class BrandingPage  {
 		File file = new File("src/test/resources/Girasol.jpeg");
 		Reporter.log(file.getAbsolutePath());
 		upload.sendKeys(file.getAbsolutePath());
+		Thread.sleep(3000);
 		driver.findElement(okPicture).click();
 		Reporter.log("Foto cargada exitosamente");
 		this.guardar();
 	}
 		
-	public void loadBackgroundPicture(){
+	public void loadBackgroundPicture() throws InterruptedException{
 			Reporter.log("Cargando foto para el backgroud de la plataforma");
 
 		// function to make visible the button loginBgFilePicker, as it is set
@@ -162,6 +164,7 @@ public class BrandingPage  {
 
 		Reporter.log(filebackground.getAbsolutePath());
 		elementbackground.sendKeys(filebackground.getAbsolutePath());
+		Thread.sleep(2000);
 		this.guardar();
 	
 	}
