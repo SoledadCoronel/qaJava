@@ -2,15 +2,13 @@ package go5.automation.compania;
 
 import go5.automation.SetUp;
 import go5.pageObjects.BrandingPage;
-import go5.pageObjects.DatosGeneralesPage;
 import go5.pageObjects.HomePage;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 public class BrandingFotosAC extends SetUp {
 
-	BrandingPage branding= null;
+	BrandingPage branding = null;
 	HomePage home = null;
 
 	@AfterClass
@@ -20,23 +18,19 @@ public class BrandingFotosAC extends SetUp {
 	}
 
 	@Test
-	public void verifyColors() throws Exception {
-
+	public void brandingPictures() throws Exception {
 
 		home = new HomePage(driver);
 		branding = new BrandingPage(driver);
 
-		// Ir a Imageb
+		// Ir a Imagen
 		home.goToConfiguration();
 		home.goDisenio();
-		branding.restablecerInterfaz();
 		Thread.sleep(2000);
-		branding.changeColorPlatform();
-		/*
-		company.changeColorHeader();
-		Thread.sleep(4000);
-		company.changeColorContrast();
-		Thread.sleep(4000);
-		*/
+		branding.loadLogoPicture();
+		Thread.sleep(2000);
+		branding.loadBackgroundPicture();
+		Thread.sleep(2000);
+		
 	}
 }

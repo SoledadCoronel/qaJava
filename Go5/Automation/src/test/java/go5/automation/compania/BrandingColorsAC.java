@@ -28,17 +28,15 @@ public class BrandingColorsAC extends SetUp {
 
 		// Ir a Imageb
 		home.goToConfiguration();
-		Thread.sleep(3000);
 		home.goDisenio();
-		Thread.sleep(5000);
-		branding.restablecerInterfaz();
 		Thread.sleep(2000);
 		branding.changeColorPlatform();
-		/*
-		company.changeColorHeader();
-		Thread.sleep(4000);
-		company.changeColorContrast();
-		Thread.sleep(4000);
-		*/
+		Thread.sleep(2000);
+		branding.changeColorText();		
+		branding.guardar();
+		Thread.sleep(2000);
+		branding.restablecerInterfaz();
+		branding.guardar();
+				
 	}
 }
