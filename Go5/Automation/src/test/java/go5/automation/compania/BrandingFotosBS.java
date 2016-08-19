@@ -1,10 +1,11 @@
-package go5.automation.profile;
+package go5.automation.compania;
 
 
 
+
+import go5.pageObjects.BrandingPage;
 import go5.pageObjects.HomePage;
 import go5.pageObjects.LoginPage;
-import go5.pageObjects.ProfilePage;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -17,7 +18,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
-public class CargarFotoProfileBS {
+public class BrandingFotosBS {
 
 	 LoginPage login =null;
 	 private WebDriver driver;
@@ -32,7 +33,7 @@ public class CargarFotoProfileBS {
 	    capability.setCapability("browserVersion", version);
 	    capability.setCapability("project", "GOIntegro");
 	    capability.setCapability("build", "13.0");
-	     capability.setCapability("name", "Cargar foto profile");
+	     capability.setCapability("name", "Branding pictures");
 	    
 	    driver = new RemoteWebDriver(
 	    		 new URL("http://rdgointegro1:8EKsJe3iYdeXFrKc2Byt@hub.browserstack.com/wd/hub"),
@@ -45,9 +46,7 @@ public class CargarFotoProfileBS {
 		 login= new LoginPage(driver);
 		 login.loginToGo("marina.touceda@gointegro.com","Auto1234");
 	 }
-	
-		
-	 ProfilePage profile = null;
+	 BrandingPage branding = null;
 		HomePage home = null;
 
 		@AfterClass
@@ -56,23 +55,23 @@ public class CargarFotoProfileBS {
 			driver.quit();
 		}
 
-		@Test(testName = "Cambiar la foto de perfil del usuario")
-		public void setUpPictureProfile() throws Exception {
+		@Test
+		public void brandingPictures() throws Exception {
 
-			profile = new ProfilePage(driver);
 			home = new HomePage(driver);
+			branding = new BrandingPage(driver);
 
-			// Go to the user menu
-
-			home.goToUserMenu();
-			profile.goToProfile();
-			home.goToMenu();
-			profile.editarProfile();
-			profile.cargarFoto();
-			profile.cancelarSubirFoto();
+			// Ir a Imagen
+			home.goToConfiguration();
+			home.goDisenio();
 			Thread.sleep(2000);
-			profile.cargarFoto();
-			Thread.sleep(4000);
-		}
+			branding.loadLogoPicture();
+			Thread.sleep(2000);
+			branding.loadBackgroundPicture();
+			Thread.sleep(2000);
+			branding.restablecerInterfaz();
+			
+		
+	 }
 	 
 }

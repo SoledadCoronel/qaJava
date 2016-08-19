@@ -28,6 +28,7 @@ public class CargarFotoProfile extends SetUp {
 
 		home.goToUserMenu();
 		profile.goToProfile();
+		home.goToMenu();
 		profile.editarProfile();
 		profile.cargarFoto();
 		profile.cancelarSubirFoto();
