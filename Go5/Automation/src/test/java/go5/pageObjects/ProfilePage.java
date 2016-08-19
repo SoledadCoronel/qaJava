@@ -36,9 +36,11 @@ public class ProfilePage extends SetUp {
 
 	private String confirmar = ".active .primary";
 	private String cancelar = ".active .optional";
-	private String inputFotoProfile = "sarasa";
 	private String selectPictureOrCamera = "#photoFileDrop";
 
+	//Picture
+	private String inputPictureProfileCss="form.dotmenu label input";
+	
 	// Datos Laborales
 
 	protected String idEmpleadoCss = ".labordata label:nth-child(2) input";
@@ -96,7 +98,10 @@ public class ProfilePage extends SetUp {
 	// Edit Profile
 
 	By editProfile = By.cssSelector(editProfileCss);
-
+	
+	//Picture
+	By pictureProfile=By.cssSelector(inputPictureProfileCss);
+	
 	// Datos Laborales
 	By idEmpleado = By.cssSelector(idEmpleadoCss);
 	By fechaIngreso = By.cssSelector(fechaIngresoCss);
@@ -274,15 +279,14 @@ public class ProfilePage extends SetUp {
 
 	public void cancelarSubirFoto() throws InterruptedException {
 
-		js = (JavascriptExecutor) driver;
+		//js = (JavascriptExecutor) driver;
 		driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
-		WebElement element = driver.findElement(By.id("sarasa"));
-		js.executeScript("arguments[0].setAttribute('style', 'display:block')",
-				element);
+		//WebElement element = driver.findElement(pictureProfile);
+		//js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
 
 		// Agarrar el elemento para cargar el file y pasarle el path
 
-		WebElement subirFile = driver.findElement(By.id("sarasa"));
+		WebElement subirFile = driver.findElement(pictureProfile);
 
 		File file = new File("src/test/resources/Girasol.jpeg");
 		subirFile.sendKeys(file.getAbsolutePath());
