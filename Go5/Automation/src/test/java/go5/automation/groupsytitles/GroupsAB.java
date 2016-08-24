@@ -23,26 +23,21 @@ public class GroupsAB extends SetUp {
 		groups = new GroupsPage(driver);
 		home = new HomePage(driver);
 
-		
-    	  	  // Ir a Config
-		     home.goToConfiguration();
-		     Thread.sleep(3000);
-    	
-   	    	    home.goToGrupos();
-   	    	    Thread.sleep(3000);
-   	    	 	groups.addAGroups("Primer Grupo");
-   	    	 	Thread.sleep(6000);
-   	    	 	groups.addAFirstSubgroup("Primer subgrupo del Grupo 1"); 	    	 	
-   	    	 	
-   	    	 	groups.addAGroups("Segundo Grupo");
-   	    	 	Thread.sleep(6000);
-   	    	 	groups.addASubgroup("Probando subgrupo");
-   	    	 	groups.deleteFirstSubGroup();
-   	    	 	Thread.sleep(3000);
-   	    	 	groups.deleteFirstGroup();
-   	  	 	
-   
-		
+		// Ir a Config
+		home.goToConfiguration();
+		Thread.sleep(3000);
+		home.goToGrupos();
+		home.goToMenu();
+		Thread.sleep(3000);
+		groups.addAGroups("Primer Grupo");
+		Thread.sleep(6000);
+		groups.addAFirstSubgroup("Primer subgrupo del Grupo 1");
+		groups.addAGroups("Segundo Grupo");
+		Thread.sleep(3000);
+		groups.deleteFirstSubGroup();
+		Thread.sleep(3000);
+		groups.deleteFirstGroup();
+
 	}
 
 }

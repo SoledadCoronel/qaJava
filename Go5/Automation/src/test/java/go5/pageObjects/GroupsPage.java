@@ -13,7 +13,7 @@ public class GroupsPage {
 
 	// Group
 	private String addGroupCss = ".groupsform fieldset:nth-child(1) label:nth-child(1) a";
-	private String addPrimerGrupo= ".groupsform fieldset:nth-child(2) .subtree a";
+	private String addFirstSubgroupcss= ".groupsform fieldset:nth-child(2) .subtree a";
 	private String deletePrimerGrupo=".groupsform fieldset:nth-child(2) .tree .delete";
 	private String deleteFirstSubgroupCss=".groupsform fieldset:nth-child(2) .subtree .delete";
 	private String confirmDeleteGroup=".active .mconfirmation .primary";
@@ -22,7 +22,6 @@ public class GroupsPage {
 	
 	// Subgroup
 	
-	protected String addSubgroupCss = ".subtree .active a";
 	protected String inputNameSubgroupCss = ".groupsform fieldset:nth-child(2) .additem input";
 	protected String editfirstRowCss = ".tables tbody tr:nth-child(1) td:nth-child(7) a";
 	protected String desplegarCamposCss = ".addpeople .secondary";
@@ -31,13 +30,12 @@ public class GroupsPage {
 	// References
 
 	By addGroup = By.cssSelector(addGroupCss);
-	By addFirstGroup=By.cssSelector(addPrimerGrupo);
+	By addFirstSubrgoup=By.cssSelector(addFirstSubgroupcss);
 	By inputNameGroup = By.cssSelector(inputNameGroupCss);
 	By deleteFirstGroup = By.cssSelector(deletePrimerGrupo);
 	By deleteFirstSubgroup=By.cssSelector(deleteFirstSubgroupCss);
 	By confirmDelete=By.cssSelector(confirmDeleteGroup);
-	By confirm = By.cssSelector(confirmCss);
-	By addSubgroup = By.cssSelector(addSubgroupCss);
+	By confirm = By.cssSelector(confirmCss);	
 	By inputNameSubgroup = By.cssSelector(inputNameSubgroupCss);
 	By editfirstRow =By.cssSelector(editfirstRowCss);
 	By desplegarCampos = By.cssSelector(desplegarCamposCss);
@@ -78,19 +76,10 @@ public class GroupsPage {
 		driver.findElement(deleteFirstSubgroup).click();
 		driver.findElement(confirmDelete).click();
 	}
-
-	public void addASubgroup(String name) throws InterruptedException {
-		// Agregar un Subgrupo
-		driver.findElement(addFirstGroup).click();
-		WebElement addgroup = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputNameSubgroup));		
-		driver.findElement(inputNameSubgroup).sendKeys(name);
-		driver.findElement(inputNameSubgroup).sendKeys(Keys.RETURN);
-		Thread.sleep(1000);
-
-	}
+	
 	public void addAFirstSubgroup(String name) throws InterruptedException {
 		// Agregar un Subgrupo
-		driver.findElement(addSubgroup).click();
+		driver.findElement(addFirstSubrgoup).click();
 		WebElement addgroup = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputNameSubgroup));		
 		driver.findElement(inputNameSubgroup).sendKeys(name);
 		driver.findElement(inputNameSubgroup).sendKeys(Keys.RETURN);
