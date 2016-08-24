@@ -485,6 +485,7 @@
                 <hashTree/>
               </hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="postFile - .JPEG - 4.01 KB - prefix application" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="" elementType="HTTPArgument">
@@ -502,7 +503,6 @@
                     </elementProp>
                   </collectionProp>
                 </elementProp>
-                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <stringProp name="HTTPSampler.domain"></stringProp>
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.connect_timeout"></stringProp>
@@ -554,6 +554,25 @@
       &quot;summary&quot;: &quot;Aplicacion de beneficios&quot;,&#xd;
       &quot;description&quot;: &quot;Aplicacion para conocer beneficios de Gointegro&quot;&#xd;
     },&#xd;
+    &quot;meta&quot;: {&#xd;
+      &quot;language&quot;: {&#xd;
+        &quot;name&quot;: {&#xd;
+          &quot;es&quot;: &quot;GObenefits&quot;,&#xd;
+          &quot;en&quot;: &quot;GObenefits&quot;,&#xd;
+          &quot;pt&quot;: &quot;GObenefits&quot;&#xd;
+        },&#xd;
+        &quot;description&quot;: {&#xd;
+          &quot;es&quot;: &quot;La red más amplia de ofertas exclusivas para empleados, con descuentos en más de 15.000 puntos de venta y sitios online.&quot;,&#xd;
+          &quot;en&quot;: &quot;Latin America’s largest employee discounts network, with exclusive deals in more than 15,000 points of sale and websites.&quot;,&#xd;
+          &quot;pt&quot;: &quot;A rede mais ampla de ofertas exclusivas para colaboradores, com descontos em mais de 15.000 pontos de venda físicos e onlines.&quot;&#xd;
+        },&#xd;
+        &quot;summary&quot;: {&#xd;
+          &quot;es&quot;: &quot;Beneficios&quot;,&#xd;
+          &quot;en&quot;: &quot;Benefits&quot;,&#xd;
+          &quot;pt&quot;: &quot;Benefícios&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    },&#xd;
     &quot;relationships&quot;: {&#xd;
       &quot;icon&quot;: {&#xd;
         &quot;data&quot;: {&#xd;
@@ -562,13 +581,12 @@
         }&#xd;
       },&#xd;
       &quot;images&quot;: {&#xd;
-      &quot;data&quot;: &#xd;
-      [&#xd;
-        {&#xd;
-          &quot;type&quot;: &quot;files&quot;,&#xd;
-          &quot;id&quot;: &quot;${APPLICATION_JPEG_ID}&quot;&#xd;
-        }&#xd;
-      ]  &#xd;
+        &quot;data&quot;: [&#xd;
+          {&#xd;
+            &quot;type&quot;: &quot;files&quot;,&#xd;
+            &quot;id&quot;: &quot;${APPLICATION_JPEG_ID}&quot;&#xd;
+          }&#xd;
+        ]&#xd;
       }&#xd;
     }&#xd;
   }&#xd;
