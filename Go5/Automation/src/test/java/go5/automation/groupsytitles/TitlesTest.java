@@ -39,7 +39,6 @@ public class TitlesTest extends SetUp {
 		// Ir a Config
 		home.goToConfiguration();
 		Thread.sleep(3000);
-
 		home.goToTitulos();
 
 		Reporter.log(" Agregar , editar y borrar Tiers y ");
