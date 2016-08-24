@@ -13,12 +13,17 @@ public class GroupsPage {
 
 	// Group
 	private String addGroupCss = ".groupsform fieldset:nth-child(1) label:nth-child(1) a";
-	private String inputNameGroupCss = ".groupsform fieldset:nth-child(1) label:nth-child(2) input";
-	private String deleteGroupCss = ".groupsform fieldset:nth-child(2) .delete";
+	private String addPrimerGrupo= ".groupsform fieldset:nth-child(2) .subtree a";
+	private String deletePrimerGrupo=".groupsform fieldset:nth-child(2) .tree .delete";
+	private String deleteFirstSubgroupCss=".groupsform fieldset:nth-child(2) .subtree .delete";
+	private String confirmDeleteGroup=".active .mconfirmation .primary";
+	private String inputNameGroupCss = ".groupsform fieldset:nth-child(1) label:nth-child(2) input";	
 	private String confirmCss = ".mconfirmation a";
+	
 	// Subgroup
+	
 	protected String addSubgroupCss = ".subtree .active a";
-	protected String inputNameSubgroupCss = ".additem.active input";
+	protected String inputNameSubgroupCss = ".groupsform fieldset:nth-child(2) .additem input";
 	protected String editfirstRowCss = ".tables tbody tr:nth-child(1) td:nth-child(7) a";
 	protected String desplegarCamposCss = ".addpeople .secondary";
 	protected String savePersonCss = ".container .addpeople .primary";
@@ -26,11 +31,14 @@ public class GroupsPage {
 	// References
 
 	By addGroup = By.cssSelector(addGroupCss);
+	By addFirstGroup=By.cssSelector(addPrimerGrupo);
 	By inputNameGroup = By.cssSelector(inputNameGroupCss);
-	By deleteGroup = By.cssSelector(deleteGroupCss);
+	By deleteFirstGroup = By.cssSelector(deletePrimerGrupo);
+	By deleteFirstSubgroup=By.cssSelector(deleteFirstSubgroupCss);
+	By confirmDelete=By.cssSelector(confirmDeleteGroup);
 	By confirm = By.cssSelector(confirmCss);
 	By addSubgroup = By.cssSelector(addSubgroupCss);
-	By inputNameSubgroup = By.cssSelector(inputNameGroupCss);
+	By inputNameSubgroup = By.cssSelector(inputNameSubgroupCss);
 	By editfirstRow =By.cssSelector(editfirstRowCss);
 	By desplegarCampos = By.cssSelector(desplegarCamposCss);
 	By savePerson = By.cssSelector(savePersonCss);
@@ -60,21 +68,34 @@ public class GroupsPage {
 
 	}
 
-	public void deleteGroup() {
+	public void deleteFirstGroup() {
 		// Borrar Grupo
-		driver.findElement(deleteGroup).click();
-		driver.findElement(confirm).click();	
+		driver.findElement(deleteFirstGroup).click();
+		driver.findElement(confirmDelete).click();	
+	}
+	
+	public void deleteFirstSubGroup(){
+		driver.findElement(deleteFirstSubgroup).click();
+		driver.findElement(confirmDelete).click();
 	}
 
 	public void addASubgroup(String name) throws InterruptedException {
 		// Agregar un Subgrupo
-		driver.findElement(addSubgroup).click();
+		driver.findElement(addFirstGroup).click();
 		WebElement addgroup = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputNameSubgroup));		
 		driver.findElement(inputNameSubgroup).sendKeys(name);
 		driver.findElement(inputNameSubgroup).sendKeys(Keys.RETURN);
 		Thread.sleep(1000);
 
 	}
+	public void addAFirstSubgroup(String name) throws InterruptedException {
+		// Agregar un Subgrupo
+		driver.findElement(addSubgroup).click();
+		WebElement addgroup = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(inputNameSubgroup));		
+		driver.findElement(inputNameSubgroup).sendKeys(name);
+		driver.findElement(inputNameSubgroup).sendKeys(Keys.RETURN);
+		Thread.sleep(1000);
 	
-		
+	}
+
 	}

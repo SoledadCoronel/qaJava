@@ -46,9 +46,15 @@ public class GroupsAB extends SetUp{
    	    	    home.goToGrupos();
    	    	    Thread.sleep(3000);
    	    	 	groups.addAGroups("Primer Grupo");
-   	    	 	groups.deleteGroup();
+   	    	 	Thread.sleep(6000);
+   	    	 	groups.addAFirstSubgroup("Primer subgrupo del Grupo 1"); 	    	 	
+   	    	 	
    	    	 	groups.addAGroups("Segundo Grupo");
+   	    	 	Thread.sleep(6000);
    	    	 	groups.addASubgroup("Probando subgrupo");
+   	    	 	groups.deleteFirstSubGroup();
+   	    	 	Thread.sleep(3000);
+   	    	 	groups.deleteFirstGroup();
    	    	 	
    	    	 	
    	    	/*
