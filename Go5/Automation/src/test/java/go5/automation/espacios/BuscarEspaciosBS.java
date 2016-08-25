@@ -7,7 +7,7 @@ import org.testng.annotations.Parameters;
 
 
 
-public class BuscarEspaciosBS extends BuscarEspaciosAC {
+public class BuscarEspaciosBS extends AgregarPersonasAEspacioAC {
 	
 		
 

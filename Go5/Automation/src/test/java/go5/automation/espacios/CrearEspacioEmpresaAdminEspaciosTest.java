@@ -2,9 +2,6 @@ package go5.automation.espacios;
 
 import go5.automation.SetUp;
 import go5.pageObjects.AgregarEspacioPage;
-import go5.pageObjects.EspacioPage;
-
-import org.openqa.selenium.By;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -32,7 +29,6 @@ public class CrearEspacioEmpresaAdminEspaciosTest extends SetUp {
 
 		Reporter.log(" Verificar que si me logueo como un user Admin de Espacios, no puedo crear un espacio del tipo empresa");
 
-		
 		// Ir a Crear Espacio
 
 		addespacio.goToCrearEspacio();

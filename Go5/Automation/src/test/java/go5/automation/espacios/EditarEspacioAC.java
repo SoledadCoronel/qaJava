@@ -14,6 +14,7 @@ public class EditarEspacioAC extends SetUp {
 	EspacioPage espacio = null;
 	AgregarEspacioPage addspace = null;
 	HomePage home=null;
+	String strusername = "admin";
 
 	@AfterClass
 	// call function to close browser
@@ -31,10 +32,10 @@ public class EditarEspacioAC extends SetUp {
 		Reporter.log(" Editando un espacio como user admin");
 
 		// Ir a espacios
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		home.goToEspacios();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		// Ir a Editar un Espacio
 
@@ -51,8 +52,7 @@ public class EditarEspacioAC extends SetUp {
 		// Si es de tipo empresa, no aparece la opcion de cambiar el tipo
 		// espacio.setEspacioPrivado();
 		addspace.grabarEspacio();
-		Thread.sleep(1000);
-
+		Thread.sleep(1000);		
 		Reporter.log("Caso de editar espacio finalizado correctamente");
 
 	}

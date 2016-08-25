@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 
 
 
-public class BuscarEspaciosTest extends BuscarEspaciosAC {
+public class BuscarEspaciosTest extends AgregarPersonasAEspacioAC {
 	
 
 	

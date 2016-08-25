@@ -3,8 +3,6 @@ package go5.automation.espacios;
 
 import go5.automation.SetUp;
 import go5.pageObjects.AgregarEspacioPage;
-import go5.pageObjects.EspacioPage;
-
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
@@ -59,12 +57,7 @@ public class CrearEspacioPrivadoAC extends SetUp {
 	
 	         //Actividad Social
 	          Reporter.log("Desactivar Acitividad Social");
-	         addespacio.activarActividadSocial();
-	  
-	          //Seleccionar el icono
-	        //  Reporter.log("Seleccionar el icono del espacio");
-	        //  espacio.cambiarIconoBanana();
-	         Thread.sleep(1000);
+	         addespacio.activarActividadSocial();	         
 	         addespacio.setEspacioPrivado();
 	         Thread.sleep(1000);
 	     
