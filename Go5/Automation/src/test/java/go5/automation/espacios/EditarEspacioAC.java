@@ -3,6 +3,7 @@ package go5.automation.espacios;
 import go5.automation.SetUp;
 import go5.pageObjects.EspacioPage;
 import go5.pageObjects.AgregarEspacioPage;
+import go5.pageObjects.HomePage;
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -12,6 +13,7 @@ public class EditarEspacioAC extends SetUp {
 
 	EspacioPage espacio = null;
 	AgregarEspacioPage addspace = null;
+	HomePage home=null;
 
 	@AfterClass
 	// call function to close browser
@@ -24,18 +26,19 @@ public class EditarEspacioAC extends SetUp {
 
 		espacio = new EspacioPage(driver);
 		addspace = new AgregarEspacioPage(driver);
+		home= new HomePage(driver);
 
 		Reporter.log(" Editando un espacio como user admin");
 
 		// Ir a espacios
 		Thread.sleep(5000);
-		espacio.goToEspacios();
+		home.goToEspacios();
 
 		Thread.sleep(5000);
 
 		// Ir a Editar un Espacio
 
-		addspace.editarEspacio();
+		espacio.goToEditEspacio();
 		addspace.setNameEspacio("Editado");
 
 		// Activar o Desactivar el espacio

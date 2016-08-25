@@ -15,34 +15,48 @@ public class EspacioPage extends SetUp {
 
 	// Go To Spaces
 	
-	private String goToEspaciosCss = "article .space:last-child li:last-child a";// to find it with jquery on chrome use $('.space li:last-child a')
-	protected String goToRecomendadosCss = ".title menu li:first-child a";
+	protected String goToRecomendadosCss = ".igotitleswhite";
+	private String goToMisEspaciosCss = ".igopasswordwhite";
+	
+
 
 	// Order
 
-	protected String ordenNombre =	".tables thead tr th:nth-child(2) a";
-	protected String ordenDescripcion = ".tables thead tr th:nth-child(3) a";
-	protected String ordenMiembros =	".tables thead tr th:nth-child(4) a";
-
-	protected String ordenTitulo = ".igocaretdown";
-
-	//
-	protected String editfourthRow =".tables tbody tr:nth-child(4) td:nth-child(5) a";
-	protected String firstType = ".tables  tr:nth-child(1) td:nth-child(3)";
-	protected String firstSpace = ".tables tbody tr:nth-child(1) td:nth-child(2) a";
-	protected String firstState = ".tables tbody tr:nth-child(1) td:nth-child(5) a";
-	protected String firstName = ".tables tbody tr:nth-child(1) td:nth-child(2) a";
-	protected String secondName = ".tables tbody tr:nth-child(2) td:nth-child(2) a";
+	protected String ordenNombreEspaciosCss =	".igocaretdown";
+	
+	
+	//Espacios
+	protected String editfourthRowCss =".tables tbody tr:nth-child(4) td:nth-child(5) a";
+	protected String firstTypeCss = ".tables  tr:nth-child(1) td:nth-child(3)";
+	protected String firstSpaceCss = ".tables tbody tr:nth-child(1) td:nth-child(2) a";
+	protected String firstNameCss = ".tables tbody tr:nth-child(1) td:nth-child(2) a";
+	protected String secondNameCss = ".tables tbody tr:nth-child(2) td:nth-child(2) a";
 
 	// Search Spaces
-	protected String buscarEspacio = ".actions .btnsearch";
-	protected String inputSearch = ".actions .search input";
+	protected String buscarEspacioCss = ".btnsearch";
+	protected String inputSearchCss = ".search input";
 
 	// References
 
 	// By
-	By goToEspacios = By.cssSelector(goToEspaciosCss);
+	By goToMisEspacios = By.cssSelector(goToMisEspaciosCss);
 	By goToRecomendados = By.cssSelector(goToRecomendadosCss);
+	
+	// Order
+
+	By ordenNombreEspacios= By.cssSelector(ordenNombreEspaciosCss);
+		
+	//Espacios
+	By editfourthRow = By.cssSelector(editfourthRowCss);
+	By firstType = By.cssSelector(firstTypeCss);
+	By firstSpace = By.cssSelector(firstSpaceCss);
+	By firstName = By.cssSelector(firstNameCss);
+	By secondName = By.cssSelector(secondNameCss);
+
+	// Search Spaces
+	By buscarEspacio = By.cssSelector(buscarEspacioCss);
+	By inputSearch = By.cssSelector(inputSearchCss);
+	
 
 	// Driver
 
@@ -55,8 +69,16 @@ public class EspacioPage extends SetUp {
 		this.driver = driver;
 	}
 
-	public void goToEspacios() {
-		driver.findElement(goToEspacios).click();
+	public void goToMisEspacios() {
+		driver.findElement(goToMisEspacios).click();
+		// Wait until recomendados appear
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebElement element = wait.until(ExpectedConditions
+				.elementToBeClickable(goToRecomendados));
+
+	}
+	public void goToRecomendados() {
+		driver.findElement(goToRecomendados).click();
 		// Wait until recomendados appear
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement element = wait.until(ExpectedConditions
@@ -65,45 +87,29 @@ public class EspacioPage extends SetUp {
 	}
 
 	public void ordenarPorNombreEspacio() throws InterruptedException {
-		driver.findElement(By.cssSelector(ordenNombre)).click();
+		driver.findElement(ordenNombreEspacios).click();
 
 		Reporter.log("El primer nombre de la tabla es :");
-		Reporter.log(driver.findElement(By.cssSelector(firstName)).getText());
+		Reporter.log(driver.findElement(firstName).getText());
 		Reporter.log("El segundo nombre de la tabla es :");
-		Reporter.log(driver.findElement(By.cssSelector(secondName)).getText());
+		Reporter.log(driver.findElement(secondName).getText());
 		verificarOrden();
-	}
-
-	public void ordenarPorEstado() throws InterruptedException {
-		driver.findElement(By.cssSelector(ordenEstado)).click();
-		Reporter.log("El valor del primer estado es :");
-		Reporter.log(driver.findElement(By.cssSelector(firstState)).getText());
 	}
 
 	public String getTypeFirstRow() {
 		// Ver q el primero de la lista sea tipo empresa
-		return (driver.findElement(By.cssSelector(firstType)).getText());
-
-	}
-
-	public void verificarOrdenDefault() {
-
-		Reporter.log("Verificar que el primer tipo de espacio es de empresa");
-		Assert.assertEquals(this.getTypeFirstRow(), "company",
-				"El primero es empresa");
-		Reporter.log("El valor del tipo de espacio es:");
-		Reporter.log(this.getTypeFirstRow());
+		return (driver.findElement(firstType).getText());
 
 	}
 
 	public String getFirstNameSpace() {
 
-		return driver.findElement(By.cssSelector(firstName)).getText();
+		return driver.findElement(firstName).getText();
 	}
 
 	public String getSecondName() {
 
-		return driver.findElement(By.cssSelector(secondName)).getText();
+		return driver.findElement(secondName).getText();
 	}
 
 	public void verificarOrden() {
@@ -118,14 +124,14 @@ public class EspacioPage extends SetUp {
 	public void buscarEspacio(String espacio) {
 
 		Reporter.log("Buscar un espacio en el listado de Espacios");
-		driver.findElement(By.cssSelector(buscarEspacio)).click();
-		driver.findElement(By.cssSelector(inputSearch)).clear();
-		driver.findElement(By.cssSelector(inputSearch)).sendKeys(espacio);
-		driver.findElement(By.cssSelector(inputSearch)).sendKeys(Keys.ENTER);
+		driver.findElement(buscarEspacio).click();
+		driver.findElement(inputSearch).clear();
+		driver.findElement(inputSearch).sendKeys(espacio);
+		driver.findElement(inputSearch).sendKeys(Keys.ENTER);
 		Reporter.log(" El nombre a buscar es :..");
 		Reporter.log(espacio);
 		Reporter.log("El nombre encontrado es ..");
-		Reporter.log(driver.findElement(By.cssSelector(firstSpace)).getText());
+		Reporter.log(driver.findElement(firstSpace).getText());
 
 	}
 
@@ -135,5 +141,9 @@ public class EspacioPage extends SetUp {
 		driver.findElement(By.cssSelector(iconoEspacio)).click();
 		
 
+	}
+	
+	public void goToEditEspacio(){
+		driver.findElement(editfourthRow).click();
 	}
 }

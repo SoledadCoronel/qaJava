@@ -70,7 +70,7 @@ public class SetUp {
 		driver = new FirefoxDriver();
 		login = new LoginPage(driver);
 		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		this.openSite(urlSiteAutomation1);
+		this.openSite(urlSiteAutomation3);
 
 		Reporter.log("Abriendo la aplicacion");
 	

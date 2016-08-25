@@ -25,10 +25,10 @@ import org.testng.Reporter;
     	private String personasTableCss=".tables";    	
     	private String goToDirectorioCss ="igouserwhite";
     	private String goToActividadSocialCss="igosocialswhite";
-    	private String goToEspaciosCss=".noicon";
+    	private String goToVerMasEspaciosCss=".noicon";
     	private String goToAdmistrarStoreCs="article .space:nth-child(3) .igoadminwhite";
     	private String goToTiendaCss="article .space:nth-child(3) .igotitleswhite";
-    	private String misEspaciosCss= "igopasswordwhite";
+    	private String misEspaciosCss= ".igopasswordwhite";
     	private String goToUserMenuCss=".usermenu .last a figure";
     	private String goToLogoutCss=".users li:last-child a";		
     	private  String inputmailLogin = ".session label:nth-child(3) input";
@@ -49,7 +49,7 @@ import org.testng.Reporter;
     	
     	By personasTable=By.cssSelector(personasTableCss);
     	By ayudaLink=By.cssSelector(ayudaLinkCss);    	
-    	By goToEspacios=By.cssSelector(goToEspaciosCss);
+    	By goToVerMasEspacios=By.cssSelector(goToVerMasEspaciosCss);
     	By misEspacios=By.cssSelector(misEspaciosCss);
     	By goToUserMenu= By.cssSelector(goToUserMenuCss);
     	By goToLogout=By.cssSelector(goToLogoutCss);
@@ -120,7 +120,7 @@ import org.testng.Reporter;
 	    
     public  void goToEspacios(){
     	Reporter.log("Abriendo espacios" );  
-    	driver.findElement(goToEspacios).click();
+    	driver.findElement(goToVerMasEspacios).click();
     	WebElement insertPassword = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(misEspacios));
     
     }

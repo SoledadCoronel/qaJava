@@ -136,12 +136,7 @@ public class AgregarEspacioPage extends SetUp {
 		driver.findElement(grabarEspacioEmpresaInactivo).click();
 	}
 
-	public void editarEspacio() {
-		// Agarro el cuarto elemento de la lista y lo tomo para editarlo
-
-	//	driver.findElement(By.cssSelector(editfourthRow)).click();
-	}
-
+	
 	public void cambiarIconoOso() throws InterruptedException {
 		cambiarIcono(iconoOsoCss);
 	}
