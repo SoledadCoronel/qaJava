@@ -2,7 +2,7 @@ package go5.automation.espacios;
 
 
 import go5.automation.SetUp;
-import go5.pageObjects.EspacioPage;
+import go5.pageObjects.EspaciosPage;
 import go5.pageObjects.HomePage;
 
 import org.testng.Reporter;
@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 public class ListadoEspaciosAC extends SetUp {
 	
 		
-	EspacioPage espacio=null;
+	EspaciosPage espacio=null;
 	HomePage home=null;
 	
 	@AfterClass // call function to close browser 
@@ -30,7 +30,7 @@ public class ListadoEspaciosAC extends SetUp {
 	
 	public void listarEspacios() throws Exception { 
 	
-		espacio= new EspacioPage(driver); 
+		espacio= new EspaciosPage(driver); 
 		home = new HomePage(driver);	
 	        
 		 Reporter.log(" Listado de espacios ");

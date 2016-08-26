@@ -1,7 +1,7 @@
 package go5.automation.social;
 
 import go5.automation.SetUp;
-import go5.pageObjects.EspacioPage;
+import go5.pageObjects.EspaciosPage;
 import go5.pageObjects.HomePage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class MuroSocialAC extends SetUp {
 
 	MuroSocialPage muro = null;
-	EspacioPage espacio = null;
+	EspaciosPage espacio = null;
 	LoginPage login = null;
 	HomePage home = null;
 
@@ -31,7 +31,7 @@ public class MuroSocialAC extends SetUp {
 	public void postearLikearComentar() throws Exception {
 
 		muro = new MuroSocialPage(driver);
-		espacio = new EspacioPage(driver);
+		espacio = new EspaciosPage(driver);
 		login = new LoginPage(driver);
 		home = new HomePage(driver);
 

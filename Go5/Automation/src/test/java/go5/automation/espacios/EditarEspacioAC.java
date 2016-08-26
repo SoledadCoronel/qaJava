@@ -1,7 +1,7 @@
 package go5.automation.espacios;
 
 import go5.automation.SetUp;
-import go5.pageObjects.EspacioPage;
+import go5.pageObjects.EspaciosPage;
 import go5.pageObjects.AgregarEspacioPage;
 import go5.pageObjects.HomePage;
 
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class EditarEspacioAC extends SetUp {
 
-	EspacioPage espacio = null;
+	EspaciosPage espacio = null;
 	AgregarEspacioPage addspace = null;
 	HomePage home=null;
 	String strusername = "admin";
@@ -25,7 +25,7 @@ public class EditarEspacioAC extends SetUp {
 	@Test
 	public void editarEspacio() throws Exception {
 
-		espacio = new EspacioPage(driver);
+		espacio = new EspaciosPage(driver);
 		addspace = new AgregarEspacioPage(driver);
 		home= new HomePage(driver);
 

@@ -44,7 +44,7 @@ import org.testng.Reporter;
        
     	//Likes
     
-        protected String likeFirstPostcss=".posttext:nth-child(3) .actions .igolike";
+        protected String likeFirstPostcss=".posttext:nth-child(2) .socials .link:first-child";
         protected String likeFirstCommentcss=".posttext:nth-child(3) .commentsitem .igolike";
         protected String likeReponseCommentcss=".posttext:nth-child(3) .commentsreplay .socials .igolike ";
         protected String desplegarLikescss=".posttext:nth-child(3) .socials:nth-child(3) p a:nth-child(2)";
@@ -60,6 +60,7 @@ import org.testng.Reporter;
     	
     	//links
         protected String linkPostcss=".igolink";
+        protected String linkInputFieldCss=".url input";
     	protected String linkVerMascss=".posttext:nth-child(3) div:nth-child(2) .link";
         
     	//attachments    	
@@ -106,6 +107,7 @@ import org.testng.Reporter;
     	
     	//links
     	By link =By.cssSelector(linkPostcss);
+    	By inputLink= By.cssSelector(linkInputFieldCss);
     	By linkVerMas=By.cssSelector(linkVerMascss);
     	
     	//attachments      	
@@ -285,9 +287,8 @@ import org.testng.Reporter;
 	     public void postLink (String strlink){
 	    	 Reporter.log("Posteo un link");
 	    	  driver.findElement(link).click();
-	    	  driver.findElement(By.cssSelector(".active input")).sendKeys(strlink);
-	    	  driver.findElement(By.cssSelector(".active input")).sendKeys(Keys.ENTER);
-	    	    	 
+	    	  driver.findElement(inputLink).sendKeys(strlink);	    	  
+	    	  driver.findElement(inputLink).sendKeys(Keys.ENTER);    	    	 
 	    }
        
 	     public void postFile(){

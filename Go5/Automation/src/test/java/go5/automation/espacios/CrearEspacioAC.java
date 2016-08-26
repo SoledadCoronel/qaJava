@@ -24,6 +24,8 @@ public class CrearEspacioAC extends SetUp {
 		Reporter.log(" Creando un espacio como user admin");
 
 		// Ir a Crear Espacio
+		
+		Thread.sleep(3000);
 
 		addespacio.goToCrearEspacio();
 
@@ -36,48 +38,22 @@ public class CrearEspacioAC extends SetUp {
 
 		// Desactivar
 		Reporter.log("Desactivar el espacio");
-		addespacio.activarEspacio();
-
-		// Seleccionar el icono
-		Reporter.log("Seleccionar el icono del espacio");
-		// espacio.cambiarIconoBasket();
-
-		/*
-		 * //Verificar ayuda del tipo de espacio
-		 * 
-		 * Reporter.log("Verificando modal de ayuda en Tipo de Espacio");
-		 * 
-		 * JavascriptExecutor js = (JavascriptExecutor) driver; WebElement
-		 * element = driver.findElement(By.linkText("Ayuda"));
-		 * Thread.sleep(1000); js.executeScript("scroll(250, 0)");
-		 * 
-		 * //js.executeScript(
-		 * "arguments[0].setAttribute('style', 'display: block; position: relative; height: 300px; width: 300px; opacity: 1; visiblity: visible')"
-		 * ,element);
-		 * 
-		 * 
-		 * driver.findElement(By.cssSelector("a[title='Muestra la ayuda']")).click
-		 * ();
-		 * driver.findElement(By.cssSelector(".spaceformtype .help")).click();
-		 * 
-		 * 
-		 * //Cerrar el popup
-		 * driver.findElement(By.cssSelector(".active .minformation .primary"
-		 * )).click();
-		 */
-		// Seleccionar el tipo de espacio
+		addespacio.activarEspacio();		
 
 		// Espacio publico
 
 		addespacio.setEspacioPublico();
 
 		// Grabar el espacio nuevo
-
+		Thread.sleep(3000);
 		addespacio.grabarEspacio();
 
 		Thread.sleep(1000);
 		Reporter.log("Caso de crear espacio  finalizado correctamente");
-
+		
+		
+  // Ir a buscar el espacio al sidebar y agregarle personas
+		
 	}
 
 }

@@ -1,7 +1,7 @@
 package go5.automation.espacios;
 
 import go5.automation.SetUp;
-import go5.pageObjects.EspaciosPage;
+import go5.pageObjects.EspacioPage;
 import go5.pageObjects.HomePage;
 
 import org.testng.Reporter;
@@ -9,16 +9,16 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class ListadoEspaciosUserBasicAC extends SetUp {
+public class LeaveEspacioTest extends SetUp {
 
-	EspaciosPage espacio = null;
-	HomePage home=null;
+	EspacioPage espacio = null;
+	HomePage home = null;
 
 	@BeforeClass
 	// call function to open the browser and login
 	public void setup() throws Exception {
+		this.setUpMaven();
 
-		this.setUpMavenUserBasic();
 	}
 
 	@AfterClass
@@ -28,20 +28,17 @@ public class ListadoEspaciosUserBasicAC extends SetUp {
 	}
 
 	@Test
-	public void listarEspacios() throws Exception {
+	public void leaveSpace() throws Exception {
 
-		espacio = new EspaciosPage(driver);
+		espacio = new EspacioPage(driver);
 		home = new HomePage(driver);
 
-		Reporter.log(" Listado de espacios ");
-
-		// Ir a espacios
-
-		home.goToEspacios();
-
-		// Ordenar espacios
-
-	  // verificar que no este el boton de editar el espacio
+		Reporter.log(" Ir a un espacio e irse");
+		home.goToSpaceUmbrella();
+		Thread.sleep(3000);
+		//espacio.goToMembers();
+		Thread.sleep(2000);
+		espacio.leaveSpace();
 
 	}
 

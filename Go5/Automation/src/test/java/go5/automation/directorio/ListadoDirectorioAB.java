@@ -7,6 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import go5.pageObjects.DirectorioPage;
+import go5.pageObjects.HomePage;
 
 public class ListadoDirectorioAB extends SetUp {
 
@@ -17,6 +18,7 @@ public class ListadoDirectorioAB extends SetUp {
 	// Uso de la pagina Directorio
 
 	DirectorioPage directorio = null;
+	HomePage home=null;
 
 	@AfterClass
 	// call function to close browser
@@ -30,10 +32,11 @@ public class ListadoDirectorioAB extends SetUp {
 		// Inicializar pagina de Directorio
 
 		directorio = new DirectorioPage(driver);
+		home= new HomePage(driver);
 
 		// Go to Directorio de personas
 
-		directorio.goToDirectorio();
+		home.goToDirectorio();
 
 		// Ver si esta ordenado por default cuando carga la pagina
 		Reporter.log("Ver si esta ordenado por default cuando carga la pagina");

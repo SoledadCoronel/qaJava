@@ -23,8 +23,8 @@ import org.testng.Reporter;
     	private String goToTitulosCss="article .space:nth-child(2) .igotitleswhite";
     	private String goToGruposCss=".igogroups";
     	private String personasTableCss=".tables";    	
-    	private String goToDirectorioCss ="igouserwhite";
-    	private String goToActividadSocialCss="igosocialswhite";
+    	private String goToDirectorioCss =".space .igouserwhite";
+    	private String goToActividadSocialCss=".igosocialswhite";
     	private String goToVerMasEspaciosCss=".noicon";
     	private String goToAdmistrarStoreCs="article .space:nth-child(3) .igoadminwhite";
     	private String goToTiendaCss="article .space:nth-child(3) .igotitleswhite";
@@ -32,6 +32,8 @@ import org.testng.Reporter;
     	private String goToUserMenuCss=".usermenu .last a figure";
     	private String goToLogoutCss=".users li:last-child a";		
     	private  String inputmailLogin = ".session label:nth-child(3) input";
+    	private String goToSpaceIconUmbrellaCss=".igospaceumbrella ";
+    	private String textPostCss=".posttext";
       //References
     	
     	By goToConfiguration=By.cssSelector(goToConfigurationCss);
@@ -54,6 +56,8 @@ import org.testng.Reporter;
     	By goToUserMenu= By.cssSelector(goToUserMenuCss);
     	By goToLogout=By.cssSelector(goToLogoutCss);
     	By inputLogin= By.cssSelector(inputmailLogin);
+    	By goToSpaceIconUmbrella= By.cssSelector(goToSpaceIconUmbrellaCss);
+    	By textPost=By.cssSelector(textPostCss);
     	
     	
     	
@@ -107,6 +111,13 @@ import org.testng.Reporter;
 	   driver.findElement(goToDisenio).click();
     }
    
+   public void goToDirectorio(){
+	   Reporter.log("Abriendo pagina de directorio" );  
+	   driver.findElement(goToDirectorio).click();
+	   WebElement listaPersonas = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(personasTable));
+    
+   }
+   
     public void goToAyuda(){
     	 Reporter.log("Abriendo la auyda" );  
     	driver.findElement(ayudaLink).click();
@@ -123,6 +134,11 @@ import org.testng.Reporter;
     	driver.findElement(goToVerMasEspacios).click();
     	WebElement insertPassword = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(misEspacios));
     
+    }
+    
+    public void goToSpaceUmbrella(){
+    	driver.findElement(goToSpaceIconUmbrella).click();
+    	WebElement cargarSpace = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(textPost));
     }
     public void goToLogout() throws InterruptedException{
     	goToUserMenu();

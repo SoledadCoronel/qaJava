@@ -41,9 +41,8 @@ public class MuroSocialProfileAC extends SetUp {
 		home = new HomePage(driver);
 
 		Reporter.log(" Ir  a buscar en directorio el user basic y postearle en su profile");
-		directorio.goToDirectorio();
-		// WebElement tablevailable = (new WebDriverWait(driver,
-		// 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".people")));
+		home.goToDirectorio();
+		
 		this.click(searchButton);
 		this.sendValue(inputSearch, "User Basic");
 
