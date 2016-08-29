@@ -4,7 +4,7 @@ import go5.automation.SetUp;
 
 import java.io.File;
 import java.security.SecureRandom;
-import java.util.concurrent.TimeUnit;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -253,14 +253,14 @@ public class MuroSocialPage extends SetUp {
 	}
 
 	public void postFile() throws InterruptedException {
+		
+		js = (JavascriptExecutor) driver;
 		Reporter.log("Me posiciono en el text area para luego subir un file");
 		driver.findElement(textPost).click();		
 		Thread.sleep(3000);
 		Reporter.log("Postear un file");
 		// function to make visible the button logoFilePicker, as it is set to
-		// class "off"
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		System.out.println(loadFilePart1Css);
+		// class "off"		
 		WebElement element = driver.findElement(loadFile);
 		js.executeScript("arguments[0].setAttribute('style', 'display:block')",
 				element);
