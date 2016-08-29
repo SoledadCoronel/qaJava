@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeClass;
 
 
 
-public class Post10CharsTest extends Post10CharsAC {
+public class PostFileTest extends PostFileAC {
 	
 	
 	

@@ -34,6 +34,7 @@ public class EspaciosPage extends SetUp {
 	// Search Spaces
 	protected String buscarEspacioCss = ".btnsearch";
 	protected String inputSearchCss = ".search input";
+	private String textPostCss=".posttext";
 
 	// References
 
@@ -55,6 +56,8 @@ public class EspaciosPage extends SetUp {
 	// Search Spaces
 	By buscarEspacio = By.cssSelector(buscarEspacioCss);
 	By inputSearch = By.cssSelector(inputSearchCss);
+	
+	By textPost=By.cssSelector(textPostCss);
 	
 
 	// Driver
@@ -138,7 +141,8 @@ public class EspaciosPage extends SetUp {
 
 		Reporter.log("Clickear un espacio pasandole el icono");
 		driver.findElement(By.cssSelector(iconoEspacio)).click();
-		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textPost));
 
 	}
 	

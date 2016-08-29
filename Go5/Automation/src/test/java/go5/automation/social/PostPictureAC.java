@@ -1,6 +1,8 @@
 package go5.automation.social;
 
 
+import java.io.File;
+
 import go5.automation.SetUp;
 import go5.pageObjects.EspaciosPage;
 import go5.pageObjects.LoginPage;
@@ -19,7 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 
-public class Post10CharsAC extends SetUp {
+public class PostPictureAC extends SetUp {
 	
 	MuroSocialPage muro=null;
 	EspaciosPage espacio=null;
@@ -60,25 +62,10 @@ public class Post10CharsAC extends SetUp {
 	// WebElement insertPost = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(textPost));
 		 espacio.clickEspacioSidebar(iconoEmpresa);
 		 Thread.sleep(4000);
-		muro.postTexto(muro.randomString(10));
-		Thread.sleep(5000);
-		System.out.println("Clickear publicar!");
-		muro.postear();
-		System.out.println("Ya clickeo publicar");
-		Thread.sleep(5000);
-		/*
-		//Scrollear la pagina
-		Reporter.log("Scrolleo");
-		js.executeScript("scroll(0, 750);");
-		Thread.sleep(2000);
-		Reporter.log("Busco el link de ver mas en el post de mas de 480 Chars");
-		muro.verifyLinkVerMas();
-		Reporter.log("Clickeo el link de Ver Mas");
-		Thread.sleep(2000);
-		muro.verifyLinkVerMenos();
-		Reporter.log("Clickeo el link de Ver Menos");
-		Thread.sleep(2000);
-	 */
+		muro.postPicture();
+		Thread.sleep(3000);
+		
+		
 		}	
 		
 		
