@@ -10,7 +10,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class MuroSocialAC extends SetUp {
+public class PostSimpleAC extends SetUp {
 
 	MuroSocialPage muro = null;
 	EspaciosPage espacio = null;
@@ -28,7 +28,7 @@ public class MuroSocialAC extends SetUp {
 	}
 
 	@Test(description = "Creo un post con usuario admin, lo likeo.Respondo como usuario basico,likeo y respondo")
-	public void postearLikearComentar() throws Exception {
+	public void postearylikear() throws Exception {
 
 		muro = new MuroSocialPage(driver);
 		espacio = new EspaciosPage(driver);
@@ -49,37 +49,7 @@ public class MuroSocialAC extends SetUp {
 		Reporter.log("Like el post creado como user admin");
 		muro.likearPost();
 		Thread.sleep(2000);
-		home.goToLogout();
-		Thread.sleep(2000);
-		Reporter.log("Loguearse como usuario basico");
-		login.loginToGoAsUSerBasic();
-		espacio.clickEspacioSidebar(iconoEmpresa);
-		Thread.sleep(2000);
-		Reporter.log("Imprimir y assertear que el texto posteado es el del user admin");
-		Reporter.log(muro.getTextFirstPost());		
-		Reporter.log("Likear el post del user admin, como user basic");
-		muro.likearPost();
-		Reporter.log("Imprimo la cantidad de likes del post:");
-		Reporter.log(muro.countLikesPost());		
-		muro.likearPost();
-		muro.comentarFIrstPost("Comento el post del usuario admin, siendo el user basic");
-		muro.likearComment();
-		// Cuento los likes del comment, 1 solo
-		Reporter.log("Imprimo la cantidad de likes del comment, debe ser 1");
-		Reporter.log(muro.countLikesComments());
-		Thread.sleep(2000);
-		Reporter.log("Imprimo la cantidad de likes del post:");
-		Reporter.log(muro.countLikesPost());
-
-		// Repondo a mi comment y lo likeo
-
-		muro.responderComment("Respondo el comment que hice como user basic");
-		Thread.sleep(4000);
-		muro.likearResponseComment();
-		Reporter.log(muro.countLikesResponseComment());
-		Reporter.log(" Ir al profile del posteador, que es el user admin");
-		muro.goToProfilePost();
-		Thread.sleep(2000);
+		
 
 	}
 

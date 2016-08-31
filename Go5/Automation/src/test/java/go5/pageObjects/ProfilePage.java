@@ -23,7 +23,7 @@ public class ProfilePage extends SetUp {
 
 	protected String irAProfile = ".last .igouserwhite";
 	private String goToAcercaCss = ".igotitleswhite";
-	private String goToSocialCss = ".igosocialswhite";
+	private String goToSocialCss = ".title .igosocialswhite";
 	protected String goToProfileSidebar = ".igowithoutimage";
 	private String datosPerfilCss = ".data";
 	private String linkSupervisor = "small a ";
@@ -92,6 +92,7 @@ public class ProfilePage extends SetUp {
 
 	By goToMiPerfil = By.cssSelector(irAProfile);
 	By goToSocial = By.cssSelector(goToSocialCss);
+	By goToAcerca=By.cssSelector(goToAcercaCss);
 	By goToMiPerfilSidebar = By.cssSelector(goToProfileSidebar);
 	By datosProfile = By.cssSelector(datosPerfilCss);
 
@@ -181,9 +182,7 @@ public class ProfilePage extends SetUp {
 	public void goToProfile() {
 		Reporter.log("Ir a Profile");
 		driver.findElement(goToMiPerfil).click();
-		WebElement profilePage = (new WebDriverWait(driver, 10))
-				.until(ExpectedConditions
-						.presenceOfElementLocated(datosProfile));
+		WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(datosProfile));
 	}
 
 	public void goToProfileSideBar() throws InterruptedException {
@@ -334,9 +333,11 @@ public class ProfilePage extends SetUp {
 
 	public void goToSocial() {
 		driver.findElement(goToSocial).click();
-		WebElement profilePage = (new WebDriverWait(driver, 10))
-				.until(ExpectedConditions
-						.presenceOfElementLocated(textAreaPost));
+	//	WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(textAreaPost));
 	}
 
+	public void goToAcerca(){
+		driver.findElement(goToAcerca).click();
+		
+	}
 }

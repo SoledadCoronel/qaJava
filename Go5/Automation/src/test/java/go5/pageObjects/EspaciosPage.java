@@ -141,7 +141,7 @@ public class EspaciosPage extends SetUp {
 
 		Reporter.log("Clickear un espacio pasandole el icono");
 		driver.findElement(By.cssSelector(iconoEspacio)).click();
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, 20);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textPost));
 
 	}

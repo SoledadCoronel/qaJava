@@ -42,7 +42,7 @@ public class MuroSocialProfileAC extends SetUp {
 
 		Reporter.log(" Ir  a buscar en directorio el user basic y postearle en su profile");
 		home.goToDirectorio();
-		
+
 		this.click(searchButton);
 		this.sendValue(inputSearch, "User Basic");
 
@@ -52,25 +52,15 @@ public class MuroSocialProfileAC extends SetUp {
 		// Aca falla por el search
 
 		directorio.goToFirstProfileUserByNameLink();
-		profile.goToSocial();
 		Thread.sleep(2000);
+		profile.goToAcerca();
+		profile.goToSocial();
+		Thread.sleep(4000);
+		
 		muro.postTexto("Posteo en el profile del user basic, como user admin desde directorio");
 		Thread.sleep(2000);
-		muro.postear();
-		// Me deslogueo como user admin
-		home.goToLogout();
-		Thread.sleep(4000);
-		// Me logueo como user basic para fijarme si el post se publico en mi
-		// profile
-		login.loginToGoAsUSerBasic();
-		home.goToUserMenu();
-	     profile.goToProfile();
-		profile.goToSocial();
-		Reporter.log(muro.getTextFirstPost());
-		// Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
-		muro.goToProfilePost();
+		muro.postear();		
 		Thread.sleep(2000);
-
 	}
 
 }

@@ -5,7 +5,6 @@ import go5.automation.SetUp;
 import java.io.File;
 import java.security.SecureRandom;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -37,6 +36,11 @@ public class MuroSocialPage extends SetUp {
 	protected String reponderCommentFirstPostcss = ".posttext:nth-child(3) .commentsitem .commentsform fieldset div";
 	protected String showMoreCommentscss = ".link showmore";
 
+	//Eliminar post
+	
+	protected String goToEliminarPostCss=".posttext:nth-child(3) .btnoptions";
+	protected String eliminarPostCss=".posttext:nth-child(3) .active li:first-child a";
+	
 	// Likes
 
 	protected String likeFirstPostcss = ".posttext:nth-child(2) .socials .link:first-child";
@@ -58,9 +62,10 @@ public class MuroSocialPage extends SetUp {
 	protected String linkVerMascss = ".posttext:nth-child(3) div:nth-child(2) .link";
 
 	// attachments
+	
 	protected String openloadFileCss = ".igoattach";
-	protected String loadFilePart1Css = ".actions input" + "[id$="
-			+ "'filePicker'" + "]";
+	protected String loadFilePart1Css = ".actions input" + "[id$="+ "'filePicker'" + "]";
+	protected String loadPictureCss=".actions input" + "[id$=" + "'imagePicker'" + "]";
 	protected String loadFilePart2Css = "filePicker";
 	protected String cameraOrPicturePostcss = ".igocamerawhite";
 	protected String cameracss = ".igocamera";
@@ -87,6 +92,11 @@ public class MuroSocialPage extends SetUp {
 	By responseCommentFirstPost = By.cssSelector(reponderCommentFirstPostcss);
 	By abrirReponderComment = By.cssSelector(arbirResponderCommentFirstPstscss);
 
+	//Eliminar post
+	
+	By goToEliminarPost=By.cssSelector(goToEliminarPostCss);
+	By eliminarPost=By.cssSelector(eliminarPostCss);
+	
 	// Likes
 	By like = By.cssSelector(likeFirstPostcss);
 	By desplegarLikes = By.cssSelector(desplegarLikescss);
@@ -110,6 +120,7 @@ public class MuroSocialPage extends SetUp {
 
 	By openloadFile = By.cssSelector(openloadFileCss);
 	By loadFile = By.cssSelector(loadFilePart1Css);
+	By loadPicture=By.cssSelector(loadPictureCss);
 	By selectCameraOrPicture = By.cssSelector(cameraOrPicturePostcss);
 	By subirFoto = By.cssSelector(subirFotocss);
 
@@ -246,10 +257,11 @@ public class MuroSocialPage extends SetUp {
 
 	}
 
-	public void postear() {
+	public void postear() throws InterruptedException {
 
 		Reporter.log("CLikeo publicar");
 		driver.findElement(publicarContenido).click();
+		Thread.sleep(3000);
 	}
 
 	public void postFile() throws InterruptedException {
@@ -271,6 +283,8 @@ public class MuroSocialPage extends SetUp {
 		upload.sendKeys(file.getAbsolutePath());
 
 	}
+	
+	
 
 	public void responderComment(String strResponseComment) {
 		// Clickear Reponder
@@ -296,7 +310,7 @@ public class MuroSocialPage extends SetUp {
 		driver.findElement(inputLink).sendKeys(Keys.ENTER);
 	}
 
-	public void postPicture() {
+	public void postPicture() throws InterruptedException {
 
 		js = (JavascriptExecutor) driver;
 
@@ -304,14 +318,15 @@ public class MuroSocialPage extends SetUp {
 		Reporter.log("Ingresar un texto en el postbox");
 		driver.findElement(textPost).clear();
 		driver.findElement(textPost).click();
+		Thread.sleep(3000);
 
-		WebElement element = driver.findElement(subirFoto);
+		WebElement element = driver.findElement(loadPicture);
 		js.executeScript("arguments[0].setAttribute('style', 'display:block')",
 				element);
 
 		// Agarrar el elemento para cargar el file y pasarle el path
 
-		WebElement subirFile = driver.findElement(subirFoto);
+		WebElement subirFile = driver.findElement(loadPicture);
 
 		File file = new File("src/test/resources/Girasol.jpeg");
 		subirFile.sendKeys(file.getAbsolutePath());
@@ -319,4 +334,9 @@ public class MuroSocialPage extends SetUp {
 		Reporter.log(" Foto cargada exitosamente");
 	}
 
+	public void eliminarPost() {
+		driver.findElement(goToEliminarPost).click();
+		driver.findElement(eliminarPost).click();
+	}
+	
 }

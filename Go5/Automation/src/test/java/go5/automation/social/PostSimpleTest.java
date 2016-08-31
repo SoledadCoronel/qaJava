@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 
 
 
-public class MuroSocialTest extends MuroSocialAC {
+public class PostSimpleTest extends PostSimpleAC {
 	
 	
 		

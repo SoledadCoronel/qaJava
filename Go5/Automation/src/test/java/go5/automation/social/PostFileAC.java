@@ -49,9 +49,7 @@ public class PostFileAC extends SetUp {
 		// Ir a espacios
 		// Tengo q ir a un espacio
 		espacio.clickEspacioSidebar(iconoEmpresa);
-		Thread.sleep(4000);
-		// WebElement insertPost = (new WebDriverWait(driver,
-		// 10)).until(ExpectedConditions.presenceOfElementLocated(textPost));
+		Thread.sleep(4000);		
 		espacio.clickEspacioSidebar(iconoEmpresa);
 		muro.postFile();
 		Thread.sleep(2000);

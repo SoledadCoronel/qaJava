@@ -69,6 +69,8 @@ public class Post500CharsAC extends SetUp {
 		muro.verifyLinkVerMenos();
 		Reporter.log("Clickeo el link de Ver Menos");
 		Thread.sleep(2000);
+		
+		
 	 
 		}	
 		
