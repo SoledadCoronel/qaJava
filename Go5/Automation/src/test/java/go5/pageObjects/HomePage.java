@@ -31,7 +31,7 @@ import org.testng.Reporter;
     	private String misEspaciosCss= ".igopasswordwhite";
     	private String goToUserMenuCss=".usermenu .last a figure";
     	private String goToLogoutCss=".users li:last-child a";		
-    	private  String inputmailLogin = ".session label:nth-child(3) input";
+    	private  String inputmailLogin = "label:nth-child(3) input";
     	private String goToSpaceIconUmbrellaCss=".igospaceumbrella ";
     	private String textPostCss=".posttext";
       //References

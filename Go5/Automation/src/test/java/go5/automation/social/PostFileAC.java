@@ -36,7 +36,7 @@ public class PostFileAC extends SetUp {
 	By textPost = By.cssSelector(textAreaPostcss);
 
 	@Test
-	public void postearTextoDe500Chars() throws Exception {
+	public void postearunFile() throws Exception {
 
 		muro = new MuroSocialPage(driver);
 		espacio = new EspaciosPage(driver);
