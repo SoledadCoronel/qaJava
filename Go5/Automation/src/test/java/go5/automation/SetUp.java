@@ -231,7 +231,7 @@ public class SetUp {
 
 	public String generateName() {
 
-		int rand = (int) (Math.random() * 999999999);
+		int rand = (int) (Math.random() * 9999);
 		String name = "qaname" + rand;
 		return name;
 	}

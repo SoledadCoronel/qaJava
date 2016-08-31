@@ -111,8 +111,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
          
          //Esperar hasta que cargur el muro social despues de loguearse
          
-         WebDriverWait wait = new WebDriverWait(driver, 20);
- 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textPost));
+    //     WebDriverWait wait = new WebDriverWait(driver, 20);
+ 	//	WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textPost));
 
      } 
   

@@ -55,8 +55,7 @@ public class MuroSocialProfileAC extends SetUp {
 		Thread.sleep(2000);
 		profile.goToAcerca();
 		profile.goToSocial();
-		Thread.sleep(4000);
-		
+		Thread.sleep(4000);		
 		muro.postTexto("Posteo en el profile del user basic, como user admin desde directorio");
 		Thread.sleep(2000);
 		muro.postear();		
