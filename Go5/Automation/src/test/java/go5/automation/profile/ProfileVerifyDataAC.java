@@ -31,10 +31,8 @@ public class ProfileVerifyDataAC extends SetUp {
 		profile.verifyemaildisplayedAtHeader();
 		profile.verifyPhonesDisplayedAtHeader();
 		Thread.sleep(1000);
-		profile.goToTwitter();
-		Thread.sleep(2000);
-		profile.goToFacebook();
-		Thread.sleep(2000);
+		//profile.goToTwitter();	
+		//profile.goToFacebook();
 		profile.goToSupervisor();
 
 	}
