@@ -264,9 +264,9 @@ public class MuroSocialPage extends SetUp {
 		Thread.sleep(3000);
 	}
 
-	public void postFile() throws InterruptedException {
-		
-		js = (JavascriptExecutor) driver;
+	public void postFile() throws InterruptedException {		
+	
+		JavascriptExecutor js = (JavascriptExecutor) driver;		
 		Reporter.log("Me posiciono en el text area para luego subir un file");
 		driver.findElement(textPost).click();		
 		Thread.sleep(3000);
@@ -279,7 +279,7 @@ public class MuroSocialPage extends SetUp {
 		// Agarrar el elemento para cargar el file y pasarle el path
 		WebElement upload = driver.findElement(loadFile);
 		File file = new File("src/test/resources/Girasol.jpeg");
-		Reporter.log(file.getAbsolutePath());
+		Reporter.log(file.getAbsolutePath());		
 		upload.sendKeys(file.getAbsolutePath());
 
 	}
@@ -329,6 +329,8 @@ public class MuroSocialPage extends SetUp {
 		WebElement subirFile = driver.findElement(loadPicture);
 
 		File file = new File("src/test/resources/Girasol.jpeg");
+		Reporter.log(file.getAbsolutePath());
+		System.out.println(file.getAbsolutePath());
 		subirFile.sendKeys(file.getAbsolutePath());
 
 		Reporter.log(" Foto cargada exitosamente");

@@ -72,7 +72,7 @@ import org.testng.Reporter;
   
     public void goToConfiguration(){
     	driver.findElement(goToConfiguration).click();
-    	WebElement sidebar = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
+    	WebElement loadDatosGenerales = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
     }
     	    
     	public void goToMenu(){

@@ -68,10 +68,7 @@ public class CargarFotoProfileBS {
 			profile.goToProfile();
 			home.goToMenu();
 			profile.editarProfile();
-			profile.cargarFoto();
-			profile.cancelarSubirFoto();
-			Thread.sleep(2000);
-			profile.cargarFoto();
+			profile.cargarFoto();			
 			Thread.sleep(4000);
 		}
 	 

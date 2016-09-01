@@ -37,6 +37,7 @@ public class ProfilePage extends SetUp {
 	private String confirmar = ".active .primary";
 	private String cancelar = ".active .optional";
 	private String selectPictureOrCamera = "#photoFileDrop";
+	private String cambiarFotoCss= ".picture .link";
 
 	//Picture
 	private String inputPictureProfileCss="form.dotmenu label input";
@@ -102,6 +103,7 @@ public class ProfilePage extends SetUp {
 	
 	//Picture
 	By pictureProfile=By.cssSelector(inputPictureProfileCss);
+	By cambiarFoto=By.cssSelector(cambiarFotoCss);
 	
 	// Datos Laborales
 	By idEmpleado = By.cssSelector(idEmpleadoCss);
@@ -298,7 +300,10 @@ public class ProfilePage extends SetUp {
 
 		js = (JavascriptExecutor) driver;
 		// ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
-		driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
+		//darle click a cambiar foto y tirarle el class off a sarasa
+		driver.findElement(cambiarFoto).click();
+		Thread.sleep(2000);		
+		//driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
 		WebElement element = driver.findElement(By.id("sarasa"));
 		js.executeScript("arguments[0].setAttribute('style', 'display:block')",
 				element);
