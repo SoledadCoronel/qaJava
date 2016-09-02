@@ -17,7 +17,7 @@ import org.testng.Reporter;
     	private String goToHomeCss=".igohome";
     	private String goToMenuCss=".menu";
     	private String ayudaLinkCss="igohelpwhite";
-    	private String goToDatosGeneraleCss=".igocompanydata";
+	private String goToDatosGeneraleCss =".igocompanydata";
     	private String goToDisenioCss=".igodesign";
     	private String goToAdministrarPersonasCss="article .space:nth-child(2) .igoadminwhite";
     	private String goToTitulosCss="article .space:nth-child(2) .igotitleswhite";
@@ -70,9 +70,10 @@ import org.testng.Reporter;
     	        this.driver = driver;
      }
   
-    public void goToConfiguration(){
+    public void goToConfiguration() throws InterruptedException{
     	driver.findElement(goToConfiguration).click();
-    	WebElement loadDatosGenerales = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
+    	Thread.sleep(2000);
+    //	WebElement loadDatosGenerales = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
     }
     	    
     	public void goToMenu(){
