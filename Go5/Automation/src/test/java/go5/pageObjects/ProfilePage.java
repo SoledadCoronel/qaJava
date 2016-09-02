@@ -25,7 +25,7 @@ public class ProfilePage extends SetUp {
 	private String goToAcercaCss = ".igotitleswhite";
 	private String goToSocialCss = ".title .igosocialswhite";
 	protected String goToProfileSidebar = ".igowithoutimage";
-	private String datosPerfilCss = ".data";
+	private String datosPerfilCss = ".igotitleswhite";//tab Acerca
 	private String linkSupervisor = "small a ";
 
 	// Edit Profile
@@ -37,18 +37,18 @@ public class ProfilePage extends SetUp {
 	private String confirmar = ".active .primary";
 	private String cancelar = ".active .optional";
 	private String selectPictureOrCamera = "#photoFileDrop";
-	private String cambiarFotoCss= ".picture .link";
+	private String cambiarFotoCss = ".picture .link";
 
-	//Picture
-	private String inputPictureProfileCss="form.dotmenu label input";
-	
+	// Picture
+	private String inputPictureProfileCss = "form.dotmenu label input";
+
 	// Datos Laborales
 
-	protected String idEmpleadoCss = ".labordata label:nth-child(2) input";
-	protected String fechaIngresoCss = ".labordata label:nth-child(3) input";
-	protected String tipoEmpleoCss = ".labordata label:nth-child(4) select";
-	protected String tituloCss = ".labordata label:nth-child(5) select";
-	protected String abrirReportaACss = ".labordata label:nth-child(6) ";
+	protected String idEmpleadoCss = ".labordata label:nth-child(1) input";
+	protected String fechaIngresoCss = ".labordata label:nth-child(2) input";
+	protected String tipoEmpleoCss = ".labordata label:nth-child(3) select";
+	protected String tituloCss = ".labordata label:nth-child(4) select";
+	protected String abrirReportaACss = ".labordata label:nth-child(5) ";
 	protected String listaReportaACss = ".list li:nth-child(n)";
 	protected String telFijoLaboralCss = ".labordata label:nth-child(7) input";
 	protected String telMovilLaboralCss = ".labordata label:nth-child(8) input";
@@ -60,21 +60,21 @@ public class ProfilePage extends SetUp {
 
 	// Datos Personales
 
-	protected String tipoDocumentoCss = ".personaldata label:nth-child(2) select";
-	protected String documentoCss = ".personaldata label:nth-child(3) input";
-	protected String fechaNacimientoCss = ".personaldata label:nth-child(4) input";
-	protected String generoCss = ".personaldata label:nth-child(5) select";
-	protected String estadoCivilCss = ".personaldata label:nth-child(6) select";
-	protected String mailPersonalCss = ".personaldata label:nth-child(7) input";
-	protected String telefonoFIjoCss = ".personaldata label:nth-child(8) input";
-	protected String telefonoMovilCss = ".personaldata label:nth-child(9) input";
-	protected String direccionPersonalCss = ".personaldata label:nth-child(10) input";
+	protected String tipoDocumentoCss = ".personaldata label:nth-child(1) select";
+	protected String documentoCss = ".personaldata label:nth-child(2) input";
+	protected String fechaNacimientoCss = ".personaldata label:nth-child(3) input";
+	protected String generoCss = ".personaldata label:nth-child(4) select";
+	protected String estadoCivilCss = ".personaldata label:nth-child(5) select";
+	protected String mailPersonalCss = ".personaldata label:nth-child(6) input";
+	protected String telefonoFIjoCss = ".personaldata label:nth-child(7) input";
+	protected String telefonoMovilCss = ".personaldata label:nth-child(8) input";
+	protected String direccionPersonalCss = ".personaldata label:nth-child(9) input";
 
 	// Redes Sociales
 
-	protected String linkedinCss = ".socialdata label:nth-child(2) input";
+	protected String linkedinCss = ".socialdata label:nth-child(1) input";
 	protected String twitterCss = ".socialdata label:nth-child(3) input";
-	protected String facebookCss = ".socialdata label:nth-child(4) input";
+	protected String facebookCss = ".socialdata label:nth-child(2) input";
 
 	// Social
 
@@ -93,18 +93,18 @@ public class ProfilePage extends SetUp {
 
 	By goToMiPerfil = By.cssSelector(irAProfile);
 	By goToSocial = By.cssSelector(goToSocialCss);
-	By goToAcerca=By.cssSelector(goToAcercaCss);
+	By goToAcerca = By.cssSelector(goToAcercaCss);
 	By goToMiPerfilSidebar = By.cssSelector(goToProfileSidebar);
 	By datosProfile = By.cssSelector(datosPerfilCss);
 
 	// Edit Profile
 
 	By editProfile = By.cssSelector(editProfileCss);
-	
-	//Picture
-	By pictureProfile=By.cssSelector(inputPictureProfileCss);
-	By cambiarFoto=By.cssSelector(cambiarFotoCss);
-	
+
+	// Picture
+	By pictureProfile = By.cssSelector(inputPictureProfileCss);
+	By cambiarFoto = By.cssSelector(cambiarFotoCss);
+
 	// Datos Laborales
 	By idEmpleado = By.cssSelector(idEmpleadoCss);
 	By fechaIngreso = By.cssSelector(fechaIngresoCss);
@@ -184,7 +184,9 @@ public class ProfilePage extends SetUp {
 	public void goToProfile() {
 		Reporter.log("Ir a Profile");
 		driver.findElement(goToMiPerfil).click();
-		WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(datosProfile));
+		WebElement profilePage = (new WebDriverWait(driver, 10))
+				.until(ExpectedConditions
+						.presenceOfElementLocated(datosProfile));
 	}
 
 	public void goToProfileSideBar() throws InterruptedException {
@@ -280,10 +282,10 @@ public class ProfilePage extends SetUp {
 
 	public void cancelarSubirFoto() throws InterruptedException {
 
-		//js = (JavascriptExecutor) driver;
+		// js = (JavascriptExecutor) driver;
 		driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
-		//WebElement element = driver.findElement(pictureProfile);
-		//js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
+		// WebElement element = driver.findElement(pictureProfile);
+		// js.executeScript("arguments[0].setAttribute('style', 'display:block')",element);
 
 		// Agarrar el elemento para cargar el file y pasarle el path
 
@@ -300,10 +302,10 @@ public class ProfilePage extends SetUp {
 
 		js = (JavascriptExecutor) driver;
 		// ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
-		//darle click a cambiar foto y tirarle el class off a sarasa
+		// darle click a cambiar foto y tirarle el class off a sarasa
 		driver.findElement(cambiarFoto).click();
-		Thread.sleep(2000);		
-		//driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
+		Thread.sleep(2000);
+		// driver.findElement(By.cssSelector(selectPictureOrCamera)).click();
 		WebElement element = driver.findElement(By.id("sarasa"));
 		js.executeScript("arguments[0].setAttribute('style', 'display:block')",
 				element);
@@ -338,11 +340,12 @@ public class ProfilePage extends SetUp {
 
 	public void goToSocial() {
 		driver.findElement(goToSocial).click();
-	//	WebElement profilePage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(textAreaPost));
+		// WebElement profilePage = (new WebDriverWait(driver,
+		// 10)).until(ExpectedConditions.presenceOfElementLocated(textAreaPost));
 	}
 
-	public void goToAcerca(){
+	public void goToAcerca() {
 		driver.findElement(goToAcerca).click();
-		
+
 	}
 }
