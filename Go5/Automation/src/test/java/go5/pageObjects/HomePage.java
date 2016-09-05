@@ -112,10 +112,11 @@ import org.testng.Reporter;
 	   driver.findElement(goToDisenio).click();
     }
    
-   public void goToDirectorio(){
+   public void goToDirectorio() throws InterruptedException{
 	   Reporter.log("Abriendo pagina de directorio" );  
 	   driver.findElement(goToDirectorio).click();
-	   WebElement listaPersonas = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(personasTable));
+	   Thread.sleep(3000);
+	//   WebElement listaPersonas = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(personasTable));
     
    }
    

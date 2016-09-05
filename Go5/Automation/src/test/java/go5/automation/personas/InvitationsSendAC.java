@@ -106,7 +106,7 @@ public class InvitationsSendAC extends SetUp {
 		Reporter.log("Comprobar loguearse a la aplicacion con ese user nuevo registrado");
 		// Comprobar loguearse a la aplicacion con ese user nuevo registrado
 		login.loginToGo(name, strPassword);
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 		home.goToUserMenu();
 		Reporter.log("Ir al perfil del usuario logueado");

@@ -25,6 +25,7 @@ public class BrandingFotosAC extends SetUp {
 
 		// Ir a Imagen
 		home.goToConfiguration();
+		home.goToMenu();
 		home.goDisenio();
 		Thread.sleep(2000);
 		branding.loadLogoPicture();
