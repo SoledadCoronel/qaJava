@@ -47,10 +47,12 @@ public class PostSimpleAC extends SetUp {
 		Thread.sleep(6000);
 		muro.postear();
 		Thread.sleep(2000);
-		Reporter.log("Like el post creado como user admin");
+	/*
+	  	Reporter.log("Like el post creado como user admin");
+	
 		muro.likearPost();
 		Thread.sleep(2000);
-		
+		 */
 
 	}
 

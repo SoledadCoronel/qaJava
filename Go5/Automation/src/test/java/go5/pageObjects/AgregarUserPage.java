@@ -22,9 +22,9 @@ public class AgregarUserPage extends SetUp {
 	protected String inputemailUserCss = ".primarydata label:nth-child(3) input";
 	protected String selectRolCss = ".primarydata label:nth-child(4) select";
 
-	protected String desplegarCamposCss = ".addpeople fieldset:nth-child(4) .link";
-    protected String agregarPersonaYEnviarInvitacionCss=".addpeople fieldset:nth-child(4) .primary";
-	protected String agregarPersonaSinInvitacionCss = ".optional";
+	protected String desplegarCamposCss = ".addpeople fieldset.last .link";
+    protected String agregarPersonaYEnviarInvitacionCss=".addpeople fieldset.last .primary";
+	protected String agregarPersonaSinInvitacionCss = ".addpeople fieldset.last .optional";
 
 	
 	protected String personasCss=".tables";
