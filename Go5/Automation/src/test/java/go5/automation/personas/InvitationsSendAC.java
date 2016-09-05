@@ -68,6 +68,7 @@ public class InvitationsSendAC extends SetUp {
 		// Go to Users Menu
 
 		home.goToAdministrar();
+		home.goToMenu();
 
 		admin.goToagregarPersona();
 

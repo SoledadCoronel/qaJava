@@ -68,6 +68,7 @@ public class InvitationsCancelAC extends SetUp {
 		// Go to Users Menu
 
 		home.goToAdministrar();
+		home.goToMenu();
 		
 		
 		admin.goToagregarPersona();
