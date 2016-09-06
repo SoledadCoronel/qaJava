@@ -194,9 +194,10 @@ public class ProfilePage extends SetUp {
 		// Go to the user menu
 		Reporter.log("Ir a Perfil Desde el sidebar");
 		driver.findElement(goToMiPerfilSidebar).click();
-		WebElement profilePage = (new WebDriverWait(driver, 10))
+		Thread.sleep(3000);
+	/*	WebElement profilePage = (new WebDriverWait(driver, 10))
 				.until(ExpectedConditions
-						.presenceOfElementLocated(datosProfile));
+						.presenceOfElementLocated(datosProfile));*/
 	}
 
 	public void editarProfile() {
