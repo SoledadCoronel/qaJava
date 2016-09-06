@@ -37,6 +37,7 @@ public class ListadoDirectorioAB extends SetUp {
 		// Go to Directorio de personas
 
 		home.goToDirectorio();
+		home.goToMenu();
 
 		// Ver si esta ordenado por default cuando carga la pagina
 		Reporter.log("Ver si esta ordenado por default cuando carga la pagina");
@@ -58,18 +59,9 @@ public class ListadoDirectorioAB extends SetUp {
 		Reporter.log(" Imprimiendo el resultado del search:");
 		Reporter.log(directorio.getFirstName());
 
-		Reporter.log(" Hacer una busqueda de un usuario por Apellido");
-		this.search("AutomationLastName");
-		Thread.sleep(2000);
-		// Chequear q se mueste en la tabla users
-		Reporter.log("El nombre del user buscado es AutomationLastName");
+	
 
-		Reporter.log(" Imprimiendo el resultado del search");
-		Reporter.log(directorio.getFirstName());
-
-		// Ir al profile del user buscado
-		Thread.sleep(2000);
-		this.click(firstRow);
+		
 
 	}
 }

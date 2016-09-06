@@ -79,7 +79,7 @@ public class ConfigurarCuentaPage extends SetUp {
 		// Go to the user menu
 		Reporter.log("Ir al tab contraseña de configurar cuenta en profile");
 		driver.findElement(goToPassword).click();
-		WebElement passwordPage = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(cambiarPassword));
+		WebElement passwordPage = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(cambiarPassword));
 	}
 
 	public void goToIrAGeneral()  {
