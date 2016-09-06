@@ -2,7 +2,8 @@ package go5.automation.espacios;
 
 
 import go5.automation.SetUp;
-import go5.pageObjects.EspacioPage;
+import go5.pageObjects.EspaciosPage;
+import go5.pageObjects.HomePage;
 
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -13,8 +14,8 @@ import org.testng.annotations.Test;
 public class ListadoEspaciosAC extends SetUp {
 	
 		
-	EspacioPage espacio=null;
-	
+	EspaciosPage espacio=null;
+	HomePage home=null;
 	
 	@AfterClass // call function to close browser 
 		
@@ -29,32 +30,24 @@ public class ListadoEspaciosAC extends SetUp {
 	
 	public void listarEspacios() throws Exception { 
 	
-		espacio= new EspacioPage(driver); 
-			
+		espacio= new EspaciosPage(driver); 
+		home = new HomePage(driver);	
 	        
 		 Reporter.log(" Listado de espacios ");
 		 
-		
-			
+		home.goToConfiguration();
+		home.goToHome();	
 		 //Ir a espacios
+		 home.goToHome();
+		home.goToEspacios();
 		
-		 espacio.goToEspacios();
+		Thread.sleep(3000);
 		
-		
-					
 			
 		    // Ordenar espacios
 				 
-		 espacio.verificarOrdenDefault();
-		
-		 espacio.ordenarPorEstado();
-		 Thread.sleep(2000);
-		 espacio.ordenarPorNombreEspacio();
-		 
-		  this.goToPagina(2);
-		 Thread.sleep(1000);
-		
-		 espacio.ordenarPorNombreEspacio();
+			
+		 espacio.ordenarPorNombreEspacio();		  
 		 espacio.buscarEspacio("Editado");  	
 	      Thread.sleep(2000);     
 	           

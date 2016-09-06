@@ -1,16 +1,14 @@
-package go5.automation.espacios;
-
+package go5.automation.social;
 
 import org.testng.annotations.BeforeClass;
 
 
 
 
-public class BuscarEspaciosTest extends BuscarEspaciosAC {
-	
-
+public class MuroSocialProfileTest extends MuroSocialProfileAC {
 	
 	
+		
 	
 	@BeforeClass // call function to open the browser and login 
 	 public void setup () throws Exception{
@@ -19,5 +17,4 @@ public class BuscarEspaciosTest extends BuscarEspaciosAC {
 	}
 	
 }
-	
 

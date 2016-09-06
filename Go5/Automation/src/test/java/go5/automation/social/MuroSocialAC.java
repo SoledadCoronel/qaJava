@@ -1,7 +1,7 @@
 package go5.automation.social;
 
 import go5.automation.SetUp;
-import go5.pageObjects.EspacioPage;
+import go5.pageObjects.EspaciosPage;
 import go5.pageObjects.HomePage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class MuroSocialAC extends SetUp {
 
 	MuroSocialPage muro = null;
-	EspacioPage espacio = null;
+	EspaciosPage espacio = null;
 	LoginPage login = null;
 	HomePage home = null;
 
@@ -31,7 +31,7 @@ public class MuroSocialAC extends SetUp {
 	public void postearLikearComentar() throws Exception {
 
 		muro = new MuroSocialPage(driver);
-		espacio = new EspacioPage(driver);
+		espacio = new EspaciosPage(driver);
 		login = new LoginPage(driver);
 		home = new HomePage(driver);
 
@@ -56,18 +56,12 @@ public class MuroSocialAC extends SetUp {
 		espacio.clickEspacioSidebar(iconoEmpresa);
 		Thread.sleep(2000);
 		Reporter.log("Imprimir y assertear que el texto posteado es el del user admin");
-		Reporter.log(muro.getTextFirstPost());
-		// Assert.assertEquals(muro.getTimeFirstPost(), "HACE 0 MINUTOS");
+		Reporter.log(muro.getTextFirstPost());		
 		Reporter.log("Likear el post del user admin, como user basic");
 		muro.likearPost();
 		Reporter.log("Imprimo la cantidad de likes del post:");
-		Reporter.log(muro.countLikesPost());
-		// Aserteo que el post tengo 2 likes, uno del user admin y otro del user
-		// basic
-		// Assert.assertEquals(muro.countLikesPost(),"2 LIKES");
-		// Deslike el post y vuelvo a contar
+		Reporter.log(muro.countLikesPost());		
 		muro.likearPost();
-
 		muro.comentarFIrstPost("Comento el post del usuario admin, siendo el user basic");
 		muro.likearComment();
 		// Cuento los likes del comment, 1 solo
@@ -81,11 +75,8 @@ public class MuroSocialAC extends SetUp {
 
 		muro.responderComment("Respondo el comment que hice como user basic");
 		Thread.sleep(4000);
-
 		muro.likearResponseComment();
 		Reporter.log(muro.countLikesResponseComment());
-		// Assert.assertEquals(muro.countLikesResponseComment(),"1 likes");
-
 		Reporter.log(" Ir al profile del posteador, que es el user admin");
 		muro.goToProfilePost();
 		Thread.sleep(2000);

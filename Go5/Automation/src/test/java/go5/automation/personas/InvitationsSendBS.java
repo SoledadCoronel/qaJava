@@ -6,7 +6,7 @@ import org.testng.annotations.Parameters;
 
 
 
-public class InvitationsSentBS extends InvitationsSendAC{
+public class InvitationsSendBS extends InvitationsSendAC{
 
 	 
 		@BeforeClass

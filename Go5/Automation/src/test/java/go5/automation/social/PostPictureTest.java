@@ -1,27 +1,22 @@
-package go5.automation.espacios;
+package go5.automation.social;
 
 
-
-import go5.pageObjects.EspaciosPage;
 
 
 import org.testng.annotations.BeforeClass;
 
 
 
-
-public class ListadoEspaciosTest extends ListadoEspaciosAC {
+public class PostPictureTest extends PostPictureAC {
 	
 	
-
 	
-	EspaciosPage espacio=null;
-	
-
+		
 	@BeforeClass // call function to open the browser and login 
 	 public void setup () throws Exception{
 		
 		 this.setUpMaven();
 	}
-
 }
+	
+	

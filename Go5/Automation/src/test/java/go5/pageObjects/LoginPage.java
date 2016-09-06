@@ -3,6 +3,9 @@ package go5.pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
   
@@ -12,18 +15,22 @@ import org.openqa.selenium.WebDriver;
 
     	//Css
     	
-    	public static String strUsername= new String("marina.touceda@gointegro.com");
-    	protected static String strUsernameAdminEspacios= new String("marina.touceda+023@gointegro.com");
-    	protected static String strUsernameUserBasic= new String("marina.touceda+022@gointegro.com");
-     	public static String strPassword= new String("Auto1234");
-    	protected static String inputmailLogin = new String (".session label:nth-child(3) input");
-    	protected static String inputPasswordLogin = new String (".session label:nth-child(4) input");
-    	protected static String goButton = new String (".session .primary");
+    	public static String strUsername= "marina.touceda@gointegro.com";
+    	protected static String strUsernameAdminEspacios= "marina.touceda+023@gointegro.com";
+    	protected static String strUsernameUserBasic= "marina.touceda+022@gointegro.com";
+     	public static String strPassword= "Auto1234";
+    	protected static String inputmailLogin = "label:nth-child(3) input";
+    	protected static String inputPasswordLogin = "label:nth-child(4) input";
+    	protected static String goButton =".primary";
+    	private String textPostCss=".posttext";
+    	
+    	//References
     	
     	By userName =By.cssSelector(inputmailLogin);
     	By password =By.cssSelector(inputPasswordLogin);
     	By go=By.cssSelector(goButton);
-    	By title = By.cssSelector(".session legend");
+    	By title = By.cssSelector(" legend");
+    	By textPost=By.cssSelector(textPostCss);
     	
     	
     	  WebDriver driver;
@@ -98,11 +105,15 @@ import org.openqa.selenium.WebDriver;
   
          this.setPassword(strPasword);
   
-         //Click Login button
-      //   driver.findElement(password).sendKeys(Keys.ENTER);
-          
+               
   
          this.clickLogin();
+         
+         //Esperar hasta que cargur el muro social despues de loguearse
+         
+    //     WebDriverWait wait = new WebDriverWait(driver, 20);
+ 	//	WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textPost));
+
      } 
   
          public void loginToGoAsAdmin() throws InterruptedException{

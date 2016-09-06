@@ -11,96 +11,71 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
+import com.sun.jna.ptr.ByteByReference;
 
-    
-    
-    public class TitlesPage {
+public class TitlesPage {
 
-    	//Css
-    	
-    	 private String addGroup= new String(".groupsform fieldset:nth-child(1) label:nth-child(1) a");
-    	 
-	     private String inputNameGroup= new String (".groupsform fieldset:nth-child(1) label:nth-child(2) input"); 
-	     private String  deleteGroup = new String (".groupsform fieldset:nth-child(2) .delete");
-	     private String confirm = new String (".mconfirmation a");    
-	     protected String irAGroups = new String (".igogroups");
-	     protected String irATitles = new String (".igotitles");
-	     protected String addSubgroup = new String (".subtree .active a");
-	     protected String inputNameSubgroup= new String (".additem.active input");
-	     protected String groupEnProfile = new String (".groupsdata select");
-	          	
-    	  WebDriver driver;
-    
-     
-  //Constructor
-    	    public TitlesPage(WebDriver driver){
-    	    	 
-    	        this.driver = driver;
-     }
-  
-     //Set user name in textbox
-  
-     public  void  goToGroups(){
-      
-    	 Reporter.log("Abriendo pagina de grupos" );
-    	    	          
-    	    	 WebElement groupsavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(irAGroups)));
-				driver.findElement(By.cssSelector(irAGroups)).click();
-			}
-       
+	// Css
 
-     public  void  addATitle(String nameGroup){
-      
-    	 Reporter.log("Agregando un title" );
-    	 WebElement addgroupsavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(addGroup)));
- 	       
-    	 
-     driver.findElement(By.cssSelector(addGroup)).click();   
-    
-     //Insertar un nombre 
-    
-     
-        driver.findElement(By.cssSelector(inputNameGroup)).sendKeys(nameGroup);
-        driver.findElement(By.cssSelector(inputNameGroup)).sendKeys(Keys.RETURN);
-       
-    	 
-			}
-    
-     public void deleteGroup(){
-   
-    	 
-    	   driver.findElement(By.cssSelector(deleteGroup)).click();
-       //driver.findElement(By.cssSelector(".groupsform fieldset:nth-child(2) .delete")).click();
-    	   driver.findElement(By.cssSelector(confirm)).click();
-      // driver.findElement(By.cssSelector(".mconfirmation a")).click();
-    	   driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-     }
-   
-    
-     public void addASubgroup(String name) throws InterruptedException{
-    	  //Agregar un Subgrupo
-    	    	     	 driver.findElement(By.cssSelector(addSubgroup)).click();
-    	    	     	
-   	 WebElement addgroupsavailable = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(inputNameSubgroup)));
-	    driver.findElement(By.cssSelector(inputNameSubgroup)).sendKeys(name);
-    	driver.findElement(By.cssSelector(inputNameSubgroup)).sendKeys(Keys.RETURN);
-    	Thread.sleep(1000);
-    
-     }
-    
-     public void selectGroup(){
-    		
-    		Select selectGroups=new  Select(driver.findElement(By.cssSelector(groupEnProfile))); 
-	 		
-		 	  selectGroups.selectByIndex(1);
-    	}
-   
+	private String addTitleCss = ".groupsform fieldset:nth-child(1) label:nth-child(1) a";
+	private String inputNameTitleCss = ".groupsform fieldset:nth-child(1) label:nth-child(2) input";
+	private String deleteTitleCss = ".groupsform fieldset:nth-child(2) .delete";
+	private String confirmCss = ".mconfirmation a";
+	protected String addSubtitle = "";
+	protected String titleProfile = ".groupsdata select";
 
+	// Subtitle
+	protected String addSubtitlecss = ".subtree .active a";
+	protected String inputNameSubtitleCss = ".additem.active input";
+	protected String editfirstRowCss = ".tables tbody tr:nth-child(1) td:nth-child(7) a";
+	protected String desplegarCamposCss = ".addpeople .secondary";
+	protected String savePersonCss = ".container .addpeople .primary";
+
+	// References
+
+	By addTitle = By.cssSelector(addTitleCss);
+	By inputNameTitle = By.cssSelector(inputNameTitleCss);
+	By inputNameSubtitle = By.cssSelector(inputNameSubtitleCss);
+	By confirm = By.cssSelector(confirmCss);
+	By deleteTitle = By.cssSelector(deleteTitleCss);
+
+	// Driver
+
+	WebDriver driver;
+
+	// Constructor
+	public TitlesPage(WebDriver driver) {
+
+		this.driver = driver;
+	}
+
+	public void addATitle(String nameTitle) {
+
+		Reporter.log("Agregando un title");
+		driver.findElement(addTitle).click();
+
+		// Insertar un nombre
+
+		driver.findElement(inputNameTitle).sendKeys(nameTitle);
+		driver.findElement(inputNameTitle).sendKeys(Keys.RETURN);
+
+	}
+
+	public void deleteGroup() {
+
+		driver.findElement(deleteTitle).click();
+		driver.findElement(confirm).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+
+	public void addASubtitle(String name) throws InterruptedException {
+		// Agregar un Subgrupo
+		driver.findElement(By.cssSelector(addSubtitle)).click();
+		WebElement addgroup = (new WebDriverWait(driver, 10))
+				.until(ExpectedConditions.presenceOfElementLocated(addTitle));
+		driver.findElement(inputNameSubtitle).sendKeys(name);
+		driver.findElement(inputNameSubtitle).sendKeys(Keys.RETURN);
+
+	}
 
 }
-
-
-    
-      
-     
-

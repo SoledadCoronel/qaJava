@@ -46,8 +46,8 @@ public class SetUp {
 
 	
 	protected static String inputmailLoginCss = ".session label:nth-child(3) input";	
-	protected String searchButton = ".search";
-	protected String inputSearch = ".search input";
+	protected String searchButton = ".btnsearch";
+	protected String inputSearch = ".search-input";
 	protected String firstRow = ".tables tbody tr:nth-child(1) td:nth-child(2)";
 	protected String secondRow = ".tables tbody tr:nth-child(2) td:nth-child(2)";
 	protected String irAInvitaciones = ".title menu li:nth-child(2) a";
@@ -70,7 +70,7 @@ public class SetUp {
 		driver = new FirefoxDriver();
 		login = new LoginPage(driver);
 		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		this.openSite(urlSiteAutomation1);
+		this.openSite(urlSiteAutomation3);
 
 		Reporter.log("Abriendo la aplicacion");
 	
@@ -231,7 +231,7 @@ public class SetUp {
 
 	public String generateName() {
 
-		int rand = (int) (Math.random() * 999999999);
+		int rand = (int) (Math.random() * 9999);
 		String name = "qaname" + rand;
 		return name;
 	}

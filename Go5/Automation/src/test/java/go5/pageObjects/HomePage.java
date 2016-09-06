@@ -17,19 +17,23 @@ import org.testng.Reporter;
     	private String goToHomeCss=".igohome";
     	private String goToMenuCss=".menu";
     	private String ayudaLinkCss="igohelpwhite";
-    	private String goToDatosGeneraleCss="igocompanydata";
+	private String goToDatosGeneraleCss =".igocompanydata";
     	private String goToDisenioCss=".igodesign";
-    	private String goToAdministrarPersonasCss=".igoadminwhite";
-    	private String goToTitulosCss=".igotitleswhite";
+    	private String goToAdministrarPersonasCss=".space:nth-child(2) .igoadminwhite";
+    	private String goToTitulosCss=".space:nth-child(2) .igotitleswhite";
     	private String goToGruposCss=".igogroups";
     	private String personasTableCss=".tables";    	
-    	private String goToDirectorioCss ="igouserwhite";
-    	private String goToActividadSocialCss="igosocialswhite";
-    	private String goToEspaciosCss=".noicon";
-    	private String misEspaciosCss= "igopasswordwhite";
+    	private String goToDirectorioCss =".space .igouserwhite";
+    	private String goToActividadSocialCss=".igosocialswhite";
+    	private String goToVerMasEspaciosCss=".noicon";
+    	private String goToAdmistrarStoreCs="article .space:nth-child(3) .igoadminwhite";
+    	private String goToTiendaCss=".space:nth-child(3) .igotitleswhite";
+    	private String misEspaciosCss= ".igopasswordwhite";
     	private String goToUserMenuCss=".usermenu .last a figure";
     	private String goToLogoutCss=".users li:last-child a";		
-    	private  String inputmailLogin = ".session label:nth-child(3) input";
+    	private  String inputmailLogin = "label:nth-child(3) input";
+    	private String goToSpaceIconUmbrellaCss=".igospaceumbrella ";
+    	private String textPostCss=".posttext";
       //References
     	
     	By goToConfiguration=By.cssSelector(goToConfigurationCss);
@@ -42,13 +46,18 @@ import org.testng.Reporter;
     	By goToGrupos=By.cssSelector(goToGruposCss);
     	By goToDirectorio=By.cssSelector(goToDirectorioCss);
     	By goToAvtividadSocial=By.cssSelector(goToActividadSocialCss);
+    	By goToAdministrarStore=By.cssSelector(goToAdmistrarStoreCs);
+    	By goToTienda=By.cssSelector(goToTiendaCss);
+    	
     	By personasTable=By.cssSelector(personasTableCss);
     	By ayudaLink=By.cssSelector(ayudaLinkCss);    	
-    	By goToEspacios=By.cssSelector(goToEspaciosCss);
+    	By goToVerMasEspacios=By.cssSelector(goToVerMasEspaciosCss);
     	By misEspacios=By.cssSelector(misEspaciosCss);
     	By goToUserMenu= By.cssSelector(goToUserMenuCss);
     	By goToLogout=By.cssSelector(goToLogoutCss);
     	By inputLogin= By.cssSelector(inputmailLogin);
+    	By goToSpaceIconUmbrella= By.cssSelector(goToSpaceIconUmbrellaCss);
+    	By textPost=By.cssSelector(textPostCss);
     	
     	
     	
@@ -61,9 +70,10 @@ import org.testng.Reporter;
     	        this.driver = driver;
      }
   
-    public void goToConfiguration(){
+    public void goToConfiguration() throws InterruptedException{
     	driver.findElement(goToConfiguration).click();
-    //	WebElement sidebar = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
+    	Thread.sleep(2000);
+    //	WebElement loadDatosGenerales = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
     }
     	    
     	public void goToMenu(){
@@ -102,6 +112,14 @@ import org.testng.Reporter;
 	   driver.findElement(goToDisenio).click();
     }
    
+   public void goToDirectorio() throws InterruptedException{
+	   Reporter.log("Abriendo pagina de directorio" );  
+	   driver.findElement(goToDirectorio).click();
+	   Thread.sleep(3000);
+	//   WebElement listaPersonas = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(personasTable));
+    
+   }
+   
     public void goToAyuda(){
     	 Reporter.log("Abriendo la auyda" );  
     	driver.findElement(ayudaLink).click();
@@ -115,9 +133,14 @@ import org.testng.Reporter;
 	    
     public  void goToEspacios(){
     	Reporter.log("Abriendo espacios" );  
-    	driver.findElement(goToEspacios).click();
+    	driver.findElement(goToVerMasEspacios).click();
     	WebElement insertPassword = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(misEspacios));
     
+    }
+    
+    public void goToSpaceUmbrella(){
+    	driver.findElement(goToSpaceIconUmbrella).click();
+    	WebElement cargarSpace = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(textPost));
     }
     public void goToLogout() throws InterruptedException{
     	goToUserMenu();

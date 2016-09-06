@@ -2,7 +2,7 @@ package go5.automation.social;
 
 
 import go5.automation.SetUp;
-import go5.pageObjects.EspacioPage;
+import go5.pageObjects.EspaciosPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.MuroSocialPage;
 
@@ -19,7 +19,7 @@ import org.openqa.selenium.interactions.Actions;
 public class Post500CharsAC extends SetUp {
 	
 	MuroSocialPage muro=null;
-	EspacioPage espacio=null;
+	EspaciosPage espacio=null;
 	LoginPage login =null;
 	//js javascriptExecutor =null;
 	
@@ -41,7 +41,7 @@ public class Post500CharsAC extends SetUp {
 	public void postearTextoDe500Chars() throws Exception { 
 	
 		muro= new MuroSocialPage(driver); 
-		espacio= new EspacioPage(driver);
+		espacio= new EspaciosPage(driver);
 		js=  (JavascriptExecutor) driver;
 	
 		
@@ -69,6 +69,8 @@ public class Post500CharsAC extends SetUp {
 		muro.verifyLinkVerMenos();
 		Reporter.log("Clickeo el link de Ver Menos");
 		Thread.sleep(2000);
+		
+		
 	 
 		}	
 		

@@ -7,20 +7,19 @@
 	</listeners>
 	<test name="Firefox Tests">
 		<parameter name="browser" value="firefox" />
-		<parameter name="version" value="42.0" />
+		<parameter name="version" value="48.0" />
 		<parameter name="platform" value="WIN8" />
 		<parameter name="url"
 			value="http://automation1.pla.qa.go5.gointegro.net/authentication/login" />
 		<parameter name="build" value="11.0" />
 		<classes>
-			<class name="go5.automation.directorio.ListadoDirectorioBS" />
+			<class name="go5.automation.profile.IrAProfileSidebarBS" />
+			<class name="go5.automation.profile.ProfileTestBS" />
+			<class name="go5.automation.profile.ProfileVerifyDataBS" />		
+			<class name="go5.automation.profile.ConfigurarCuentaBS" />			
 			<class name="go5.automation.espacios.CrearEspacioBS" />
-			<class name="go5.automation.personas.ListadoPersonasBS" />
 			<class name="go5.automation.signup.ForgotPasswordBS" />
-			<class name="go5.automation.social.MuroSocialPerfilBS" />
 			<class name="go5.automation.personas.InvitationsCancelBS" />
-			<class name="go5.automation.personas.InvitationsSentBS" />
-			<class name="go5.automation.profile.IrAPerfilSidebarBS" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

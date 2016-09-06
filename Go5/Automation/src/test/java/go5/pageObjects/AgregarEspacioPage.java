@@ -3,12 +3,7 @@ package go5.pageObjects;
 import go5.automation.SetUp;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.Reporter;
 
 public class AgregarEspacioPage extends SetUp {
@@ -16,8 +11,26 @@ public class AgregarEspacioPage extends SetUp {
 	// Css Define Space
 
 	private String crearEspacioCss = ".igospaces a";
+	private String generalCss = ".igoconfigurationwhite";
 	private String nombreEspacioCss = ".first label:nth-child(1) input";
 	private String descripcionEspacioCss = ".first label:nth-child(2) input";
+
+	// Admins
+	private String admisnCss = ".igoadminwhite";	
+	private String listaAdminCss = ".open .list";
+
+	// Personas
+	private String personasCss = ".igouserwhite";
+	private String addPersonaCss=".btnaction";
+	private String searchPersonaCss=".active .search input";
+	private String primerPersonaListaCss=".active li:first-child a";
+	private String listaPersonasCss = ".open .list";
+
+
+	// Grupos
+	private String gruposCss = ".igousergroupwhite";
+	private String listaGruposCss = ".open .list";
+
 
 	// Space type
 	private String espacioPublicoCss = ".type label:nth-child(3) input";
@@ -39,12 +52,19 @@ public class AgregarEspacioPage extends SetUp {
 	protected String grabarEspacioCss = ".spacecreate .primary";
 	protected String grabarEspacioEmpresaInactivoCss = ".active .mconfirmation .optional";
 
-
 	// References
 
 	// By
 
 	By crearEspacio = By.cssSelector(crearEspacioCss);
+	By general = By.cssSelector(generalCss);
+	By admin = By.cssSelector(admisnCss);
+	By persona = By.cssSelector(personasCss);
+	By addPersona=By.cssSelector(addPersonaCss);
+	By searchPersona=By.cssSelector(searchPersonaCss);
+	By primerPersonaLista=By.cssSelector(primerPersonaListaCss);
+	By grupos = By.cssSelector(gruposCss);
+
 	By nombreDeEspacio = By.cssSelector(nombreEspacioCss);
 	By descripcionEspacio = By.cssSelector(descripcionEspacioCss);
 
@@ -81,6 +101,30 @@ public class AgregarEspacioPage extends SetUp {
 	public void goToCrearEspacio() {
 		driver.findElement(crearEspacio).click();
 
+	}
+
+	public void goToPersonas() {
+		driver.findElement(persona).click();
+		}
+
+	public void goToAddPersona(){
+		driver.findElement(addPersona).click();
+	}
+	
+	public void addPersonaEspacio(String strusername) throws InterruptedException{
+		driver.findElement(searchPersona).sendKeys(strusername);
+		Thread.sleep(2000);
+		driver.findElement(primerPersonaLista).click();
+	
+		
+	}
+	
+	public void goToGrupos() {
+		driver.findElement(grupos).click();
+	}
+
+	public void goToAdmins() {
+		driver.findElement(admin).click();
 	}
 
 	public void setNameEspacio(String name) {
@@ -134,12 +178,6 @@ public class AgregarEspacioPage extends SetUp {
 
 	public void grabarEspacioEmpresaInactivo() {
 		driver.findElement(grabarEspacioEmpresaInactivo).click();
-	}
-
-	public void editarEspacio() {
-		// Agarro el cuarto elemento de la lista y lo tomo para editarlo
-
-	//	driver.findElement(By.cssSelector(editfourthRow)).click();
 	}
 
 	public void cambiarIconoOso() throws InterruptedException {

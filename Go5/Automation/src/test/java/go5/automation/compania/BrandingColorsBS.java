@@ -1,21 +1,22 @@
-package go5.automation.social;
+package go5.automation.compania;
+
+
+
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 
 
+public class BrandingColorsBS extends BrandingColorsAC{
 
-public class MuroSocialPerfilBS extends MuroSocialPerfilAC {
 	
 	
-		
-	
-	@BeforeClass
+	 @BeforeClass
 	  @Parameters(value={"browser","version","platform","url","build"})
 	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.setUpBrowserStack(browser, version, platform, url,build,"Test de Muro Social en perfil de usuario");
+		this.setUpBrowserStack(browser, version, platform, url,build,"Test Branding");
+	 }
 		
-	}
+	 
 }
-

@@ -47,18 +47,10 @@ public class ProfileAC extends SetUp {
 		profile.agregarDatosPersonales();
 
 		profile.agregarRedesSociales();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 
 		profile.grabarUsuario();
-
-		// Grabar el nuevo usuario creado
-		Reporter.log("Grabando perfil editado");
-		Thread.sleep(2000);
-		driver.findElement(By.cssSelector(".primary")).click();
-		Reporter.log("Edicion de profile fue exitoso");
-
-		home.goToLogout();
-
+		
 	}
 
 }
