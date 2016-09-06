@@ -15,7 +15,7 @@ import org.testng.Reporter;
 public class MuroSocialPage extends SetUp {
 
 	// Css
-
+	
 	// Generics
 	protected String publicarContenidoCss = "fieldset .primary";
 	protected String iconcss = ".icon";

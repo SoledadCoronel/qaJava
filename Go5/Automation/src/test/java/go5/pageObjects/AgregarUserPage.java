@@ -1,17 +1,12 @@
 package go5.pageObjects;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+
 
 import go5.automation.SetUp;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.Reporter;
 
 public class AgregarUserPage extends SetUp {
@@ -22,19 +17,43 @@ public class AgregarUserPage extends SetUp {
 	protected String estadoDesactivadoCss = ".statedata label:nth-child(2) input:nth-child(2)";
 	protected String bloquearAccesoCss = ".statedata label:nth-child(3) input";
 
-	protected String inputNombreUserCss = ".primarydata label:nth-child(2) input";
-	protected String inputLastnameUserCss = ".primarydata label:nth-child(3) input";
-	protected String inputemailUserCss = ".primarydata label:nth-child(4) input";
-	protected String selectRolCss = ".primarydata label:nth-child(5) select";
+	protected String inputNombreUserCss = ".primarydata label:nth-child(1) input";
+	protected String inputLastnameUserCss = ".primarydata label:nth-child(2) input";
+	protected String inputemailUserCss = ".primarydata label:nth-child(3) input";
+	protected String selectRolCss = ".primarydata label:nth-child(4) select";
 
-	protected String desplegarCamposCss = ".addpeople fieldset:nth-child(4) .link";
-    protected String agregarPersonaYEnviarInvitacionCss=".addpeople fieldset:nth-child(4) .primary";
-	protected String agregarPersonaSinInvitacionCss = ".optional";
+	protected String desplegarCamposCss = ".addpeople fieldset.last .link";
+    protected String agregarPersonaYEnviarInvitacionCss=".addpeople fieldset.last .primary";
+	protected String agregarPersonaSinInvitacionCss = ".addpeople fieldset.last .optional";
 
 	
 	protected String personasCss=".tables";
 	protected String groupsSelectCss = ".groupsdata select";
 	
+	// Datos Laborales
+
+		protected String idEmpleadoCss = ".labordata label:nth-child(1) input";
+		protected String fechaIngresoCss = ".labordata label:nth-child(2) input";
+		protected String tipoEmpleoCss = ".labordata label:nth-child(3) select";
+		protected String tituloCss = ".labordata label:nth-child(4) select";
+		protected String abrirReportaACss = ".labordata label:nth-child(5) ";
+		protected String listaReportaACss = ".list li:nth-child(n)";
+		protected String telFijoLaboralCss = ".labordata label:nth-child(7) input";
+		protected String telMovilLaboralCss = ".labordata label:nth-child(8) input";
+		protected String direccionLaboralCss = ".labordata label:nth-child(9) input";
+	
+		// Datos Personales
+
+		protected String tipoDocumentoCss = ".personaldata label:nth-child(1) select";
+		protected String documentoCss = ".personaldata label:nth-child(2) input";
+		protected String fechaNacimientoCss = ".personaldata label:nth-child(3) input";
+		protected String generoCss = ".personaldata label:nth-child(4) select";
+		protected String estadoCivilCss = ".personaldata label:nth-child(5) select";
+		protected String mailPersonalCss = ".personaldata label:nth-child(6) input";
+		protected String telefonoFIjoCss = ".personaldata label:nth-child(7) input";
+		protected String telefonoMovilCss = ".personaldata label:nth-child(8) input";
+		protected String direccionPersonalCss = ".personaldata label:nth-child(9) input";
+
 	// Modales
 
 	protected String clickayudaEstadoPersona = "basicdata label:nth-child(1) a";
@@ -60,7 +79,28 @@ public class AgregarUserPage extends SetUp {
 	 By personas = By.cssSelector(personasCss);
 	 By groupsSelect=By.cssSelector(groupsSelectCss);
 	 
-	
+
+		// Datos Laborales
+		By idEmpleado = By.cssSelector(idEmpleadoCss);
+		By fechaIngreso = By.cssSelector(fechaIngresoCss);
+		By tipoEmpleo = By.cssSelector(tipoEmpleoCss);
+		By titulo = By.cssSelector(tituloCss);
+		By direccion = By.cssSelector(direccionLaboralCss);
+		By abrirReportaA = By.cssSelector(abrirReportaACss);
+		By listaReportaA = By.cssSelector(listaReportaACss);
+		By telFijoLaboral = By.cssSelector(telFijoLaboralCss);
+		By telMovilLaboral = By.cssSelector(telMovilLaboralCss);
+
+		// Datos Personales
+		By tipoDocumento = By.cssSelector(tipoDocumentoCss);
+		By documento = By.cssSelector(documentoCss);
+		By genero = By.cssSelector(generoCss);
+		By fechaNacimiento = By.cssSelector(fechaNacimientoCss);
+		By estadoCivil = By.cssSelector(estadoCivilCss);
+		By mailPersonal = By.cssSelector(mailPersonalCss);
+		By telefonoFijo = By.cssSelector(telefonoFIjoCss);
+		By telefonoMovil = By.cssSelector(telefonoMovilCss);
+		By direccionPersonal = By.cssSelector(direccionPersonalCss);
 	
 	//Driver
 	WebDriver driver;
@@ -154,7 +194,9 @@ public class AgregarUserPage extends SetUp {
 	//	WebElement personasTable=(new WebDriverWait(driver,10)).until(ExpectedConditions.presenceOfElementLocated(personas));
 		}
 
-	
+	public void goToDesplegarCampos(){
+		driver.findElement(desplegarCampos).click();
+	}
 
 	public String agregarAdminConInvite() throws Exception {
 

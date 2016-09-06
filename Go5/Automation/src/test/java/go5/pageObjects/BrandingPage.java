@@ -18,8 +18,8 @@ public class BrandingPage  {
 
 	private String headerCss = "header h1";
 	private String goToRestablecerInterfazCss = ".design fieldset:nth-child(5) a";
-	private String confirmarInterfazCss = ".modal:nth-child(6) .primary";
-	private String cancelarInterfazCss = ".modal:nth-child(6) .optional";
+	private String confirmarInterfazCss = ".active .primary";
+	private String cancelarInterfazCss = ".active .optional";
 	private String guardarCambiosCss = ".design fieldset:nth-child(5) .primary";
 
 	// Platform Logo
@@ -92,7 +92,8 @@ public class BrandingPage  {
 		Thread.sleep(3000);
 		Reporter.log("Clickeo en restablecer Interfaz");
 		driver.findElement(goToRestablecerInterfaz).click();
-		WebElement okPopup = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(okRestablecerInterfaz));
+		Thread.sleep(2000);
+		//WebElement okPopup = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(okRestablecerInterfaz));
 		// Click en el popup de restorear
 		driver.findElement(okRestablecerInterfaz).click();
 	}

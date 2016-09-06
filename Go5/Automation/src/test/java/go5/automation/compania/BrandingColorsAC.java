@@ -29,6 +29,7 @@ public class BrandingColorsAC extends SetUp {
 		// Ir a Imageb
 		home.goToConfiguration();
 		home.goDisenio();
+		home.goToMenu();
 		Thread.sleep(2000);
 		branding.changeColorPlatform();
 		Thread.sleep(2000);

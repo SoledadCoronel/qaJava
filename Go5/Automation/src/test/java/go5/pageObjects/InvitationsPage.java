@@ -13,9 +13,9 @@ public class InvitationsPage extends SetUp {
 
 	// Modales
 
-	String resendCss = ".tables tr:nth-child(1) td:nth-child(6) .link";
+	String resendCss = "tr:nth-child(1) td:nth-child(5) .link";
 	String resendModalCss = ".active .primary";
-	String cancelCss = ".tables tr:nth-child(1) td:nth-child(5) .link";
+	String cancelCss = "tr:nth-child(1) td:nth-child(4) .link";
 	String cancelarModalCss = ".active .primary";
 	String tablaCss = ".tables";
 

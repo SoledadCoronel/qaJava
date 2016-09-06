@@ -17,7 +17,7 @@ public class AdministrarPersonasPage extends SetUp {
 
 	// Css
 
-	protected String agregarUsuarioCss = ".data .primary";
+	protected String agregarUsuarioCss = ".adduser";
 	protected String invitacionesPendientesCss=".title menu li:nth-child(2) a";
 	protected String listadoPersonasCss=".title menu li:nth-child(2) a";
 	protected String listaInvitacionesCss=".tables";

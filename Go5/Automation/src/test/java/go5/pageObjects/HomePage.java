@@ -17,17 +17,17 @@ import org.testng.Reporter;
     	private String goToHomeCss=".igohome";
     	private String goToMenuCss=".menu";
     	private String ayudaLinkCss="igohelpwhite";
-    	private String goToDatosGeneraleCss=".igocompanydata";
+	private String goToDatosGeneraleCss =".igocompanydata";
     	private String goToDisenioCss=".igodesign";
-    	private String goToAdministrarPersonasCss="article .space:nth-child(2) .igoadminwhite";
-    	private String goToTitulosCss="article .space:nth-child(2) .igotitleswhite";
+    	private String goToAdministrarPersonasCss=".space:nth-child(2) .igoadminwhite";
+    	private String goToTitulosCss=".space:nth-child(2) .igotitleswhite";
     	private String goToGruposCss=".igogroups";
     	private String personasTableCss=".tables";    	
     	private String goToDirectorioCss =".space .igouserwhite";
     	private String goToActividadSocialCss=".igosocialswhite";
     	private String goToVerMasEspaciosCss=".noicon";
     	private String goToAdmistrarStoreCs="article .space:nth-child(3) .igoadminwhite";
-    	private String goToTiendaCss="article .space:nth-child(3) .igotitleswhite";
+    	private String goToTiendaCss=".space:nth-child(3) .igotitleswhite";
     	private String misEspaciosCss= ".igopasswordwhite";
     	private String goToUserMenuCss=".usermenu .last a figure";
     	private String goToLogoutCss=".users li:last-child a";		
@@ -70,9 +70,10 @@ import org.testng.Reporter;
     	        this.driver = driver;
      }
   
-    public void goToConfiguration(){
+    public void goToConfiguration() throws InterruptedException{
     	driver.findElement(goToConfiguration).click();
-    	WebElement loadDatosGenerales = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
+    	Thread.sleep(2000);
+    //	WebElement loadDatosGenerales = (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(goToDatosGenerales));
     }
     	    
     	public void goToMenu(){
@@ -111,10 +112,11 @@ import org.testng.Reporter;
 	   driver.findElement(goToDisenio).click();
     }
    
-   public void goToDirectorio(){
+   public void goToDirectorio() throws InterruptedException{
 	   Reporter.log("Abriendo pagina de directorio" );  
 	   driver.findElement(goToDirectorio).click();
-	   WebElement listaPersonas = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(personasTable));
+	   Thread.sleep(3000);
+	//   WebElement listaPersonas = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(personasTable));
     
    }
    

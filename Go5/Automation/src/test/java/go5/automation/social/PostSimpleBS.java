@@ -1,7 +1,4 @@
-package go5.automation.personas;
-
-
-
+package go5.automation.social;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -9,17 +6,17 @@ import org.testng.annotations.Parameters;
 
 
 
-public class ListadoPersonasBS extends ListadoPersonasAB {
-			 	 
+public class PostSimpleBS extends PostSimpleAC {
+	
+	
+		
+	
 	@BeforeClass
 	  @Parameters(value={"browser","version","platform","url","build"})
 	  public void setUp(String browser, String version, String platform,String url,String build) throws Exception {
-		this.setUpBrowserStack(browser, version, platform, url,build,"Test de Listado de Personas");
-				
-	 }
-	 }
-	   
-       
-	           
-
+		this.setUpBrowserStack(browser, version, platform, url,build,"Test de postear y likear un post");
+		
+	}
 	
+}
+

@@ -46,8 +46,8 @@ public class SetUp {
 
 	
 	protected static String inputmailLoginCss = ".session label:nth-child(3) input";	
-	protected String searchButton = ".search";
-	protected String inputSearch = ".search input";
+	protected String searchButton = ".btnsearch";
+	protected String inputSearch = ".search-input";
 	protected String firstRow = ".tables tbody tr:nth-child(1) td:nth-child(2)";
 	protected String secondRow = ".tables tbody tr:nth-child(2) td:nth-child(2)";
 	protected String irAInvitaciones = ".title menu li:nth-child(2) a";

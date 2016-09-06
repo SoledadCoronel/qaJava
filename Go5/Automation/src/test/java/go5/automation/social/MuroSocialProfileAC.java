@@ -45,8 +45,9 @@ public class MuroSocialProfileAC extends SetUp {
 
 		this.click(searchButton);
 		this.sendValue(inputSearch, "User Basic");
+		
 
-		this.click(searchButton);
+		//this.click(searchButton);
 		Thread.sleep(2000);
 
 		// Aca falla por el search
