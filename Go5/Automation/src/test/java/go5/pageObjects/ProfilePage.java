@@ -207,8 +207,9 @@ public class ProfilePage extends SetUp {
 				.until(ExpectedConditions.presenceOfElementLocated(idEmpleado));
 	}
 
-	public void grabarUsuario() {
+	public void grabarUsuario() throws InterruptedException {
 		Reporter.log("Grabando el profile");
+		Thread.sleep(3000);
 		driver.findElement(By.cssSelector(grabarUser)).click();
 
 	}
