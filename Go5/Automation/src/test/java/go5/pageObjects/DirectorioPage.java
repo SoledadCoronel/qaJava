@@ -12,10 +12,8 @@ public class DirectorioPage {
 
 	private String listaPersonasCss = ".tables";
 
-	private String firstName = new String(
-			".tables tbody tr:nth-child(1) td:nth-child(2) a");
-	private String lastName = new String(
-			".tables tbody tr:nth-child(10) td:nth-child(2) a");
+	private String firstName = ".tables tbody tr:nth-child(1) td:nth-child(2) a";
+	private String lastName = ".tables tbody tr:nth-child(10) td:nth-child(2) a";
 
 	// By
 	By goToPersonas = By.cssSelector(goToPersonasCss);

@@ -38,7 +38,7 @@ public class SetUp {
 	protected String urlSiteAutomation1 = "http://automation1.pla.qa.go5.gointegro.net/authentication/login";
 	protected String urlSignup = "http://signup.qa.go5.gointegro.net/landing";
 	protected String urlSiteAutomation2 = "http://automation4.pla.qa.go5.gointegro.net/authentication/login";
-	protected String urlSiteAutomation3 = "http://automation5.pla.qa.go5.gointegro.net/authentication/login";
+	protected String urlSiteAutomation3 = "http://automation6.pla.qa.go5.gointegro.net/authentication/login";
 	protected String email = this.generateRandomEmail();
 	protected String name = this.generateName();
 
