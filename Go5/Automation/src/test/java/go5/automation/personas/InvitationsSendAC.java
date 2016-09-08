@@ -62,7 +62,7 @@ public class InvitationsSendAC extends SetUp {
 		js = (JavascriptExecutor) driver;
 
 		Reporter.log("Crear un user, reenviarle la invitacion y registrarlo");
-
+		Thread.sleep(3000);
 		home.goToConfiguration();
 
 		// Go to Users Menu
