@@ -165,6 +165,9 @@ public class BrandingPage  {
 
 		Reporter.log(filebackground.getAbsolutePath());
 		elementbackground.sendKeys(filebackground.getAbsolutePath());
+		Thread.sleep(3000);
+		driver.findElement(okPicture).click();
+		Reporter.log("Foto cargada exitosamente");
 		Thread.sleep(2000);
 		this.guardar();
 	

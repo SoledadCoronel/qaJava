@@ -63,8 +63,10 @@ public class BrandingFotosBS {
 
 			// Ir a Imagen
 			home.goToConfiguration();
+			Thread.sleep(2000);
 			home.goDisenio();
 			Thread.sleep(2000);
+			home.goToMenu();
 			branding.loadLogoPicture();
 			Thread.sleep(2000);
 			branding.loadBackgroundPicture();
