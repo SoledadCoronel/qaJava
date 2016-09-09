@@ -171,8 +171,9 @@ public class AgregarEspacioPage extends SetUp {
 
 	}
 
-	public void grabarEspacio() {
+	public void grabarEspacio() throws InterruptedException {
 		Reporter.log("Grabando espacio");
+		Thread.sleep(3000);
 		driver.findElement(grabarEspacio).click();
 	}
 
