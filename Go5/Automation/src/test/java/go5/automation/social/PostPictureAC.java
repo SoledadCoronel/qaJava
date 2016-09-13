@@ -1,6 +1,5 @@
 package go5.automation.social;
 
-import java.io.File;
 
 import go5.automation.SetUp;
 import go5.pageObjects.EspaciosPage;
@@ -31,7 +30,7 @@ public class PostPictureAC extends SetUp {
 	By textPost = By.cssSelector(textAreaPostcss);
 
 	@Test
-	public void postearTextoDe500Chars() throws Exception {
+	public void postearUnaPicture() throws Exception {
 
 		muro = new MuroSocialPage(driver);
 		espacio = new EspaciosPage(driver);
