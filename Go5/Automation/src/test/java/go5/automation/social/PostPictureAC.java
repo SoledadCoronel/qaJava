@@ -18,16 +18,15 @@ public class PostPictureAC extends SetUp {
 	LoginPage login = null;
 	// js javascriptExecutor =null;
 
-	private String iconoEmpresa = ".igospacebicycle";
-	protected String textAreaPostcss = ".postbox fieldset:nth-child(1) label:nth-child(4) div";
-
+	private String iconoBike = ".igospacebicycle";
+	
 	@AfterClass
 	// call function to close browser
 	public void teardown() {
 		this.quitBrowser();
 	}
 
-	By textPost = By.cssSelector(textAreaPostcss);
+	
 
 	@Test
 	public void postearUnaPicture() throws Exception {
@@ -42,9 +41,8 @@ public class PostPictureAC extends SetUp {
 
 		// Ir a espacios
 		// Tengo q ir a un espacio
-		espacio.clickEspacioSidebar(iconoEmpresa);
-		Thread.sleep(4000);		
-		espacio.clickEspacioSidebar(iconoEmpresa);
+		espacio.clickEspacioSidebar(iconoBike);
+		Thread.sleep(3000);
 		muro.postPicture();
 		Thread.sleep(3000);
 		muro.postear();

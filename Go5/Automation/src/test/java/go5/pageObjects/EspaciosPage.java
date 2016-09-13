@@ -137,12 +137,13 @@ public class EspaciosPage extends SetUp {
 
 	}
 
-	public void clickEspacioSidebar(String iconoEspacio) {
+	public void clickEspacioSidebar(String iconoEspacio) throws InterruptedException {
 
 		Reporter.log("Clickear un espacio pasandole el icono");
 		driver.findElement(By.cssSelector(iconoEspacio)).click();
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textPost));
+		Thread.sleep(3000);
+	//	WebDriverWait wait = new WebDriverWait(driver, 20);
+		//WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textPost));
 
 	}
 	
