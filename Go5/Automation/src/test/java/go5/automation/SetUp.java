@@ -47,7 +47,7 @@ public class SetUp {
 	
 	protected static String inputmailLoginCss = ".session label:nth-child(3) input";	
 	protected String searchButton = ".btnsearch";
-	protected String inputSearch = ".search-input";
+	protected String inputSearch = ".search input";
 	protected String firstRow = ".tables tbody tr:nth-child(1) td:nth-child(2)";
 	protected String secondRow = ".tables tbody tr:nth-child(2) td:nth-child(2)";
 	protected String irAInvitaciones = ".title menu li:nth-child(2) a";
@@ -306,9 +306,7 @@ public class SetUp {
 
 	public void search(String nombreABuscar) throws Exception {
 
-		WebElement searchavailable = new WebDriverWait(driver, 10)
-				.until(ExpectedConditions.elementToBeClickable(By
-						.cssSelector(searchButton)));
+		
 		this.click(searchButton);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		WebElement someElement = (new WebDriverWait(driver, 20))

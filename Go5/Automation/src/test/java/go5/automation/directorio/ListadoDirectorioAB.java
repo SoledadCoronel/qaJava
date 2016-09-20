@@ -35,8 +35,9 @@ public class ListadoDirectorioAB extends SetUp {
 		home= new HomePage(driver);
 
 		// Go to Directorio de personas
-
+		Thread.sleep(3000);
 		home.goToDirectorio();
+		Thread.sleep(3000);
 		home.goToMenu();
 
 		// Ver si esta ordenado por default cuando carga la pagina
@@ -49,7 +50,7 @@ public class ListadoDirectorioAB extends SetUp {
 		directorio.verificarOrden();
 
 		// Hacer una busqueda
-
+	
 		Reporter.log(" Hacer una busqueda de un usuario por Nombre");
 		this.search("Automation");
 
