@@ -36900,7 +36900,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   <hashTree/>
                   <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                     <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">PRIVATE_POST_ID4</stringProp>
+                    <stringProp name="RegexExtractor.refname">BASIC_POST_ID4</stringProp>
                     <stringProp name="RegexExtractor.regex">&quot;id&quot;: &quot;(.+?)&quot;,</stringProp>
                     <stringProp name="RegexExtractor.template">$1$</stringProp>
                     <stringProp name="RegexExtractor.default"></stringProp>
@@ -37233,7 +37233,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">/posts/${PRIVATE_POST_ID4}</stringProp>
+                  <stringProp name="HTTPSampler.path">/posts/${BASIC_POST_ID4}</stringProp>
                   <stringProp name="HTTPSampler.method">DELETE</stringProp>
                   <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -39496,7 +39496,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 </ResponseAssertion>
                 <hashTree/>
               </hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="like - post - usuario externo" enabled="true">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="like - post - usuario externo sobre el segundo post" enabled="true">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                   <collectionProp name="Arguments.arguments">
@@ -39509,7 +39509,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
       &quot;subject&quot;: {&#xd;
         &quot;data&quot;: {&#xd;
           &quot;type&quot;: &quot;posts&quot;,&#xd;
-          &quot;id&quot;: &quot;${PRIVATE_POST_ID2}&quot;&#xd;
+          &quot;id&quot;: &quot;${PRIVATE_POST_ID3}&quot;&#xd;
         }&#xd;
       }&#xd;
     }&#xd;
@@ -39535,23 +39535,6 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               </HTTPSamplerProxy>
               <hashTree>
-                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                  <collectionProp name="HeaderManager.headers">
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">Content-Type</stringProp>
-                      <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">Accept</stringProp>
-                      <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                    </elementProp>
-                    <elementProp name="" elementType="Header">
-                      <stringProp name="Header.name">Authorization</stringProp>
-                      <stringProp name="Header.value">${BASICUSER_ACCESS_TOKEN2}</stringProp>
-                    </elementProp>
-                  </collectionProp>
-                </HeaderManager>
-                <hashTree/>
                 <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
                   <boolProp name="ResultCollector.error_logging">false</boolProp>
                   <objProp>
@@ -43741,7 +43724,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                       </elementProp>
                       <elementProp name="filter[older-than]" elementType="HTTPArgument">
                         <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">${PRIVATE_THIRD_POST_ID}</stringProp>
+                        <stringProp name="Argument.value">${PRIVATE_FORTH_POST_ID}</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                         <boolProp name="HTTPArgument.use_equals">true</boolProp>
                         <stringProp name="Argument.name">filter[older-than]</stringProp>
@@ -43825,7 +43808,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   <hashTree/>
                   <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                     <collectionProp name="Asserion.test_strings">
-                      <stringProp name="-597865855">&quot;total-items&quot;: 4</stringProp>
+                      <stringProp name="-597865856">&quot;total-items&quot;: 3</stringProp>
                     </collectionProp>
                     <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                     <boolProp name="Assertion.assume_success">false</boolProp>
@@ -43833,7 +43816,11 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   </ResponseAssertion>
                   <hashTree/>
                 </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getFeed-items - por space por rango" enabled="false">
+                <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
+                  <stringProp name="ConstantTimer.delay">2000</stringProp>
+                </ConstantTimer>
+                <hashTree/>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getFeed-items - por space por rango" enabled="true">
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                     <collectionProp name="Arguments.arguments">
                       <elementProp name="filter[space]" elementType="HTTPArgument">
@@ -43845,14 +43832,14 @@ utils.load(&apos;schemas&apos;);</stringProp>
                       </elementProp>
                       <elementProp name="filter[from]" elementType="HTTPArgument">
                         <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">${PRIVATE_THIRD_POST_ID}</stringProp>
+                        <stringProp name="Argument.value">${PRIVATE_FORTH_POST_ID}</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                         <boolProp name="HTTPArgument.use_equals">true</boolProp>
                         <stringProp name="Argument.name">filter[from]</stringProp>
                       </elementProp>
                       <elementProp name="filter[to]" elementType="HTTPArgument">
                         <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value">${PRIVATE_SECOND_POST_ID}</stringProp>
+                        <stringProp name="Argument.value">${PRIVATE_FIRST_POST_ID}</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                         <boolProp name="HTTPArgument.use_equals">true</boolProp>
                         <stringProp name="Argument.name">filter[to]</stringProp>
@@ -43875,23 +43862,6 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                    <collectionProp name="HeaderManager.headers">
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">Content-Type</stringProp>
-                        <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                      </elementProp>
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">Accept</stringProp>
-                        <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                      </elementProp>
-                      <elementProp name="" elementType="Header">
-                        <stringProp name="Header.name">Authorization</stringProp>
-                        <stringProp name="Header.value">${BASICUSER_ACCESS_TOKEN2}</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </HeaderManager>
-                  <hashTree/>
                   <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
                     <boolProp name="ResultCollector.error_logging">false</boolProp>
                     <objProp>
@@ -43934,7 +43904,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                     <intProp name="Assertion.test_type">8</intProp>
                   </ResponseAssertion>
                   <hashTree/>
-                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="false">
                     <collectionProp name="Asserion.test_strings">
                       <stringProp name="-597865858">&quot;total-items&quot;: 1</stringProp>
                     </collectionProp>
