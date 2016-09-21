@@ -31796,6 +31796,18 @@ utils.load(&apos;schemas&apos;);</stringProp>
           &quot;type&quot;: &quot;users&quot;,&#xd;
           &quot;id&quot;: &quot;${PROFILE_ID5}&quot;&#xd;
         }&#xd;
+      },&#xd;
+      &quot;mentions&quot;: {&#xd;
+        &quot;data&quot;: [&#xd;
+          {&#xd;
+            &quot;type&quot;: &quot;users&quot;,&#xd;
+            &quot;id&quot;: &quot;${BASICUSER_ID2}&quot;&#xd;
+          },&#xd;
+          {&#xd;
+            &quot;type&quot;: &quot;users&quot;,&#xd;
+            &quot;id&quot;: &quot;${BASICUSER_ID3}&quot;&#xd;
+          }&#xd;
+        ]&#xd;
       }&#xd;
     }&#xd;
   }&#xd;
@@ -32721,14 +32733,33 @@ utils.load(&apos;schemas&apos;);</stringProp>
               </hashTree>
               <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Validaciones GETs DELETEs" enabled="true"/>
               <hashTree>
+                <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load libs in context" enabled="true">
+                  <stringProp name="scriptLanguage">javascript</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">//we have to retrieve the utils from vars
+var utils = props.get(&apos;utils&apos;);
+
+utils.load(&apos;jjv&apos;);
+utils.load(&apos;schemas&apos;);</stringProp>
+                </BSFSampler>
+                <hashTree/>
+                <BSFSampler guiclass="TestBeanGUI" testclass="BSFSampler" testname="BSF Sampler - Load utils.js" enabled="true">
+                  <stringProp name="filename">${jsPath}utils.js</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script"></stringProp>
+                  <stringProp name="scriptLanguage">javascript</stringProp>
+                </BSFSampler>
+                <hashTree/>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getPost - inicial" enabled="true">
-                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                     <collectionProp name="Arguments.arguments">
-                      <elementProp name="" elementType="HTTPArgument">
+                      <elementProp name="include" elementType="HTTPArgument">
                         <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                        <stringProp name="Argument.value"></stringProp>
+                        <stringProp name="Argument.value">target,author,author.profile,author.profile.image,image,hyperlink,featured-likes,featured-likes.author,mentions</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">include</stringProp>
                       </elementProp>
                     </collectionProp>
                   </elementProp>
@@ -32780,6 +32811,33 @@ utils.load(&apos;schemas&apos;);</stringProp>
                     </objProp>
                     <stringProp name="filename"></stringProp>
                   </ResultCollector>
+                  <hashTree/>
+                  <BSFAssertion guiclass="TestBeanGUI" testclass="BSFAssertion" testname="BSF Assertion - ESTE ES EL GET A MIRAR " enabled="false">
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="script">try {
+	var utils = props.get(&apos;utils&apos;);
+	utils.reload();	
+
+   	eval(&apos;var response = &apos; + prev.getResponseDataAsString());
+   	for (resource in response.included) {
+   		if (resource[&apos;data&apos;][&apos;type&apos;] == &apos;users&apos;) {
+   			errors = schemas.validate(&apos;user&apos;, resource);
+		 	if (errors) {
+		     	prev.setSuccessful(false);
+		      	prev.setResponseMessage(&quot;Invalid JSON schema: &quot;+JSON.stringify(errors));
+		      	break;
+		   	}   			
+   		}
+   	}
+
+	
+} catch(e) {
+      prev.setSuccessful(false);
+      prev.setResponseMessage(&quot;Invalid response. Expected a valid JSON.&quot;);
+}</stringProp>
+                    <stringProp name="scriptLanguage">javascript</stringProp>
+                  </BSFAssertion>
                   <hashTree/>
                   <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                     <collectionProp name="Asserion.test_strings">
