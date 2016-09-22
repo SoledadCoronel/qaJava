@@ -2,9 +2,9 @@
   "name": "TestMobileNode",
   "version": "0.1.0",
   "description": "Package json for appium test ",
-  "main": "hello-world-server.js",
+  "main": "login.js",
   "scripts": {
-	  "test": "mocha --recursive"
+    "test": "mocha \"test/**/*@(.js)\" --compilers js:babel-register"
   },
   "repository": "",
   "keywords": [
@@ -20,5 +20,10 @@
     "mocha": "^3.0.2",
     "selenium-webdriver": "^2.47",
     "webdriverio": "^4.2.15"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-register": "^6.14.0"
   }
 }

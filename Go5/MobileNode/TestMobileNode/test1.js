@@ -6,20 +6,10 @@ var driver = new webdriver.Builder()
     .forBrowser('firefox')
     .build();
 
-var loginTest = require('./pages/login'),
-	forgotPasswordTest = require('./pages/forgot-password');
-
-
 // login test
-loginTest.run();
-
-forgotPasswordTest.run();
-
+//loginTest.run();
 
 driver.get('http://www.google.com/ncr');
-
-
-
 
 driver.findElement(By.name('q')).sendKeys('webdriver');
 driver.findElement(By.name('btnG')).click();

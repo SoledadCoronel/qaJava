@@ -1,27 +1,36 @@
-var webdriver = require("selenium-webdriver");
-var assert = require("chai").assert;
-var loginSelectors = require('../selectors/login');
+import webdriver from 'selenium-webdriver';
+import {assert} from 'chai';
+import loginSelectors from '../selectors/login';
 
-describe("Demonstrating webdriver promises", function() {
-    this.timeout(30000);
-    var driver;
+describe("Demonstrating webdriver promises", function () {
+	var driver;
 
-    before(function() {
-        driver = new webdriver.Builder().forBrowser('firefox').build();
-    });
+	this.timeout(30000);
 
-    after(function() {
-        driver.quit();
-    });
+	before(() => {
+		console.log('running before');
+		//driver = new webdriver.Builder().forBrowser('firefox').build();
+	});
 
-    it("I open the blog www", function() {
-        driver.get("http://www.scottlogic.com/blog");
-    });
+	after(() => {
+		console.log('running after');
+		driver.quit();
+	});
 
-    it("The title is 'Scott Logic Blog'", function() {
-        // Since we want the title from the page, we need to manually handle the Promise
-        return driver.getTitle().then(function(title) {
-            assert.equal(title, "Scot Logic Blog");
-        });
-    });
+	it("I open the blog www", (done) => {
+		console.log('Loading google page');
+		driver = new webdriver.Builder().forBrowser('firefox').build();
+		driver.get("http://google.com")
+			.then(() => {
+				done();
+			});
+		
+	});
+
+	/* it("The title is 'Scott Logic Blog'", () => {
+		// Since we want the title from the page, we need to manually handle the Promise
+		return driver.getTitle().then(function(title) {
+			assert.equal(title, "Scot Logic Blog");
+		});
+	});*/
 });
