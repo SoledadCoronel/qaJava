@@ -18,14 +18,14 @@ import org.testng.Reporter;
 
     	//Css
     	
-    	 private String addGroup= new String(".groupsform fieldset:nth-child(1) label:nth-child(1) a");
+    	 private String addGroup= new String(".groupsform fieldset:nth-child(1) label a"); // modificado
     	 
 	     private String inputNameGroup= new String (".groupsform fieldset:nth-child(1) label:nth-child(2) input"); 
 	     private String  deleteGroup = new String (".groupsform fieldset:nth-child(2) .delete");
 	     private String confirm = new String (".mconfirmation a");    
 	     protected String irAGroups = new String (".igogroups");
 	     protected String irATitles = new String (".igotitles");
-	     protected String addSubgroup = new String (".subtree .active a");
+	     protected String addSubgroup = new String (".subtree .active a"); //modificado
 	     protected String inputNameSubgroup= new String (".additem.active input");
 	     protected String groupEnProfile = new String (".groupsdata select");
 	          	

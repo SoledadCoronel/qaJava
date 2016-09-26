@@ -19,7 +19,7 @@ import org.testng.Reporter;
     	//Css
     	
     	 private String addGroup= new String(".groupsform fieldset:nth-child(1) label:nth-child(1) a");
-    	
+ 
 	     private String inputNameGroup= new String (".groupsform fieldset:nth-child(1) label:nth-child(2) input"); 
 	     private String  deleteGroup = new String (".groupsform fieldset:nth-child(2) .delete");
 	     private String confirm = new String (".mconfirmation a");    
