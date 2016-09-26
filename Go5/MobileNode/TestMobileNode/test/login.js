@@ -1,6 +1,6 @@
 import webdriver from 'selenium-webdriver';
 import {assert} from 'chai';
-import loginSelectors from '../selectors/login';
+import login from '../pagesobjects/LoginPage';
 
 describe("Demonstrating webdriver promises", function () {
 	var driver;
@@ -20,11 +20,16 @@ describe("Demonstrating webdriver promises", function () {
 	it("I open the blog www", (done) => {
 		console.log('Loading google page');
 		driver = new webdriver.Builder().forBrowser('firefox').build();
-		driver.get("http://google.com")
+		driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
 			.then(() => {
+				login.loginToGo('marina.touceda@gointegro.com', 'Auto1234');
+			})
+			.catch(() => {
+
+			})
+			.finally(() => {
 				done();
 			});
-		
 	});
 
 	/* it("The title is 'Scott Logic Blog'", () => {
