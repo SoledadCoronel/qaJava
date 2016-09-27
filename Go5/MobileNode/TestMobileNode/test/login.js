@@ -1,8 +1,9 @@
 import webdriver from 'selenium-webdriver';
+import test from 'selenium-webdriver/testing';
 import {assert} from 'chai';
 import login from '../pagesobjects/LoginPage';
 
-describe("Demonstrating webdriver promises", function () {
+test.describe("tratando de hacer andar mi test", function () {
 	var driver;
 
 	this.timeout(30000);
@@ -17,12 +18,12 @@ describe("Demonstrating webdriver promises", function () {
 		driver.quit();
 	});
 
-	it("I open the blog www", (done) => {
+	test.it("I open the blog www", (done) => {
 		console.log('Loading google page');
 		driver = new webdriver.Builder().forBrowser('firefox').build();
-		driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login");
+		driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login")
 			.then(() => {
-				login.loginToGo('marina.touceda@gointegro.com', 'Auto1234');
+				login.isLoaded();
 			})
 			.catch(() => {
 
@@ -31,11 +32,4 @@ describe("Demonstrating webdriver promises", function () {
 				done();
 			});
 	});
-
-	/* it("The title is 'Scott Logic Blog'", () => {
-		// Since we want the title from the page, we need to manually handle the Promise
-		return driver.getTitle().then(function(title) {
-			assert.equal(title, "Scot Logic Blog");
-		});
-	});*/
 });

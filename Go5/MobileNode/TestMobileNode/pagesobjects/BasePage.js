@@ -6,25 +6,15 @@ Base constructor for a pageobject
 *@param webdriver
 *@constructor
 */
-function BasePage(webdriver){
-	this.driver=webdriver;
-}
-/*
-BasePage.prototype.waitForLocated = function (locator,timeout) {
-	var MAX_RETRIES = 5;
-	var retry = 0;
-
-	timeout = timeout || WAIT_TIME_PRESENT;
-	var _this = this;
-	//The actual wait ,but we handle the error
-
-	return _this.driver.wait
+	class BasePage {
+	constructor (webdriver) {
+		this.driver = webdriver;
 	}
-	*/
-BasePage.prototype.waitForPresent = function (locator,timeout){
-	timeout = timeout || WAIT_TIMEOUT;
-	var driver = this.driver;
-	return this.driver.wait (function(){
-		// definir que el elemento esta presente
-		},timeout);
-	};
+
+	waitForPresent(locator,timeout){
+		timeout = timeout || WAIT_TIMEOUT;
+		driver.waitForPresent=>(locator)//No se si se hace asi...
+	}
+
+	}
+

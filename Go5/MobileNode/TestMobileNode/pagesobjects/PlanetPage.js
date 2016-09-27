@@ -8,7 +8,7 @@ PlanetPage = function PlanetsPage(driver) {
 
 PlanetPage.prototype.visit = function() {
   this.driver.get(this.url);
-  return webdriver.promise.fulfilled(true);
+ // return webdriver.promise.fulfilled(true);
 };
 
 PlanetPage.prototype.weightEntryPresent = function() {
