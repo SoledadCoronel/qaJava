@@ -1,40 +1,45 @@
-var BasePage = require ('./BasePage'),
-	goButtonLogin = '.signup .primary',
-	inputEmail = '.signup fieldset label:nth-child(2) input',
-	inputPassword = '.signup fieldset label:nth-child(3) input';
+import BasePage from './BasePage';
+const	goButtonLogin = '.primary';
+const	inputEmail = '.label:nth-child(3) input';
+const	inputPassword = '.label:nth-child(4) input';
 
-/**
-*Constructor for the Login Page
-*Hooks up the webdriver holder in the base page allowing to call this.driver in page objects
-*@param webdriver
-*@constructor
-*/
+import {By, until} from 'selenium-webdriver';
 
 
-//Hooking up prototypal inheritance to BasePage
+// Me traigo el driver de la  BasePage
+
 class LoginPage extends BasePage {
-constructor(webdriver) {
-super(webdriver);
+	constructor (webdriver) {
+		super(webdriver);
+	}
+
+	isLoaded () {
+		return this.driver.wait(until.elementLocated(By.id('ember759')),30000);
+		//return super.waitForDisplayed(inputEmail, 50000);
+	}
+
+ 	sendUsername (username) {
+ 		this.driver.findElement (By.id('ember759')).sendKeys(username);
+ 	}
+
+ 	sendPassword (password) {
+		this.driver.findElement(By.id('ember760')).sendKeys(password);
+ 	}
+
+ 	pressLoginButton () {
+ 		this.driver.findElement(By.css(goButtonLogin)).click();
+
+ 	}
+
+ 	login (username,password) {
+ 		//Sthis.isLoaded();
+ 		this.sendUsername(username);
+ 		this.sendPassword(password);
+ 		this.pressLoginButton();
+ 		return this.driver.wait(until.elementLocated(By.css('.igohome')),50000);
+ 	//	return this;
+ 	}
+
 }
-}
 
-
-/*//This is the constructor
-LoginPage.prototype.constructor = LoginPage;
-*/
-
-LoginPage.prototype.isLoaded = function (){
-	this.waitForDisplayed (By.css (inputEmail));
-	return this;
-}
-
-LoginPage.prototype.login => function (username,password) {
-	this.waitForDisplayed(By.css(inputEmail));
-	this.driver.findElement (By.css(inputEmail)).sendKeys(username);
-	this.driver.findElement(By.css(inputPassword)).sendKeys(password);
-	this.driver.findElement(By.css(goButtonLogin)).click;
-	return this;
-
-
-}
-
+export default LoginPage;

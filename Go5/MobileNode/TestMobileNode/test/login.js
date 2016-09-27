@@ -1,35 +1,42 @@
-import webdriver from 'selenium-webdriver';
 import test from 'selenium-webdriver/testing';
 import {assert} from 'chai';
-import login from '../pagesobjects/LoginPage';
+import LoginPage from '../pagesobjects/LoginPage';
+import DriverFactory from '../drivers/';
 
-test.describe("tratando de hacer andar mi test", function () {
+const username = 'marina.touceda@gointegro.com';
+const password ='Auto1234';
+
+test.describe("Test de login", function (done) {
+	this.timeout(300000);
 	var driver;
-
-	this.timeout(30000);
+	//var webdriver;
 
 	before(() => {
-		console.log('running before');
-		//driver = new webdriver.Builder().forBrowser('firefox').build();
+		//webdriver = require('selenium-webdriver');
+		//driver = new webdriver.Builder()
+		  //  .forBrowser('firefox');
+		driver = DriverFactory.getDriver('firefox');
+
 	});
 
 	after(() => {
-		console.log('running after');
 		driver.quit();
 	});
 
-	test.it("I open the blog www", (done) => {
-		console.log('Loading google page');
-		driver = new webdriver.Builder().forBrowser('firefox').build();
-		driver.get("http://automation5.pla.qa.go5.gointegro.net/authentication/login")
-			.then(() => {
-				login.isLoaded();
-			})
-			.catch(() => {
+	test.it("I login into GO5", (done) => {
+		driver = driver.build();
 
-			})
-			.finally(() => {
-				done();
+		var loginPage = new LoginPage(driver);
+		loginPage.open('http://automation5.pla.qa.go5.gointegro.net/authentication/login')
+			.then(() => {
+				loginPage.isLoaded().then(() => {
+					loginPage.login(username,password).then(() => {
+						done();
+					});
+
+				});
+
 			});
 	});
+
 });

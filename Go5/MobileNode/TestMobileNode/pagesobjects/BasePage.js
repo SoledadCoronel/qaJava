@@ -6,15 +6,22 @@ Base constructor for a pageobject
 *@param webdriver
 *@constructor
 */
-	class BasePage {
+import {By, until} from 'selenium-webdriver';
+
+
+class BasePage {
 	constructor (webdriver) {
 		this.driver = webdriver;
 	}
 
-	waitForPresent(locator,timeout){
-		timeout = timeout || WAIT_TIMEOUT;
-		driver.waitForPresent=>(locator)//No se si se hace asi...
+	open (url) {
+		return this.driver.get(url);
 	}
 
+	waitForDisplayed(locator,timeout){
+		return this.driver.wait(until.elementLocated(By.css(locator)),timeout);
 	}
 
+}
+
+export default BasePage;
