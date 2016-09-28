@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="3" name="Suite" parallel="tests">
- <listeners>      
-  <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
-</listeners>
-  <test name="IExplorer Tests">
-  <parameter name="browser" value="ie"/>
-  <parameter name="version" value="10.0"/>
-  <parameter name="platform" value="WIN8"/>
-  <parameter name="url" value="http://automation4.pla.qa.go5.gointegro.net/authentication/login"/>
-  <parameter name="build" value="11.0"/>
-    <classes>
-    	   	<class name="go5.automation.profile.IrAPerfilSidebarBS"/>
-    	  	<class name="go5.automation.compania.BrandingBS"/>
-    	  	<class name="go5.automation.personas.ListadoPersonasFiltersBS"/>
-    	   	<class name="go5.automation.espacios.CrearEspacioBS"/>
-    	   	 <class name="go5.automation.signup.ForgotPasswordBS"/>
-    	   	 <class name="go5.automation.profile.IrAPerfilSidebarBS"/>
-    	   	 </classes>
-  </test> <!-- Test -->
-  </suite> <!-- Suite -->
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="IExplorer Tests">
+		<parameter name="browser" value="ie" />
+		<parameter name="version" value="10.0" />
+		<parameter name="platform" value="WIN8" />
+		<parameter name="url"
+			value="http://automation6.pla.qa.go5.gointegro.net/authentication/login" />
+		<parameter name="build" value="11.0" />
+		<classes>
+			<class name="go5.automation.compania.BrandingColorsBS" />
+			<class name="go5.automation.personas.InvitationsSendBS" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

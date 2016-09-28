@@ -1,9 +1,11 @@
 package go5.pageObjects;
-import java.util.concurrent.TimeUnit;
+
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
   
@@ -13,18 +15,22 @@ import org.openqa.selenium.WebDriver;
 
     	//Css
     	
-    	public static String strUsername= new String("marina.touceda@gointegro.com");
-    	protected static String strUsernameAdminEspacios= new String("marina.touceda+023@gointegro.com");
-    	protected static String strUsernameUserBasic= new String("marina.touceda+022@gointegro.com");
-     	public static String strPassword= new String("Auto1234");
-    	protected static String inputmailLogin = new String (".session label:nth-child(3) input");
-    	protected static String inputPasswordLogin = new String (".session label:nth-child(4) input");
-    	protected static String goButton = new String (".session .primary");
+    	public static String strUsername= "marina.touceda@gointegro.com";
+    	protected static String strUsernameAdminEspacios= "marina.touceda+023@gointegro.com";
+    	protected static String strUsernameUserBasic= "marina.touceda+022@gointegro.com";
+     	public static String strPassword= "Auto1234";
+    	protected static String inputmailLogin = "label:nth-child(3) input";
+    	protected static String inputPasswordLogin = "label:nth-child(4) input";
+    	protected static String goButton =".primary";
+    	private String textPostCss=".posttext";
+    	
+    	//References
     	
     	By userName =By.cssSelector(inputmailLogin);
     	By password =By.cssSelector(inputPasswordLogin);
     	By go=By.cssSelector(goButton);
-    	By title = By.cssSelector(".session legend");
+    	By title = By.cssSelector(" legend");
+    	By textPost=By.cssSelector(textPostCss);
     	
     	
     	  WebDriver driver;
@@ -67,8 +73,8 @@ import org.openqa.selenium.WebDriver;
   
      //Click on login button
   
-     public void clickLogin(){
-  
+     public void clickLogin() throws InterruptedException{
+    	 	Thread.sleep(2000);
              driver.findElement(go).click();
   
      }
@@ -83,10 +89,11 @@ import org.openqa.selenium.WebDriver;
       * @param strPasword
   
       * @return
+     * @throws InterruptedException 
   
       */
   
-     public void loginToGo(String strUserName,String strPasword){
+     public void loginToGo(String strUserName,String strPasword) throws InterruptedException{
   
          //Fill user name
     	 
@@ -98,12 +105,18 @@ import org.openqa.selenium.WebDriver;
   
          this.setPassword(strPasword);
   
-         //Click Login button
+               
   
          this.clickLogin();
+         
+         //Esperar hasta que cargur el muro social despues de loguearse
+         
+    //     WebDriverWait wait = new WebDriverWait(driver, 20);
+ 	//	WebElement element = wait.until(ExpectedConditions.elementToBeClickable(textPost));
+
      } 
   
-         public void loginToGoAsAdmin(){
+         public void loginToGoAsAdmin() throws InterruptedException{
         	  
              //Fill user name
         	 this.setUserName(strUsername);
@@ -122,7 +135,7 @@ import org.openqa.selenium.WebDriver;
   
  
  
-         public void loginToGoAsAdminEspacios(){
+         public void loginToGoAsAdminEspacios() throws InterruptedException{
        	  
              //Fill user name
         	 this.setUserName(strUsernameAdminEspacios);
@@ -138,7 +151,7 @@ import org.openqa.selenium.WebDriver;
                
          }
  
-         public void loginToGoAsUSerBasic(){
+         public void loginToGoAsUSerBasic() throws InterruptedException{
           	  
              //Fill user name
         	 this.setUserName(strUsernameUserBasic);

@@ -52,8 +52,9 @@ import org.testng.Reporter;
     	 driver.findElement(By.id(idCompania)).sendKeys(strName);
          }
     
-     public void setSubdomainName() throws InterruptedException{
+     public void setSubdomainName(String strName) throws InterruptedException{
     	 driver.findElement(By.id(idSubdomain)).click();
+    	 driver.findElement(By.id(idCompania)).sendKeys(strName);
     	 driver.findElement(By.id(idSubdomain)).sendKeys(Keys.ENTER);
     	 Thread.sleep(2000);
     	  }
@@ -103,10 +104,10 @@ import org.testng.Reporter;
      public void registrarse(String strcompanyname) throws InterruptedException{
     	
     	 	setCompanyName(strcompanyname);
-    		setSubdomainName();
+    		setSubdomainName(strcompanyname);
+    	//	selectCantEmpleados();
     		setName("Thiago");
-    		setLastName("My best friend");
-    	 //	selectCantEmpleados();
+    		setLastName("My best friend");    	 	
     		setPassword("Auto1234");
     		setTimeZone();
 	  		aceptarTerminosYCondiciones();
