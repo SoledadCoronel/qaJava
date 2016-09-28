@@ -1,7 +1,8 @@
 import BasePage from './BasePage';
 const	goButtonLogin = '.primary';
-const	inputEmail = '.label:nth-child(3) input';
-const	inputPassword = '.label:nth-child(4) input';
+const	inputEmail = 'label:nth-child(3) input';
+const	inputPassword = 'label:nth-child(4) input';
+const 	home ='.igohome';
 
 import {By, until} from 'selenium-webdriver';
 
@@ -14,31 +15,29 @@ class LoginPage extends BasePage {
 	}
 
 	isLoaded () {
-		return this.driver.wait(until.elementLocated(By.id('ember759')),30000);
-		//return super.waitForDisplayed(inputEmail, 50000);
+		//return this.driver.wait(until.elementLocated(By.id('ember759')),30000);
+		return super.waitForDisplayed('label:last-child .primary', 50000);
 	}
 
  	sendUsername (username) {
- 		this.driver.findElement (By.id('ember759')).sendKeys(username);
+ 		this.driver.findElement (By.css(inputEmail)).sendKeys(username);
  	}
 
  	sendPassword (password) {
-		this.driver.findElement(By.id('ember760')).sendKeys(password);
+		this.driver.findElement(By.css(inputPassword)).sendKeys(password);
  	}
 
  	pressLoginButton () {
  		this.driver.findElement(By.css(goButtonLogin)).click();
-
  	}
 
  	login (username,password) {
- 		//Sthis.isLoaded();
+ 		//this.isLoaded();
  		this.sendUsername(username);
  		this.sendPassword(password);
  		this.pressLoginButton();
- 		return this.driver.wait(until.elementLocated(By.css('.igohome')),50000);
- 	//	return this;
- 	}
+ 		return this.driver.wait(until.elementLocated(By.css(home)),50000);
+ 	 	}
 
 }
 
