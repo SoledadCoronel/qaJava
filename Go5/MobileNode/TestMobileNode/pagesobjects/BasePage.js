@@ -26,6 +26,7 @@ class BasePage {
     assertAValue (locator,expectedValue){
 	     return expect(driver.findElement(By.css(locator)).getAttribute('value')).to.eventually.equal(expectedValue);
     }
+
 }
 
 export default BasePage;
