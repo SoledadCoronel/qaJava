@@ -2,7 +2,7 @@ package go5.automation.groupsytitles;
 
 
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 
 
-public class TitlesDragAndDrop extends TestSuite{
+public class TitlesDragAndDrop extends SetUp{
 
 	@BeforeTest // call function to open the browser and login 
 	 public void setup () throws Exception{
@@ -39,20 +39,18 @@ public class TitlesDragAndDrop extends TestSuite{
 	 public void dragAndDrop() throws Exception{
 		
 		
-				     		
-		// Go to the configuration
-				 this.goToConfiguration();
-				 this.goToMenu();	
-				// Go to  Users Menu
+			     		
+		
 			        Reporter.log("Abriendo administar personas" );  
 			       
 			        
 			    // Go to Titles2    
 			       
 			        Reporter.log("Abriendo titulos");
-			 	     this.goToTitles();
-			      
-			      
+			 	   
+			     // Go to Titles2    
+		            Reporter.log("Abriendo titulos");
+		            driver.findElement(By.cssSelector(".igotitleswhite")).click();
 			      
 			  	  
 			         // Go to Grupos

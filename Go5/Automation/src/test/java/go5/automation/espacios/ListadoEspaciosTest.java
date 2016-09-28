@@ -2,7 +2,7 @@ package go5.automation.espacios;
 
 
 
-import go5.pageObjects.EspacioPage;
+import go5.pageObjects.EspaciosPage;
 
 
 import org.testng.annotations.BeforeClass;
@@ -15,7 +15,7 @@ public class ListadoEspaciosTest extends ListadoEspaciosAC {
 	
 
 	
-	EspacioPage espacio=null;
+	EspaciosPage espacio=null;
 	
 
 	@BeforeClass // call function to open the browser and login 

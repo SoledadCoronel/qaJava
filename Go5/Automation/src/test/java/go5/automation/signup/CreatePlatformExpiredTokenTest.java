@@ -5,7 +5,7 @@ package go5.automation.signup;
 
 import java.util.concurrent.TimeUnit;
 
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 import go5.pageObjects.CreatePlatformPage;
 import go5.pageObjects.LoginPage;
 import go5.pageObjects.SignupPage;
@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
 
 
 
-public class CreatePlatformExpiredTokenTest extends TestSuite{
+public class CreatePlatformExpiredTokenTest extends SetUp{
 			
  protected String urltokenVencido="http://signup.qa.go5.gointegro.net/en/createPlatform/token/3e8hap5qzxes404s0goocso08wocwk0kw4k8c4cw4sosg4c8wo";			
 		

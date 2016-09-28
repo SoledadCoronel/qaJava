@@ -1,5 +1,5 @@
 package go5.pageObjects;
-import go5.automation.TestSuite;
+import go5.automation.SetUp;
 
 import java.io.File;
 import java.security.SecureRandom;
@@ -16,7 +16,7 @@ import org.testng.Reporter;
   
     
     
-    public class SocialActivityPage extends TestSuite{
+    public class SocialActivityPage extends SetUp{
 
     		
     	
