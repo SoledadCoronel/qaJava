@@ -67,7 +67,8 @@ public class ForgotPasswordAC extends SetUp{
 		 
 		 forgot.insertEmail(validEmail);
 		//forgot.createForgotLink();
-		 forgot.clickGo();
+		 forgot.clickVolver();
+		// forgot.clickGo();
 		 forgot.verifyEmailSent();
 		 Thread.sleep(5000);
 		 forgot.goToRestorePassword();

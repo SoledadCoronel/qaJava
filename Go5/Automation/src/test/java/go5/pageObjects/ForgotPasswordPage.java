@@ -1,11 +1,8 @@
 package go5.pageObjects;
 
 
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,7 +18,8 @@ import org.testng.Reporter;
 
     	//Css
     	
-    	private String goToForgotPageCss=".signup .link";
+    	private  final String volverLinkCss = ".signup fieldset button";
+		private String goToForgotPageCss=".signup .link";
     	public static String strUsername= new String("marina.touceda@gointegro.com");
     	
     	protected static String strUsernameUserBasic= new String("marina.touceda+022@gointegro.com");
@@ -40,6 +38,7 @@ import org.testng.Reporter;
     	By goToForgtoPage=By.cssSelector(goToForgotPageCss);
     	By userName =By.id(inputmailLogin);
     	By password =By.id(inputPassword);
+    	By volver=By.cssSelector(volverLinkCss);
     	By go=By.cssSelector(goButton);
     	By mensajeError= By.cssSelector(mensajeErrorCss);
     	By forgotLink=By.cssSelector(forgotLinkCss);
@@ -125,7 +124,10 @@ import org.testng.Reporter;
    		 Assert.assertEquals(text,"El email ingresado no se encuentra registrado. Por favor vuelve a intentarlo");
       }
  
-       
+       public void clickVolver() throws InterruptedException{
+    	   driver.findElement(volver).click();
+    	   Thread.sleep(2000);
+       }
      
 
        public void verifyEmailSent(){

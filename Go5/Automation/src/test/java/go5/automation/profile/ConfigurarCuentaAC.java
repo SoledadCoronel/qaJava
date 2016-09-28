@@ -32,6 +32,7 @@ public class ConfigurarCuentaAC extends SetUp {
 		home.goToUserMenu();
 		Thread.sleep(1000);
 		config.goToConfigurarCuenta();
+		home.goToMenu();
 		config.changeLanguageToEnglish();
 		config.guardar();
 		Thread.sleep(2000);
