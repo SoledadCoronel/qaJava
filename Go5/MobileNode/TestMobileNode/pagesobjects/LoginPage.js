@@ -1,5 +1,5 @@
 import BasePage from './BasePage';
-const	goButtonLogin = '.primary';
+const	goButtonLogin = 'label:last-child .primary';
 const	inputEmail = 'label:nth-child(3) input';
 const	inputPassword = 'label:nth-child(4) input';
 const 	home ='.igohome';
@@ -16,7 +16,7 @@ class LoginPage extends BasePage {
 
 	isLoaded () {
 		//return this.driver.wait(until.elementLocated(By.id('ember759')),30000);
-		return super.waitForDisplayed('label:last-child .primary', 50000);
+		return super.waitForDisplayed(goButtonLogin, 50000);
 	}
 
  	sendUsername (username) {
