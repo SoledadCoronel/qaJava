@@ -267,7 +267,7 @@ schemas.addSchema('space',
                 }
             },
             "required": ["name", "visibility", "description", "icon", "active", "visibility", "social-enabled", "users-count",
-                        "groups-count", "admins-count", "membership-status", "position", "created-at", "updated-at"]
+                        "groups-count", "admins-count", "position", "created-at", "updated-at"]
         },
         "relationships": {
             "type": "object",

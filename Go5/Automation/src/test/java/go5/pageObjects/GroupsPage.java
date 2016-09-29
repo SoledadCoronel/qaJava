@@ -63,9 +63,7 @@ public class GroupsPage {
 
 		driver.findElement(inputNameGroup).sendKeys(nameGroup);
 		driver.findElement(inputNameGroup).sendKeys(Keys.RETURN);
-
 	}
-
 	public void deleteFirstGroup() {
 		// Borrar Grupo
 		driver.findElement(deleteFirstGroup).click();
