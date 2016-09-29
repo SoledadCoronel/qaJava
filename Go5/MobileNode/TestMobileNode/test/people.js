@@ -1,6 +1,7 @@
 import test from 'selenium-webdriver/testing';
 import {assert} from 'chai';
 import LoginPage from '../pagesobjects/LoginPage';
+import HomePage from '../pagesobjects/HomePage';
 import DriverFactory from '../drivers/';
 
 const username = 'marina.touceda@gointegro.com';
@@ -28,10 +29,13 @@ test.describe("Test de login", function (done) {
 		driver = driver.build();
 
 		var loginPage = new LoginPage(driver);
+		var home = new HomePage(driver);
 		loginPage.open(url)
 			.then(() => {
 				loginPage.isLoaded().then(() => {
 					loginPage.login(username,password).then(() => {
+						home.goToConfiguration
+						home.goToUsers();
 						done();
 					});
 

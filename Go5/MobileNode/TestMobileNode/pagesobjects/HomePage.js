@@ -1,26 +1,35 @@
 import BasePage from './BasePage';
 //Css
-const	goToConfiguration = '.igoconfigurationwhite';
-const   goToHome ='.igohome';
-const 	goToMenu ='.menu';
-const 	helpLink ='igohelpwhite';
-const   goToDatosGenerales = '.igocompanydata';
-const   goToDisenio = '.igodesign';
-const   goToAdministrarPersonas = '.space:nth-child(2) .igoadminwhite';
-const   goToTitulos = '.space:nth-child(2) .igotitleswhite';
-const   goToGrupos = '.igogroups';
-const   personasTable = '.tables';
-const   goToDirectorio = '.space .igouserwhite';
-const   goToActividadSocial = '.igosocialswhite';
-const   goToVerMasEspacios = '.noicon';
-const   goToAdmistrarStore = 'article .space:nth-child(3) .igoadminwhite';
-const   goToTienda = '.space:nth-child(3) .igotitleswhite';
-const   mySpaces = '.igopasswordwhite';
-const   goToUserMenu = '.usermenu .last a figure';
-const   goToLogout = '.users li:last-child a';
-const   goToSpaceIconUmbrella = '.igospaceumbrella ';
-const   textPost = '.posttext';
-const	inputEmail = 'label:nth-child(3) input';
+const goToConfiguration = '.igoconfigurationwhite';
+const goToMenu ='.menu';
+
+//SideBar user basic
+
+const goToHome ='.igohome';
+const goToMyProfile = '.igowithoutimage';
+const goToPeople = '.space .igouserwhite';
+const mySpaces = '.igopasswordwhite';
+const goToUserMenu = '.usermenu .last a figure';
+const goToLogout = '.users li:last-child a';
+const goToSpaceIconUmbrella = '.igospaceumbrella ';
+
+//SideBar user admin
+
+const goToGeneralInfo = '.igocompanydata';
+const goToImage = '.igodesign';
+const goToEmails='.igomail';
+const goToUsers = '.space:nth-child(2) .igoadminwhite';
+const goToTitles = '.space:nth-child(2) .igotitleswhite';
+const goToGroups = '.igogroups';
+const peopleTable = '.tables';
+
+const goToSocial = '.igosocialswhite';
+const goToManageStore = 'article .space:nth-child(3) .igoadminwhite';
+const goToManageSpaces = 'article .space:nth-child(4) .igoadminwhite';
+
+const textPost = '.posttext';
+const inputEmail = 'label:nth-child(3) input';
+const helpLink ='igohelpwhite';
 
 import {By, until} from 'selenium-webdriver';
 
@@ -34,35 +43,46 @@ class HomePage extends BasePage {
 
 	isLoaded () {
 		//return this.driver.wait(until.elementLocated(By.id('ember759')),30000);
-		return super.waitForDisplayed(goToHome, 50000);
+		return super.waitForDisplayed(goToHome, 30000);
 	}
 	goToHome (){
 		this.driver.findElement(By.css(goToHome)).click();
 	}
 	goToMenu () {
+		console.log('open menu');
 		this.driver.findElement(By.css(goToMenu)).click();
 	}
 	goToUserMenu () {
 		this.driver.findElement(By.css(goToUserMenu)).click();
 	}
-	goToAdministrar () {
-		this.driver.findElement(By.css(goToAdministrar)).click();
+	goToMyProfile () {
+		this.driver.findElement(By.css(goToMyProfile)).click();
 	}
-	goToTitulos () {
+	goToPeople () {
+		this.driver.findElement(By.css(goToPeople)).click();
+	}
+	//Sidebar user admin
+
+	goToUsers () {
+		this.driver.findElement(By.css(goToUsers)).click();
+		return super.waitForDisplayed(peopleTable,10000);
+	}
+	goToTitles () {
 		console.log('Abriendo titulos');
-		this.driver.findElement(By.css(goToTitulos)).click();
+		this.driver.findElement(By.css(goToTitles)).click();
 	}
-	goToGrupos () {
-		this.driver.findElement(By.css(goToGrupos)).click();
+	goToGroups () {
+		this.driver.findElement(By.css(goToGroups)).click();
 	}
-	goToDatosGenerales () {
-		this.driver.findElement(By.css(goToDatosGenerales)).click();
+	goToGeneralInfo () {
+		this.driver.findElement(By.css(goToGeneralInfo)).click();
 	}
-	goToDisenio () {
-		this.driver.findElement(By.css(goToDisenio)).click();
+	goToImage () {
+		this.driver.findElement(By.css(goToImage)).click();
 	}
-	goToDirectorio () {
-		this.driver.findElement(By.css(goToDirectorio)).click();
+
+	goToEmails () {
+		this.driver.findElement(By.css(goToEmails)).click();
 	}
 	goToAyuda () {
 		this.driver.findElement(By.css(helpLink)).click();
@@ -72,6 +92,7 @@ class HomePage extends BasePage {
 		this.driver.findElement(By.css(goToLogout)).click();
 		waitForDisplayed(inputEmail,15);
 	}
+
 }
 
-export default LoginPage;
+export default HomePage;

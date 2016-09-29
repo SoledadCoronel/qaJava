@@ -1,11 +1,12 @@
 import {By, until} from 'selenium-webdriver';
+//import chaiAsPromised from 'chai-as-promised';
 
 //Navigate selectors
 const goBack ='header .back';
 
 //Chai as Promised
-const chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
+//const chaiAsPromised = require('chai-as-promised');
+//chai.use(chaiAsPromised);
 //Class definition
 var driver;
 class BasePage {
@@ -17,7 +18,7 @@ class BasePage {
 		return this.driver.get(url);
 	}
 
-	waitForDisplayed(locator,timeout){
+	waitForDisplayed (locator,timeout){
 		return this.driver.wait(until.elementLocated(By.css(locator)),timeout);
 	}
 	waitForEnabled (locator,timeout){
