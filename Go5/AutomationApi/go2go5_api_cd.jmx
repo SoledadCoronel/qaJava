@@ -6399,9 +6399,18 @@
             <hashTree>
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regex Extractor access_token" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">BEARER_ACCESS_TOKEN</stringProp>
+                <stringProp name="RegexExtractor.refname">BEARER_ACCESS_TOKEN2</stringProp>
                 <stringProp name="RegexExtractor.regex">&quot;access_token&quot;:&quot;([A-Za-z0-9]+?)&quot;</stringProp>
                 <stringProp name="RegexExtractor.template">Bearer $1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regex Extractor access_token" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">ACCESS_TOKEN2</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;access_token&quot;:&quot;([A-Za-z0-9]+?)&quot;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
               </RegexExtractor>
@@ -6458,7 +6467,7 @@
                     <stringProp name="Argument.value">{&#xd;
   &quot;users&quot;: {&#xd;
     &quot;name&quot;: &quot;Maria&quot;,&#xd;
-    &quot;surname&quot;: &quot;Perez&quot;,&#xd;
+    &quot;surname&quot;: &quot;Perez${__Random(1,9999,)}&quot;,&#xd;
     &quot;enabled&quot;: true,&#xd;
     &quot;role&quot;: &quot;ROLE_BASIC&quot;,&#xd;
     &quot;registered&quot;: true,&#xd;
@@ -6490,7 +6499,7 @@
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Authorization</stringProp>
-                    <stringProp name="Header.value">${BEARER_ACCESS_TOKEN}</stringProp>
+                    <stringProp name="Header.value">${BEARER_ACCESS_TOKEN2}</stringProp>
                   </elementProp>
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Content-Type</stringProp>
@@ -6584,6 +6593,23 @@
         <hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SSO - Go5" enabled="true"/>
           <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/vnd.api+json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/vnd.api+json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">${ACCESS_TOKEN}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
             <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
               <collectionProp name="CookieManager.cookies"/>
               <boolProp name="CookieManager.clearEachIteration">false</boolProp>
@@ -6602,23 +6628,6 @@
               <stringProp name="HTTPSampler.path"></stringProp>
               <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
             </ConfigTestElement>
-            <hashTree/>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">application/vnd.api+json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">${ACCESS_TOKEN}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
             <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getSSO - installations - app bnf" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -6765,24 +6774,55 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SSO - Go2" enabled="true"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SSO - Go2" enabled="false"/>
           <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/vnd.api+json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/vnd.api+json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">${ACCESS_TOKEN}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">integrations.cd.go5.gointegro.net</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+            </ConfigTestElement>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="post - SSO- GO2 - bnf" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments">
-                  <elementProp name="SAMLResponse" elementType="HTTPArgument">
+                  <elementProp name="installation-id" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                    <stringProp name="Argument.value">${SAML_RESPONSE}</stringProp>
+                    <stringProp name="Argument.value">${GO5_INSTALLATION_TOKEN_ID}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">SAMLResponse</stringProp>
+                    <stringProp name="Argument.name">installation-id</stringProp>
                   </elementProp>
-                  <elementProp name="RelayState" elementType="HTTPArgument">
+                  <elementProp name="oauth-token" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                    <stringProp name="Argument.value">http://${GO2_HOST_NAME}/saml2-sp</stringProp>
+                    <stringProp name="Argument.value">${ACCESS_TOKEN2}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">RelayState</stringProp>
+                    <stringProp name="Argument.name">oauth-token</stringProp>
                   </elementProp>
                 </collectionProp>
               </elementProp>
@@ -6792,7 +6832,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-              <stringProp name="HTTPSampler.path">sso/module.php/saml/sp/saml2-acs.php/go5-sp</stringProp>
+              <stringProp name="HTTPSampler.path">/go2-app</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6802,20 +6842,6 @@
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
-                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                  <collectionProp name="Arguments.arguments"/>
-                </elementProp>
-                <stringProp name="HTTPSampler.domain">${GO2_HOST_NAME}</stringProp>
-                <stringProp name="HTTPSampler.port"></stringProp>
-                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                <stringProp name="HTTPSampler.protocol">http</stringProp>
-                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path"></stringProp>
-                <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
-              </ConfigTestElement>
-              <hashTree/>
               <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
                 <collectionProp name="CookieManager.cookies"/>
                 <boolProp name="CookieManager.clearEachIteration">false</boolProp>
@@ -6854,7 +6880,7 @@
                 <stringProp name="filename"></stringProp>
               </ResultCollector>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="false">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -6863,7 +6889,7 @@
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="false">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="2255103">Home</stringProp>
                 </collectionProp>
@@ -6985,7 +7011,7 @@
             </hashTree>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Oauth2 - Usuarios" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Oauth2 - Usuarios" enabled="false"/>
         <hashTree>
           <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -7970,7 +7996,7 @@
             </hashTree>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Patch de atributos en GO5" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Patch de atributos en GO5" enabled="false"/>
         <hashTree>
           <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -8344,7 +8370,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Creacion de usuarios" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Creacion de usuarios" enabled="false"/>
         <hashTree>
           <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
