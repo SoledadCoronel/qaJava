@@ -1,6 +1,16 @@
 import BasePage from './BasePage';
 //Css
-const goToConfiguration = '.igoconfigurationwhite';
+const navigationSelectors = {
+	configuration: '.igoconfigurationwhite',
+	users: '.space:nth-child(2) .igoadminwhite',
+}
+
+const pagesToWait = {
+	users: true,
+	configuration: true
+}
+
+
 const goToMenu ='.menu';
 
 //SideBar user basic
@@ -15,10 +25,9 @@ const goToSpaceIconUmbrella = '.igospaceumbrella ';
 
 //SideBar user admin
 
-const goToGeneralInfo = '.igocompanydata';
+
 const goToImage = '.igodesign';
 const goToEmails='.igomail';
-const goToUsers = '.space:nth-child(2) .igoadminwhite';
 const goToTitles = '.space:nth-child(2) .igotitleswhite';
 const goToGroups = '.igogroups';
 const peopleTable = '.tables';
@@ -26,10 +35,12 @@ const peopleTable = '.tables';
 const goToSocial = '.igosocialswhite';
 const goToManageStore = 'article .space:nth-child(3) .igoadminwhite';
 const goToManageSpaces = 'article .space:nth-child(4) .igoadminwhite';
-
+//Elemens for explicit waits
 const textPost = '.posttext';
 const inputEmail = 'label:nth-child(3) input';
 const helpLink ='igohelpwhite';
+const timeout = 20000;
+
 
 import {By, until} from 'selenium-webdriver';
 
@@ -39,6 +50,7 @@ import {By, until} from 'selenium-webdriver';
 class HomePage extends BasePage {
 	constructor (webdriver) {
 		super(webdriver);
+		this.navigationSelectors = navigationSelectors;
 	}
 
 	isLoaded () {
@@ -50,7 +62,7 @@ class HomePage extends BasePage {
 	}
 	goToMenu () {
 		console.log('open menu');
-		this.driver.findElement(By.css(goToMenu)).click();
+		return this.driver.findElement(By.css(goToMenu)).click();
 	}
 	goToUserMenu () {
 		this.driver.findElement(By.css(goToUserMenu)).click();
@@ -61,12 +73,9 @@ class HomePage extends BasePage {
 	goToPeople () {
 		this.driver.findElement(By.css(goToPeople)).click();
 	}
-	//Sidebar user admin
 
-	goToUsers () {
-		this.driver.findElement(By.css(goToUsers)).click();
-		return super.waitForDisplayed(peopleTable,10000);
-	}
+	// Sidebar user admin
+
 	goToTitles () {
 		console.log('Abriendo titulos');
 		this.driver.findElement(By.css(goToTitles)).click();

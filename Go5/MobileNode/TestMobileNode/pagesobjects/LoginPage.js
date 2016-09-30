@@ -2,7 +2,7 @@ import BasePage from './BasePage';
 const	goButtonLogin = 'label:last-child .primary';
 const	inputEmail = 'label:nth-child(3) input';
 const	inputPassword = 'label:nth-child(4) input';
-const 	home ='.igohome';
+const 	home = '.igohome';
 
 import {By, until} from 'selenium-webdriver';
 

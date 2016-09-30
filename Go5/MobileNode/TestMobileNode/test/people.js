@@ -25,22 +25,28 @@ test.describe("Test de login", function (done) {
 		driver.quit();
 	});
 
-	test.it("I login into GO5", (done) => {
+	test.it("go to Users and add a new user ", (done) => {
 		driver = driver.build();
 
 		var loginPage = new LoginPage(driver);
 		var home = new HomePage(driver);
 		loginPage.open(url)
 			.then(() => {
-				loginPage.isLoaded().then(() => {
-					loginPage.login(username,password).then(() => {
-						home.goToConfiguration
-						home.goToUsers();
-						done();
-					});
-
-				});
-
+				return loginPage.isLoaded();
+			})
+			.then(() => {
+				return loginPage.login(username,password);
+			})
+			.then(() => {
+				return home.goTo('configuration');
+				//return home.goToConfiguration();
+			})
+			.then(() => {
+				return home.goTo('users');
+				//return home.goToUsers();
+			})
+			.then(() => {
+				done();
 			});
 	});
 
