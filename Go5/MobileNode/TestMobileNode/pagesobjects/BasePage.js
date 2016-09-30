@@ -1,5 +1,5 @@
 import {By, until} from 'selenium-webdriver';
-import { timeouts as TimeoutConfig} from '../config/';
+import {timeouts} from '../config/';
 //import chaiAsPromised from 'chai-as-promised';
 
 // esto tiene que ir en algun archivo vieja!
@@ -7,10 +7,10 @@ const waiterSelectors = {
 	configuration: '.igoconfigurationwhite',
 	people: '.tables',
 	logout: 'label:nth-child(3) input'
-}
+};
 
 //Navigate selectors
-const goBack ='header .back';
+const goBack = 'header .back';
 
 //Chai as Promised
 //const chaiAsPromised = require('chai-as-promised');
@@ -45,7 +45,7 @@ class BasePage {
 			let waiterSelector = this.getPageWaiterSelector(pageName);
 
 			if (waiterSelector) {
-				return this.waitForDisplayed(waiterSelector, TimeoutConfig.visible_elements);
+				return this.waitForDisplayed(waiterSelector, timeouts.visible_elements);
 			}
 
 			return result;

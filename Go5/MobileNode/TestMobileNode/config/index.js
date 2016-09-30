@@ -1,3 +1,3 @@
-export const timemouts = {
+export const timeouts = {
 	visible_elements: 30000
-}
+};
