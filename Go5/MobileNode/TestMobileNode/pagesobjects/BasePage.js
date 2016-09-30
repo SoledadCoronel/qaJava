@@ -11,12 +11,8 @@ const waiterSelectors = {
 
 //Navigate selectors
 const goBack = 'header .back';
-
-//Chai as Promised
-//const chaiAsPromised = require('chai-as-promised');
-//chai.use(chaiAsPromised);
-//Class definition
 var driver;
+
 class BasePage {
 	constructor (webdriver) {
 		this.driver = webdriver;
