@@ -46,9 +46,14 @@ class HomePage extends BasePage {
 		return super.waitForDisplayed(goToHome, 30000);
 	}
 
+	showUserMenu () {
+		return this.driver.findElement(By.css('userMenu').click());
+	}
+
+
 	goToLogout () {
-		      this.goTo('userMenu')
-		      .then(() => {
+		this.showUserMenu()
+			.then(() => {
 				return this.goTo('logout')
 			});
 

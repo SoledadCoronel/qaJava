@@ -48,7 +48,6 @@ class BasePage {
 		})
 	}
 
-
 	waitForDisplayed (locator,timeout){
 		return this.driver.wait(until.elementLocated(By.css(locator)),timeout);
 	}
