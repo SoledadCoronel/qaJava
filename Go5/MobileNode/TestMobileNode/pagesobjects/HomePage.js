@@ -27,9 +27,9 @@ const navigationSelectors = {
  	helpLink :'igohelpwhite',
 }
 
-const pagesToWait : {
+const pagesToWait = {
 	users: true,
-	configuration: true
+	configuration: true,
 }
 
 
@@ -47,9 +47,11 @@ class HomePage extends BasePage {
 	}
 
 	goToLogout () {
-		goToUserMenu();
-		this.driver.findElement(By.css(goToLogout)).click();
-		waitForDisplayed(inputEmail,15);
+		      this.goTo('userMenu')
+		      .then(() => {
+				return this.goTo('logout')
+			});
+
 	}
 
 }

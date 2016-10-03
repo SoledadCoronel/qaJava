@@ -46,6 +46,9 @@ test.describe("Test de login", function (done) {
 				//return home.goToUsers();
 			})
 			.then(() => {
+				return home.goToLogout();
+			})
+			.then(() => {
 				done();
 			});
 	});
