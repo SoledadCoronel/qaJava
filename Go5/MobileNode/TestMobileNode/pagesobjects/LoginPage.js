@@ -32,7 +32,7 @@ class LoginPage extends BasePage {
  	}
 
  	login (username,password) {
- 		//this.isLoaded();
+
  		this.sendUsername(username);
  		this.sendPassword(password);
  		this.pressLoginButton();

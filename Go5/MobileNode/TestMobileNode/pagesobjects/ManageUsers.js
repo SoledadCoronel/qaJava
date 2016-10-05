@@ -1,12 +1,14 @@
 import BasePage from './BasePage';
-import {By, until} from 'selenium-webdriver';
+
 //Css
 const navigationSelectors = {
 	//Css
 	addUser: '.adduser',
 	invitations: '.title menu li:nth-child(2) a',
-	users: '.open .admin li:first-child',
-	usersList:'tables admin'
+	}
+
+const elementsPage = {
+	usersList:'tables admin',
 	invitationsList: '.tables',
 	searchButton: '.btnsearch',
 	inputSearch: '.search input',
@@ -17,8 +19,8 @@ const navigationSelectors = {
 	}
 
 	const pagesToWait = {
-	users: true,
-	invitations: true,
+	adduser: true,
+
 }
 
 
@@ -31,8 +33,6 @@ class ManageUsers extends BasePage {
 	}
 
 		}
-
-}
 
 export default ManageUsers;
 

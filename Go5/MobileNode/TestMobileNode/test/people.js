@@ -2,6 +2,8 @@ import test from 'selenium-webdriver/testing';
 import {assert} from 'chai';
 import LoginPage from '../pagesobjects/LoginPage';
 import HomePage from '../pagesobjects/HomePage';
+import ManageUsers from '../pagesobjects/ManageUsers';
+import AddUser from '../pagesobjects/AddUser';
 import DriverFactory from '../drivers/';
 
 const username = 'marina.touceda@gointegro.com';
@@ -11,12 +13,10 @@ const url = 'http://automation5.pla.qa.go5.gointegro.net/authentication/login';
 test.describe("Test de login", function (done) {
 	this.timeout(300000);
 	var driver;
-	//var webdriver;
+
 
 	before(() => {
-		//webdriver = require('selenium-webdriver');
-		//driver = new webdriver.Builder()
-		  //  .forBrowser('firefox');
+
 		driver = DriverFactory.getDriver('firefox');
 
 	});
@@ -30,6 +30,8 @@ test.describe("Test de login", function (done) {
 
 		var loginPage = new LoginPage(driver);
 		var home = new HomePage(driver);
+		var users = new ManageUsers(driver);
+		var adduser = new AddUser(driver);
 		loginPage.open(url)
 			.then(() => {
 				return loginPage.isLoaded();
@@ -39,11 +41,17 @@ test.describe("Test de login", function (done) {
 			})
 			.then(() => {
 				return home.goTo('configuration');
-				//return home.goToConfiguration();
+				console.log ('open configuration page');
 			})
 			.then(() => {
 				return home.goTo('users');
-				//return home.goToUsers();
+				console.log ('open manage users page');
+			})
+			.then(() => {
+				return users.goTo('addUser');
+			})
+			.then(() => {
+				return adduser.createUser('testname','testautomation','testauto@gointegro.com');
 			})
 			.then(() => {
 				return home.goToLogout();

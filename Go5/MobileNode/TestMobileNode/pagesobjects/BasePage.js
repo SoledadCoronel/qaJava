@@ -6,7 +6,8 @@ import {timeouts} from '../config/';
 const waiterSelectors = {
 	configuration: '.igoconfigurationwhite',
 	people: '.tables',
-	logout: 'label:nth-child(3) input'
+	logout: 'label:nth-child(3) input',
+	addUser: '.primarydata label:nth-child(1) input'
 };
 
 //Navigate selectors
@@ -48,6 +49,12 @@ class BasePage {
 		})
 	}
 
+	setValue (locator,value) {
+		 this.driver.findElement(By.css(locator)).clear
+		.then (()=>{
+			 this.driver.findElement(By.css(locator)).sendKeys(value);
+		})
+	}
 	waitForDisplayed (locator,timeout){
 		return this.driver.wait(until.elementLocated(By.css(locator)),timeout);
 	}

@@ -42,19 +42,21 @@ class HomePage extends BasePage {
 	}
 
 	isLoaded () {
-		//return this.driver.wait(until.elementLocated(By.id('ember759')),30000);
 		return super.waitForDisplayed(goToHome, 30000);
 	}
 
 	showUserMenu () {
-		return this.driver.findElement(By.css('userMenu').click());
+		return this.driver.findElement(By.css(userMenu)).click();
+
 	}
 
 
 	goToLogout () {
-		this.showUserMenu()
+		  //this.showUserMenu()
+		 this.goTo('userMenu')
 			.then(() => {
-				return this.goTo('logout')
+				this.goTo('logout')
+
 			});
 
 	}
