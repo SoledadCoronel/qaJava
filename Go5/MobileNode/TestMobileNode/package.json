@@ -4,7 +4,8 @@
   "description": "Package json for appium test ",
   "main": "login.js",
   "scripts": {
-    "test": "mocha \"test/**/*@(.js)\" --compilers js:babel-register -R spec  2>&1 | tee log.txt"
+    "test": "mocha \"test/**/*@(.js)\" --compilers js:babel-register -R spec  2>&1 | tee log.txt",
+    "onetest": "mocha test/people --compilers js:babel-register"
   },
   "repository": "",
   "keywords": [
