@@ -1,8 +1,6 @@
 
 var chai = require('chai'), chaiColors = require('chai-colors');
 var chaiHttp = require('chai-http');
-	assert = chai.assert;
-var expect = chai.expect;
 var Random = require("random-js");
 
 var should = chai.should();
