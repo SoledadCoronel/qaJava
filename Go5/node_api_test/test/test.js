@@ -18,7 +18,7 @@ describe('AUTOMATION', function() {
     .get('/platforms?filter[subdomain]=qago65809261')
     .end(function(err, res) {
     expect(res).to.have.property('status', 200);    // <= Test completes before this runs
-//console.log(jsonApiSerializer.deserialize(res.body));
+	//console.log(jsonApiSerializer.deserialize(res.body));
 	done();
     expect
 		});
