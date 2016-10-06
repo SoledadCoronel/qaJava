@@ -1,0 +1,29 @@
+{
+  "name": "TestMobileNode",
+  "version": "0.1.0",
+  "description": "Package json for appium test ",
+  "main": "login.js",
+  "scripts": {
+    "test": "mocha \"test/**/*@(.js)\" --compilers js:babel-register -R spec  2>&1 | tee log.txt",
+    "onetest": "mocha test/people --compilers js:babel-register"
+  },
+  "repository": "",
+  "keywords": [
+    "node.js",
+    "eclipse",
+    "nodeclipse"
+  ],
+  "author": "",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "selenium-webdriver": "^2.47"
+    },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-register": "^6.14.0"
+  }
+}
