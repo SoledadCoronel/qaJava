@@ -7634,9 +7634,9 @@
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">SAML_RESPONSE</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;saml-response&quot;: &quot;(.+?)&quot;,</stringProp>
                 <stringProp name="RegexExtractor.regex">&quot;saml-response&quot;: &quot;([A-Za-z0-9]+?)&quot;</stringProp>
                 <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
@@ -7846,7 +7846,7 @@
                   </value>
                 </objProp>
                 <stringProp name="filename"></stringProp>
-              </ResultCollector>       
+              </ResultCollector>
               <hashTree/>
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
