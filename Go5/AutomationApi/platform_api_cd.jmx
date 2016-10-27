@@ -19249,6 +19249,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   <hashTree/>
                 </hashTree>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PatchActive - Active - false" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                   <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                     <collectionProp name="Arguments.arguments">
                       <elementProp name="" elementType="HTTPArgument">
@@ -19266,7 +19267,6 @@ utils.load(&apos;schemas&apos;);</stringProp>
                       </elementProp>
                     </collectionProp>
                   </elementProp>
-                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
                   <stringProp name="HTTPSampler.connect_timeout"></stringProp>
@@ -26988,7 +26988,15 @@ utils.load(&apos;schemas&apos;);</stringProp>
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getArticles - por adminSpace" enabled="false">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                  <collectionProp name="Arguments.arguments"/>
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="filter[space]" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${PUBLIC_SPACE_ID}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">filter[space]</stringProp>
+                    </elementProp>
+                  </collectionProp>
                 </elementProp>
                 <stringProp name="HTTPSampler.domain"></stringProp>
                 <stringProp name="HTTPSampler.port"></stringProp>
@@ -26996,7 +27004,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">/articles?filter[space]=${PUBLIC_SPACE_ID}</stringProp>
+                <stringProp name="HTTPSampler.path">/articles</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -27015,6 +27023,10 @@ utils.load(&apos;schemas&apos;);</stringProp>
                     <elementProp name="" elementType="Header">
                       <stringProp name="Header.name">Authorization</stringProp>
                       <stringProp name="Header.value">${ACCESS_TOKEN_ADMINSPACE}</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/vnd.api+json</stringProp>
                     </elementProp>
                   </collectionProp>
                 </HeaderManager>
@@ -27162,7 +27174,22 @@ utils.load(&apos;schemas&apos;);</stringProp>
               </hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getArticles - por adminSpace - NO publicados" enabled="false">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                  <collectionProp name="Arguments.arguments"/>
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="filter[space]" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${PUBLIC_SPACE_ID}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">filter[space]</stringProp>
+                    </elementProp>
+                    <elementProp name="filter[published]" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">0</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">filter[published]</stringProp>
+                    </elementProp>
+                  </collectionProp>
                 </elementProp>
                 <stringProp name="HTTPSampler.domain"></stringProp>
                 <stringProp name="HTTPSampler.port"></stringProp>
@@ -27170,7 +27197,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">/articles?filter[space]=${PUBLIC_SPACE_ID}&amp;filter[published]=0</stringProp>
+                <stringProp name="HTTPSampler.path">/articles</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
