@@ -6526,6 +6526,7 @@
         &quot;image&quot;: &quot;http://g02.s.alicdn.com/kf/HTB1wAYPHpXXXXa0XFXXq6xXFXXXK/3D-Crystal-Rose-flower-3-5mm-Anti.jpg&quot;,&#xd;
         &quot;name&quot;: &quot;POST AUTOMATICO - freeDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;freeDay&quot;,&#xd;
+        &quot;validDate&quot;: &quot;2018-01-02&quot;,&#xd;
         &quot;links&quot;: {&#xd;
           &quot;duration&quot;:  &quot;3&quot;,&#xd;
 		&quot;country&quot;:&quot;1&quot;&#xd;
@@ -6793,7 +6794,7 @@
         &quot;image&quot;: &quot;http://g02.s.alicdn.com/kf/HTB1wAYPHpXXXXa0XFXXq6xXFXXXK/3D-Crystal-Rose-flower-3-5mm-Anti.jpg&quot;,&#xd;
         &quot;name&quot;: &quot;POST AUTOMATICO - specialDay - BUG&quot;,&#xd;
         &quot;optionType&quot;: &quot;specialDay&quot;,&#xd;
-        &quot;validDate&quot;: &quot;2017-01-01&quot;,&#xd;
+        &quot;validDate&quot;: &quot;2018-01-02&quot;,&#xd;
         &quot;links&quot;: {&#xd;
           &quot;duration&quot;:  &quot;35&quot;,&#xd;
           &quot;country&quot;:&quot;1&quot;&#xd;
@@ -10157,97 +10158,6 @@
             </ResultCollector>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="6. postFreeDaySinFecha" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-    &quot;reward-redeems&quot;: {&#xd;
-        &quot;user-id&quot;: ${USER_ID},&#xd;
-        &quot;quantity&quot;: 1,&#xd;
-        &quot;links&quot;: {&#xd;
-          &quot;reward&quot;:  &quot;${FREEDAY_ID}&quot;&#xd;
-        }&#xd;
-    }&#xd;
-}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain"></stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="HTTPSampler.protocol"></stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">rest.php/api/v2/rewards/catalog-accounts/${CATALOG_ACCOUNT_ID2}/links/reward-redeems</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <boolProp name="HTTPSampler.monitor">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">${ACCESS_TOKEN}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>false</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <threadCounts>true</threadCounts>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="339534415">La fecha para canjear un producto de tiempo libre es obligatoria</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">2</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="7. postMedioFreeDay" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -10258,7 +10168,7 @@
     &quot;reward-redeems&quot;: {&#xd;
         &quot;user-id&quot;: ${USER_ID},&#xd;
         &quot;quantity&quot;: 1,&#xd;
-        &quot;free-date&quot;: &quot;2017-01-01&quot;,&#xd;
+        &quot;free-date&quot;: &quot;2018-01-01&quot;,&#xd;
         &quot;free-choice&quot;: &quot;morning&quot;,&#xd;
         &quot;links&quot;: {&#xd;
           &quot;reward&quot;:  &quot;${MEDIO_FREEDAY_ID}&quot;&#xd;
@@ -10638,7 +10548,7 @@
     &quot;reward-redeems&quot;: {&#xd;
         &quot;user-id&quot;: ${USER_ID},&#xd;
         &quot;quantity&quot;: 1,&#xd;
-        &quot;free-date&quot;: &quot;2017-01-01&quot;,&#xd;
+        &quot;free-date&quot;: &quot;2018-01-01&quot;,&#xd;
         &quot;free-choice&quot;: &quot;morning&quot;,&#xd;
         &quot;links&quot;: {&#xd;
           &quot;reward&quot;:  &quot;${MEDIO_SPECIALDAY_ID}&quot;&#xd;
@@ -10730,8 +10640,8 @@
                   <stringProp name="Argument.value">{&#xd;
     &quot;reward-redeems&quot;: {&#xd;
         &quot;user-id&quot;: ${USER_ID},&#xd;
+        &quot;free-date&quot;: &quot;2018-01-02&quot;,&#xd;
         &quot;quantity&quot;: 1,&#xd;
-        &quot;free-date&quot;: &quot;2017-01-01&quot;,&#xd;
         &quot;links&quot;: {&#xd;
           &quot;reward&quot;:  &quot;${FREEDAY_ID}&quot;&#xd;
         }&#xd;
@@ -10831,7 +10741,7 @@
                   <stringProp name="Argument.value">{&#xd;
     &quot;reward-redeems&quot;: {&#xd;
         &quot;user-id&quot;: ${USER_ID},&#xd;
-        &quot;free-date&quot;: &quot;2017-01-01&quot;,&#xd;
+        &quot;free-date&quot;: &quot;2018-01-02&quot;,&#xd;
         &quot;quantity&quot;: 1,&#xd;
         &quot;links&quot;: {&#xd;
           &quot;reward&quot;:  &quot;${SPECIALDAY_ID}&quot;&#xd;
@@ -10879,6 +10789,15 @@
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number"></stringProp>
             </RegexExtractor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49587">201</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
             <hashTree/>
             <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
               <boolProp name="ResultCollector.error_logging">false</boolProp>
