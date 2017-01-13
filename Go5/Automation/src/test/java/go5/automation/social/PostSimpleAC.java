@@ -39,8 +39,7 @@ public class PostSimpleAC extends SetUp {
 
 		// Ir a espacios
 		// Tengo q ir a un espacio
-		Thread.sleep(3000);
-		espacio.clickEspacioSidebar(iconoEmpresa);
+		Thread.sleep(3000);		
 		Thread.sleep(4000);
 		muro.postTexto("Posteo como usuario admin para probar los likes ");
 		muro.postLink(link);
