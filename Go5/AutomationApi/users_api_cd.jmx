@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Plan de Pruebas" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -3760,7 +3760,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${USERADMIN3_ID}/profile</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${USERADMIN3_ID}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3806,7 +3806,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${PLT3_USER_ID1}/profile</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${PLT3_USER_ID1}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -4742,8 +4742,18 @@
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;job-titles&quot;,&#xd;
-    &quot;id&quot;: &quot;${PLT3_TITLE_ID}&quot;&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${PLT3_USER_ID1}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;job-title&quot;: {&#xd;
+		  &quot;data&quot;:&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;job-titles&quot;,&#xd;
+		      &quot;id&quot;:&quot;${PLT3_TITLE_ID}&quot;&#xd;
+		    } 			&#xd;
+  		}&#xd;
+  	}&#xd;
   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4756,7 +4766,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${PLT3_USER_ID1}/relationships/job-title</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${PLT3_USER_ID1}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -9713,12 +9723,21 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
-    {&#xd;
-      &quot;type&quot;: &quot;group-items&quot;,&#xd;
-      &quot;id&quot;:&quot;${GROUPITEM_ID}&quot;&#xd;
-    }&#xd;
-  ]&#xd;
+  &quot;data&quot;: {&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${USER_ID}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;group-items&quot;: {&#xd;
+		  &quot;data&quot;: [&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;group-items&quot;,&#xd;
+		      &quot;id&quot;:&quot;${GROUPITEM_ID}&quot;&#xd;
+		    }&#xd;
+		  ]  			&#xd;
+  		}&#xd;
+  	}&#xd;
+  }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -9730,8 +9749,8 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${USER_ID}/relationships/group-item</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${USER_ID}</stringProp>
+              <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -16466,7 +16485,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${USERADMIN_ID}/profile</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${USERADMIN_ID}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -16527,7 +16546,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID}/profile</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -16597,7 +16616,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${ADMINSPACEUSER_ID}/profile</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${ADMINSPACEUSER_ID}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -16667,7 +16686,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${USER_ID_ESPECIALES}/profile</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${USER_ID_ESPECIALES}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -16737,7 +16756,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${USER_ID}/profile</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${USER_ID}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -16807,7 +16826,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${USERADMIN2_ID}/profile</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${USERADMIN2_ID}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -20704,8 +20723,18 @@
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
                       <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;job-titles&quot;,&#xd;
-    &quot;id&quot;: &quot;${ANALISTA_TITLE_ID}&quot;&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${USER_ID_NAMEANALISTA}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;job-title&quot;: {&#xd;
+		  &quot;data&quot;:&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;job-titles&quot;,&#xd;
+		      &quot;id&quot;:&quot;${ANALISTA_TITLE_ID}&quot;&#xd;
+		    }			&#xd;
+  		}&#xd;
+  	}&#xd;
   }&#xd;
 }</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
@@ -20718,7 +20747,7 @@
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">/users/${USER_ID_NAMEANALISTA}/relationships/job-title</stringProp>
+                <stringProp name="HTTPSampler.path">/users/${USER_ID_NAMEANALISTA}</stringProp>
                 <stringProp name="HTTPSampler.method">PATCH</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -21862,8 +21891,18 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;job-titles&quot;,&#xd;
-    &quot;id&quot;: &quot;${TITLE_ID}&quot;&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${USER_ID}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;job-title&quot;: {&#xd;
+		  &quot;data&quot;:&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;job-titles&quot;,&#xd;
+		      &quot;id&quot;:&quot;${TITLE_ID}&quot;&#xd;
+		    }			&#xd;
+  		}&#xd;
+  	}&#xd;
   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -21876,7 +21915,7 @@
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/users/${USER_ID}/relationships/job-title</stringProp>
+            <stringProp name="HTTPSampler.path">/users/${USER_ID}</stringProp>
             <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -21905,8 +21944,18 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;job-titles&quot;,&#xd;
-    &quot;id&quot;: &quot;${TITLE_ID}&quot;&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${USER_ID}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;job-title&quot;: {&#xd;
+		  &quot;data&quot;:&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;job-titles&quot;,&#xd;
+		      &quot;id&quot;:&quot;${TITLE_ID}&quot;&#xd;
+		    }			&#xd;
+  		}&#xd;
+  	}&#xd;
   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -21919,7 +21968,7 @@
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/users/${USER_ID}/relationships/job-title</stringProp>
+            <stringProp name="HTTPSampler.path">/users/${USER_ID}</stringProp>
             <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -21942,7 +21991,7 @@
                 </elementProp>
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">${BASICUSER_ACCESS_TOKEN}</stringProp>
+                  <stringProp name="Header.value">${ACCESS_TOKEN}</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -21965,8 +22014,18 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;job-titles&quot;,&#xd;
-    &quot;id&quot;: &quot;${TITLE_ID}&quot;&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${USEROTHERPLATFORM_ID}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;job-title&quot;: {&#xd;
+		  &quot;data&quot;:&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;job-titles&quot;,&#xd;
+		      &quot;id&quot;:&quot;${TITLE_ID}&quot;&#xd;
+		    }			&#xd;
+  		}&#xd;
+  	}&#xd;
   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -21979,7 +22038,7 @@
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/users/${USEROTHERPLATFORM_ID}/relationships/job-title</stringProp>
+            <stringProp name="HTTPSampler.path">/users/${USEROTHERPLATFORM_ID}</stringProp>
             <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -22024,8 +22083,18 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;job-titles&quot;,&#xd;
-    &quot;id&quot;: &quot;${PLATFORM2_TITLE_ID}&quot;&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${USER_ID}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;job-title&quot;: {&#xd;
+		  &quot;data&quot;:&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;job-titles&quot;,&#xd;
+		      &quot;id&quot;:&quot;${PLATFORM2_TITLE_ID}&quot;&#xd;
+		    }			&#xd;
+  		}&#xd;
+  	}&#xd;
   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -22038,7 +22107,7 @@
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/users/${USER_ID}/relationships/job-title</stringProp>
+            <stringProp name="HTTPSampler.path">/users/${USER_ID}</stringProp>
             <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -22077,8 +22146,18 @@
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;job-titles&quot;,&#xd;
-    &quot;id&quot;: &quot;${TITLE_ID2}&quot;&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${USER_ID}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;job-title&quot;: {&#xd;
+		  &quot;data&quot;:&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;job-titles&quot;,&#xd;
+		      &quot;id&quot;:&quot;${TITLE_ID2}&quot;&#xd;
+		    }			&#xd;
+  		}&#xd;
+  	}&#xd;
   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -22091,7 +22170,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${USER_ID}/relationships/job-title</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${USER_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -22128,8 +22207,18 @@
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
   &quot;data&quot;: {&#xd;
-    &quot;type&quot;: &quot;job-titles&quot;,&#xd;
-    &quot;id&quot;: &quot;${TITLE_ID2}&quot;&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${BASICUSER_ID}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;job-title&quot;: {&#xd;
+		  &quot;data&quot;:&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;job-titles&quot;,&#xd;
+		      &quot;id&quot;:&quot;${TITLE_ID2}&quot;&#xd;
+		    }			&#xd;
+  		}&#xd;
+  	}&#xd;
   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -22142,7 +22231,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID}/relationships/job-title</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID}</stringProp>
               <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -27285,7 +27374,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/1/profile</stringProp>
+              <stringProp name="HTTPSampler.path">/users/1</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
