@@ -66,7 +66,7 @@ public class GO5LoginTest {
         capabilities.setCapability("platformVersion", "5.1.1");//  es el mobile OS version, si instalo api22 es 5.1.1
        // The app capability is not requires if you set appPackage and appActivity
        capabilities.setCapability("app", "/home/marinatouceda/Documentos/android-sdk-linux/platform-tools/go5-tag0.11.12.apk");
-        capabilities.setCapability("appPackage", "com.gointegro.go5mobile");
+        capabilities.setCapability("app-package'", "com.gointegro.go5mobile");
       //  capabilities.setCapability("appActivity", "com.gointegro.go5mobile.MainActivity");
         driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     //Setear la aplicacion a hybrida
