@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Plan de Pruebas" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -2664,12 +2664,21 @@ try
                     <elementProp name="" elementType="HTTPArgument">
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
                       <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
-    {&#xd;
-      &quot;type&quot;: &quot;group-items&quot;,&#xd;
-      &quot;id&quot;: &quot;${GROUPITEM_ID}&quot;&#xd;
-    }&#xd;
-  ]&#xd;
+  &quot;data&quot;: {&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${MEMBER_USER_ID}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;group-items&quot;: {&#xd;
+		  &quot;data&quot;: [&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;group-items&quot;,&#xd;
+		      &quot;id&quot;:&quot;${GROUPITEM_ID}&quot;&#xd;
+		    }&#xd;
+		  ]  			&#xd;
+  		}&#xd;
+  	}&#xd;
+  }&#xd;
 }</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
                     </elementProp>
@@ -2681,8 +2690,8 @@ try
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">/users/${MEMBER_USER_ID}/relationships/group-item</stringProp>
-                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <stringProp name="HTTPSampler.path">/users/${MEMBER_USER_ID}</stringProp>
+                <stringProp name="HTTPSampler.method">PATCH</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                 <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -2708,12 +2717,21 @@ try
                     <elementProp name="" elementType="HTTPArgument">
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
                       <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
-    {&#xd;
-      &quot;type&quot;: &quot;group-items&quot;,&#xd;
-      &quot;id&quot;: &quot;${GROUPITEM_ID}&quot;&#xd;
-    }&#xd;
-  ]&#xd;
+  &quot;data&quot;: {&#xd;
+  	&quot;type&quot;: &quot;users&quot;,&#xd;
+  	&quot;id&quot;: &quot;${ADMINSPACE_USER_ID}&quot;,&#xd;
+  	&quot;attributes&quot;: {},&#xd;
+  	&quot;relationships&quot;: {&#xd;
+  		&quot;group-items&quot;: {&#xd;
+		  &quot;data&quot;: [&#xd;
+		    {&#xd;
+		      &quot;type&quot;: &quot;group-items&quot;,&#xd;
+		      &quot;id&quot;:&quot;${GROUPITEM_ID}&quot;&#xd;
+		    }&#xd;
+		  ]  			&#xd;
+  		}&#xd;
+  	}&#xd;
+  }&#xd;
 }</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
                     </elementProp>
@@ -2725,8 +2743,8 @@ try
                 <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">/users/${ADMINSPACE_USER_ID}/relationships/group-item</stringProp>
-                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <stringProp name="HTTPSampler.path">/users/${ADMINSPACE_USER_ID}</stringProp>
+                <stringProp name="HTTPSampler.method">PATCH</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                 <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
