@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="PLATFORM" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -15781,12 +15781,17 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
+  &quot;data&quot;:&#xd;
     {&#xd;
-      &quot;type&quot;: &quot;group-items&quot;,&#xd;
-      &quot;id&quot;: &quot;${GROUPITEM_ID}&quot;&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID3}&quot;,&#xd;
+      &quot;attributes&quot;: {},&#xd;
+      &quot;relationships&quot;: {&#xd;
+      	&quot;group-items&quot;: {&#xd;
+      		&quot;data&quot;: [{&quot;type&quot;: &quot;group-items&quot;, &quot;id&quot;: &quot;${GROUPITEM_ID}&quot;}]&#xd;
+      	}&#xd;
+      }&#xd;
     }&#xd;
-  ]&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -15798,8 +15803,8 @@ utils.load(&apos;schemas&apos;);</stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID3}/relationships/group-item</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID3}</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -15825,12 +15830,15 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
+  &quot;data&quot;:&#xd;
     {&#xd;
-      &quot;type&quot;: &quot;group-items&quot;,&#xd;
-      &quot;id&quot;: &quot;${GROUPITEM_ID}&quot;&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID4}&quot;,&#xd;
+      &quot;attributes&quot;: {},&#xd;
+      &quot;relationships&quot;: {&#xd;
+      	&quot;group-items&quot;: {&quot;data&quot;: [{&quot;type&quot;: &quot;group-items&quot;, &quot;id&quot;: &quot;${GROUPITEM_ID}&quot;}]}&#xd;
+      }&#xd;
     }&#xd;
-  ]&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -15842,8 +15850,8 @@ utils.load(&apos;schemas&apos;);</stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID4}/relationships/group-item</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID4}</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -15944,12 +15952,15 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
+  &quot;data&quot;:&#xd;
     {&#xd;
-      &quot;type&quot;: &quot;group-items&quot;,&#xd;
-      &quot;id&quot;: &quot;${GROUPITEM_ID2}&quot;&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID5}&quot;,&#xd;
+      &quot;attributes&quot;: {},&#xd;
+      &quot;relationships&quot;: {&#xd;
+      	&quot;group-items&quot;: {&quot;data&quot;: [{&quot;type&quot;: &quot;group-items&quot;, &quot;id&quot;: &quot;${GROUPITEM_ID2}&quot;}]}&#xd;
+      }&#xd;
     }&#xd;
-  ]&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -15961,8 +15972,8 @@ utils.load(&apos;schemas&apos;);</stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID5}/relationships/group-item</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID5}</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -15988,12 +15999,15 @@ utils.load(&apos;schemas&apos;);</stringProp>
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
+  &quot;data&quot;:&#xd;
     {&#xd;
-      &quot;type&quot;: &quot;group-items&quot;,&#xd;
-      &quot;id&quot;: &quot;${GROUPITEM_ID2}&quot;&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID6}&quot;,&#xd;
+      &quot;attributes&quot;: {},&#xd;
+      &quot;relationships&quot;: {&#xd;
+      	&quot;group-items&quot;: {&quot;data&quot;: [{&quot;type&quot;: &quot;group-items&quot;, &quot;id&quot;: &quot;${GROUPITEM_ID2}&quot;}]}&#xd;
+      }&#xd;
     }&#xd;
-  ]&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -16005,8 +16019,8 @@ utils.load(&apos;schemas&apos;);</stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID6}/relationships/group-item</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID6}</stringProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -25592,12 +25606,15 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
+  &quot;data&quot;:&#xd;
     {&#xd;
-      &quot;type&quot;: &quot;group-items&quot;,&#xd;
-      &quot;id&quot;: &quot;${GROUPITEM_ID}&quot;&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID4}&quot;,&#xd;
+      &quot;attributes&quot;: {},&#xd;
+      &quot;relationships&quot;: {&#xd;
+      	&quot;group-items&quot;: {&quot;data&quot;: []}&#xd;
+      }&#xd;
     }&#xd;
-  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -25609,8 +25626,8 @@ utils.load(&apos;schemas&apos;);</stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID4}/relationships/group-item</stringProp>
-              <stringProp name="HTTPSampler.method">DELETE</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID4}</stringProp>
+              <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -25632,7 +25649,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   </elementProp>
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Authorization</stringProp>
-                    <stringProp name="Header.value">${ACCESS_TOKEN_BASICO4}</stringProp>
+                    <stringProp name="Header.value">${ACCESS_TOKEN}</stringProp>
                   </elementProp>
                 </collectionProp>
               </HeaderManager>
@@ -25756,12 +25773,15 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-  &quot;data&quot;: [&#xd;
+  &quot;data&quot;:&#xd;
     {&#xd;
-      &quot;type&quot;: &quot;group-items&quot;,&#xd;
-      &quot;id&quot;: &quot;${GROUPITEM_ID}&quot;&#xd;
+      &quot;type&quot;: &quot;users&quot;,&#xd;
+      &quot;id&quot;: &quot;${BASICUSER_ID6}&quot;,&#xd;
+      &quot;attributes&quot;: {},&#xd;
+      &quot;relationships&quot;: {&#xd;
+      	&quot;group-items&quot;: {&quot;data&quot;: []}&#xd;
+      }&#xd;
     }&#xd;
-  ]&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -25773,8 +25793,8 @@ utils.load(&apos;schemas&apos;);</stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID6}/relationships/group-item</stringProp>
-              <stringProp name="HTTPSampler.method">DELETE</stringProp>
+              <stringProp name="HTTPSampler.path">/users/${BASICUSER_ID6}</stringProp>
+              <stringProp name="HTTPSampler.method">PATCH</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -25796,7 +25816,7 @@ utils.load(&apos;schemas&apos;);</stringProp>
                   </elementProp>
                   <elementProp name="" elementType="Header">
                     <stringProp name="Header.name">Authorization</stringProp>
-                    <stringProp name="Header.value">${ACCESS_TOKEN_BASICO6}</stringProp>
+                    <stringProp name="Header.value">${ACCESS_TOKEN}</stringProp>
                   </elementProp>
                 </collectionProp>
               </HeaderManager>
