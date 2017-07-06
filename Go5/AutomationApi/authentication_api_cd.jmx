@@ -1227,7 +1227,7 @@
               <hashTree/>
               <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
                 <collectionProp name="CookieManager.cookies"/>
-                <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+                <boolProp name="CookieManager.clearEachIteration">true</boolProp>
               </CookieManager>
               <hashTree/>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getBasicUserProfile" enabled="true">
@@ -1318,6 +1318,7 @@
                 <hashTree/>
               </hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getBasicUserProfile" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="" elementType="HTTPArgument">
@@ -1327,7 +1328,6 @@
                     </elementProp>
                   </collectionProp>
                 </elementProp>
-                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <stringProp name="HTTPSampler.domain"></stringProp>
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.connect_timeout"></stringProp>
