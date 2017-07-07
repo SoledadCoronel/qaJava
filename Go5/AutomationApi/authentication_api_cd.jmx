@@ -1209,10 +1209,10 @@
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Controlador Simple" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Verificación - Usuario deslogueado2" enabled="true"/>
             <hashTree>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
-                <stringProp name="ConstantTimer.delay">20000</stringProp>
+                <stringProp name="ConstantTimer.delay">5000</stringProp>
               </ConstantTimer>
               <hashTree/>
               <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Oauth en platforma de usuario" enabled="true"/>
@@ -1301,26 +1301,14 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
                     <collectionProp name="Asserion.test_strings">
-                      <stringProp name="417462488">&quot;access_token&quot;:</stringProp>
-                      <stringProp name="-1974810037">&quot;refresh_token&quot;:</stringProp>
-                      <stringProp name="-2047299387">&quot;user_id&quot;:</stringProp>
-                      <stringProp name="528588317">&quot;platform_id&quot;:</stringProp>
+                      <stringProp name="51509">401</stringProp>
                     </collectionProp>
-                    <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                    <boolProp name="Assertion.assume_success">false</boolProp>
-                    <intProp name="Assertion.test_type">2</intProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                    <boolProp name="Assertion.assume_success">true</boolProp>
+                    <intProp name="Assertion.test_type">8</intProp>
                   </ResponseAssertion>
-                  <hashTree/>
-                  <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
-                    <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                    <stringProp name="RegexExtractor.refname">ACCESS_TOKEN5</stringProp>
-                    <stringProp name="RegexExtractor.regex">&quot;access_token&quot;:&quot;(.+?)&quot;</stringProp>
-                    <stringProp name="RegexExtractor.template">Bearer $1$</stringProp>
-                    <stringProp name="RegexExtractor.default"></stringProp>
-                    <stringProp name="RegexExtractor.match_number">1</stringProp>
-                  </RegexExtractor>
                   <hashTree/>
                   <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
                     <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -1358,10 +1346,10 @@
                 </hashTree>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Verificación - Usuario deslogueado" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Verificación - Usuario deslogueado2" enabled="true"/>
             <hashTree>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Temporizador Constante" enabled="true">
-                <stringProp name="ConstantTimer.delay">20000</stringProp>
+                <stringProp name="ConstantTimer.delay">5000</stringProp>
               </ConstantTimer>
               <hashTree/>
               <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
@@ -1469,6 +1457,15 @@
                   <stringProp name="filename"></stringProp>
                 </ResultCollector>
                 <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="51509">401</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                  <boolProp name="Assertion.assume_success">true</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                </ResponseAssertion>
+                <hashTree/>
               </hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getBasicUserProfile" enabled="true">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -1497,6 +1494,15 @@
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               </HTTPSamplerProxy>
               <hashTree>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="51509">401</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                  <boolProp name="Assertion.assume_success">true</boolProp>
+                  <intProp name="Assertion.test_type">8</intProp>
+                </ResponseAssertion>
+                <hashTree/>
                 <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
                   <collectionProp name="HeaderManager.headers">
                     <elementProp name="" elementType="Header">
